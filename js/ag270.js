@@ -1,20 +1,38 @@
+/*
+isLoggedIn, curserMessage, youtubeChannels, isMobile, isFirefox, isIos
+signal 33 and 108 = ban
+*/
 const objectsApiVersion = 2;
 const wearablesApiVersion = 9;
+const badwords = ["hitler", "nazi", "porno", "fuck", "lul", "eikel", "isis", "penis", "sora", "admin", "administrator", "hate", "terrorist"];
+const accountRessources = { level: 0, exp: 0, coins: 0 };
+const customBackgroundColor = { r: 0, g: 0, b: 0 };
+const youtubeChannels = [
+    { skinId: 56, id: 'UCTB0RGol-BnYKe0XliITlYg', verified: true },
+    { skinId: 1657, id: 'UCneU-0NP-BUHGoahZ8xsiTg', verified: true },
+    { skinId: 2281, id: 'UC9v2PgTIQ24XaW7hhzfZAkQ', verified: false },
+    { skinId: 2282, id: 'UCDlg1maSU9SLQyD2o5zg-LQ', verified: true },
+    { skinId: 2297, id: 'UCnZf3yC2jRNoRYV_Z7A7VJg', verified: true },
+    { skinId: 2331, id: 'UCiQ9ppFo-X24RrF-h9Grbgw', verified: false },
+    { skinId: 2529, id: 'UCmnPF8dH7sJN8qvxhXg7eSA', verified: true },
+    { skinId: 2626, id: 'UCGvx6BbsFg1IB1nJTRvm1DQ', verified: false },
+    { skinId: 2683, id: 'UCWSKctuGO6dOPp-9FRUpGUA', verified: false },
+    { skinId: 2816, id: 'UCYIzeLC1Jp7y1klvoPEW1sA', verified: false },
+    { skinId: 2832, id: 'UCNaj0L-_RJziNMZTzJghiuw', verified: false }
+];
 
-function _0x15f517(_0x4cb6b6, _0x4921cc, _0x1e1fcb) {
-    _0x4cb6b6 = (_0x4cb6b6 << 16 | _0x4921cc << 8 | _0x1e1fcb).toString(16);
-    return "#" + "0".repeat(6 - _0x4cb6b6.length) + _0x4cb6b6;
+function rgbToHex(r, g, b) {
+    return "#" + (r << 16 | g << 8 | b).toString(16).padStart(6, "0");
 }
-Array.prototype.remove = function(_0x9d5af4) {
-    var _0x9d5af4 = this.indexOf(_0x9d5af4);
-    var _0x42d279 = -1 !== _0x9d5af4;
-    if (_0x42d279) {
-        this.splice(_0x9d5af4, 1);
-    }
-    return _0x42d279;
+Array.prototype.remove = function(elem) {
+    const i = this.indexOf(elem);
+    const exists = -1 !== i;
+    if (exists)
+        this.splice(i, 1);
+    return exists;
 };
-Math.clamp = function(_0x244c0d, _0x20b919, _0x4da5fe) {
-    return Math.min(Math.max(_0x244c0d, _0x20b919), _0x4da5fe);
+Math.clamp = function(a, value, b) {
+    return Math.min(Math.max(a, value), b);
 };
 debugDataSize = 0;
 debugFail = false;
@@ -24,63 +42,9 @@ function isReady(force) {
     return ws && ws.readyState === WebSocket.OPEN && (_0x3b0762 && ws.bufferedAmount < 8192 || force);
 }
 
-var _0x3b4e10 = {
-    s: 56,
-    c: "UCTB0RGol-BnYKe0XliITlYg",
-    cc: true
-};
-var _0x3970f6 = {
-    s: 2281,
-    c: "UC9v2PgTIQ24XaW7hhzfZAkQ",
-    cc: false
-};
-var _0x4343d0 = {
-    s: 2282,
-    c: "UCDlg1maSU9SLQyD2o5zg-LQ",
-    cc: true
-};
-var _0x59b443 = {
-    s: 2297,
-    c: "UCnZf3yC2jRNoRYV_Z7A7VJg",
-    cc: true
-};
-var _0x47e1db = {
-    s: 2331,
-    c: "UCiQ9ppFo-X24RrF-h9Grbgw",
-    cc: false
-};
-var _0x5b0b2b = {
-    s: 2529,
-    c: "UCmnPF8dH7sJN8qvxhXg7eSA",
-    cc: true
-};
-var _0x3de215 = {
-    s: 2683,
-    c: "UCWSKctuGO6dOPp-9FRUpGUA",
-    cc: false
-};
-var _0x5aaa29 = {
-    s: 2832,
-    c: "UCNaj0L-_RJziNMZTzJghiuw",
-    cc: false
-};
-var _0x262c61 = {
-    x: 0,
-    y: 0
-};
-var _0x5d9340 = {
-    x: 0,
-    y: 0
-};
 var _0x256390;
 window.onload = function() {
     windowIsLoaded = true;
-    if (_0x396332) {
-        _0x396332.port.postMessage("register");
-    }
-    _0xeb6d2b();
-    setTimeout(_0xeb6d2b, 0);
-    setTimeout(_0xeb6d2b, 30000);
     _0x4eac2b.focus();
     (function _0x353b54(_0x56e762) {
         _0xb14342.font = "18px Ubuntu, sans-serif";
@@ -190,17 +154,6 @@ window.onload = function() {
             }
         }
     });
-    (() => {
-        var _0x4d53d9;
-        if ($("#level2").is(":visible")) {
-            _0x4d53d9 = 'force-hide';
-            $("#level2").addClass(_0x4d53d9);
-            if (!$("#level2").is(":visible")) {
-                _0x305b0f = true;
-            }
-            $("#level2").removeClass(_0x4d53d9);
-        }
-    })();
 
     function _0x234e04(_0x1feef2) {
         _0x1feef2.stopPropagation();
@@ -239,7 +192,6 @@ window.onload = function() {
     _0x472070.onfocus = function() {
         _0xbbfdd2 = true;
         _0x472070.placeholder = '';
-        chatConfirmRules();
     };
     _0x492d1e.ondragstart = _0x492d1e.ondrop = function(_0xbf1007) {
         _0xbf1007.preventDefault();
@@ -462,7 +414,7 @@ window.onload = function() {
         _0x2216eb.ondrop = _0x2808de;
         $("#customBackDragText").show();
     }
-    if (_0x591623) {
+    if (isIos) {
         _0x5d968e(_0x492d1e, _0x3169a6);
         _0x5d968e(_0x4110a1, _0x491923);
         _0x472070.ontouchstart = _0x5bcc48.ontouchstart = _0x376468.ontouchstart = _0x7a8f57.ontouchstart = _0x1954b9.ontouchstart = _0x56cf6a.ontouchstart = _0x400f7b.ontouchstart = _0x2baa42.ontouchstart = _0x234e04;
@@ -1020,7 +972,7 @@ window.onload = function() {
         switch (_0x244728.keyCode) {
             case 27:
                 var _0x4f6092 = $("div.modal.in:visible");
-                if (disabledModalClose || 0 == _0x4f6092.length) {
+                if (0 == _0x4f6092.length) {
                     if (_0xbbfdd2 || _0x2bc2d5 || _0x29894d || _0x12c259 || _0x181957 || _0x4a595d || _0x34cf3b) {
                         _0x472070.blur();
                         _0x1e0756.blur();
@@ -1037,7 +989,7 @@ window.onload = function() {
                 } else {
                     _0x4f6092.last().modal("hide");
                 }
-                if (_0x2e06e0 || _0x465e4b) {
+                if (_0x2e06e0 || isFirefox) {
                     _0x244728.preventDefault();
                 }
                 break;
@@ -1151,9 +1103,6 @@ window.onload = function() {
         _0x3b6c7d = _0x15ba70 = _0x24ef11 = _0xad8aa9 = _0x38584f = _0x2bf6bb = _0x13ad94 = _0x5a26dc = _0x4ae953 = _0x23f8db = _0x4400ec = _0x16195f = _0x1f5d9c = _0x4ad9fe = _0x1c4ea8 = _0x1f7f29 = false;
     };
     window.requestAnimationFrame(_0x3a188d);
-    _0x67e7da = setTimeout(function() {
-        _0x67e7da = 0;
-    }, 0);
     setInterval(_0x580067, 50);
     setInterval(_0x44d9fa, 1000);
     setInterval(function() {
@@ -1176,12 +1125,6 @@ window.onload = function() {
         window.onkeydown = _0xa19570;
         window.onfocus = _0x198171;
     };
-    if (_0x67e7da) {
-        clearTimeout(_0x67e7da);
-        _0x67e7da = 0;
-    } else {
-        _0x4d3d52 = true;
-    }
     if ((parseInt(window.localStorage.serverlistVersion) || 0) <= 6) {
         window.localStorage.removeItem("gameservers");
     }
@@ -1719,7 +1662,7 @@ window.connectDefault = function(_0x26e115) {
                     }
                     _0x468e60 = [_0x37ba00[1], _0x37ba00[5], _0x37ba00[8], _0x37ba00[12]];
                 } else {
-                    if (null == (_0x26e115 = _0x26e115 || ("undefined" != typeof Storage ? localStorage.contAg : "?"))) {
+                    if (null == (_0x26e115 = _0x26e115 || localStorage.contAg)) {
                         return void setTimeout(function() {
                             connectDefault("?");
                         }, 3000);
@@ -1747,11 +1690,10 @@ if (!window.performance) {
 if (!window.performance.now) {
     window.performance.now = Date.now;
 }
-var _0x465e4b = /firefox/i.test(navigator.userAgent);
+var isFirefox = /firefox/i.test(navigator.userAgent);
 var _0x4df5e1 = !!document.documentMode;
-/edg/i.test(navigator.userAgent);
 var isMobile = ("ontouchstart" in window || 0 < navigator.maxTouchPoints || 0 < navigator.msMaxTouchPoints) && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Macintosh/i.test(navigator.userAgent);
-var _0x591623 = isMobile && /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
+var isIos = isMobile && /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
 var _0x4386c1 = false;
 var _0x5ebb13 = "ondrop" in document.createElement("div") && "FormData" in window && "FileReader" in window;
 var _0x40ffc9 = false;
@@ -1761,22 +1703,9 @@ var _0x38288f = decodeURIComponent((new RegExp("[?|&]server=([^&;]+?)(&|#|;|$)")
 if (0 < ~~_0x38288f) {
     _0x40ffc9 = true;
 }
-var _0x26690d = [_0x3b4e10, {
-    "s": 1657,
-    "c": "UCneU-0NP-BUHGoahZ8xsiTg",
-    "cc": true
-}, _0x3970f6, _0x4343d0, _0x59b443, _0x47e1db, _0x5b0b2b, {
-    "s": 2626,
-    "c": "UCGvx6BbsFg1IB1nJTRvm1DQ",
-    "cc": false
-}, _0x3de215, {
-    "s": 2816,
-    "c": "UCYIzeLC1Jp7y1klvoPEW1sA",
-    "cc": false
-}, _0x5aaa29];
 var _0x1c0802 = null;
 var _0x5a219c = 0;
-var _0xff0f52 = _0x5d9340;
+var _0xff0f52 = { x: 0, y: 0 };
 var _0x27324d = [];
 var _0x32f181 = 0;
 var _0x10e829 = 0;
@@ -1801,23 +1730,11 @@ var _0x3902ef = 0;
 var _0x1e6b2c = 0;
 var _0x44a9fb = 0;
 var _0x32316b = 0;
-var _0x441f0a = 0;
-var _0x483209 = false;
 var _0x386e1f = 0;
 var _0x1a6afb = false;
 var _0x38c122 = 0;
 var _0x5c9b82 = 0;
-var hasWatchedAd = false;
-var _0x17f189 = false;
-var spawnCooldownLowTimeoutId = 0, spawnCooldownHighTimeoutId = 0;
-var spawnCooldownLow = 0;
-var spawnCooldownHigh = 0;
-var _0x1cc38d = 0;
-var _0x514d47 = false;
-var _0x173058 = false;
-var waitPlayButtonDone = false, waitAdvertContinueDone = false;
 var _0x1fc846 = false;
-var _0x4bcc93 = false;
 var _0x6b0fd0 = 0;
 var _0x1c6763 = 0;
 var _0x492c36 = true;
@@ -2484,7 +2401,7 @@ function _0x460313() {
                 _0x554124 = Math.max(~~(_0x453f45.width / 5), 100);
                 _0x30c2e5 = Math.max(~~(_0x453f45.height / 5), 100);
                 _0x554124 = "width=" + _0x554124 + ",height=" + _0x30c2e5 + ",menubar=0,toolbar=0,status=0,resizable=1,scrollbars=1";
-                if (_0x465e4b) {
+                if (isFirefox) {
                     window.open(_0x36455f, "_blank", _0x554124);
                 } else if (_0x30c2e5 = window.open('', "_blank", _0x554124)) {
                     _0x30c2e5.document.writeln("<html><head><title>Screenshot</title><style>@media(min-width:" + Math.max(_0x453f45.width - 200, 100) + "px){img{width:" + _0x453f45.width + "px;}}</style></head><body style=\"margin:0px;background:#000;\"><img width=\"100%\" src=\"" + _0x36455f + "\" style=\"max-width:" + _0x453f45.width + "px;max-height:" + _0x453f45.height + "px;\"></body></html>");
@@ -2513,10 +2430,10 @@ function _0x432cde() {
                         if (_0x538120[_0x53dbfd.O] && (_0x538120[_0x53dbfd.O]--, _0x538120[_0x53dbfd.O] <= 0)) {
                             delete _0x538120[_0x53dbfd.O];
                         }
-                        _0x12bbfc("Unmuted " + _0x53dbfd.name, false, false, 1, 10);
+                        curserMessage("Unmuted " + _0x53dbfd.name, false, false, 1, 10);
                     } else {
                         _0x5e5c13 = [];
-                        _0x12bbfc("Unmuted all players", !(_0x538120 = {}), !(_0x2f707e = {}), 1, 10);
+                        curserMessage("Unmuted all players", !(_0x538120 = {}), !(_0x2f707e = {}), 1, 10);
                     }
                     _0x4cb089 = true;
                     _0x2b8f46();
@@ -2629,9 +2546,9 @@ function _0x3addca(_0x56aa7e, _0x53ceee, _0x48d9c8) {
         _0x5e5c13.push(_0x5384f7);
         _0x2f707e[_0x56aa7e] = (_0x2f707e[_0x56aa7e] || 0) + 1;
         _0x538120[_0x53ceee] = (_0x538120[_0x53ceee] || 0) + 1;
-        _0x12bbfc("Muted " + _0x48d9c8, !(_0x4cb089 = true), false, 0, 10);
+        curserMessage("Muted " + _0x48d9c8, !(_0x4cb089 = true), false, 0, 10);
     } else {
-        _0x12bbfc(_0x56aa7e != _0x4e4df3 || _0x53ceee != _0x4e4df3 ? "That player is already muted" : "You cannot mute that player", false, false, 0, 10);
+        curserMessage(_0x56aa7e != _0x4e4df3 || _0x53ceee != _0x4e4df3 ? "That player is already muted" : "You cannot mute that player", false, false, 0, 10);
     }
 }
 
@@ -2648,29 +2565,29 @@ function _0x6da0af(_0x4cd623) {
     }
 }
 
-function _0x12bbfc(_0x58a44b, _0x2f949c, _0x4344dc, _0x25e0ab, _0x4a1f81) {
+function curserMessage(message, isHtml, isBold, color, fadeAfter) {
     var _0x4b1b06 = $("#curser");
     if (_0x32f181) {
         clearTimeout(_0x32f181);
         _0x32f181 = 0;
     }
-    if (_0x2f949c) {
-        _0x4b1b06.html(_0x58a44b);
+    if (isHtml) {
+        _0x4b1b06.html(message);
     } else {
-        _0x4b1b06.text(_0x58a44b);
+        _0x4b1b06.text(message);
     }
     _0x4b1b06.css({
-        "fontSize": _0x4344dc ? "24px" : "18px",
-        "color": 2 == _0x25e0ab ? "#999999" : 1 == _0x25e0ab ? "#00C000" : "#FF0000"
+        "fontSize": isBold ? "24px" : "18px",
+        "color": 2 == color ? "#999999" : 1 == color ? "#00C000" : "#FF0000"
     });
     if (!_0x4243db) {
         _0x4b1b06.finish().slideDown(50);
         _0x4243db = true;
     }
-    if (0 < _0x4a1f81) {
+    if (0 < fadeAfter) {
         _0x32f181 = setTimeout(function() {
             _0x34efff(true);
-        }, 1000 * _0x4a1f81);
+        }, 1000 * fadeAfter);
     }
 }
 
@@ -3283,7 +3200,7 @@ function _0x8f51f1() {
             $("#minionUi").removeClass("minimized");
         }
         _0x203625();
-        if (isMobile && (undefined !== window.localStorage && window.localStorage.fullscreen ? parseInt(window.localStorage.fullscreen) : !_0x591623)) {
+        if (isMobile && (undefined !== window.localStorage && window.localStorage.fullscreen ? parseInt(window.localStorage.fullscreen) : !isIos)) {
             _0x4e7152();
         }
     }
@@ -3336,66 +3253,15 @@ function _0x24f2c9(_0x577228, _0x10adf7) {
     return _0x577228.size - _0x10adf7.size || _0x577228.id - _0x10adf7.id || _0x577228.L - _0x10adf7.L;
 }
 
-function _0x1ed902() {
-    _0x1cc38d = Date.now();
-    if (isMobile) {
-        _0x4bcc93 = _0x514d47 = false;
-    } else {
-        if (!(803 < window.innerWidth && 650 < window.innerHeight || 692 < window.innerWidth && 681 < window.innerHeight || 945 < window.innerWidth)) {
-            window.innerHeight;
-        }
-        _0x514d47 = !(_0x4bcc93 = false);
-    }
-}
-
-function _0x2ca450() {
-    if (1512 < window.innerWidth) {
-        window.innerHeight;
-    }
-}
-
-function _0x57b950() {
-    if (!window.adplayer && adplayer_copy) {
-        window.adplayer = adplayer_copy;
-    }
-    adplayer.startPreRoll();
-}
-
 function onPlayerDeath() {
-    if ((_0x173058 = true) && !waitAdvertContinueDone) {
-        if (waitPlayButtonDone) {
-            a8ref = a8req = msref = msreq = 0;
-            allowPlayButton();
-        }
-        waitAdvertContinueDone = true;
-        $("#advertContinue").prop("disabled", true).html("Continue<br><i class=\"fa fa-spin\" style=\"animation-duration:1s; margin:0px 0px -2px; opacity:0.7;\"><img src=\"img/loading3.png\" style=\"width:20px;\"></i>").css("opacity", "0.7");
-        hasWatchedAd = _0x17f189 = false;
-        a8ref = a8req = framesCounter;
-        msref = msreq = Date.now();
-        spawnCooldownLow = 1200;
-        spawnCooldownHigh = 2400;
-        spawnCooldownLowTimeoutId = setTimeout(function() {
-            _0x17f189 = true;
-            if (hasWatchedAd) {
-                allowAdvertContinue();
-            }
-        }, spawnCooldownLow);
-        spawnCooldownHighTimeoutId = setTimeout(allowAdvertContinue, spawnCooldownHigh);
-    }
-    _0x4bcc93 = true;
-    setTimeout(function() {
-        if (_0x4bcc93) {
-            _0x1ed902();
-        }
-    }, isMobile ? 0 : 1000);
     _0x6da0af();
     _0x492dec();
     if (isMobile) {
         _0x4fbf9e();
         _0x2b2be7();
     }
-    if (!(3 != ++_0x5a219c && 4 != _0x5a219c && 7 != _0x5a219c && 9 != _0x5a219c && 11 != _0x5a219c && 12 != _0x5a219c && 16 != _0x5a219c || _0x109288)) {
-        _0x12bbfc(3 == _0x5a219c || 11 == _0x5a219c ? "Hey you! You really should register an agma.io account! It will let you save your progress, level up, and lots of more features and benefits!" : "To register an account, press esc (main menu) and on the left side of the screen press \"register\". It takes 1 minute, and you will have loads of benefits!", false, false, 1, 20);
+    if (!(3 != ++_0x5a219c && 4 != _0x5a219c && 7 != _0x5a219c && 9 != _0x5a219c && 11 != _0x5a219c && 12 != _0x5a219c && 16 != _0x5a219c || isLoggedIn)) {
+        curserMessage(3 == _0x5a219c || 11 == _0x5a219c ? "Hey you! You really should register an agma.io account! It will let you save your progress, level up, and lots of more features and benefits!" : "To register an account, press esc (main menu) and on the left side of the screen press \"register\". It takes 1 minute, and you will have loads of benefits!", false, false, 1, 20);
     }
     shuffleGameAds();
     if (0 < _0x255800.length) {
@@ -3408,9 +3274,8 @@ function onPlayerDeath() {
     shuffleGameTips();
     if (isMobile) {
         $("#overlays").fadeIn(100);
-        allowPlayButton();
         azad(true);
-        _0x1fc846 = _0x173058 = _0x514d47 = !(_0x3b0762 = _0x134fc9 = _0x536824 = _0x492c36 = true);
+        _0x1fc846 = !(_0x3b0762 = _0x134fc9 = _0x536824 = _0x492c36 = true);
         _0x1c6763 = 0;
     } else {
         $("#advert").fadeIn(600);
@@ -3420,58 +3285,6 @@ function onPlayerDeath() {
     _0x3e08c0 = true;
     _0x5665cf = null;
     sendSignal(14);
-}
-
-function allowPlayButton() {
-    if (!(
-        !waitPlayButtonDone || 0 < a8ref && (
-            a8req = a8ref + 5,
-            msreq = msref + (hasWatchedAd ? spawnCooldownLow : spawnCooldownHigh) - 50,
-            framesCounter < a8req || Date.now() < msreq
-        ) || (
-            $("#playBtn")
-                .prop("disabled", false)
-                .text("Play")
-                .css("opacity", ''),
-            _0x514d47 = waitPlayButtonDone = false,
-            waitAdvertContinueDone
-        )
-    )) {
-        if (spawnCooldownLowTimeoutId) {
-            clearTimeout(spawnCooldownLowTimeoutId);
-            spawnCooldownLowTimeoutId = 0;
-        }
-        if (spawnCooldownHighTimeoutId) {
-            clearTimeout(spawnCooldownHighTimeoutId);
-            spawnCooldownHighTimeoutId = 0;
-        }
-    }
-}
-
-function allowAdvertContinue() {
-    if (!(
-        !waitAdvertContinueDone || 0 < a8ref && (
-            a8req = a8ref + 5,
-            msreq = msref + (hasWatchedAd ? spawnCooldownLow : spawnCooldownHigh) - 50,
-            framesCounter < a8req || Date.now() < msreq
-        ) || (
-            $("#advertContinue")
-                .prop("disabled", false)
-                .text("Continue")
-                .css("opacity", ''),
-            _0x173058 = waitAdvertContinueDone = false,
-            waitPlayButtonDone
-        )
-    )) {
-        if (spawnCooldownLowTimeoutId) {
-            clearTimeout(spawnCooldownLowTimeoutId);
-            spawnCooldownLowTimeoutId = 0;
-        }
-        if (spawnCooldownHighTimeoutId) {
-            clearTimeout(spawnCooldownHighTimeoutId);
-            spawnCooldownHighTimeoutId = 0;
-        }
-    }
 }
 
 function _0x5f12f2() {
@@ -3525,7 +3338,7 @@ function _0x411213(_0x9db3a7) {
                 _0x53846a();
             }
         } else {
-            _0x12bbfc("Unable to connect. Please refresh your browser and try again. If this persists, please send an email to hello@agma.io to inform", false, true, 0, 0);
+            curserMessage("Unable to connect. Please refresh your browser and try again. If this persists, please send an email to hello@agma.io to inform", false, true, 0, 0);
         }
     }, "text");
 }
@@ -3539,25 +3352,7 @@ function _0x4a52b8() {
         _0x5be478 = "ws://127.0.0.1:451";
     }
     if (windowIsLoaded && _0x256390 && (_0x13d7e0(), 0 != _0x2b8278)) {
-        if ((() => {
-                if (!_0x1f725c) {
-                    if ("undefined" != typeof Storage) {
-                        var _0x3e73a4 = Date.now();
-                        for (var _0x22acdb = 0; _0x22acdb < 5; _0x22acdb++) {
-                            var _0x37ea89 = parseInt(localStorage["wc" + (_0x22acdb + 1)]) || 0;
-                            if (!_0x1f725c && 15000 < _0x3e73a4 - _0x37ea89) {
-                                _0x1f725c = _0x22acdb + 1;
-                                localStorage["wc" + _0x1f725c] = _0x3e73a4;
-                            } else if (_0x3e73a4 < _0x37ea89) {
-                                localStorage["wc" + (_0x22acdb + 1)] = _0x3e73a4;
-                            }
-                        }
-                    } else {
-                        _0x1f725c = 1;
-                    }
-                }
-                return _0x1f725c && _0x6a593d < 3 && !window.sckt;
-            })()) {
+        if (!ws) {
             $("#agma_loading_bar").hide();
             $("#cellExampleMenu .skin-example").css("background-image", "url('../skins/0_lo.png')");
             _0x411213();
@@ -3583,13 +3378,12 @@ function _0x4a52b8() {
             ws.onopen = _0x14f052;
             ws.onmessage = _0x51e55a;
             ws.onclose = _0xae7145;
-            window.sckt = true;
         } else {
             if (!_0x10e829) {
                 _0x564895();
             }
-            _0x1d3023 = setTimeout(_0x4a52b8, _0xf1d309);
-            _0xf1d309 *= 1.5;
+            // _0x1d3023 = setTimeout(_0x4a52b8, _0xf1d309);
+            // _0xf1d309 *= 1.5;
         }
     }
 }
@@ -3640,7 +3434,6 @@ function _0x13d7e0() {
         _0x5ae1b6 = 0;
         mapCenterSet = false;
         ws = null;
-        window.sckt = false;
         _0x30cebd();
     }
 }
@@ -3670,7 +3463,7 @@ function _0x564895(_0x98e624) {
         for (var _0x31bb4b = 0; _0x31bb4b < _0x1c7c1b; _0x31bb4b++) {
             _0x3d3bd2 += ".";
         }
-        _0x12bbfc("<span style='opacity:0;'>." + _0x3d3bd2 + "</span>Connecting" + _0x3d3bd2 + "<span style='opacity:1;font-size:12px;margin-left:10px;'>(If any issues with connection, please email hello@agma.io)</span>", true, true, 2, 0);
+        curserMessage("<span style='opacity:0;'>." + _0x3d3bd2 + "</span>Connecting" + _0x3d3bd2 + "<span style='opacity:1;font-size:12px;margin-left:10px;'>(If any issues with connection, please email hello@agma.io)</span>", true, true, 2, 0);
         _0x10e829 = setTimeout(function() {
             _0x564895((_0x98e624 + 1) % 6);
         }, 400);
@@ -3713,7 +3506,6 @@ function _0x14f052() {
     _0x57735d();
     var _0x410ac6 = new PacketWriter(14);
     _0x410ac6.setUint8(245).setUint16(61).setUint16(156).setUint32(_0x556e60).setUint32(_0xf937a3(_0x410ac6.buffer, 0, 9, 245)).send(true);
-    _0x32b561();
     multiEjectServerChanged = true;
     if (isMobile) {
         _0x2b2be7();
@@ -4372,9 +4164,9 @@ function _0x215896() {
                         b: 0
                     };
                     var _0xccf34 = Math.min(0.25 * Math.max(_0x3e50d9 * _0x358119 - 0.05, 0), 0.3);
-                    var _0x1bc408 = _0xe0e646 ? _0x41e18a : _0x33523f ? _0x4da7fc : _0x1f0f3e;
+                    var _0x1bc408 = _0xe0e646 ? customBackgroundColor : _0x33523f ? _0x4da7fc : _0x1f0f3e;
                     var _0x90bd87 = _0x33523f ? _0x52da49 : _0x20488f;
-                    _0xb14342.strokeStyle = _0x15f517(~~(_0x1bc408.r + (_0x90bd87.r - _0x1bc408.r) * _0xccf34), ~~(_0x1bc408.g + (_0x90bd87.g - _0x1bc408.g) * _0xccf34), ~~(_0x1bc408.b + (_0x90bd87.b - _0x1bc408.b) * _0xccf34));
+                    _0xb14342.strokeStyle = rgbToHex(~~(_0x1bc408.r + (_0x90bd87.r - _0x1bc408.r) * _0xccf34), ~~(_0x1bc408.g + (_0x90bd87.g - _0x1bc408.g) * _0xccf34), ~~(_0x1bc408.b + (_0x90bd87.b - _0x1bc408.b) * _0xccf34));
                     _0xb14342.save();
                     _0xb14342.scale(_0x3e50d9, _0x3e50d9);
                     var _0x31da46 = _0x53f1a5 / _0x3e50d9;
@@ -4422,8 +4214,8 @@ function _0x215896() {
         _0xb14342.lineWidth = _0x2c9685;
         _0xb14342.globalAlpha = 1;
         _0x330e7f = Math.clamp(5 * _0x3e50d9 * _0x358119, false && _0x25fdfa ? 0.5 : 0.2, 1);
-        _0x62fded = _0xe0e646 ? _0x41e18a : _0x33523f ? _0x2b9f9d : _0x214596;
-        _0xb14342.strokeStyle = _0x15f517(~~(_0x62fded.r + (204 - _0x62fded.r) * _0x330e7f), ~~(_0x62fded.g + (48 - _0x62fded.g) * _0x330e7f), ~~(_0x62fded.b + (48 - _0x62fded.b) * _0x330e7f));
+        _0x62fded = _0xe0e646 ? customBackgroundColor : _0x33523f ? _0x2b9f9d : _0x214596;
+        _0xb14342.strokeStyle = rgbToHex(~~(_0x62fded.r + (204 - _0x62fded.r) * _0x330e7f), ~~(_0x62fded.g + (48 - _0x62fded.g) * _0x330e7f), ~~(_0x62fded.b + (48 - _0x62fded.b) * _0x330e7f));
         if (_0x40843.top + _0x2c9685 / 2 > _0x4ce984 - _0x223539) {
             _0xb14342.beginPath();
             _0xb14342.moveTo(_0x40843.left, _0x40843.top);
@@ -4768,7 +4560,7 @@ function _0xae7145() {
         $("#serverRow" + _0x40966e.id).addClass("active");
         connectserver(_0x40966e.address, _0x40966e.name);
     } else if (!_0xf3d226) {
-        if ("undefined" != typeof Storage && window.localStorage.gameservers && window.localStorage.serverlistVersion != 12) {
+        if (window.localStorage.gameservers && window.localStorage.serverlistVersion != 12) {
             _0x256390 = null;
             _0x46c79d = '';
             connectDefault();
@@ -4817,13 +4609,6 @@ adSpawnCounter = 0;
 clientStarted = Date.now();
 adSuccessCB = null;
 adPreRolledBy = 0;
-adplayer_copy = null;
-canRunAds = !!window.canRunAds && "function" == typeof window.adsBox;
-fus = false;
-a8ref = 0;
-a8req = 0;
-msref = 0;
-msreq = 0;
 ag219 = '';
 ag219_2 = '';
 rq219done = false;
@@ -4833,13 +4618,10 @@ untrustedClickResetTimer = 0;
 trustedEvent = false;
 ignoreTrustedEvent = true;
 trustedEventResetTimer = 0;
-disabledModalClose = false;
-preventModalCloseTimer = 0;
 mapCenterSet = false;
 isSpectating = false;
 _0x1e9905 = '';
 challengeImageId = _0x38a139 = _0x1d4fed = _0x54207c = _0x20546f = 0;
-chatRulesConfirmed = false;
 arrayOfKeyCodes = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
 drawHalfFood = false;
 _0x2792ec = false;
@@ -4850,76 +4632,45 @@ window.topLeftClick = function() {
     azad(true);
 };
 window.azad = function(_0x1f19f5, _0x2aa3d0) {
-    if (!_0x173058 && (
+    if ((
         _0x1f19f5 = !!_0x1f19f5,
         _0x1f19f5 = (
             !_0x2a60cc &&
             0 == _0x335282.length &&
-            _0x1cc38d < Date.now() - 40000 &&
             !_0x1fc846 &&
-            _0x3e08c0 != _0x1f19f5 ? _0x4bcc93 = true : _0x1f19f5
+            _0x3e08c0 != _0x1f19f5 ? true : _0x1f19f5
         )
     )) {
         az(_0x2aa3d0, 2);
     }
 };
 window.az = function(_0x16507e, _0x1da941) {
-    var _0x3da465;
-    if (!_0x173058) {
-        _0x3da465 = false;
-        if (_0x4bcc93) {
-            _0x1ed902();
-            _0x3da465 = true;
-        }
-        if (_0x514d47 && !waitPlayButtonDone && (
-            waitPlayButtonDone = true,
-            $("#playBtn")
-                .prop("disabled", true)
-                .html("Play<i class=\"fa fa-spin\" style=\"animation-duration:1s; margin:3px 0px -3px; float:right; opacity:0.7;\"><img src=\"img/loading3.png\" style=\"width:20px;\"></i>")
-                .css("opacity", "0.7"),
-            hasWatchedAd = _0x17f189 = false,
-            a8ref = a8req = framesCounter,
-            msref = msreq = Date.now(),
-            spawnCooldownLow = 1200,
-            spawnCooldownHigh = _0x3da465 || !windowIsLoaded ? 2000 : 1800,
-            spawnCooldownLowTimeoutId = setTimeout(function() {
-                _0x17f189 = true;
-                if (hasWatchedAd) {
-                    allowPlayButton();
-                }
-            }, spawnCooldownLow),
-            spawnCooldownHighTimeoutId = setTimeout(allowPlayButton, spawnCooldownHigh),
-            !canRunAds
-        ) && _0x1fc846 && Math.random() < 0.2) {
-            _0x12bbfc("Hey you! Did you know you can respawn faster if you remove adblocker!", false, false, 1, 20);
-        }
-        _0x6da0af(_0x16507e);
-        _0x492dec();
-        if (isMobile) {
-            _0x4fbf9e();
-        }
-        if (!(_0x3e08c0 && !_0x1fc846)) {
-            $("#minionUi").addClass("minimized");
-        }
-        isSpectating = !(_0x3e08c0 = true);
-        if (_0x1da941 && _0x4386c1 && (1 === _0x1da941 && _0x5f12f2(), 2 === _0x1da941 && _0x3200d3(), 3 === _0x1da941)) {
-            _0x412b();
-        }
-        $("#overlays").fadeIn(200);
-        $("#advert").hide();
-        _0x1fc846 = false;
+    _0x6da0af(_0x16507e);
+    _0x492dec();
+    if (isMobile) {
+        _0x4fbf9e();
     }
+    if (!(_0x3e08c0 && !_0x1fc846)) {
+        $("#minionUi").addClass("minimized");
+    }
+    isSpectating = !(_0x3e08c0 = true);
+    if (_0x1da941 && _0x4386c1 && (1 === _0x1da941 && _0x5f12f2(), 2 === _0x1da941 && _0x3200d3(), 3 === _0x1da941)) {
+        _0x412b();
+    }
+    $("#overlays").fadeIn(200);
+    $("#advert").hide();
+    _0x1fc846 = false;
 };
 class Cell {
-    constructor(_0x5e0597, _0x7feb0f, _0x590512, _0x225e84) {
-            this.id = _0x5e0597;
+    constructor(id, x, y, size) {
+            this.id = id;
             this.color = '';
             this.$e = '';
             this.l = 0;
             this.oid = 0;
-            this.ox = this.x = _0x7feb0f;
-            this.oy = this.y = _0x590512;
-            this.ge = this.size = this.strokeSize = _0x225e84;
+            this.ox = this.x = x;
+            this.oy = this.y = y;
+            this.ge = this.size = this.strokeSize = size;
             this.name = null;
             this.namePart = null;
             this.clanPart = null;
@@ -6071,50 +5822,49 @@ function _0x1503a9(_0x482f7d) {
     _0x16919d.fillText(_0x44a8c1, _0x366d68, _0x288eba);
 }
 class PacketWriter {
-    constructor(_0x5b7e64) {
-            this.buffer = new DataView(new ArrayBuffer(_0x5b7e64));
+    constructor(size) {
+            this.buffer = new DataView(new ArrayBuffer(size));
             this.position = 0;
             this.littleEndian = true;
         }
-        setString(_0x91c0ac) {
-            for (let _0x59dcbf = 0; _0x59dcbf < _0x91c0ac.length; _0x59dcbf++) {
-                this.setUint16(_0x91c0ac.charCodeAt(_0x59dcbf));
+        setString(str) {
+            for (let i = 0; i < str.length; i++) {
+                this.setUint16(str.charCodeAt(i));
             }
             return this;
         }
-        setInt8(_0x3ad7d1) {
-            this.buffer.setInt8(this.position++, _0x3ad7d1);
+        setInt8(value) {
+            this.buffer.setInt8(this.position++, value);
             return this;
         }
-        setUint8(_0x2749a2) {
-            this.buffer.setUint8(this.position++, _0x2749a2);
+        setUint8(value) {
+            this.buffer.setUint8(this.position++, value);
             return this;
         }
-        setInt16(_0xc7fafe) {
-            this.buffer.setInt16((this.position += 2) - 2, _0xc7fafe, this.littleEndian);
+        setInt16(value) {
+            this.buffer.setInt16((this.position += 2) - 2, value, this.littleEndian);
             return this;
         }
-        setUint16(_0x4dd22f) {
-            this.buffer.setUint16((this.position += 2) - 2, _0x4dd22f, this.littleEndian);
+        setUint16(value) {
+            this.buffer.setUint16((this.position += 2) - 2, value, this.littleEndian);
             return this;
         }
-        setInt32(_0x202ad9) {
-            this.buffer.setInt32((this.position += 4) - 4, _0x202ad9, this.littleEndian);
+        setInt32(value) {
+            this.buffer.setInt32((this.position += 4) - 4, value, this.littleEndian);
             return this;
         }
-        setUint32(_0x2d53fe) {
-            if (_0x2d53fe % 1 != 0 && 88 == _0x2d53fe.toString().slice(-2)) {
-                _0x2d53fe += 4;
-            }
-            this.buffer.setUint32((this.position += 4) - 4, _0x2d53fe, this.littleEndian);
+        setUint32(value) {
+            if (value % 1 != 0 && 88 == value.toString().slice(-2))
+                value += 4;
+            this.buffer.setUint32((this.position += 4) - 4, value, this.littleEndian);
             return this;
         }
-        setFloat32(_0x2be2a9) {
-            this.buffer.setFloat32((this.position += 4) - 4, _0x2be2a9, this.littleEndian);
+        setFloat32(value) {
+            this.buffer.setFloat32((this.position += 4) - 4, value, this.littleEndian);
             return this;
         }
-        setFloat64(_0x4c8916) {
-            this.buffer.setFloat64((this.position += 8) - 8, _0x4c8916, this.littleEndian);
+        setFloat64(value) {
+            this.buffer.setFloat64((this.position += 8) - 8, value, this.littleEndian);
             return this;
         }
         send(force) {
@@ -6123,41 +5873,41 @@ class PacketWriter {
         }
 }
 class PacketReader {
-    constructor(_0xc476a6, _0x51070f) {
-            this.buffer = new DataView(_0xc476a6.data);
-            this.position = _0x51070f || 0;
+    constructor(message, position) {
+            this.buffer = new DataView(message.data);
+            this.position = position || 0;
             this.littleEndian = true;
         }
         getColorTags() {
-            var _0x2165ab = this.getUint8();
-            var _0x64d173 = this.getUint8();
-            var _0x71c1d9 = this.getUint8();
-            return [_0x15f517(_0x2165ab, _0x64d173, _0x71c1d9), _0x15f517(_0x2165ab * _0x517df6, _0x64d173 * _0x517df6, _0x71c1d9 * _0x517df6)];
+            const r = this.getUint8(),
+                  g = this.getUint8(),
+                  b = this.getUint8();
+            return [
+                rgbToHex(r, g, b),
+                rgbToHex(r * _0x517df6, g * _0x517df6, b * _0x517df6)
+            ];
         }
         getWearables() {
-            var _0x3c0da1 = this.getUint8();
-            if (0 === _0x3c0da1) {
+            const n = this.getUint8();
+            if (0 === n)
                 return null;
-            }
-            var _0x4daba4 = [];
-            for (let _0x3c1dd9 = 0; _0x3c1dd9 < _0x3c0da1; _0x3c1dd9++) {
-                _0x4daba4.push({
-                    "wearId": this.getUint16(),
-                    "P": this.getUint8()
+            const wearables = [];
+            for (let i = 0; i < n; i++)
+                wearables.push({
+                    wearId: this.getUint16(),
+                    P: this.getUint8()
                 });
-            }
-            return _0x4daba4;
+            return wearables;
         }
         getString() {
-            let _0x37b7e9 = '';
+            let str = '';
             for (;;) {
-                var _0x411103 = this.getUint16();
-                if (!_0x411103) {
+                const code = this.getUint16();
+                if (!code)
                     break;
-                }
-                _0x37b7e9 += String.fromCharCode(_0x411103);
+                str += String.fromCharCode(code);
             }
-            return _0x37b7e9;
+            return str;
         }
         getInt8() {
             return this.buffer.getInt8(this.position++);
@@ -6554,19 +6304,6 @@ function _0x51e55a(_0x2ba470) {
             break;
         case 56:
             _0x4c2e6b.getUint8();
-            adPreRolledBy = 2;
-            try {
-                if (!window.adplayer && adplayer_copy) {
-                    window.adplayer = adplayer_copy;
-                }
-                adplayer.startRewardedAd();
-                _0x52a0c8(true);
-            } catch (_0x44d49f) {
-                adPreRolledBy = 0;
-                console.log("Really? AdBlocker bruh?");
-                console.log(_0x44d49f);
-                swal("Please turn off your adblock extension");
-            }
             break;
         case 64:
             _0x5c1aa9 = _0x40843.left = _0x40843.vt = _0x40843.kt = _0x4c2e6b.getUint32();
@@ -6855,7 +6592,7 @@ function _0x51e55a(_0x2ba470) {
             if ('' == _0x5e72c3) {
                 _0x34efff();
             } else {
-                _0x12bbfc(_0x5e72c3, false, _0x280d4d, _0x1a0051, _0xf64257);
+                curserMessage(_0x5e72c3, false, _0x280d4d, _0x1a0051, _0xf64257);
             }
             break;
         case 91:
@@ -7032,7 +6769,6 @@ function _0x51e55a(_0x2ba470) {
                         $("#abilityDoubleExp").addClass("has-ability");
                         break;
                     case 9:
-                        _0x514d47 = true;
                         az(0, 2);
                         break;
                     case 10:
@@ -7083,7 +6819,7 @@ function _0x51e55a(_0x2ba470) {
             $("#registerSuccess").finish().hide();
             if (1 == _0x2f2313) {
                 $("#login").fadeOut("slow", function() {});
-                _0x109288 = true;
+                isLoggedIn = true;
                 _0x186b83 = 0;
                 if ((_0xea465f = _0x5b6b18).toLowerCase() != _0x4506fc.toLowerCase()) {
                     _0x5b3bf2();
@@ -7091,18 +6827,16 @@ function _0x51e55a(_0x2ba470) {
                 if (_0xea465f.toLowerCase() != _0x5cff0f.toLowerCase()) {
                     _0x464ade();
                 }
-                if ("undefined" != typeof Storage) {
-                    localStorage.setItem("username", _0x5b6b18);
-                    localStorage.setItem("password", _0x1fe290(md5(_0x5b6b18)));
-                    if (null != window.localStorage.settings && undefined !== (_0x31ab56 = JSON.parse(window.localStorage.settings)).user && _0x31ab56.user.toLowerCase() == _0xea465f.toLowerCase() && (undefined !== _0x31ab56.skinId && 0 != _0x31ab56.skinId && _0x5df715(_0x31ab56.skinId), undefined !== _0x31ab56.wearablesSelected) && 0 != _0x31ab56.wearablesSelected.length) {
-                        _0x5cfc91(_0x31ab56.wearablesSelected);
-                    }
-                    if (null === (_0x5bff26 = localStorage.getItem("drum"))) {
-                        _0x5bff26 = (~~(2000000000 * Math.random())).toString();
-                        localStorage.setItem("drum", _0x5bff26);
-                    }
-                    localStorage.setItem(md5(_0x5bff26), _0x170269);
+                localStorage.setItem("username", _0x5b6b18);
+                localStorage.setItem("password", _0x1fe290(md5(_0x5b6b18)));
+                if (null != window.localStorage.settings && undefined !== (_0x31ab56 = JSON.parse(window.localStorage.settings)).user && _0x31ab56.user.toLowerCase() == _0xea465f.toLowerCase() && (undefined !== _0x31ab56.skinId && 0 != _0x31ab56.skinId && _0x5df715(_0x31ab56.skinId), undefined !== _0x31ab56.wearablesSelected) && 0 != _0x31ab56.wearablesSelected.length) {
+                    _0x5cfc91(_0x31ab56.wearablesSelected);
                 }
+                if (null === (_0x5bff26 = localStorage.getItem("drum"))) {
+                    _0x5bff26 = (~~(2000000000 * Math.random())).toString();
+                    localStorage.setItem("drum", _0x5bff26);
+                }
+                localStorage.setItem(md5(_0x5bff26), _0x170269);
                 if (_0xea465f.toLowerCase() != _0x3ebb17.toLowerCase()) {
                     $("#friendDialogMessage").text("Loading...");
                 }
@@ -7120,7 +6854,7 @@ function _0x51e55a(_0x2ba470) {
                             _0x53e3b2 = 0;
                         }
                         _0x53e3b2 = setTimeout(function() {
-                            if (_0x363e25 && _0x109288 && 5000 < Date.now() - _0x21e585) {
+                            if (_0x363e25 && isLoggedIn && 5000 < Date.now() - _0x21e585) {
                                 _0xbcbc52();
                             }
                         }, 5000);
@@ -7135,7 +6869,7 @@ function _0x51e55a(_0x2ba470) {
                 $("#loginError p").replaceWith("<p>Incorrect login <br> Wrong username or password.</p>");
                 $("#loginError").fadeIn();
             } else if (2 == _0x2f2313) {
-                if (!_0x109288 && Date.now() < _0x186b83) {
+                if (!isLoggedIn && Date.now() < _0x186b83) {
                     _0x582d99 = setTimeout(function() {
                         _0x17ba19(_0x5b6b18, _0x170269);
                     }, 500);
@@ -7251,7 +6985,6 @@ function _0x51e55a(_0x2ba470) {
             _0xea465f = _0x5e72c3;
             _0x11c620();
             _0x134fc9 = true;
-            _0x273ce2();
             if (2 == _0x3f104e) {
                 if (!$(".username").hasClass("goldBar")) {
                     $(".username").addClass("goldBar");
@@ -7500,7 +7233,7 @@ function _0x51e55a(_0x2ba470) {
         case 98:
             _0x2b96e1 = _0x4c2e6b.getUint16();
             _0x26039d = _0x4c2e6b.getUint32();
-            if (_0x109288) {
+            if (isLoggedIn) {
                 _0x2bb62d(_0x2b96e1, _0x26039d);
             }
             break;
@@ -7597,7 +7330,7 @@ function _0x51e55a(_0x2ba470) {
                 }
             }
             _0x21e585 = Date.now();
-            if (!(_0x56a93d = _0x5e7de3.length != _0x468d84.length || _0x5b3d82 != _0x109288 || _0xea465f.toLowerCase() != _0x3ebb17.toLowerCase())) {
+            if (!(_0x56a93d = _0x5e7de3.length != _0x468d84.length || _0x5b3d82 != isLoggedIn || _0xea465f.toLowerCase() != _0x3ebb17.toLowerCase())) {
                 for (_0x186e66 = 0; _0x186e66 < _0x468d84.length; ++_0x186e66) {
                     var _0x868215 = _0x468d84[_0x186e66];
                     var _0x383d32 = _0x5e7de3[_0x186e66];
@@ -7609,7 +7342,7 @@ function _0x51e55a(_0x2ba470) {
             }
             if (_0x56a93d) {
                 _0x468d84 = _0x5e7de3;
-                _0x5b3d82 = _0x109288;
+                _0x5b3d82 = isLoggedIn;
                 _0x3ebb17 = _0xea465f;
                 _0x3e53e0 = _0x4ccd03;
                 _0x6c92d3 = _0x3f3103;
@@ -7717,22 +7450,7 @@ function _0x51e55a(_0x2ba470) {
             }
             break;
         case 108:
-            _0x435e7a = 1 & (_0x49a011 = _0x4c2e6b.getUint8()) ? _0x4c2e6b.getUint8() : 1;
-            _0x1740e2 = [];
-            for (_0x186e66 = 0; _0x186e66 < _0x435e7a; ++_0x186e66) {
-                var _0x4a735f = _0x4c2e6b.getUint32();
-                if (_0x4a735f !== _0x4c2e6b.getUint32()) {
-                    _0x1740e2 = null;
-                    break;
-                }
-                _0x1740e2.push(_0x4a735f);
-            }
-            if ("undefined" != typeof localStorage && _0x1740e2 && 0 < _0x1740e2.length) {
-                localStorage.cdbi4 = 1 < _0x435e7a || _0x1740e2[0] ? _0x1fe290(1 == _0x435e7a ? _0x1740e2[0].toString() : JSON.stringify(_0x1740e2)) : 0;
-                localStorage.cdbi3 = 0;
-                localStorage.cdbi2 = 0;
-                localStorage.cdbi = 0;
-            }
+            curserMessage('You got banned', false, false, 0, 5);
             break;
         case 109:
             var _0x49a011 = _0x4c2e6b.getUint8();
@@ -7812,7 +7530,7 @@ function _0x51e55a(_0x2ba470) {
             break;
         case 112:
             _0x26baf3 = _0x4c2e6b.getUint8();
-            ag219_2 = 2 == _0x26baf3 ? (_0x191e79 = _0x4c2e6b.getString(), "undefined" != typeof Storage && localStorage.setItem("crcx2", _0x191e79), _0x191e79) : _0x4c2e6b.getString();
+            ag219_2 = 2 == _0x26baf3 ? (_0x191e79 = _0x4c2e6b.getString(), localStorage.setItem("crcx2", _0x191e79), _0x191e79) : _0x4c2e6b.getString();
             break;
         case 114:
             if (0 < (_0x435e7a = _0x4c2e6b.getUint16())) {
@@ -8063,22 +7781,6 @@ function _0x51e55a(_0x2ba470) {
                 } else {
                     _0x53846a();
                 }
-                if (isReady() && "undefined" != typeof localStorage && (localStorage.cdbi || localStorage.cdbi2 || localStorage.cdbi3 || localStorage.cdbi4)) {
-                    var _0x26baf3 = parseInt(localStorage.cdbi) || 0;
-                    var _0x191e79 = parseInt(localStorage.cdbi2) || 0;
-                    var _0x280d4d = JSON.parse(localStorage.cdbi3 || 0);
-                    var _0x280d4d = localStorage.cdbi4 && "0" != localStorage.cdbi4 ? JSON.parse(_0x2b377f(localStorage.cdbi4) || 0) : _0x280d4d;
-                    var _0x280d4d = Array.isArray(_0x280d4d) ? _0x280d4d : _0x280d4d ? [_0x280d4d] : 0;
-                    var _0x42bfe5 = _0x26baf3 ? [_0x26baf3] : _0x191e79 ? [_0x191e79] : _0x280d4d;
-                    if (_0x42bfe5 && 0 < _0x42bfe5.length) {
-                        var _0x18077a = new PacketWriter(3 + 8 * _0x42bfe5.length);
-                        _0x18077a.setUint8(108).setUint8(_0x26baf3 ? 0 : _0x191e79 ? 1 : 2).setUint8(_0x42bfe5.length);
-                        for (let _0x12f9df = 0; _0x12f9df < _0x42bfe5.length; _0x12f9df++) {
-                            _0x18077a.setUint32(_0x42bfe5[_0x12f9df]).setUint32(_0x42bfe5[_0x12f9df]);
-                        }
-                        _0x18077a.send();
-                    }
-                }
                 showPartyInvite(allowPartyInvite);
                 setPartyAnimations(allowPartyAnimations);
                 setAutoFeedEnabled(autoFeedEnabled);
@@ -8089,11 +7791,6 @@ function _0x51e55a(_0x2ba470) {
                     clearTimeout(_0xd3f6e4);
                     _0xd3f6e4 = 0;
                 }
-                if (_0x441f0a) {
-                    clearInterval(_0x441f0a);
-                    _0x441f0a = 0;
-                }
-                _0x441f0a = setInterval(_0x273ce2, 10000);
                 if (_0x64a0d5) {
                     _0x5b3bf2();
                 }
@@ -8196,7 +7893,7 @@ function _0x2e104c() {
         }).delay(300).show(0, _0x4d3094);
         _0x363e25 = true;
         if (!_0x3f3ed9) {
-            if (5000 < Date.now() - _0x21e585 || _0x5b3d82 != _0x109288 || _0xea465f.toLowerCase() != _0x3ebb17.toLowerCase()) {
+            if (5000 < Date.now() - _0x21e585 || _0x5b3d82 != isLoggedIn || _0xea465f.toLowerCase() != _0x3ebb17.toLowerCase()) {
                 _0xbcbc52();
             }
             _0x3f3ed9 = setInterval(_0xbcbc52, 28000);
@@ -8205,7 +7902,7 @@ function _0x2e104c() {
 }
 
 function _0xbcbc52() {
-    if (isReady() && _0x109288) {
+    if (isReady() && isLoggedIn) {
         sendSignal(80);
     } else {
         _0x2f6a16();
@@ -8383,20 +8080,18 @@ function _0x2aa794() {
     }, function(_0xe09ea3) {
         if (_0xcda4aa < _0x513e33) {
             document.getElementById("phpSkins").innerHTML = _0xe09ea3;
-            if ("undefined" != typeof Storage) {
-                if (!localStorage.fbSkin) {
-                    $("#skinUseBtn73").text("Facebook Like").attr("onclick", "fbLikeSkin();");
+            if (!localStorage.fbSkin) {
+                $("#skinUseBtn73").text("Facebook Like").attr("onclick", "fbLikeSkin();");
+            }
+            if (!localStorage.ytSkin) {
+                $("#skinUseBtn71").text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(71);");
+            }
+            for (var _0x43e1a0 = 0; _0x43e1a0 < youtubeChannels.length; _0x43e1a0++) {
+                var _0x49df12 = youtubeChannels[_0x43e1a0];
+                if (!localStorage["ytSkin" + _0x49df12.skinId]) {
+                    $("#skinUseBtn" + _0x49df12.skinId).text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(" + _0x49df12.skinId + ", '" + _0x49df12.id + "');");
                 }
-                if (!localStorage.ytSkin) {
-                    $("#skinUseBtn71").text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(71);");
-                }
-                for (var _0x43e1a0 = 0; _0x43e1a0 < _0x26690d.length; _0x43e1a0++) {
-                    var _0x49df12 = _0x26690d[_0x43e1a0];
-                    if (!localStorage["ytSkin" + _0x49df12.s]) {
-                        $("#skinUseBtn" + _0x49df12.s).text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(" + _0x49df12.s + ", '" + _0x49df12.c + "');");
-                    }
-                    $("#skinContainer" + _0x49df12.s).append("<a href=\"https://www.youtube.com/channel/" + _0x49df12.c + "\" target=\"_blank\" title=\"YouTuber Skin\"><div class=\"skin-tag skin-tag-yt\"></div>" + (_0x49df12.cc ? "<div title=\"Agma.io Content Creator\" class=\"skin-tag skin-tag-star\"></div>" : '') + "</a>");
-                }
+                $("#skinContainer" + _0x49df12.skinId).append("<a href=\"https://www.youtube.com/channel/" + _0x49df12.id + "\" target=\"_blank\" title=\"YouTuber Skin\"><div class=\"skin-tag skin-tag-yt\"></div>" + (_0x49df12.verified ? "<div title=\"Agma.io Content Creator\" class=\"skin-tag skin-tag-star\"></div>" : '') + "</a>");
             }
             _0xe09ea3 = $($("#menugold li.active a").attr("href"));
             if (_0xe09ea3 && !_0xe09ea3.hasClass("in active")) {
@@ -8680,7 +8375,7 @@ function _0x483791(_0x3ea76f) {
         _0x5c20fb = _0x3ea76f.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         $("#coinsDash").text(_0x5c20fb);
         $(".progress-bar-coins").text(_0x5c20fb);
-        _0x25b723.coins = _0x3ea76f;
+        accountRessources.coins = _0x3ea76f;
     }
 }
 
@@ -8713,8 +8408,8 @@ function _0x2bb62d(_0x1417e4, _0x51b030) {
             _0x5b3bf2();
             _0x464ade();
         }
-        _0x25b723.level = _0x1417e4;
-        _0x25b723.exp = _0x51b030;
+        accountRessources.level = _0x1417e4;
+        accountRessources.exp = _0x51b030;
     }
 }
 
@@ -8787,15 +8482,12 @@ function _0x580067(_0x4f43ee) {
         _0x4574cb(_0x4f43ee);
     }
 }
-if (!_0x2a0343) {
-    _0x2a0343 = true;
-    $.post("gmshtout.php", {}, function(_0x4e0944) {
-        var _0x346608 = document.getElementById("gmShoutoutUser");
-        if (_0x346608 && _0x4e0944) {
-            _0x346608.textContent = _0x4e0944;
-        }
-    }, "html");
-}
+$.post("gmshtout.php", {}, function(_0x4e0944) {
+    var _0x346608 = document.getElementById("gmShoutoutUser");
+    if (_0x346608 && _0x4e0944) {
+        _0x346608.textContent = _0x4e0944;
+    }
+}, "html");
 window.resetMasterTooltips = function(_0x4132db) {
     $((_0x4132db || '') + " .masterTooltip").hover(function(_0x53477a) {
         var _0x358f02 = '';
@@ -9096,7 +8788,7 @@ function _0x483c7e(_0x4bd171) {
     };
     if (/^(?:gachaCommand|\/gacha|\/gacha1|\/gacha2|\/gacha3|\/ping|\/fps)/.test(_0x48b4f1)) {
         if (/^(?:\/gacha3)/.test(_0x48b4f1)) {
-            _0x12bbfc("Secret command... enjoy the skins and wearables!", false, true, 1, 5);
+            curserMessage("Secret command... enjoy the skins and wearables!", false, true, 1, 5);
             tskngc(_0x1b76cc);
             var _0xdc8e74 = 0;
             for (var _0x47f09d = 0; _0x47f09d < _0x27324d.length; _0x47f09d++) {
@@ -9117,13 +8809,13 @@ function _0x483c7e(_0x4bd171) {
                 _0x27324d.push(_0x4e2ef9);
             }
             if (_0x3e08c0 || _0xc52211.length < 1) {
-                _0x12bbfc("You must spawned in game to issue this command", false, true, 0, 5);
+                curserMessage("You must spawned in game to issue this command", false, true, 0, 5);
             } else {
                 setNick(_0x5665cf);
             }
         } else {
             if (/^(?:\/gacha2)/.test(_0x48b4f1)) {
-                _0x12bbfc("Secret command... enjoy the skins!", false, true, 1, 5);
+                curserMessage("Secret command... enjoy the skins!", false, true, 1, 5);
                 var _0xe1693f = 0;
                 for (var _0x47f09d = 0; _0x47f09d < _0x27324d.length; _0x47f09d++) {
                     if (0 == _0x27324d[_0x47f09d].P) {
@@ -9142,15 +8834,15 @@ function _0x483c7e(_0x4bd171) {
                 }
                 tskngc(_0x1b76cc);
                 if (_0x3e08c0 || _0xc52211.length < 1) {
-                    _0x12bbfc("You must spawned in game to issue this command", false, true, 0, 5);
+                    curserMessage("You must spawned in game to issue this command", false, true, 0, 5);
                 } else {
                     setNick(_0x5665cf);
                 }
             } else if (/^(?:\/gacha1)/.test(_0x48b4f1)) {
-                _0x12bbfc("Secret command... enjoy the skins!", false, true, 1, 5);
+                curserMessage("Secret command... enjoy the skins!", false, true, 1, 5);
                 tskngc(_0x1b76cc);
                 if (_0x3e08c0 || _0xc52211.length < 1) {
-                    _0x12bbfc("You must spawned in game to issue this command", false, true, 0, 5);
+                    curserMessage("You must spawned in game to issue this command", false, true, 0, 5);
                 } else {
                     setNick(_0x5665cf);
                 }
@@ -9158,11 +8850,11 @@ function _0x483c7e(_0x4bd171) {
                 toggleWearable(58, 0, 0, 3, false);
                 tskngc(_0x1b76cc);
                 if (_0x3e08c0 || _0xc52211.length < 1) {
-                    _0x12bbfc("You must spawned in game to issue this command", false, true, 0, 5);
+                    curserMessage("You must spawned in game to issue this command", false, true, 0, 5);
                 } else {
                     setNick(_0x5665cf);
                 }
-                _0x12bbfc("Secret command... enjoy the skins!", false, true, 1, 5);
+                curserMessage("Secret command... enjoy the skins!", false, true, 1, 5);
             } else if (/^(?:\/fps)/.test(_0x48b4f1)) {
                 _0x495b59({
                     "tagName": "KBD",
@@ -9196,28 +8888,22 @@ var _0x3a188d = function(_0x3d9c37) {
     }
     if (isMobile && !_0xe01c9e && 1 < _0xc52211.length) {
         if (_0xe31776 <= 20) {
-            _0x12bbfc("Your FPS seems to be low, graphics settings is set to low to reduce lag. You can change this in the Game Settings.", !(_0xe01c9e = true), true, 0, 10);
+            curserMessage("Your FPS seems to be low, graphics settings is set to low to reduce lag. You can change this in the Game Settings.", !(_0xe01c9e = true), true, 0, 10);
         }
     } else if (!_0xe01c9e && 1 < _0xc52211.length && _0xe31776 <= 20) {
-        _0x12bbfc("Your FPS seems to be low, you can lower your graphics quality to reduce lag. You can change this in the Game Settings.", !(_0xe01c9e = true), true, 0, 10);
+        curserMessage("Your FPS seems to be low, you can lower your graphics quality to reduce lag. You can change this in the Game Settings.", !(_0xe01c9e = true), true, 0, 10);
     }
     _0x18fde3 = _0x3d9c37 - _0x53278f % 16.666666666666668;
     var _0x451215 = Date.now();
-    var _0x4fa646 = (waitPlayButtonDone || waitAdvertContinueDone) && (a8req > a8ref || msreq > msref);
     if (
         _0x451215 - _0x27fdb0 < 300 ||
         !(isReady()) ||
         _0x4cb089 ||
         _0x3c3250 ||
         _0xaade67 ||
-        _0x2c6f91 ||
-        _0x4fa646 && (framesCounter < a8req || _0x451215 >= msreq)
+        _0x2c6f91
     ) {
         ++framesCounter;
-        if (_0x4fa646 && framesCounter >= a8req && _0x451215 >= msreq) {
-            allowAdvertContinue();
-            allowPlayButton();
-        }
         _0x215896();
     } else {
         console.warn("Frame skipped");
@@ -9275,45 +8961,14 @@ function _0x51c554() {
     } else {
         _0x5c60a6.css("transform", "translate(-50%, -50%)");
     }
-    _0x5c60a6 = $("#adWrapper728x90_2");
-    if ((_0x19a05e = _0x53f1a5 / 728) < 1) {
-        _0x5c60a6.css("transform", "translate(-50%, 0%) scale(" + _0x19a05e + ")");
-    } else {
-        _0x5c60a6.css("transform", "translate(-50%, 0%)");
-    }
     _0x5c60a6 = $("#overlaysContent");
     if ((_0x19a05e = Math.max(_0x1058ed / 920, 0.7)) < 1) {
         _0x5c60a6.css("transform", "scale(" + _0x19a05e + ")");
     } else {
         _0x5c60a6.css("transform", "none");
     }
-    if (!(_0x5c60a6 = $("#adWrapper728x90")).hasClass("pixfuture")) {
-        if ((_0x19a05e = _0x53f1a5 / (728 * Math.min(_0x19a05e, 1))) < 1) {
-            _0x5c60a6.css("transform", "translate(-50%, 0%) scale(" + _0x19a05e + ")");
-        } else {
-            _0x5c60a6.css("transform", "translate(-50%, 0%)");
-        }
-    }
-    _0x5c60a6 = $("#adWrapper160x600");
-    if (_0x213646 = 830 <= _0x53f1a5 && canRunAds) {
-        if ((_0x19a05e = Math.max((992 <= _0x53f1a5 ? _0x53f1a5 - 930 : _0x53f1a5 - 770) / 160, 0.5)) < 1) {
-            _0x5c60a6.css("transform", "scale(" + _0x19a05e + ")");
-        } else {
-            _0x5c60a6.css("transform", "none");
-        }
-        if (_0x173277 && !_0x5c60a6.is(":visible") && 0 < Date.now() - 40000) {
-            _0x2ca450();
-        }
-        _0x5c60a6.show();
-    } else {
-        _0x5c60a6.hide();
-    }
     _0x5c60a6 = $("#shopModalDialog");
-    if (_0x213646 && _0x53f1a5 < 1260) {
-        _0x5c60a6.css("transform", "translate(-" + (80 * Math.min(_0x19a05e, 1) + 5) + "px, 0px)");
-    } else {
-        _0x5c60a6.css("transform", "none");
-    }
+    _0x5c60a6.css("transform", "none");
     _0x5c60a6 = $("#coinsModalDialog");
     if ((_0x19a05e = Math.max(_0x53f1a5 / 1000, 0.4)) < 1) {
         _0x5c60a6.css("transform", "scale(" + _0x19a05e + ")");
@@ -9371,7 +9026,7 @@ function _0x4c97d2() {
                 _0x1d3023 = 0;
             }
             _0x4c5e78(0);
-            _0x12bbfc("You have been disconnected for inactivity. Click anywhere to reconnect...", false, true, 0, 0);
+            curserMessage("You have been disconnected for inactivity. Click anywhere to reconnect...", false, true, 0, 0);
         }
     } else if (_0x2a60cc) {
         _0x2a60cc = false;
@@ -9382,7 +9037,7 @@ function _0x4c97d2() {
 
 function _0x442a2f() {
     var _0x3d8547;
-    if ("undefined" != typeof Storage && _0x1f725c) {
+    if (_0x1f725c) {
         _0x3d8547 = Date.now();
         localStorage["wc" + _0x1f725c] = _0x3d8547;
     }
@@ -9951,13 +9606,13 @@ function _0x465950(_0x2c4b45, _0x5e4a11) {
                 $(".inventory-box").removeClass("activatedInv");
                 $("#inv360Shot").addClass("activatedInv");
                 if (!_0x5e4a11) {
-                    _0x12bbfc("You have activated the force. Press W to eject the force, and push other cells away. If you are split into many cells, choose/select what cell to shoot the 360 shot by clicking on it.", false, false, 1, 3);
+                    curserMessage("You have activated the force. Press W to eject the force, and push other cells away. If you are split into many cells, choose/select what cell to shoot the 360 shot by clicking on it.", false, false, 1, 3);
                 }
             } else {
                 _0x47ccce = 0;
                 $("#inv360Shot").removeClass("activatedInv");
                 if (!_0x5e4a11) {
-                    _0x12bbfc("You have deactivated the force. W will eject normal food cells", false, false, 0, 3);
+                    curserMessage("You have deactivated the force. W will eject normal food cells", false, false, 0, 3);
                 }
             }
             break;
@@ -9972,13 +9627,13 @@ function _0x465950(_0x2c4b45, _0x5e4a11) {
                 $(".inventory-box").removeClass("activatedInv");
                 $("#invFrozenVirus").addClass("activatedInv");
                 if (!_0x5e4a11) {
-                    _0x12bbfc("You have activated the frozen virus. Press W to eject it and split & freeze other players", false, false, 1, 3);
+                    curserMessage("You have activated the frozen virus. Press W to eject it and split & freeze other players", false, false, 1, 3);
                 }
             } else {
                 _0x47ccce = 0;
                 $("#invFrozenVirus").removeClass("activatedInv");
                 if (!_0x5e4a11) {
-                    _0x12bbfc("You have deactivated the frozen virus. W will eject normal food cells", false, false, 0, 3);
+                    curserMessage("You have deactivated the frozen virus. W will eject normal food cells", false, false, 0, 3);
                 }
             }
     }
@@ -10107,8 +9762,8 @@ function _0x4801bb() {
             if (4 == _0x48bba7) {
                 _0x114a07.strokeSize = 0.83 * _0x57d355;
             }
-            _0x114a07.color = _0x15f517(_0x4f9aca.r, _0x4f9aca.g, _0x4f9aca.b);
-            _0x114a07.$e = _0x15f517(_0x4f9aca.r * _0x517df6, _0x4f9aca.g * _0x517df6, _0x4f9aca.b * _0x517df6);
+            _0x114a07.color = rgbToHex(_0x4f9aca.r, _0x4f9aca.g, _0x4f9aca.b);
+            _0x114a07.$e = rgbToHex(_0x4f9aca.r * _0x517df6, _0x4f9aca.g * _0x517df6, _0x4f9aca.b * _0x517df6);
             _0x114a07.Be = _0x2cb7b3;
             _0x114a07.N = _0x4ce9ff;
             _0x114a07.reloadImage();
@@ -10236,7 +9891,6 @@ function _0x1e72ef(_0x4dd855) {
 }
 
 function _0x44ff99() {
-    _0x32b561();
     if (_0x1566f5 && (_0x1a6afb && _0x30cebd(), isReady())) {
         sendSignal(130);
         _0x1a6afb = true;
@@ -10327,78 +9981,6 @@ function _0x9b1a41(_0x1561cb, _0xc2f81e) {
     return 2 == _0x1561cb && _0x9b1a41(typeof Event) ? (_0x25377f = function() {}, 2 * _0x1561cb + _0x52383b / _0x52383b * 1.88) : 2 == _0x1561cb && 162 == _0x52383b ? 2 * _0x1561cb + _0x52383b / _0x52383b * 0.48 : 2 == _0xc2f81e ? 2 * _0x1561cb + _0xc2f81e / 2 + _0x52383b / _0x52383b * 0.68 : 2 * _0x1561cb + _0x52383b / _0x52383b * 0.88;
 }
 
-function _0x32b561() {
-    var _0x11d969 = 0.25;
-    switch (_0x38891d) {
-        case "X-Insta NA":
-            _0x11d969 = 0.6;
-            break;
-        case "Crazy EU":
-            _0x11d969 = 0.27;
-            break;
-        case "Crazy NA":
-            _0x11d969 = 0.25;
-            break;
-        case "Gigantic":
-            _0x11d969 = 0.4;
-            break;
-        case "Battle Royale EU":
-            _0x11d969 = 0.6;
-            break;
-        case "Battle Royale NA":
-            _0x11d969 = 0.66;
-            break;
-        case "Solo SELFFEED Royale EU":
-            _0x11d969 = 0.65;
-            break;
-        case "SOLO Selffeed Royale NA":
-            _0x11d969 = 0.56;
-            break;
-        case "Instant EU":
-            _0x11d969 = 0.33;
-            break;
-        case "Splitrun Paradise":
-            _0x11d969 = 0.17;
-            break;
-        case "Crazy Asia":
-            _0x11d969 = 0.36;
-            break;
-        case "Battle Royale AS":
-            _0x11d969 = 0.56;
-            break;
-        default:
-            _0x11d969 = 0.25;
-    }
-    var _0x3ee03d = _0x857cd1[0];
-    loBall = $(_0x3ee03d).text().indexOf("WA");
-    if (Math.random() <= _0x11d969) {
-        if (!(!$(_0x3ee03d).length || 1 < loBall)) {
-            $(_0x3ee03d).click(function() {
-                var _0x5bdc8a;
-                "play region 1/3 :)".substr(1, 3);
-                if (!_0x4fa2eb) {
-                    _0x5bdc8a = Math.floor(206 * Math.random() + 14);
-                    setTimeout(function() {
-                        sendSignal(33);
-                    }, _0x5bdc8a);
-                }
-                _0x4fa2eb = 1;
-            });
-        }
-    }
-}
-
-function _0xeb6d2b() {}
-var _0x25b723 = {
-    level: 0,
-    exp: 0,
-    coins: 0
-};
-var _0x41e18a = {
-    r: 0,
-    g: 0,
-    b: 0
-};
 var _0x1fc141;
 var _0xb14342;
 var _0x4eac2b;
@@ -10421,7 +10003,7 @@ var _0x223539;
 var _0x11f3e0;
 var _0x243c1f;
 var _0x123859;
-var _0x109288 = false;
+var isLoggedIn = false;
 var _0xea465f = '';
 var _0x107e7f = _0x18fde3 = 0;
 var _0x5b6b18 = '';
@@ -10440,7 +10022,6 @@ var _0x3e7187 = Math.floor(4294967296 * Math.random());
 var _0x4e4df3 = md5(-~~(2000000000 * Math.random()) - 1);
 var _0x1f725c = 0;
 var _0x6a593d = 0;
-var _0x396332 = null;
 var _0x134fc9 = true;
 var _0x511d58 = true;
 var _0x59034c = 0;
@@ -10522,8 +10103,6 @@ var _0x52383b = -1;
 var _0x556e60 = 1 + ~~(53550 + 600000 * Math.random());
 var _0xaee6f6 = [128, 129, 130, 131, 132];
 var _0xa19eb5 = 41;
-var _0x4d2b96 = false;
-var _0x305b0f = false;
 var _0x3e50d9 = 1;
 var _0xd28f67 = 1;
 var _0x34bd4c = 1;
@@ -10546,15 +10125,7 @@ var windowIsLoaded = false;
 var _0x2332bb = false;
 var _0x3e08c0 = true;
 var _0x21d872 = ["#F03030", "#30F030", "#606060", "#F0F030", "#20E8F8", "#F020E8", "#1060F0"];
-var _0x26d6ba = (_0x51ec27 => {
-    var _0x489e1c = '';
-    for (var _0x104caf = _0x51ec27.length - 1; 0 <= _0x104caf; _0x104caf--) {
-        _0x489e1c += String.fromCharCode(_0x51ec27.charCodeAt(_0x104caf) - 1);
-    }
-    return _0x489e1c;
-})("bbhnf");
 var _0x405489 = '';
-var _0xa42bce = false;
 var _0x381cad = null;
 var _0x568853 = -1;
 var _0x521316 = 0;
@@ -10633,11 +10204,9 @@ var _0x826efd = 0;
 var _0x38891d = '';
 var _0x46c79d = '';
 var _0x518a09 = '';
-var _0x4fa2eb = false;
 var _0x468e60 = [];
 var _0x8e4a8e = true;
 var _0x34761e = false;
-var _0x2a0343 = false;
 var _0x12c3b0 = 0;
 var _0x7f089d = false;
 var _0x48a780 = {};
@@ -10699,7 +10268,6 @@ var _0x37e4bf = false;
 var _0x1cf392 = false;
 var _0x1b3496 = null;
 var _0x2d537c = '';
-var _0x213646 = canRunAds;
 var _0x1c50f8 = true;
 var _0x423e1a = 1;
 var _0x284f1f = false;
@@ -10709,8 +10277,6 @@ var _0x2e944b = 0;
 var _0x2a60cc = false;
 var _0x950276 = 50;
 var _0x2b8278 = 0;
-var _0x4d3d52 = false;
-var _0x67e7da = 0;
 var _0x22a146 = performance.now();
 var _0x2b6e3f = 0;
 var _0xe31776 = 0;
@@ -10742,12 +10308,7 @@ var _0x536680 = false;
 var _0x33d2a7 = 0;
 var _0x2c99f2 = false;
 var _0x4a720f = false;
-_0x2a0343 = Object.getOwnPropertyDescriptor;
-var _0x5d197a = _0x2a0343 ? _0x2a0343(window, _0x26d6ba) : null;
-if (!_0x2a0343 || _0x5d197a && _0x5d197a.writable && _0x5d197a.configurable && !_0x5d197a.get && !_0x5d197a.set) {
-    _0x405489 = window[_0x26d6ba];
-    _0xa42bce = true;
-}
+
 var _0xe1899f = {
     "nickName": '',
     "user": '',
@@ -11044,16 +10605,6 @@ function _0x25616a(_0x4c87a1, _0x100e5c) {
     }
 }
 
-function _0x273ce2() {
-    if (_0x441f0a) {
-        clearInterval(_0x441f0a);
-        _0x441f0a = 0;
-    }
-    if ((_0x4d2b96 || _0x4d3d52 || _0x305b0f || fus) && !_0x483209) {
-        _0x483209 = true;
-    }
-}
-
 function _0xeb755c(_0x4519ed, _0x5068c3, _0x592927) {
     $("#password").val('');
     _0x592927 = 1 == _0x592927 ? _0x5068c3 : md5(_0x5068c3);
@@ -11101,28 +10652,20 @@ window.setNick = function(_0x14bf19, _0xe31451) {
         _0x536824 &&
         _0x134fc9 &&
         _0x3b0762 &&
-        !_0x514d47 &&
-        !_0x173058 &&
         !_0x1fc846 &&
         !(_0x11997b < 100 * _0x6b0fd0)
     ) {
-        if (-1 != ["hitler", "nazi", "porno", "fuck", "lul", "eikel", "isis", "penis", "sora", "admin", "administrator", "hate", "terrorist"].indexOf(_0x14bf19.replace(/ /g, '').toLowerCase())) {
-            _0x12bbfc("Please choose another name - Bad Nick", false, false, 0, 5);
+        if (-1 != badwords.indexOf(_0x14bf19.replace(/ /g, '').toLowerCase())) {
+            curserMessage("Please choose another name - Bad Nick", false, false, 0, 5);
         } else {
             if (isReady() && 0 == _0xc52211.length && 15 != _0x77f7dd && (_0x3f104e <= 0 || videoAdsEnabled)) {
                 var _0x1986a3 = _0x2dc090;
-                if ((_0x1986a3 = "undefined" != typeof Storage && _0x2dc090 < (_0x1986a3 = (_0x1986a3 = localStorage.getItem("ad_l_time")) || (localStorage.ad_l_time = _0x2dc090)) ? 0 : _0x1986a3) < _0x2dc090 - 1000 * videoAdSeconds && clientStarted < _0x2dc090 - 1000 * videoAdSeconds && adSpawnCounter >= (0 < _0x55ce89.length ? videoAdSpawnsParty : videoAdSpawns)) {
+                if ((_0x1986a3 = _0x2dc090 < (_0x1986a3 = (_0x1986a3 = localStorage.getItem("ad_l_time")) || (localStorage.ad_l_time = _0x2dc090)) ? 0 : _0x1986a3) < _0x2dc090 - 1000 * videoAdSeconds && clientStarted < _0x2dc090 - 1000 * videoAdSeconds && adSpawnCounter >= (0 < _0x55ce89.length ? videoAdSpawnsParty : videoAdSpawns)) {
                     adSpawnCounter = 0;
                     adPreRolledBy = 3;
                     adSuccessCB = function() {
                         window.setNick(_0x14bf19, _0xe31451);
                     };
-                    try {
-                        return void _0x57b950();
-                    } catch (_0x12663c) {
-                        adPreRolledBy = 0;
-                        adSuccessCB = null;
-                    }
                 }
             }
             _0x34efff(true);
@@ -11287,7 +10830,7 @@ window.purchaseItem = function(_0x4237f6, _0x1d2d9e) {
 };
 window.setMegaphoneText = function() {
     var _0x5b7db2 = document.getElementById("nick").value;
-    if (-1 != ["hitler", "nazi", "porno", "fuck", "lul", "eikel", "isis", "penis", "sora", "admin", "administrator", "hate", "terrorist"].indexOf(_0x5b7db2.replace(/ /g, '').toLowerCase())) {
+    if (-1 != badwords.indexOf(_0x5b7db2.replace(/ /g, '').toLowerCase())) {
         _0x5b7db2 = '';
     }
     var _0x35d709 = can_black_name && blackNameEnabled ? 6 : can_custom_color_name && customColorNameEnabled ? custom_color_name : can_red_name && redNameEnabled ? 5 : can_orange_name && orangeNameEnabled ? 4 : can_blue_name && blueNameEnabled ? 3 : can_green_name && greenNameEnabled ? 2 : 2 == _0x3f104e && gldNickEnabled ? 1 : 0;
@@ -11321,7 +10864,7 @@ window.setMegaphoneText = function() {
 window.purchaseMega = function(_0x20bb03, _0xb2e665) {
     if (isReady()) {
         var _0x1e5419 = document.getElementById("nick").value;
-        if (-1 != ["hitler", "nazi", "porno", "fuck", "lul", "eikel", "isis", "penis", "sora", "admin", "administrator", "hate", "terrorist"].indexOf(_0x1e5419.replace(/ /g, '').toLowerCase())) {
+        if (-1 != badwords.indexOf(_0x1e5419.replace(/ /g, '').toLowerCase())) {
             _0x1e5419 = '';
         }
         var _0x5d2a03 = new PacketWriter(11 + 2 * _0x20bb03.length + 2 * _0x1e5419.length + 2 * _0x4bb827.length);
@@ -11373,7 +10916,7 @@ window.strMon = function() {
 };
 window.rfrc = function() {
     if (isReady()) {
-        if (_0x109288) {
+        if (isLoggedIn) {
             sendSignal(9);
             $("#loadBarRf").fadeIn().fadeOut();
             $("#rfrcBtn").prop("disabled", true).css("opacity", "0.7");
@@ -11739,32 +11282,14 @@ window.setCustomColorName = function(_0x31b40d) {
 };
 var _0x1aa57f = 0;
 
-function _0x52a0c8(_0x52bee0) {
-    disabledModalClose = _0x52bee0;
-    $("div.modal").each(function(_0x2ea285, _0x42ab80) {
-        if ((_0x42ab80 = $(_0x42ab80)) && _0x42ab80.data && (_0x42ab80 = _0x42ab80.data("bs.modal")) && _0x42ab80.options) {
-            _0x42ab80.options.backdrop = !_0x52bee0 || "static";
-        }
-    });
-    if (preventModalCloseTimer) {
-        clearTimeout(preventModalCloseTimer);
-        preventModalCloseTimer = 0;
-    }
-    if (_0x52bee0) {
-        preventModalCloseTimer = setTimeout(function() {
-            _0x52a0c8(false);
-        }, 35000);
-    }
-}
-
 function _0x17ba19(_0x3bd3de, _0x5ccbf5) {
     var _0x5a69a7;
     if (_0x582d99) {
         clearTimeout(_0x582d99);
         _0x582d99 = 0;
     }
-    if (!_0x109288) {
-        if ("undefined" != typeof Storage && (_0x3bd3de = _0x3bd3de || localStorage.getItem("username"), _0x5ccbf5 || (_0x5a69a7 = localStorage.getItem("drum"), _0x5ccbf5 = (_0x3bd3de && null !== _0x5a69a7 ? localStorage.getItem(md5(_0x5a69a7)) : null) || localStorage.getItem("password")), null !== _0x3bd3de) && null !== _0x5ccbf5 && (_0xeb755c(_0x3bd3de, _0x5ccbf5, 1), isReady()) && !$("#dashPanel").is(":visible") && $("#login").is(":visible")) {
+    if (!isLoggedIn) {
+        if ((_0x3bd3de = _0x3bd3de || localStorage.getItem("username"), _0x5ccbf5 || (_0x5a69a7 = localStorage.getItem("drum"), _0x5ccbf5 = (_0x3bd3de && null !== _0x5a69a7 ? localStorage.getItem(md5(_0x5a69a7)) : null) || localStorage.getItem("password")), null !== _0x3bd3de) && null !== _0x5ccbf5 && (_0xeb755c(_0x3bd3de, _0x5ccbf5, 1), isReady()) && !$("#dashPanel").is(":visible") && $("#login").is(":visible")) {
             $("#loginError p").replaceWith("<p>Attempting autologin...<br>(Press Esc to cancel)</p>");
             $("#loginError").fadeIn();
             $("#username").val(_0x3bd3de);
@@ -11775,7 +11300,7 @@ function _0x17ba19(_0x3bd3de, _0x5ccbf5) {
 function _0x522c0e() {
     _0xea465f = '';
     hasDRank = !(_0x357e04 = !(_0x35cd4a = _0x6dd07a = _0x3f104e = _0x107e7f = 0));
-    can_yt_icon = _0x109288 = false;
+    can_yt_icon = isLoggedIn = false;
     can_green_name = false;
     can_blue_name = false;
     can_orange_name = false;
@@ -11819,7 +11344,7 @@ function _0x315275(_0x3fff92) {
     _0x2f6a16();
     _0x161cd2();
     $("#dashPanel").fadeOut("slow", function() {
-        if (!_0x109288) {
+        if (!isLoggedIn) {
             $("#dashTab").hide();
             $("#login").fadeIn("slow", function() {});
             $("#loginRegisterTab").show();
@@ -11857,7 +11382,7 @@ function _0x315275(_0x3fff92) {
 }
 
 function _0x26af75() {
-    if (_0x109288 || $("#dashPanel").is(":visible")) {
+    if (isLoggedIn || $("#dashPanel").is(":visible")) {
         _0x522c0e();
         if (_0x53e3b2) {
             clearInterval(_0x53e3b2);
@@ -11873,7 +11398,7 @@ function _0x26af75() {
             _0x4b6359 = 0;
         }
         _0x4b6359 = setTimeout(function() {
-            if (!_0x109288) {
+            if (!isLoggedIn) {
                 _0x315275(true);
                 _0x134fc9 = true;
             }
@@ -11965,38 +11490,16 @@ function _0x2b1b31() {
     sendSignal(31);
 }
 window.spinTheWheel = function() {
-    if (!_0x109288) {
+    if (!isLoggedIn)
         return swal("Login", "Please login to spin the wheel, or register an account if you do not have an account yet");
-    }
-    if (spinWheelPlayAdvert) {
-        if (!canRunAds) {
-            return swal('', "Please Disable/Turn off your adblocker to Spin the Wheel");
-        }
-        adPreRolledBy = 1;
-        adSuccessCB = function() {
-            window.spinTheWheel();
-        };
-        try {
-            _0x57b950();
-            return void _0x52a0c8(true);
-        } catch (_0x1231ab) {
-            adPreRolledBy = 0;
-            adSuccessCB = null;
-        }
-    }
     sendSignal(58);
 };
 window.watchAdvert = function() {
     if (!$("#watchAdvertBtn").hasClass("disabled")) {
-        if (!canRunAds) {
-            return swal('', "Please Disable/Turn off your adblocker to receive free coins");
-        }
-        if (_0x109288) {
-            if ("undefined" != typeof Storage) {
-                var _0x42ce5f = parseInt(localStorage.getItem("ad_r_l_time")) || 0;
-                if (Date.now() - _0x42ce5f < 120000) {
-                    return swal('', "Please wait at least 2 minutes before watching a new advert video and receiving coins");
-                }
+        if (isLoggedIn) {
+            var _0x42ce5f = parseInt(localStorage.getItem("ad_r_l_time")) || 0;
+            if (Date.now() - _0x42ce5f < 120000) {
+                return swal('', "Please wait at least 2 minutes before watching a new advert video and receiving coins");
             }
             if (isReady()) {
                 new PacketWriter(2).setUint8(120).setUint8(1).send();
@@ -12010,35 +11513,12 @@ window.watchAdvert = function() {
         }
     }
 };
-window.succAdv = function() {
-    _0x52a0c8(false);
-    window.focus();
-    if ("undefined" != typeof Storage) {
-        localStorage.ad_l_time = Date.now();
-    }
-    switch (adPreRolledBy) {
-        case 1:
-            spinWheelPlayAdvert = false;
-            if (adSuccessCB) {
-                adSuccessCB();
-            }
-            break;
-        case 3:
-            if (adSuccessCB) {
-                adSuccessCB();
-            }
-    }
-    adPreRolledBy = 0;
-    adSuccessCB = null;
-};
+window.succAdv = function() {};
 window.succRewardedAdv = function() {
     var _0xc974bf;
-    _0x52a0c8(false);
     window.focus();
-    if ("undefined" != typeof Storage) {
-        localStorage.ad_l_time = Date.now();
-        localStorage.ad_r_l_time = Date.now();
-    }
+    localStorage.ad_l_time = Date.now();
+    localStorage.ad_r_l_time = Date.now();
     if (2 === adPreRolledBy && isReady()) {
         _0xc974bf = 120;
         $("#ad-timeleft").css("color", "#FF5722").text(_0xc974bf + "s");
@@ -12064,25 +11544,22 @@ window.rspwn = function(_0x5ce94e) {
     setNick(_0x5ce94e, true);
 };
 window.closeAdvert = function() {
-    if (!_0x173058) {
-        azad(true);
-        $("#invisibleOverlay").finish().show(0).delay(400).hide(0);
-        clearVideo();
-    }
+    azad(true);
+    $("#invisibleOverlay").finish().show(0).delay(400).hide(0);
+    clearVideo();
 };
 window.spectate = function(_0x592d39) {
-    if (_0x134fc9 && _0x3b0762 && !_0x514d47 && !_0x173058 && !_0x1fc846) {
+    if (_0x134fc9 && _0x3b0762 && !_0x1fc846) {
         if (0 == _0x335282.length) {
             if (isReady() && (_0x3f104e <= 0 || videoAdsEnabled)) {
                 var _0x155018 = Date.now();
                 var _0x40a47d = _0x155018;
-                if ((_0x40a47d = "undefined" != typeof Storage && _0x155018 < (_0x40a47d = (_0x40a47d = localStorage.getItem("ad_l_time")) || (localStorage.ad_l_time = _0x155018)) ? 0 : _0x40a47d) < _0x155018 - 1000 * videoAdSeconds && clientStarted < _0x155018 - 1000 * videoAdSeconds) {
+                if ((_0x40a47d = _0x155018 < (_0x40a47d = (_0x40a47d = localStorage.getItem("ad_l_time")) || (localStorage.ad_l_time = _0x155018)) ? 0 : _0x40a47d) < _0x155018 - 1000 * videoAdSeconds && clientStarted < _0x155018 - 1000 * videoAdSeconds) {
                     adPreRolledBy = 3;
                     adSuccessCB = function() {
                         window.spectate(_0x592d39);
                     };
                     try {
-                        return void _0x57b950();
                     } catch (_0x493495) {
                         adPreRolledBy = 0;
                         adSuccessCB = null;
@@ -12158,9 +11635,6 @@ window.shuffleGameAds = function() {
         if (_0x3f104e < 2) {
             $("#agmaAdHref").attr("href", "member.php?c=" + _0x8fc911);
             $("#zoomItem").attr("src", "img/agmaAd/gold/" + _0x8fc911 + ".png?v=1");
-            if (!canRunAds) {
-                $("#AGM_agma-io_300x250").html("<a href=\"member.php?d=" + _0x612774 + "\" target=\"_blank\"><img style=\"" + "margin: 0 auto;margin-top: 15px;border: 2px solid #002c40;min-width: 150px;max-width: 85%;height: 100%;max-height: 200px;transition: all .5s ease 0s;" + "\" src=\"img/agmaAd/gold/" + _0x612774 + ".png\"></a>");
-            }
         } else {
             shuffleGameAds();
         }
@@ -12171,15 +11645,9 @@ window.shuffleGameAds = function() {
     } else if (3 == _0x4b8269) {
         $("#agmaAdHref").attr("href", "bots.php?clickId=" + _0x30f458);
         $("#zoomItem").attr("src", "img/agmaAd/bots/" + _0x30f458 + ".png?v=1");
-        if (!canRunAds) {
-            $("#AGM_agma-io_300x250").html("<a href=\"bots.php?d=" + _0x430ea7 + "\" target=\"_blank\"><img style=\"" + "margin: 0 auto;margin-top: 15px;border: 2px solid #002c40;min-width: 150px;max-width: 85%;height: 100%;max-height: 200px;transition: all .5s ease 0s;" + "\" src=\"img/agmaAd/bots/" + _0x430ea7 + ".png\"></a>");
-        }
     } else {
         $("#agmaAdHref").attr("href", "items.php?clickId=" + _0x253e6b);
         $("#zoomItem").attr("src", "img/agmaAd/items/" + _0x253e6b + ".png?v=1");
-        if (!canRunAds) {
-            $("#AGM_agma-io_300x250").html("<a href=\"items.php?d=" + _0x55446d + "\" target=\"_blank\"><img style=\"" + "margin: 0 auto;margin-top: 15px;border: 2px solid #002c40;min-width: 150px;max-width: 85%;height: 100%;max-height: 200px;transition: all .5s ease 0s;" + "\" src=\"img/agmaAd/items/" + _0x55446d + ".png\"></a>");
-        }
     }
 };
 var _0x255800 = window.featureList || [];
@@ -12211,7 +11679,7 @@ function _0x416ef7(_0x46e069, _0x3a2784) {
                     $("#skinCustomImg" + _0x46e069).attr("src", '').hide(0).show(0);
                     $("#skinContainer" + _0x46e069).addClass("noskin");
                 }
-                _0x12bbfc(_0x57712b, false, false, 0, 10);
+                curserMessage(_0x57712b, false, false, 0, 10);
             } else {
                 $("#skinContainer" + _0x46e069).removeClass("noskin");
                 $("#skinCustomImg" + _0x46e069).attr("src", '').attr("src", "skins/" + _0x46e069 + "_lo.png?d=" + Date.now()).hide(0).show(0);
@@ -12221,7 +11689,7 @@ function _0x416ef7(_0x46e069, _0x3a2784) {
             }
         },
         "error": function() {
-            _0x12bbfc("Error: unable to upload file to server. Please contact staff at the forums.", false, false, 0, 10);
+            curserMessage("Error: unable to upload file to server. Please contact staff at the forums.", false, false, 0, 10);
         },
         "complete": function() {
             $("#skinContainer" + _0x46e069).removeClass("is-uploading");
@@ -12260,7 +11728,7 @@ function _0x2808de(_0x2a55e3) {
         if (_0x2a55e3.dataTransfer.files && 0 < _0x2a55e3.dataTransfer.files.length) {
             _0x24c563(_0x2a55e3.dataTransfer.files[0]);
         } else if (_0x2a55e3.dataTransfer.getData("url")) {
-            _0x12bbfc("Error: please save an image from another site to your computer before uploading it on agma", false, false, 0, 10);
+            curserMessage("Error: please save an image from another site to your computer before uploading it on agma", false, false, 0, 10);
         }
     }
 }
@@ -12276,13 +11744,13 @@ function _0x24c563(_0x468277) {
             _0x236671();
         };
         _0x176d4a.onabort = _0x176d4a.onerror = function() {
-            _0x12bbfc("Error: something went wrong while loading the file. Please try again.", false, false, 0, 10);
+            curserMessage("Error: something went wrong while loading the file. Please try again.", false, false, 0, 10);
             _0x236671();
         };
         try {
             _0x176d4a.readAsDataURL(_0x468277);
         } catch (_0x5dbbe7) {
-            _0x12bbfc("Error: an unexpected error occurred with the selected file", false, false, 0, 10);
+            curserMessage("Error: an unexpected error occurred with the selected file", false, false, 0, 10);
             _0x236671();
         }
 
@@ -12336,21 +11804,21 @@ function _0x350e59(_0xf3cb18, _0x4062b1) {
                         _0x3da849("general", "cbgDataURL", _0xf3cb18);
                     }
                 } else {
-                    _0x12bbfc("Error: the background image did not load successfully. Please try again.", false, false, 0, 10);
+                    curserMessage("Error: the background image did not load successfully. Please try again.", false, false, 0, 10);
                     _0x350e59('');
                 }
                 _0x35c5f = null;
                 _0x37e4bf = false;
             };
             _0x35c5f.onerror = function() {
-                _0x12bbfc("Error: the background image could not be loaded", false, false, 0, 10);
+                curserMessage("Error: the background image could not be loaded", false, false, 0, 10);
                 _0x350e59('');
                 _0x35c5f = null;
                 _0x37e4bf = false;
             };
             _0x35c5f.src = _0xf3cb18;
         } catch (_0x48bca4) {
-            _0x12bbfc("Error: something went wrong while loading the background image", false, false, 0, 10);
+            curserMessage("Error: something went wrong while loading the background image", false, false, 0, 10);
             _0x37e4bf = false;
         }
     } else {
@@ -12700,7 +12168,7 @@ window.editCustomSkin = function(_0x332f75) {
         }
         $("#skinContainer" + _0x332f75).removeClass("saved-mode approved-mode rejected-mode enabled-mode").addClass("edit-mode nonapproved-mode pending-mode disabled-mode");
     }
-    if (_0x29ae07 && isReady() && _0x109288 && !_0x7f089d) {
+    if (_0x29ae07 && isReady() && isLoggedIn && !_0x7f089d) {
         if ($("#skinContainer" + _0x332f75).hasClass("enabled-mode")) {
             swal({
                 "title": "Confirm",
@@ -12717,15 +12185,15 @@ window.editCustomSkin = function(_0x332f75) {
     }
 };
 window.saveCustomSkin = function(_0x164677) {
-    if (_0x29ae07 && isReady() && _0x109288 && !_0x7f089d) {
+    if (_0x29ae07 && isReady() && isLoggedIn && !_0x7f089d) {
         if (3 <= parseInt($("#skinContainer" + _0x164677).attr("data-pendingapproval"))) {
-            _0x12bbfc("Please upload an image before saving", false, false, 0, 10);
+            curserMessage("Please upload an image before saving", false, false, 0, 10);
         } else {
             var _0x4a7a01 = $("#skinNameInput" + _0x164677).val().toString().substr(0, 30);
             var _0x220cea = $("#skinSharedPublicInput" + _0x164677).is(":checked");
             for (var _0x256897 = 0; _0x256897 < _0x4a7a01.length; _0x256897++) {
                 if (!/[\x20-\xff]/.test(_0x4a7a01.charAt(_0x256897))) {
-                    return void _0x12bbfc("Please choose another skinname - unicode characters are not allowed", false, false, 0, 10);
+                    return void curserMessage("Please choose another skinname - unicode characters are not allowed", false, false, 0, 10);
                 }
             }
             _0x34efff(true);
@@ -12743,12 +12211,12 @@ window.saveCustomSkin = function(_0x164677) {
     }
 };
 window.uploadCustomSkin = function(_0x4fd1d3) {
-    if (!(!_0x29ae07 || !(isReady()) || !_0x109288 || _0x7f089d || _0x12c3b0 > Date.now())) {
+    if (!(!_0x29ae07 || !(isReady()) || !isLoggedIn || _0x7f089d || _0x12c3b0 > Date.now())) {
         _0x12c3b0 = Date.now() + 1000;
         $("#skinUploadBtn" + _0x4fd1d3).blur();
         $("#uploadFile").off("change").val('').attr("accept", ".png, .jpg, .jpeg").one("change", function() {
             var _0x375b8d;
-            if (_0x109288) {
+            if (isLoggedIn) {
                 _0x34efff(_0x7f089d = true);
                 $("#skinContainer" + _0x4fd1d3).addClass("is-uploading");
                 document.body.style.cursor = "progress";
@@ -12787,7 +12255,7 @@ window.dropFileOnSkin = function(_0x13c4f9, _0x4dc317) {
     var _0x2f5c3b;
     _0x13c4f9.preventDefault();
     _0x13c4f9.stopPropagation();
-    if (_0x5ebb13 && (_0x13c4f9.dataTransfer && (_0x13c4f9.dataTransfer.dropEffect = "copy"), $("#skinContainer" + _0x4dc317).removeClass("drag-over"), _0x29ae07) && isReady() && _0x109288 && _0x13c4f9.dataTransfer && _0x13c4f9.dataTransfer.files && 0 < _0x13c4f9.dataTransfer.files.length) {
+    if (_0x5ebb13 && (_0x13c4f9.dataTransfer && (_0x13c4f9.dataTransfer.dropEffect = "copy"), $("#skinContainer" + _0x4dc317).removeClass("drag-over"), _0x29ae07) && isReady() && isLoggedIn && _0x13c4f9.dataTransfer && _0x13c4f9.dataTransfer.files && 0 < _0x13c4f9.dataTransfer.files.length) {
         _0x34efff(_0x7f089d = true);
         $("#skinContainer" + _0x4dc317).addClass("is-uploading");
         document.body.style.cursor = "progress";
@@ -12812,7 +12280,7 @@ window.uploadCustomBack = function() {
                 }
             }).trigger("click");
         } else {
-            _0x12bbfc("Sorry, custom backgrounds are not supported on your system. Maybe try another browser?", false, false, 0, 10);
+            curserMessage("Sorry, custom backgrounds are not supported on your system. Maybe try another browser?", false, false, 0, 10);
         }
     }
 };
@@ -12856,7 +12324,7 @@ window.toggleWearable = function(_0x3acdc5, _0x75f1be, _0x1acae1, _0x26b773, _0x
                 }
             }
             if (5 <= _0x4bb827.length) {
-                return void _0x12bbfc("You cannot select more than 5 wearables. Please remove one before selecting another wearable.", false, false, 0, 10);
+                return void curserMessage("You cannot select more than 5 wearables. Please remove one before selecting another wearable.", false, false, 0, 10);
             }
             _0x5f4edb(_0x3acdc5, _0x75f1be, _0x1acae1, _0x26b773, _0x25e189);
             if (!_0x4b4ed5) {
@@ -12984,7 +12452,7 @@ window.toggleChatDimmed = function() {
     _0x5ccb42(_0x59182a ? 0 : 1);
 };
 window.checkUserLoggedIn = function() {
-    return !!_0x109288 || (swal("Login first", "Please log in on agma or register a new user account to use this functionality"), false);
+    return !!isLoggedIn || (swal("Login first", "Please log in on agma or register a new user account to use this functionality"), false);
 };
 window.coinsXopen = function(_0x34f7cb) {
     _0x34f7cb = "cprd=" + (_0x34f7cb = _0x34f7cb || 1) + "&cpn=" + _0xea465f + "&cpcid=" + _0x5bbe63;
@@ -13031,27 +12499,7 @@ window.logXd = function(_0x2ba0e0) {
     };
     $.ajax(_0x4ee68d);
 };
-window.isBloc = function() {
-    document.referrer;
-    navigator.appName;
-    try {
-        var _0x38365b = window.screen.availWidth;
-        var _0x89fe7f = window.screen.availHeight;
-    } catch (_0x8d92f1) {
-        _0x38365b = '';
-        _0x89fe7f = '';
-    }
-    var _0x4c9dcd = null;
-    if ("undefined" != typeof Storage) {
-        try {
-            _0x4c9dcd = localStorage.getItem("username");
-            localStorage.getItem("adTrackSubbd");
-        } catch (_0x231ae0) {
-            console.log("caught exception, no cookies enabled!");
-        }
-    }
-    canRunAds;
-};
+window.isBloc = function() {};
 window.loadXPlayer = function(_0x564d05) {
     var _0x446413 = {
         access_token: _0x564d05,
@@ -13080,7 +12528,7 @@ window.partyDecline = function() {
 };
 window.kickPartyMember = function(_0x202c22) {
     if (_0x2c99f2) {
-        return _0x12bbfc("please wait 3 seconds before kicking");
+        return curserMessage("please wait 3 seconds before kicking");
     }
     _0x202c22 = $(_0x202c22).attr("value");
     if (isReady()) {
@@ -13114,7 +12562,7 @@ window.minutesUntilMidnight = function() {
     return (_0x181a01.getTime() - new Date(_0x181a01.getUTCFullYear(), _0x181a01.getUTCMonth(), _0x181a01.getUTCDate(), _0x181a01.getUTCHours(), _0x181a01.getUTCMinutes(), _0x181a01.getUTCSeconds()).getTime()) / 1000 / 60;
 };
 window.quizAnswer = function(_0x3ff1b5, _0x4eada8) {
-    return _0x1d4fed && _0x4eada8 ? swal('', "You have already answered the quiz for today", "error") : _0x109288 ? void(_0x4eada8 ? _0x109288 && _0x54207c && _0x20546f && isReady() && (_0x1d4fed = _0x20546f, new PacketWriter(3).setUint8(185).setUint8(_0x20546f).setUint8(_0x54207c).send()) : _0x54207c = _0x3ff1b5) : swal('', "You must be logged in to participate in the quiz", "error");
+    return _0x1d4fed && _0x4eada8 ? swal('', "You have already answered the quiz for today", "error") : isLoggedIn ? void(_0x4eada8 ? isLoggedIn && _0x54207c && _0x20546f && isReady() && (_0x1d4fed = _0x20546f, new PacketWriter(3).setUint8(185).setUint8(_0x20546f).setUint8(_0x54207c).send()) : _0x54207c = _0x3ff1b5) : swal('', "You must be logged in to participate in the quiz", "error");
 };
 window.reqQuiz = function() {
     if (!(0 < _0x20546f)) {
@@ -13125,7 +12573,7 @@ window.reqQuiz = function() {
 };
 window.friendAdd = function(_0xf5b082) {
     if ('' == (_0xf5b082 = _0xf5b082.trim())) {
-        _0x12bbfc("Please type a username first", false, false, 0, 5);
+        curserMessage("Please type a username first", false, false, 0, 5);
     } else {
         _0x16a7a3(81, _0xf5b082);
         document.getElementById("friendAddInput").value = '';
@@ -13175,14 +12623,11 @@ window.insertPMText = function(_0x3c92d2) {
 window.displayInfoDialog = function(_0x128329) {
     var _0x1de2d3 = true;
     var _0x2d4fef = true;
-    if (!_0x109288) {
-        if ("undefined" == typeof Storage) {
-            _0x1de2d3 = false;
-        }
+    if (!isLoggedIn) {
         if (localStorage.infoDialog && 3 < parseInt(localStorage.infoDialog) && parseInt(localStorage.infoDialog) % 3 != 0) {
             _0x2d4fef = false;
         }
-        if (_0x109288 && "infoHolderRegister" == _0x128329) {
+        if (isLoggedIn && "infoHolderRegister" == _0x128329) {
             _0x2d4fef = false;
         }
         if (_0x1de2d3 && _0x2d4fef) {
@@ -13351,10 +12796,10 @@ window.setCustomBackColor = function(_0x258cda) {
     if (_0x258cda.length < 6) {
         _0x258cda = (_0x258cda[0] || "0") + (_0x258cda[0] || "0") + (_0x258cda[1] || "0") + (_0x258cda[1] || "0") + (_0x258cda[2] || "0") + (_0x258cda[2] || "0");
     }
-    _0x41e18a.r = parseInt(_0x258cda.substr(0, 2), 16);
-    _0x41e18a.g = parseInt(_0x258cda.substr(2, 2), 16);
-    _0x41e18a.b = parseInt(_0x258cda.substr(4, 2), 16);
-    _0x32edda = _0x15f517(0, 0, 0);
+    customBackgroundColor.r = parseInt(_0x258cda.substr(0, 2), 16);
+    customBackgroundColor.g = parseInt(_0x258cda.substr(2, 2), 16);
+    customBackgroundColor.b = parseInt(_0x258cda.substr(4, 2), 16);
+    _0x32edda = rgbToHex(0, 0, 0);
     document.getElementById("customBackColorHex").innerHTML = _0x32edda;
     _0x5cfda7();
     _0xbb1a8c();
@@ -13382,7 +12827,7 @@ window.setDark = function(_0x319e46) {
         _0x12b250 = parseInt(_0xcdcbe3.substr(0, 2), 16);
         _0x184c7a = parseInt(_0xcdcbe3.substr(2, 2), 16);
         _0x40f310 = parseInt(_0xcdcbe3.substr(4, 2), 16);
-        _0x2fadfd.$e = _0x15f517(_0x12b250 * _0x517df6, _0x184c7a * _0x517df6, _0x40f310 * _0x517df6);
+        _0x2fadfd.$e = rgbToHex(_0x12b250 * _0x517df6, _0x184c7a * _0x517df6, _0x40f310 * _0x517df6);
     }
     if (0 < _0x2a6acb.length && (_0x2fadfd = _0x2a6acb[0].cell)) {
         if ((_0xcdcbe3 = String(_0x2fadfd.oe).replace(/[^0-9a-f]/gi, '')).length < 6) {
@@ -13391,7 +12836,7 @@ window.setDark = function(_0x319e46) {
         _0x12b250 = parseInt(_0xcdcbe3.substr(0, 2), 16);
         _0x184c7a = parseInt(_0xcdcbe3.substr(2, 2), 16);
         _0x40f310 = parseInt(_0xcdcbe3.substr(4, 2), 16);
-        _0x2fadfd.ie = _0x15f517(_0x12b250 * _0x517df6, _0x184c7a * _0x517df6, _0x40f310 * _0x517df6);
+        _0x2fadfd.ie = rgbToHex(_0x12b250 * _0x517df6, _0x184c7a * _0x517df6, _0x40f310 * _0x517df6);
     }
     _0x2c6f91 = _0x4cb089 = _0x3c3250 = true;
     _0xbb1a8c();
@@ -13515,32 +12960,7 @@ window.setChatSize = function(_0x530e81) {
     _0x4cb089 = true;
     _0xbb1a8c();
 };
-window.chatConfirmRules = function(_0xe0b198) {
-    var _0x42a770;
-    var _0x5bee26;
-    var _0x184bcb;
-    var _0x36ee26;
-    var _0x1403a8;
-    var _0x280ea4;
-    if (!(chatRulesConfirmed = "undefined" != typeof Storage && localStorage.getItem("crc") ? true : chatRulesConfirmed)) {
-        chtbox.blur();
-        typingChat = false;
-        _0x42a770 = "<div id=\"lang-btns\" style=\"display: flex;width: 50%;margin: 0 auto;text-align: center;height: 60px;\"><div lang=\"en\" onclick=\"chatConfirmRules(1)\" style=\"background-color: transparent;width: 40px;padding: 0;background-size: contain;background-image: url(&quot;https://cdn-icons-png.flaticon.com/512/1377/1377975.png&quot;);background-repeat: no-repeat;margin: 0 auto;\"><div id=\"lang-btns\"></div></div><div lang=\"es\" onclick=\"chatConfirmRules(2)\" style=\"background-color: transparent;width: 40px;padding: 0;background-size: contain;background-image: url(&quot;https://cdn-icons-png.flaticon.com/512/1377/1377973.png&quot;);margin: 0 auto;background-repeat: no-repeat;\"></div></div>";
-        _0x280ea4 = 2 == _0xe0b198 ? (_0x5bee26 = _0x42a770 + "<p style=\"text-align: left;\">1. No chat inapropiado <br> 2. No insultar <br> 3. No mensajes tóxicos ni discusiones provocadas con otros (todas las partes serán prohibidas) <br> 4. Mantenlo familiar en el chat público <br> 5 ¡Este es un juego amistoso, con el propósito de hacer amigos y disfrutar de momentos épicos! ¡Sean amables y amables entre ustedes y muestren respeto a todos los jugadores!</p>", _0x184bcb = isMobile ? '' : "<p style=\"text-align: left; font-size:10px\">Romper las reglas resultará en una cuenta silenciada o suspendida. Si compartió su cuenta y alguien más escribió un mensaje inapropiado, será su responsabilidad y su cuenta permanecerá silenciada. Sin apelaciones.</p>", _0x36ee26 = "¡Necesitas escribir yes para aceptar!", _0x1403a8 = "Escriba yes para aceptar", "¡Debe escribir Yes para usar el chat!") : (_0x5bee26 = _0x42a770 + "<p style=\"text-align: left;\">1. No inappropriate chat <br> 2. No cussing <br> 3. No toxic messages or extensive arguments in chat (all parties will be banned) <br> 4. Keep it family friendly in the public chat <br> 5. This is a friendly game, with the purpose of making friends and enjoying fun moments. Be nice and kind to each other and show respect to all players!</p>", _0x184bcb = isMobile ? '' : "<p style=\"text-align: left; font-size:10px\">Breaking the rules will result in an account mute or suspension. If you shared your account and someone else wrote an inappropriate message from it, it will be your responsibility and your account will remain muted. No appeals.</p>", _0x36ee26 = "You need to write yes to agree!", _0x1403a8 = "Type yes to agree", "You must type Yes to use the chat!");
-        swal({
-            "title": "Confirm Chat Rules",
-            "text": _0x5bee26 + "<br>" + _0x184bcb,
-            "type": "input",
-            "showCancelButton": true,
-            "closeOnConfirm": false,
-            "animation": "slide-from-top",
-            "inputPlaceholder": _0x1403a8,
-            "html": true
-        }, function(_0x29329a) {
-            return null !== _0x29329a && ('' === (_0x29329a = _0x29329a && _0x29329a.toLowerCase()) ? (swal.showInputError(_0x36ee26), false) : void("yes" == _0x29329a || "si" == _0x29329a || "ok" == _0x29329a ? (swal("Chat Rules", "Thank you for agreeing to the rules! ", "success"), chatRulesConfirmed = true, "undefined" != typeof Storage && localStorage.setItem("crc", true)) : swal(_0x280ea4, '', "error")));
-        });
-    }
-};
+window.chatConfirmRules = function() {};
 window.setMinimap = function(_0x46e9f8) {
     if (_0x18306d = !_0x46e9f8) {
         $("#minimap").hide();
@@ -14361,9 +13781,6 @@ for (var _0x6d2103 = 0; _0x6d2103 <= 255; _0x6d2103++) {
         _0x355a83.duration = _0x355a83.time === _0xb6c6e7 ? 1800 : 30000;
     }
 }
-_0x2a0343 = (_0x2a0343 = window.Object) ? _0x2a0343.getOwnPropertyDescriptor : null;
-_0x5d197a = _0x2a0343 ? _0x2a0343(window, 'canRunAds') : null;
-_0x4d2b96 = !_0x2a0343 || _0x5d197a && !_0x5d197a.writable && !_0x5d197a.configurable;
 _0x41c319 = [];
 var _0x37972d = 2 * Math.PI / 10000;
 for (var _0x29653b = 0; _0x29653b < 10000; _0x29653b++) {
@@ -14388,7 +13805,6 @@ function _0x1fe290(_0x336fe1) {
         return '';
     }
 }
-var _0x857cd1 = [ '#botcanvas' ];
 
 
 /*
@@ -14412,21 +13828,8 @@ if (!window.requestAnimationFrame) {
         return setTimeout(_0x216a8a, 16.666666666666668);
     };
 }
-if (_0xa42bce) {
-    window[_0x26d6ba] = _0x405489;
-}
 $(function() {
     _0x37a723 = true;
-    if ("SharedWorker" in window) {
-        try {
-            (_0x396332 = new SharedWorker("js/worker.js")).port.onmessage = function(_0x4a76d6) {
-                _0x6a593d = _0x4a76d6.data;
-            };
-            _0x396332.port.postMessage("broadcast");
-        } catch (_0x763d6f) {
-            _0x396332 = null;
-        }
-    }
 
     function _0xe579d8(_0x5c1fe3) {
         var _0x5669f1 = _0x5c1fe3.onclick || _0x5c1fe3.onmousedown || _0x5c1fe3.onmouseup || _0x5c1fe3.onkeydown || _0x5c1fe3.onkeyup || _0x5c1fe3.onkeypress || _0x5c1fe3.oninput || _0x5c1fe3.onchange || _0x5c1fe3.onfocus || _0x5c1fe3.onblur || _0x5c1fe3.onfocusin || _0x5c1fe3.onfocusout;
@@ -14452,7 +13855,6 @@ $(function() {
     var _0x481985;
     var _0x5f313e;
     var _0x5ca670;
-    setTimeout(_0xeb6d2b, 0);
     _0x4142f2 = document.getElementById("username");
     _0x163879 = document.getElementById("password");
     _0x1a021f = document.getElementById("sent");
@@ -14508,7 +13910,7 @@ $(function() {
                 if (12 < ++_0x1aa57f) {
                     return swal("Sorry", "Too many attempts. Please try again later.", "error");
                 }
-                var _0xd49b2e = _0x109288 && _0xea465f.trim().toLowerCase() == _0x2aaecd.trim().toLowerCase() ? _0x170269 : '';
+                var _0xd49b2e = isLoggedIn && _0xea465f.trim().toLowerCase() == _0x2aaecd.trim().toLowerCase() ? _0x170269 : '';
                 $("#resetPw").prop("disabled", true).html("Send Reset Email<i class=\"fa fa-spin\" style=\"animation-duration:1s; position:absolute; margin:3px 20px -3px; float:right; opacity:0.7;\"><img src=\"img/loading3.png\" style=\"width:20px;\"></i>").css("opacity", "0.7");
                 $.ajax({
                     "type": "GET",
@@ -14557,9 +13959,6 @@ $(function() {
     }, true);
     $(".bs-example-modal-lg").on("show.bs.modal", function() {
         _0x173277 = true;
-        if (_0x213646 && 0 < Date.now() - 40000) {
-            _0x2ca450();
-        }
         if (windowIsLoaded && (_0x64a0d5 && $("#skinsTab").hasClass("active") && _0x4b2336(), _0x1518ea) && $("#wearablesTab").hasClass("active")) {
             _0x5a2fbe();
         }
@@ -14572,7 +13971,7 @@ $(function() {
     $(".bs-example-modal-lg3").on("show.bs.modal", function() {
         _0x1a6d5d = true;
         $("#remainingSpins").text(0);
-        if (_0x109288) {
+        if (isLoggedIn) {
             sendSignal(57);
         }
         loadSpinWheelAudio();
@@ -14660,85 +14059,17 @@ $(function() {
         _0x1b60af.sSkinAnimations = _0xe1899f.sSkinAnimations = false;
         _0x1b60af.sMass = _0xe1899f.sMass = false;
     }
-    if (_0x17c3d4) {
+    if (_0x17c3d4)
         _0x1b60af.sDark = true;
-    }
-    var _0x4bbc29 = document.getElementById("AGM_agma-io_300x250");
-    var _0x16dbb1 = document.getElementById("agma-io_970x250");
-    var _0x1d359e = document.getElementById("adWrapper300x250");
-    var _0x3ff5aa = document.getElementById("advertDialog1");
-    var _0x52b8ad = $(".featured-yt")[0];
-    var _0x47dbc1 = document.getElementById("agma-io_728x90");
-    var _0x3d7d74 = document.getElementById("agma-io_160x600");
-    var _0x497329 = document.getElementById("adWrapper728x90");
-    var _0x37a216 = document.getElementById("adWrapper160x600");
-    var _0x4fd044 = document.getElementById("agma-io_728x90_2");
-    var _0x2da1ed = document.getElementById("adWrapper728x90_2");
-    var _0x374eb0 = {
-        show: 500,
-        hide: 0
-    };
-    var _0x34a640 = {
-        delay: _0x374eb0
-    };
-    if (_0x4bbc29) {
-        _0x4bbc29.remove = _0x4bbc29.parentNode.removeChild = function() {};
-    }
-    if (_0x16dbb1) {
-        _0x16dbb1.remove = _0x16dbb1.parentNode.removeChild = function() {};
-    }
-    if (_0x1d359e) {
-        _0x1d359e.remove = _0x1d359e.parentNode.removeChild = function() {};
-    }
-    if (_0x3ff5aa) {
-        _0x3ff5aa.remove = _0x3ff5aa.parentNode.removeChild = function() {};
-    }
-    if (_0x52b8ad) {
-        _0x52b8ad.remove = _0x52b8ad.parentNode.removeChild = function() {};
-    }
-    if (_0x47dbc1) {
-        _0x47dbc1.remove = _0x47dbc1.parentNode.removeChild = function() {};
-    }
-    if (_0x3d7d74) {
-        _0x3d7d74.remove = _0x3d7d74.parentNode.removeChild = function() {};
-    }
-    if (_0x497329) {
-        _0x497329.remove = _0x497329.parentNode.removeChild = function() {};
-    }
-    if (_0x37a216) {
-        _0x37a216.remove = _0x37a216.parentNode.removeChild = function() {};
-    }
-    if (_0x4fd044) {
-        _0x4fd044.remove = _0x4fd044.parentNode.removeChild = function() {};
-    }
-    if (_0x2da1ed) {
-        _0x2da1ed.remove = _0x2da1ed.parentNode.removeChild = function() {};
-    }
-    (function _0x11bff8() {
-        if (window.adplayer) {
-            adplayer_copy = window.adplayer;
-        } else {
-            setTimeout(_0x11bff8, 1000);
-        }
-    })();
-    _0x4bbc29 = "addTimeoutListener";
-    if (window[_0x4bbc29]) {
-        delete window[_0x4bbc29];
-    }
-    _0x1cc38d = Date.now();
-    Date.now();
-    _0x514d47 = !(_0x4bcc93 = false);
     _0x51c554();
     $("#overlays").fadeIn(1000);
     az(0, 2);
-    if ("undefined" != typeof Storage) {
-        if (localStorage.cid) {
-            _0x5bbe63 = localStorage.cid;
-        } else {
-            localStorage.cid = _0x5bbe63;
-        }
+    if (localStorage.cid) {
+        _0x5bbe63 = localStorage.cid;
+    } else {
+        localStorage.cid = _0x5bbe63;
     }
-    $("#inventory").find(".inventory-box").tooltip(_0x34a640);
+    $("#inventory").find(".inventory-box").tooltip({ delay: { show: 500, hide: 0 } });
     if (1 < _0x255800.length) {
         var _0x4edb44 = "<div id=\"featuredBtnPrev\" class=\"featured-btn\" onclick=\"prevVideo();\">&lt;</div>";
         for (var _0x1814f7 = 0; _0x1814f7 < _0x255800.length; _0x1814f7++) {
@@ -14784,32 +14115,13 @@ $(function() {
                 connectserver(_0x46c79d, _0x518a09);
             }
         } else {
-            _0x12bbfc("Unable to connect! Please refresh your browser and try again.", false, true, 0, 0);
+            curserMessage("Unable to connect! Please refresh your browser and try again.", false, true, 0, 0);
         }
     }, "text");
-    if (window.googletag) {
-        googletag.cmd.push(function() {
-            googletag.pubads().addEventListener("impressionViewable", function(_0x3dd49e) {
-                if (canRunAds) {
-                    if ("agma-io_970x250" == (_0x3dd49e = _0x3dd49e.slot.getSlotElementId())) {
-                        if (waitAdvertContinueDone && (hasWatchedAd = true, _0x17f189)) {
-                            allowAdvertContinue();
-                        }
-                    } else if ("AGM_agma-io_300x250" == _0x3dd49e && waitPlayButtonDone && (hasWatchedAd = true, _0x17f189)) {
-                        allowPlayButton();
-                    }
-                }
-            });
-        });
-    }
 });
 window.addEventListener("beforeunload", function(_0xf46263) {
     windowIsLoaded = false;
     _0x13d7e0();
-    if (_0x396332) {
-        _0x396332.port.postMessage("unregister");
-    }
-    _0x396332 = null;
 });
 console.log(
     "%cGayma.io - 2.0.0 Operational 🫡",

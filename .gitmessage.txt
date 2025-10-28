@@ -1,0 +1,6 @@
+refactor(core): deobfuscate variables and remove unused code
+
+# - Cleaned up variable names
+# - Removed dead code
+# - Simplified debugging process
+
