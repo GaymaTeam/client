@@ -168,13 +168,13 @@ window.onload = function() {
     })();
     var _0xbbfdd2 = false;
     var _0x4a595d = false;
-    if (null != window.localStorage.settings && (undefined !== (_0x492d1e = JSON.parse(window.localStorage.settings)).nickName && (_0x1b60af.nickName = _0x492d1e.nickName), undefined !== _0x492d1e.user && '' == _0x492d1e.user && (undefined !== _0x492d1e.skinId && (_0x1b60af.skinId = _0x492d1e.skinId), undefined !== _0x492d1e.wearablesSelected && (_0x1b60af.wearablesSelected = _0x492d1e.wearablesSelected.slice(0)), _0x1b60af.user = ''), undefined !== _0x492d1e.sSounds && (_0x1b60af.sSounds = _0x492d1e.sSounds), undefined !== _0x492d1e.sSkins && (_0x1b60af.sSkins = _0x492d1e.sSkins), undefined !== _0x492d1e.sWearables && (_0x1b60af.sWearables = _0x492d1e.sWearables), undefined !== _0x492d1e.sColors && (_0x1b60af.sColors = _0x492d1e.sColors), undefined !== _0x492d1e.sNames && (_0x1b60af.sNames = _0x492d1e.sNames), undefined !== _0x492d1e.sMinionNames && (_0x1b60af.sMinionNames = _0x492d1e.sMinionNames), undefined !== _0x492d1e.sMass && (_0x1b60af.sMass = _0x492d1e.sMass), undefined !== _0x492d1e.sFood && (_0x1b60af.sFood = _0x492d1e.sFood), undefined !== _0x492d1e.sFoodHalf && (_0x1b60af.sFoodHalf = _0x492d1e.sFoodHalf), undefined !== _0x492d1e.sCellAnimations && (_0x1b60af.sCellAnimations = _0x492d1e.sCellAnimations), undefined !== _0x492d1e.sSkinAnimations && (_0x1b60af.sSkinAnimations = _0x492d1e.sSkinAnimations), undefined !== _0x492d1e.sMapBorder && (_0x1b60af.sMapBorder = _0x492d1e.sMapBorder), undefined !== _0x492d1e.sFancyGrid && (_0x1b60af.sFancyGrid = _0x492d1e.sFancyGrid), undefined !== _0x492d1e.sSectionGrid && (_0x1b60af.sSectionGrid = _0x492d1e.sSectionGrid), undefined !== _0x492d1e.sGrid && (_0x1b60af.sGrid = _0x492d1e.sGrid && false), undefined !== _0x492d1e.sCustomBack && (_0x1b60af.sCustomBack = _0x492d1e.sCustomBack), undefined !== _0x492d1e.sCustomBackType && (_0x1b60af.sCustomBackType = _0x492d1e.sCustomBackType), undefined !== _0x492d1e.sCustomBackOpacity && (_0x1b60af.sCustomBackOpacity = _0x492d1e.sCustomBackOpacity), undefined !== _0x492d1e.sCustomBackClip && (_0x1b60af.sCustomBackClip = _0x492d1e.sCustomBackClip), undefined !== _0x492d1e.sCustomBackEnableColor && (_0x1b60af.sCustomBackEnableColor = _0x492d1e.sCustomBackEnableColor), undefined !== _0x492d1e.sCustomBackColor && (_0x1b60af.sCustomBackColor = _0x492d1e.sCustomBackColor), undefined !== _0x492d1e.sDark && (_0x1b60af.sDark = _0x492d1e.sDark), undefined !== _0x492d1e.sSlowMotion && (_0x1b60af.sSlowMotion = _0x492d1e.sSlowMotion), undefined !== _0x492d1e.sFPS && (_0x1b60af.sFPS = _0x492d1e.sFPS), undefined !== _0x492d1e.sZoom && (_0x1b60af.sZoom = _0x492d1e.sZoom), undefined !== _0x492d1e.sFixedZoom && (_0x1b60af.sFixedZoom = _0x492d1e.sFixedZoom), undefined !== _0x492d1e.fixedZoomScale && (_0x1b60af.fixedZoomScale = _0x492d1e.fixedZoomScale), undefined !== _0x492d1e.sMinionUi && (_0x1b60af.sMinionUi = _0x492d1e.sMinionUi), undefined !== _0x492d1e.sLeaderboard && (_0x1b60af.sLeaderboard = _0x492d1e.sLeaderboard), undefined !== _0x492d1e.sChat && (_0x1b60af.sChat = _0x492d1e.sChat), undefined !== _0x492d1e.sChatSize && (_0x1b60af.sChatSize = _0x492d1e.sChatSize), undefined !== _0x492d1e.sMinimap && (_0x1b60af.sMinimap = _0x492d1e.sMinimap), undefined !== _0x492d1e.sCellBorders && (_0x1b60af.sCellBorders = _0x492d1e.sCellBorders), undefined !== _0x492d1e.sLargeNames && (_0x1b60af.sLargeNames = _0x492d1e.sLargeNames), undefined !== _0x492d1e.sNameOutlines && (_0x1b60af.sNameOutlines = _0x492d1e.sNameOutlines), undefined !== _0x492d1e.sCellSpikes && (_0x1b60af.sCellSpikes = _0x492d1e.sCellSpikes), undefined !== _0x492d1e.sTransparentViruses && (_0x1b60af.sTransparentViruses = _0x492d1e.sTransparentViruses), undefined !== _0x492d1e.sClassicViruses && (_0x1b60af.sClassicViruses = _0x492d1e.sClassicViruses), undefined !== _0x492d1e.sPolygonShapes && (_0x1b60af.sPolygonShapes = _0x492d1e.sPolygonShapes), undefined !== _0x492d1e.sLineShapes && (_0x1b60af.sLineShapes = _0x492d1e.sLineShapes), undefined !== _0x492d1e.sBubbleCells && (_0x1b60af.sBubbleCells = _0x492d1e.sBubbleCells), undefined !== _0x492d1e.sGraphics && (_0x1b60af.sGraphics = _0x492d1e.sGraphics), undefined !== _0x492d1e.sMobileLeft && (_0x1b60af.sMobileLeft = _0x492d1e.sMobileLeft), undefined !== _0x492d1e.sMobileFeedLock)) {
-        _0x1b60af.sMobileFeedLock = _0x492d1e.sMobileFeedLock;
+    if (null != window.localStorage.settings && (undefined !== (_0x492d1e = JSON.parse(window.localStorage.settings)).nickName && (gameSettings.nickName = _0x492d1e.nickName), undefined !== _0x492d1e.user && '' == _0x492d1e.user && (undefined !== _0x492d1e.skinId && (gameSettings.skinId = _0x492d1e.skinId), undefined !== _0x492d1e.wearablesSelected && (gameSettings.wearablesSelected = _0x492d1e.wearablesSelected.slice(0)), gameSettings.user = ''), undefined !== _0x492d1e.sSounds && (gameSettings.sSounds = _0x492d1e.sSounds), undefined !== _0x492d1e.sSkins && (gameSettings.sSkins = _0x492d1e.sSkins), undefined !== _0x492d1e.sWearables && (gameSettings.sWearables = _0x492d1e.sWearables), undefined !== _0x492d1e.sColors && (gameSettings.sColors = _0x492d1e.sColors), undefined !== _0x492d1e.sNames && (gameSettings.sNames = _0x492d1e.sNames), undefined !== _0x492d1e.sMinionNames && (gameSettings.sMinionNames = _0x492d1e.sMinionNames), undefined !== _0x492d1e.sMass && (gameSettings.sMass = _0x492d1e.sMass), undefined !== _0x492d1e.sFood && (gameSettings.sFood = _0x492d1e.sFood), undefined !== _0x492d1e.sFoodHalf && (gameSettings.sFoodHalf = _0x492d1e.sFoodHalf), undefined !== _0x492d1e.sCellAnimations && (gameSettings.sCellAnimations = _0x492d1e.sCellAnimations), undefined !== _0x492d1e.sSkinAnimations && (gameSettings.sSkinAnimations = _0x492d1e.sSkinAnimations), undefined !== _0x492d1e.sMapBorder && (gameSettings.sMapBorder = _0x492d1e.sMapBorder), undefined !== _0x492d1e.sFancyGrid && (gameSettings.sFancyGrid = _0x492d1e.sFancyGrid), undefined !== _0x492d1e.sSectionGrid && (gameSettings.sSectionGrid = _0x492d1e.sSectionGrid), undefined !== _0x492d1e.sGrid && (gameSettings.sGrid = _0x492d1e.sGrid && false), undefined !== _0x492d1e.sCustomBack && (gameSettings.sCustomBack = _0x492d1e.sCustomBack), undefined !== _0x492d1e.sCustomBackType && (gameSettings.sCustomBackType = _0x492d1e.sCustomBackType), undefined !== _0x492d1e.sCustomBackOpacity && (gameSettings.sCustomBackOpacity = _0x492d1e.sCustomBackOpacity), undefined !== _0x492d1e.sCustomBackClip && (gameSettings.sCustomBackClip = _0x492d1e.sCustomBackClip), undefined !== _0x492d1e.sCustomBackEnableColor && (gameSettings.sCustomBackEnableColor = _0x492d1e.sCustomBackEnableColor), undefined !== _0x492d1e.sCustomBackColor && (gameSettings.sCustomBackColor = _0x492d1e.sCustomBackColor), undefined !== _0x492d1e.sDark && (gameSettings.sDark = _0x492d1e.sDark), undefined !== _0x492d1e.sSlowMotion && (gameSettings.sSlowMotion = _0x492d1e.sSlowMotion), undefined !== _0x492d1e.sFPS && (gameSettings.sFPS = _0x492d1e.sFPS), undefined !== _0x492d1e.sZoom && (gameSettings.sZoom = _0x492d1e.sZoom), undefined !== _0x492d1e.sFixedZoom && (gameSettings.sFixedZoom = _0x492d1e.sFixedZoom), undefined !== _0x492d1e.fixedZoomScale && (gameSettings.fixedZoomScale = _0x492d1e.fixedZoomScale), undefined !== _0x492d1e.sMinionUi && (gameSettings.sMinionUi = _0x492d1e.sMinionUi), undefined !== _0x492d1e.sLeaderboard && (gameSettings.sLeaderboard = _0x492d1e.sLeaderboard), undefined !== _0x492d1e.sChat && (gameSettings.sChat = _0x492d1e.sChat), undefined !== _0x492d1e.sChatSize && (gameSettings.sChatSize = _0x492d1e.sChatSize), undefined !== _0x492d1e.sMinimap && (gameSettings.sMinimap = _0x492d1e.sMinimap), undefined !== _0x492d1e.sCellBorders && (gameSettings.sCellBorders = _0x492d1e.sCellBorders), undefined !== _0x492d1e.sLargeNames && (gameSettings.sLargeNames = _0x492d1e.sLargeNames), undefined !== _0x492d1e.sNameOutlines && (gameSettings.sNameOutlines = _0x492d1e.sNameOutlines), undefined !== _0x492d1e.sCellSpikes && (gameSettings.sCellSpikes = _0x492d1e.sCellSpikes), undefined !== _0x492d1e.sTransparentViruses && (gameSettings.sTransparentViruses = _0x492d1e.sTransparentViruses), undefined !== _0x492d1e.sClassicViruses && (gameSettings.sClassicViruses = _0x492d1e.sClassicViruses), undefined !== _0x492d1e.sPolygonShapes && (gameSettings.sPolygonShapes = _0x492d1e.sPolygonShapes), undefined !== _0x492d1e.sLineShapes && (gameSettings.sLineShapes = _0x492d1e.sLineShapes), undefined !== _0x492d1e.sBubbleCells && (gameSettings.sBubbleCells = _0x492d1e.sBubbleCells), undefined !== _0x492d1e.sGraphics && (gameSettings.sGraphics = _0x492d1e.sGraphics), undefined !== _0x492d1e.sMobileLeft && (gameSettings.sMobileLeft = _0x492d1e.sMobileLeft), undefined !== _0x492d1e.sMobileFeedLock)) {
+        gameSettings.sMobileFeedLock = _0x492d1e.sMobileFeedLock;
     }
     _0x536824 = false;
     _0x5df715(0);
-    _0x5cfc91(_0x1b60af.wearablesSelected);
-    $("#cSkins").prop("checked", _0x1b60af.sSkins).change();
+    _0x5cfc91(gameSettings.wearablesSelected);
+    $("#cSkins").prop("checked", gameSettings.sSkins).change();
     $("#cWearables").prop("checked", true).change();
     $("#cColors").prop("checked", true).change();
     $("#cNames").prop("checked", true).change();
@@ -921,7 +921,7 @@ window.onload = function() {
             case 27:
                 var _0x4f6092 = $("div.modal.in:visible");
                 if (0 == _0x4f6092.length) {
-                    if (_0xbbfdd2 || _0x2bc2d5 || _0x29894d || _0x12c259 || _0x181957 || _0x4a595d || _0x34cf3b) {
+                    if (_0xbbfdd2 || _0x2bc2d5 || _0x29894d || contextMenuVisible || _0x181957 || _0x4a595d || _0x34cf3b) {
                         _0x472070.blur();
                         _0x1e0756.blur();
                         _0x6da0af();
@@ -942,7 +942,7 @@ window.onload = function() {
                 }
                 break;
             case 13:
-                if (_0x12c259) {
+                if (contextMenuVisible) {
                     (_0x218784 ? (_0x11d4f6(_0x244728), _0x432cde) : _0x460313)();
                 } else if (_0xbbfdd2) {
                     _0x42b2d5();
@@ -960,12 +960,12 @@ window.onload = function() {
                 }
                 break;
             case 38:
-                if (_0x12c259) {
+                if (contextMenuVisible) {
                     _0x194510(-1);
                 }
                 break;
             case 40:
-                if (_0x12c259) {
+                if (contextMenuVisible) {
                     _0x194510(1);
                 }
                 break;
@@ -975,7 +975,7 @@ window.onload = function() {
                 }
                 break;
             case 39:
-                if (_0x12c259 && (_0x4f6092 = $("#contextMenu").find("li.context-has-submenu.hover")) && _0x4f6092.length && _0x4f6092[0] !== _0xab54f2 && (_0x2b63fd(), _0x460313(), _0x218784)) {
+                if (contextMenuVisible && (_0x4f6092 = $("#contextMenu").find("li.context-has-submenu.hover")) && _0x4f6092.length && _0x4f6092[0] !== _0xab54f2 && (_0x2b63fd(), _0x460313(), _0x218784)) {
                     $("#contextSubMenu").find("li.enabled").first().addClass("hover");
                 }
         }
@@ -1089,13 +1089,13 @@ window.onload = function() {
                 }
             }
         }
-        updateServersPanel();
     }
     if ('' == _0x54a038) {
         connectDefault();
     } else {
         connectserver(_0x54a038, _0x38891d);
     }
+    updateServersPanel();
     $("#overlays").show();
     ++framesCounter;
     _0x51c554();
@@ -1253,7 +1253,7 @@ function _0x191230(_0x5b7ebf, _0x3c2fed) {
 
 function _0x491923(_0x4c7278) {
     var _0x203d30;
-    if (!_0x3e08c0 && (_0x203d30 = _0xfe046f, _0xfe046f = _0x191230(_0x4c7278.clientX, _0x4c7278.clientY), _0x203d30 || _0xfe046f)) {
+    if (!_0x3e08c0 && (_0x203d30 = selectedMessage, selectedMessage = _0x191230(_0x4c7278.clientX, _0x4c7278.clientY), _0x203d30 || selectedMessage)) {
         _0x4cb089 = !(_0x10e53d = null);
     }
 }
@@ -1261,24 +1261,24 @@ function _0x491923(_0x4c7278) {
 function _0x38ee8a(_0x42c4a5) {
     if (!(_0x3e08c0 || _0x181957)) {
         _0x491923(_0x42c4a5);
-        if (_0xfe046f) {
+        if (selectedMessage) {
             _0x3169a6(_0x42c4a5);
             $("#contextMenu").find("li.hover").removeClass("hover");
             $("#contextUserProfile.enabled").addClass("hover");
             _0x460313();
-            _0x2b8f46();
+            hideContextMenu();
         }
     }
 }
 
 function _0xed8399(_0x4c53ad) {
     if (!(_0x3e08c0 || _0x181957 || !isSpectating || 0 != _0x335282.length)) {
-        _0x2b8f46();
+        hideContextMenu();
         _0x3169a6(_0x4c53ad);
         $("#contextMenu").find("li.hover").removeClass("hover");
         $("#contextSpectate.enabled").addClass("hover");
         _0x460313();
-        _0x2b8f46();
+        hideContextMenu();
     }
 }
 
@@ -1286,7 +1286,7 @@ function _0x3169a6(_0x4dc13e) {
     if (!_0x3e08c0 && (_0x4dc13e.preventDefault(), !_0x181957)) {
         document.getElementById("chtbox").blur();
         var _0x5c09e8 = null;
-        if (!_0xfe046f) {
+        if (!selectedMessage) {
             var _0x3e0f5a = (_0x4dc13e.pageX - _0x53f1a5 / 2) / _0x3e50d9 + _0x59034c;
             var _0x56bce2 = (_0x4dc13e.pageY - _0x1058ed / 2) / _0x3e50d9 + _0x4ce984;
             for (var _0x57a21f = _0x34b545.length - 1; 0 <= _0x57a21f; _0x57a21f--) {
@@ -1305,21 +1305,21 @@ function _0x3169a6(_0x4dc13e) {
             "background-image": '',
             "background-color": ''
         };
-        if (_0xfe046f || _0x5c09e8) {
-            if (_0xfe046f) {
-                if (isReady() && _0xfe046f.$ == _0x826efd && 0 != _0xfe046f.l) {
-                    new PacketWriter(6).setUint8(60).setUint8(0).setUint32(_0xfe046f.l).send();
+        if (selectedMessage || _0x5c09e8) {
+            if (selectedMessage) {
+                if (isReady() && selectedMessage.$ == _0x826efd && 0 != selectedMessage.l) {
+                    new PacketWriter(6).setUint8(60).setUint8(0).setUint32(selectedMessage.l).send();
                 }
                 $("#contextPlayerSkin").css({
                     "background-image": '',
-                    "background-color": _0xfe046f.color
+                    "background-color": selectedMessage.color
                 });
                 $(".context-player-wear").css("background-image", '').hide();
-                $("#contextPlayerName").text(_0xfe046f.name).css("color", '').removeClass("gold black");
-                if (_0xfe046f.goldMember) {
+                $("#contextPlayerName").text(selectedMessage.name).css("color", '').removeClass("gold black");
+                if (selectedMessage.goldMember) {
                     $("#contextPlayerName").addClass("gold");
                 }
-                if (_0xfe046f.$ == _0x826efd && 0 != _0xfe046f.l) {
+                if (selectedMessage.$ == _0x826efd && 0 != selectedMessage.l) {
                     $("#contextPartyInvite").addClass("enabled");
                     $("#contextFriendAdd").addClass("enabled");
                     $("#contextUserProfile").addClass("enabled");
@@ -1338,7 +1338,7 @@ function _0x3169a6(_0x4dc13e) {
                     $("#contextModerate").removeClass("enabled");
                     $("#contextPartyInvite").removeClass("enabled");
                     $("#contextUserProfile").removeClass("enabled");
-                    if (2 == _0xfe046f.category) {
+                    if (2 == selectedMessage.category) {
                         $("#contextFriendAdd").addClass("enabled");
                         $("#contextPrivateMessage").addClass("enabled");
                     } else {
@@ -1440,7 +1440,7 @@ function _0x3169a6(_0x4dc13e) {
         };
         _0x46f984.show();
         _0x46f984.css(_0x46542c);
-        _0x12c259 = true;
+        contextMenuVisible = true;
     }
 }
 
@@ -1474,17 +1474,17 @@ function _0x337253(_0x1c5f0b) {
     _0x218784 = true;
 }
 
-function _0x2b8f46() {
-    if (_0x12c259) {
+function hideContextMenu() {
+    if (contextMenuVisible) {
         if (isReady()) {
             new PacketWriter(6).setUint8(60).setUint8(0).setUint32(0).send();
         }
         _0x2b63fd();
         $("#contextMenu").hide().find("li.hover").removeClass("hover");
-        if (_0xfe046f) {
-            _0x4cb089 = !(_0xfe046f = null);
+        if (selectedMessage) {
+            _0x4cb089 = !(selectedMessage = null);
         }
-        _0x12c259 = false;
+        contextMenuVisible = false;
     }
 }
 
@@ -1655,39 +1655,39 @@ function _0x460313() {
         switch (_0x1f7dac.id) {
             case "contextPartyInvite":
                 sendSignal(61);
-                _0x2b8f46();
+                hideContextMenu();
                 break;
             case "contextFriendAdd":
-                if (_0xfe046f && 2 == _0xfe046f.category) {
-                    _0x16a7a3(81, _0xfe046f.name);
+                if (selectedMessage && 2 == selectedMessage.category) {
+                    sendString(81, selectedMessage.name);
                 } else {
                     sendSignal(84);
                 }
-                _0x2b8f46();
+                hideContextMenu();
                 break;
             case "contextUserProfile":
                 sendSignal(88);
-                _0x2b8f46();
+                hideContextMenu();
                 break;
             case "contextPrivateMessage":
-                if (_0xfe046f && 2 == _0xfe046f.category) {
-                    insertPMText(_0xfe046f.name);
+                if (selectedMessage && 2 == selectedMessage.category) {
+                    insertPMText(selectedMessage.name);
                 } else {
                     sendSignal(45);
                 }
-                _0x2b8f46();
+                hideContextMenu();
                 break;
             case "contextMute":
-                if (_0xfe046f) {
-                    _0x3addca(_0xfe046f.R, _0xfe046f.O, _0xfe046f.name);
+                if (selectedMessage) {
+                    _0x3addca(selectedMessage.R, selectedMessage.O, selectedMessage.name);
                 } else {
                     sendSignal(109);
                 }
-                _0x2b8f46();
+                hideContextMenu();
                 break;
             case "contextSpectate":
                 sendSignal(92);
-                _0x2b8f46();
+                hideContextMenu();
                 break;
             case "contextFBan":
                 sendSignal(94);
@@ -1699,11 +1699,11 @@ function _0x460313() {
                     _0x3577b3.selectionStart = _0x3577b3.selectionEnd = _0x453f45.length;
                     _0x3577b3.focus();
                 }
-                _0x2b8f46();
+                hideContextMenu();
                 break;
             case "contextPartyLeave":
                 sendSignal(64);
-                _0x2b8f46();
+                hideContextMenu();
                 break;
             case "contextUnmute":
                 _0x19fdd4 = {};
@@ -1829,7 +1829,7 @@ function _0x460313() {
                     _0x30c2e5.document.location.href = "#";
                     _0x30c2e5.document.close();
                 }
-                _0x2b8f46();
+                hideContextMenu();
         }
     }
 }
@@ -1857,7 +1857,7 @@ function _0x432cde() {
                         curserMessage("Unmuted all players", !(_0x538120 = {}), !(_0x2f707e = {}), 1, 10);
                     }
                     _0x4cb089 = true;
-                    _0x2b8f46();
+                    hideContextMenu();
                     break;
                 case "contextModerate":
                     function _0x2c8dfa(_0x61fe04) {
@@ -1891,7 +1891,7 @@ function _0x432cde() {
                     } else if (10 == _0x19fdd4[_0x174ccf.id]) {
                         _0x483c7e("/lastshout");
                     }
-                    _0x2b8f46();
+                    hideContextMenu();
                     break;
                 case "contextPickpocket":
                     if (0 == _0x19fdd4[_0x174ccf.id]) {
@@ -1913,15 +1913,15 @@ function _0x432cde() {
                         az(0, 3);
                         $("#gameSettingsTab a").tab("show");
                         openSettingPage(2);
-                        _0x2b8f46();
+                        hideContextMenu();
                     } else if ("contextSettingSetBackground" == _0x174ccf.id) {
                         $("#customBackModal").modal("show");
-                        _0x2b8f46();
+                        hideContextMenu();
                     } else if ("contextSettingMore" == _0x174ccf.id) {
                         az(0, 3);
                         $("#gameSettingsTab a").tab("show");
                         openSettingPage(1);
-                        _0x2b8f46();
+                        hideContextMenu();
                     } else {
                         if ((_0x337d0c = _0x19fdd4[_0x174ccf.id]) && !_0x337d0c.is(":disabled")) {
                             _0x337d0c.prop("checked", !_0x337d0c.is(":checked")).change();
@@ -1936,7 +1936,7 @@ function _0x432cde() {
                             });
                             $("#" + _0x382cc9 + ".enabled").addClass("hover");
                         } else {
-                            _0x2b8f46();
+                            hideContextMenu();
                         }
                     }
                     break;
@@ -1948,7 +1948,7 @@ function _0x432cde() {
                     if (_0x16e8e8 && Number.isInteger(_0x16e8e8) && isReady()) {
                         new PacketWriter(2).setUint8(179).setUint8(_0x16e8e8).send();
                     }
-                    _0x2b8f46();
+                    hideContextMenu();
             }
         }
     }
@@ -1979,7 +1979,7 @@ function _0x6da0af(_0x4cd623) {
         _0x488b2a();
     }
     if (2 !== _0x4cd623) {
-        _0x2b8f46();
+        hideContextMenu();
     }
     if (3 !== _0x4cd623 && _0x34cf3b) {
         _0x4d8d48();
@@ -3057,7 +3057,7 @@ function _0x215896() {
     if (0 != _0xe31aef && _0xe31aef <= currentFrameTime) {
         _0x243b5e = _0x36887a;
         _0x4d7270 = _0x19f1c7;
-        if (!(_0x3e08c0 || _0x10e53d || _0xfe046f)) {
+        if (!(_0x3e08c0 || _0x10e53d || selectedMessage)) {
             if (_0x10e53d = _0x191230(_0x243b5e, _0x4d7270)) {
                 _0x4cb089 = true;
             }
@@ -3166,7 +3166,7 @@ function _0x215896() {
                         _0x4f2a5f = _0x56941e.me;
                         _0x546ce1 = _0x56941e.selected;
                         _0x56941e.me = _0x53a19d === _0x10e53d;
-                        _0x56941e.selected = _0x53a19d === _0xfe046f;
+                        _0x56941e.selected = _0x53a19d === selectedMessage;
                         if (null == _0x56941e.canvas) {
                             _0x56941e.canvas = document.createElement("canvas");
                             _0x56941e.ctx = _0x56941e.canvas.getContext("2d");
@@ -7989,9 +7989,9 @@ function _0x4574cb(_0x10911a) {
     }
 }
 
-function _0x16a7a3(_0x5a4513, _0x2ba369) {
+function sendString(id, text) {
     if (isReady()) {
-        new PacketWriter(1 + 2 * _0x2ba369.length).setUint8(_0x5a4513).setString(_0x2ba369).send();
+        new PacketWriter(1 + 2 * text.length).setUint8(id).setString(text).send();
     }
 }
 
@@ -8257,7 +8257,7 @@ function _0x51c554() {
     var _0x5c60a6 = Math.max(Math.min(1.6 * _0x1058ed, _0x53f1a5, 1400) / 1400, 0.5);
     $(".slide-box").css("transform", "scale(" + _0x5c60a6 + ")");
     _0x38c054(true, true);
-    _0x2b8f46();
+    hideContextMenu();
     if ((0 < _0x2de48c || 0 < _0x517404) && (_0x2de48c = Math.clamp(_0x2de48c, 200, _0x53f1a5), _0x517404 = Math.clamp(_0x517404, 200, _0x1058ed), _0x363e25)) {
         $("#friendDialog").css({
             "width": _0x2de48c + "px",
@@ -9438,7 +9438,7 @@ var _0x43e0d0 = 0;
 var _0x2106d0 = null;
 var _0xe31aef = 0;
 var _0x10e53d = null;
-var _0xfe046f = null;
+var selectedMessage = null;
 var _0x1937c1 = [];
 var _0x5e5c13 = [];
 var _0x2f707e = {};
@@ -9507,7 +9507,7 @@ var _0x13f6c5 = false;
 var _0x596e1d = false;
 var _0xd1c597 = false;
 var _0x242c36 = false;
-var _0x12c259 = false;
+var contextMenuVisible = false;
 var _0x218784 = false;
 var _0x5c9745 = false;
 var _0x561770 = false;
@@ -9610,7 +9610,7 @@ var _0xe1899f = {
     "sMobileLeft": false,
     "sMobileFeedLock": true
 };
-var _0x1b60af = {
+var gameSettings = {
     "nickName": '',
     "user": '',
     "skinId": 0,
@@ -9713,55 +9713,55 @@ var _0x2eebe7 = true;
 
 function _0xbb1a8c() {
     if (_0x536824) {
-        _0x1b60af.version = 2;
-        _0x1b60af.user = _0xea465f;
-        _0x1b60af.skinId = _0x28aabd;
-        _0x1b60af.wearablesSelected = _0x4bb827.slice(0);
-        _0x1b60af.sSkins = _0xfd65d9;
-        _0x1b60af.sWearables = _0x4b4ed5;
-        _0x1b60af.sColors = !_0x246ae5;
-        _0x1b60af.sSounds = _0x1f14e9;
-        _0x1b60af.sNames = _0x101b79;
-        _0x1b60af.sMinionNames = _0x1c7c12;
-        _0x1b60af.sMass = _0x3fa749;
-        _0x1b60af.sFood = _0x23a795;
-        _0x1b60af.sFoodHalf = _0x2792ec;
-        _0x1b60af.sCellAnimations = _0x414662;
-        _0x1b60af.sSkinAnimations = _0x32b0e5;
-        _0x1b60af.sMapBorder = !_0x1f1bbd;
-        _0x1b60af.sFancyGrid = _0x41cc0f;
-        _0x1b60af.sSectionGrid = _0x277c68;
-        _0x1b60af.sGrid = _0x1e5f5a;
-        _0x1b60af.sCustomBack = _0x12e7a7;
-        _0x1b60af.sCustomBackType = _0x19d645;
-        _0x1b60af.sCustomBackOpacity = _0x537d17;
-        _0x1b60af.sCustomBackClip = _0x1407a2;
-        _0x1b60af.sCustomBackEnableColor = _0xe0e646;
-        _0x1b60af.sCustomBackColor = _0x32edda;
-        _0x1b60af.sDark = _0x33523f;
-        _0x1b60af.sSlowMotion = _0x4c1257;
-        _0x1b60af.sFPS = _0x1566f5;
-        _0x1b60af.sZoom = _0x286c1f;
-        _0x1b60af.sFixedZoom = _0x1e208d;
-        _0x1b60af.fixedZoomScale = _0x4c4c0f;
-        _0x1b60af.sMinionUi = _0x255a3e;
-        _0x1b60af.sLeaderboard = _0x36d371;
-        _0x1b60af.sChat = !_0x5eeb3b;
-        _0x1b60af.sChatSize = !_0x46bbb2;
-        _0x1b60af.sMinimap = !_0x18306d;
-        _0x1b60af.sCellBorders = !_0x11baa8;
-        _0x1b60af.sLargeNames = _0xbdc65b;
-        _0x1b60af.sNameOutlines = _0x471c1e;
-        _0x1b60af.sCellSpikes = _0x345ceb;
-        _0x1b60af.sTransparentViruses = true;
-        _0x1b60af.sClassicViruses = _0x53ec10;
-        _0x1b60af.sPolygonShapes = _0xb4d644;
-        _0x1b60af.sLineShapes = _0x161144;
-        _0x1b60af.sBubbleCells = _0x2dceca;
-        _0x1b60af.sGraphics = _0x294d0a;
-        _0x1b60af.sMobileLeft = _0x18d745;
-        _0x1b60af.sMobileFeedLock = _0x2eebe7;
-        window.localStorage.settings = JSON.stringify(_0x1b60af);
+        gameSettings.version = 2;
+        gameSettings.user = _0xea465f;
+        gameSettings.skinId = _0x28aabd;
+        gameSettings.wearablesSelected = _0x4bb827.slice(0);
+        gameSettings.sSkins = _0xfd65d9;
+        gameSettings.sWearables = _0x4b4ed5;
+        gameSettings.sColors = !_0x246ae5;
+        gameSettings.sSounds = _0x1f14e9;
+        gameSettings.sNames = _0x101b79;
+        gameSettings.sMinionNames = _0x1c7c12;
+        gameSettings.sMass = _0x3fa749;
+        gameSettings.sFood = _0x23a795;
+        gameSettings.sFoodHalf = _0x2792ec;
+        gameSettings.sCellAnimations = _0x414662;
+        gameSettings.sSkinAnimations = _0x32b0e5;
+        gameSettings.sMapBorder = !_0x1f1bbd;
+        gameSettings.sFancyGrid = _0x41cc0f;
+        gameSettings.sSectionGrid = _0x277c68;
+        gameSettings.sGrid = _0x1e5f5a;
+        gameSettings.sCustomBack = _0x12e7a7;
+        gameSettings.sCustomBackType = _0x19d645;
+        gameSettings.sCustomBackOpacity = _0x537d17;
+        gameSettings.sCustomBackClip = _0x1407a2;
+        gameSettings.sCustomBackEnableColor = _0xe0e646;
+        gameSettings.sCustomBackColor = _0x32edda;
+        gameSettings.sDark = _0x33523f;
+        gameSettings.sSlowMotion = _0x4c1257;
+        gameSettings.sFPS = _0x1566f5;
+        gameSettings.sZoom = _0x286c1f;
+        gameSettings.sFixedZoom = _0x1e208d;
+        gameSettings.fixedZoomScale = _0x4c4c0f;
+        gameSettings.sMinionUi = _0x255a3e;
+        gameSettings.sLeaderboard = _0x36d371;
+        gameSettings.sChat = !_0x5eeb3b;
+        gameSettings.sChatSize = !_0x46bbb2;
+        gameSettings.sMinimap = !_0x18306d;
+        gameSettings.sCellBorders = !_0x11baa8;
+        gameSettings.sLargeNames = _0xbdc65b;
+        gameSettings.sNameOutlines = _0x471c1e;
+        gameSettings.sCellSpikes = _0x345ceb;
+        gameSettings.sTransparentViruses = true;
+        gameSettings.sClassicViruses = _0x53ec10;
+        gameSettings.sPolygonShapes = _0xb4d644;
+        gameSettings.sLineShapes = _0x161144;
+        gameSettings.sBubbleCells = _0x2dceca;
+        gameSettings.sGraphics = _0x294d0a;
+        gameSettings.sMobileLeft = _0x18d745;
+        gameSettings.sMobileFeedLock = _0x2eebe7;
+        window.localStorage.settings = JSON.stringify(gameSettings);
     }
 }
 
@@ -9926,7 +9926,7 @@ window.setNick = function(_0x14bf19, _0xe31451) {
             }
             sendSignal(34);
             _0x5ae1b6 = 0;
-            _0x1b60af.nickName = _0x5665cf;
+            gameSettings.nickName = _0x5665cf;
             _0xbb1a8c();
             _0x8f51f1();
             if (isReady()) {
@@ -10248,22 +10248,22 @@ window.setGoldNickname = function(_0x20907a) {
         if (gldNickEnabled && _0x597133) {
             _0x597133 = false;
             if (can_green_name) {
-                _0x4e459c("cGreenName", false);
+                setSetting("cGreenName", false);
             }
             if (can_blue_name) {
-                _0x4e459c("cBlueName", false);
+                setSetting("cBlueName", false);
             }
             if (can_orange_name) {
-                _0x4e459c("cOrangeName", false);
+                setSetting("cOrangeName", false);
             }
             if (can_red_name) {
-                _0x4e459c("cRedName", false);
+                setSetting("cRedName", false);
             }
             if (can_black_name) {
-                _0x4e459c("cBlackName", false);
+                setSetting("cBlackName", false);
             }
             if (can_custom_color_name) {
-                _0x4e459c("cCustomColorName", false);
+                setSetting("cCustomColorName", false);
             }
             _0x597133 = true;
         }
@@ -10348,22 +10348,22 @@ window.setGreenName = function(_0x5054e2) {
         if (greenNameEnabled && _0x597133) {
             _0x597133 = false;
             if (2 == _0x3f104e) {
-                _0x4e459c("cGoldName", false);
+                setSetting("cGoldName", false);
             }
             if (can_blue_name) {
-                _0x4e459c("cBlueName", false);
+                setSetting("cBlueName", false);
             }
             if (can_orange_name) {
-                _0x4e459c("cOrangeName", false);
+                setSetting("cOrangeName", false);
             }
             if (can_red_name) {
-                _0x4e459c("cRedName", false);
+                setSetting("cRedName", false);
             }
             if (can_black_name) {
-                _0x4e459c("cBlackName", false);
+                setSetting("cBlackName", false);
             }
             if (can_custom_color_name) {
-                _0x4e459c("cCustomColorName", false);
+                setSetting("cCustomColorName", false);
             }
             _0x597133 = true;
         }
@@ -10380,22 +10380,22 @@ window.setBlueName = function(_0x3e8618) {
         if (blueNameEnabled && _0x597133) {
             _0x597133 = false;
             if (2 == _0x3f104e) {
-                _0x4e459c("cGoldName", false);
+                setSetting("cGoldName", false);
             }
             if (can_green_name) {
-                _0x4e459c("cGreenName", false);
+                setSetting("cGreenName", false);
             }
             if (can_orange_name) {
-                _0x4e459c("cOrangeName", false);
+                setSetting("cOrangeName", false);
             }
             if (can_red_name) {
-                _0x4e459c("cRedName", false);
+                setSetting("cRedName", false);
             }
             if (can_black_name) {
-                _0x4e459c("cBlackName", false);
+                setSetting("cBlackName", false);
             }
             if (can_custom_color_name) {
-                _0x4e459c("cCustomColorName", false);
+                setSetting("cCustomColorName", false);
             }
             _0x597133 = true;
         }
@@ -10412,22 +10412,22 @@ window.setOrangeName = function(_0x4a3695) {
         if (orangeNameEnabled && _0x597133) {
             _0x597133 = false;
             if (2 == _0x3f104e) {
-                _0x4e459c("cGoldName", false);
+                setSetting("cGoldName", false);
             }
             if (can_green_name) {
-                _0x4e459c("cGreenName", false);
+                setSetting("cGreenName", false);
             }
             if (can_blue_name) {
-                _0x4e459c("cBlueName", false);
+                setSetting("cBlueName", false);
             }
             if (can_red_name) {
-                _0x4e459c("cRedName", false);
+                setSetting("cRedName", false);
             }
             if (can_black_name) {
-                _0x4e459c("cBlackName", false);
+                setSetting("cBlackName", false);
             }
             if (can_custom_color_name) {
-                _0x4e459c("cCustomColorName", false);
+                setSetting("cCustomColorName", false);
             }
             _0x597133 = true;
         }
@@ -10444,22 +10444,22 @@ window.setRedName = function(_0x488cf0) {
         if (redNameEnabled && _0x597133) {
             _0x597133 = false;
             if (2 == _0x3f104e) {
-                _0x4e459c("cGoldName", false);
+                setSetting("cGoldName", false);
             }
             if (can_green_name) {
-                _0x4e459c("cGreenName", false);
+                setSetting("cGreenName", false);
             }
             if (can_blue_name) {
-                _0x4e459c("cBlueName", false);
+                setSetting("cBlueName", false);
             }
             if (can_orange_name) {
-                _0x4e459c("cOrangeName", false);
+                setSetting("cOrangeName", false);
             }
             if (can_black_name) {
-                _0x4e459c("cBlackName", false);
+                setSetting("cBlackName", false);
             }
             if (can_custom_color_name) {
-                _0x4e459c("cCustomColorName", false);
+                setSetting("cCustomColorName", false);
             }
             _0x597133 = true;
         }
@@ -10476,22 +10476,22 @@ window.setBlackName = function(_0x23a5b3) {
         if (blackNameEnabled && _0x597133) {
             _0x597133 = false;
             if (2 == _0x3f104e) {
-                _0x4e459c("cGoldName", false);
+                setSetting("cGoldName", false);
             }
             if (can_green_name) {
-                _0x4e459c("cGreenName", false);
+                setSetting("cGreenName", false);
             }
             if (can_blue_name) {
-                _0x4e459c("cBlueName", false);
+                setSetting("cBlueName", false);
             }
             if (can_orange_name) {
-                _0x4e459c("cOrangeName", false);
+                setSetting("cOrangeName", false);
             }
             if (can_red_name) {
-                _0x4e459c("cRedName", false);
+                setSetting("cRedName", false);
             }
             if (can_custom_color_name) {
-                _0x4e459c("cCustomColorName", false);
+                setSetting("cCustomColorName", false);
             }
             _0x597133 = true;
         }
@@ -10508,22 +10508,22 @@ window.setCustomColorName = function(_0x31b40d) {
         if (customColorNameEnabled && _0x597133) {
             _0x597133 = false;
             if (2 == _0x3f104e) {
-                _0x4e459c("cGoldName", false);
+                setSetting("cGoldName", false);
             }
             if (can_green_name) {
-                _0x4e459c("cGreenName", false);
+                setSetting("cGreenName", false);
             }
             if (can_blue_name) {
-                _0x4e459c("cBlueName", false);
+                setSetting("cBlueName", false);
             }
             if (can_orange_name) {
-                _0x4e459c("cOrangeName", false);
+                setSetting("cOrangeName", false);
             }
             if (can_red_name) {
-                _0x4e459c("cRedName", false);
+                setSetting("cRedName", false);
             }
             if (can_black_name) {
-                _0x4e459c("cBlackName", false);
+                setSetting("cBlackName", false);
             }
             _0x597133 = true;
         }
@@ -10822,7 +10822,7 @@ window.toggleSkin = function(_0x2fe59f) {
         } else {
             _0x5df715(_0x2fe59f);
             if (!_0xfd65d9) {
-                _0x4e459c("cSkins", true);
+                setSetting("cSkins", true);
             }
         }
         _0xbb1a8c();
@@ -11325,7 +11325,7 @@ function _0x5ccb42(_0x3c154e) {
     }
 }
 
-function _0x4e459c(_0x27a0fe, _0x427b0f) {
+function setSetting(_0x27a0fe, _0x427b0f) {
     $("#" + _0x27a0fe).prop("checked", _0x427b0f).change();
     _0x427b0f = $("#" + _0x27a0fe).closest("label", document.getElementById("settings"));
     var _0x35377f = {
@@ -11566,7 +11566,7 @@ window.toggleWearable = function(_0x3acdc5, _0x75f1be, _0x1acae1, _0x26b773, _0x
             }
             _0x5f4edb(_0x3acdc5, _0x75f1be, _0x1acae1, _0x26b773, _0x25e189);
             if (!_0x4b4ed5) {
-                _0x4e459c("cWearables", true);
+                setSetting("cWearables", true);
             }
         }
         _0xbb1a8c();
@@ -11813,7 +11813,7 @@ window.friendAdd = function(_0xf5b082) {
     if ('' == (_0xf5b082 = _0xf5b082.trim())) {
         curserMessage("Please type a username first", false, false, 0, 5);
     } else {
-        _0x16a7a3(81, _0xf5b082);
+        sendString(81, _0xf5b082);
         document.getElementById("friendAddInput").value = '';
         $("#friendAdd").prop("disabled", true).css("cursor", "progress");
         setTimeout(function() {
@@ -11822,7 +11822,7 @@ window.friendAdd = function(_0xf5b082) {
     }
 };
 window.friendRemove = function(_0xf36640, _0x1e1e3) {
-    _0x16a7a3(82, _0xf36640);
+    sendString(82, _0xf36640);
     if (_0x1e1e3) {
         $(_0x1e1e3).prop("disabled", true).css("cursor", "progress");
         setTimeout(function() {
@@ -11831,7 +11831,7 @@ window.friendRemove = function(_0xf36640, _0x1e1e3) {
     }
 };
 window.friendAccept = function(_0x44a71d, _0x412c72) {
-    _0x16a7a3(83, _0x44a71d);
+    sendString(83, _0x44a71d);
     if (_0x412c72) {
         $(_0x412c72).prop("disabled", true).css("cursor", "progress");
         setTimeout(function() {
@@ -11956,9 +11956,9 @@ window.setFancyGrid = function(_0x1a2aff) {
     $("#cFancyGrid").prop("checked", _0x41cc0f);
     $("#cFancyGrid2").prop("checked", _0x41cc0f);
     if (_0x41cc0f && _0x536824) {
-        _0x4e459c("cSectionGrid", _0x536824 = false);
-        _0x4e459c("cGrid", false);
-        _0x4e459c("cCustomBack", false);
+        setSetting("cSectionGrid", _0x536824 = false);
+        setSetting("cGrid", false);
+        setSetting("cCustomBack", false);
         _0x536824 = true;
     }
     _0xbb1a8c();
@@ -11968,9 +11968,9 @@ window.setSectionGrid = function(_0x4d1e8a) {
     $("#cSectionGrid").prop("checked", _0x277c68);
     $("#cSectionGrid2").prop("checked", _0x277c68);
     if (_0x277c68 && _0x536824) {
-        _0x4e459c("cFancyGrid", _0x536824 = false);
-        _0x4e459c("cGrid", false);
-        _0x4e459c("cCustomBack", false);
+        setSetting("cFancyGrid", _0x536824 = false);
+        setSetting("cGrid", false);
+        setSetting("cCustomBack", false);
         _0x536824 = true;
     }
     _0xbb1a8c();
@@ -11980,9 +11980,9 @@ window.setGrid = function(_0x57b9cf) {
     $("#cGrid").prop("checked", _0x1e5f5a);
     $("#cGrid2").prop("checked", _0x1e5f5a);
     if (_0x1e5f5a && _0x536824) {
-        _0x4e459c("cFancyGrid", _0x536824 = false);
-        _0x4e459c("cSectionGrid", false);
-        _0x4e459c("cCustomBack", false);
+        setSetting("cFancyGrid", _0x536824 = false);
+        setSetting("cSectionGrid", false);
+        setSetting("cCustomBack", false);
         _0x536824 = true;
     }
     _0xbb1a8c();
@@ -11993,9 +11993,9 @@ window.setCustomBack = function(_0x48864b) {
     $("#cCustomBack2").prop("checked", _0x12e7a7);
     $("#cCustomBack3").prop("checked", _0x12e7a7);
     if (_0x12e7a7 && _0x536824) {
-        _0x4e459c("cFancyGrid", _0x536824 = false);
-        _0x4e459c("cSectionGrid", false);
-        _0x4e459c("cGrid", false);
+        setSetting("cFancyGrid", _0x536824 = false);
+        setSetting("cSectionGrid", false);
+        setSetting("cGrid", false);
         _0x536824 = true;
         if (!(_0x37e4bf || _0x1b3496)) {
             if ('' != _0x2d537c) {
@@ -12114,7 +12114,7 @@ window.setFPS = function(_0x4c7830) {
 };
 window.setZoom = function(_0x17349a) {
     if (!(_0x286c1f = _0x17349a) && _0x536824) {
-        _0x4e459c("cFixedZoom", _0x536824 = false);
+        setSetting("cFixedZoom", _0x536824 = false);
         _0x536824 = true;
     }
     _0x1450ce();
@@ -12122,7 +12122,7 @@ window.setZoom = function(_0x17349a) {
 };
 window.setSounds = function(_0x355478) {
     if (!(_0x1f14e9 = _0x355478) && _0x536824) {
-        _0x4e459c("cSetSounds", _0x536824 = false);
+        setSetting("cSetSounds", _0x536824 = false);
         _0x536824 = true;
     }
     _0xbb1a8c();
@@ -12133,7 +12133,7 @@ window.setFixedZoom = function(_0x251ee2) {
     $("#cFixedZoom").prop("checked", _0x1e208d);
     $("#cFixedZoom2").prop("checked", _0x1e208d);
     if (_0x1e208d && _0x536824) {
-        _0x4e459c("cZoom", !(_0x536824 = false));
+        setSetting("cZoom", !(_0x536824 = false));
         _0x536824 = true;
     }
     if (_0x36002b && 0 < framesCounter) {
@@ -12232,14 +12232,14 @@ window.setCellBorders = function(_0x782d3c) {
 };
 window.setClassicViruses = function(_0x5c35df) {
     if ((_0x53ec10 = _0x5c35df) && _0x536824) {
-        _0x4e459c("cCellSpikes", !(_0x536824 = false));
+        setSetting("cCellSpikes", !(_0x536824 = false));
         _0x536824 = true;
     }
     _0xbb1a8c();
 };
 window.setPolygonShapes = function(_0x52387c) {
     if ((_0xb4d644 = _0x52387c) && _0x536824) {
-        _0x4e459c("cLineShapes", _0x536824 = false);
+        setSetting("cLineShapes", _0x536824 = false);
         _0x536824 = true;
     }
     if (_0xb4d644) {
@@ -12249,7 +12249,7 @@ window.setPolygonShapes = function(_0x52387c) {
 };
 window.setLineShapes = function(_0x2a84b3) {
     if ((_0x161144 = _0x2a84b3) && _0x536824) {
-        _0x4e459c("cPolygonShapes", _0x536824 = false);
+        setSetting("cPolygonShapes", _0x536824 = false);
         _0x536824 = true;
     }
     if (_0x161144) {
@@ -12261,7 +12261,7 @@ window.setBubbleCells = function(_0xb6fb40) {
     _0x2dceca = _0xb6fb40;
     if (_0x536824) {
         _0x536824 = false;
-        _0x4e459c("cCellBorders", _0x2dceca);
+        setSetting("cCellBorders", _0x2dceca);
         _0x536824 = true;
     }
     _0xbb1a8c();
@@ -12302,42 +12302,42 @@ window.setMobileFeedLock = function(_0x247906) {
 };
 window.setDefaults = function() {
     _0x536824 = false;
-    _0x4e459c("cSkins", _0xe1899f.sSkins);
-    _0x4e459c("cWearables", true);
-    _0x4e459c("cColors", true);
-    _0x4e459c("cNames", true);
-    _0x4e459c("cMinionNames", true);
-    _0x4e459c("cMass", true);
-    _0x4e459c("cFood", true);
-    _0x4e459c("cFoodHalf", false);
-    _0x4e459c("cCellAnimations", true);
-    _0x4e459c("cSkinAnimations", true);
-    _0x4e459c("cMapBorder", true);
-    _0x4e459c("cFancyGrid", true);
-    _0x4e459c("cSectionGrid", false);
-    _0x4e459c("cGrid", false);
-    _0x4e459c("cCustomBack", false);
-    _0x4e459c("cCustomBackClip", false);
-    _0x4e459c("cCustomBackEnableColor", false);
-    _0x4e459c("cDark", false);
-    _0x4e459c("cSlowMotion", false);
-    _0x4e459c("cFPS", true);
-    _0x4e459c("cSounds", true);
-    _0x4e459c("cZoom", true);
-    _0x4e459c("cFixedZoom", false);
-    _0x4e459c("cMinionUi", false);
-    _0x4e459c("cLeaderboard", true);
-    _0x4e459c("cChat", true);
-    _0x4e459c("cChatSize", false);
-    _0x4e459c("cMinimap", true);
-    _0x4e459c("cCellBorders", false);
-    _0x4e459c("cLargeNames", false);
-    _0x4e459c("cNameOutlines", true);
-    _0x4e459c("cCellSpikes", true);
-    _0x4e459c("cClassicViruses", false);
-    _0x4e459c("cPolygonShapes", false);
-    _0x4e459c("cLineShapes", false);
-    _0x4e459c("cBubbleCells", false);
+    setSetting("cSkins", _0xe1899f.sSkins);
+    setSetting("cWearables", true);
+    setSetting("cColors", true);
+    setSetting("cNames", true);
+    setSetting("cMinionNames", true);
+    setSetting("cMass", true);
+    setSetting("cFood", true);
+    setSetting("cFoodHalf", false);
+    setSetting("cCellAnimations", true);
+    setSetting("cSkinAnimations", true);
+    setSetting("cMapBorder", true);
+    setSetting("cFancyGrid", true);
+    setSetting("cSectionGrid", false);
+    setSetting("cGrid", false);
+    setSetting("cCustomBack", false);
+    setSetting("cCustomBackClip", false);
+    setSetting("cCustomBackEnableColor", false);
+    setSetting("cDark", false);
+    setSetting("cSlowMotion", false);
+    setSetting("cFPS", true);
+    setSetting("cSounds", true);
+    setSetting("cZoom", true);
+    setSetting("cFixedZoom", false);
+    setSetting("cMinionUi", false);
+    setSetting("cLeaderboard", true);
+    setSetting("cChat", true);
+    setSetting("cChatSize", false);
+    setSetting("cMinimap", true);
+    setSetting("cCellBorders", false);
+    setSetting("cLargeNames", false);
+    setSetting("cNameOutlines", true);
+    setSetting("cCellSpikes", true);
+    setSetting("cClassicViruses", false);
+    setSetting("cPolygonShapes", false);
+    setSetting("cLineShapes", false);
+    setSetting("cBubbleCells", false);
     $("#oGraphics").val('0').change();
     _0x536824 = true;
     _0xbb1a8c();
