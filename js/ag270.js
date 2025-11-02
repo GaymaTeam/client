@@ -1,3 +1,6 @@
+// TODO: remove chat canvas
+// TODO: remove leaderboard canvas
+
 const objectsApiVersion = 2;
 const wearablesApiVersion = 9;
 const badwords = ["hitler", "nazi", "porno", "fuck", "lul", "eikel", "isis", "penis", "sora", "admin", "administrator", "hate", "terrorist"];
@@ -1076,25 +1079,25 @@ window.onload = function() {
     if ((parseInt(window.localStorage.serverlistVersion) || 0) <= 6) {
         window.localStorage.removeItem("gameservers");
     }
-    var _0x54a038 = '';
+    var currentServer;
     if (null != window.localStorage.gameservers) {
         gameservers = JSON.parse(window.localStorage.gameservers);
         for (const server of gameservers) {
             server.players = 0;
             if (server.isCurrent) {
                 if (server.address) {
-                    _0x54a038 = server.address;
+                    currentServer = server;
                     _0x38891d = server.name;
                     _0x826efd = server.id;
                 }
             }
         }
-        updateServersPanel();
     }
-    if ('' == _0x54a038) {
-        connectDefault();
+    if (currentServer) {
+        connectserver(currentServer.address, currentServer.name);
+        updateServersPanel(currentServer);
     } else {
-        connectserver(_0x54a038, _0x38891d);
+        connectDefault();
     }
     $("#overlays").show();
     ++framesCounter;
@@ -1119,21 +1122,16 @@ window.connectserver = window.setserver = function(_0x4537b3, _0x148016) {
         _0x826efd = _0x148016 ? _0x148016.id : 0;
     }
 };
-window.connectDefault = function(_0x26e115) {
+window.connectDefault = function() {
     if (windowIsLoaded && null == _0x256390 && '' == _0x46c79d) {
         var chosenDefaultServer = defaultGameservers[1];
-        if (null == (_0x26e115 = _0x26e115 || localStorage.contAg)) {
-            return void setTimeout(function() {
-                connectDefault("?");
-            }, 3000);
-        }
         fallbackGameservers = [defaultGameservers[0], defaultGameservers[2], defaultGameservers[3], chosenDefaultServer];
         if (0 == gameservers.length) {
             gameservers = defaultGameservers;
             chosenDefaultServer.isCurrent = true;
-            updateServersPanel();
         }
         connectserver(chosenDefaultServer.address, chosenDefaultServer.name);
+        updateServersPanel(chosenDefaultServer.address);
     }
 };
 if (!Date.now) {
@@ -6567,6 +6565,7 @@ function _0x51e55a(_0x2ba470) {
             _0x4cb089 = true;
             break;
         case 100:
+            let friendListChanged;
             var _0x5e7de3 = [];
             var _0x4ccd03 = 0;
             var _0x3f3103 = 0;
@@ -6592,17 +6591,17 @@ function _0x51e55a(_0x2ba470) {
                 }
             }
             _0x21e585 = Date.now();
-            if (!(objectChanged = _0x5e7de3.length != _0x468d84.length || _0x5b3d82 != isLoggedIn || _0xea465f.toLowerCase() != _0x3ebb17.toLowerCase())) {
+            if (!(friendListChanged = _0x5e7de3.length != _0x468d84.length || _0x5b3d82 != isLoggedIn || _0xea465f.toLowerCase() != _0x3ebb17.toLowerCase())) {
                 for (i = 0; i < _0x468d84.length; ++i) {
                     var _0x868215 = _0x468d84[i];
                     var _0x383d32 = _0x5e7de3[i];
                     if (_0x868215.name != _0x383d32.name || _0x868215.accepted != _0x383d32.accepted || _0x868215.isRequester != _0x383d32.isRequester || _0x868215.loginStatus != _0x383d32.loginStatus || _0x868215.goldMember != _0x383d32.goldMember || _0x868215.serverName != _0x383d32.serverName) {
-                        objectChanged = true;
+                        friendListChanged = true;
                         break;
                     }
                 }
             }
-            if (objectChanged) {
+            if (friendListChanged) {
                 _0x468d84 = _0x5e7de3;
                 _0x5b3d82 = isLoggedIn;
                 _0x3ebb17 = _0xea465f;
@@ -6749,7 +6748,7 @@ function _0x51e55a(_0x2ba470) {
                         "isCurrent": !!(1 & _0x49a011)
                     });
                     if (newGameservers[i].isCurrent) {
-                        _0x77d7cb = newGameservers[i].location;
+                        _0x77d7cb = newGameservers[i];
                         _0x40eece(newGameservers[i].gamemode);
                         _0x826efd = _0x395b2d;
                     }
@@ -6782,7 +6781,7 @@ function _0x51e55a(_0x2ba470) {
                 window.localStorage.gameservers = JSON.stringify(gameservers);
                 window.localStorage.serverlistVersion = 12;
                 if (_0x8e4a8e) {
-                    updateServersPanel();
+                    updateServersPanel(_0x77d7cb);
                     _0x8e4a8e = false;
                     _0x9db55f(_0x950276);
                 }
@@ -7107,30 +7106,35 @@ function _0x40eece(_0x16a881) {
 }
 
 function _0x1afbd7() {
-    var _0x45538d = $("#requestList").hasClass("active") ? 1 : 0;
-    var _0x45538d = {
-        "friendlist": _0x468d84,
-        "activeTab": _0x45538d,
-        "Jt": _0x5b3d82
-    };
     var _0x2903e8 = $($("#friendDialog li.active a").attr("href"));
     var _0x90c63c = 0 < _0x2903e8.length ? _0x2903e8[0].id : '';
+
     var _0x244e69 = ++_0x2530ff;
-    var _0x4f8496 = false;
-    for (var _0x3773a5 = 0; _0x3773a5 < _0x468d84.length; ++_0x3773a5) {
-        var _0x45538d;
-        var _0x45538d;
-        var _0x2903e8;
-        var _0x90c63c;
-        var _0x244e69;
-        var _0x4f8496;
-        var _0x3773a5;
-        if (!(_0x2903e8 = _0x468d84[_0x3773a5]).accepted && _0x2903e8.isRequester) {
-            _0x4f8496 = true;
-            break;
+    $.post('friendlist.php', {
+        data: JSON.stringify({
+            friendlist: _0x468d84,
+            activeTab: $("#requestList").hasClass('active') ? 1 : 0,
+            Jt: _0x5b3d82
+        })
+    }, function(res) {
+        if (_0x598dfa < _0x244e69) {
+            const _0x54d5a0 = _0x90c63c ? $('#' + _0x90c63c).scrollTop() : 0;
+            document.getElementById("phpFriendlist").innerHTML = res;
+            $('#friendsLoggedInAmt').text(_0x3e53e0);
+            $("#friendsTotalAmt").text(' / ' + _0x6c92d3);
+            $('#friendsRequestsAmt').text(0 < _0xd85888 ? _0xd85888 : '');
+            const href = $($("#friendDialog li.active a").attr('href'));
+            if (href && !href.hasClass("active")) {
+                $('#friendDialog div.friend-list').removeClass('active');
+                href.addClass('active');
+            }
+            if (_0x90c63c) {
+                $('#' + _0x90c63c).scrollTop(_0x54d5a0);
+            }
+            _0x598dfa = _0x244e69;
         }
-    }
-    if (_0x4f8496) {
+    }, 'html');
+    if (_0x468d84.some(friend => !friend.accepted && friend.isRequester)) {
         $("#friendRequestsBell").addClass("red");
     } else {
         $("#friendRequestsBell").removeClass("red");
@@ -7138,13 +7142,12 @@ function _0x1afbd7() {
 }
 
 function _0x2e104c() {
-    var _0x2187e9 = {
-        width: '',
-        height: ''
-    };
     if (_0x363e25) {
         document.getElementById("friendAddInput").blur();
-        $("#friendDialog").stop(true, false).removeClass("shown").css(_0x2187e9).delay(200).hide(0);
+        $("#friendDialog").stop(true, false).removeClass("shown").css({
+            width: '',
+            height: ''
+        }).delay(200).hide(0);
         _0x363e25 = false;
         if (_0x3f3ed9) {
             clearInterval(_0x3f3ed9);
@@ -7152,8 +7155,8 @@ function _0x2e104c() {
         }
     } else {
         $("#friendDialog").stop(true, false).show(0).addClass("shown").css({
-            "width": 0 < _0x2de48c ? _0x2de48c + "px" : '',
-            "height": 0 < _0x517404 ? _0x517404 + "px" : ''
+            width: 0 < _0x2de48c ? _0x2de48c + "px" : '',
+            height: 0 < _0x517404 ? _0x517404 + "px" : ''
         }).delay(300).show(0, _0x4d3094);
         _0x363e25 = true;
         if (!_0x3f3ed9) {
@@ -7302,10 +7305,9 @@ const regions = [
     { location: 2, code: 'AS', name: 'Asia' }
 ];
 
-function updateServersPanel() {
-    const currentServer = getServerFromAddress(_0x256390);
+function updateServersPanel(currentServer) {
     document.getElementById("serv").innerHTML = `<div class="tabbed">${regions.map(({ location, code, name }) => `
-        <input name="tabbed" id="tab${code}" type="radio" ${location === currentServer.location ? 'checked' : ''}>
+        <input name="tabbed" id="tab${code}" type="radio" ${location === (currentServer?.location || 0) ? 'checked' : ''}>
         <section>
           <h1><label for="tab${code}">${name}</label></h1>
           <div class="server-tabmenu">
@@ -9479,6 +9481,7 @@ var _0x5cff0f = '';
 var _0x2530ff = 0;
 var _0x36e61c = 0;
 var _0xcda4aa = 0;
+var _0x598dfa = 0;
 var _0x35e5f6 = 0;
 var _0x2ad6ee = 0;
 var _0x4243db = false;
@@ -13077,7 +13080,4 @@ window.addEventListener("beforeunload", function(_0xf46263) {
     windowIsLoaded = false;
     _0x13d7e0();
 });
-console.log(
-    "%cGayma.io - 2.0.0 Operational 🫡",
-    "padding: 40px; font-weight: bold; font-size: 60pt; color: black; background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red );"
-);
+console.log('[%c+%c] Gayma.io loaded', "font-weight: bold; color: lime;", "");
