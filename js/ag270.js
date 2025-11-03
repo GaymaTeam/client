@@ -1094,11 +1094,12 @@ window.onload = function() {
     }
     if (currentServer) {
         connectserver(currentServer.address, currentServer.name);
+    
         updateServersPanel(currentServer);
     } else {
         connectDefault();
     }
-    updateServersPanel();
+    updateServersPanel(currentServer);
     $("#overlays").show();
     ++framesCounter;
     _0x51c554();
@@ -6728,7 +6729,7 @@ function _0x51e55a(_0x2ba470) {
             _0x3addca(_0x2f2313, _0xba74db = md5(1 < _0xba74db.length ? JSON.stringify(_0xba74db) : _0xba74db[0]), pkt.getString());
             break;
         case 110:
-            var _0x77d7cb = 0;
+            var currentServer = 0;
             if (0 < (_0x435e7a = pkt.getUint16())) {
                 var objectChanged;
                 var newGameservers = [];
@@ -6747,14 +6748,14 @@ function _0x51e55a(_0x2ba470) {
                         "isCurrent": !!(1 & _0x49a011)
                     });
                     if (newGameservers[i].isCurrent) {
-                        _0x77d7cb = newGameservers[i];
+                        currentServer = newGameservers[i];
                         _0x40eece(newGameservers[i].gamemode);
                         _0x826efd = _0x395b2d;
                     }
                 }
                 if (!_0x8e4a8e) {
                     if (!(objectChanged = newGameservers.length != gameservers.length)) {
-                        for (i = 0; i < gameservers.length; ++i) {
+                        for (i = 0;  i < gameservers.length; ++i) {
                             var _0x1909f7 = gameservers[i];
                             var _0x4619e3 = newGameservers[i];
                             if (
@@ -6774,13 +6775,10 @@ function _0x51e55a(_0x2ba470) {
                     _0x8e4a8e = objectChanged;
                 }
                 gameservers = newGameservers;
-                if (null != window.localStorage.gameservers) {
-                    _0x77d7cb = undefined;
-                }
                 window.localStorage.gameservers = JSON.stringify(gameservers);
                 window.localStorage.serverlistVersion = 12;
                 if (_0x8e4a8e) {
-                    updateServersPanel(_0x77d7cb);
+                    updateServersPanel(currentServer);
                     _0x8e4a8e = false;
                     _0x9db55f(_0x950276);
                 }
