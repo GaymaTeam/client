@@ -2768,7 +2768,7 @@ function _0x13d7e0() {
         _0x463a1e = [];
         _0x2032b6 = [];
         _0x5bdc9e = [];
-        _0x381cad = _0x634c41 = _0x4eac2b = null;
+        customServerInfos = _0x634c41 = _0x4eac2b = null;
         _0x170269 = _0x5b6b18 = '';
         _0x522c0e();
         _0x4400ec = _0x11c29c = _0x52da56 = _0x506037 = _0x43802f = _0x53176c = !(_0x568853 = -1);
@@ -2778,7 +2778,7 @@ function _0x13d7e0() {
         _0x37e4a8 = _0xb1583e = _0x31962a = _0x5ea511 = _0x5a5860 = _0x3c6854 = 0;
         isSpectating = _0x2c99f2 = _0x211844 = _0x1ec523 = !(_0x55ce89 = []);
         _0x2c6f91 = _0x3c3250 = true;
-        _0x2ed741();
+        setBattleRoyaleInfos();
         _0x593148();
         _0x2d6730();
         _0x39b68a();
@@ -5406,12 +5406,12 @@ function _0x51e55a(_0x2ba470) {
             break;
         case 33:
             var _0x5c8d2e;
-            var _0xb790f3 = 1 & (_0x49a011 = pkt.getUint8()) ? 1 : 2 & _0x49a011 ? 2 : 0;
-            var _0x571f96 = !!(8 & _0x49a011);
+            var _0xb790f3 = 1 & (flags = pkt.getUint8()) ? 1 : 2 & flags ? 2 : 0;
+            var _0x571f96 = !!(8 & flags);
             var _0x3205e2 = 0;
             var _0x46fd3a = 0;
             var _0x6cf8bb = [];
-            if (16 & _0x49a011) {
+            if (16 & flags) {
                 _0x3205e2 = pkt.getUint16();
             }
             if (0 != _0xb790f3) {
@@ -5419,7 +5419,7 @@ function _0x51e55a(_0x2ba470) {
             } else {
                 _0x5c8d2e = [];
                 _0x435e7a = 1;
-                if (4 & _0x49a011) {
+                if (4 & flags) {
                     _0x435e7a = pkt.getUint16();
                 }
                 for (var i = 0; i < _0x435e7a; i++) {
@@ -5519,15 +5519,15 @@ function _0x51e55a(_0x2ba470) {
                 var _0x135b2d;
                 var _0xc93166 = 0;
                 var _0x253ecd = 0;
-                if (1 & (_0x49a011 = pkt.getUint8())) {
+                if (1 & (flags = pkt.getUint8())) {
                     _0x253ecd = pkt.getUint8();
                 }
-                if (2 & _0x49a011) {
+                if (2 & flags) {
                     _0xc93166 = pkt.getUint16();
                 }
                 var _0x59cc1c = pkt.getString();
                 var _0xaf794f = null;
-                if (8 & _0x49a011) {
+                if (8 & flags) {
                     [_0x35aab7, _0x135b2d] = pkt.getColorTags();
                     _0xaf794f = {
                         "oe": _0x35aab7,
@@ -5540,7 +5540,7 @@ function _0x51e55a(_0x2ba470) {
                     "name": _0x59cc1c,
                     "se": _0x253ecd,
                     "pos": _0xc93166,
-                    "empty": !!(4 & _0x49a011),
+                    "empty": !!(4 & flags),
                     "cell": _0xaf794f
                 });
             }
@@ -5583,20 +5583,20 @@ function _0x51e55a(_0x2ba470) {
             if (!(mapCenterSet || (mapCenterSet = true, _0x59034c = _0x53b8b0, _0x4ce984 = _0x464afc, _0x1e208d))) {
                 _0x3e50d9 = _0xd28f67 = 1;
             }
-            _0x77f7dd = pkt.getInt16();
+            currentServerMode = pkt.getInt16();
             var _0x435e7a = pkt.getUint32();
             var _0x571f96 = pkt.getUint32();
-            var _0x49a011 = pkt.getUint8();
-            _0x42a8fa = !!(1 & _0x49a011);
-            _0x114b07 = !!(2 & _0x49a011);
-            _0x3df17b = !!(4 & _0x49a011);
+            var flags = pkt.getUint8();
+            _0x42a8fa = !!(1 & flags);
+            _0x114b07 = !!(2 & flags);
+            _0x3df17b = !!(4 & flags);
             _0x247d2d = 2 * pkt.getUint32();
             _0x2cd9d1 = 2 * pkt.getUint32();
             _0x25b838 = pkt.getUint16();
             _0x2fc5e8 = pkt.getUint16();
             _0x27fdb0 = Date.now();
             _0x2c6f91 = true;
-            if (17 == _0x77f7dd) {
+            if (17 == currentServerMode) {
                 for (i = 15; i <= 19; i++) {
                     if (!wearablesAndObjectsImages[i]) {
                         _0x1cb610(i, 16);
@@ -5666,43 +5666,38 @@ function _0x51e55a(_0x2ba470) {
             _0x2c6f91 = true;
             break;
         case 75:
-            if (15 == _0x77f7dd) {
-                _0x49a011 = pkt.getUint8();
-                _0x3205e2 = pkt.getUint32();
-                _0x3205e2 = Number(_0x3205e2);
-                _0xb790f3 = Math.floor(_0x3205e2 / 3600);
-                _0x46fd3a = Math.floor(_0x3205e2 % 3600 / 60);
-                _0x3205e2 = Math.floor(_0x3205e2 % 3600 % 60);
-                _0x381cad = {
-                    "phase": pkt.getUint8(),
-                    "Ct": (0 < _0xb790f3 ? _0xb790f3 + "h" + (_0x46fd3a < 10 ? "0" : '') : '') + _0x46fd3a + "m" + (_0x3205e2 < 10 ? "0" : '') + _0x3205e2 + "s",
-                    "Tt": pkt.getUint32(),
-                    "Et": !!(1 & _0x49a011),
-                    "_t": pkt.getUint16(),
-                    "players": pkt.getUint16(),
-                    "maxPlayers": pkt.getUint16(),
-                    "Ft": pkt.getUint16(),
-                    "Nt": [pkt.getUint32(), pkt.getUint32(), pkt.getUint32()],
-                    "Bt": !!(2 & _0x49a011),
-                    "At": !!(4 & _0x49a011),
-                    "Pt": pkt.getUint16(),
-                    "It": pkt.getUint16(),
-                    "Re": !!(8 & _0x49a011),
-                    "Ut": pkt.getUint16(),
-                    "Dt": pkt.getUint16(),
-                    "zt": pkt.getUint16(),
-                    "Rt": pkt.getUint32(),
-                    "Ot": pkt.getUint32()
+            if (15 == currentServerMode) {
+                flags = pkt.getUint8();
+                customServerInfos = {
+                    phase: pkt.getUint8(),
+                    Ct: timeFormat(pkt.getUint32()),
+                    Tt: pkt.getUint32(),
+                    Et: !!(1 & flags),
+                    _t: pkt.getUint16(),
+                    players: pkt.getUint16(),
+                    maxPlayers: pkt.getUint16(),
+                    Ft: pkt.getUint16(),
+                    Nt: [pkt.getUint32(), pkt.getUint32(), pkt.getUint32()],
+                    Bt: !!(2 & flags),
+                    At: !!(4 & flags),
+                    Pt: pkt.getUint16(),
+                    It: pkt.getUint16(),
+                    Re: !!(8 & flags),
+                    Ut: pkt.getUint16(),
+                    Dt: pkt.getUint16(),
+                    zt: pkt.getUint16(),
+                    Rt: pkt.getUint32(),
+                    Ot: pkt.getUint32()
                 };
-                _0x2ed741();
+                setBattleRoyaleInfos();
                 _0x2d6730();
-            } else if (!(17 != _0x77f7dd && 18 != _0x77f7dd && 22 != _0x77f7dd)) {
-                _0x49a011 = pkt.getUint8();
-                _0x381cad = {
-                    "Gt": _0x5d13b8(pkt.getUint32()),
+            } else if (!(17 != currentServerMode && 18 != currentServerMode && 22 != currentServerMode)) {
+                flags = pkt.getUint8();
+                customServerInfos = {
+                    "Gt": timeFormat(pkt.getUint32()),
                     "Lt": pkt.getUint16(),
                     "Yt": pkt.getUint16(),
-                    "Bt": !!(1 & _0x49a011),
+                    "Bt": !!(1 & flags),
                     "It": pkt.getUint16(),
                     "qt": pkt.getUint16()
                 };
@@ -5792,18 +5787,18 @@ function _0x51e55a(_0x2ba470) {
             }
             break;
         case 85:
-            _0x49a011 = pkt.getUint8();
+            flags = pkt.getUint8();
             _0x435e7a = pkt.getUint16();
-            _0x1ec523 = !!(1 & _0x49a011);
+            _0x1ec523 = !!(1 & flags);
             _0x55ce89 = [];
             for (i = 0; i < _0x435e7a; ++i) {
-                _0x49a011 = pkt.getUint8();
+                flags = pkt.getUint8();
                 var _0x1740e2 = pkt.getString();
                 _0x427639 = _0x1740e2;
                 _0x55ce89.push({
                     "name": _0x1740e2,
                     "Wt": $("<div/>").text(_0x427639).html(),
-                    "accepted": !!(1 & _0x49a011),
+                    "accepted": !!(1 & flags),
                     "ke": false,
                     "cx": 0,
                     "cy": 0,
@@ -5816,8 +5811,8 @@ function _0x51e55a(_0x2ba470) {
             _0x435e7a = pkt.getUint16();
             for (i = 0; i < _0x435e7a && i < _0x55ce89.length; ++i) {
                 var _0x13c64b = _0x55ce89[i];
-                var _0x49a011 = pkt.getUint8();
-                _0x13c64b.ke = !!(1 & _0x49a011);
+                var flags = pkt.getUint8();
+                _0x13c64b.ke = !!(1 & flags);
                 _0x13c64b.cx = pkt.getInt32();
                 _0x13c64b.cy = pkt.getInt32();
             }
@@ -5827,11 +5822,11 @@ function _0x51e55a(_0x2ba470) {
             break;
         case 88:
             var _0x571f96 = pkt.getString();
-            var _0x2e4161 = !!(2 & (_0x49a011 = pkt.getUint16()));
-            var _0x31ab56 = 4 & _0x49a011 ? 1 : 8 & _0x49a011 ? 2 : 0;
-            var _0x5bff26 = !!(1 & _0x49a011);
-            var _0x311374 = 16 & _0x49a011 ? 1 : 32 & _0x49a011 ? 2 : 64 & _0x49a011 ? 3 : 128 & _0x49a011 ? 4 : 256 & _0x49a011 ? 5 : 512 & _0x49a011 ? 6 : 0;
-            var _0x2f2313 = !!(1024 & _0x49a011);
+            var _0x2e4161 = !!(2 & (flags = pkt.getUint16()));
+            var _0x31ab56 = 4 & flags ? 1 : 8 & flags ? 2 : 0;
+            var _0x5bff26 = !!(1 & flags);
+            var _0x311374 = 16 & flags ? 1 : 32 & flags ? 2 : 64 & flags ? 3 : 128 & flags ? 4 : 256 & flags ? 5 : 512 & flags ? 6 : 0;
+            var _0x2f2313 = !!(1024 & flags);
             var _0x26baf3 = pkt.getUint16();
             var _0x469523 = pkt.getUint16();
             var _0x49adef = pkt.getUint32();
@@ -5846,7 +5841,7 @@ function _0x51e55a(_0x2ba470) {
             break;
         case 89:
             var _0x5e72c3 = pkt.getString();
-            var _0x280d4d = !!(1 & (_0x49a011 = pkt.getUint8()));
+            var _0x280d4d = !!(1 & (flags = pkt.getUint8()));
             var _0x1a0051 = pkt.getUint8();
             var _0xf64257 = pkt.getUint16();
             if ('' == _0x5e72c3) {
@@ -5857,7 +5852,7 @@ function _0x51e55a(_0x2ba470) {
             break;
         case 91:
             var _0x5e72c3 = pkt.getString();
-            var _0x280d4d = !!(1 & (_0x49a011 = pkt.getUint8()));
+            var _0x280d4d = !!(1 & (flags = pkt.getUint8()));
             var _0x2581c0 = pkt.getUint8();
             var _0xf64257 = pkt.getUint16();
             var _0x3933ea = {
@@ -5984,13 +5979,13 @@ function _0x51e55a(_0x2ba470) {
             }
             break;
         case 94:
-            var _0x49a011 = pkt.getUint8();
+            var flags = pkt.getUint8();
             var _0x5e72c3 = pkt.getString();
             var _0x3626db = pkt.getUint8();
             var _0x1a0051 = pkt.getUint8();
-            var _0x1711bf = 1 & _0x49a011 ? pkt.getString() : _0x1a0051 <= 2 ? ["Oops...", "Success!", "Info"][_0x1a0051] : '';
-            var _0x469523 = 2 & _0x49a011 ? pkt.getUint8() : 0;
-            var _0x571f96 = 4 & _0x49a011 ? 1 : 0;
+            var _0x1711bf = 1 & flags ? pkt.getString() : _0x1a0051 <= 2 ? ["Oops...", "Success!", "Info"][_0x1a0051] : '';
+            var _0x469523 = 2 & flags ? pkt.getUint8() : 0;
+            var _0x571f96 = 4 & flags ? 1 : 0;
             var _0x29fe8d = null;
             var _0x43052c = null;
             var _0xb91967 = '';
@@ -6195,20 +6190,20 @@ function _0x51e55a(_0x2ba470) {
             }
             break;
         case 96:
-            var _0x26baf3 = 128 & (_0x49a011 = pkt.getUint8()) ? pkt.getUint8() : 0;
-            _0x357e04 = !(1 & _0x49a011);
-            hasDRank = !!(32 & _0x49a011);
-            can_yt_icon = !!(64 & _0x49a011);
+            var _0x26baf3 = 128 & (flags = pkt.getUint8()) ? pkt.getUint8() : 0;
+            _0x357e04 = !(1 & flags);
+            hasDRank = !!(32 & flags);
+            can_yt_icon = !!(64 & flags);
             can_green_name = !!(1 & _0x26baf3);
             can_blue_name = !!(2 & _0x26baf3);
             can_orange_name = !!(4 & _0x26baf3);
             can_red_name = !!(8 & _0x26baf3);
             can_black_name = !!(16 & _0x26baf3);
             can_custom_color_name = !!(32 & _0x26baf3);
-            abilityFreeze = !!(2 & _0x49a011);
-            abilityCloak = !!(4 & _0x49a011);
-            abilityDoubleSpawnSize = !!(8 & _0x49a011);
-            abilityDoubleExp = !!(16 & _0x49a011);
+            abilityFreeze = !!(2 & flags);
+            abilityCloak = !!(4 & flags);
+            abilityDoubleSpawnSize = !!(8 & flags);
+            abilityDoubleExp = !!(16 & flags);
             if (can_custom_color_name) {
                 custom_color_name = pkt.getUint32();
             }
@@ -6572,14 +6567,14 @@ function _0x51e55a(_0x2ba470) {
             var _0x87b38a = 0;
             var _0x435e7a = pkt.getUint16();
             for (var i = 0; i < _0x435e7a; ++i) {
-                _0x49a011 = pkt.getUint8();
+                flags = pkt.getUint8();
                 _0x5e7de3.push({
                     "name": pkt.getString(),
-                    "accepted": !!(1 & _0x49a011),
-                    "isRequester": !!(2 & _0x49a011),
-                    "loginStatus": !!(4 & _0x49a011),
-                    "goldMember": !!(16 & _0x49a011),
-                    "serverName": 4 & _0x49a011 ? pkt.getString() : ''
+                    "accepted": !!(1 & flags),
+                    "isRequester": !!(2 & flags),
+                    "loginStatus": !!(4 & flags),
+                    "goldMember": !!(16 & flags),
+                    "serverName": 4 & flags ? pkt.getString() : ''
                 });
                 if ((_0x1740e2 = _0x5e7de3[i]).accepted || !_0x1740e2.isRequester) {
                     if (_0x1740e2.loginStatus) {
@@ -6714,12 +6709,12 @@ function _0x51e55a(_0x2ba470) {
             curserMessage('You got banned', false, false, 0, 5);
             break;
         case 109:
-            var _0x49a011 = pkt.getUint8();
+            var flags = pkt.getUint8();
             var _0x2f2313 = _0x4e4df3;
-            var _0x435e7a = 1 & _0x49a011 ? pkt.getUint8() : 1;
+            var _0x435e7a = 1 & flags ? pkt.getUint8() : 1;
             var _0xba74db = [];
             for (var i = 0; i < _0x435e7a; ++i) {
-                var _0x49a011;
+                var flags;
                 var _0x2f2313;
                 var _0x435e7a;
                 var _0xba74db;
@@ -6734,7 +6729,7 @@ function _0x51e55a(_0x2ba470) {
                 var objectChanged;
                 var newGameservers = [];
                 for (var i = 0; i < _0x435e7a; ++i) {
-                    var _0x49a011 = pkt.getUint8();
+                    var flags = pkt.getUint8();
                     var _0x395b2d = pkt.getUint16();
                     newGameservers.push({
                         "id": _0x395b2d,
@@ -6745,7 +6740,7 @@ function _0x51e55a(_0x2ba470) {
                         "gamemode": getModeFromId(pkt.getUint8()),
                         "players": pkt.getUint16(),
                         "maxPlayers": pkt.getUint16(),
-                        "isCurrent": !!(1 & _0x49a011)
+                        "isCurrent": !!(1 & flags)
                     });
                     if (newGameservers[i].isCurrent) {
                         currentServer = newGameservers[i];
@@ -6802,7 +6797,7 @@ function _0x51e55a(_0x2ba470) {
             if (0 < (_0x435e7a = pkt.getUint16())) {
                 _0x51aa44 = [];
                 for (i = 0; i < _0x435e7a; ++i) {
-                    var _0x49a011 = pkt.getUint8();
+                    var flags = pkt.getUint8();
                     var _0x1819b7 = pkt.getUint16();
                     var _0x3af9db = pkt.getUint8();
                     _0x51aa44.push({
@@ -6815,9 +6810,9 @@ function _0x51e55a(_0x2ba470) {
                         "levelRequired": 0,
                         "vipLevelRequired": 0,
                         "price": 0,
-                        "approved": !!(2 & _0x49a011),
-                        "pendingApproval": !!(4 & _0x49a011),
-                        "enabled": !!(1 & _0x49a011)
+                        "approved": !!(2 & flags),
+                        "pendingApproval": !!(4 & flags),
+                        "enabled": !!(1 & flags)
                     });
                     if (1 == _0x3af9db) {
                         _0x51aa44[_0x51aa44.length - 1].levelRequired = pkt.getUint16();
@@ -6836,7 +6831,7 @@ function _0x51e55a(_0x2ba470) {
             if (0 < (_0x435e7a = pkt.getUint16())) {
                 _0x2e4195 = [];
                 for (i = 0; i < _0x435e7a; ++i) {
-                    var _0x49a011 = pkt.getUint8();
+                    var flags = pkt.getUint8();
                     var _0x1819b7 = pkt.getUint16();
                     var _0x3af9db = pkt.getUint8();
                     var _0x3a3464 = pkt.getUint32();
@@ -6847,15 +6842,15 @@ function _0x51e55a(_0x2ba470) {
                         "levelRequired": 0,
                         "vipLevelRequired": 0,
                         "price": 0,
-                        "approved": !!(2 & _0x49a011),
+                        "approved": !!(2 & flags),
                         "pendingApproval": 0,
-                        "userAssigned": !!(8 & _0x49a011),
-                        "sharedPublic": !!(16 & _0x49a011),
+                        "userAssigned": !!(8 & flags),
+                        "sharedPublic": !!(16 & flags),
                         "changedUnix": _0x3a3464,
                         "changedDaysAgo": 0,
-                        "changeAllowed": !!(32 & _0x49a011),
+                        "changeAllowed": !!(32 & flags),
                         "popularity": 0,
-                        "enabled": !!(1 & _0x49a011)
+                        "enabled": !!(1 & flags)
                     });
                     if (1 == _0x3af9db) {
                         _0x2e4195[_0x2e4195.length - 1].levelRequired = pkt.getUint16();
@@ -6864,10 +6859,10 @@ function _0x51e55a(_0x2ba470) {
                     } else if (2 == _0x3af9db) {
                         _0x2e4195[_0x2e4195.length - 1].price = pkt.getUint32();
                     } else if (4 == _0x3af9db) {
-                        if (8 & _0x49a011) {
+                        if (8 & flags) {
                             _0x2e4195[_0x2e4195.length - 1].pendingApproval = pkt.getUint8();
                             _0x2e4195[_0x2e4195.length - 1].changedDaysAgo = pkt.getUint16();
-                        } else if (16 & _0x49a011 && 1 & _0x49a011) {
+                        } else if (16 & flags && 1 & flags) {
                             _0x2e4195[_0x2e4195.length - 1].popularity = pkt.getUint16();
                         }
                     }
@@ -8295,52 +8290,53 @@ function _0x585560() {
     return _0x40e852 * _0x423e1a;
 }
 
-function _0x2ed741() {
-    if (_0x381cad && 15 == _0x77f7dd) {
-        $("#brPlayersValue").text(_0x381cad.players);
-        var _0x58e2f4 = '';
-        var _0x2a476e = '';
-        var _0x5b94ec = false;
-        switch (_0x381cad.phase) {
+function setBattleRoyaleInfos() {
+
+    if (customServerInfos && 15 == currentServerMode) {
+        $("#brPlayersValue").text(customServerInfos.players);
+        var image = '';
+        var timer = '';
+        var redTimer = false;
+        switch (customServerInfos.phase) {
             case 0:
-                _0x58e2f4 = "timer";
-                _0x2a476e = '';
+                image = "timer";
+                timer = timeFormat(customServerInfos._t);
                 break;
             case 1:
-                _0x58e2f4 = "timer";
-                _0x2a476e = _0x5d13b8(_0x381cad.Tt);
+                image = "timer";
+                timer = timeFormat(customServerInfos.Tt);
                 break;
             case 2:
-                _0x58e2f4 = "join";
-                _0x2a476e = _0x5d13b8(_0x381cad.Tt);
+                image = "join";
+                timer = timeFormat(customServerInfos.Tt);
                 break;
             case 3:
-                _0x58e2f4 = _0x381cad.Et ? "nuclear_red" : "nuclear_yellow";
-                _0x2a476e = _0x5d13b8(_0x381cad._t);
-                _0x5b94ec = _0x381cad.Et;
+                image = customServerInfos.Et ? "nuclear_red" : "nuclear_yellow";
+                timer = timeFormat(customServerInfos._t);
+                redTimer = customServerInfos.Et;
                 break;
             case 4:
-                _0x58e2f4 = "finished";
-                _0x2a476e = _0x5d13b8(_0x381cad.Tt);
+                image = "finished";
+                timer = timeFormat(customServerInfos.Tt);
         }
-        if ('' != _0x58e2f4) {
-            $("#brTimerImg").css("background-image", "url('img/game_" + _0x58e2f4 + ".png')");
+        if ('' != image) {
+            $("#brTimerImg").css("background-image", "url('img/game_" + image + ".png')");
         }
-        if (_0x5b94ec) {
-            $("#brTimerValue").text(_0x2a476e).addClass("red");
+        if (redTimer) {
+            $("#brTimerValue").text(timer).addClass("red");
         } else {
-            $("#brTimerValue").text(_0x2a476e).removeClass("red");
+            $("#brTimerValue").text(timer).removeClass("red");
         }
-        $("#brKillsValue").text(_0x381cad.It);
+        $("#brKillsValue").text(customServerInfos.It);
         var _0x3ebced = false;
-        if (_0x381cad.Bt) {
-            if (_0x381cad.At) {
-                $("#brExtraImg").css("background-image", "url('img/game_star_" + (1 == _0x381cad.Pt ? "gold" : "grey") + ".png')");
-                $("#brExtraValue").text("You finished #" + _0x381cad.Pt);
+        if (customServerInfos.Bt) {
+            if (customServerInfos.At) {
+                $("#brExtraImg").css("background-image", "url('img/game_star_" + (1 == customServerInfos.Pt ? "gold" : "grey") + ".png')");
+                $("#brExtraValue").text("You finished #" + customServerInfos.Pt);
                 _0x3ebced = true;
-            } else if (_0x381cad.Re) {
+            } else if (customServerInfos.Re) {
                 $("#brExtraImg").css("background-image", "url('img/game_ghost.png')");
-                $("#brExtraValue").html("Ghost time left    <span class=\"" + (_0x381cad.Ut <= 10 ? "red" : "orange") + "\">" + _0x5d13b8(_0x381cad.Ut) + "</span>");
+                $("#brExtraValue").html("Ghost time left    <span class=\"" + (customServerInfos.Ut <= 10 ? "red" : "orange") + "\">" + timeFormat(customServerInfos.Ut) + "</span>");
                 _0x3ebced = true;
             }
         }
@@ -8360,7 +8356,7 @@ function _0x2ed741() {
 }
 
 function _0x593148() {
-    if (0 <= _0x568853 && (17 == _0x77f7dd || 18 == _0x77f7dd || 22 == _0x77f7dd)) {
+    if (0 <= _0x568853 && (17 == currentServerMode || 18 == currentServerMode || 22 == currentServerMode)) {
         $("#infBarProgress").width(100 * _0x568853 + "%");
         if (!_0x5141de) {
             $("#infGameContainer").show();
@@ -8376,12 +8372,12 @@ function _0x2d6730() {
     var _0x14056b = _0x521316;
     var _0x3fe65e = 0;
     var _0x306fb1 = '';
-    if (_0x381cad) {
+    if (customServerInfos) {
         if (!_0x2412c8) {
-            if (15 == _0x77f7dd) {
+            if (15 == currentServerMode) {
                 _0x306fb1 += "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">BATTLE ROYALE</span>&nbsp;</p>";
                 _0x3fe65e++;
-                switch (_0x381cad.phase) {
+                switch (customServerInfos.phase) {
                     case 0:
                         _0x306fb1 += "<p><span class=\"col-left\">Not running</span>&nbsp;</p>";
                         _0x3fe65e++;
@@ -8392,53 +8388,53 @@ function _0x2d6730() {
                         break;
                     case 2:
                     case 3:
-                        _0x306fb1 += "<p><span class=\"col-left\">Running:</span>&nbsp;" + _0x381cad.Ct + "</p>";
+                        _0x306fb1 += "<p><span class=\"col-left\">Running:</span>&nbsp;" + customServerInfos.Ct + "</p>";
                         _0x3fe65e++;
                         break;
                     case 4:
-                        _0x306fb1 += "<p><span class=\"col-left\">Finished:</span>&nbsp;" + _0x381cad.Ct + "</p>";
+                        _0x306fb1 += "<p><span class=\"col-left\">Finished:</span>&nbsp;" + customServerInfos.Ct + "</p>";
                         _0x3fe65e++;
                 }
                 _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 += "<p><span class=\"col-left\">Players:</span>&nbsp;" + _0x381cad.players + "/" + _0x381cad.maxPlayers + "</p>") + ("<p><span class=\"col-left\">Spectators:</span>&nbsp;" + _0x381cad.Ft.toString() + "</p>");
+                _0x306fb1 = (_0x306fb1 += "<p><span class=\"col-left\">Players:</span>&nbsp;" + customServerInfos.players + "/" + customServerInfos.maxPlayers + "</p>") + ("<p><span class=\"col-left\">Spectators:</span>&nbsp;" + customServerInfos.Ft.toString() + "</p>");
                 _0x3fe65e++;
-                if (1 <= _0x381cad.phase && 0 < _0x381cad.Nt[0] && (_0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">REWARDS</span>&nbsp;</p>") + "<p><span class=\"col-left\">1st place:</span>&nbsp;" + _0x381cad.Nt[0].toString() + " coins</p>", _0x3fe65e++, 0 < _0x381cad.Nt[1] && (_0x306fb1 += "<p><span class=\"col-left\">2nd place:</span>&nbsp;" + _0x381cad.Nt[1].toString() + " coins</p>", _0x3fe65e++), 0 < _0x381cad.Nt[2])) {
-                    _0x306fb1 += "<p><span class=\"col-left\">3rd place:</span>&nbsp;" + _0x381cad.Nt[2].toString() + " coins</p>";
+                if (1 <= customServerInfos.phase && 0 < customServerInfos.Nt[0] && (_0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">REWARDS</span>&nbsp;</p>") + "<p><span class=\"col-left\">1st place:</span>&nbsp;" + customServerInfos.Nt[0].toString() + " coins</p>", _0x3fe65e++, 0 < customServerInfos.Nt[1] && (_0x306fb1 += "<p><span class=\"col-left\">2nd place:</span>&nbsp;" + customServerInfos.Nt[1].toString() + " coins</p>", _0x3fe65e++), 0 < customServerInfos.Nt[2])) {
+                    _0x306fb1 += "<p><span class=\"col-left\">3rd place:</span>&nbsp;" + customServerInfos.Nt[2].toString() + " coins</p>";
                     _0x3fe65e++;
                 }
-                if (0 < _0x381cad.Dt) {
+                if (0 < customServerInfos.Dt) {
                     _0x3fe65e++;
                     _0x3fe65e++;
                     _0x3fe65e++;
                     _0x3fe65e++;
-                    _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR STATS</span>&nbsp;</p>") + "<p><span class=\"col-left\">Matches:</span>&nbsp;" + _0x381cad.Dt.toString() + "</p>") + "<p><span class=\"col-left\">Wins:</span>&nbsp;" + _0x381cad.zt.toString() + "</p>") + "<p><span class=\"col-left\">Points:</span>&nbsp;" + _0x381cad.Rt.toString() + "</p>") + "<p><span class=\"col-left\">Kills:</span>&nbsp;" + _0x381cad.Ot.toString() + "</p>";
+                    _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR STATS</span>&nbsp;</p>") + "<p><span class=\"col-left\">Matches:</span>&nbsp;" + customServerInfos.Dt.toString() + "</p>") + "<p><span class=\"col-left\">Wins:</span>&nbsp;" + customServerInfos.zt.toString() + "</p>") + "<p><span class=\"col-left\">Points:</span>&nbsp;" + customServerInfos.Rt.toString() + "</p>") + "<p><span class=\"col-left\">Kills:</span>&nbsp;" + customServerInfos.Ot.toString() + "</p>";
                     _0x3fe65e++;
                 }
-            } else if (17 == _0x77f7dd) {
+            } else if (17 == currentServerMode) {
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">INFECTION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + _0x381cad.Gt + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + _0x381cad.Yt + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + _0x381cad.Lt + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + _0x381cad.It.toString() + "</p>") + "<p><span class=\"col-left\">You infected:</span>&nbsp;" + _0x381cad.qt.toString() + "</p>";
+                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">INFECTION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.Gt + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.Yt + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.Lt + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.It.toString() + "</p>") + "<p><span class=\"col-left\">You infected:</span>&nbsp;" + customServerInfos.qt.toString() + "</p>";
                 _0x3fe65e++;
-            } else if (18 == _0x77f7dd) {
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + _0x381cad.Gt + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + _0x381cad.Yt + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + _0x381cad.Lt + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + _0x381cad.It.toString() + "</p>";
-                _0x3fe65e++;
-            } else if (22 == _0x77f7dd) {
+            } else if (18 == currentServerMode) {
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
+                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.Gt + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.Yt + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.Lt + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.It.toString() + "</p>";
                 _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + _0x381cad.Gt + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + _0x381cad.Yt + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + _0x381cad.Lt + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You Hit:</span>&nbsp;" + _0x381cad.It.toString() + "</p>") + "<p><span class=\"col-left\">You Failed to Dodge:</span>&nbsp;" + _0x381cad.qt.toString() + "</p>";
+            } else if (22 == currentServerMode) {
+                _0x3fe65e++;
+                _0x3fe65e++;
+                _0x3fe65e++;
+                _0x3fe65e++;
+                _0x3fe65e++;
+                _0x3fe65e++;
+                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.Gt + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.Yt + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.Lt + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You Hit:</span>&nbsp;" + customServerInfos.It.toString() + "</p>") + "<p><span class=\"col-left\">You Failed to Dodge:</span>&nbsp;" + customServerInfos.qt.toString() + "</p>";
                 _0x3fe65e++;
             }
         }
@@ -8503,7 +8499,7 @@ function _0x39b68a() {
     }
     if (!_0x2fe589 && ((0 < _0x24af02 || _0x296920[0]) && (_0x296920[0] = _0x296920[1] = _0x296920[2] = true, _0x544400++, _0x544400++, _0xa8b1e9 = (_0xa8b1e9 = (_0xa8b1e9 += "<p>Minions: <span style=\"color:" + (0 < _0x24af02 ? "#4f4" : "#f44") + ";\">" + _0x24af02.toString() + "</span></p>") + "<p>Minion Time: <span style=\"color:" + (0 < _0x4a4cf7 ? "#4f4" : "#f44") + ";\">" + (_0x48c140 = _0x4a4cf7, _0x48c140 = Number(_0x48c140), _0x2dfda5 = Math.floor(_0x48c140 / 3600), _0x40f2a8 = Math.floor(_0x48c140 % 3600 / 60), _0x48c140 = Math.floor(_0x48c140 % 3600 % 60), _0x2dfda5 < 10 ? "0" : '') + _0x2dfda5 + ":" + (_0x40f2a8 < 10 ? "0" : '') + _0x40f2a8 + ":" + (_0x48c140 < 10 ? "0" : '') + _0x48c140 + "</span></p>") + "<p>You control: <span style=\"color:" + (_0x53176c ? "#f44" : "#4f4") + ";\">" + (_0x53176c ? "Minions" : "Yourself") + "</span></p>", _0x544400++), (_0x43802f || _0x296920[3]) && (_0x296920[3] = true, _0xa8b1e9 += "<p>Frozen: <span style=\"color:" + (_0x43802f ? "#4f4" : "#f44") + ";\">" + (_0x43802f ? "On" : "Off") + "</span></p>", _0x544400++), (_0x506037 || _0x296920[4]) && _0x296920[0] && (_0x296920[4] = true, _0xa8b1e9 += "<p>Frozen minions: <span style=\"color:" + (_0x506037 ? "#4f4" : "#f44") + ";\">" + (_0x506037 ? "On" : "Off") + "</span></p>", _0x544400++), (_0x52da56 || _0x296920[5]) && (_0x296920[5] = true, _0xa8b1e9 += "<p>Cloaked: <span style=\"color:" + (_0x52da56 ? "#4f4" : "#f44") + ";\">" + (_0x52da56 ? "On" : "Off") + "</span></p>", _0x544400++), (_0x11c29c || _0x296920[6]) && _0x296920[0] && (_0x296920[6] = true, _0xa8b1e9 += "<p>Cloaked minions: <span style=\"color:" + (_0x11c29c ? "#4f4" : "#f44") + ";\">" + (_0x11c29c ? "On" : "Off") + "</span></p>", _0x544400++), _0x296920[5] || _0x296920[6])) {
         _0x296920[7] = true;
-        _0xa8b1e9 += "<p>Cloak Time: <span style=\"color:" + (0 < _0x30bfdb ? "#4f4" : "#f44") + ";\">" + _0x5d13b8(_0x30bfdb) + "</span></p>";
+        _0xa8b1e9 += "<p>Cloak Time: <span style=\"color:" + (0 < _0x30bfdb ? "#4f4" : "#f44") + ";\">" + timeFormat(_0x30bfdb) + "</span></p>";
         _0x544400++;
     }
     $("#infoContent").html(_0xa8b1e9);
@@ -8914,7 +8910,7 @@ function _0x4801bb() {
                     g: 255,
                     b: 0
                 };
-                _0x277ade(2, 100, 17 == _0x77f7dd ? _0x4b9c23 : _0x561f50, 2, 0);
+                _0x277ade(2, 100, 17 == currentServerMode ? _0x4b9c23 : _0x561f50, 2, 0);
                 break;
             case 5:
                 var _0x28e585 = {
@@ -8927,7 +8923,7 @@ function _0x4801bb() {
                     g: 85,
                     b: 100
                 };
-                _0x277ade(9, 224, 17 == _0x77f7dd ? _0x28e585 : _0x27f7f5, 2, 0);
+                _0x277ade(9, 224, 17 == currentServerMode ? _0x28e585 : _0x27f7f5, 2, 0);
                 break;
             case 6:
                 var _0x1aeb72 = {
@@ -9321,7 +9317,7 @@ var _0x40843 = {
     "Fe": 0,
     "draw": false
 };
-var _0x77f7dd = -1;
+var currentServerMode = -1;
 var _0x3df17b = false;
 var _0x42a8fa = true;
 var _0x247d2d = 1920;
@@ -9356,7 +9352,7 @@ var _0x2332bb = false;
 var _0x3e08c0 = true;
 var _0x21d872 = ["#F03030", "#30F030", "#606060", "#F0F030", "#20E8F8", "#F020E8", "#1060F0"];
 var _0x405489 = '';
-var _0x381cad = null;
+var customServerInfos = null;
 var _0x568853 = -1;
 var _0x521316 = 0;
 var _0x2412c8 = 0;
@@ -9742,12 +9738,12 @@ function _0xbb1a8c() {
     
 }
 
-function _0x5d13b8(_0x51ba4e) {
-    _0x51ba4e = Number(_0x51ba4e);
-    var _0xd9f620 = Math.floor(_0x51ba4e / 3600);
-    var _0xd0f524 = Math.floor(_0x51ba4e % 3600 / 60);
-    var _0x51ba4e = Math.floor(_0x51ba4e % 3600 % 60);
-    return (0 < _0xd9f620 ? _0xd9f620 + ":" + (_0xd0f524 < 10 ? "0" : '') : '') + _0xd0f524 + ":" + (_0x51ba4e < 10 ? "0" : '') + _0x51ba4e;
+function timeFormat(s) {
+    s = Number(s);
+    var h = Math.floor(s / 3600);
+    var m = Math.floor(s % 3600 / 60);
+    var s = Math.floor(s % 3600 % 60);
+    return (0 < h ? h + ":" + (m < 10 ? "0" : '') : '') + m + ":" + (s < 10 ? "0" : '') + s;
 }
 
 function _0x11c620() {
