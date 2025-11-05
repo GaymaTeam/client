@@ -985,9 +985,7 @@ window.onload = function() {
         _0x36acf7 = 0;
     };
     window.onkeyup = function(_0xe5126b) {
-        if (_0xe5126b.keyCode == _0x3569f8.Space.c) {
-            _0x3b6c7d = _0x3b6c7d && false;
-        }
+        if (_0xe5126b.keyCode == _0x3569f8.Space.c) _0x3b6c7d = false;
         if (_0xe5126b.keyCode == _0x3569f8.W.c && _0x15ba70) {
             sendSignal(36);
             _0x15ba70 = false;
@@ -1000,57 +998,27 @@ window.onload = function() {
             sendSignal(38);
             _0x24ef11 = false;
         }
-        if (_0xe5126b.keyCode == _0x3569f8.F.c) {
-            _0xad8aa9 = _0xad8aa9 && false;
-        }
-        if (_0xe5126b.keyCode == _0x3569f8.Q.c) {
-            _0x38584f = _0x38584f && false;
-        }
-        if (_0xe5126b.keyCode == _0x3569f8.E.c) {
-            _0x2bf6bb = _0x2bf6bb && false;
-        }
-        if (_0xe5126b.keyCode == _0x3569f8.S.c) {
-            _0x13ad94 = _0x13ad94 && false;
-        }
-        if (_0xe5126b.keyCode == _0x3569f8.A.c) {
-            _0x5a26dc = _0x5a26dc && false;
-        }
+        if (_0xe5126b.keyCode == _0x3569f8.F.c) _0xad8aa9 = false;
+        if (_0xe5126b.keyCode == _0x3569f8.Q.c) _0x38584f = false;
+        if (_0xe5126b.keyCode == _0x3569f8.E.c) _0x2bf6bb = false;
+        if (_0xe5126b.keyCode == _0x3569f8.S.c) _0x13ad94 = false;
+        if (_0xe5126b.keyCode == _0x3569f8.A.c) _0x5a26dc = false;
         if (_0xe5126b.keyCode == _0x3569f8.X.c && _0x4ae953) {
             sendSignal(40);
             _0x4ae953 = false;
         }
-        if (_0xe5126b.keyCode == _0x3569f8.I.c) {
-            _0x23f8db = _0x23f8db && false;
-        }
-        if (_0xe5126b.keyCode == _0x3569f8.C.c && _0x4400ec) {
-            _0x580067(!(_0x4400ec = false));
-        }
-        if (_0xe5126b.keyCode == _0x3569f8.D.c) {
-            _0x16195f = _0x16195f && false;
-        }
-        if (_0xe5126b.keyCode == _0x3569f8.T.c) {
-            _0x1f5d9c = _0x1f5d9c && false;
-        }
-        if (_0xe5126b.keyCode == _0x3569f8.M.c) {
-            _0x4ad9fe = _0x4ad9fe && false;
-        }
-        if (_0xe5126b.keyCode == _0x3569f8.W360.c) {
-            _0x1c4ea8 = _0x1c4ea8 && false;
-        }
-        if (_0xe5126b.keyCode == _0x3569f8.DW.c) {
-            _0x1f7f29 = _0x1f7f29 && false;
-        }
+        if (_0xe5126b.keyCode == _0x3569f8.I.c) _0x23f8db = false;
+        if (_0xe5126b.keyCode == _0x3569f8.C.c && _0x4400ec) _0x580067(!(_0x4400ec = false));
+        if (_0xe5126b.keyCode == _0x3569f8.D.c) _0x16195f = false;
+        if (_0xe5126b.keyCode == _0x3569f8.T.c) _0x1f5d9c = false;
+        if (_0xe5126b.keyCode == _0x3569f8.M.c) _0x4ad9fe = false;
+        if (_0xe5126b.keyCode == _0x3569f8.W360.c) _0x1c4ea8 = false;
+        if (_0xe5126b.keyCode == _0x3569f8.DW.c) _0x1f7f29 = false;
     };
     window.onblur = function() {
-        if (_0x15ba70) {
-            sendSignal(36);
-        }
-        if (_0x24ef11) {
-            sendSignal(38);
-        }
-        if (_0x4ae953) {
-            sendSignal(40);
-        }
+        if (_0x15ba70) sendSignal(36);
+        if (_0x24ef11) sendSignal(38);
+        if (_0x4ae953) sendSignal(40);
         _0x3b6c7d = _0x15ba70 = _0x24ef11 = _0xad8aa9 = _0x38584f = _0x2bf6bb = _0x13ad94 = _0x5a26dc = _0x4ae953 = _0x23f8db = _0x4400ec = _0x16195f = _0x1f5d9c = _0x4ad9fe = _0x1c4ea8 = _0x1f7f29 = false;
     };
     window.requestAnimationFrame(_0x3a188d);
@@ -3409,10 +3377,10 @@ function _0x215896() {
                 _0x31da46 -= _0x3a579c.height * _0x330e7f;
             }
             if (_0x1407a2) {
-                _0x2058b6 = Math.max(_0x2058b6, -_0x59034c + _0x2263d7 + _0x40843.left);
-                _0x20b8b1 = Math.max(_0x20b8b1, -_0x4ce984 + _0x223539 + _0x40843.top);
-                _0x5b5b68 = Math.min(_0x5b5b68, -_0x59034c + _0x2263d7 + _0x40843.right) - _0x2058b6;
-                _0x547c24 = Math.min(_0x547c24, -_0x4ce984 + _0x223539 + _0x40843.bottom) - _0x20b8b1;
+                _0x2058b6 = Math.max(_0x2058b6, -_0x59034c + _0x2263d7 + mapInfos.left);
+                _0x20b8b1 = Math.max(_0x20b8b1, -_0x4ce984 + _0x223539 + mapInfos.top);
+                _0x5b5b68 = Math.min(_0x5b5b68, -_0x59034c + _0x2263d7 + mapInfos.right) - _0x2058b6;
+                _0x547c24 = Math.min(_0x547c24, -_0x4ce984 + _0x223539 + mapInfos.bottom) - _0x20b8b1;
             }
             if (0 < _0x5b5b68 && 0 < _0x547c24) {
                 if (_0xccf34) {
@@ -3533,10 +3501,10 @@ function _0x215896() {
     };
     _0xb14342.lineCap = "round";
     _0xb14342.save();
-    if (false && (_0x4f401c(currentFrameTime), _0x25fdfa = _0x40843.top > _0x4ce984 - _0x223539 || _0x40843.right < _0x59034c + _0x2263d7 || _0x40843.bottom < _0x4ce984 + _0x223539 || _0x40843.left > _0x59034c - _0x2263d7)) {
+    if (mapInfos.draw && (_0x4f401c(currentFrameTime), _0x25fdfa = mapInfos.top > _0x4ce984 - _0x223539 || mapInfos.right < _0x59034c + _0x2263d7 || mapInfos.bottom < _0x4ce984 + _0x223539 || mapInfos.left > _0x59034c - _0x2263d7)) {
         _0xb14342.beginPath();
         _0xb14342.rect(0, 0, _0x53f1a5, _0x1058ed);
-        _0xb14342.rect(Math.max(_0x40843.left - _0x59034c + _0x2263d7, 0) * _0x3e50d9, Math.max(_0x40843.top - _0x4ce984 + _0x223539, 0) * _0x3e50d9, (Math.min(_0x40843.right, _0x59034c + _0x2263d7) - Math.max(_0x40843.left, _0x59034c - _0x2263d7)) * _0x3e50d9, (Math.min(_0x40843.bottom, _0x4ce984 + _0x223539) - Math.max(_0x40843.top, _0x4ce984 - _0x223539)) * _0x3e50d9);
+        _0xb14342.rect(Math.max(mapInfos.left - _0x59034c + _0x2263d7, 0) * _0x3e50d9, Math.max(mapInfos.top - _0x4ce984 + _0x223539, 0) * _0x3e50d9, (Math.min(mapInfos.right, _0x59034c + _0x2263d7) - Math.max(mapInfos.left, _0x59034c - _0x2263d7)) * _0x3e50d9, (Math.min(mapInfos.bottom, _0x4ce984 + _0x223539) - Math.max(mapInfos.top, _0x4ce984 - _0x223539)) * _0x3e50d9);
         _0xb14342.globalAlpha = 0.3;
         _0xb14342.fillStyle = "#CC3030";
         _0xb14342.fill("evenodd");
@@ -3547,31 +3515,31 @@ function _0x215896() {
         _0x2c9685 = Math.max(20, 1 / _0x3e50d9);
         _0xb14342.lineWidth = _0x2c9685;
         _0xb14342.globalAlpha = 1;
-        _0x330e7f = Math.clamp(5 * _0x3e50d9 * _0x358119, false && _0x25fdfa ? 0.5 : 0.2, 1);
+        _0x330e7f = Math.clamp(5 * _0x3e50d9 * _0x358119, mapInfos.draw && _0x25fdfa ? 0.5 : 0.2, 1);
         _0x62fded = _0xe0e646 ? customBackgroundColor : _0x33523f ? _0x2b9f9d : _0x214596;
         _0xb14342.strokeStyle = rgbToHex(~~(_0x62fded.r + (204 - _0x62fded.r) * _0x330e7f), ~~(_0x62fded.g + (48 - _0x62fded.g) * _0x330e7f), ~~(_0x62fded.b + (48 - _0x62fded.b) * _0x330e7f));
-        if (_0x40843.top + _0x2c9685 / 2 > _0x4ce984 - _0x223539) {
+        if (mapInfos.top + _0x2c9685 / 2 > _0x4ce984 - _0x223539) {
             _0xb14342.beginPath();
-            _0xb14342.moveTo(_0x40843.left, _0x40843.top);
-            _0xb14342.lineTo(_0x40843.right, _0x40843.top);
+            _0xb14342.moveTo(mapInfos.left, mapInfos.top);
+            _0xb14342.lineTo(mapInfos.right, mapInfos.top);
             _0xb14342.stroke();
         }
-        if (_0x40843.right - _0x2c9685 / 2 < _0x59034c + _0x2263d7) {
+        if (mapInfos.right - _0x2c9685 / 2 < _0x59034c + _0x2263d7) {
             _0xb14342.beginPath();
-            _0xb14342.moveTo(_0x40843.right, _0x40843.top);
-            _0xb14342.lineTo(_0x40843.right, _0x40843.bottom);
+            _0xb14342.moveTo(mapInfos.right, mapInfos.top);
+            _0xb14342.lineTo(mapInfos.right, mapInfos.bottom);
             _0xb14342.stroke();
         }
-        if (_0x40843.bottom - _0x2c9685 / 2 < _0x4ce984 + _0x223539) {
+        if (mapInfos.bottom - _0x2c9685 / 2 < _0x4ce984 + _0x223539) {
             _0xb14342.beginPath();
-            _0xb14342.moveTo(_0x40843.right, _0x40843.bottom);
-            _0xb14342.lineTo(_0x40843.left, _0x40843.bottom);
+            _0xb14342.moveTo(mapInfos.right, mapInfos.bottom);
+            _0xb14342.lineTo(mapInfos.left, mapInfos.bottom);
             _0xb14342.stroke();
         }
-        if (_0x59034c - _0x2263d7 < _0x40843.left + _0x2c9685 / 2) {
+        if (_0x59034c - _0x2263d7 < mapInfos.left + _0x2c9685 / 2) {
             _0xb14342.beginPath();
-            _0xb14342.moveTo(_0x40843.left, _0x40843.bottom);
-            _0xb14342.lineTo(_0x40843.left, _0x40843.top);
+            _0xb14342.moveTo(mapInfos.left, mapInfos.bottom);
+            _0xb14342.lineTo(mapInfos.left, mapInfos.top);
             _0xb14342.stroke();
         }
     }
@@ -3655,7 +3623,44 @@ function _0x215896() {
         _0xb14342.globalAlpha = 1;
         _0xb14342.drawImage(_0x13a1ae, (_0x312d0a - _0x59034c + _0x2263d7) * _0x3e50d9 - 20, (_0x2435c4 - _0x4ce984 + _0x223539) * _0x3e50d9 - 10, 50, 50);
     }
-    if (_0x181957 && (_0x28c1e5(), _0x114a07 && (_0x114a07.x = _0x114a07.ox = _0x114a07.hx = _0x21548d, _0x114a07.y = _0x114a07.oy = _0x114a07.hy = _0x1598a0, _0x114a07.nSize != _0x4289a6 && 0 != _0x4289a6 && (_0x114a07.size = _0x114a07.ge = _0x114a07.nSize = _0x114a07.strokeSize = _0x4289a6, _0x114a07.be = null, _0x114a07.sizeScale = 0), _0x34eb69 = 4 == _0x114a07.i ? 0.83 * _0x114a07.size : _0x114a07.size, _0x51f702 = 0 == _0x489844 && _0x496adb && 0 != _0x4289a6 && _0x114a07.sizeScale ? _0x34eb69 * _0x3e50d9 < 4 ? 4 / _0x34eb69 : _0x3e50d9 : (16 == _0x114a07.i ? 23 : 14) * (_0x4386c1 ? 0.7 : 1) / _0x34eb69, _0x2c9685 = +_0x587d52, _0x114a07.sizeScale = _0x114a07.sizeScale ? (_0x2c9685 * _0x114a07.sizeScale + _0x51f702) / (_0x2c9685 + 1) : _0x51f702, (_0x25fdfa = _0x114a07.getTransform()).t = _0x25fdfa.s = true, _0x25fdfa.sx = _0x25fdfa.sy = _0x114a07.sizeScale / _0x3e50d9, _0xb14342.save(), _0xb14342.scale(_0x3e50d9, _0x3e50d9), _0xb14342.translate(-_0x59034c + _0x2263d7, -_0x4ce984 + _0x223539), _0x114a07.pe(), _0xb14342.restore()), !_0x3e08c0) && 0 == _0x489844 && _0x496adb) {
+    if (_0x181957 && (
+        _0x28c1e5(),
+        _0x114a07 && (
+            _0x114a07.x = _0x114a07.ox = _0x114a07.hx = _0x21548d,
+            _0x114a07.y = _0x114a07.oy = _0x114a07.hy = _0x1598a0,
+            _0x114a07.nSize != _0x4289a6 && 0 != _0x4289a6 && (
+                _0x114a07.size = _0x114a07.ge = _0x114a07.nSize = _0x114a07.strokeSize = _0x4289a6,
+                _0x114a07.be = null,
+                _0x114a07.sizeScale = 0
+            ),
+            _0x34eb69 = 4 == _0x114a07.i ? 0.83 * _0x114a07.size : _0x114a07.size,
+            _0x51f702 = 0 == _0x489844 && _0x496adb && 0 != _0x4289a6 && _0x114a07.sizeScale
+                ? _0x34eb69 * _0x3e50d9 < 4
+                    ? 4 / _0x34eb69
+                    : _0x3e50d9
+                : (16 == _0x114a07.i ? 23 : 14) * (_0x4386c1 ? 0.7 : 1) / _0x34eb69,
+            _0x2c9685 = +_0x587d52,
+            _0x114a07.sizeScale = _0x114a07.sizeScale
+                ? (_0x2c9685 * _0x114a07.sizeScale + _0x51f702) / (_0x2c9685 + 1)
+                : _0x51f702,
+            (_0x25fdfa = _0x114a07.getTransform()).t = _0x25fdfa.s = true,
+            _0x25fdfa.sx = _0x25fdfa.sy = _0x114a07.sizeScale / _0x3e50d9,
+            _0xb14342.save(),
+            _0xb14342.scale(_0x3e50d9, _0x3e50d9),
+            _0xb14342.translate(-_0x59034c + _0x2263d7, -_0x4ce984 + _0x223539),
+            _0x496adb && 0 == _0x489844 && (
+                _0xb14342.beginPath(),
+                _0xb14342.arc(_0x2c22b1.x, _0x2c22b1.y, 60 / _0x3e50d9, 0, 2 * Math.PI, false),
+                _0xb14342.arc(_0x2c22b1.x, _0x2c22b1.y, 50 / _0x3e50d9, 0, 2 * Math.PI, false),
+                _0xb14342.globalAlpha = 0.2,
+                _0xb14342.fillStyle = _0x496adb ? "#00FF00" : "#FF0000",
+                _0xb14342.fill("evenodd")
+            ),
+            _0x114a07.pe(),
+            _0xb14342.restore()
+        ),
+        !_0x3e08c0
+    ) && 0 == _0x489844 && _0x496adb) {
         _0x4cb1e7 = null;
         for (_0x34eb69 = _0x34b545.length - 1; 0 <= _0x34eb69; _0x34eb69--) {
             if (0 == (_0x25fdfa = _0x34b545[_0x34eb69]).i) {
@@ -3700,7 +3705,20 @@ function _0x215896() {
         _0x5be4cd.globalAlpha = 1;
         _0x5be4cd.drawImage(_0x4b4b51, 0, 0);
         _0x5be4cd.scale(_0x28ad4b, _0x28ad4b);
+
+        if (mapInfos.draw) {
+            _0x5be4cd.beginPath();
+            _0x5be4cd.rect(0, 0, _0x51f702, _0x51f702);
+        }
         _0x51f702 /= Math.max(_0x28f6af - _0x5c1aa9, _0x500945 - _0x4ba286);
+
+        if (mapInfos.draw) {
+            _0x5be4cd.rect((mapInfos.left - _0x5c1aa9) * _0x51f702, (mapInfos.top - _0x4ba286) * _0x51f702, (mapInfos.right - mapInfos.left) * _0x51f702, (mapInfos.bottom - mapInfos.top) * _0x51f702);
+            _0x5be4cd.globalAlpha = 0.4;
+            _0x5be4cd.fillStyle = "#CC3030";
+            _0x5be4cd.fill("evenodd");
+        }
+
         _0x5be4cd.scale(_0x51f702, _0x51f702);
         _0x5be4cd.translate(-_0x5c1aa9, -_0x4ba286);
         _0x25fdfa = _0x51f702 * _0x51f702 * _0x53f1a5 * _0x1058ed / (_0x3e50d9 * _0x3e50d9 * 200 * 200 * _0x34eb69 * _0x34eb69);
@@ -5571,11 +5589,11 @@ function _0x51e55a(_0x2ba470) {
             pkt.getUint8();
             break;
         case 64:
-            _0x5c1aa9 = _0x40843.left = _0x40843.vt = _0x40843.kt = pkt.getUint32();
-            _0x4ba286 = _0x40843.top = _0x40843.$t = _0x40843.yt = pkt.getUint32();
-            _0x28f6af = _0x40843.right = _0x40843.xt = _0x40843.nRight = pkt.getUint32();
-            _0x500945 = _0x40843.bottom = _0x40843.St = _0x40843.Mt = pkt.getUint32();
-            _0x40843.draw = false;
+            _0x5c1aa9 = mapInfos.left = mapInfos.vt = mapInfos.kt = pkt.getUint32();
+            _0x4ba286 = mapInfos.top = mapInfos.$t = mapInfos.yt = pkt.getUint32();
+            _0x28f6af = mapInfos.right = mapInfos.xt = mapInfos.nRight = pkt.getUint32();
+            _0x500945 = mapInfos.bottom = mapInfos.St = mapInfos.Mt = pkt.getUint32();
+            mapInfos.draw = false;
             _0x53b8b0 = _0x46ac7b = _0x40e81b = (_0x5c1aa9 + _0x28f6af) / 2;
             _0x464afc = _0x2c7938 = _0x6c7bce = (_0x4ba286 + _0x500945) / 2;
             _0x29c97b = 1;
@@ -5628,11 +5646,11 @@ function _0x51e55a(_0x2ba470) {
             }
             break;
         case 65:
-            _0x5c1aa9 = _0x40843.left = _0x40843.vt = _0x40843.kt = pkt.getFloat64();
-            _0x4ba286 = _0x40843.top = _0x40843.$t = _0x40843.yt = pkt.getFloat64();
-            _0x28f6af = _0x40843.right = _0x40843.xt = _0x40843.nRight = pkt.getFloat64();
-            _0x500945 = _0x40843.bottom = _0x40843.St = _0x40843.Mt = pkt.getFloat64();
-            _0x40843.draw = false;
+            _0x5c1aa9 = mapInfos.left = mapInfos.vt = mapInfos.kt = pkt.getFloat64();
+            _0x4ba286 = mapInfos.top = mapInfos.$t = mapInfos.yt = pkt.getFloat64();
+            _0x28f6af = mapInfos.right = mapInfos.xt = mapInfos.nRight = pkt.getFloat64();
+            _0x500945 = mapInfos.bottom = mapInfos.St = mapInfos.Mt = pkt.getFloat64();
+            mapInfos.draw = false;
             _0x27fdb0 = Date.now();
             _0x2c6f91 = true;
             break;
@@ -5642,26 +5660,26 @@ function _0x51e55a(_0x2ba470) {
             var _0x46fd3a = pkt.getFloat64();
             var _0x571f96 = pkt.getFloat64();
             var _0x435e7a = Date.now();
-            if (true || 3600 < _0x435e7a - 0) {
-                _0x40843.left = _0x40843.vt = _0x40843.kt = _0x3205e2;
-                _0x40843.top = _0x40843.$t = _0x40843.yt = _0xb790f3;
-                _0x40843.right = _0x40843.xt = _0x40843.nRight = _0x46fd3a;
-                _0x40843.bottom = _0x40843.St = _0x40843.Mt = _0x571f96;
-                _0x40843.ga = 0;
-                _0x40843.L = _0x435e7a;
+            if (!mapInfos.draw || 3600 < _0x435e7a - mapInfos.Fe) {
+                mapInfos.left = mapInfos.vt = mapInfos.kt = _0x3205e2;
+                mapInfos.top = mapInfos.$t = mapInfos.yt = _0xb790f3;
+                mapInfos.right = mapInfos.xt = mapInfos.nRight = _0x46fd3a;
+                mapInfos.bottom = mapInfos.St = mapInfos.Mt = _0x571f96;
+                mapInfos.ga = 0;
+                mapInfos.L = _0x435e7a;
             } else {
                 _0x4f401c(_0x435e7a);
-                _0x40843.vt = _0x40843.left;
-                _0x40843.$t = _0x40843.top;
-                _0x40843.xt = _0x40843.right;
-                _0x40843.St = _0x40843.bottom;
-                _0x40843.kt = _0x3205e2;
-                _0x40843.yt = _0xb790f3;
-                _0x40843.nRight = _0x46fd3a;
-                _0x40843.Mt = _0x571f96;
+                mapInfos.vt = mapInfos.left;
+                mapInfos.$t = mapInfos.top;
+                mapInfos.xt = mapInfos.right;
+                mapInfos.St = mapInfos.bottom;
+                mapInfos.kt = _0x3205e2;
+                mapInfos.yt = _0xb790f3;
+                mapInfos.nRight = _0x46fd3a;
+                mapInfos.Mt = _0x571f96;
             }
-            _0x40843.Fe = _0x435e7a;
-            _0x40843.draw = true;
+            mapInfos.Fe = _0x435e7a;
+            mapInfos.draw = true;
             _0x2c6f91 = true;
             break;
         case 75:
@@ -7376,7 +7394,6 @@ function _0x2aa794() {
                 $("#skinBrowser div.tab-pane").removeClass("in active");
                 _0xe09ea3.addClass("in active");
             }
-            _0x29ae07 = true;
             _0xcda4aa = _0x513e33;
             if (_0x16de9b) {
                 _0x16de9b();
@@ -7387,13 +7404,16 @@ function _0x2aa794() {
 }
 
 function _0x5b3bf2() {
-    _0x29ae07 = !(_0x64a0d5 = true);
+    _0x64a0d5 = true;
     if (_0x173277 && $("#skinsTab").hasClass("active")) {
         _0x4b2336();
     }
 }
 
+let gotSkins = false;
 function _0x4b2336() {
+    if (gotSkins) return;
+    gotSkins = true;
     if (isReady()) {
         sendSignal(115);
     } else if (0 < _0x2e4195.length) {
@@ -7442,7 +7462,10 @@ function _0x464ade() {
     }
 }
 
+let gotWearables = false;
 function _0x5a2fbe() {
+    if (gotWearables) return;
+    gotWearables = true;
     if (isReady()) {
         sendSignal(114);
     } else if (0 < _0x51aa44.length) {
@@ -7804,7 +7827,7 @@ window.showSkin = function(_0x56bb91, _0x263a38) {
     function _0x456666() {
         var _0x16e8da;
         var _0x39e0a6;
-        if (_0x29ae07 && !_0xc4a55e && (0 < (_0x16e8da = $("#skinContainer" + _0x56bb91).closest("#skinBrowser div.tab-pane")).length ? _0x39e0a6 = $("#menugold li a[href=\"#" + _0x16e8da[0].id + "\"]") : 0 < (_0x16e8da = $("#skinBrowser div.publicskins-page-content:contains(skinContainer" + _0x56bb91 + ")")).length && (showPublicSkinsPage(_0x16e8da[0].id.substring(22)), _0x39e0a6 = $("#skinsCustomTab a")), _0x39e0a6)) {
+        if (!_0xc4a55e && (0 < (_0x16e8da = $("#skinContainer" + _0x56bb91).closest("#skinBrowser div.tab-pane")).length ? _0x39e0a6 = $("#menugold li a[href=\"#" + _0x16e8da[0].id + "\"]") : 0 < (_0x16e8da = $("#skinBrowser div.publicskins-page-content:contains(skinContainer" + _0x56bb91 + ")")).length && (showPublicSkinsPage(_0x16e8da[0].id.substring(22)), _0x39e0a6 = $("#skinsCustomTab a")), _0x39e0a6)) {
             if (!(_0xc4a55e = _0x39e0a6.parent("li").hasClass("active"))) {
                 _0x39e0a6.one("shown.bs.tab", function() {
                     _0xc4a55e = true;
@@ -7819,7 +7842,7 @@ window.showSkin = function(_0x56bb91, _0x263a38) {
         var _0x62965e;
         var _0x4bc858;
         var _0x5edeaf;
-        if (_0x3a8f23 && _0x4ab28e && _0x29ae07 && _0xc4a55e && (_0x62965e = document.getElementById("skinContainer" + _0x56bb91)) && (_0x62965e.scrollIntoView(), 0 < (_0x4bc858 = $($("#menugold li.active a").attr("href") + " .skin-data").first()).length && _0x4bc858.scrollTop(_0x4bc858.scrollTop() - 8), _0x263a38) && 0 < (_0x5edeaf = $(_0x62965e)).length) {
+        if (_0x3a8f23 && _0x4ab28e && _0xc4a55e && (_0x62965e = document.getElementById("skinContainer" + _0x56bb91)) && (_0x62965e.scrollIntoView(), 0 < (_0x4bc858 = $($("#menugold li.active a").attr("href") + " .skin-data").first()).length && _0x4bc858.scrollTop(_0x4bc858.scrollTop() - 8), _0x263a38) && 0 < (_0x5edeaf = $(_0x62965e)).length) {
             _0x5edeaf.off("webkitAnimationEnd animationEnd").removeClass("shopitem-highlight");
             setTimeout(function() {
                 _0x5edeaf.one("webkitAnimationEnd animationEnd", function() {
@@ -7849,9 +7872,7 @@ window.showSkin = function(_0x56bb91, _0x263a38) {
                 _0x457f56();
             }).tab("show");
         }
-        if (!_0x29ae07) {
-            _0x16de9b = _0x456666;
-        }
+        _0x16de9b = _0x456666;
         _0x456666();
     }
 };
@@ -9109,11 +9130,11 @@ function _0x489880() {
 }
 
 function _0x4f401c(_0x4aa53c) {
-    var _0x2e6191 = (_0x4aa53c - 0) / 1100;
-    _0x40843.left = (_0x2e6191 = _0x2e6191 < 0 ? 0 : 1 < _0x2e6191 ? 1 : _0x2e6191) * (_0x40843.kt - _0x40843.vt) + _0x40843.vt;
-    _0x40843.top = _0x2e6191 * (_0x40843.yt - _0x40843.$t) + _0x40843.$t;
-    _0x40843.right = _0x2e6191 * (_0x40843.nRight - _0x40843.xt) + _0x40843.xt;
-    _0x40843.bottom = _0x2e6191 * (_0x40843.Mt - _0x40843.St) + _0x40843.St;
+    var _0x2e6191 = (_0x4aa53c - mapInfos.Fe) / 1100;
+    mapInfos.left = (_0x2e6191 = _0x2e6191 < 0 ? 0 : 1 < _0x2e6191 ? 1 : _0x2e6191) * (mapInfos.kt - mapInfos.vt) + mapInfos.vt;
+    mapInfos.top = _0x2e6191 * (mapInfos.yt - mapInfos.$t) + mapInfos.$t;
+    mapInfos.right = _0x2e6191 * (mapInfos.nRight - mapInfos.xt) + mapInfos.xt;
+    mapInfos.bottom = _0x2e6191 * (mapInfos.Mt - mapInfos.St) + mapInfos.St;
 }
 
 function _0x1e72ef(_0x4dd855) {
@@ -9305,7 +9326,7 @@ var _0x5c1aa9 = 0;
 var _0x4ba286 = 0;
 var _0x28f6af = 10000;
 var _0x500945 = 10000;
-var _0x40843 = {
+var mapInfos = {
     "left": _0x5c1aa9,
     "top": _0x4ba286,
     "right": _0x28f6af,
@@ -9446,7 +9467,6 @@ var _0x2645ec = {};
 var _0x520472 = 0;
 var _0x2e4195 = [];
 var _0x64a0d5 = true;
-var _0x29ae07 = false;
 var _0x16de9b = null;
 var _0x4506fc = '';
 var _0x51aa44 = [];
@@ -10765,7 +10785,7 @@ window.spectate = function(_0x592d39) {
     }
 };
 window.toggleSkin = function(_0x2fe59f) {
-    if (_0x3e08c0 && _0x29ae07 && isReady()) {
+    if (_0x3e08c0 && isReady()) {
         if (_0x28aabd == _0x2fe59f) {
             _0x5df715(0);
         } else {
@@ -11313,7 +11333,7 @@ window.clearVideo = function() {
     _0x1643ef = -1;
 };
 window.purchaseSkin = function(_0x1e4706, _0x24b987) {
-    if (_0x29ae07 && isReady()) {
+    if (isReady()) {
         swal({
             "title": "Confirm",
             "text": "If you click \"Buy\", you will purchase this skin. It costs " + _0x1e4706,
@@ -11330,7 +11350,7 @@ window.purchaseSkin = function(_0x1e4706, _0x24b987) {
     }
 };
 window.purchaseCustomSkin = function(_0x50e431) {
-    if (_0x29ae07 && isReady()) {
+    if (isReady()) {
         swal({
             "title": "Confirm",
             "text": "If you click \"Yes\", you will purchase a new custom skin slot. It costs " + _0x50e431 + "<br><span style=\"font-size:13px;\"><br>(click here for <a href=\"#customSkinInstructions\" onclick=\"swal.close();\">instructions</a>)</span><br><br>",
@@ -11355,7 +11375,7 @@ window.editCustomSkin = function(_0x332f75) {
         }
         $("#skinContainer" + _0x332f75).removeClass("saved-mode approved-mode rejected-mode enabled-mode").addClass("edit-mode nonapproved-mode pending-mode disabled-mode");
     }
-    if (_0x29ae07 && isReady() && isLoggedIn && !_0x7f089d) {
+    if (isReady() && isLoggedIn && !_0x7f089d) {
         if ($("#skinContainer" + _0x332f75).hasClass("enabled-mode")) {
             swal({
                 "title": "Confirm",
@@ -11372,7 +11392,7 @@ window.editCustomSkin = function(_0x332f75) {
     }
 };
 window.saveCustomSkin = function(_0x164677) {
-    if (_0x29ae07 && isReady() && isLoggedIn && !_0x7f089d) {
+    if (isReady() && isLoggedIn && !_0x7f089d) {
         if (3 <= parseInt($("#skinContainer" + _0x164677).attr("data-pendingapproval"))) {
             curserMessage("Please upload an image before saving", false, false, 0, 10);
         } else {
@@ -11398,7 +11418,7 @@ window.saveCustomSkin = function(_0x164677) {
     }
 };
 window.uploadCustomSkin = function(_0x4fd1d3) {
-    if (!(!_0x29ae07 || !(isReady()) || !isLoggedIn || _0x7f089d || _0x12c3b0 > Date.now())) {
+    if (isReady() && isLoggedIn && !_0x7f089d && _0x12c3b0 <= Date.now()) {
         _0x12c3b0 = Date.now() + 1000;
         $("#skinUploadBtn" + _0x4fd1d3).blur();
         $("#uploadFile").off("change").val('').attr("accept", ".png, .jpg, .jpeg").one("change", function() {
@@ -11442,7 +11462,7 @@ window.dropFileOnSkin = function(_0x13c4f9, _0x4dc317) {
     var _0x2f5c3b;
     _0x13c4f9.preventDefault();
     _0x13c4f9.stopPropagation();
-    if (supportFileDragAndDrop && (_0x13c4f9.dataTransfer && (_0x13c4f9.dataTransfer.dropEffect = "copy"), $("#skinContainer" + _0x4dc317).removeClass("drag-over"), _0x29ae07) && isReady() && isLoggedIn && _0x13c4f9.dataTransfer && _0x13c4f9.dataTransfer.files && 0 < _0x13c4f9.dataTransfer.files.length) {
+    if (supportFileDragAndDrop && (_0x13c4f9.dataTransfer && (_0x13c4f9.dataTransfer.dropEffect = "copy"), $("#skinContainer" + _0x4dc317).removeClass("drag-over"), true) && isReady() && isLoggedIn && _0x13c4f9.dataTransfer && _0x13c4f9.dataTransfer.files && 0 < _0x13c4f9.dataTransfer.files.length) {
         _0x34efff(_0x7f089d = true);
         $("#skinContainer" + _0x4dc317).addClass("is-uploading");
         document.body.style.cursor = "progress";
@@ -11472,7 +11492,7 @@ window.uploadCustomBack = function() {
     }
 };
 window.showPublicSkinsPage = function(_0x79939c) {
-    if (_0x29ae07 && isReady()) {
+    if (isReady()) {
         $("#skinsCustom .publicskins-nav-btn").addClass("btn-primary").filter(".publicskins-nav-btn-" + _0x79939c.toLowerCase()).removeClass("btn-primary").addClass("btn-default");
         document.getElementById("publicSkinsPage").innerHTML = document.getElementById("publicSkinsPageContent" + _0x79939c).textContent;
         $("#publicSkinsPage .skin-container").removeClass("selected");
@@ -13025,5 +13045,6 @@ $(function() {
 window.addEventListener("beforeunload", function(_0xf46263) {
     windowIsLoaded = false;
     _0x13d7e0();
+    sendSignal(5); // logout
 });
 console.log('[%c+%c] Gayma.io loaded', "font-weight: bold; color: lime;", "");
