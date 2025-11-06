@@ -1,6 +1,60 @@
 // TODO: remove chat canvas
 // TODO: remove leaderboard canvas
 
+const gameSettings = Object.assign({
+    version:                2,
+    nickname:               '',
+    user:                   '',
+    skinId:                 0,
+    wearablesSelected:      [],
+    fixedZoomScale:         1,
+
+    sSkins:                 true,
+    sWearables:             true,
+    sColors:                true,
+    sSounds:                true,
+    sNames:                 true,
+    sMinionNames:           true,
+    sMass:                  true,
+    sFood:                  true,
+    sFoodHalf:              false,
+    sCellAnimations:        true,
+    sSkinAnimations:        true,
+    sMapBorder:             true,
+    sFancyGrid:             true,
+    sSectionGrid:           false,
+    sGrid:                  false,
+    sCustomBack:            false,
+    sCustomBackType:        0,
+    sCustomBackOpacity:     0.5,
+    sCustomBackClip:        false,
+    sCustomBackEnableColor: false,
+    sCustomBackColor:       "#000000",
+    sDark:                  false,
+    sAcid:                  false,
+    sSlowMotion:            false,
+    sFPS:                   true,
+    sZoom:                  true,
+    sFixedZoom:             false,
+    sMinionUi:              false,
+    sLeaderboard:           true,
+    sChat:                  true,
+    sChatSize:              false,
+    sMinimap:               true,
+    sCellBorders:           true,
+    sLargeNames:            false,
+    sNameOutlines:          true,
+    sCellSpikes:            true,
+    sTransparentViruses:    true,
+    sClassicViruses:        false,
+    sPolygonShapes:         false,
+    sLineShapes:            false,
+    sBubbleCells:           false,
+    sGraphics:              0,
+    sMobileLeft:            false,
+    sMobileFeedLock:        true
+}, JSON.parse(window.localStorage.settings));
+
 const objectsApiVersion = 2;
 const wearablesApiVersion = 9;
 const badwords = ["hitler", "nazi", "porno", "fuck", "lul", "eikel", "isis", "penis", "sora", "admin", "administrator", "hate", "terrorist"];
@@ -171,53 +225,50 @@ window.onload = function() {
     })();
     var _0xbbfdd2 = false;
     var _0x4a595d = false;
-    if (null != window.localStorage.settings && (undefined !== (_0x492d1e = JSON.parse(window.localStorage.settings)).nickName && (gameSettings.nickName = _0x492d1e.nickName), undefined !== _0x492d1e.user && '' == _0x492d1e.user && (undefined !== _0x492d1e.skinId && (gameSettings.skinId = _0x492d1e.skinId), undefined !== _0x492d1e.wearablesSelected && (gameSettings.wearablesSelected = _0x492d1e.wearablesSelected.slice(0)), gameSettings.user = ''), undefined !== _0x492d1e.sSounds && (gameSettings.sSounds = _0x492d1e.sSounds), undefined !== _0x492d1e.sSkins && (gameSettings.sSkins = _0x492d1e.sSkins), undefined !== _0x492d1e.sWearables && (gameSettings.sWearables = _0x492d1e.sWearables), undefined !== _0x492d1e.sColors && (gameSettings.sColors = _0x492d1e.sColors), undefined !== _0x492d1e.sNames && (gameSettings.sNames = _0x492d1e.sNames), undefined !== _0x492d1e.sMinionNames && (gameSettings.sMinionNames = _0x492d1e.sMinionNames), undefined !== _0x492d1e.sMass && (gameSettings.sMass = _0x492d1e.sMass), undefined !== _0x492d1e.sFood && (gameSettings.sFood = _0x492d1e.sFood), undefined !== _0x492d1e.sFoodHalf && (gameSettings.sFoodHalf = _0x492d1e.sFoodHalf), undefined !== _0x492d1e.sCellAnimations && (gameSettings.sCellAnimations = _0x492d1e.sCellAnimations), undefined !== _0x492d1e.sSkinAnimations && (gameSettings.sSkinAnimations = _0x492d1e.sSkinAnimations), undefined !== _0x492d1e.sMapBorder && (gameSettings.sMapBorder = _0x492d1e.sMapBorder), undefined !== _0x492d1e.sFancyGrid && (gameSettings.sFancyGrid = _0x492d1e.sFancyGrid), undefined !== _0x492d1e.sSectionGrid && (gameSettings.sSectionGrid = _0x492d1e.sSectionGrid), undefined !== _0x492d1e.sGrid && (gameSettings.sGrid = _0x492d1e.sGrid), undefined !== _0x492d1e.sCustomBack && (gameSettings.sCustomBack = _0x492d1e.sCustomBack), undefined !== _0x492d1e.sCustomBackType && (gameSettings.sCustomBackType = _0x492d1e.sCustomBackType), undefined !== _0x492d1e.sCustomBackOpacity && (gameSettings.sCustomBackOpacity = _0x492d1e.sCustomBackOpacity), undefined !== _0x492d1e.sCustomBackClip && (gameSettings.sCustomBackClip = _0x492d1e.sCustomBackClip), undefined !== _0x492d1e.sCustomBackEnableColor && (gameSettings.sCustomBackEnableColor = _0x492d1e.sCustomBackEnableColor), undefined !== _0x492d1e.sCustomBackColor && (gameSettings.sCustomBackColor = _0x492d1e.sCustomBackColor), undefined !== _0x492d1e.sDark && (gameSettings.sDark = _0x492d1e.sDark), undefined !== _0x492d1e.sSlowMotion && (gameSettings.sSlowMotion = _0x492d1e.sSlowMotion), undefined !== _0x492d1e.sFPS && (gameSettings.sFPS = _0x492d1e.sFPS), undefined !== _0x492d1e.sZoom && (gameSettings.sZoom = _0x492d1e.sZoom), undefined !== _0x492d1e.sFixedZoom && (gameSettings.sFixedZoom = _0x492d1e.sFixedZoom), undefined !== _0x492d1e.fixedZoomScale && (gameSettings.fixedZoomScale = _0x492d1e.fixedZoomScale), undefined !== _0x492d1e.sMinionUi && (gameSettings.sMinionUi = _0x492d1e.sMinionUi), undefined !== _0x492d1e.sLeaderboard && (gameSettings.sLeaderboard = _0x492d1e.sLeaderboard), undefined !== _0x492d1e.sChat && (gameSettings.sChat = _0x492d1e.sChat), undefined !== _0x492d1e.sChatSize && (gameSettings.sChatSize = _0x492d1e.sChatSize), undefined !== _0x492d1e.sMinimap && (gameSettings.sMinimap = _0x492d1e.sMinimap), undefined !== _0x492d1e.sCellBorders && (gameSettings.sCellBorders = _0x492d1e.sCellBorders), undefined !== _0x492d1e.sLargeNames && (gameSettings.sLargeNames = _0x492d1e.sLargeNames), undefined !== _0x492d1e.sNameOutlines && (gameSettings.sNameOutlines = _0x492d1e.sNameOutlines), undefined !== _0x492d1e.sCellSpikes && (gameSettings.sCellSpikes = _0x492d1e.sCellSpikes), undefined !== _0x492d1e.sTransparentViruses && (gameSettings.sTransparentViruses = _0x492d1e.sTransparentViruses), undefined !== _0x492d1e.sClassicViruses && (gameSettings.sClassicViruses = _0x492d1e.sClassicViruses), undefined !== _0x492d1e.sPolygonShapes && (gameSettings.sPolygonShapes = _0x492d1e.sPolygonShapes), undefined !== _0x492d1e.sLineShapes && (gameSettings.sLineShapes = _0x492d1e.sLineShapes), undefined !== _0x492d1e.sBubbleCells && (gameSettings.sBubbleCells = _0x492d1e.sBubbleCells), undefined !== _0x492d1e.sGraphics && (gameSettings.sGraphics = _0x492d1e.sGraphics), undefined !== _0x492d1e.sMobileLeft && (gameSettings.sMobileLeft = _0x492d1e.sMobileLeft), undefined !== _0x492d1e.sMobileFeedLock)) {
-        gameSettings.sMobileFeedLock = _0x492d1e.sMobileFeedLock;
-    }
-    _0x536824 = false;
-    _0x5df715(0);
+    canEditGameSettings = false;
+    _0x5df715(gameSettings.skinId);
     _0x5cfc91(gameSettings.wearablesSelected);
     $("#cSkins").prop("checked", gameSettings.sSkins).change();
-    $("#cWearables").prop("checked", true).change();
-    $("#cColors").prop("checked", true).change();
-    $("#cNames").prop("checked", true).change();
-    $("#cMinionNames").prop("checked", true).change();
-    $("#cMass").prop("checked", true).change();
-    $("#cFood").prop("checked", true).change();
-    $("#cFoodHalf").prop("checked", false).change();
-    $("#cCellAnimations").prop("checked", true).change();
-    $("#cSkinAnimations").prop("checked", true).change();
-    $("#cMapBorder").prop("checked", true).change();
-    $("#cFancyGrid").prop("checked", true).change();
-    $("#cSectionGrid").prop("checked", false).change();
-    $("#cGrid").prop("checked", false).change();
-    $("#cCustomBack").prop("checked", false).change();
-    $("input[name=customBackType][value=0]").prop("checked", true).change();
-    $("#customBackOpacitySlider").val(50).change();
-    $("#cCustomBackClip").prop("checked", false).change();
-    $("#cCustomBackEnableColor").prop("checked", false).change();
-    $("#customBackColorPicker").val("#000000").change();
-    $("#cDark").prop("checked", false).change();
-    $("#cSlowMotion").prop("checked", false).change();
-    $("#cFPS").prop("checked", true).change();
-    $("#cZoom").prop("checked", true).change();
-    $("#cSounds").prop("checked", true).change();
-    $("#cFixedZoom").prop("checked", false).change();
-    $("#cMinionUi").prop("checked", false).change();
-    $("#cLeaderboard").prop("checked", true).change();
-    $("#cChat").prop("checked", true).change();
-    $("#cChatSize").prop("checked", false).change();
-    $("#cMinimap").prop("checked", true).change();
-    $("#cCellBorders").prop("checked", false).change();
-    $("#cLargeNames").prop("checked", false).change();
-    $("#cNameOutlines").prop("checked", true).change();
-    $("#cCellSpikes").prop("checked", true).change();
-    $("#cClassicViruses").prop("checked", false).change();
-    $("#cPolygonShapes").prop("checked", false).change();
-    $("#cLineShapes").prop("checked", false).change();
-    $("#cBubbleCells").prop("checked", false).change();
-    $("#oGraphics").val('0').change();
-    _0x536824 = true;
+    $("#cWearables").prop("checked", gameSettings.sWearables).change();
+    $("#cColors").prop("checked", gameSettings.sColors).change();
+    $("#cNames").prop("checked", gameSettings.sNames).change();
+    $("#cMinionNames").prop("checked", gameSettings.sMinionNames).change();
+    $("#cMass").prop("checked", gameSettings.sMass).change();
+    $("#cFood").prop("checked", gameSettings.sFood).change();
+    $("#cFoodHalf").prop("checked", gameSettings.sFoodHalf).change();
+    $("#cCellAnimations").prop("checked", gameSettings.sCellAnimations).change();
+    $("#cSkinAnimations").prop("checked", gameSettings.sSkinAnimations).change();
+    $("#cMapBorder").prop("checked", gameSettings.sMapBorder).change();
+    $("#cFancyGrid").prop("checked", gameSettings.sFancyGrid).change();
+    $("#cSectionGrid").prop("checked", gameSettings.sSectionGrid).change();
+    $("#cGrid").prop("checked", gameSettings.sGrid).change();
+    $("#cCustomBack").prop("checked", gameSettings.sCustomBack).change();
+    $("input[name=customBackType][value=0]").prop("checked", gameSettings.sCustomBackType).change();
+    $("#customBackOpacitySlider").val(gameSettings.sustomBackOpacitySlider).change();
+    $("#cCustomBackClip").prop("checked", gameSettings.sCustomBackClip).change();
+    $("#cCustomBackEnableColor").prop("checked", gameSettings.sCustomBackEnableColor).change();
+    $("#customBackColorPicker").val(gameSettings.sCustomBackColor).change();
+    $("#cDark").prop("checked", gameSettings.sDark).change();
+    $("#cSlowMotion").prop("checked", gameSettings.sSlowMotion).change();
+    $("#cFPS").prop("checked", gameSettings.sFPS).change();
+    $("#cZoom").prop("checked", gameSettings.sZoom).change();
+    $("#cSounds").prop("checked", gameSettings.sSounds).change();
+    $("#cFixedZoom").prop("checked", gameSettings.sFixedZoom).change();
+    $("#cMinionUi").prop("checked", gameSettings.sMinionUi).change();
+    $("#cLeaderboard").prop("checked", gameSettings.sLeaderboard).change();
+    $("#cChat").prop("checked", gameSettings.sChat).change();
+    $("#cChatSize").prop("checked", gameSettings.sChatSize).change();
+    $("#cMinimap").prop("checked", gameSettings.sMinimap).change();
+    $("#cCellBorders").prop("checked", gameSettings.sCellBorders).change();
+    $("#cLargeNames").prop("checked", gameSettings.sLargeNames).change();
+    $("#cNameOutlines").prop("checked", gameSettings.sNameOutlines).change();
+    $("#cCellSpikes").prop("checked", gameSettings.sCellSpikes).change();
+    $("#cClassicViruses").prop("checked", gameSettings.sClassicViruses).change();
+    $("#cPolygonShapes").prop("checked", gameSettings.sPolygonShapes).change();
+    $("#cLineShapes").prop("checked", gameSettings.sLineShapes).change();
+    $("#cBubbleCells").prop("checked", gameSettings.sBubbleCells).change();
+    $("#oGraphics").val(gameSettings.sGraphics).change();
+    canEditGameSettings = true;
     (() => {
         var _0xde8d5d;
         if (window.localStorage.hotkeys && (undefined !== (_0xde8d5d = JSON.parse(window.localStorage.hotkeys)).Space && (_0x3569f8.Space = _0xde8d5d.Space), undefined !== _0xde8d5d.W && (_0x3569f8.W = _0xde8d5d.W), undefined !== _0xde8d5d.V && (_0x3569f8.V = _0xde8d5d.V), undefined !== _0xde8d5d.Z && (_0x3569f8.Z = _0xde8d5d.Z), undefined !== _0xde8d5d.F && (_0x3569f8.F = _0xde8d5d.F), undefined !== _0xde8d5d.Q && (_0x3569f8.Q = _0xde8d5d.Q), undefined !== _0xde8d5d.E && (_0x3569f8.E = _0xde8d5d.E), undefined !== _0xde8d5d.S && (_0x3569f8.S = _0xde8d5d.S), undefined !== _0xde8d5d.A && (_0x3569f8.A = _0xde8d5d.A), undefined !== _0xde8d5d.X && (_0x3569f8.X = _0xde8d5d.X), undefined !== _0xde8d5d.I && (_0x3569f8.I = _0xde8d5d.I), undefined !== _0xde8d5d.C && (_0x3569f8.C = _0xde8d5d.C), undefined !== _0xde8d5d.D && (_0x3569f8.D = _0xde8d5d.D), undefined !== _0xde8d5d.T && (_0x3569f8.T = _0xde8d5d.T), undefined !== _0xde8d5d.M && (_0x3569f8.M = _0xde8d5d.M), undefined !== _0xde8d5d.W360 && (_0x3569f8.W360 = _0xde8d5d.W360), undefined !== _0xde8d5d.DW)) {
@@ -244,7 +295,7 @@ window.onload = function() {
         }
     })("general", "cbgDataURL", function(_0x5a56e4) {
         if ('' != (_0x5a56e4 = _0x5a56e4 || '')) {
-            if (_0x12e7a7 || _0x14d497) {
+            if (gameSettings.sCustomBack || _0x14d497) {
                 _0x350e59(_0x5a56e4, false);
             } else {
                 _0x2d537c = _0x5a56e4;
@@ -428,14 +479,13 @@ window.onload = function() {
         }
     });
     _0x2216eb.onclick = function(_0xd6bc5) {
-        showSkin(_0x28aabd, false);
+        showSkin(gameSettings.skinId, false);
         _0xd6bc5.stopPropagation();
     };
     _0x2216eb.onmousedown = function(_0x29fb33) {
         if (2 == _0x29fb33.button) {
             _0x5df715(0);
             _0x94dbbc();
-            _0xbb1a8c();
         }
     };
     _0x2216eb.oncontextmenu = _0x5f4cbe.oncontextmenu = _0x4c920b;
@@ -477,13 +527,13 @@ window.onload = function() {
     _0x118a13.onmouseenter = _0x118a13.onmousemove = function(_0x43b52c) {
         if (!_0x1cf392) {
             _0x1cf392 = true;
-            _0x5cfda7();
+            reloadBackground();
         }
     };
     _0x118a13.onmouseleave = function(_0x7beeb1) {
         if (_0x1cf392) {
             _0x1cf392 = false;
-            _0x5cfda7();
+            reloadBackground();
         }
     };
     $.fn.o = function(_0x5312fa, _0x36c5ab, _0x5de99e) {
@@ -957,7 +1007,7 @@ window.onload = function() {
                     _0x472070.selectionStart = _0x472070.selectionEnd = _0x40774a.length;
                     _0x472070.blur();
                     _0xbbfdd2 = false;
-                } else if (!(_0x5eeb3b || 0 != $("div.modal.in:visible").length)) {
+                } else if (gameSettings.sChat && 0 === $("div.modal.in:visible").length) {
                     _0x472070.focus();
                     _0xbbfdd2 = true;
                 }
@@ -1173,7 +1223,7 @@ function _0x495b59(_0x5e7ad1) {
         var _0x5e7ad1 = _0x5e7ad1.innerHTML;
         if (_0x5e7ad1) {
             if ("/ping" == _0x5e7ad1) {
-                if (!_0x1566f5) {
+                if (!gameSettings.sFPS) {
                     setFPS(1);
                 }
                 if (!pingTime) {
@@ -1181,7 +1231,7 @@ function _0x495b59(_0x5e7ad1) {
                 }
                 _0x5e7ad1 = "📢 My ping is: " + pingTime + ". FPS: " + _0xe31776;
             } else if ("/fps" == _0x5e7ad1) {
-                if (!_0x1566f5) {
+                if (!gameSettings.sFPS) {
                     setFPS(1);
                 }
                 _0x5e7ad1 = "📢 My FPS is: " + _0xe31776 + ". Ping: " + pingTime;
@@ -1321,7 +1371,7 @@ function _0x3169a6(_0x4dc13e) {
                     new PacketWriter(6).setUint8(60).setUint8(1).setUint32(_0x5c09e8.l).send();
                 }
                 $("#contextPlayerSkin").css("background-color", _0x5c09e8.color);
-                if (_0x5c09e8._ && _0xfd65d9 && (0 != _0x5c09e8.skinId && !_0x3df17b || 0 != _0x5c09e8.N)) {
+                if (_0x5c09e8._ && gameSettings.sSkins && (0 != _0x5c09e8.skinId && !_0x3df17b || 0 != _0x5c09e8.N)) {
                     if (0 == _0x5c09e8.skinId || _0x3df17b) {
                         $("#contextPlayerSkin").css("background-image", "url(skins/objects/" + _0x5c09e8.N.toString() + "_lo.png?v=" + objectsApiVersion + ")");
                     } else {
@@ -1331,7 +1381,7 @@ function _0x3169a6(_0x4dc13e) {
                     $("#contextPlayerSkin").css("background-image", '');
                 }
                 for (var _0x5673e8 = 1; _0x5673e8 <= 5; _0x5673e8++) {
-                    if (_0x5c09e8.B && _0x4b4ed5 && _0x5673e8 <= _0x5c09e8.B.length) {
+                    if (_0x5c09e8.B && gameSettings.sWearables && _0x5673e8 <= _0x5c09e8.B.length) {
                         var _0x77372b = _0x5c09e8.B[_0x5673e8 - 1];
                         var _0x37c0a3 = wearableClasses[_0x77372b.P] || '';
                         try {
@@ -1660,7 +1710,7 @@ function _0x460313() {
                 sendSignal(94);
                 break;
             case "contextPartyMessage":
-                if (!_0x5eeb3b) {
+                if (gameSettings.sChat) {
                     _0x453f45 = "/party ";
                     (_0x3577b3 = document.getElementById("chtbox")).value = _0x453f45;
                     _0x3577b3.selectionStart = _0x3577b3.selectionEnd = _0x453f45.length;
@@ -2499,13 +2549,12 @@ function _0x3359de(_0x5f4291) {
 }
 
 function _0x1450ce() {
-    var _0x2b58c0 = _0x286c1f ? 0.001 : 1;
+    var _0x2b58c0 = gameSettings.sZoom ? 0.001 : 1;
     if (4 < (_0x423e1a = _0x423e1a < _0x2b58c0 ? _0x2b58c0 : _0x423e1a) * _0x3e50d9) {
         _0x423e1a = 4 / _0x3e50d9;
     }
-    if (_0x1e208d && 0 < framesCounter) {
-        _0x4c4c0f = 0.2 * _0x585560();
-        _0xbb1a8c();
+    if (gameSettings.sFixedZoom && 0 < framesCounter) {
+        gameSettings.fixedZoomScale = 0.2 * _0x585560();
     }
 }
 
@@ -2521,10 +2570,10 @@ function _0x8f51f1() {
         $("#invisibleOverlay").hide();
         _0x284f1f = !(_0x1fc846 = false);
         if (isReady() && _0x284f1f && null != currentNickname) {
-            var _0x4de013 = new PacketWriter(4 + 2 * _0x4bb827.length + 2 * currentNickname.length);
-            _0x4de013.setUint8(1).setUint16(_0x28aabd).setUint8(_0x4bb827.length);
-            for (let _0xfae066 = 0; _0xfae066 < _0x4bb827.length; _0xfae066++) {
-                _0x4de013.setUint16(_0x4bb827[_0xfae066].wearId);
+            var _0x4de013 = new PacketWriter(4 + 2 * gameSettings.wearablesSelected.length + 2 * currentNickname.length);
+            _0x4de013.setUint8(1).setUint16(gameSettings.skinId).setUint8(gameSettings.wearablesSelected.length);
+            for (let _0xfae066 = 0; _0xfae066 < gameSettings.wearablesSelected.length; _0xfae066++) {
+                _0x4de013.setUint16(gameSettings.wearablesSelected[_0xfae066].wearId);
             }
             _0x4de013.setString(currentNickname).send();
             if (0 === _0xc52211.length) {
@@ -2653,7 +2702,7 @@ function _0x411213(_0x9db3a7) {
             "cv": 2 * _0x556e60,
             "ch": _0x950276,
             "ccv2": _0x556e60 - 2,
-            "abl": 261, // encodeURIComponent(_0x11d218).length
+            "abl": 288, // encodeURIComponent(_0x11d218).length
             "cp": 61,
             "vv": 156
         })
@@ -2794,7 +2843,7 @@ function _0x564895(_0x98e624) {
 }
 
 function _0x14f052() {
-    _0x5af7fe.push({
+    chatMessages.push({
         "Y": false,
         "$": 0,
         "l": 0,
@@ -2905,7 +2954,7 @@ function _0x215896() {
     }
     _0x368208();
     if (_0x3c3250) {
-        if (_0x36d371) {
+        if (gameSettings.sLeaderboard) {
             var _0xf261be;
             var _0x416571;
             var _0x40d243;
@@ -2966,7 +3015,7 @@ function _0x215896() {
                     _0x5e49f7.lineWidth = 1;
                     _0x5e49f7.strokeStyle = _0x15f2d8.ie;
                     _0x5e49f7.stroke();
-                    if (_0x15f2d8.skinId && _0xfd65d9 && ((_0x2e4d3d = skinImagesHigh[_0x15f2d8.skinId + "_lo"]) || (_0x58d0e1(_0x15f2d8.skinId), _0x2e4d3d = skinImagesHigh[_0x15f2d8.skinId + "_lo"]), _0x2e4d3d) && _0x2e4d3d.complete && 0 != _0x2e4d3d.width) {
+                    if (_0x15f2d8.skinId && gameSettings.sSkins && ((_0x2e4d3d = skinImagesHigh[_0x15f2d8.skinId + "_lo"]) || (_0x58d0e1(_0x15f2d8.skinId), _0x2e4d3d = skinImagesHigh[_0x15f2d8.skinId + "_lo"]), _0x2e4d3d) && _0x2e4d3d.complete && 0 != _0x2e4d3d.width) {
                         _0x5e49f7.beginPath();
                         _0x5e49f7.arc(22, 22, 11, 0, 2 * Math.PI, false);
                         _0x5e49f7.save();
@@ -2974,7 +3023,7 @@ function _0x215896() {
                         _0x5e49f7.drawImage(_0x2e4d3d, 11, 11, 22, 22);
                         _0x5e49f7.restore();
                     }
-                    if (_0x15f2d8.B && _0x4b4ed5) {
+                    if (_0x15f2d8.B && gameSettings.sWearables) {
                         for (_0x3ea109 = 0; _0x3ea109 < _0x15f2d8.B.length; _0x3ea109++) {
                             var _0x2e4d3d;
                             var _0x2a2cb4;
@@ -3004,7 +3053,7 @@ function _0x215896() {
                             _0x5e49f7.font = _0x19f04f + "px Ubuntu, serif";
                             _0x40d243 = _0x5e49f7.measureText(_0x1fd0b5).width;
                             _0x5e49f7.font = _0x19f04f + "px Ubuntu";
-                            _0x5e49f7.fillStyle = 1 == _0xf261be ? "#FFAAAA" : 2 == _0xf261be ? "#FFCCAA" : 3 == _0xf261be ? _0x33523f ? "#777777" : "#A0A0A0" : "#FFFFFF";
+                            _0x5e49f7.fillStyle = 1 == _0xf261be ? "#FFAAAA" : 2 == _0xf261be ? "#FFCCAA" : 3 == _0xf261be ? gameSettings.sDark ? "#777777" : "#A0A0A0" : "#FFFFFF";
                             _0x5e49f7.fillText(_0x1fd0b5, ~~((_0x4a720f ? Math.max((_0x139239 - _0x40d243) / 2, 5 * _0x2d45ca) : 5 * _0x2d45ca) + 0.5), ~~((61 + 25 * _0x1e1569) * _0x2d45ca + 0.5));
                         }
                     }
@@ -3031,31 +3080,28 @@ function _0x215896() {
         _0xe31aef = 0;
     }
     if (_0x4cb089 && _0x2332bb && ((() => {
-            var _0x1afc1f = 15;
-            if (!_0x46bbb2) {
-                _0x1afc1f = 25;
-            }
+            var _0x1afc1f = gameSettings.sChatSize ? 25 : 15;
             var _0x4f2a5f;
             var _0x546ce1;
             var _0x8e2e84 = ~~(Math.max(_0x1afc1f * Math.min(1.6 * _0x1058ed, _0x53f1a5, 1400) / 1400, 8) + 0.5);
             var _0x5952c4 = _0x8e2e84 / _0x1afc1f;
             var _0x1ee7cb = Math.min(12, Math.max(~~((_0x1058ed - 132) / ~~(20 * _0x5952c4 + 0.5)), 3));
             var _0x2f227f = [];
-            var _0x47744f = _0x5af7fe.length;
+            var _0x47744f = chatMessages.length;
             var _0x74f54b = 0;
             var _0x5b2664 = 0;
             var _0x232de1 = 0;
             var _0x290625 = 0;
-            var _0x11e944 = _0x33523f ? "#F5F6CE" : "#444444";
-            b72 = _0x33523f ? "#ff8100" : "#c96d0e";
-            b73 = _0x33523f ? "#9fc5e8" : "#6fa8dc";
-            if (!_0x5eeb3b && 0 < _0x47744f) {
+            var _0x11e944 = gameSettings.sDark ? "#F5F6CE" : "#444444";
+            b72 = gameSettings.sDark ? "#ff8100" : "#c96d0e";
+            b73 = gameSettings.sDark ? "#9fc5e8" : "#6fa8dc";
+            if (gameSettings.sChat && 0 < _0x47744f) {
                 _0x44020a.font = _0x8e2e84 + "px Ubuntu, serif";
                 var _0x67fcf;
                 var _0x4aac3c;
                 var _0xb4b953;
                 for (var _0x461e7e = 0; _0x461e7e < _0x47744f; _0x461e7e++) {
-                    (_0x53a19d = _0x5af7fe[_0x461e7e]).filter = !(0 != _0xd835b8 && (_0xd835b8 != _0x53a19d.category || 1 != _0xd835b8 && '' != _0x1723aa && _0x1723aa.toLowerCase() != _0x53a19d.name.toLowerCase() && _0x1723aa.toLowerCase() != _0x53a19d.receiver.toLowerCase()) || _0x53a19d.R != _0x4e4df3 && _0x2f707e[_0x53a19d.R] || _0x53a19d.O != _0x4e4df3 && _0x538120[_0x53a19d.O]);
+                    (_0x53a19d = chatMessages[_0x461e7e]).filter = !(0 != _0xd835b8 && (_0xd835b8 != _0x53a19d.category || 1 != _0xd835b8 && '' != _0x1723aa && _0x1723aa.toLowerCase() != _0x53a19d.name.toLowerCase() && _0x1723aa.toLowerCase() != _0x53a19d.receiver.toLowerCase()) || _0x53a19d.R != _0x4e4df3 && _0x2f707e[_0x53a19d.R] || _0x53a19d.O != _0x4e4df3 && _0x538120[_0x53a19d.O]);
                     if (_0x53a19d.filter) {
                         _0x5b2664++;
                     }
@@ -3126,7 +3172,7 @@ function _0x215896() {
                 }
                 _0x290625 = _0x1ee7cb < _0x5b2664 ? (1 - _0x190280) * (_0x5b2664 - _0x1ee7cb) : (_0x190280 = 1, 0);
                 for (_0x461e7e = _0x47744f - 1; 0 <= _0x461e7e; _0x461e7e--) {
-                    var _0x53a19d = _0x5af7fe[_0x461e7e];
+                    var _0x53a19d = chatMessages[_0x461e7e];
                     if (_0x53a19d.filter && ~~_0x290625 <= ++_0x232de1 - 1) {
                         var _0x56941e = _0x53a19d.cache;
                         _0x4f2a5f = _0x56941e.me;
@@ -3215,7 +3261,7 @@ function _0x215896() {
                     $("#chtContent").removeClass("scrollbar");
                     _0x666805 = false;
                 }
-                _0x44020a.globalAlpha = _0x33523f ? 0.8 : 0.95;
+                _0x44020a.globalAlpha = gameSettings.sDark ? 0.8 : 0.95;
                 for (_0x461e7e = 0; _0x461e7e < _0x232de1; _0x461e7e++) {
                     if ((_0x56941e = (_0x53a19d = _0x2f227f[_0x461e7e]).cache).he) {
                         _0x56941e.canvas.width = Math.max(~~(Math.min(_0x56941e.le + _0x56941e.de + _0x56941e.width2, _0x53f1a5 - 10) * _0x358119 + 0.5), 1);
@@ -3296,27 +3342,27 @@ function _0x215896() {
     var _0x243b5e = _0xb14342.globalAlpha = 1;
     var _0x4d7270 = _0x3e50d9 * _0x28ad4b;
     var _0x236d05 = 0;
-    if (_0x3b1e5e = _0x41cc0f || _0x277c68 || _0x1e5f5a || _0x12e7a7) {
-        if (_0x41cc0f || _0x12e7a7 && 2 == _0x19d645) {
+    if (_0x3b1e5e = gameSettings.sFancyGrid || gameSettings.sSectionGrid || gameSettings.sGrid || gameSettings.sCustomBack) {
+        if (gameSettings.sFancyGrid || gameSettings.sCustomBack && 2 == gameSettings.sCustomBackType) {
             _0x243b5e = 0.375 < _0x4d7270 ? 1 : 0.1875 < _0x4d7270 ? 2 : 0.09375 < _0x4d7270 ? 4 : 0.046875 < _0x4d7270 ? 8 : 0.0234375 < _0x4d7270 ? 16 : 32;
             _0x3b1e5e = (_0x236d05 = 0.046875) / 2 < _0x3e50d9 * _0x358119;
-        } else if (_0x277c68 || _0x12e7a7 && 2 != _0x19d645) {
+        } else if (gameSettings.sSectionGrid || gameSettings.sCustomBack && 2 != gameSettings.sCustomBackType) {
             _0x3c5dfa = _0x28f6af - _0x5c1aa9;
             _0x31da46 = _0x500945 - _0x4ba286;
             _0x4d7270 = Math.max(_0x3c5dfa, _0x31da46) * _0x4d7270;
-            _0x243b5e = _0x277c68 ? 3000 < _0x4d7270 ? 1 : 1500 < _0x4d7270 ? 2 : 750 < _0x4d7270 ? 4 : 8 : (_0x12e7a7 && 2 != _0x19d645 && (null == (_0x3a579c = _0x46d4aa[_0x62fded = "customback_fit1"]) && (_0x4c0e03(), _0x3a579c = _0x46d4aa[_0x62fded]), _0x3b1e5e = _0x3a579c && _0x3a579c.complete) && (_0x330e7f = _0x3a579c.width / _0x3a579c.height, _0x4d7270 = (1 < _0x330e7f ? _0x3c5dfa / _0x31da46 < _0x330e7f ? _0x31da46 * _0x330e7f : _0x3c5dfa : _0x330e7f < _0x3c5dfa / _0x31da46 ? _0x3c5dfa / _0x330e7f : _0x31da46) * _0x3e50d9), 3072 < _0x4d7270 ? 1 : 1536 < _0x4d7270 ? 2 : 768 < _0x4d7270 ? 4 : 8);
-        } else if (_0x1e5f5a) {
+            _0x243b5e = gameSettings.sSectionGrid ? 3000 < _0x4d7270 ? 1 : 1500 < _0x4d7270 ? 2 : 750 < _0x4d7270 ? 4 : 8 : (gameSettings.sCustomBack && 2 != gameSettings.sCustomBackType && (null == (_0x3a579c = _0x46d4aa[_0x62fded = "customback_fit1"]) && (_0x4c0e03(), _0x3a579c = _0x46d4aa[_0x62fded]), _0x3b1e5e = _0x3a579c && _0x3a579c.complete) && (_0x330e7f = _0x3a579c.width / _0x3a579c.height, _0x4d7270 = (1 < _0x330e7f ? _0x3c5dfa / _0x31da46 < _0x330e7f ? _0x31da46 * _0x330e7f : _0x3c5dfa : _0x330e7f < _0x3c5dfa / _0x31da46 ? _0x3c5dfa / _0x330e7f : _0x31da46) * _0x3e50d9), 3072 < _0x4d7270 ? 1 : 1536 < _0x4d7270 ? 2 : 768 < _0x4d7270 ? 4 : 8);
+        } else if (gameSettings.sGrid) {
             _0x3b1e5e = 0.1 < _0x3e50d9 * _0x358119;
         }
     }
-    var _0x4d7270 = _0x41cc0f && _0x3b1e5e;
-    var _0x90bd87 = _0x277c68 && _0x3b1e5e;
-    var _0x5db90e = _0x1e5f5a && _0x3b1e5e;
-    var _0xccf34 = _0x12e7a7 && 2 == _0x19d645 && _0x3b1e5e;
-    var _0x5bd130 = _0x12e7a7 && 2 != _0x19d645 && _0x3b1e5e;
+    var _0x4d7270 = gameSettings.sFancyGrid && _0x3b1e5e;
+    var _0x90bd87 = gameSettings.sSectionGrid && _0x3b1e5e;
+    var _0x5db90e = gameSettings.sGrid && _0x3b1e5e;
+    var _0xccf34 = gameSettings.sCustomBack && 2 == gameSettings.sCustomBackType && _0x3b1e5e;
+    var _0x5bd130 = gameSettings.sCustomBack && 2 != gameSettings.sCustomBackType && _0x3b1e5e;
     if (_0x3b1e5e) {
         if (_0x4d7270) {
-            _0x3a579c = _0x46d4aa[(_0x965bf3 = _0x33523f ? "grid_fancy_dark" : "grid_fancy_white") + _0x243b5e];
+            _0x3a579c = _0x46d4aa[(_0x965bf3 = gameSettings.sDark ? "grid_fancy_dark" : "grid_fancy_white") + _0x243b5e];
             _0x1bc408 = _0x43c4be[_0x965bf3 + _0x243b5e];
             if (null == _0x3a579c) {
                 _0x46d4aa[_0x965bf3 + "1"] = newCanvasImage("img/" + _0x965bf3 + "1.png");
@@ -3359,7 +3405,7 @@ function _0x215896() {
             _0x5bd130 = _0x3b1e5e = _0x3a579c && _0x3a579c.complete;
         }
     }
-    _0xb14342.fillStyle = _0xe0e646 ? _0x32edda : _0x41cc0f ? _0x33523f ? "#0d0c0c" : "#f0f7fa" : _0x33523f ? "#0f0f0f" : "#F2FBFF";
+    _0xb14342.fillStyle = gameSettings.sCustomBackEnableColor ? gameSettings.sCustomBackColor : gameSettings.sFancyGrid ? gameSettings.sDark ? "#0d0c0c" : "#f0f7fa" : gameSettings.sDark ? "#0f0f0f" : "#F2FBFF";
     _0xb14342.fillRect(0, 0, _0x53f1a5, _0x1058ed);
     if (_0x3b1e5e) {
         if (_0x4d7270 || _0xccf34) {
@@ -3377,7 +3423,7 @@ function _0x215896() {
             if (0 < _0x31da46) {
                 _0x31da46 -= _0x3a579c.height * _0x330e7f;
             }
-            if (_0x1407a2) {
+            if (gameSettings.sCustomBackClip) {
                 _0x2058b6 = Math.max(_0x2058b6, -_0x59034c + _0x2263d7 + mapInfos.left);
                 _0x20b8b1 = Math.max(_0x20b8b1, -_0x4ce984 + _0x223539 + mapInfos.top);
                 _0x5b5b68 = Math.min(_0x5b5b68, -_0x59034c + _0x2263d7 + mapInfos.right) - _0x2058b6;
@@ -3385,7 +3431,7 @@ function _0x215896() {
             }
             if (0 < _0x5b5b68 && 0 < _0x547c24) {
                 if (_0xccf34) {
-                    _0xb14342.globalAlpha = _0x537d17 * _0x62fded;
+                    _0xb14342.globalAlpha = gameSettings.sCustomBackOpacity * _0x62fded;
                 } else if (_0x62fded < 1) {
                     _0xb14342.globalAlpha = _0x62fded;
                 }
@@ -3402,7 +3448,7 @@ function _0x215896() {
                 var _0x31da46 = _0x500945 - _0x4ba286;
                 if (_0x90bd87) {
                     _0x3c5dfa = _0x31da46 = Math.max(_0x3c5dfa, _0x31da46);
-                } else if (_0x5bd130 && 1 == _0x19d645) {
+                } else if (_0x5bd130 && 1 == gameSettings.sCustomBackType) {
                     if ((_0x330e7f = _0x3a579c.width / _0x3a579c.height) < _0x3c5dfa / _0x31da46) {
                         _0x31da46 = _0x3c5dfa / _0x330e7f;
                     } else {
@@ -3435,12 +3481,12 @@ function _0x215896() {
                     _0x236d05 = _0x3a579c.height - _0x3b1e5e;
                     _0x547c24 = (-_0x4ce984 + _0x223539 + _0x31da46 + _0x4ba286) * _0x3e50d9 - _0x20b8b1;
                 }
-                if (_0x5bd130 && 1 == _0x19d645 && _0x1407a2 && 0 < _0x5b5b68 && 0 < _0x547c24 && (_0x62fded = (_0x28f6af - Math.max(_0x5c1aa9, _0x59034c - _0x2263d7)) * _0x3e50d9, _0x4f95d4 = (_0x500945 - Math.max(_0x4ba286, _0x4ce984 - _0x223539)) * _0x3e50d9, _0x62fded < _0x5b5b68 && (_0x4d7270 *= _0x62fded / _0x5b5b68, _0x5b5b68 = _0x62fded), _0x4f95d4 < _0x547c24)) {
+                if (_0x5bd130 && 1 == gameSettings.sCustomBackType && gameSettings.sCustomBackClip && 0 < _0x5b5b68 && 0 < _0x547c24 && (_0x62fded = (_0x28f6af - Math.max(_0x5c1aa9, _0x59034c - _0x2263d7)) * _0x3e50d9, _0x4f95d4 = (_0x500945 - Math.max(_0x4ba286, _0x4ce984 - _0x223539)) * _0x3e50d9, _0x62fded < _0x5b5b68 && (_0x4d7270 *= _0x62fded / _0x5b5b68, _0x5b5b68 = _0x62fded), _0x4f95d4 < _0x547c24)) {
                     _0x236d05 *= _0x4f95d4 / _0x547c24;
                     _0x547c24 = _0x4f95d4;
                 }
                 if (0 < _0x4d7270 && 0 < _0x236d05 && 0 < _0x5b5b68 && 0 < _0x547c24) {
-                    _0xb14342.globalAlpha = _0x5bd130 ? _0x537d17 : _0x33523f ? 0.3 : 0.2;
+                    _0xb14342.globalAlpha = _0x5bd130 ? gameSettings.sCustomBackOpacity : gameSettings.sDark ? 0.3 : 0.2;
                     _0xb14342.drawImage(_0x3a579c, _0x965bf3, _0x3b1e5e, _0x4d7270, _0x236d05, _0x2058b6, _0x20b8b1, _0x5b5b68, _0x547c24);
                 }
             } else {
@@ -3467,8 +3513,8 @@ function _0x215896() {
                         b: 0
                     };
                     var _0xccf34 = Math.min(0.25 * Math.max(_0x3e50d9 * _0x358119 - 0.05, 0), 0.3);
-                    var _0x1bc408 = _0xe0e646 ? customBackgroundColor : _0x33523f ? _0x4da7fc : _0x1f0f3e;
-                    var _0x90bd87 = _0x33523f ? _0x52da49 : _0x20488f;
+                    var _0x1bc408 = gameSettings.sCustomBackEnableColor ? customBackgroundColor : gameSettings.sDark ? _0x4da7fc : _0x1f0f3e;
+                    var _0x90bd87 = gameSettings.sDark ? _0x52da49 : _0x20488f;
                     _0xb14342.strokeStyle = rgbToHex(~~(_0x1bc408.r + (_0x90bd87.r - _0x1bc408.r) * _0xccf34), ~~(_0x1bc408.g + (_0x90bd87.g - _0x1bc408.g) * _0xccf34), ~~(_0x1bc408.b + (_0x90bd87.b - _0x1bc408.b) * _0xccf34));
                     _0xb14342.save();
                     _0xb14342.scale(_0x3e50d9, _0x3e50d9);
@@ -3512,12 +3558,12 @@ function _0x215896() {
     }
     _0xb14342.scale(_0x3e50d9, _0x3e50d9);
     _0xb14342.translate(-_0x59034c + _0x2263d7, -_0x4ce984 + _0x223539);
-    if (!_0x1f1bbd) {
+    if (gameSettings.sMapBorder) {
         _0x2c9685 = Math.max(20, 1 / _0x3e50d9);
         _0xb14342.lineWidth = _0x2c9685;
         _0xb14342.globalAlpha = 1;
         _0x330e7f = Math.clamp(5 * _0x3e50d9 * _0x358119, mapInfos.draw && _0x25fdfa ? 0.5 : 0.2, 1);
-        _0x62fded = _0xe0e646 ? customBackgroundColor : _0x33523f ? _0x2b9f9d : _0x214596;
+        _0x62fded = gameSettings.sCustomBackEnableColor ? customBackgroundColor : gameSettings.sDark ? _0x2b9f9d : _0x214596;
         _0xb14342.strokeStyle = rgbToHex(~~(_0x62fded.r + (204 - _0x62fded.r) * _0x330e7f), ~~(_0x62fded.g + (48 - _0x62fded.g) * _0x330e7f), ~~(_0x62fded.b + (48 - _0x62fded.b) * _0x330e7f));
         if (mapInfos.top + _0x2c9685 / 2 > _0x4ce984 - _0x223539) {
             _0xb14342.beginPath();
@@ -3582,7 +3628,7 @@ function _0x215896() {
         if (_0x2332bb) {
             _0x3a579c = Math.max(Math.min(1.6 * _0x1058ed, _0x53f1a5, 1400) / 1400, 0.5);
             _0x5bd130 = "Mass: " + ~~_0x5bd130;
-            _0x965bf3 = _0x33523f ? "#FFFFFF" : "#626262";
+            _0x965bf3 = gameSettings.sDark ? "#FFFFFF" : "#626262";
             _0x3b1e5e = ~~(24 * _0x3a579c + 0.5);
             _0x236d05 = _0x28ad4b;
             if (_0x351ad0) {
@@ -3651,8 +3697,8 @@ function _0x215896() {
             _0xb14342.translate(-_0x59034c + _0x2263d7, -_0x4ce984 + _0x223539),
             _0x496adb && 0 == _0x489844 && (
                 _0xb14342.beginPath(),
-                _0xb14342.arc(_0x2c22b1.x, _0x2c22b1.y, 60 / _0x3e50d9, 0, 2 * Math.PI, false),
-                _0xb14342.arc(_0x2c22b1.x, _0x2c22b1.y, 50 / _0x3e50d9, 0, 2 * Math.PI, false),
+                _0xb14342.arc(_0x114a07.x, _0x114a07.y, 60 / _0x3e50d9, 0, 2 * Math.PI, false),
+                _0xb14342.arc(_0x114a07.x, _0x114a07.y, 50 / _0x3e50d9, 0, 2 * Math.PI, false),
                 _0xb14342.globalAlpha = 0.2,
                 _0xb14342.fillStyle = _0x496adb ? "#00FF00" : "#FF0000",
                 _0xb14342.fill("evenodd")
@@ -3681,7 +3727,7 @@ function _0x215896() {
             });
         }
     }
-    if (_0x2c6f91 && !_0x18306d && _0x12af20) {
+    if (_0x2c6f91 && gameSettings.sMinimap && _0x12af20) {
         var _0x34eb69;
         var _0x13a1ae;
         var _0x270f24 = _0x51f702 = ~~(200 * (_0x34eb69 = ~~(Math.max(200 * Math.min(1.6 * _0x1058ed, _0x53f1a5, 1400) / 1400, 90) + 0.5) / 200) + 0.5);
@@ -3723,7 +3769,7 @@ function _0x215896() {
         _0x5be4cd.scale(_0x51f702, _0x51f702);
         _0x5be4cd.translate(-_0x5c1aa9, -_0x4ba286);
         _0x25fdfa = _0x51f702 * _0x51f702 * _0x53f1a5 * _0x1058ed / (_0x3e50d9 * _0x3e50d9 * 200 * 200 * _0x34eb69 * _0x34eb69);
-        if (_0x33523f) {
+        if (gameSettings.sDark) {
             _0x5be4cd.globalAlpha = 0.4 <= _0x25fdfa ? 0.04 : 0.06 * (1 - _0x25fdfa / 0.4) + 0.04;
             _0x5be4cd.fillStyle = "#CCCCCC";
         } else {
@@ -3825,7 +3871,7 @@ function _0x215896() {
 
 function _0xae7145() {
     var _0x40966e;
-    _0x5af7fe.push({
+    chatMessages.push({
         "Y": false,
         "$": 0,
         "l": 0,
@@ -3918,7 +3964,6 @@ _0x1e9905 = '';
 challengeImageId = _0x38a139 = _0x1d4fed = _0x54207c = _0x20546f = 0;
 arrayOfKeyCodes = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
 drawHalfFood = false;
-_0x2792ec = false;
 if (void(_0x33d2a7 = _0x352c3f = _0x170049 = 0) !== window.localStorage && window.localStorage.getItem("crcx2") && 5 < window.localStorage.getItem("crcx2").length) {
     ag219_2 = window.localStorage.getItem("crcx2");
 }
@@ -4032,7 +4077,7 @@ class Cell {
             if (0 == this.skinId || _0x3df17b) {
                 if (0 != this.N) {
                     _0x5f2385 = _0x5d0bce = null;
-                    if (!(!_0xfd65d9 && 0 == this.i)) {
+                    if (!(!gameSettings.sSkins && 0 == this.i)) {
                         if (!(_0x5d0bce = wearablesAndObjectsImages[this.N + "_lo"])) {
                             _0x1cb610(this.N, this.i);
                             _0x5d0bce = wearablesAndObjectsImages[this.N + "_lo"];
@@ -4050,7 +4095,7 @@ class Cell {
                 this.ye = null;
             } else {
                 _0x5f2385 = _0x5d0bce = null;
-                if (_0xfd65d9) {
+                if (gameSettings.sSkins) {
                     if (!(_0x5d0bce = skinImagesHigh[this.skinId + "_lo"])) {
                         _0x58d0e1(this.skinId);
                         _0x5d0bce = skinImagesHigh[this.skinId + "_lo"];
@@ -4072,7 +4117,7 @@ class Cell {
                         };
                     }
                     _0x5d0bce = _0x5f2385 = null;
-                    if (_0xfd65d9 && _0x32b0e5) {
+                    if (gameSettings.sSkins && gameSettings.sSkinAnimations) {
                         if (!(_0x5d0bce = skinImagesLow[this.skinId + "_lo"])) {
                             _0x3991a0 = this.skinId;
                             _0x2a03ce = (_0x48a780[_0x3991a0] || 0).toString();
@@ -4092,7 +4137,7 @@ class Cell {
         Je(_0x59e23e) {
             var _0x463750 = null;
             var _0x5d0660 = null;
-            if (_0x4b4ed5) {
+            if (gameSettings.sWearables) {
                 if (!(_0x463750 = wearablesAndObjectsImages["W" + _0x59e23e.wearId + "_lo"])) {
                     _0x22f945(_0x59e23e.wearId);
                     _0x463750 = wearablesAndObjectsImages["W" + _0x59e23e.wearId + "_lo"];
@@ -4104,7 +4149,7 @@ class Cell {
         }
         Ve() {
             var _0x4c019b = this.be;
-            var _0x145478 = !_0x53ec10 && 2 == this.Be;
+            var _0x145478 = !gameSettings.sClassicViruses && 2 == this.Be;
             var _0x1dd76f = 4 == this.i ? 0.83 * this.size : this.size;
             var _0x4433fd = 0 != this.id ? this.size * _0xb66c8e : this.size;
             if (_0x145478) {
@@ -4172,12 +4217,12 @@ class Cell {
             delete _0x534f3c[this.id];
             this.fe = 1;
             this.ne = true;
-            if (_0x445cfe && (_0x23a795 || !this.Ue || _0x4400ec)) {
+            if (_0x445cfe && (gameSettings.sFood || !this.Ue || _0x4400ec)) {
                 _0xa92e4c.push(this);
             }
         }
         ae() {
-            var _0x270f49 = _0x4c1257 ? 480 : 120;
+            var _0x270f49 = gameSettings.sSlowMotion ? 480 : 120;
             var _0x3f5582 = (currentFrameTime - this.Fe) / _0x270f49;
             var _0x4e56ee = this.x;
             var _0x2fa8fa = this.y;
@@ -4192,7 +4237,7 @@ class Cell {
                     this.rotation -= 2 * Math.PI;
                 }
             }
-            if (_0x4c1257 && this.ga < 1) {
+            if (gameSettings.sSlowMotion && this.ga < 1) {
                 _0x3f5582 = (currentFrameTime - this.L) / _0x270f49;
                 this.ga = _0x3f5582 < 0 ? 0 : 1 < _0x3f5582 ? 1 : _0x3f5582;
             }
@@ -4202,17 +4247,17 @@ class Cell {
             return _0x332e49;
         }
         pe() {
-            var _0x282a29 = (this.B && _0x4b4ed5 ? 2.5 * this.size : this.size) + 40;
-            if (!_0x23a795 && this.Ue && (!this.ne || this.x == this.hx && this.y == this.hy) && !_0x4400ec || this.x + _0x282a29 < _0x59034c - _0x2263d7 || this.y + _0x282a29 < _0x4ce984 - _0x223539 || this.x - _0x282a29 > _0x59034c + _0x2263d7 || this.y - _0x282a29 > _0x4ce984 + _0x223539) {
+            var _0x282a29 = (this.B && gameSettings.sWearables ? 2.5 * this.size : this.size) + 40;
+            if (!gameSettings.sFood && this.Ue && (!this.ne || this.x == this.hx && this.y == this.hy) && !_0x4400ec || this.x + _0x282a29 < _0x59034c - _0x2263d7 || this.y + _0x282a29 < _0x4ce984 - _0x223539 || this.x - _0x282a29 > _0x59034c + _0x2263d7 || this.y - _0x282a29 > _0x4ce984 + _0x223539) {
                 if (this.ne && (this.ae(), 1 != this.i)) {
                     this.be = null;
                     this.strokeSize = 4 == this.i ? 0.83 * this.size : this.size;
                 }
             } else {
-                if (!_0x2792ec || !this.Ue || -1 != this.shouldDraw) {
-                    var _0x222c9e = _0x161144 && 2 == this.shape;
-                    var _0x683945 = _0xb4d644 && 3 <= this.shape || _0x222c9e;
-                    var _0x2c5c7d = !this.Be || !_0x345ceb || _0x683945 || _0x3e50d9 < (_0x53ec10 || 2 != this.Be ? 0.2 : 0.06) && 0 != this.id;
+                if (!gameSettings.sFoodHalf || !this.Ue || -1 != this.shouldDraw) {
+                    var _0x222c9e = gameSettings.sLineShapes && 2 == this.shape;
+                    var _0x683945 = gameSettings.sPolygonShapes && 3 <= this.shape || _0x222c9e;
+                    var _0x2c5c7d = !this.Be || !gameSettings.sCellSpikes || _0x683945 || _0x3e50d9 < (gameSettings.sClassicViruses || 2 != this.Be ? 0.2 : 0.06) && 0 != this.id;
                     var _0x58ffc6 = this.ne ? this.ae() : 1;
                     var _0x33867d = false;
                     var _0x1b2b2f = this.x;
@@ -4301,7 +4346,7 @@ class Cell {
                             }
                             _0xb14342.closePath();
                         } else {
-                            if (this.Ge && _0x345ceb) {
+                            if (this.Ge && gameSettings.sCellSpikes) {
                                 var _0x463db0 = this.strokeSize;
                                 var _0x2fe564 = currentFrameTime % 1000;
                                 var _0x2919e4 = _0x2fe564 <= 500 ? _0x2fe564 / 500 : 1 - (_0x2fe564 - 500) / 500;
@@ -4349,27 +4394,27 @@ class Cell {
                         }
                         _0xb14342.closePath();
                     }
-                    _0x282a29 = ((this.Be ? 0.03 : 0.05) < _0x3e50d9 || 0 == this.id) && (60 < this.size || this.Be || !this.Ue && 25 < this.size && 0.15 < _0x3e50d9 || _0x2dceca && (0.4 < _0x3e50d9 || 20 < this.size));
+                    _0x282a29 = ((this.Be ? 0.03 : 0.05) < _0x3e50d9 || 0 == this.id) && (60 < this.size || this.Be || !this.Ue && 25 < this.size && 0.15 < _0x3e50d9 || gameSettings.sBubbleCells && (0.4 < _0x3e50d9 || 20 < this.size));
                     if (!_0x222c9e) {
-                        _0x433539 = this.ga * (this.Oe ? 0.04 : this.Re ? 0.2 : _0x2dceca ? !_0x282a29 && this.Ue ? 1 : this.Be && false ? 0.7 : 0.4 : this.Ue ? 1 : this.Be && true || 14 == this.i ? 0.7 : 0.4 < _0x3e50d9 || 60 < this.size ? 0.95 : 1);
+                        _0x433539 = this.ga * (this.Oe ? 0.04 : this.Re ? 0.2 : gameSettings.sBubbleCells ? !_0x282a29 && this.Ue ? 1 : this.Be && false ? 0.7 : 0.4 : this.Ue ? 1 : this.Be && true || 14 == this.i ? 0.7 : 0.4 < _0x3e50d9 || 60 < this.size ? 0.95 : 1);
                         _0xb14342.globalAlpha = this.fe ? _0x433539 * (1 - _0x58ffc6) : _0x433539;
-                        _0xb14342.fillStyle = this.Re ? "#AAAAAA" : _0x246ae5 ? "#FFFFFF" : this.color;
+                        _0xb14342.fillStyle = this.Re ? "#AAAAAA" : gameSettings.sColors ? this.color : "#FFFFFF";
                         _0xb14342.fill();
                     }
-                    if ((_0x282a29 && (!_0x11baa8 || this.Be) || _0x222c9e) && !this.Oe || this.Oe && (this.Ie || _0x4400ec)) {
+                    if ((_0x282a29 && (gameSettings.sCellBorders || this.Be) || _0x222c9e) && !this.Oe || this.Oe && (this.Ie || _0x4400ec)) {
                         _0x433539 = this.ga;
                         _0xb14342.globalAlpha = this.fe ? _0x433539 * (1 - _0x58ffc6) : _0x433539;
-                        _0xb14342.lineWidth = this.Oe && (this.Ie || _0x4400ec) ? 30 : this.Ue ? 4 : _0x2dceca ? this.Be || 25 < this.size ? 6 : 4 : this.Be && this.size < 80 ? 8 : 10;
-                        _0xb14342.lineJoin = this.Be && (_0x53ec10 || 2 != this.Be || this.size < 70) ? "miter" : "round";
-                        _0xb14342.strokeStyle = this.Oe && (this.Ie || _0x4400ec) ? _0x33523f ? "#333333" : "#DDDDDD" : this.Re || _0x246ae5 ? "#AAAAAA" : _0x2dceca ? this.color : this.$e;
+                        _0xb14342.lineWidth = this.Oe && (this.Ie || _0x4400ec) ? 30 : this.Ue ? 4 : gameSettings.sBubbleCells ? this.Be || 25 < this.size ? 6 : 4 : this.Be && this.size < 80 ? 8 : 10;
+                        _0xb14342.lineJoin = this.Be && (gameSettings.sClassicViruses || 2 != this.Be || this.size < 70) ? "miter" : "round";
+                        _0xb14342.strokeStyle = this.Oe && (this.Ie || _0x4400ec) ? gameSettings.sDark ? "#333333" : "#DDDDDD" : this.Re || !gameSettings.sColors ? "#AAAAAA" : gameSettings.sBubbleCells ? this.color : this.$e;
                         _0xb14342.stroke();
                     }
                     if (1 != this.i) {
-                        if (this._ && (_0xfd65d9 || 0 != this.i) && !_0x222c9e && !this.Re) {
+                        if (this._ && (gameSettings.sSkins || 0 != this.i) && !_0x222c9e && !this.Re) {
                             if ((_0x282a29 = _0x683945 ? this.strokeSize * cellStrokeSizeMultiplier[this.shape] : this.Ge ? this.strokeSize * (1.275 + 0.075 * Math.abs(currentFrameTime % 500 / 250 - 1)) : 11 == this.i ? 1.28 * this.strokeSize : this.strokeSize) < this.size) {
                                 _0x282a29 = this.size;
                             }
-                            if (this.ye && _0x32b0e5) {
+                            if (this.ye && gameSettings.sSkinAnimations) {
                                 var _0x433539 = this.ye;
                                 var _0x5d47a4 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? _0x433539.Ye : _0x433539.qe;
                                 if (!_0x5d47a4) {
@@ -4399,11 +4444,11 @@ class Cell {
                                 this.reloadImage();
                                 _0x3d1099 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? this.xe : this.Se;
                             }
-                            if (_0x3d1099 && (_0x433539 = this.ga * (this.Oe ? 0.01 : _0x2dceca ? 0 != this.N ? 0.5 : 0.3 : 0 != this.N ? 0.85 : 1), _0xb14342.globalAlpha = this.fe ? _0x433539 * (1 - _0x58ffc6) : _0x433539, _0x473372 = _0x282a29, _0x472af5 = false, 16 == this.i ? (_0x473372 = _0x282a29 / 8, 1 == this.orientation && (_0xb14342.save(), _0x472af5 = true, _0xb14342.translate(_0x1b2b2f, _0x52fc0c), _0xb14342.rotate(Math.PI / 2), _0xb14342.translate(-_0x1b2b2f, -_0x52fc0c))) : 11 == this.i || (_0xb14342.save(), _0x472af5 = true, _0xb14342.clip()), _0xb14342.drawImage(_0x3d1099, _0x1b2b2f - _0x282a29, _0x52fc0c - _0x473372, 2 * _0x282a29, 2 * _0x473372), _0x472af5)) {
+                            if (_0x3d1099 && (_0x433539 = this.ga * (this.Oe ? 0.01 : gameSettings.sBubbleCells ? 0 != this.N ? 0.5 : 0.3 : 0 != this.N ? 0.85 : 1), _0xb14342.globalAlpha = this.fe ? _0x433539 * (1 - _0x58ffc6) : _0x433539, _0x473372 = _0x282a29, _0x472af5 = false, 16 == this.i ? (_0x473372 = _0x282a29 / 8, 1 == this.orientation && (_0xb14342.save(), _0x472af5 = true, _0xb14342.translate(_0x1b2b2f, _0x52fc0c), _0xb14342.rotate(Math.PI / 2), _0xb14342.translate(-_0x1b2b2f, -_0x52fc0c))) : 11 == this.i || (_0xb14342.save(), _0x472af5 = true, _0xb14342.clip()), _0xb14342.drawImage(_0x3d1099, _0x1b2b2f - _0x282a29, _0x52fc0c - _0x473372, 2 * _0x282a29, 2 * _0x473372), _0x472af5)) {
                                 _0xb14342.restore();
                             }
                         }
-                        if (this.B && _0x4b4ed5 && !this.Re) {
+                        if (this.B && gameSettings.sWearables && !this.Re) {
                             _0x282a29 = this.strokeSize;
                             for (var _0x46c353 = 0; _0x46c353 < this.B.length; _0x46c353++) {
                                 var _0x3d1099;
@@ -4415,7 +4460,7 @@ class Cell {
                                     _0x3d1099 = _0x4a5fdf * _0x3e50d9 * _0x28ad4b <= 128 ? _0x557f3e.xe : _0x557f3e.Se;
                                 }
                                 if (_0x3d1099) {
-                                    _0x433539 = this.ga * (this.Oe ? 0.01 : _0x2dceca ? 0.7 : 0.95);
+                                    _0x433539 = this.ga * (this.Oe ? 0.01 : gameSettings.sBubbleCells ? 0.7 : 0.95);
                                     _0xb14342.globalAlpha = this.fe ? _0x433539 * (1 - _0x58ffc6) : _0x433539;
                                     _0xb14342.drawImage(_0x3d1099, _0x1b2b2f - (3 == _0x2e5cdf || 5 == _0x2e5cdf ? 2.5 : 4 == _0x2e5cdf ? 0.5 : 1.5) * _0x282a29, _0x52fc0c - (1 == _0x2e5cdf || 5 == _0x2e5cdf ? 2.5 : 2 == _0x2e5cdf ? 0.5 : 1.5) * _0x282a29, _0x4a5fdf, _0x4a5fdf);
                                 }
@@ -4493,7 +4538,7 @@ class Cell {
                                 this.Ae = null;
                             }
                         }
-                        if (0 == this.i && (this.Pe ? 10 : 20) < this.size * _0x3e50d9 && (_0x1c7c12 || !this.De || 125 < this.size) && (_0x25b838 < this.size || this.Pe && 30 <= this.size) && !this.fe && _0x2332bb && (_0x2c5c7d = _0x101b79 && (this.name || 0 < this.Le), _0x222c9e = _0x3fa749 && (this.Ie || 0 == _0xc52211.length || this.ze) && 60 < this.size * _0x3e50d9, _0x2c5c7d || _0x222c9e)) {
+                        if (0 == this.i && (this.Pe ? 10 : 20) < this.size * _0x3e50d9 && (gameSettings.sMinionNames || !this.De || 125 < this.size) && (_0x25b838 < this.size || this.Pe && 30 <= this.size) && !this.fe && _0x2332bb && (_0x2c5c7d = gameSettings.sNames && (this.name || 0 < this.Le), _0x222c9e = gameSettings.sMass && (this.Ie || 0 == _0xc52211.length || this.ze) && 60 < this.size * _0x3e50d9, _0x2c5c7d || _0x222c9e)) {
                             if (this.textDrawn || _0x164fe5 == this) {
                                 if (!_0x33867d) {
                                     _0xb14342.save();
@@ -4580,7 +4625,7 @@ class Cell {
             } else {
                 _0x9bfc0d = 1 - _0x59765d;
                 _0x59765d = this.getTransform();
-                if (_0x414662) {
+                if (gameSettings.sCellAnimations) {
                     _0x59765d.t = _0x59765d.r = true;
                 }
                 _0x59765d.rz += ((1 + 4 * (1 - _0x9bfc0d * _0x9bfc0d)) % 2 - 1) * Math.PI;
@@ -4593,7 +4638,7 @@ class Cell {
             } else {
                 _0x343225 = (_0x407aa8 = 1 - _0x343225) * _0x407aa8;
                 _0x407aa8 = this.getTransform();
-                if (_0x414662) {
+                if (gameSettings.sCellAnimations) {
                     _0x407aa8.t = _0x407aa8.s = _0x407aa8.r = true;
                 }
                 _0x407aa8.sx *= _0x41c319[~~(10000 * ((1 + 8 * (1 - _0x343225)) % 2 + 1) / 2 + 0.5) % 10000].cos;
@@ -4611,7 +4656,7 @@ class Cell {
                 }
                 _0x4ef9c8 = _0x4ef9c8 < 0 ? 0 : 1 < _0x4ef9c8 ? 1 : _0x4ef9c8;
                 _0x4275c7 = this.getTransform();
-                if (_0x414662) {
+                if (gameSettings.sCellAnimations) {
                     _0x4275c7.t = _0x4275c7.s = true;
                 }
                 _0x4275c7.sx *= _0x41c319[~~(10000 * (0.5 < _0x4ef9c8 ? 1 - _0x4ef9c8 : _0x4ef9c8) / 2 + 0.5)].cos;
@@ -4624,7 +4669,7 @@ class Cell {
             } else {
                 _0x2e6f39 = 1 - _0x1fec16;
                 _0x1fec16 = this.getTransform();
-                if (_0x414662) {
+                if (gameSettings.sCellAnimations) {
                     _0x1fec16.t = _0x1fec16.r = true;
                 }
                 _0x1fec16.tx += ~~((100 + 0.1 * this.size) * _0x2e6f39 * (Math.random() - 0.5));
@@ -4650,7 +4695,7 @@ class Cell {
                 for (var _0x228e98 = 0; _0x228e98 < ~~_0x5ef063; _0x228e98++) {
                     _0x4e7b3f *= 0.5;
                 }
-                if (_0x414662) {
+                if (gameSettings.sCellAnimations) {
                     _0x3ee1c2.t = _0x3ee1c2.s = true;
                 }
                 if (_0x45e5f2 < _0x4a7fc6 && _0x4a7fc6 < 1 - _0x45e5f2) {
@@ -4671,10 +4716,10 @@ class Cell {
             if (1 <= (_0x52d848 = _0x52d848 < 0 ? 0 : 1 < _0x52d848 ? 1 : _0x52d848) || this.fe) {
                 _0x1406e4.ee = 0;
             } else {
-                _0x5dc4ed.globalAlpha = (_0x33523f ? 0.25 : 0.18) * (_0x52d848 < 0.05 ? _0x52d848 / 0.05 : _0x52d848 < 0.5 ? 1 : 1 - (_0x52d848 - 0.5) / 0.5);
+                _0x5dc4ed.globalAlpha = (gameSettings.sDark ? 0.25 : 0.18) * (_0x52d848 < 0.05 ? _0x52d848 / 0.05 : _0x52d848 < 0.5 ? 1 : 1 - (_0x52d848 - 0.5) / 0.5);
                 _0x5dc4ed.lineWidth = Math.min(30 + 30 * Math.max(1 - 2 * _0x3e50d9, 0), this.size);
                 _0x5dc4ed.lineJoin = this.Be ? "miter" : "round";
-                _0x5dc4ed.strokeStyle = _0x33523f ? "#FFFFFF" : "#000000";
+                _0x5dc4ed.strokeStyle = gameSettings.sDark ? "#FFFFFF" : "#000000";
                 _0x5dc4ed.stroke();
             }
         }
@@ -4686,7 +4731,7 @@ class Cell {
                 _0xe5b6db.globalAlpha = _0x2522fb < 0.5 ? 1 : 1 - (_0x2522fb - 0.5) / 0.5;
                 _0xe5b6db.lineWidth = 30;
                 _0xe5b6db.lineJoin = this.Be ? "miter" : "round";
-                _0xe5b6db.strokeStyle = _0x33523f ? "#333333" : "#DDDDDD";
+                _0xe5b6db.strokeStyle = gameSettings.sDark ? "#333333" : "#DDDDDD";
                 _0xe5b6db.stroke();
             }
         }
@@ -4705,7 +4750,7 @@ class Cell {
             var _0x254cec = (currentFrameTime - _0x19b597.te) / playerEmotes[_0x19b597.ee].duration;
             if (1 <= (_0x254cec = _0x254cec < 0 ? 0 : 1 < _0x254cec ? 1 : _0x254cec) || this.fe) {
                 _0x19b597.ee = 0;
-            } else if (_0x414662 && ((_0x14aef6 = (_0x19b597 = this.transform) && (_0x19b597.s || _0x19b597.r)) && (_0x2acef5.restore(), _0x2acef5.save(), _0x19b597.t) && _0x2acef5.translate(_0x19b597.tx, _0x19b597.ty), (_0x210819 = flashAnimations) && _0x210819.complete && 0 != _0x210819.width && (_0x48bf90 = this.size / 20, _0x3854da = _0x210819.width * _0x48bf90 * (_0x2f2e1c = _0x254cec < 0.2 ? _0x254cec / 0.2 : 1 - (_0x254cec - 0.2) / 0.8), _0x48bf90 = _0x210819.height * _0x48bf90 * _0x2f2e1c, _0x2acef5.globalAlpha = 0.7 * _0x2f2e1c * _0x2f2e1c, _0x2acef5.drawImage(_0x210819, _0x5c3fed - _0x3854da / 2, _0x5720a0 - _0x48bf90 / 2, _0x3854da, _0x48bf90)), _0x254cec < 0.9 && (_0x2f2e1c = _0x254cec / 0.9, _0x2acef5.beginPath(), this.size < 0 && (console.log("ERROR #2: THIS_SIZE < 0"), this.size = 0), _0x2acef5.arc(_0x5c3fed, _0x5720a0, 1.3 * this.size + 500 * _0x2f2e1c, 0, 2 * Math.PI, false), _0x2acef5.globalAlpha = 0.2 * (1 - _0x2f2e1c) * (1 - _0x2f2e1c), _0x2acef5.lineWidth = ~~(20 + 0.02 * this.size), _0x2acef5.strokeStyle = "#90A0FF", _0x2acef5.stroke()), _0x14aef6) && (_0x19b597.s && _0x2acef5.scale(_0x19b597.sx, _0x19b597.sy), _0x19b597.r)) {
+            } else if (gameSettings.sCellAnimations && ((_0x14aef6 = (_0x19b597 = this.transform) && (_0x19b597.s || _0x19b597.r)) && (_0x2acef5.restore(), _0x2acef5.save(), _0x19b597.t) && _0x2acef5.translate(_0x19b597.tx, _0x19b597.ty), (_0x210819 = flashAnimations) && _0x210819.complete && 0 != _0x210819.width && (_0x48bf90 = this.size / 20, _0x3854da = _0x210819.width * _0x48bf90 * (_0x2f2e1c = _0x254cec < 0.2 ? _0x254cec / 0.2 : 1 - (_0x254cec - 0.2) / 0.8), _0x48bf90 = _0x210819.height * _0x48bf90 * _0x2f2e1c, _0x2acef5.globalAlpha = 0.7 * _0x2f2e1c * _0x2f2e1c, _0x2acef5.drawImage(_0x210819, _0x5c3fed - _0x3854da / 2, _0x5720a0 - _0x48bf90 / 2, _0x3854da, _0x48bf90)), _0x254cec < 0.9 && (_0x2f2e1c = _0x254cec / 0.9, _0x2acef5.beginPath(), this.size < 0 && (console.log("ERROR #2: THIS_SIZE < 0"), this.size = 0), _0x2acef5.arc(_0x5c3fed, _0x5720a0, 1.3 * this.size + 500 * _0x2f2e1c, 0, 2 * Math.PI, false), _0x2acef5.globalAlpha = 0.2 * (1 - _0x2f2e1c) * (1 - _0x2f2e1c), _0x2acef5.lineWidth = ~~(20 + 0.02 * this.size), _0x2acef5.strokeStyle = "#90A0FF", _0x2acef5.stroke()), _0x14aef6) && (_0x19b597.s && _0x2acef5.scale(_0x19b597.sx, _0x19b597.sy), _0x19b597.r)) {
                 _0x2acef5.rotate(_0x19b597.rz);
             }
         }
@@ -4718,7 +4763,7 @@ class Cell {
             };
             if (1 <= (_0x279b6b = _0x279b6b < 0 ? 0 : 1 < _0x279b6b ? 1 : _0x279b6b)) {
                 _0x263a12.ee = 0;
-            } else if (_0x414662 && (_0x263a12.pos || (_0x263a12.pos = _0x57f290), _0x16f54b = _0x263a12.pos.x, _0x3e0001 = _0x263a12.pos.y, (_0x228f94 = (_0x263a12 = this.transform) && (_0x263a12.t || _0x263a12.s || _0x263a12.r)) && (_0x27b177.restore(), _0x27b177.save()), _0x27b177.beginPath(), this.size < 0 && (console.log("ERROR #3: THIS_SIZE < 0"), this.size = 0), _0x27b177.arc(_0x16f54b, _0x3e0001, this.size + 1340 * _0x279b6b, 0, 2 * Math.PI, false), _0x27b177.globalAlpha = 0.5 * (1 - _0x279b6b) * (1 - _0x279b6b), _0x27b177.fillStyle = _0x33523f ? "#FFFFFF" : "#777777", _0x27b177.fill(), _0x228f94) && (_0x263a12.t && _0x27b177.translate(_0x263a12.tx, _0x263a12.ty), _0x263a12.s && _0x27b177.scale(_0x263a12.sx, _0x263a12.sy), _0x263a12.r)) {
+            } else if (gameSettings.sCellAnimations && (_0x263a12.pos || (_0x263a12.pos = _0x57f290), _0x16f54b = _0x263a12.pos.x, _0x3e0001 = _0x263a12.pos.y, (_0x228f94 = (_0x263a12 = this.transform) && (_0x263a12.t || _0x263a12.s || _0x263a12.r)) && (_0x27b177.restore(), _0x27b177.save()), _0x27b177.beginPath(), this.size < 0 && (console.log("ERROR #3: THIS_SIZE < 0"), this.size = 0), _0x27b177.arc(_0x16f54b, _0x3e0001, this.size + 1340 * _0x279b6b, 0, 2 * Math.PI, false), _0x27b177.globalAlpha = 0.5 * (1 - _0x279b6b) * (1 - _0x279b6b), _0x27b177.fillStyle = gameSettings.sDark ? "#FFFFFF" : "#777777", _0x27b177.fill(), _0x228f94) && (_0x263a12.t && _0x27b177.translate(_0x263a12.tx, _0x263a12.ty), _0x263a12.s && _0x27b177.scale(_0x263a12.sx, _0x263a12.sy), _0x263a12.r)) {
                 _0x27b177.rotate(_0x263a12.rz);
             }
         }
@@ -4743,13 +4788,13 @@ class Cell {
                     }
                     if (_0x24d439 > _0x421db6.m - 1) {
                         _0xdf8471.ee = 0;
-                    } else if (_0x414662 || playerEmotes[_0xdf8471.ee].ut) {
+                    } else if (gameSettings.sCellAnimations || playerEmotes[_0xdf8471.ee].ut) {
                         _0x355a00 = _0x421db6.canvas.width / _0x421db6.h;
                         _0x1b66bf = _0x421db6.canvas.height / Math.ceil(_0x421db6.m / _0x421db6.h);
                         _0x27e6d4 = _0x355a00 * (_0x38b488 = 2 * _0x421db6.scale * this.strokeSize / Math.max(_0x355a00, _0x1b66bf));
                         _0x15e709 = _0x1b66bf * _0x38b488;
                         _0x3f97aa = !(_0x349a68 = _0x421db6.fade) || _0x5d0f77 < _0x349a68.ht ? 0 : _0x5d0f77 >= _0x349a68.ft ? _0x349a68.gt : _0x349a68.bt + (_0x349a68.gt - _0x349a68.bt) * (_0x5d0f77 - _0x349a68.ht) / (_0x349a68.ft - _0x349a68.ht);
-                        _0x41acbd.globalAlpha = (_0x2dceca ? _0x421db6.globalAlphaBub : _0x421db6.globalAlpha) * (1 - _0x3f97aa);
+                        _0x41acbd.globalAlpha = (gameSettings.sBubbleCells ? _0x421db6.globalAlphaBub : _0x421db6.globalAlpha) * (1 - _0x3f97aa);
                         _0x41acbd.drawImage(_0x421db6.canvas, _0x24d439 % _0x421db6.h * _0x355a00, ~~(_0x24d439 / _0x421db6.h) * _0x1b66bf, _0x355a00, _0x1b66bf, _0x13b9e6 - _0x27e6d4 / 2 + _0x421db6.xOffset * _0x38b488, _0x3d2a0d - _0x15e709 / 2 + _0x421db6.yOffset * _0x38b488, _0x27e6d4, _0x15e709);
                     }
                 }
@@ -4761,7 +4806,7 @@ class Cell {
             var _0x3f06ab = (currentFrameTime - _0x267d4a.te) / playerEmotes[_0x267d4a.ee].duration;
             if (1 <= (_0x3f06ab = _0x3f06ab < 0 ? 0 : 1 < _0x3f06ab ? 1 : _0x3f06ab)) {
                 _0x267d4a.ee = 0;
-            } else if (_0x414662 && (_0x267d4a = hitAnimations) && _0x267d4a.complete && 0 != _0x267d4a.width) {
+            } else if (gameSettings.sCellAnimations && (_0x267d4a = hitAnimations) && _0x267d4a.complete && 0 != _0x267d4a.width) {
                 _0x26f399 = 1 - _0x3f06ab;
                 _0x3f06ab = this.strokeSize * _0x3f06ab * 0.015;
                 _0x57d5bc = _0x267d4a.width * _0x3f06ab;
@@ -4805,7 +4850,7 @@ class Cell {
                 if (_0x42aaca.wt.length > ~~(5.5 - 2 * _0x10d812)) {
                     _0x42aaca.wt.splice(0, 1);
                 }
-                if (1 < _0x42aaca.wt.length && _0x414662) {
+                if (1 < _0x42aaca.wt.length && gameSettings.sCellAnimations) {
                     if (_0x585fc2 * _0x3e50d9 <= 16) {
                         if ((_0x2c21f4 = speedcirclesAnimations) && _0x2c21f4.complete && 0 != _0x2c21f4.width) {
                             for (var _0xd5008b = 0; _0xd5008b < _0x42aaca.wt.length; _0xd5008b++) {
@@ -4839,7 +4884,7 @@ class Cell {
             var _0xe4a380;
             var _0x29e8fb;
             var _0x1be03d;
-            var _0x1eaef0 = _0xbdc65b ? 50 + ~~(0.3 * this.size) : Math.max(~~(0.3 * this.size), 24);
+            var _0x1eaef0 = gameSettings.sLargeNames ? 50 + ~~(0.3 * this.size) : Math.max(~~(0.3 * this.size), 24);
             var _0x6261ce = 1;
             _0x2d721a.globalAlpha = this.ga * (this.Oe ? 0.01 : 1);
             if (_0x265307) {
@@ -4877,11 +4922,11 @@ class Cell {
                 _0x29e8fb = (_0x1be03d = this.massCache = ((_0x5f0ab0, _0xc5a1bb, _0x4714e5) => {
                     var _0x4ac589;
                     if (_0x5f0ab0) {
-                        if (!(_0x5f0ab0.value == _0xc5a1bb && _0x4714e5 <= 1.2 * _0x5f0ab0.size && _0x4714e5 >= 0.8 * _0x5f0ab0.size && _0x5f0ab0.scale == _0x34bd4c && _0x5f0ab0.stroke == _0x471c1e)) {
+                        if (!(_0x5f0ab0.value == _0xc5a1bb && _0x4714e5 <= 1.2 * _0x5f0ab0.size && _0x4714e5 >= 0.8 * _0x5f0ab0.size && _0x5f0ab0.scale == _0x34bd4c && _0x5f0ab0.stroke == gameSettings.sNameOutlines)) {
                             _0x5f0ab0.value = _0xc5a1bb;
                             _0x5f0ab0.size = _0x4714e5;
                             _0x5f0ab0.scale = _0x34bd4c;
-                            _0x5f0ab0.stroke = _0x471c1e;
+                            _0x5f0ab0.stroke = gameSettings.sNameOutlines;
                             _0x1503a9(_0x5f0ab0);
                         }
                     } else {
@@ -4894,7 +4939,7 @@ class Cell {
                             "strokeColor": "#000000",
                             "size": _0x4714e5,
                             "scale": _0x34bd4c,
-                            "stroke": _0x471c1e,
+                            "stroke": gameSettings.sNameOutlines,
                             "appliedScale": _0x34bd4c
                         });
                     }
@@ -4909,7 +4954,7 @@ class Cell {
         ve(_0x449d3e) {
             var _0xffa50a = this.nSize * _0x449d3e * _0x358119;
             var _0xa5fc71 = 0.6 < _0xffa50a ? this.nSize : ~~(0.6 / (_0x449d3e * _0x358119));
-            var _0x393330 = _0x161144 && 2 == this.shape && 1 < _0xffa50a;
+            var _0x393330 = gameSettings.sLineShapes && 2 == this.shape && 1 < _0xffa50a;
             var _0x419d21 = false;
             var _0x57c74d = this.hx;
             var _0x556074 = this.hy;
@@ -4944,7 +4989,7 @@ class Cell {
                 }
             }
             _0x5be4cd.beginPath();
-            if (_0xb4d644 && 3 <= this.shape && 2 < _0xffa50a || _0x393330) {
+            if (gameSettings.sPolygonShapes && 3 <= this.shape && 2 < _0xffa50a || _0x393330) {
                 var _0x3e88a0 = this.shape;
                 var _0xc2f789 = _0xa5fc71 * cellStrokeSizeMultiplier[_0x3e88a0];
                 var _0x42004a = 10000 * (this.rotation / (2 * Math.PI) + 1) + 0.5;
@@ -4973,11 +5018,11 @@ class Cell {
                 _0x5be4cd.arc(_0x57c74d, _0x556074, _0xa5fc71, 0, 2 * Math.PI, false);
             }
             if (!_0x393330) {
-                _0x5be4cd.fillStyle = this.Re ? "#AAAAAA" : _0x246ae5 ? "#FFFFFF" : this.color;
+                _0x5be4cd.fillStyle = this.Re ? "#AAAAAA" : gameSettings.sColors ? this.color : "#FFFFFF";
                 _0x5be4cd.fill();
             }
             if (this.Be && 4 < _0xffa50a || _0x393330) {
-                _0x5be4cd.strokeStyle = this.Re || _0x246ae5 ? "#666666" : this.$e;
+                _0x5be4cd.strokeStyle = this.Re || !gameSettings.sColors ? "#666666" : this.$e;
                 _0x5be4cd.stroke();
             }
             if (this.Ae) {
@@ -5036,7 +5081,7 @@ class Cell {
 var _0x34a1ac = {};
 
 function _0x2182a7(_0x592c9b, _0x20c7ad, _0x2ea14e, _0xf0f1a1, _0x30d885) {
-    if (_0x592c9b && _0x592c9b.value == _0x20c7ad && _0x592c9b.color == _0x2ea14e && _0x592c9b.strokeColor == _0xf0f1a1 && _0x30d885 <= 1.2 * _0x592c9b.size && _0x30d885 >= 0.8 * _0x592c9b.size && _0x592c9b.scale == _0x34bd4c && _0x592c9b.stroke == _0x471c1e) {
+    if (_0x592c9b && _0x592c9b.value == _0x20c7ad && _0x592c9b.color == _0x2ea14e && _0x592c9b.strokeColor == _0xf0f1a1 && _0x30d885 <= 1.2 * _0x592c9b.size && _0x30d885 >= 0.8 * _0x592c9b.size && _0x592c9b.scale == _0x34bd4c && _0x592c9b.stroke == gameSettings.sNameOutlines) {
         _0x592c9b.timestamp = currentFrameTime;
         return _0x592c9b;
     }
@@ -5045,9 +5090,9 @@ function _0x2182a7(_0x592c9b, _0x20c7ad, _0x2ea14e, _0xf0f1a1, _0x30d885) {
     if (_0x411cfe) {
         for (var _0x3a630a in _0x411cfe)
             if (_0x30d885 <= 1.2 * _0x3a630a && 0.8 * _0x3a630a <= _0x30d885) {
-                if (!((_0x53afa8 = _0x411cfe[_0x3a630a]).scale == _0x34bd4c && _0x53afa8.stroke == _0x471c1e)) {
+                if (!((_0x53afa8 = _0x411cfe[_0x3a630a]).scale == _0x34bd4c && _0x53afa8.stroke == gameSettings.sNameOutlines)) {
                     _0x53afa8.scale = _0x34bd4c;
-                    _0x53afa8.stroke = _0x471c1e;
+                    _0x53afa8.stroke = gameSettings.sNameOutlines;
                     _0x1503a9(_0x53afa8);
                 }
                 _0x53afa8.timestamp = currentFrameTime;
@@ -5067,7 +5112,7 @@ function _0x2182a7(_0x592c9b, _0x20c7ad, _0x2ea14e, _0xf0f1a1, _0x30d885) {
         "strokeColor": _0xf0f1a1,
         "size": _0x30d885,
         "scale": _0x34bd4c,
-        "stroke": _0x471c1e,
+        "stroke": gameSettings.sNameOutlines,
         "appliedScale": _0x34bd4c,
         "timestamp": currentFrameTime
     });
@@ -5170,7 +5215,7 @@ class PacketReader {
                   b = this.getUint8();
             return [
                 rgbToHex(r, g, b),
-                rgbToHex(r * _0x517df6, g * _0x517df6, b * _0x517df6)
+                rgbToHex(r * gameBrightness, g * gameBrightness, b * gameBrightness)
             ];
         }
         getWearables() {
@@ -5296,7 +5341,7 @@ function _0x51e55a(_0x2ba470) {
                     if (_0x13100f) {
                         if (1 === _0x534ff6) {
                             (_0x2c474f <= _0x2fc5e8 ? (_0x23060e.Ue = true, _0x4fd5c0) : _0x34b545).push(_0x23060e);
-                            if (_0x2792ec && (drawHalfFood = !drawHalfFood)) {
+                            if (gameSettings.sFoodHalf && (drawHalfFood = !drawHalfFood)) {
                                 _0x23060e.shouldDraw = -1;
                             }
                         } else {
@@ -5331,11 +5376,11 @@ function _0x51e55a(_0x2ba470) {
                             } else if (4 === _0x534ff6) {
                                 _0x23060e.strokeSize = 0.83 * _0x2c474f;
                             }
-                            if (!(!_0xb4d644 && !_0x161144 || 0 !== _0x534ff6 && 3 !== _0x534ff6)) {
-                                _0x23060e.shape = _0x161144 ? 2 : foodCellRandomShapes[_0x269ac7 % 100];
+                            if (!(!gameSettings.sPolygonShapes && !gameSettings.sLineShapes || 0 !== _0x534ff6 && 3 !== _0x534ff6)) {
+                                _0x23060e.shape = gameSettings.sLineShapes ? 2 : foodCellRandomShapes[_0x269ac7 % 100];
                                 _0x23060e.rotation = (2 * Math.random() - 1) * Math.PI;
                             }
-                            if (_0x4c1257) {
+                            if (gameSettings.sSlowMotion) {
                                 _0x23060e.ga = 0;
                                 _0x23060e.ne = true;
                             }
@@ -5598,7 +5643,7 @@ function _0x51e55a(_0x2ba470) {
             _0x53b8b0 = _0x46ac7b = _0x40e81b = (_0x5c1aa9 + _0x28f6af) / 2;
             _0x464afc = _0x2c7938 = _0x6c7bce = (_0x4ba286 + _0x500945) / 2;
             _0x29c97b = 1;
-            if (!(mapCenterSet || (mapCenterSet = true, _0x59034c = _0x53b8b0, _0x4ce984 = _0x464afc, _0x1e208d))) {
+            if (!(mapCenterSet || (mapCenterSet = true, _0x59034c = _0x53b8b0, _0x4ce984 = _0x464afc, gameSettings.sFixedZoom))) {
                 _0x3e50d9 = _0xd28f67 = 1;
             }
             currentServerMode = pkt.getInt16();
@@ -5631,7 +5676,7 @@ function _0x51e55a(_0x2ba470) {
                     }
                 }
             }
-            if (_0x1e208d) {
+            if (gameSettings.sFixedZoom) {
                 _0xb03f97();
             }
             if (_0x435e7a === _0x571f96) {
@@ -6102,8 +6147,11 @@ function _0x51e55a(_0x2ba470) {
                 }
                 localStorage.setItem("username", _0x5b6b18);
                 localStorage.setItem("password", _0x1fe290(md5(_0x5b6b18)));
-                if (null != window.localStorage.settings && undefined !== (_0x31ab56 = JSON.parse(window.localStorage.settings)).user && _0x31ab56.user.toLowerCase() == _0xea465f.toLowerCase() && (undefined !== _0x31ab56.skinId && 0 != _0x31ab56.skinId && _0x5df715(_0x31ab56.skinId), undefined !== _0x31ab56.wearablesSelected) && 0 != _0x31ab56.wearablesSelected.length) {
-                    _0x5cfc91(_0x31ab56.wearablesSelected);
+                if (gameSettings.user.toLowerCase() == _0xea465f.toLowerCase()) {
+                    if (gameSettings.skinId)
+                        _0x5df715(gameSettings.skinId);
+                    if (gameSettings.wearablesSelected.length)
+                        _0x5cfc91(gameSettings.wearablesSelected);
                 }
                 if (null === (_0x5bff26 = localStorage.getItem("drum"))) {
                     _0x5bff26 = (~~(2000000000 * Math.random())).toString();
@@ -6534,7 +6582,7 @@ function _0x51e55a(_0x2ba470) {
             var _0x3626db = 2 & _0x3988b2 ? pkt.getString() : '';
             var _0x469523 = null;
             var _0x1711bf = !!(8 & _0x3988b2);
-            _0x5af7fe.push({
+            chatMessages.push({
                 "Y": _0x3884cc,
                 "$": _0x826efd,
                 "l": _0x24a818,
@@ -6981,7 +7029,7 @@ function _0x51e55a(_0x2ba470) {
             _0x26039d.getColorTags();
             _0x17a702 = _0x26039d.getString();
             _0x26039d = _0x26039d.getString();
-            _0x5af7fe.push({
+            chatMessages.push({
                 "Y": true,
                 "$": _0x826efd,
                 "l": _0x2d1f83,
@@ -7022,7 +7070,7 @@ function _0x51e55a(_0x2ba470) {
         case 130:
             pingTime = pkt.getUint16();
             _0x1a6afb = false;
-            if (_0x1566f5) {
+            if (gameSettings.sFPS) {
                 $("#ping").html("<span style=\"color:" + (150 < pingTime ? "#f44" : 100 < pingTime ? "#fa4" : "#2d2") + ";\">" + pingTime + "<span style=\"font-size:12px;\">ms</span></span>");
             }
             break;
@@ -7203,7 +7251,7 @@ function _0x4d3094() {
     var _0x5990ff;
     var _0x4ebe0d;
     var _0x5dd920 = ~~(Math.max(200 * Math.min(1.6 * _0x1058ed, _0x53f1a5, 1400) / 1400, 90) + 0.5) / 200;
-    var _0x5dd920 = _0x36d371 ? 20 + ~~(200 * _0x5dd920 + 0.5) : 10;
+    var _0x5dd920 = gameSettings.sLeaderboard ? 20 + ~~(200 * _0x5dd920 + 0.5) : 10;
     $("#btnFriends").css("right", _0x5dd920 + "px");
     var _0x4abb41 = $("#friendDialog");
     _0x4ebe0d = _0x363e25 ? (_0x22af33 = _0x4abb41.outerHeight() * (_0x4386c1 ? 0.7 : 1), _0x39f84e = _0x4abb41.outerWidth() * (_0x4386c1 ? 0.7 : 1), _0x5990ff = (_0x4ebe0d = _0x4abb41.offset()).top, _0x4ebe0d = _0x4ebe0d.left, _0x5990ff = Math.clamp(_0x5990ff, 0, _0x1058ed - _0x22af33), Math.clamp(_0x53f1a5 - _0x4ebe0d - _0x39f84e, 0, _0x53f1a5 - _0x39f84e)) : (_0x5990ff = 12 + (_0x22af33 = _0x4386c1 ? 28 : 40), _0x4386c1 ? 0 : _0x5dd920 + _0x22af33);
@@ -7362,7 +7410,7 @@ function _0x2aa794() {
         "data": JSON.stringify({
             "skins": _0x2e4195,
             "activeTab": _0x4f2e5c,
-            "currentSkin": _0x28aabd,
+            "currentSkin": gameSettings.skinId,
             "customSkinPrice": _0x520472,
             "supportFileDragAndDrop": supportFileDragAndDrop
         })
@@ -7415,15 +7463,15 @@ function _0x4b2336() {
     }
 }
 
-function _0x5df715(_0x51b78e) {
-    if (_0x28aabd != _0x51b78e) {
-        if (0 != _0x28aabd) {
-            $("#skinContainer" + _0x28aabd).removeClass("selected");
-            $("#skinUseBtn" + _0x28aabd).removeClass("btn-default").addClass("btn-primary").text("Use");
+function _0x5df715(skinId) {
+    if (gameSettings.skinId != skinId) {
+        if (gameSettings.skinId) {
+            $("#skinContainer" + gameSettings.skinId).removeClass("selected");
+            $("#skinUseBtn" + gameSettings.skinId).removeClass("btn-default").addClass("btn-primary").text("Use");
         }
-        if (0 != (_0x28aabd = _0x51b78e)) {
-            $("#skinContainer" + _0x28aabd).addClass("selected");
-            $("#skinUseBtn" + _0x28aabd).removeClass("btn-primary").addClass("btn-default").text("Cancel");
+        if (0 != (gameSettings.skinId = skinId)) {
+            $("#skinContainer" + skinId).addClass("selected");
+            $("#skinUseBtn" + skinId).removeClass("btn-primary").addClass("btn-default").text("Cancel");
         }
         _0x113238();
     }
@@ -7431,8 +7479,8 @@ function _0x5df715(_0x51b78e) {
 
 function _0x568cd2() {
     var _0x71f2bc = [];
-    for (var _0x43878d = 0; _0x43878d < _0x4bb827.length; _0x43878d++)
-        _0x71f2bc.push(_0x4bb827[_0x43878d].wearId);
+    for (var i = 0; i < gameSettings.wearablesSelected.length; i++)
+        _0x71f2bc.push(gameSettings.wearablesSelected[i].wearId);
     var _0x1ac90e = ++_0x35e5f6;
     $.post("wearables.php", {
         "data": JSON.stringify({
@@ -7469,9 +7517,9 @@ function _0x5a2fbe() {
 
 function _0x5f4edb(_0x42f503, _0x21ad86, _0x1c70b7, _0x55241a, _0x5e7c26) {
     _0x5e7c26 = !!_0x5e7c26;
-    for (var _0x44c49 = 0; _0x44c49 < _0x4bb827.length; _0x44c49++) {
-        if (_0x4bb827[_0x44c49].wearId == _0x42f503) {
-            _0x4bb827.splice(_0x44c49, 1);
+    for (var i = 0; i < gameSettings.wearablesSelected.length; i++) {
+        if (gameSettings.wearablesSelected[i].wearId == _0x42f503) {
+            gameSettings.wearablesSelected.splice(i, 1);
             break;
         }
     }
@@ -7479,9 +7527,9 @@ function _0x5f4edb(_0x42f503, _0x21ad86, _0x1c70b7, _0x55241a, _0x5e7c26) {
     $("#wearableUseBtn" + _0x42f503).removeClass("btn-primary").addClass("btn-default").text("Cancel");
     $("#wearableTryBtn" + _0x42f503).removeClass("btn-primary").addClass("btn-default").text("Cancel");
     var _0x457b8 = 0;
-    for (var _0x44c49 = _0x4bb827.length - 1; 0 <= _0x44c49; _0x44c49--) {
-        if (_0x4bb827[_0x44c49].zIndex <= _0x1c70b7) {
-            _0x457b8 = _0x44c49 + 1;
+    for (var i = gameSettings.wearablesSelected.length - 1; 0 <= i; i--) {
+        if (gameSettings.wearablesSelected[i].zIndex <= _0x1c70b7) {
+            _0x457b8 = i + 1;
             break;
         }
     }
@@ -7492,17 +7540,17 @@ function _0x5f4edb(_0x42f503, _0x21ad86, _0x1c70b7, _0x55241a, _0x5e7c26) {
         wearGroup: _0x55241a,
         wearTry: _0x5e7c26
     };
-    _0x4bb827.splice(_0x457b8, 0, _0x1f6a9f);
+    gameSettings.wearablesSelected.splice(_0x457b8, 0, _0x1f6a9f);
     _0x113238();
 }
 
 function _0x5eb440(_0x51e372) {
-    for (var _0x49c412 = 0; _0x49c412 < _0x4bb827.length; _0x49c412++) {
-        if (_0x4bb827[_0x49c412].wearId == _0x51e372) {
+    for (var _0x49c412 = 0; _0x49c412 < gameSettings.wearablesSelected.length; _0x49c412++) {
+        if (gameSettings.wearablesSelected[_0x49c412].wearId == _0x51e372) {
             $("#wearableContainer" + _0x51e372).removeClass("selected");
             $("#wearableUseBtn" + _0x51e372).removeClass("btn-default").addClass("btn-primary").text("Use");
             $("#wearableTryBtn" + _0x51e372).removeClass("btn-default").addClass("btn-primary").text("Try");
-            _0x4bb827.splice(_0x49c412, 1);
+            gameSettings.wearablesSelected.splice(_0x49c412, 1);
             _0x113238();
             break;
         }
@@ -7510,8 +7558,8 @@ function _0x5eb440(_0x51e372) {
 }
 
 function _0x94dbbc() {
-    for (; 0 < _0x4bb827.length;) {
-        _0x5eb440(_0x4bb827[0].wearId);
+    for (; 0 < gameSettings.wearablesSelected.length;) {
+        _0x5eb440(gameSettings.wearablesSelected[0].wearId);
     }
 }
 
@@ -7523,34 +7571,34 @@ function _0x5cfc91(_0x30baa2) {
 }
 
 function _0x4e199b() {
-    var _0x59fc96 = _0x4bb827.length;
-    for (var _0x12962c = 0; _0x12962c < _0x59fc96; _0x12962c++) {
-        if (_0x4bb827[_0x12962c].wearTry && (_0x5eb440(_0x4bb827[_0x12962c].wearId), _0x4bb827.length < _0x59fc96)) {
-            _0x59fc96--;
-            _0x12962c--;
+    var n = gameSettings.wearablesSelected.length;
+    for (var i = 0; i < n; i++) {
+        if (gameSettings.wearablesSelected[i].wearTry && (_0x5eb440(gameSettings.wearablesSelected[i].wearId), gameSettings.wearablesSelected.length < n)) {
+            n--;
+            i--;
         }
     }
 }
 
 function _0x113238() {
-    if (0 != _0x28aabd) {
-        $(".cell-example .skin-example").css("background-image", "url('skins/" + _0x28aabd.toString() + "_lo.png?u=" + (_0x48a780[_0x28aabd] || 0) + "')");
+    if (gameSettings.skinId) {
+        $(".cell-example .skin-example").css("background-image", "url('skins/" + gameSettings.skinId.toString() + "_lo.png?u=" + (_0x48a780[gameSettings.skinId] || 0) + "')");
     } else {
         $(".cell-example .skin-example").css("background-image", "none");
         $("#skinExampleMenu").css("background-image", "url('skins/0_lo.png?u=0')");
     }
-    for (var _0x3545ca = 1; _0x3545ca <= 5; _0x3545ca++) {
-        if (_0x3545ca <= _0x4bb827.length) {
-            var _0x3bf6ee = _0x4bb827[_0x3545ca - 1];
+    for (var i = 1; i <= 5; i++) {
+        if (i <= gameSettings.wearablesSelected.length) {
+            var _0x3bf6ee = gameSettings.wearablesSelected[i - 1];
             var _0x4304c3 = wearableClasses[_0x3bf6ee.P] || '';
             try {
-                $(".cell-example .wear-example-" + _0x3545ca).css("background-image", "url('wearables/" + _0x3bf6ee.wearId.toString() + "_lo.png?v=" + wearablesApiVersion + "')").removeClass("center top bottom left right max".replace(_0x4304c3, '')).addClass(_0x4304c3).show();
+                $(".cell-example .wear-example-" + i).css("background-image", "url('wearables/" + _0x3bf6ee.wearId.toString() + "_lo.png?v=" + wearablesApiVersion + "')").removeClass("center top bottom left right max".replace(_0x4304c3, '')).addClass(_0x4304c3).show();
             } catch (_0x4709fb) {
                 console.log("ERROR IN wear.wearId.toString()");
                 console.log(_0x4709fb);
             }
         } else {
-            $(".cell-example .wear-example-" + _0x3545ca).css("background-image", "none").hide();
+            $(".cell-example .wear-example-" + i).css("background-image", "none").hide();
         }
     }
 }
@@ -7563,10 +7611,10 @@ function _0x5eca46(_0x5968b9) {
         document.body.style.cursor = "pointer";
     } else {
         if (0 < _0x9738b8.wearId) {
-            for (var _0x45da10 = 0; _0x45da10 < _0x4bb827.length; _0x45da10++) {
-                if (_0x4bb827[_0x45da10].wearId == _0x9738b8.wearId) {
+            for (var i = 0; i < gameSettings.wearablesSelected.length; i++) {
+                if (gameSettings.wearablesSelected[i].wearId == _0x9738b8.wearId) {
                     $("#cellExampleShop div").addClass("faded");
-                    $("#wearExampleShop" + (_0x45da10 + 1)).removeClass("faded");
+                    $("#wearExampleShop" + (i + 1)).removeClass("faded");
                     document.body.style.cursor = "pointer";
                     break;
                 }
@@ -7600,7 +7648,6 @@ function _0x22a3b0(_0x1cfe4b) {
         } else {
             _0x5eb440(_0x2ad0f9.wearId);
         }
-        _0xbb1a8c();
         _0x5eca46(_0x1cfe4b);
     }
     _0x1cfe4b.stopPropagation();
@@ -7610,16 +7657,16 @@ function _0x54ad2a(_0x36ae78) {
     var _0x1e0c7d = $("#cellExampleShop").offset();
     var _0x3f4eb6 = ~~(_0x36ae78.pageX - _0x1e0c7d.left);
     var _0xb388cb = ~~(_0x36ae78.pageY - _0x1e0c7d.top);
-    if (0 < _0x4bb827.length) {
+    if (0 < gameSettings.wearablesSelected.length) {
         if (!_0x3b426e) {
             _0x3b426e = document.createElement("canvas");
             _0x2ed271 = _0x3b426e.getContext("2d");
         }
         _0x3b426e.width = _0x3b426e.height = 204;
     }
-    for (var _0x1c6cb6 = _0x4bb827.length; 0 <= _0x1c6cb6; _0x1c6cb6--) {
+    for (var _0x1c6cb6 = gameSettings.wearablesSelected.length; 0 <= _0x1c6cb6; _0x1c6cb6--) {
         if (0 != _0x1c6cb6) {
-            var _0x2cb37c = _0x4bb827[_0x1c6cb6 - 1];
+            var _0x2cb37c = gameSettings.wearablesSelected[_0x1c6cb6 - 1];
             var _0x44b7f4 = wearablesAndObjectsImages["W" + _0x2cb37c.wearId + "_lo"];
             if (!_0x44b7f4) {
                 _0x22f945(_0x2cb37c.wearId);
@@ -7646,7 +7693,7 @@ function _0x54ad2a(_0x36ae78) {
             _0x44b7f4 = 102 - _0x3f4eb6;
             _0x5c8542 = 102 - _0xb388cb;
             var _0x24dadd = {
-                skinId: _0x28aabd,
+                skinId: gameSettings.skinId,
                 wearId: -1
             };
             if (_0x44b7f4 * _0x44b7f4 + _0x5c8542 * _0x5c8542 <= 1764) {
@@ -7707,8 +7754,8 @@ function _0x2bb62d(level, xp) {
 
 function _0x44d9fa() {
     var _0x216027 = 400;
-    for (var _0x5bb528 = Date.now(); 0 < _0x5af7fe.length && (_0x5bb528 >= 1800000 + _0x5af7fe[0].time || _0x5af7fe.length > _0x216027);) {
-        _0x5af7fe.splice(0, 1);
+    for (var _0x5bb528 = Date.now(); 0 < chatMessages.length && (_0x5bb528 >= 1800000 + chatMessages[0].time || chatMessages.length > _0x216027);) {
+        chatMessages.splice(0, 1);
     }
     _0x4cb089 = true;
 }
@@ -8170,7 +8217,7 @@ var _0x3a188d = function(_0x3d9c37) {
     var _0x4fa646 = performance.now();
     var _0x3d9c37 = _0x3d9c37 || _0x4fa646;
     var _0x53278f = _0x3d9c37 - _0x18fde3;
-    if (_0x1566f5 && (_0x2b6e3f++, 1000 < (_0x4fa646 = _0x4fa646) - _0x22a146)) {
+    if (gameSettings.sFPS && (_0x2b6e3f++, 1000 < (_0x4fa646 = _0x4fa646) - _0x22a146)) {
         _0xe31776 = _0x451215 = ~~(1000 * _0x2b6e3f / (_0x4fa646 - _0x22a146) + 0.5);
         $("#fps").html("<span style=\"color:" + (_0x451215 < 30 ? "#f44" : _0x451215 < 50 ? "#fa4" : "#2d2") + ";\">" + _0x451215 + "</span>");
         _0x22a146 = _0x4fa646;
@@ -8198,7 +8245,7 @@ var _0x3a188d = function(_0x3d9c37) {
 
 function _0x41e1d9() {
     var _0xeb2666;
-    _0xd28f67 = _0x1e208d ? _0x4c4c0f : (_0x29c97b = -1 != (_0xeb2666 = (() => {
+    _0xd28f67 = gameSettings.sFixedZoom ? gameSettings.fixedZoomScale : (_0x29c97b = -1 != (_0xeb2666 = (() => {
         if (0 == _0xc52211.length) {
             return -1;
         }
@@ -8212,10 +8259,10 @@ function _0x41e1d9() {
 
 function _0xb03f97() {
     var _0x4351d6;
-    if (_0x1e208d) {
-        _0x423e1a *= (_0x4c4c0f = _0xd28f67) / (0.2 * _0x585560());
+    if (gameSettings.sFixedZoom) {
+        _0x423e1a *= (gameSettings.fixedZoomScale = _0xd28f67) / (0.2 * _0x585560());
     } else {
-        _0x4c4c0f = 1;
+        gameSettings.fixedZoomScale = 1;
         _0x4351d6 = _0xd28f67;
         _0x41e1d9();
         _0x423e1a *= _0x4351d6 / _0xd28f67;
@@ -8234,7 +8281,7 @@ function _0x51c554() {
         _0x1058ed = 1;
     }
     _0x358119 = window.devicePixelRatio || 1;
-    _0x28ad4b = Math.min(_0x358119, 4 == _0x294d0a ? 0.5 : 3 == _0x294d0a ? 0.75 : 2 == _0x294d0a ? 1 : 1 == _0x294d0a ? (_0x358119 + 1) / 2 : _0x358119);
+    _0x28ad4b = Math.min(_0x358119, 4 == gameSettings.sGraphics ? 0.5 : 3 == gameSettings.sGraphics ? 0.75 : 2 == gameSettings.sGraphics ? 1 : 1 == gameSettings.sGraphics ? (_0x358119 + 1) / 2 : _0x358119);
     _0x1fc141.width = Math.max(~~(_0x53f1a5 * _0x28ad4b + 0.5), 1);
     _0x1fc141.height = Math.max(~~(_0x1058ed * _0x28ad4b + 0.5), 1);
     _0x1fc141.style.width = _0x53f1a5 + "px";
@@ -8282,7 +8329,7 @@ function _0x51c554() {
     _0x4d3094();
     _0x4cb089 = _0x3c3250 = _0xaade67 = _0x2c6f91 = true;
     if (windowIsLoaded) {
-        if (_0x1e208d) {
+        if (gameSettings.sFixedZoom) {
             _0xb03f97();
         }
         _0x215896();
@@ -9010,7 +9057,7 @@ function _0x4801bb() {
                 _0x114a07.strokeSize = 0.83 * _0x57d355;
             }
             _0x114a07.color = rgbToHex(_0x4f9aca.r, _0x4f9aca.g, _0x4f9aca.b);
-            _0x114a07.$e = rgbToHex(_0x4f9aca.r * _0x517df6, _0x4f9aca.g * _0x517df6, _0x4f9aca.b * _0x517df6);
+            _0x114a07.$e = rgbToHex(_0x4f9aca.r * gameBrightness, _0x4f9aca.g * gameBrightness, _0x4f9aca.b * gameBrightness);
             _0x114a07.Be = _0x2cb7b3;
             _0x114a07.N = _0x4ce9ff;
             _0x114a07.reloadImage();
@@ -9114,7 +9161,7 @@ function _0x489880() {
             if (_0x39fc65.shape < 2) {
                 _0x39fc65.rotation = (2 * Math.random() - 1) * Math.PI;
             }
-            if (_0x161144) {
+            if (gameSettings.sLineShapes) {
                 _0x39fc65.shape = 2;
             } else if (_0x39fc65.shape < 3) {
                 _0x39fc65.shape = foodCellRandomShapes[_0x39fc65.id % 100];
@@ -9138,14 +9185,14 @@ function _0x1e72ef(_0x4dd855) {
 }
 
 function _0x44ff99() {
-    if (_0x1566f5 && (_0x1a6afb && _0x30cebd(), isReady())) {
+    if (gameSettings.sFPS && (_0x1a6afb && _0x30cebd(), isReady())) {
         sendSignal(130);
         _0x1a6afb = true;
     }
 }
 
 function _0x30cebd() {
-    if (_0x1566f5) {
+    if (gameSettings.sFPS) {
         $("#ping").text("---");
         _0x1a6afb = false;
     }
@@ -9289,7 +9336,7 @@ var _0x463a1e = [];
 var _0x2032b6 = [];
 var _0x5bdc9e = [];
 var _0x57f5d0 = 0;
-var _0x5af7fe = [];
+var chatMessages = [];
 var _0x36887a = 0;
 var _0x19f1c7 = 0;
 var _0x2df455 = -1;
@@ -9552,211 +9599,11 @@ var _0x33d2a7 = 0;
 var _0x2c99f2 = false;
 var _0x4a720f = false;
 
-var _0xe1899f = {
-    "nickName": '',
-    "user": '',
-    "skinId": 0,
-    "wearablesSelected": [],
-    "sSkins": !(isSpectating = false),
-    "sWearables": true,
-    "sColors": true,
-    "sSounds": true,
-    "sNames": true,
-    "sMinionNames": true,
-    "sMass": true,
-    "sFood": true,
-    "sFoodHalf": false,
-    "sCellAnimations": true,
-    "sSkinAnimations": true,
-    "sMapBorder": true,
-    "sFancyGrid": true,
-    "sSectionGrid": false,
-    "sGrid": false,
-    "sCustomBack": false,
-    "sCustomBackType": 0,
-    "sCustomBackOpacity": 0.5,
-    "sCustomBackClip": false,
-    "sCustomBackEnableColor": false,
-    "sCustomBackColor": "#000000",
-    "sDark": false,
-    "sAcid": false,
-    "sSlowMotion": false,
-    "sFPS": true,
-    "sZoom": true,
-    "sFixedZoom": false,
-    "fixedZoomScale": 1,
-    "sMinionUi": false,
-    "sLeaderboard": true,
-    "sChat": true,
-    "sChatSize": false,
-    "sMinimap": true,
-    "sCellBorders": false,
-    "sLargeNames": false,
-    "sNameOutlines": true,
-    "sCellSpikes": true,
-    "sTransparentViruses": true,
-    "sClassicViruses": false,
-    "sPolygonShapes": false,
-    "sLineShapes": false,
-    "sBubbleCells": false,
-    "sGraphics": 0,
-    "sMobileLeft": false,
-    "sMobileFeedLock": true
-};
-var gameSettings = {
-    "nickName": '',
-    "user": '',
-    "skinId": 0,
-    "wearablesSelected": _0xe1899f.wearablesSelected.slice(0),
-    "sSkins": _0xe1899f.sSkins,
-    "sWearables": true,
-    "sColors": true,
-    "sNames": true,
-    "sMinionNames": true,
-    "sMass": true,
-    "sFood": true,
-    "sFoodHalf": false,
-    "sCellAnimations": true,
-    "sSkinAnimations": true,
-    "sMapBorder": true,
-    "sFancyGrid": true,
-    "sSectionGrid": false,
-    "sGrid": false,
-    "sCustomBack": false,
-    "sCustomBackType": 0,
-    "sCustomBackOpacity": 0.5,
-    "sCustomBackClip": false,
-    "sCustomBackEnableColor": false,
-    "sCustomBackColor": "#000000",
-    "sDark": false,
-    "sSlowMotion": false,
-    "sFPS": true,
-    "sZoom": true,
-    "sSounds": true,
-    "sFixedZoom": false,
-    "fixedZoomScale": 1,
-    "sMinionUi": false,
-    "sLeaderboard": true,
-    "sChat": true,
-    "sChatSize": false,
-    "sMinimap": true,
-    "sCellBorders": false,
-    "sLargeNames": false,
-    "sNameOutlines": true,
-    "sCellSpikes": true,
-    "sTransparentViruses": true,
-    "sClassicViruses": false,
-    "sPolygonShapes": false,
-    "sLineShapes": false,
-    "sBubbleCells": false,
-    "sGraphics": 0,
-    "sMobileLeft": false,
-    "sMobileFeedLock": true
-};
-var _0x536824 = false;
+var canEditGameSettings = false;
 var _0x597133 = false;
 var currentNickname = null;
-var _0x28aabd = 0;
-var _0x4bb827 = _0xe1899f.wearablesSelected.slice(0);
-var _0xfd65d9 = _0xe1899f.sSkins;
-var _0x4b4ed5 = true;
-var _0x246ae5 = false;
-var _0x101b79 = true;
-var _0x1c7c12 = true;
-var _0x3fa749 = true;
-var _0x23a795 = true;
-var _0x2792ec = false;
-var _0x414662 = true;
-var _0x32b0e5 = true;
-var _0xec393c = false;
-var _0x1f1bbd = false;
-var _0x41cc0f = true;
-var _0x277c68 = false;
-var _0x1e5f5a = false;
-var _0x12e7a7 = false;
-var _0x19d645 = 0;
-var _0x537d17 = 0.5;
-var _0x1407a2 = false;
-var _0xe0e646 = false;
-var _0x32edda = "#000000";
-var _0x33523f = false;
-var _0x517df6 = _0x33523f ? 0.8 : 0.9;
-var _0x4c1257 = false;
-var _0x1566f5 = true;
-var _0x286c1f = true;
-var _0x1f14e9 = true;
-var _0x1e208d = false;
-var _0x4c4c0f = 1;
-var _0x255a3e = false;
-var _0x36d371 = true;
-var _0x5eeb3b = false;
-var _0x46bbb2 = true;
-var _0x18306d = false;
-var _0x11baa8 = true;
-var _0xbdc65b = false;
-var _0x471c1e = true;
-var _0x345ceb = true;
-var _0x53ec10 = false;
-var _0xb4d644 = false;
-var _0x161144 = false;
-var _0x2dceca = false;
-var _0x294d0a = 0;
-var _0x18d745 = false;
-var _0x2eebe7 = true;
-    
-
-function _0xbb1a8c() {
-        gameSettings.version = 2;
-        gameSettings.user = _0xea465f;
-        gameSettings.skinId = _0x28aabd;
-        gameSettings.wearablesSelected = _0x4bb827.slice(0);
-        gameSettings.sSkins = _0xfd65d9;
-        gameSettings.sWearables = _0x4b4ed5;
-        gameSettings.sColors = !_0x246ae5;
-        gameSettings.sSounds = _0x1f14e9;
-        gameSettings.sNames = _0x101b79;
-        gameSettings.sMinionNames = _0x1c7c12;
-        gameSettings.sMass = _0x3fa749;
-        gameSettings.sFood = _0x23a795;
-        gameSettings.sFoodHalf = _0x2792ec;
-        gameSettings.sCellAnimations = _0x414662;
-        gameSettings.sSkinAnimations = _0x32b0e5;
-        gameSettings.sMapBorder = !_0x1f1bbd;
-        gameSettings.sFancyGrid = _0x41cc0f;
-        gameSettings.sSectionGrid = _0x277c68;
-        gameSettings.sGrid = _0x1e5f5a;
-        gameSettings.sCustomBack = _0x12e7a7;
-        gameSettings.sCustomBackType = _0x19d645;
-        gameSettings.sCustomBackOpacity = _0x537d17;
-        gameSettings.sCustomBackClip = _0x1407a2;
-        gameSettings.sCustomBackEnableColor = _0xe0e646;
-        gameSettings.sCustomBackColor = _0x32edda;
-        gameSettings.sDark = _0x33523f;
-        gameSettings.sSlowMotion = _0x4c1257;
-        gameSettings.sFPS = _0x1566f5;
-        gameSettings.sZoom = _0x286c1f;
-        gameSettings.sFixedZoom = _0x1e208d;
-        gameSettings.fixedZoomScale = _0x4c4c0f;
-        gameSettings.sMinionUi = _0x255a3e;
-        gameSettings.sLeaderboard = _0x36d371;
-        gameSettings.sChat = !_0x5eeb3b;
-        gameSettings.sChatSize = !_0x46bbb2;
-        gameSettings.sMinimap = !_0x18306d;
-        gameSettings.sCellBorders = !_0x11baa8;
-        gameSettings.sLargeNames = _0xbdc65b;
-        gameSettings.sNameOutlines = _0x471c1e;
-        gameSettings.sCellSpikes = _0x345ceb;
-        gameSettings.sTransparentViruses = true;
-        gameSettings.sClassicViruses = _0x53ec10;
-        gameSettings.sPolygonShapes = _0xb4d644;
-        gameSettings.sLineShapes = _0x161144;
-        gameSettings.sBubbleCells = _0x2dceca;
-        gameSettings.sGraphics = _0x294d0a;
-        gameSettings.sMobileLeft = _0x18d745;
-        gameSettings.sMobileFeedLock = _0x2eebe7;
-        window.localStorage.settings = JSON.stringify(gameSettings);
-    
-}
+var fastBanEnabled = false;
+var gameBrightness = gameSettings.sDark ? 0.8 : 0.9;
 
 function timeFormat(s) {
     s = Number(s);
@@ -9768,7 +9615,7 @@ function timeFormat(s) {
 
 function _0x11c620() {
     var _0x461b23;
-    if (null != window.localStorage["userSettings" + _0x107e7f.toString()] && (undefined !== (_0x461b23 = JSON.parse(window.localStorage["userSettings" + _0x107e7f.toString()])).sAPInv && (allowPartyInvite = _0x461b23.sAPInv), undefined !== _0x461b23.sAPAni && (allowPartyAnimations = _0x461b23.sAPAni), undefined !== _0x461b23.sAuFdEn && (autoFeedEnabled = _0x461b23.sAuFdEn), undefined !== _0x461b23.sGldNickEnabled && (gldNickEnabled = _0x461b23.sGldNickEnabled), undefined !== _0x461b23.sGldCrownEnabled && (gldCrownEnabled = _0x461b23.sGldCrownEnabled), undefined !== _0x461b23.sLargeRenderDistance && (largeRenderDistance = _0x461b23.sLargeRenderDistance), undefined !== _0x461b23.sMinionSkins && (minionSkins = _0x461b23.sMinionSkins), undefined !== _0x461b23.sVideoAdsEnabled && (videoAdsEnabled = _0x461b23.sVideoAdsEnabled), undefined !== _0x461b23.sModIconEnabled && (modIconEnabled = _0x461b23.sModIconEnabled), undefined !== _0x461b23.sIconDRankEnabled && (iconDRankEnabled = _0x461b23.sIconDRankEnabled), undefined !== _0x461b23.sIconYTEnabled && (iconYTEnabled = _0x461b23.sIconYTEnabled), undefined !== _0x461b23.sGreenNameEnabled && (greenNameEnabled = _0x461b23.sGreenNameEnabled), undefined !== _0x461b23.sBlueNameEnabled && (blueNameEnabled = _0x461b23.sBlueNameEnabled), undefined !== _0x461b23.sOrangeNameEnabled && (orangeNameEnabled = _0x461b23.sOrangeNameEnabled), undefined !== _0x461b23.sRedNameEnabled && (redNameEnabled = _0x461b23.sRedNameEnabled), undefined !== _0x461b23.sBlackNameEnabled && (blackNameEnabled = _0x461b23.sBlackNameEnabled), undefined !== _0x461b23.sCustomColorNameEnabled)) {
+    if (null != window.localStorage.userSettings && (undefined !== (_0x461b23 = JSON.parse(window.localStorage.userSettings)).sAPInv && (allowPartyInvite = _0x461b23.sAPInv), undefined !== _0x461b23.sAPAni && (allowPartyAnimations = _0x461b23.sAPAni), undefined !== _0x461b23.sAuFdEn && (autoFeedEnabled = _0x461b23.sAuFdEn), undefined !== _0x461b23.sGldNickEnabled && (gldNickEnabled = _0x461b23.sGldNickEnabled), undefined !== _0x461b23.sGldCrownEnabled && (gldCrownEnabled = _0x461b23.sGldCrownEnabled), undefined !== _0x461b23.sLargeRenderDistance && (largeRenderDistance = _0x461b23.sLargeRenderDistance), undefined !== _0x461b23.sMinionSkins && (minionSkins = _0x461b23.sMinionSkins), undefined !== _0x461b23.sVideoAdsEnabled && (videoAdsEnabled = _0x461b23.sVideoAdsEnabled), undefined !== _0x461b23.sModIconEnabled && (modIconEnabled = _0x461b23.sModIconEnabled), undefined !== _0x461b23.sIconDRankEnabled && (iconDRankEnabled = _0x461b23.sIconDRankEnabled), undefined !== _0x461b23.sIconYTEnabled && (iconYTEnabled = _0x461b23.sIconYTEnabled), undefined !== _0x461b23.sGreenNameEnabled && (greenNameEnabled = _0x461b23.sGreenNameEnabled), undefined !== _0x461b23.sBlueNameEnabled && (blueNameEnabled = _0x461b23.sBlueNameEnabled), undefined !== _0x461b23.sOrangeNameEnabled && (orangeNameEnabled = _0x461b23.sOrangeNameEnabled), undefined !== _0x461b23.sRedNameEnabled && (redNameEnabled = _0x461b23.sRedNameEnabled), undefined !== _0x461b23.sBlackNameEnabled && (blackNameEnabled = _0x461b23.sBlackNameEnabled), undefined !== _0x461b23.sCustomColorNameEnabled)) {
         customColorNameEnabled = _0x461b23.sCustomColorNameEnabled;
     }
     _0x597133 = false;
@@ -9790,7 +9637,7 @@ function _0x11c620() {
     setBlackName(blackNameEnabled);
     setCustomColorName(customColorNameEnabled);
     _0x597133 = true;
-    if (null == window.localStorage["userSettings" + _0x107e7f.toString()]) {
+    if (null == window.localStorage.userSettings) {
         _0x161cd2();
     }
 }
@@ -9838,7 +9685,7 @@ function _0x161cd2() {
         if (can_custom_color_name) {
             _0x44a2c1.sCustomColorNameEnabled = customColorNameEnabled;
         }
-        window.localStorage["userSettings" + _0x107e7f.toString()] = JSON.stringify(_0x44a2c1);
+        window.localStorage.userSettings = JSON.stringify(_0x44a2c1);
     }
 }
 
@@ -9879,7 +9726,7 @@ window.setTopMass = function(_0x29926a) {
     $("#topMass").css("color", "#2d2").text(Intl.NumberFormat("en-US").format(Math.round(~~(_0x29926a / 100))));
 };
 window.playSounds = function(_0x3672c0, _0x1081e4, _0x27820b) {
-    if (_0x1f14e9) {
+    if (gameSettings.sSounds) {
         (_0x3672c0 = new Audio(_0x3672c0)).volume = _0x1081e4;
         if (_0x27820b) {
             _0x3672c0.currentTime = _0x27820b;
@@ -9890,17 +9737,17 @@ window.playSounds = function(_0x3672c0, _0x1081e4, _0x27820b) {
 window.setNick = function(nickname, respawn) {
     var now = Date.now();
     var elapsed = now - lastSpawn;
-    if (isWebSocketAccepted && elapsed > 100){
-            _0x34efff(true);
-            currentNickname = nickname;
-            _0x4e199b();
-                sendSignal(59);
-            sendSignal(34);
-            _0x5ae1b6 = 0;
-            gameSettings.nickName = currentNickname;
-            _0xbb1a8c();
-            _0x8f51f1();
-        }
+    if (isWebSocketAccepted && elapsed > 100) {
+        _0x34efff(true);
+        currentNickname = nickname;
+        _0x4e199b();
+        if (respawn)
+            sendSignal(59);
+        sendSignal(34);
+        _0x5ae1b6 = 0;
+        gameSettings.nickname = currentNickname;
+        _0x8f51f1();
+    }
 };
 window.sendCaptchaInput = function(_0x3efe3f) {
     if (isReady() && 0 < _0x3efe3f.length) {
@@ -9999,7 +9846,7 @@ window.loadGiftUI = function(_0x219024) {
     _0x219024.forEach(_0x1f4704 => {
         var _0x5c9996 = document.createElement("div");
         _0x5c9996.className = "gift-log-entry";
-        var _0x1ab07d = "\n\t            <div class=\"from-date\">\n\t                <span>From: " + _0x1f4704.from + "</span>\n\t                <span>" + _0x1f4704.date + "</span>\n\t            </div>";
+        var _0x1ab07d = "<div class=\"from-date\"><span>From: " + _0x1f4704.from + "</span><span>" + _0x1f4704.date + "</span></div>";
         var _0x53f476 = _0x1f4704.coins ? "<span class=\"coin\">" + _0x1f4704.coins.toLocaleString() + " Coins</span>" : '';
         var _0x1f4704 = _0x1f4704.powerups.map(_0x2a24f3 => {
             var _0x3fe08a = _0x1fbe68[_0x2a24f3.id] || '';
@@ -10009,9 +9856,9 @@ window.loadGiftUI = function(_0x219024) {
         _0x2032fd.appendChild(_0x5c9996);
     });
     if (_0x219024 && 0 !== _0x219024.length) {
-        document.getElementById("logsPagination").innerHTML = "\n\t\t    <button onclick=\"requestGiftLogs(1)\">1</button>\n\t\t    <button onclick=\"requestGiftLogs(2)\">2</button>\n\t\t    <button onclick=\"requestGiftLogs(3)\">3</button>\n\t\t";
+        document.getElementById("logsPagination").innerHTML = "<button onclick=\"requestGiftLogs(1)\">1</button><button onclick=\"requestGiftLogs(2)\">2</button><button onclick=\"requestGiftLogs(3)\">3</button>";
     } else {
-        _0x2032fd.innerHTML = "\n\t\t\t\t<div class=\"gift-log-entry\">\n\t\t\t\t  <div class=\"from-date\">\n\t\t\t\t    <p>No gifts received yet 🕵️‍♂️. This panel shows powerups and coins sent to you by other players when you're chosen as the 🏆 Gold Member of the Day.<br>\n\t\t\t\t    <small style=\"color:grey\">You must be a gold member for this feature!</small></p>\n\t\t\t\t  </div>\n\t\t\t\t</div>\n\t\t\t";
+        _0x2032fd.innerHTML = "<div class=\"gift-log-entry\"><div class=\"from-date\"><p>No gifts received yet 🕵️‍♂️. This panel shows powerups and coins sent to you by other players when you're chosen as the 🏆 Gold Member of the Day.<br><small style=\"color:grey\">You must be a gold member for this feature!</small></p></div></div>";
     }
 };
 window.sendGiftToGoldMember = function(_0x1f01ed, _0x7b71d0) {
@@ -10053,15 +9900,15 @@ window.setMegaphoneText = function() {
     } else if (6 == _0x35d709) {
         $("#megaphone_cell_name").addClass("black");
     }
-    if (0 != _0x28aabd) {
-        $("#skinMegaDialog").css("background-image", "url('skins/" + _0x28aabd.toString() + "_lo.png?u=" + (_0x48a780[_0x28aabd] || 0) + "')");
+    if (gameSettings.skinId) {
+        $("#skinMegaDialog").css("background-image", "url('skins/" + gameSettings.skinId.toString() + "_lo.png?u=" + (_0x48a780[gameSettings.skinId] || 0) + "')");
     } else {
         $("#skinMegaDialog").css("background-image", "none");
     }
     _0x4e199b();
     for (var _0x1f2a13 = 1; _0x1f2a13 <= 5; _0x1f2a13++) {
-        if (_0x1f2a13 <= _0x4bb827.length) {
-            var _0x5908dd = _0x4bb827[_0x1f2a13 - 1];
+        if (_0x1f2a13 <= gameSettings.wearablesSelected.length) {
+            var _0x5908dd = gameSettings.wearablesSelected[_0x1f2a13 - 1];
             var _0x57dd3b = wearableClasses[_0x5908dd.P] || '';
             try {
                 $("#wearMegaDialog" + _0x1f2a13).css("background-image", "url('wearables/" + _0x5908dd.wearId.toString() + "_lo.png?v=" + wearablesApiVersion + "')").removeClass("center top bottom left right max".replace(_0x57dd3b, '')).addClass(_0x57dd3b).show();
@@ -10080,10 +9927,10 @@ window.purchaseMega = function(_0x20bb03, _0xb2e665) {
         if (-1 != badwords.indexOf(_0x1e5419.replace(/ /g, '').toLowerCase())) {
             _0x1e5419 = '';
         }
-        var _0x5d2a03 = new PacketWriter(11 + 2 * _0x20bb03.length + 2 * _0x1e5419.length + 2 * _0x4bb827.length);
-        _0x5d2a03.setUint8(42).setUint8(_0xb2e665).setUint8(0).setString(_0x20bb03).setUint16(0).setString(_0x1e5419).setUint16(0).setUint8(can_black_name && blackNameEnabled ? 6 : can_custom_color_name && customColorNameEnabled ? custom_color_name : can_red_name && redNameEnabled ? 5 : can_orange_name && orangeNameEnabled ? 4 : can_blue_name && blueNameEnabled ? 3 : can_green_name && greenNameEnabled ? 2 : 2 == _0x3f104e && gldNickEnabled ? 1 : 0).setUint16(_0x28aabd).setUint8(_0x4bb827.length);
-        for (let _0x4828e6 = 0; _0x4828e6 < _0x4bb827.length; _0x4828e6++) {
-            _0x5d2a03.setUint16(_0x4bb827[_0x4828e6].wearId);
+        var _0x5d2a03 = new PacketWriter(11 + 2 * _0x20bb03.length + 2 * _0x1e5419.length + 2 * gameSettings.wearablesSelected.length);
+        _0x5d2a03.setUint8(42).setUint8(_0xb2e665).setUint8(0).setString(_0x20bb03).setUint16(0).setString(_0x1e5419).setUint16(0).setUint8(can_black_name && blackNameEnabled ? 6 : can_custom_color_name && customColorNameEnabled ? custom_color_name : can_red_name && redNameEnabled ? 5 : can_orange_name && orangeNameEnabled ? 4 : can_blue_name && blueNameEnabled ? 3 : can_green_name && greenNameEnabled ? 2 : 2 == _0x3f104e && gldNickEnabled ? 1 : 0).setUint16(gameSettings.skinId).setUint8(gameSettings.wearablesSelected.length);
+        for (let i = 0; i < gameSettings.wearablesSelected.length; i++) {
+            _0x5d2a03.setUint16(gameSettings.wearablesSelected[i].wearId);
         }
         _0x5d2a03.send();
     }
@@ -10778,22 +10625,21 @@ window.spectate = function(_0x592d39) {
         }
     }
 };
-window.toggleSkin = function(_0x2fe59f) {
+window.toggleSkin = function(skinId) {
     if (_0x3e08c0 && isReady()) {
-        if (_0x28aabd == _0x2fe59f) {
+        if (gameSettings.skinId == skinId) {
             _0x5df715(0);
         } else {
-            _0x5df715(_0x2fe59f);
-            if (!_0xfd65d9) {
+            _0x5df715(skinId);
+            if (!gameSettings.sSkins) {
                 setSetting("cSkins", true);
             }
         }
-        _0xbb1a8c();
     }
 };
-window.tskngc = function(_0x427c26) {
+window.tskngc = function(skinId) {
     if (isReady()) {
-        _0x5df715(_0x427c26);
+        _0x5df715(skinId);
     }
 };
 window.shareInfectionFb = function() {};
@@ -10998,7 +10844,7 @@ function _0x350e59(_0xf3cb18, _0x4062b1) {
                     }
                     _0x2d537c = _0xf3cb18;
                     if (_0x14d497) {
-                        _0x5cfda7(_0xf3cb18);
+                        reloadBackground(_0xf3cb18);
                     }
                     _0x17ae44();
                     if (_0x4062b1) {
@@ -11027,7 +10873,7 @@ function _0x350e59(_0xf3cb18, _0x4062b1) {
         _0x1b3496 = null;
         _0x2d537c = '';
         if (_0x14d497) {
-            _0x5cfda7('');
+            reloadBackground('');
         }
         _0x17ae44();
         if (_0x4062b1) {
@@ -11036,24 +10882,24 @@ function _0x350e59(_0xf3cb18, _0x4062b1) {
     }
 }
 
-function _0x5cfda7(_0x16b03a) {
+function reloadBackground(_0x16b03a) {
     var _0x5a7db6 = _0x1b3496;
     var _0x8862f2 = _0x5a7db6 && _0x5a7db6.complete && 0 != _0x5a7db6.width;
     var _0x1ff456 = $("#customBackImgHolder");
     var _0x5b18c3 = {
-        "background-color": _0xe0e646 ? _0x32edda : '',
-        border: _0x1407a2 ? "3px solid rgba(204,48,48,0.8)" : '',
-        margin: _0x1407a2 ? "-2px" : '',
-        "box-shadow": _0x1407a2 ? "none" : ''
+        "background-color": gameSettings.sCustomBackEnableColor ? gameSettings.sCustomBackColor : '',
+        border: gameSettings.sCustomBackClip ? "3px solid rgba(204,48,48,0.8)" : '',
+        margin: gameSettings.sCustomBackClip ? "-2px" : '',
+        "box-shadow": gameSettings.sCustomBackClip ? "none" : ''
     };
     $("#customBackContainer").css(_0x5b18c3);
     if (undefined !== _0x16b03a && (_0x1ff456.css("background-image", ''), '' != _0x16b03a)) {
         _0x1ff456.css("background-image", "url(\"" + _0x16b03a + "\")").hide(0).show(0);
     }
     _0x1ff456.css({
-        "opacity": (_0x1cf392 ? Math.max(_0x537d17, 0.1) : _0x537d17).toString(),
-        "background-size": 2 == _0x19d645 ? (_0x8862f2 ? Math.clamp(~~(50 * _0x5a7db6.width / 1024 + 0.5), 2, 50) : 50).toString() + "%" : 1 == _0x19d645 ? "cover" : "100% 100%",
-        "background-repeat": 2 == _0x19d645 ? "repeat" : "no-repeat"
+        "opacity": (_0x1cf392 ? Math.max(gameSettings.sCustomBackOpacity, 0.1) : gameSettings.sCustomBackOpacity).toString(),
+        "background-size": 2 == gameSettings.sCustomBackType ? (_0x8862f2 ? Math.clamp(~~(50 * _0x5a7db6.width / 1024 + 0.5), 2, 50) : 50).toString() + "%" : 1 == gameSettings.sCustomBackType ? "cover" : "100% 100%",
+        "background-repeat": 2 == gameSettings.sCustomBackType ? "repeat" : "no-repeat"
     });
 }
 
@@ -11078,8 +10924,8 @@ function _0x17ae44() {
 function _0x4c0e03() {
     var _0x5c9ea3;
     var _0x2ef3a3 = _0x1b3496;
-    if (_0x12e7a7 && _0x2ef3a3 && _0x2ef3a3.complete && 0 != _0x2ef3a3.width) {
-        if (2 == _0x19d645) {
+    if (gameSettings.sCustomBack && _0x2ef3a3 && _0x2ef3a3.complete && 0 != _0x2ef3a3.width) {
+        if (2 == gameSettings.sCustomBackType) {
             if (null == _0x46d4aa[(_0x5c9ea3 = "customback_pattern") + "1"]) {
                 var _0x4449a4 = _0x2ef3a3;
                 var _0xc96bba = _0x2ef3a3.width;
@@ -11364,7 +11210,7 @@ window.editCustomSkin = function(_0x332f75) {
         if (isReady()) {
             new PacketWriter(3).setUint8(51).setUint16(_0x332f75).send();
         }
-        if (_0x28aabd == _0x332f75) {
+        if (gameSettings.skinId == _0x332f75) {
             _0x5df715(0);
         }
         $("#skinContainer" + _0x332f75).removeClass("saved-mode approved-mode rejected-mode enabled-mode").addClass("edit-mode nonapproved-mode pending-mode disabled-mode");
@@ -11491,9 +11337,9 @@ window.showPublicSkinsPage = function(_0x79939c) {
         document.getElementById("publicSkinsPage").innerHTML = document.getElementById("publicSkinsPageContent" + _0x79939c).textContent;
         $("#publicSkinsPage .skin-container").removeClass("selected");
         $("#publicSkinsPage .skinuse-btn").removeClass("btn-default").addClass("btn-primary").text("Use");
-        if (0 != _0x28aabd) {
-            $("#skinContainer" + _0x28aabd).addClass("selected");
-            $("#skinUseBtn" + _0x28aabd).removeClass("btn-primary").addClass("btn-default").text("Cancel");
+        if (gameSettings.skinId) {
+            $("#skinContainer" + gameSettings.skinId).addClass("selected");
+            $("#skinUseBtn" + gameSettings.skinId).removeClass("btn-primary").addClass("btn-default").text("Cancel");
         }
         document.getElementById("publicSkinsHeader").scrollIntoView();
     }
@@ -11506,8 +11352,8 @@ window.tgWblGc = function(_0x164aab, _0x2c53fd, _0x4286f5, _0x1b40b7, _0x18a457)
 window.toggleWearable = function(_0x3acdc5, _0x75f1be, _0x1acae1, _0x26b773, _0x25e189) {
     if (_0x3e08c0 && _0x529909 && isReady()) {
         var _0x551068 = false;
-        for (var _0x3e19ac = 0; _0x3e19ac < _0x4bb827.length; _0x3e19ac++) {
-            if (_0x4bb827[_0x3e19ac].wearId == _0x3acdc5) {
+        for (var _0x3e19ac = 0; _0x3e19ac < gameSettings.wearablesSelected.length; _0x3e19ac++) {
+            if (gameSettings.wearablesSelected[_0x3e19ac].wearId == _0x3acdc5) {
                 _0x551068 = true;
                 break;
             }
@@ -11516,23 +11362,22 @@ window.toggleWearable = function(_0x3acdc5, _0x75f1be, _0x1acae1, _0x26b773, _0x
             _0x5eb440(_0x3acdc5);
         } else {
             if (0 != _0x26b773) {
-                var _0x323f5e = _0x4bb827.length;
+                var _0x323f5e = gameSettings.wearablesSelected.length;
                 for (var _0xe8fbe7 = 0; _0xe8fbe7 < _0x323f5e; _0xe8fbe7++) {
-                    if (_0x4bb827[_0xe8fbe7].wearGroup == _0x26b773 && (_0x5eb440(_0x4bb827[_0xe8fbe7].wearId), _0x4bb827.length < _0x323f5e)) {
+                    if (gameSettings.wearablesSelected[_0xe8fbe7].wearGroup == _0x26b773 && (_0x5eb440(gameSettings.wearablesSelected[_0xe8fbe7].wearId), gameSettings.wearablesSelected.length < _0x323f5e)) {
                         _0x323f5e--;
                         _0xe8fbe7--;
                     }
                 }
             }
-            if (5 <= _0x4bb827.length) {
+            if (5 <= gameSettings.wearablesSelected.length) {
                 return void curserMessage("You cannot select more than 5 wearables. Please remove one before selecting another wearable.", false, false, 0, 10);
             }
             _0x5f4edb(_0x3acdc5, _0x75f1be, _0x1acae1, _0x26b773, _0x25e189);
-            if (!_0x4b4ed5) {
+            if (!gameSettings.sWearables) {
                 setSetting("cWearables", true);
             }
         }
-        _0xbb1a8c();
     }
 };
 window.purchaseWearable = function(_0x1d3ed8, _0x27391e) {
@@ -11812,7 +11657,7 @@ window.friendAcceptAll = function() {
 window.insertPMText = function(_0x3c92d2) {
     var _0x684c63;
     var _0x1268b7;
-    if (!_0x5eeb3b) {
+    if (gameSettings.sChat) {
         _0x684c63 = document.getElementById("chtbox");
         _0x1268b7 = "/pm " + _0x3c92d2 + " ";
         _0x23a624(_0x3c92d2);
@@ -11857,109 +11702,101 @@ window.displayInfoDialog = function(_0x128329) {
         }
     }
 };
-window.setSkins = function(_0x93db09) {
-    _0xfd65d9 = _0x93db09;
-    $("#cSkins").prop("checked", _0xfd65d9);
-    $("#cSkins2").prop("checked", _0xfd65d9);
+window.setSkins = function(isEnabled) {
+    gameSettings.sSkins = isEnabled;
+    $("#cSkins").prop("checked", isEnabled);
+    $("#cSkins2").prop("checked", isEnabled);
+    _0x3c3250 = true; // needsFullRedraw
+};
+window.setWearables = function(isEnabled) {
+    gameSettings.sWearables = isEnabled;
     _0x3c3250 = true;
-    _0xbb1a8c();
 };
-window.setWearables = function(_0x781344) {
-    _0x4b4ed5 = _0x781344;
-    _0x3c3250 = true;
-    _0xbb1a8c();
+window.setColors = function(isEnabled) {
+    gameSettings.sColors = isEnabled;
 };
-window.setColors = function(_0x1f1aa0) {
-    _0x246ae5 = !_0x1f1aa0;
-    _0xbb1a8c();
+window.setSounds = function(isEnabled) {
+    if (!(gameSettings.sSounds = isEnabled) && canEditGameSettings) {
+        setSetting("cSetSounds", canEditGameSettings = false);
+        canEditGameSettings = true;
+    }
 };
-window.setNames = function(_0x5cfb8b) {
-    _0x101b79 = _0x5cfb8b;
-    $("#cNames").prop("checked", _0x101b79);
-    $("#cNames2").prop("checked", _0x101b79);
-    _0xbb1a8c();
+window.setNames = function(isEnabled) {
+    gameSettings.sNames = isEnabled;
+    $("#cNames").prop("checked", isEnabled);
+    $("#cNames2").prop("checked", isEnabled);
 };
-window.setMinionNames = function(_0x4dcf6e) {
-    _0x1c7c12 = _0x4dcf6e;
-    _0xbb1a8c();
+window.setMinionNames = function(isEnabled) {
+    gameSettings.sMinionNames = isEnabled;
 };
-window.setMass = function(_0xdaef7d) {
-    _0x3fa749 = _0xdaef7d;
-    _0xbb1a8c();
+window.setMass = function(isEnabled) {
+    gameSettings.sMass = isEnabled;
 };
-window.setFood = function(_0x50f987) {
-    _0x23a795 = _0x50f987;
-    _0xbb1a8c();
+window.setFood = function(isEnabled) {
+    gameSettings.sFood = isEnabled;
 };
-window.setFoodHalf = function(_0x5e51f2) {
-    _0x2792ec = _0x5e51f2;
+window.setFoodHalf = function(isEnabled) {
+    gameSettings.sFoodHalf = isEnabled;
 };
-window.setCellAnimations = function(_0x13dfdc) {
-    _0x414662 = _0x13dfdc;
-    _0xbb1a8c();
+window.setCellAnimations = function(isEnabled) {
+    gameSettings.sCellAnimations = isEnabled;
 };
-window.setSkinAnimations = function(_0x5b77d0) {
-    _0x32b0e5 = _0x5b77d0;
-    _0xbb1a8c();
+window.setSkinAnimations = function(isEnabled) {
+    gameSettings.sSkinAnimations = isEnabled;
 };
-window.setMapBorder = function(_0x183487) {
-    _0x1f1bbd = !_0x183487;
-    _0xbb1a8c();
+window.setMapBorder = function(isEnabled) {
+    gameSettings.sMapBorder = isEnabled;
 };
 window.cFastBan = function() {
-    if (0 == (_0xec393c = !_0xec393c)) {
-        $("#contextFBan").hide();
-    } else {
+    if (fastBanEnabled = !fastBanEnabled) {
         $("#contextFBan").show();
+    } else {
+        $("#contextFBan").hide();
     }
-    _0xbb1a8c();
 };
-window.setFancyGrid = function(_0x1a2aff) {
-    _0x41cc0f = _0x1a2aff;
-    $("#cFancyGrid").prop("checked", _0x41cc0f);
-    $("#cFancyGrid2").prop("checked", _0x41cc0f);
-    if (_0x41cc0f && _0x536824) {
-        setSetting("cSectionGrid", _0x536824 = false);
+window.setFancyGrid = function(isEnabled) {
+    gameSettings.sFancyGrid = isEnabled;
+    $("#cFancyGrid").prop("checked", isEnabled);
+    $("#cFancyGrid2").prop("checked", isEnabled);
+    if (isEnabled && canEditGameSettings) {
+        setSetting("cSectionGrid", canEditGameSettings = false);
         setSetting("cGrid", false);
         setSetting("cCustomBack", false);
-        _0x536824 = true;
+        canEditGameSettings = true;
     }
-    _0xbb1a8c();
 };
-window.setSectionGrid = function(_0x4d1e8a) {
-    _0x277c68 = _0x4d1e8a;
-    $("#cSectionGrid").prop("checked", _0x277c68);
-    $("#cSectionGrid2").prop("checked", _0x277c68);
-    if (_0x277c68 && _0x536824) {
-        setSetting("cFancyGrid", _0x536824 = false);
+window.setSectionGrid = function(isEnabled) {
+    gameSettings.sSectionGrid = isEnabled;
+    $("#cSectionGrid").prop("checked", isEnabled);
+    $("#cSectionGrid2").prop("checked", isEnabled);
+    if (isEnabled && canEditGameSettings) {
+        setSetting("cFancyGrid", canEditGameSettings = false);
         setSetting("cGrid", false);
         setSetting("cCustomBack", false);
-        _0x536824 = true;
+        canEditGameSettings = true;
     }
-    _0xbb1a8c();
 };
-window.setGrid = function(_0x57b9cf) {
-    _0x1e5f5a = _0x57b9cf;
-    $("#cGrid").prop("checked", _0x1e5f5a);
-    $("#cGrid2").prop("checked", _0x1e5f5a);
-    if (_0x1e5f5a && _0x536824) {
-        setSetting("cFancyGrid", _0x536824 = false);
+window.setGrid = function(isEnabled) {
+    gameSettings.sGrid = isEnabled;
+    $("#cGrid").prop("checked", isEnabled);
+    $("#cGrid2").prop("checked", isEnabled);
+    if (isEnabled && canEditGameSettings) {
+        setSetting("cFancyGrid", canEditGameSettings = false);
         setSetting("cSectionGrid", false);
         setSetting("cCustomBack", false);
-        _0x536824 = true;
+        canEditGameSettings = true;
     }
-    _0xbb1a8c();
 };
-window.setCustomBack = function(_0x48864b) {
-    _0x12e7a7 = _0x48864b;
-    $("#cCustomBack").prop("checked", _0x12e7a7);
-    $("#cCustomBack2").prop("checked", _0x12e7a7);
-    $("#cCustomBack3").prop("checked", _0x12e7a7);
-    if (_0x12e7a7 && _0x536824) {
-        setSetting("cFancyGrid", _0x536824 = false);
+window.setCustomBack = function(isEnabled) {
+    gameSettings.sCustomBack = isEnabled;
+    $("#cCustomBack").prop("checked", isEnabled);
+    $("#cCustomBack2").prop("checked", isEnabled);
+    $("#cCustomBack3").prop("checked", isEnabled);
+    if (isEnabled && canEditGameSettings) {
+        setSetting("cFancyGrid", canEditGameSettings = false);
         setSetting("cSectionGrid", false);
         setSetting("cGrid", false);
-        _0x536824 = true;
+        canEditGameSettings = true;
         if (!(_0x37e4bf || _0x1b3496)) {
             if ('' != _0x2d537c) {
                 _0x350e59(_0x2d537c, false);
@@ -11968,93 +11805,84 @@ window.setCustomBack = function(_0x48864b) {
             }
         }
     }
-    _0xbb1a8c();
 };
-window.setCustomBackType = function(_0x297478) {
-    _0x19d645 = _0x297478;
-    _0x5cfda7();
-    _0xbb1a8c();
+window.setCustomBackType = function(type) {
+    gameSettings.sCustomBackType = type;
+    reloadBackground();
 };
-window.setCustomBackOpacity = function(_0x35877e) {
-    _0x35877e = Math.clamp(~~((parseInt(_0x35877e) || 0) + 0.5), 0, 100);
-    _0x537d17 = _0x35877e / 100;
-    document.getElementById("customBackOpacityValue").innerHTML = _0x35877e + "%";
-    _0x5cfda7();
-    _0xbb1a8c();
+window.setCustomBackOpacity = function(opacity) {
+    opacity = Math.clamp(~~((parseInt(opacity) || 0) + 0.5), 0, 100);
+    gameSettings.sCustomBackOpacity = opacity / 100;
+    document.getElementById("customBackOpacityValue").innerHTML = opacity + "%";
+    reloadBackground();
 };
-window.setCustomBackClip = function(_0x222c4b) {
-    _0x1407a2 = _0x222c4b;
-    _0x5cfda7();
-    _0xbb1a8c();
+window.setCustomBackClip = function(isEnabled) {
+    gameSettings.sCustomBackClip = isEnabled;
+    reloadBackground();
 };
-window.setCustomBackEnableColor = function(_0x41c298) {
-    _0xe0e646 = _0x41c298;
-    _0x5cfda7();
-    _0xbb1a8c();
+window.setCustomBackEnableColor = function(isEnabled) {
+    gameSettings.sCustomBackEnableColor = isEnabled;
+    reloadBackground();
 };
-window.setCustomBackColor = function(_0x258cda) {
-    _0x258cda = String(_0x258cda).replace(/[^0-9a-f]/gi, '');
-    if (_0x258cda.length < 6) {
-        _0x258cda = (_0x258cda[0] || "0") + (_0x258cda[0] || "0") + (_0x258cda[1] || "0") + (_0x258cda[1] || "0") + (_0x258cda[2] || "0") + (_0x258cda[2] || "0");
-    }
-    customBackgroundColor.r = parseInt(_0x258cda.substr(0, 2), 16);
-    customBackgroundColor.g = parseInt(_0x258cda.substr(2, 2), 16);
-    customBackgroundColor.b = parseInt(_0x258cda.substr(4, 2), 16);
-    _0x32edda = rgbToHex(0, 0, 0);
-    document.getElementById("customBackColorHex").innerHTML = _0x32edda;
-    _0x5cfda7();
-    _0xbb1a8c();
+window.setCustomBackColor = function(color) {
+    color = String(color).replace(/[^0-9a-f]/gi, '');
+    if (color.length < 6)
+        color = (color[0] || "0") +
+                (color[0] || "0") +
+                (color[1] || "0") +
+                (color[1] || "0") +
+                (color[2] || "0") +
+                (color[2] || "0");
+    customBackgroundColor.r = parseInt(color.substr(0, 2), 16);
+    customBackgroundColor.g = parseInt(color.substr(2, 2), 16);
+    customBackgroundColor.b = parseInt(color.substr(4, 2), 16);
+    document.getElementById("customBackColorHex").innerHTML = gameSettings.sCustomBackColor = rgbToHex(0, 0, 0);
+    reloadBackground();
 };
-window.setMultiEjectCellsAmount = function(_0x4dab40) {
-    _0x4dab40 = Math.clamp(parseInt(_0x4dab40) || 1, 1, 5);
-    multiEjectCellsAmountChosen = _0x4dab40;
-    document.getElementById("customEjectAmountValue").innerHTML = _0x4dab40 + '';
+window.setMultiEjectCellsAmount = function(amount) {
+    amount = Math.clamp(parseInt(amount) || 1, 1, 5);
+    multiEjectCellsAmountChosen = amount;
+    document.getElementById("customEjectAmountValue").innerHTML = amount + '';
 };
-window.setDark = function(_0x319e46) {
-    _0x517df6 = (_0x33523f = _0x319e46) ? 0.8 : 0.9;
-    $("#cDark").prop("checked", _0x33523f);
-    $("#cDark2").prop("checked", _0x33523f);
+window.setDark = function(isEnabled) {
+    gameBrightness = (gameSettings.sDark = isEnabled) ? 0.8 : 0.9;
+    $("#cDark").prop("checked", isEnabled);
+    $("#cDark2").prop("checked", isEnabled);
     var _0x2fadfd;
-    var _0xcdcbe3;
-    var _0x12b250;
-    var _0x184c7a;
-    var _0x40f310;
+    var color, r, g, b;
     var _0x3d9bcc = _0x34b545.length;
-    for (var _0xad4fb4 = 0; _0xad4fb4 < _0x3d9bcc; _0xad4fb4++) {
-        _0x2fadfd = _0x34b545[_0xad4fb4];
-        if ((_0xcdcbe3 = String(_0x2fadfd.color).replace(/[^0-9a-f]/gi, '')).length < 6) {
-            _0xcdcbe3 = _0xcdcbe3[0] + _0xcdcbe3[0] + _0xcdcbe3[1] + _0xcdcbe3[1] + _0xcdcbe3[2] + _0xcdcbe3[2];
+    for (var i = 0; i < _0x3d9bcc; i++) {
+        _0x2fadfd = _0x34b545[i];
+        if ((color = String(_0x2fadfd.color).replace(/[^0-9a-f]/gi, '')).length < 6) {
+            color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2];
         }
-        _0x12b250 = parseInt(_0xcdcbe3.substr(0, 2), 16);
-        _0x184c7a = parseInt(_0xcdcbe3.substr(2, 2), 16);
-        _0x40f310 = parseInt(_0xcdcbe3.substr(4, 2), 16);
-        _0x2fadfd.$e = rgbToHex(_0x12b250 * _0x517df6, _0x184c7a * _0x517df6, _0x40f310 * _0x517df6);
+        r = parseInt(color.substr(0, 2), 16);
+        g = parseInt(color.substr(2, 2), 16);
+        b = parseInt(color.substr(4, 2), 16);
+        _0x2fadfd.$e = rgbToHex(r * gameBrightness, g * gameBrightness, b * gameBrightness);
     }
     if (0 < _0x2a6acb.length && (_0x2fadfd = _0x2a6acb[0].cell)) {
-        if ((_0xcdcbe3 = String(_0x2fadfd.oe).replace(/[^0-9a-f]/gi, '')).length < 6) {
-            _0xcdcbe3 = _0xcdcbe3[0] + _0xcdcbe3[0] + _0xcdcbe3[1] + _0xcdcbe3[1] + _0xcdcbe3[2] + _0xcdcbe3[2];
+        if ((color = String(_0x2fadfd.oe).replace(/[^0-9a-f]/gi, '')).length < 6) {
+            color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2];
         }
-        _0x12b250 = parseInt(_0xcdcbe3.substr(0, 2), 16);
-        _0x184c7a = parseInt(_0xcdcbe3.substr(2, 2), 16);
-        _0x40f310 = parseInt(_0xcdcbe3.substr(4, 2), 16);
-        _0x2fadfd.ie = rgbToHex(_0x12b250 * _0x517df6, _0x184c7a * _0x517df6, _0x40f310 * _0x517df6);
+        r = parseInt(color.substr(0, 2), 16);
+        g = parseInt(color.substr(2, 2), 16);
+        b = parseInt(color.substr(4, 2), 16);
+        _0x2fadfd.ie = rgbToHex(r * gameBrightness, g * gameBrightness, b * gameBrightness);
     }
     _0x2c6f91 = _0x4cb089 = _0x3c3250 = true;
-    _0xbb1a8c();
 };
-window.setSlowMotion = function(_0x1d5d9a) {
-    if (!(_0x4c1257 = _0x1d5d9a)) {
+window.setSlowMotion = function(isEnabled) {
+    if (!(gameSettings.sSlowMotion = isEnabled)) {
         var _0x14189e = _0x34b545.length;
-        for (var _0x270357 = 0; _0x270357 < _0x14189e; _0x270357++) {
-            _0x34b545[_0x270357].ga = 1;
-        }
+        for (var i = 0; i < _0x14189e; i++)
+            _0x34b545[i].ga = 1;
     }
-    _0xbb1a8c();
 };
-window.setFPS = function(_0x4c7830) {
-    var _0x19a4f5 = _0x1566f5;
-    if (_0x1566f5 = _0x4c7830) {
-        if (!_0x19a4f5) {
+window.setFPS = function(isEnabled) {
+    var wasntEnabled = gameSettings.sFPS;
+    if (gameSettings.sFPS = isEnabled) {
+        if (!wasntEnabled) {
             $("#fps").text("---");
             $("#ping").text("---");
             _0x22a146 = performance.now();
@@ -12073,44 +11901,34 @@ window.setFPS = function(_0x4c7830) {
         $("#fpsBox").hide();
         $("#respawnTouch").removeClass("fpsShow");
     }
-    _0xbb1a8c();
 };
-window.setZoom = function(_0x17349a) {
-    if (!(_0x286c1f = _0x17349a) && _0x536824) {
-        setSetting("cFixedZoom", _0x536824 = false);
-        _0x536824 = true;
+window.setZoom = function(isEnabled) {
+    if (!(gameSettings.sZoom = isEnabled) && canEditGameSettings) {
+        setSetting("cFixedZoom", canEditGameSettings = false);
+        canEditGameSettings = true;
     }
     _0x1450ce();
-    _0xbb1a8c();
 };
-window.setSounds = function(_0x355478) {
-    if (!(_0x1f14e9 = _0x355478) && _0x536824) {
-        setSetting("cSetSounds", _0x536824 = false);
-        _0x536824 = true;
+window.setFixedZoom = function(isEnabled) {
+    const changed = gameSettings.sFixedZoom != isEnabled;
+    gameSettings.sFixedZoom = isEnabled;
+    $("#cFixedZoom").prop("checked", isEnabled);
+    $("#cFixedZoom2").prop("checked", isEnabled);
+    if (isEnabled && canEditGameSettings) {
+        setSetting("cZoom", !(canEditGameSettings = false));
+        canEditGameSettings = true;
     }
-    _0xbb1a8c();
-};
-window.setFixedZoom = function(_0x251ee2) {
-    var _0x36002b = _0x1e208d != _0x251ee2;
-    _0x1e208d = _0x251ee2;
-    $("#cFixedZoom").prop("checked", _0x1e208d);
-    $("#cFixedZoom2").prop("checked", _0x1e208d);
-    if (_0x1e208d && _0x536824) {
-        setSetting("cZoom", !(_0x536824 = false));
-        _0x536824 = true;
-    }
-    if (_0x36002b && 0 < framesCounter) {
+    if (changed && 0 < framesCounter) {
         _0xb03f97();
     }
-    _0xbb1a8c();
 };
-window.setMinionUi = function(_0x3e1b6e) {
-    _0x255a3e = _0x3e1b6e;
-    $("#cMinionUi").prop("checked", _0x255a3e);
-    $("#cMinionUi2").prop("checked", _0x255a3e);
-    $("#cMinionUi3").prop("checked", _0x255a3e);
-    if (_0x255a3e) {
-        if (_0x536824) {
+window.setMinionUi = function(isEnabled) {
+    gameSettings.sMinionUi = isEnabled;
+    $("#cMinionUi").prop("checked", isEnabled);
+    $("#cMinionUi2").prop("checked", isEnabled);
+    $("#cMinionUi3").prop("checked", isEnabled);
+    if (isEnabled) {
+        if (canEditGameSettings) {
             $("#minionUi").removeClass("minimized");
             _0x1c50f8 = true;
         }
@@ -12118,10 +11936,9 @@ window.setMinionUi = function(_0x3e1b6e) {
     } else {
         $("#minionUi").hide();
     }
-    _0xbb1a8c();
 };
-window.setLeaderboard = function(_0x3be974) {
-    if (_0x36d371 = _0x3be974) {
+window.setLeaderboard = function(isEnabled) {
+    if (gameSettings.sLeaderboard = isEnabled) {
         $("#brGameContainer").removeClass("no-leaderboard");
         $("#infGameContainer").removeClass("no-leaderboard");
     } else {
@@ -12130,10 +11947,9 @@ window.setLeaderboard = function(_0x3be974) {
     }
     _0x4d3094();
     _0x3c3250 = true;
-    _0xbb1a8c();
 };
-window.toggleEmojis = function(_0x5a8429) {
-    if (_0x5a8429) {
+window.toggleEmojis = function(isEnabled) {
+    if (isEnabled) {
         $("#emojisBox").hide();
         $("#animatedEmojisBox").show();
     } else {
@@ -12144,128 +11960,112 @@ window.toggleEmojis = function(_0x5a8429) {
 window.plEA = function(_0x5cfec2) {
     return 0 == _0x5cfec2 ? swal("This emote is locked. You can unlock it by completing a challenge :) More information coming in a future update") : 50 == _0x5cfec2 && true ? swal("This emote requires level 400 to unlock or 20 completed challenges that will be released in the future") : void(_0x5cfec2 && Number.isInteger(_0x5cfec2) && isReady() && new PacketWriter(2).setUint8(179).setUint8(_0x5cfec2).send());
 };
-window.setChat = function(_0x59df86) {
-    if (_0x5eeb3b = !_0x59df86) {
-        $("#chat").hide();
-    } else {
+window.setChat = function(isEnabled) {
+    if (gameSettings.sChat = isEnabled) {
         _0x4cb089 = true;
         $("#chat").show();
+    } else {
+        $("#chat").hide();
     }
-    _0xbb1a8c();
 };
 window.rmShout = function(_0x3a88b3) {
     _0x483c7e(2 == _0x3a88b3 ? "/rmshout2" : "/rmshout");
 };
-window.setChatSize = function(_0x530e81) {
-    _0x46bbb2 = !_0x530e81;
+window.setChatSize = function(isBig) {
+    gameSettings.sChatSize = isBig;
     _0x4cb089 = true;
-    _0xbb1a8c();
 };
 window.chatConfirmRules = function() {};
-window.setMinimap = function(_0x46e9f8) {
-    if (_0x18306d = !_0x46e9f8) {
-        $("#minimap").hide();
-        $("#brGameContainer").addClass("no-minimap");
-        $("#infGameContainer").addClass("no-minimap");
-    } else {
+window.setMinimap = function(isEnabled) {
+    if (gameSettings.sMinimap = isEnabled) {
         _0x2c6f91 = _0xaade67 = true;
         $("#minimap").show();
         $("#brGameContainer").removeClass("no-minimap");
         $("#infGameContainer").removeClass("no-minimap");
+    } else {
+        $("#minimap").hide();
+        $("#brGameContainer").addClass("no-minimap");
+        $("#infGameContainer").addClass("no-minimap");
     }
-    _0xbb1a8c();
 };
-window.setLargeNames = function(_0x4065f7) {
-    _0xbdc65b = _0x4065f7;
-    _0xbb1a8c();
+window.setCellBorders = function(isEnabled) {
+    gameSettings.sCellBorders = isEnabled;
+    $("#cCellBorders").prop("checked", isEnabled);
+    $("#cCellBorders2").prop("checked", isEnabled);
 };
-window.setNameOutlines = function(_0x1f717d) {
-    _0x471c1e = _0x1f717d;
-    _0xbb1a8c();
+window.setLargeNames = function(isEnabled) {
+    gameSettings.sLargeNames = isEnabled;
 };
-window.setCellSpikes = function(_0x317b1e) {
-    _0x345ceb = _0x317b1e;
-    _0xbb1a8c();
+window.setNameOutlines = function(isEnabled) {
+    gameSettings.sNameOutlines = isEnabled;
 };
-window.setCellBorders = function(_0x782d3c) {
-    _0x11baa8 = !_0x782d3c;
-    $("#cCellBorders").prop("checked", !_0x11baa8);
-    $("#cCellBorders2").prop("checked", !_0x11baa8);
-    _0xbb1a8c();
+window.setCellSpikes = function(isEnabled) {
+    gameSettings.sCellSpikes = isEnabled;
 };
-window.setClassicViruses = function(_0x5c35df) {
-    if ((_0x53ec10 = _0x5c35df) && _0x536824) {
-        setSetting("cCellSpikes", !(_0x536824 = false));
-        _0x536824 = true;
+window.setClassicViruses = function(isEnabled) {
+    if ((gameSettings.sClassicViruses = isEnabled) && canEditGameSettings) {
+        setSetting("cCellSpikes", !(canEditGameSettings = false));
+        canEditGameSettings = true;
     }
-    _0xbb1a8c();
 };
-window.setPolygonShapes = function(_0x52387c) {
-    if ((_0xb4d644 = _0x52387c) && _0x536824) {
-        setSetting("cLineShapes", _0x536824 = false);
-        _0x536824 = true;
+window.setPolygonShapes = function(isEnabled) {
+    if ((gameSettings.sPolygonShapes = isEnabled) && canEditGameSettings) {
+        setSetting("cLineShapes", canEditGameSettings = false);
+        canEditGameSettings = true;
     }
-    if (_0xb4d644) {
+    if (isEnabled) {
         _0x489880();
     }
-    _0xbb1a8c();
 };
-window.setLineShapes = function(_0x2a84b3) {
-    if ((_0x161144 = _0x2a84b3) && _0x536824) {
-        setSetting("cPolygonShapes", _0x536824 = false);
-        _0x536824 = true;
+window.setLineShapes = function(isEnabled) {
+    if ((gameSettings.sLineShapes = isEnabled) && canEditGameSettings) {
+        setSetting("cPolygonShapes", canEditGameSettings = false);
+        canEditGameSettings = true;
     }
-    if (_0x161144) {
+    if (isEnabled) {
         _0x489880();
     }
-    _0xbb1a8c();
 };
-window.setBubbleCells = function(_0xb6fb40) {
-    _0x2dceca = _0xb6fb40;
-    if (_0x536824) {
-        _0x536824 = false;
-        setSetting("cCellBorders", _0x2dceca);
-        _0x536824 = true;
+window.setBubbleCells = function(isEnabled) {
+    gameSettings.sBubbleCells = isEnabled;
+    if (canEditGameSettings) {
+        canEditGameSettings = false;
+        setSetting("cCellBorders", isEnabled);
+        canEditGameSettings = true;
     }
-    _0xbb1a8c();
 };
-window.setGraphics = function(_0x485c2a, _0x336aef) {
-    _0x485c2a = parseInt(_0x485c2a) || 0;
-    var _0x394c33 = _0x294d0a != _0x485c2a;
-    _0x294d0a = _0x485c2a;
-    if (_0x394c33 && 0 < framesCounter) {
+window.setGraphics = function(sGraphics) {
+    sGraphics = parseInt(sGraphics) || 0;
+    const changed = gameSettings.sGraphics != sGraphics;
+    gameSettings.sGraphics = sGraphics;
+    if (changed && 0 < framesCounter) {
         _0x51c554();
     }
-    if (!_0x336aef) {
-        _0xbb1a8c();
-    }
 };
-window.setMobileLeft = function(_0x355afc) {
-    _0x18d745 = _0x355afc;
-    $("#cMobileLeft").prop("checked", _0x18d745);
-    $("#cMobileLeft2").prop("checked", _0x18d745);
-    if (_0x18d745) {
+window.setMobileLeft = function(isEnabled) {
+    gameSettings.sMobileLeft = isEnabled;
+    $("#cMobileLeft").prop("checked", isEnabled);
+    $("#cMobileLeft2").prop("checked", isEnabled);
+    if (isEnabled) {
         $(".touch-btn").addClass("left-side");
     } else {
         $(".touch-btn").removeClass("left-side");
     }
-    _0xbb1a8c();
 };
-window.setMobileFeedLock = function(_0x247906) {
-    _0x2eebe7 = _0x247906;
-    $("#cMobileFeedLock").prop("checked", _0x2eebe7);
-    $("#cMobileFeedLock2").prop("checked", _0x2eebe7);
-    if (_0x2eebe7) {
+window.setMobileFeedLock = function(isEnabled) {
+    gameSettings.sMobileFeedLock = isEnabled;
+    $("#cMobileFeedLock").prop("checked", isEnabled);
+    $("#cMobileFeedLock2").prop("checked", isEnabled);
+    if (isEnabled) {
         $("#touchEjectLockBtn").show();
     } else {
         _0x4fbf9e();
         $("#touchEjectLockBtn").hide();
     }
-    _0xbb1a8c();
 };
 window.setDefaults = function() {
-    _0x536824 = false;
-    setSetting("cSkins", _0xe1899f.sSkins); 
+    canEditGameSettings = false;
+    setSetting("cSkins", true); 
     setSetting("cWearables", true);
     setSetting("cColors", true);
     setSetting("cNames", true);
@@ -12302,8 +12102,7 @@ window.setDefaults = function() {
     setSetting("cLineShapes", false);
     setSetting("cBubbleCells", false);
     $("#oGraphics").val('0').change();
-    _0x536824 = true;
-    _0xbb1a8c();
+    canEditGameSettings = true;
 };
 var _0x5f2da0 = {   
     "8": "BACKSPACE",
@@ -12944,7 +12743,7 @@ $(function() {
         _0x14d497 = true;
         if (windowIsLoaded && !_0x37e4bf && '' != _0x2d537c) {
             if (_0x1b3496) {
-                _0x5cfda7(_0x2d537c);
+                reloadBackground(_0x2d537c);
             } else {
                 _0x350e59(_0x2d537c, false);
             }
@@ -13039,6 +12838,7 @@ $(function() {
 window.addEventListener("beforeunload", function(_0xf46263) {
     windowIsLoaded = false;
     _0x13d7e0();
+    window.localStorage.settings = JSON.stringify(gameSettings);
     sendSignal(5); // logout
 });
 console.log('[%c+%c] Gayma.io loaded', "font-weight: bold; color: lime;", "");
