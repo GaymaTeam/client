@@ -2704,8 +2704,8 @@ function _0x411213(_0x9db3a7) {
             "ch": _0x950276,
             "ccv2": _0x556e60 - 2,
             "abl": 288, // encodeURIComponent(_0x11d218).length
-            "cp": 61,
-            "vv": 156
+            "cp": 62,
+            "vv": 157
         })
     }, function(_0x1579ab) {
         if (_0x1579ab) {
@@ -2878,7 +2878,7 @@ function wsOnOpen() {
     }
     _0x57735d();
     var _0x410ac6 = new PacketWriter(14);
-    _0x410ac6.setUint8(245).setUint16(61).setUint16(156).setUint32(_0x556e60).setUint32(_0xf937a3(_0x410ac6.buffer, 0, 9, 245)).send(true);
+    _0x410ac6.setUint8(245).setUint16(62).setUint16(157).setUint32(_0x556e60).setUint32(_0xf937a3(_0x410ac6.buffer, 0, 9, 245)).send(true);
     multiEjectServerChanged = true;
 }
 function _0xf937a3(buffer, a, b, offset) {
@@ -2899,29 +2899,29 @@ function _0x215896() {
     currentFrameTime = Date.now();
     _0x587d52 = FRAMERATE / Math.clamp(currentFrameTime - _0x2d2df0, 1, 1000);
     _0x2d2df0 = currentFrameTime;
-    for (var _0xb8c069 = 0; _0xb8c069 < 3; _0xb8c069++) {
-        var _0x20e99f = [_0x463a1e, _0x2032b6, _0x5bdc9e][_0xb8c069];
-        var _0x3443c2 = [_0x49dbad, _0x4df025, _0x59222b][_0xb8c069];
-        for (var _0x1b6725 = 0; _0x1b6725 < _0x20e99f.length; _0x1b6725++) {
-            var _0x44eb04 = _0x20e99f[_0x1b6725];
+    for (var i = 0; i < 3; i++) {
+        var _0x20e99f = [_0x463a1e, _0x2032b6, _0x5bdc9e][i];
+        var _0x3443c2 = [_0x49dbad, _0x4df025, _0x59222b][i];
+        for (var j = 0; j < _0x20e99f.length; j++) {
+            var _0x44eb04 = _0x20e99f[j];
             var _0x2db68f = _0x3443c2[_0x44eb04];
             if (_0x2db68f) {
-                for (var _0x1581df = 0; _0x1581df < _0x2db68f.length; _0x1581df++) {
-                    var _0x49c157 = _0x2db68f[_0x1581df];
+                for (var k = 0; k < _0x2db68f.length; k++) {
+                    var _0x49c157 = _0x2db68f[k];
                     var _0x416df3 = playerEmotes[_0x49c157.ee];
                     if (_0x416df3.time() >= _0x49c157.te + _0x416df3.duration) {
-                        _0x2db68f.splice(_0x1581df, 1);
-                        _0x1581df--;
+                        _0x2db68f.splice(k, 1);
+                        k--;
                     }
                 }
                 if (0 == _0x2db68f.length) {
-                    _0xfb52a(_0xb8c069, _0x44eb04);
+                    _0xfb52a(i, _0x44eb04);
                     _0x2db68f = null;
                 }
             }
             if (!_0x2db68f) {
-                _0x20e99f.splice(_0x1b6725, 1);
-                _0x1b6725--;
+                _0x20e99f.splice(j, 1);
+                j--;
             }
         }
     }
@@ -3130,27 +3130,13 @@ function _0x215896() {
                         } else if (_0x53a19d.K) {
                             _0x587292.push(0);
                         }
-                        if (4 == _0x53a19d.category) {
-                            _0x587292.push(14);
-                        }
-                        if (!(1 != _0x53a19d.category && 2 != _0x53a19d.category)) {
-                            _0x587292.push(1 == _0x53a19d.category ? 1 : 2);
-                        }
-                        if (!(1 != _0x53a19d.q && 2 != _0x53a19d.q)) {
-                            _0x587292.push(1 == _0x53a19d.q ? 4 : 3);
-                        }
-                        if (_0x53a19d.goldMember) {
-                            _0x587292.push(5);
-                        }
-                        if (_0x53a19d.j) {
-                            _0x587292.push(1 == _0x53a19d.j ? 6 : 2 == _0x53a19d.j ? 7 : 4 == _0x53a19d.j ? 11 : 5 == _0x53a19d.j ? 12 : 6 == _0x53a19d.j ? 15 : 8);
-                        }
-                        if (_0x53a19d.J) {
-                            _0x587292.push(9);
-                        }
-                        if (_0x53a19d.H) {
-                            _0x587292.push(10);
-                        }
+                        if (4 == _0x53a19d.category) _0x587292.push(14);
+                        if (!(1 != _0x53a19d.category && 2 != _0x53a19d.category)) _0x587292.push(1 == _0x53a19d.category ? 1 : 2);
+                        if (!(1 != _0x53a19d.q && 2 != _0x53a19d.q)) _0x587292.push(1 == _0x53a19d.q ? 4 : 3);
+                        if (_0x53a19d.goldMember) _0x587292.push(5);
+                        if (_0x53a19d.j) _0x587292.push(1 == _0x53a19d.j ? 6 : 2 == _0x53a19d.j ? 7 : 4 == _0x53a19d.j ? 11 : 5 == _0x53a19d.j ? 12 : 6 == _0x53a19d.j ? 15 : 8);
+                        if (_0x53a19d.J) _0x587292.push(9);
+                        if (_0x53a19d.H) _0x587292.push(10);
                         _0x53a19d.cache = {
                             "displayName": _0x53a19d.name,
                             "re": _0x4aac3c,
@@ -3604,14 +3590,17 @@ function _0x215896() {
         }
     }
     _0x1a33c5 = allFoodCells.length;
-    for (i = 0; i < _0x1a33c5; i++) {
+    for (i = 0; i < _0x1a33c5; i++)
         allFoodCells[i].drawCell();
-    }
+    const s0 = performance.now();
     allNonFoodCells.sort(_0x24f2c9);
-    _0x1a33c5 = allNonFoodCells.length;
-    for (i = 0; i < _0x1a33c5; i++) {
-        allNonFoodCells[i].drawCell();
+    if (window.debug) {
+        console.log(performance.now() - s0);
+        debug = false;
     }
+    _0x1a33c5 = allNonFoodCells.length;
+    for (i = 0; i < _0x1a33c5; i++)
+        allNonFoodCells[i].drawCell(); // this needs to be optimized
     _0xb14342.restore();
     if (_0x5ae1b6 = (() => {
             var _0x1fa510 = 0;
@@ -4410,7 +4399,7 @@ class Cell {
                         _0xb14342.fillStyle = this.Re ? "#AAAAAA" : gameSettings.sColors ? this.color : "#FFFFFF";
                         _0xb14342.fill();
                     }
-                    if ((_0x282a29 && (gameSettings.sCellBorders || this.Be) || _0x222c9e) && !this.isCloaked || this.isCloaked && (this.Ie || _0x4400ec)) {
+                    if (this.isCloaked ? this.Ie || _0x4400ec : _0x282a29 && (gameSettings.sCellBorders || this.Be) || _0x222c9e) {
                         _0x433539 = this.ga;
                         _0xb14342.globalAlpha = this.fe ? _0x433539 * (1 - _0x58ffc6) : _0x433539;
                         _0xb14342.lineWidth = this.isCloaked && (this.Ie || _0x4400ec) ? 30 : this.Ue ? 4 : gameSettings.sBubbleCells ? this.Be || 25 < this.size ? 6 : 4 : this.Be && this.size < 80 ? 8 : 10;
@@ -5337,6 +5326,19 @@ function wsOnMessage(_0x2ba470) {
                 }
                 let cell = !_0x13100f || Object.prototype.hasOwnProperty.call(allCells, _0x269ac7) ? allCells[_0x269ac7] : null;
                 if (cell) {
+                    /* TODO: sort
+                    const ii = allNonFoodCells.indexOf(cell);
+                    let i = ii;
+                    if (_0x2c474f < cell.size) {
+                        while (i > 0 && allFoodCells[i - 1]?.size > _0x2c474f) i--;
+                    } else {
+                        const n = allNonFoodCells.length - 1;
+                        while (i < n && allFoodCells[i + 1]?.size < _0x2c474f) i++;
+                    }
+                    if (i !== ii) {
+                        allNonFoodCells.splice(ii, 1);
+                        allNonFoodCells.splice(i, 0, cell);
+                    }*/
                     if (cell.ne) {
                         cell.ae();
                     }
@@ -5344,17 +5346,25 @@ function wsOnMessage(_0x2ba470) {
                     cell.ox = cell.x;
                     cell.oy = cell.y;
                     cell.ge = cell.size;
+
                 } else {
                     cell = new Cell(_0x269ac7, _0x29879a, _0x1da5bc, _0x2c474f);
                     allCells[_0x269ac7] = cell;
                     if (_0x13100f) {
                         if (1 === _0x534ff6) {
                             (_0x2c474f <= _0x2fc5e8 ? (cell.Ue = true, allFoodCells) : allNonFoodCells).push(cell);
+                            // cell.Ue = true;
+                            // allFoodCells.push(cell);
                             if (gameSettings.sFoodHalf && (drawHalfFood = !drawHalfFood)) {
                                 cell.shouldDraw = -1;
                             }
                         } else {
                             allNonFoodCells.push(cell);
+                            /*const n = allNonFoodCells.length;
+                            let i = 0;
+                            while (i < n && allFoodCells[i]?.size < _0x2c474f) i++;
+                            allNonFoodCells.splice(i - 1, 0, cell);*/
+
                             if (_0x49dbad[_0x269ac7]) {
                                 for (let _0x163706 = 0; _0x163706 < _0x49dbad[_0x269ac7].length; _0x163706++) {
                                     cell.we(_0x49dbad[_0x269ac7][_0x163706]);
@@ -7794,11 +7804,11 @@ function _0x44d9fa() {
     _0x4cb089 = true;
 }
 
-function _0x14cfd2(_0x135d90, _0x1096c2, _0x46db45) {
-    var _0x28448d = [_0x49dbad, _0x4df025, _0x59222b][_0x135d90][_0x1096c2];
+function _0x14cfd2(i, _0x1096c2, _0x46db45) {
+    var _0x28448d = [_0x49dbad, _0x4df025, _0x59222b][i][_0x1096c2];
     if (!_0x28448d) {
-        _0x28448d = [_0x49dbad, _0x4df025, _0x59222b][_0x135d90][_0x1096c2] = [];
-        [_0x463a1e, _0x2032b6, _0x5bdc9e][_0x135d90].push(_0x1096c2);
+        _0x28448d = [_0x49dbad, _0x4df025, _0x59222b][i][_0x1096c2] = [];
+        [_0x463a1e, _0x2032b6, _0x5bdc9e][i].push(_0x1096c2);
     }
     if (_0x28448d.length < 3) {
         _0x28448d.push(_0x46db45);
@@ -9298,7 +9308,7 @@ function _0x11d218(_0x126681) {
 
 function _0x25377f(_0x28aeec, _0x2e645d, _0x58c89c) {
     _0x9b1a41(2);
-    _0x28aeec.setUint32(1 + ~~(_0x52383b / 1.41 + _0x950276 / 2 - 2 * (_0x2e645d ? 0.5 : 1)) + ~~(~~(22.29 * (~~(_0x52383b + 4.81 * _0x556e60 + 559) % --_0x58c89c - 36630)) / 4.2 + 0.4));
+    _0x28aeec.setUint32(1 + ~~(_0x52383b / 14.1 + _0x950276 / 2 - 2 * (_0x2e645d ? 0.5 : 1)) + ~~(~~(22.29 * (~~(_0x52383b + 4.81 * _0x556e60 + 559) % --_0x58c89c - 36630)) / 4.2 + 0.4));
 }
 
 function _0x9b1a41(_0x1561cb, _0xc2f81e) {
@@ -12815,7 +12825,7 @@ $(function() {
         cv: 4 * _0x556e60,
         ch: _0x950276,
         ccv: _0x556e60 - 2,
-        vv: 156
+        vv: 157
     })
     }, function(_0x21e509) {
         if (window.emgaa && _0x21e509 && !isNaN(_0x21e509) && (_0x2b8278 = (_0x38337e => {
