@@ -1,5 +1,6 @@
 // TODO: remove chat canvas
 // TODO: remove leaderboard canvas
+// FIXME: localStorage.ag218 is also a ban factor
 
 const FRAMERATE = 1000 / 60;
 const gameSettings = Object.assign({
@@ -2703,7 +2704,7 @@ function _0x411213(_0x9db3a7) {
             "cv": 2 * _0x556e60,
             "ch": _0x950276,
             "ccv2": _0x556e60 - 2,
-            "abl": 288, // encodeURIComponent(_0x11d218).length
+            "abl": 305, // encodeURIComponent(_0x11d218).length
             "cp": 62,
             "vv": 157
         })
@@ -5824,23 +5825,23 @@ function wsOnMessage(_0x2ba470) {
             var _0x5bff26 = !!(8 & _0x3626db);
             var _0x311374 = !!(16 & _0x3626db);
             var _0x2f2313 = pkt.getUint16();
-            var _0x469523 = pkt.getUint16();
-            var _0x49adef = pkt.getUint16();
-            var _0x1711bf = pkt.getUint16();
-            var _0x2581c0 = pkt.getUint16();
-            var _0x536dbe = pkt.getUint16();
-            var _0x3b0d92 = pkt.getUint16();
+            var _0x469523 = pkt.getUint32();
+            var _0x49adef = pkt.getUint32();
+            var _0x1711bf = pkt.getUint32();
+            var _0x2581c0 = pkt.getUint32();
+            var _0x536dbe = pkt.getUint32();
+            var _0x3b0d92 = pkt.getUint32();
             var _0x184d89 = pkt.getUint16();
             var _0x5180de = 0;
             if (128 & _0x3626db) {
                 _0x5180de = pkt.getUint16();
             }
-            var _0x5381b4 = pkt.getUint16();
-            var _0x3a4da8 = pkt.getUint16();
-            var _0x3988b2 = pkt.getUint16();
-            var _0x1124f6 = pkt.getUint16();
-            var _0x24a818 = pkt.getUint16();
-            var _0x3884cc = pkt.getUint16();
+            var _0x5381b4 = pkt.getUint32();
+            var _0x3a4da8 = pkt.getUint32();
+            var _0x3988b2 = pkt.getUint32();
+            var _0x1124f6 = pkt.getUint32();
+            var _0x24a818 = pkt.getUint32();
+            var _0x3884cc = pkt.getUint32();
             var _0x2712a9 = pkt.getUint32();
             var _0x191e79 = pkt.getUint32();
             var _0x26baf3 = _0x273de7 != _0x469523 || _0x852ff != _0x49adef || _0x38ea95 != _0x1711bf || _0x576526 != _0x2581c0 || _0x2873c2 != _0x536dbe || _0x4512d9 != _0x3b0d92 || _0x29f86a != _0x184d89 || _0x52d414 != _0x5180de || _0x11de32 != _0x5381b4 || _0x3c6854 != _0x3a4da8 || _0x5a5860 != _0x3988b2 || _0x5ea511 != _0x1124f6 || _0x31962a != _0x24a818 || _0x3884cc != _0xb1583e || _0x53176c != _0x571f96 || _0x52da56 != _0x5bff26 || _0x11c29c != _0x311374;
@@ -9308,7 +9309,7 @@ function _0x11d218(_0x126681) {
 
 function _0x25377f(_0x28aeec, _0x2e645d, _0x58c89c) {
     _0x9b1a41(2);
-    _0x28aeec.setUint32(1 + ~~(_0x52383b / 14.1 + _0x950276 / 2 - 2 * (_0x2e645d ? 0.5 : 1)) + ~~(~~(22.29 * (~~(_0x52383b + 4.81 * _0x556e60 + 559) % --_0x58c89c - 36630)) / 4.2 + 0.4));
+    _0x28aeec.setUint32(1 + ~~(_0x52383b / 14.1 + _0x950276 / 2 - 2 * (_0x2e645d ? 0.5 : 1)) + ~~(~~(22.29 * (~~(_0x52383b + 4.81 * _0x556e60 + 559) % --_0x58c89c + 36630)) / 4.2 + 0.4));
 }
 
 function _0x9b1a41(_0x1561cb, _0xc2f81e) {
@@ -12822,11 +12823,11 @@ $(function() {
     _0xaee6f6 = [ 126, 57, 139, 92, 346, 36 ];
     $.post("client.php", {
         "data": JSON.stringify({
-        cv: 4 * _0x556e60,
-        ch: _0x950276,
-        ccv: _0x556e60 - 2,
-        vv: 157
-    })
+            cv: 4 * _0x556e60,
+            ch: _0x950276,
+            ccv: _0x556e60 - 2,
+            vv: 157
+        })
     }, function(_0x21e509) {
         if (window.emgaa && _0x21e509 && !isNaN(_0x21e509) && (_0x2b8278 = (_0x38337e => {
                 var _0x51f097 = 0;
