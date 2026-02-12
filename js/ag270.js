@@ -164,7 +164,21 @@ const playerEmotes = {
     50: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/devsmile.png"), m: 48, h: 5, v: 3, k: 1, scale: 1.39, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
     51: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/eatman.png"), m: 12, h: 5, v: 3, k: 3, scale: 1, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
     52: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/trophy.png"), m: 33, h: 5, v: 3, k: 2, scale: 1.7, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    53: { time: animationTimeFunctionB, duration: 2, u: { canvas: newCanvasImage("img/animations/heartsv.png"), m: 44, h: 5, v: 3, k: 2, scale: 1.2, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } }
+    53: { time: animationTimeFunctionB, duration: 2, u: { canvas: newCanvasImage("img/animations/heartsv.png"), m: 44, h: 5, v: 3, k: 2, scale: 1.2, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
+
+    90: { time: animationTimeFunctionB, duration: 2600 },
+    91: { time: animationTimeFunctionB, duration: 2200 },
+    92: { time: animationTimeFunctionB, duration: 2400 },
+    93: { time: animationTimeFunctionB, duration: 2800 },
+    94: { time: animationTimeFunctionB, duration: 1900 },
+    95: { time: animationTimeFunctionB, duration: 2400 },
+    96: { time: animationTimeFunctionB, duration: 2500 },
+    97: { time: animationTimeFunctionB, duration: 2600 },
+    98: { time: animationTimeFunctionB, duration: 2600 },
+    99: { time: animationTimeFunctionB, duration: 1800 },
+    102: { time: animationTimeFunctionB, duration: 2400 },
+    103: { time: animationTimeFunctionB, duration: 2600 },
+    104: { time: animationTimeFunctionB, duration: 1800 }
 };
 const skinImagesHigh = {};
 const skinImagesLow = {};
@@ -180,6 +194,29 @@ for (var i = 0; i <= 255; i++) {
     }
 }
 
+const playerDances = {
+    spin:     0,
+    jump:     0,
+    flip:     0,
+    shake:    0,
+    quake:    0,
+    orbit:    20,
+    drift:    50,
+    sway:     70,
+    vortex:   100,
+    wobble:   120,
+    glitch:   150,
+    moonwalk: 200,
+    jelly:    300,
+    slinky:   400,
+    helix:    500,
+    hiccup:   600,
+    boogie:   800,
+    crazy:    1000,
+    funny:    1200,
+    zigzag:   1500,
+    pulse:    2000
+};
 
 function rgbToHex(r, g, b) {
     return "#" + (r << 16 | g << 8 | b).toString(16).padStart(6, "0");
@@ -197,6 +234,7 @@ Math.clamp = function(a, value, b) {
 debugDataSize = 0;
 debugFail = false;
 let ws;
+let secretWorldPassword; // 'sw_mljlfx94_7olfmf';
 
 function isReady(force) {
     return ws && ws.readyState === WebSocket.OPEN && (isWebSocketAccepted && ws.bufferedAmount < 8192 || force);
@@ -425,41 +463,9 @@ window.onload = function() {
         _0x34efff();
         _0x53addc.stopPropagation();
     };
-    document.getElementById("chtTabs").onclick = function(_0x1c5eb2) {
-        var _0x3b9b7f;
-        var _0x21e4e6;
-        var _0x5b1a3b = _0x1c5eb2.target;
-        if (_0x5b1a3b && (_0x21e4e6 = $(_0x5b1a3b)) && _0x21e4e6.hasClass("chat-tab")) {
-            _0x3b9b7f = document.getElementById("chtbox");
-            if (!_0x21e4e6.hasClass("selected")) {
-                $("#chtTabs").find("div.selected").removeClass("selected");
-                $("#chtTabs").find("div.semi-selected").removeClass("semi-selected");
-                _0x21e4e6.removeClass("blink").addClass("selected");
-                _0xd835b8 = parseInt(_0x5b1a3b.getAttribute("data-category"));
-                if (isNaN(_0xd835b8)) {
-                    _0xd835b8 = 0;
-                }
-                _0x1723aa = (_0x1723aa = _0x5b1a3b.getAttribute("data-username")) || '';
-                _0x40774a = (_0x40774a = _0x5b1a3b.getAttribute("data-insert")) || '';
-                _0x21e4e6 = (_0x21e4e6 = _0x5b1a3b.getAttribute("data-tooltip")) || '';
-                _0x3b9b7f.title = _0x21e4e6;
-                if (0 == _0xd835b8) {
-                    $("#chtTabs").find("div").not("#chtTabPublic").removeClass("blink").addClass("semi-selected");
-                } else if (2 == _0xd835b8 && '' == _0x1723aa) {
-                    $("#chtTabs").find("[data-username!=\"\"]").removeClass("blink").addClass("semi-selected");
-                }
-                _0x4cb089 = true;
-            }
-            if (1 != _0x190280) {
-                _0x190280 = 1;
-                _0x4cb089 = true;
-            }
-            _0x3b9b7f.value = _0x40774a;
-            _0x3b9b7f.focus();
-            _0x3b9b7f.selectionStart = _0x3b9b7f.selectionEnd = _0x40774a.length;
-            _0x3b9b7f.blur();
-        }
-        _0x1c5eb2.stopPropagation();
+    document.getElementById("chtTabs").onclick = function(event) {
+        updateTab(event.target);
+        event.stopPropagation();
     };
     document.getElementById("btnFriends").onclick = document.getElementById("friendDialogClose").onclick = _0x2e104c;
     document.getElementById("friendHeader").onmousedown = _0x569497;
@@ -1107,7 +1113,7 @@ window.onload = function() {
                 if (server.address) {
                     currentServer = server;
                     _0x38891d = server.name;
-                    _0x826efd = server.id;
+                    currentServerId = server.id;
                 }
             }
         }
@@ -1140,7 +1146,7 @@ window.connectserver = window.setserver = function(_0x4537b3, _0x148016) {
         if (_0x148016 = getServerFromAddress(_0x4537b3)) {
             _0x40eece(_0x148016.gamemode);
         }
-        _0x826efd = _0x148016 ? _0x148016.id : 0;
+        currentServerId = _0x148016 ? _0x148016.id : 0;
     }
 };
 window.connectDefault = function() {
@@ -1326,7 +1332,7 @@ function _0x3169a6(_0x4dc13e) {
         };
         if (selectedMessage || _0x5c09e8) {
             if (selectedMessage) {
-                if (isReady() && selectedMessage.$ == _0x826efd && 0 != selectedMessage.l) {
+                if (isReady() && selectedMessage.$ == currentServerId && 0 != selectedMessage.l) {
                     new PacketWriter(6).setUint8(60).setUint8(0).setUint32(selectedMessage.l).send();
                 }
                 $("#contextPlayerSkin").css({
@@ -1338,7 +1344,7 @@ function _0x3169a6(_0x4dc13e) {
                 if (selectedMessage.goldMember) {
                     $("#contextPlayerName").addClass("gold");
                 }
-                if (selectedMessage.$ == _0x826efd && 0 != selectedMessage.l) {
+                if (selectedMessage.$ == currentServerId && 0 != selectedMessage.l) {
                     $("#contextPartyInvite").addClass("enabled");
                     $("#contextFriendAdd").addClass("enabled");
                     $("#contextUserProfile").addClass("enabled");
@@ -1521,18 +1527,11 @@ function _0x548e1b() {
     let _0x39dfe9 = 1200 - (_0x3e8e1d - _0x51e494.lastThievingTime.coins);
     let _0x507d30 = 1200 - (_0x3e8e1d - _0x51e494.lastThievingTime.sp);
     let _0x373787 = 1200 - (_0x3e8e1d - _0x51e494.lastThievingTime.powerup);
-    if (_0x4c32dc < 0) {
-        _0x4c32dc = 0;
-    }
-    if (_0x39dfe9 < 0) {
-        _0x39dfe9 = 0;
-    }
-    if (_0x507d30 < 0) {
-        _0x507d30 = 0;
-    }
-    if (_0x373787 < 0) {
-        _0x373787 = 0;
-    }
+    var _0x551cbe = 1200 - (_0x3e8e1d - _0x51e494.lastThievingTime.minions);
+    if (_0x4c32dc < 0) _0x4c32dc = 0;
+    if (_0x39dfe9 < 0) _0x39dfe9 = 0;
+    if (_0x507d30 < 0) _0x507d30 = 0;
+    if (_0x373787 < 0) _0x373787 = 0;
     var _0x3e8e1d = Math.floor(_0x4c32dc / 60);
     var _0x3c5736 = _0x4c32dc % 60;
     var _0x1f960f = Math.floor(_0x39dfe9 / 60);
@@ -1545,7 +1544,8 @@ function _0x548e1b() {
         "mass": 0 < _0x4c32dc ? " (" + _0x3e8e1d + "m " + _0x3c5736 + "s left)" : '',
         "coins": 0 < _0x39dfe9 ? " (" + _0x1f960f + "m " + _0x59ed77 + "s left)" : '',
         "sp": 0 < _0x507d30 ? " (" + _0x3ee2c1 + "m " + _0x4cd152 + "s left)" : '',
-        "powerup": 0 < _0x373787 ? " (" + _0x56b8c5 + "m " + _0x197f26 + "s left)" : ''
+        "powerups": 0 < _0x373787 ? " (" + _0x56b8c5 + "m " + _0x197f26 + "s left)" : '',
+        "minions": 0 < _0x551cbe ? " (" + minutesLeftMinions + "m " + secondsLeftMinions + "s left)" : ''
     };
 }
 
@@ -1560,19 +1560,20 @@ function _0xe6d81(_0x3d27c7) {
         contextStealMass: 2,
         contextStealCoins: 3,
         contextStealSp: 4,
-        contextStealPowerups: 5
+        contextStealPowerups: 5,
+        contextStealMinions: 6
     };
     _0x19fdd4 = _0x4e527b;
-    _0x2fd022 = "<div style='padding:5px;font-weight:bold;font-size: 15px;'>";
-    _0x2fd022 = (_0x2fd022 = (_0x2fd022 += "<li class=\"contextmenu-item\"><p style='color: #ffc601; opacity: 1; text-shadow: 0px 0px 3px rgb(66, 133, 244);font-size: 15px;'><img src=\"img/icons/thief.png\"  style=\"width: 30px; vertical-align: middle; margin-right: 10px;\">Thieving Level: " + _0x3d27c7.thievingLevel + "/99</p></li>") + "<li class=\"contextmenu-item\"><div class='xp-bar-thieving-container' style='width: 100%; border-radius: 5px; margin: 5px 0;background: linear-gradient(to bottom, #121212 50%, #000000 50%);border:1px #4b15b8 solid;box-shadow: 0px 0px 20px -2px #315ebf;'><div class='xp-bar-thieving' style='height: 10px; background-color: #6f3eff; border-radius: 5px;width: " + _0x3d27c7.thievingXp / _0x3d27c7.thievingXpForNextLevel * 100 + "%;text-align: center; border: 1px #414d63 solid; background: linear-gradient(to bottom, #6f3eff 50%, #5e3eff 50%); font-weight: bold; color: #e2ff72; box-shadow: 0px 0px 20px -2px #315ebf; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;'>" + (_0x3d27c7.thievingXp / _0x3d27c7.thievingXpForNextLevel * 100).toFixed(1) + "%</div></div></li><hr>") + "<li id=\"contextThievingInfo\" class=\"contextmenu-item enabled\"><img src=\"" + "img/icons/info.png" + "\" style=\"width: 30px; vertical-align: middle; margin-right: 10px;\">Information</li><hr>";
-    let _0x245124 = "Steal Coins (lvl 20 required)";
-    let _0xfeed87 = "Steal SP (lvl 30 required)";
-    let _0x39e1ab = "Steal Powerup (lvl 50 required)";
-    if (20 <= _0x3d27c7.thievingLevel && (_0x245124 = "Steal Coins", 30 <= _0x3d27c7.thievingLevel) && (_0xfeed87 = "Steal SP", 50 <= _0x3d27c7.thievingLevel)) {
-        _0x39e1ab = "Steal Powerup";
-    }
-    _0x2fd022 = (_0x2fd022 = (_0x2fd022 = (_0x2fd022 += "<li id='contextStealMass' class=\"contextmenu-item enabled\"><p style='margin: 0; font-size: 15px;'><img src=\"img/icons/steal_mass.png\" style=\"width: 30px; vertical-align: middle; margin-right: 10px;\">" + ("Steal Mass" + _0x548e1b().mass) + "</p></li><hr>") + ("<li id='contextStealCoins' class=\"" + (20 <= _0x3d27c7.thievingLevel ? "contextmenu-item enabled" : "contextmenu-item disabled") + "\"><p style='margin: 0; font-size: 15px;'><img src=\"" + "img/icons/steal_coins.png" + "\" style=\"width: 30px; vertical-align: middle; margin-right: 10px;\">" + (_0x245124 + _0x548e1b().coins) + "</p></li><hr>")) + ("<li id='contextStealSp' class=\"" + (30 <= _0x3d27c7.thievingLevel ? "contextmenu-item enabled" : "contextmenu-item disabled") + "\"><p style='margin: 0; font-size: 15px;'><img src=\"" + "img/icons/steal_sp.png" + "\" style=\"width: 30px; vertical-align: middle; margin-right: 10px;\">" + (_0xfeed87 + _0x548e1b().sp) + "</p></li><hr>")) + ("<li id='contextStealPowerup' class=\"" + (50 <= _0x3d27c7.thievingLevel ? "contextmenu-item enabled" : "contextmenu-item disabled") + "\"><p style='margin: 0; font-size: 15px;'><img src=\"" + "img/icons/steal_pow.png" + "\" style=\"width: 30px; vertical-align: middle; margin-right: 10px;\">" + (_0x39e1ab + _0x548e1b().powerup) + "</p></li><hr>");
-    $("#contextSubMenu > ul").html(_0x2fd022);
+    _0x2fd022 = `<div style="padding:5px;font-weight:bold;font-size: 15px;"><li class="contextmenu-item"><p style="color: #ffc601; opacity: 1; text-shadow: 0px 0px 3px rgb(66, 133, 244);font-size: 15px;"><img src="img/icons/thief.png"  style="width: 30px; vertical-align: middle; margin-right: 10px;">Thieving Level: ${_0x3d27c7.thievingLevel}/99</p></li><li class="contextmenu-item"><div class="xp-bar-thieving-container" style="width: 100%; border-radius: 5px; margin: 5px 0;background: linear-gradient(to bottom, #121212 50%, #000000 50%);border:1px #4b15b8 solid;box-shadow: 0px 0px 20px -2px #315ebf;"><div class="xp-bar-thieving" style="height: 10px; background-color: #6f3eff; border-radius: 5px;width: ${_0x3d27c7.thievingXp / _0x3d27c7.thievingXpForNextLevel * 100}%;text-align: center; border: 1px #414d63 solid; background: linear-gradient(to bottom, #6f3eff 50%, #5e3eff 50%); font-weight: bold; color: #e2ff72; box-shadow: 0px 0px 20px -2px #315ebf; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">${(_0x3d27c7.thievingXp / _0x3d27c7.thievingXpForNextLevel * 100).toFixed(1)}%</div></div></li><hr><li id="contextThievingInfo" class="contextmenu-item enabled"><img src="img/icons/info.png" style="width: 30px; vertical-align: middle; margin-right: 10px;">Information</li><hr>`;
+    const stealCooldowns = _0x548e1b();
+    const item = (levelRequired, name, image) => `<li id="contextSteal${name}" class="contextmenu-item ${levelRequired <= _0x51e494.thievingLevel ? 'enabled' : 'disabled'}"><p style="margin: 0; font-size: 15px;"><img src="img/icons/steal_${image}.png" style="width: 30px; vertical-align: middle; margin-right: 10px;">Steal ${name}${levelRequired > _0x51e494.thievingLevel ? ` (lvl ${levelRequired} required)` : ''}${stealCooldowns[name.toLowerCase()] || ''}</p></li><hr>`;
+    $("#contextSubMenu > ul").html(_0x2fd022
+        + item(0, 'Mass', 'mass')
+        + item(20, 'Coins', 'coins')
+        + item(30, 'SP', 'sp')
+        + item(50, 'Powerups', 'pow')
+        + item(60, 'Minions', 'minions')
+        + '</div>');
     $("#contextSubMenu").removeClass("compact");
     if (_0x50d962) {
         _0x337253(_0x50d962);
@@ -2102,13 +2103,65 @@ function _0x23a624(_0x5c9470) {
             _0x55abab.setAttribute("data-username", _0x5c9470.toString());
             _0x55abab.setAttribute("data-insert", "/pm " + _0x5c9470 + " ");
             _0x55abab.setAttribute("data-tooltip", "/pm username ...");
-            _0x55abab.innerHTML = _0x5c9470;
+            _0x55abab.textContent = _0x5c9470;
+            const _0xe4eaca = document.createElement("span");
+            _0xe4eaca.innerHTML = "&times;";
+            _0xe4eaca.setAttribute("class", "chat-tab-close");
+            _0xe4eaca.style.cssText = "margin-left:6px;cursor:pointer;font-size:12px;opacity:.85;";
+            _0xe4eaca.onclick = function(_0x1a216a) {
+                _0x1a216a.stopPropagation();
+                if (_0x55abab.parentNode) {
+                    _0x55abab.parentNode.removeChild(_0x55abab);
+                }
+                delete _0xde408[_0x4a7f30];
+                if (!(2 != _0xd835b8 || !_0x1723aa || _0x1723aa.toLowerCase() != _0x4a7f30)) {
+                    if (_0x1a216a = document.getElementById("chtTabPublic")) {
+                        updateTab(_0x1a216a);
+                    }
+                }
+            };
+            _0x55abab.appendChild(_0xe4eaca);
             if (0 == _0xd835b8 || 2 == _0xd835b8 && '' == _0x1723aa) {
                 $(_0x55abab).addClass("semi-selected");
             }
             document.getElementById("chtTabs").appendChild(_0x55abab);
             _0xde408[_0x4a7f30] = _0x55abab;
         }
+    }
+}
+
+function updateTab(_0x5b1a3b) {
+    var _0x3b9b7f;
+    var _0x21e4e6;
+    if (_0x5b1a3b && (_0x21e4e6 = $(_0x5b1a3b)) && _0x21e4e6.hasClass("chat-tab")) {
+        _0x3b9b7f = document.getElementById("chtbox");
+        if (!_0x21e4e6.hasClass("selected")) {
+            $("#chtTabs").find("div.selected").removeClass("selected");
+            $("#chtTabs").find("div.semi-selected").removeClass("semi-selected");
+            _0x21e4e6.removeClass("blink").addClass("selected");
+            _0xd835b8 = parseInt(_0x5b1a3b.getAttribute("data-category"));
+            if (isNaN(_0xd835b8)) {
+                _0xd835b8 = 0;
+            }
+            _0x1723aa = (_0x1723aa = _0x5b1a3b.getAttribute("data-username")) || '';
+            _0x40774a = (_0x40774a = _0x5b1a3b.getAttribute("data-insert")) || '';
+            _0x21e4e6 = (_0x21e4e6 = _0x5b1a3b.getAttribute("data-tooltip")) || '';
+            _0x3b9b7f.title = _0x21e4e6;
+            if (0 == _0xd835b8) {
+                $("#chtTabs").find("div").not("#chtTabPublic").removeClass("blink").addClass("semi-selected");
+            } else if (2 == _0xd835b8 && '' == _0x1723aa) {
+                $("#chtTabs").find("[data-username!=\"\"]").removeClass("blink").addClass("semi-selected");
+            }
+            _0x4cb089 = true;
+        }
+        if (1 != _0x190280) {
+            _0x190280 = 1;
+            _0x4cb089 = true;
+        }
+        _0x3b9b7f.value = _0x40774a;
+        _0x3b9b7f.focus();
+        _0x3b9b7f.selectionStart = _0x3b9b7f.selectionEnd = _0x40774a.length;
+        _0x3b9b7f.blur();
     }
 }
 
@@ -2561,8 +2614,8 @@ function _0x1450ce() {
 }
 
 function _0x368208() {
-    _0x2df455 = viewX + _0x36887a / _0x3e50d9 - _0x2263d7;
-    _0x58d9ac = viewY + _0x19f1c7 / _0x3e50d9 - _0x223539;
+    X = viewX + _0x36887a / _0x3e50d9 - _0x2263d7;
+    Y = viewY + _0x19f1c7 / _0x3e50d9 - _0x223539;
 }
 
 function _0x8f51f1() {
@@ -2704,9 +2757,9 @@ function _0x411213(_0x9db3a7) {
             "cv": 2 * _0x556e60,
             "ch": _0x950276,
             "ccv2": _0x556e60 - 2,
-            "abl": 305, // encodeURIComponent(_0x11d218).length
+            "abl": 322, // encodeURIComponent(_0xced9a0).length
             "cp": 62,
-            "vv": 157
+            "vv": 158
         })
     }, function(_0x1579ab) {
         if (_0x1579ab) {
@@ -2879,7 +2932,7 @@ function wsOnOpen() {
     }
     _0x57735d();
     var _0x410ac6 = new PacketWriter(14);
-    _0x410ac6.setUint8(245).setUint16(62).setUint16(157).setUint32(_0x556e60).setUint32(_0xf937a3(_0x410ac6.buffer, 0, 9, 245)).send(true);
+    _0x410ac6.setUint8(245).setUint16(62).setUint16(158).setUint32(_0x556e60).setUint32(_0xf937a3(_0x410ac6.buffer, 0, 9, 245)).send(true);
     multiEjectServerChanged = true;
 }
 function _0xf937a3(buffer, a, b, offset) {
@@ -2909,8 +2962,8 @@ function _0x215896() {
             if (_0x2db68f) {
                 for (var k = 0; k < _0x2db68f.length; k++) {
                     var _0x49c157 = _0x2db68f[k];
-                    var _0x416df3 = playerEmotes[_0x49c157.ee];
-                    if (_0x416df3.time() >= _0x49c157.te + _0x416df3.duration) {
+                    var _0x416df3 = playerEmotes[_0x49c157.id];
+                    if (_0x416df3.time() >= _0x49c157.start + _0x416df3.duration) {
                         _0x2db68f.splice(k, 1);
                         k--;
                     }
@@ -3714,8 +3767,8 @@ function _0x215896() {
         }
         if (_0x4cb1e7) {
             _0x4cb1e7.we({
-                "ee": 13,
-                "te": playerEmotes[13].time(),
+                "id": 13,
+                "start": playerEmotes[13].time(),
                 "received": ++_0x57f5d0
             });
         }
@@ -4276,32 +4329,36 @@ class Cell {
                         }
                         if (this.Ae) {
                             for (_0x433539 = 0; _0x433539 < this.Ae.length; _0x433539++) {
-                                switch ((_0x282a29 = this.Ae[_0x433539]).ee) {
-                                    case 3:
-                                        this.He(_0x282a29);
-                                        break;
-                                    case 6:
-                                        this.Xe(_0x282a29);
-                                        break;
-                                    case 7:
-                                        this.Ze(_0x282a29);
-                                        break;
-                                    case 8:
-                                        this.o(_0x282a29);
-                                        break;
-                                    case 11:
-                                        this.Ke(_0x282a29);
+                                switch ((_0x282a29 = this.Ae[_0x433539]).id) {
+                                    case 3:   this.spin(_0x282a29);          break;
+                                    case 6:   this.flip(_0x282a29);          break;
+                                    case 7:   this.flipCoin(_0x282a29);      break;
+                                    case 8:   this.shake(_0x282a29);         break;
+                                    case 11:  this.jump(_0x282a29);          break;
+                                    case 90:  this.orbit(_0x282a29);         break;
+                                    case 91:  this.wobble(_0x282a29);        break;
+                                    case 92:  this.pulseDance(_0x282a29);    break;
+                                    case 93:  this.driftWave(_0x282a29);     break;
+                                    case 94:  this.quakeDance(_0x282a29);    break;
+                                    case 95:  this.swayDance(_0x282a29);     break;
+                                    case 96:  this.jellyDance(_0x282a29);    break;
+                                    case 97:  this.moonwalkDance(_0x282a29); break;
+                                    case 98:  this.helixDance(_0x282a29);    break;
+                                    case 99:  this.hiccupDance(_0x282a29);   break;
+                                    case 102: this.slinkyDance(_0x282a29);   break;
+                                    case 103: this.vortexDance(_0x282a29);   break;
+                                    case 104: this.glitchDance(_0x282a29);   break;
                                 }
-                                if (0 == _0x282a29.ee) {
+                                if (0 == _0x282a29.id) {
                                     this.Ae.splice(_0x433539, 1);
                                     _0x433539--;
                                 }
                             }
                             for (_0x433539 = 0; _0x433539 < this.Ae.length; _0x433539++) {
-                                if (15 === (_0x282a29 = this.Ae[_0x433539]).ee) {
+                                if (15 === (_0x282a29 = this.Ae[_0x433539]).id) {
                                     this.et(_0x282a29, _0xb14342, _0x1b2b2f, _0x52fc0c);
                                 }
-                                if (0 == _0x282a29.ee) {
+                                if (0 == _0x282a29.id) {
                                     this.Ae.splice(_0x433539, 1);
                                     _0x433539--;
                                 }
@@ -4467,7 +4524,7 @@ class Cell {
                         }
                         if (this.Ae) {
                             for (_0x433539 = 0; _0x433539 < this.Ae.length; _0x433539++) {
-                                switch ((_0x282a29 = this.Ae[_0x433539]).ee) {
+                                switch ((_0x282a29 = this.Ae[_0x433539]).id) {
                                     case 2:
                                         this.tt(_0x282a29, _0xb14342, _0x1b2b2f, _0x52fc0c);
                                         break;
@@ -4515,20 +4572,20 @@ class Cell {
                                     case 17:
                                         this.st(_0x282a29, _0xb14342, _0x1b2b2f, _0x52fc0c);
                                 }
-                                if (0 == _0x282a29.ee) {
+                                if (0 == _0x282a29.id) {
                                     this.Ae.splice(_0x433539, 1);
                                     _0x433539--;
                                 }
                             }
                             for (_0x433539 = 0; _0x433539 < this.Ae.length; _0x433539++) {
-                                switch ((_0x282a29 = this.Ae[_0x433539]).ee) {
+                                switch ((_0x282a29 = this.Ae[_0x433539]).id) {
                                     case 1:
                                         this.rt(_0x282a29, _0xb14342, _0x1b2b2f, _0x52fc0c);
                                         break;
                                     case 18:
                                         this.ct(_0x282a29, _0xb14342, _0x1b2b2f, _0x52fc0c);
                                 }
-                                if (0 == _0x282a29.ee) {
+                                if (0 == _0x282a29.id) {
                                     this.Ae.splice(_0x433539, 1);
                                     _0x433539--;
                                 }
@@ -4563,8 +4620,8 @@ class Cell {
         we(_0xb44e93) {
             if (1 != this.i) {
                 _0xb44e93 = {
-                    "ee": _0xb44e93.ee,
-                    "te": _0xb44e93.te,
+                    "id": _0xb44e93.id,
+                    "start": _0xb44e93.start,
                     "received": _0xb44e93.received
                 };
                 if (this.Ae) {
@@ -4590,7 +4647,7 @@ class Cell {
                     this.Ae = null;
                 } else {
                     for (var _0xa36314 = 0; _0xa36314 < this.Ae.length; _0xa36314++) {
-                        if (this.Ae[_0xa36314].ee == _0x36ff46) {
+                        if (this.Ae[_0xa36314].id == _0x36ff46) {
                             this.Ae.splice(_0xa36314, 1);
                             _0xa36314--;
                         }
@@ -4617,10 +4674,10 @@ class Cell {
             }
             return this.transform;
         }
-        He(_0x9bfc0d) {
-            var _0x59765d = (currentFrameTime - _0x9bfc0d.te) / playerEmotes[_0x9bfc0d.ee].duration;
+        spin(_0x9bfc0d) {
+            var _0x59765d = (currentFrameTime - _0x9bfc0d.start) / playerEmotes[_0x9bfc0d.id].duration;
             if (1 <= (_0x59765d = _0x59765d < 0 ? 0 : 1 < _0x59765d ? 1 : _0x59765d)) {
-                _0x9bfc0d.ee = 0;
+                _0x9bfc0d.id = 0;
             } else {
                 _0x9bfc0d = 1 - _0x59765d;
                 _0x59765d = this.getTransform();
@@ -4630,10 +4687,10 @@ class Cell {
                 _0x59765d.rz += ((1 + 4 * (1 - _0x9bfc0d * _0x9bfc0d)) % 2 - 1) * Math.PI;
             }
         }
-        Xe(_0x407aa8) {
-            var _0x343225 = (currentFrameTime - _0x407aa8.te) / playerEmotes[_0x407aa8.ee].duration;
+        flip(_0x407aa8) {
+            var _0x343225 = (currentFrameTime - _0x407aa8.start) / playerEmotes[_0x407aa8.id].duration;
             if (1 <= (_0x343225 = _0x343225 < 0 ? 0 : 1 < _0x343225 ? 1 : _0x343225)) {
-                _0x407aa8.ee = 0;
+                _0x407aa8.id = 0;
             } else {
                 _0x343225 = (_0x407aa8 = 1 - _0x343225) * _0x407aa8;
                 _0x407aa8 = this.getTransform();
@@ -4644,13 +4701,13 @@ class Cell {
                 _0x407aa8.rz += (0.75 < _0x343225 ? _0x343225 - 1 : 0.25 < _0x343225 ? 0.5 - _0x343225 : _0x343225) * Math.PI;
             }
         }
-        Ze(_0x4275c7) {
+        flipCoin(_0x4275c7) {
             var _0x4ef9c8;
             if (this.fe) {
-                _0x4275c7.ee = 0;
+                _0x4275c7.id = 0;
             } else {
-                if (1 <= (_0x4ef9c8 = (currentFrameTime - _0x4275c7.te) / 2000)) {
-                    _0x4275c7.te += 2000;
+                if (1 <= (_0x4ef9c8 = (currentFrameTime - _0x4275c7.start) / 2000)) {
+                    _0x4275c7.start += 2000;
                     _0x4ef9c8 %= 1;
                 }
                 _0x4ef9c8 = _0x4ef9c8 < 0 ? 0 : 1 < _0x4ef9c8 ? 1 : _0x4ef9c8;
@@ -4661,10 +4718,10 @@ class Cell {
                 _0x4275c7.sx *= _0x41c319[~~(10000 * (0.5 < _0x4ef9c8 ? 1 - _0x4ef9c8 : _0x4ef9c8) / 2 + 0.5)].cos;
             }
         }
-        o(_0x2e6f39) {
-            var _0x1fec16 = (currentFrameTime - _0x2e6f39.te) / playerEmotes[_0x2e6f39.ee].duration;
+        shake(_0x2e6f39) {
+            var _0x1fec16 = (currentFrameTime - _0x2e6f39.start) / playerEmotes[_0x2e6f39.id].duration;
             if (1 <= (_0x1fec16 = _0x1fec16 < 0 ? 0 : 1 < _0x1fec16 ? 1 : _0x1fec16)) {
-                _0x2e6f39.ee = 0;
+                _0x2e6f39.id = 0;
             } else {
                 _0x2e6f39 = 1 - _0x1fec16;
                 _0x1fec16 = this.getTransform();
@@ -4676,11 +4733,11 @@ class Cell {
                 _0x1fec16.rz += 0.5 * _0x2e6f39 * (Math.random() - 0.5) * Math.PI;
             }
         }
-        Ke(_0x380f23) {
-            var _0x3ee1c2 = (currentFrameTime - _0x380f23.te) / (playerEmotes[_0x380f23.ee].duration - this.id % 20 * 20);
+        jump(_0x380f23) {
+            var _0x3ee1c2 = (currentFrameTime - _0x380f23.start) / (playerEmotes[_0x380f23.id].duration - this.id % 20 * 20);
             if (1 <= (_0x3ee1c2 = _0x3ee1c2 < 0 ? 0 : 1 < _0x3ee1c2 ? 1 : _0x3ee1c2)) {
-                if (1 <= (_0x3ee1c2 = (currentFrameTime - _0x380f23.te) / playerEmotes[_0x380f23.ee].duration)) {
-                    _0x380f23.ee = 0;
+                if (1 <= (_0x3ee1c2 = (currentFrameTime - _0x380f23.start) / playerEmotes[_0x380f23.id].duration)) {
+                    _0x380f23.id = 0;
                 }
             } else {
                 var _0x312e2f;
@@ -4710,10 +4767,296 @@ class Cell {
                 }
             }
         }
+        orbit(_0x682ae7) {
+            var _0x5a632f;
+            var _0x35bfd8 = (currentFrameTime - _0x682ae7.start) / playerEmotes[_0x682ae7.id].a;
+            if (1 <= (_0x35bfd8 = _0x35bfd8 < 0 ? 0 : 1 < _0x35bfd8 ? 1 : _0x35bfd8)) {
+                _0x682ae7.id = 0;
+            } else {
+                _0x5a632f = this.getTransform();
+                _0x682ae7 = _0x35bfd8 * Math.PI * 8;
+                _0x35bfd8 = Math.max(24, 0.22 * this.size) * (1 - 0.35 * _0x35bfd8);
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x5a632f.t = _0x5a632f.r = true;
+                }
+                _0x5a632f.tx += Math.cos(_0x682ae7) * _0x35bfd8;
+                _0x5a632f.ty += Math.sin(_0x682ae7) * _0x35bfd8 * 0.65;
+                _0x5a632f.rz += 0.06 * Math.sin(0.5 * _0x682ae7);
+            }
+        }
+        wobble(_0x5c83e0) {
+            var _0x1c792c;
+            var _0x2d298c = (currentFrameTime - _0x5c83e0.start) / playerEmotes[_0x5c83e0.id].duration;
+            if (1 <= (_0x2d298c = _0x2d298c < 0 ? 0 : 1 < _0x2d298c ? 1 : _0x2d298c)) {
+                _0x5c83e0.id = 0;
+            } else {
+                _0x1c792c = this.getTransform();
+                _0x5c83e0 = _0x2d298c * Math.PI * 12;
+                _0x2d298c = 1 - 0.75 * _0x2d298c;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x1c792c.s = _0x1c792c.r = true;
+                }
+                _0x1c792c.rz += 0.07 * Math.sin(_0x5c83e0) * _0x2d298c;
+                _0x1c792c.sx *= 1 + 0.045 * Math.sin(0.5 * _0x5c83e0) * _0x2d298c;
+                _0x1c792c.sy *= 1 - 0.045 * Math.sin(0.5 * _0x5c83e0) * _0x2d298c;
+            }
+        }
+        pulseDance(_0x58a97d) {
+            var _0x13686c;
+            var _0x32ffc1 = (currentFrameTime - _0x58a97d.start) / playerEmotes[_0x58a97d.id].duration;
+            if (1 <= (_0x32ffc1 = _0x32ffc1 < 0 ? 0 : 1 < _0x32ffc1 ? 1 : _0x32ffc1)) {
+                _0x58a97d.id = 0;
+            } else {
+                _0x13686c = this.getTransform();
+                _0x58a97d = _0x32ffc1 * Math.PI * 18;
+                _0x32ffc1 = 1 - 0.6 * _0x32ffc1;
+                _0x32ffc1 = 1 + 0.22 * Math.max(-0.22, Math.sin(_0x58a97d)) * _0x32ffc1;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x13686c.s = true;
+                }
+                _0x13686c.sx *= _0x32ffc1;
+                _0x13686c.sy *= 2 - _0x32ffc1;
+            }
+        }
+        driftWave(_0x3b6a08) {
+            var _0x3da7d6;
+            var _0x1ba7e4;
+            var _0x1bd13f = (currentFrameTime - _0x3b6a08.start) / playerEmotes[_0x3b6a08.id].duration;
+            if (1 <= (_0x1bd13f = _0x1bd13f < 0 ? 0 : 1 < _0x1bd13f ? 1 : _0x1bd13f)) {
+                _0x3b6a08.id = 0;
+            } else {
+                _0x3da7d6 = this.getTransform();
+                _0x1ba7e4 = _0x1bd13f * Math.PI * 10;
+                _0x3b6a08 = 1 - 0.5 * _0x1bd13f;
+                _0x1bd13f = Math.max(18, 0.18 * this.size) * _0x3b6a08;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x3da7d6.t = _0x3da7d6.r = true;
+                }
+                _0x3da7d6.tx += Math.sin(_0x1ba7e4) * _0x1bd13f;
+                _0x3da7d6.ty += Math.sin(2 * _0x1ba7e4) * _0x1bd13f * 0.35;
+                _0x3da7d6.rz += 0.08 * Math.cos(_0x1ba7e4) * _0x3b6a08;
+            }
+        }
+        quakeDance(_0xacd671) {
+            var _0x155535;
+            var _0x17e08e;
+            var _0x425f14;
+            var _0x32e705;
+            var _0x64c2b9 = (currentFrameTime - _0xacd671.start) / playerEmotes[_0xacd671.id].duration;
+            if (1 <= (_0x64c2b9 = _0x64c2b9 < 0 ? 0 : 1 < _0x64c2b9 ? 1 : _0x64c2b9)) {
+                _0xacd671.id = 0;
+            } else {
+                _0x155535 = this.getTransform();
+                _0x32e705 = (_0x425f14 = 6 * _0x64c2b9) - Math.floor(_0x425f14);
+                _0x17e08e = 1 - 0.7 * _0x64c2b9;
+                _0xacd671 = Math.max(32, 0.28 * this.size) * _0x17e08e;
+                _0x425f14 = Math.max(14, 0.12 * this.size) * _0x17e08e;
+                _0x32e705 = 1 - Math.abs(2 * _0x32e705 - 1);
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x155535.t = _0x155535.s = _0x155535.r = true;
+                }
+                _0x155535.ty += _0xacd671 * (_0x32e705 - 0.5);
+                _0x155535.tx += _0x425f14 * Math.sin(_0x64c2b9 * Math.PI * 2.5);
+                _0x155535.sx *= 1 + 0.18 * _0x32e705 * _0x17e08e;
+                _0x155535.sy *= 1 - 0.14 * _0x32e705 * _0x17e08e;
+                _0x155535.rz += 0.04 * Math.sin(_0x64c2b9 * Math.PI * 12) * _0x17e08e;
+            }
+        }
+        swayDance(_0x21c3b8) {
+            var _0x52dac9;
+            var _0xa35d34;
+            var _0x1c209a = (currentFrameTime - _0x21c3b8.start) / playerEmotes[_0x21c3b8.id].duration;
+            if (1 <= (_0x1c209a = _0x1c209a < 0 ? 0 : 1 < _0x1c209a ? 1 : _0x1c209a)) {
+                _0x21c3b8.id = 0;
+            } else {
+                _0x52dac9 = this.getTransform();
+                _0xa35d34 = _0x1c209a * Math.PI * 6;
+                _0x21c3b8 = 1 - 0.6 * _0x1c209a;
+                _0x1c209a = Math.max(12, 0.09 * this.size) * _0x21c3b8;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x52dac9.t = _0x52dac9.r = true;
+                }
+                _0x52dac9.tx += Math.sin(_0xa35d34) * _0x1c209a;
+                _0x52dac9.rz += 0.06 * Math.sin(_0xa35d34) * _0x21c3b8;
+            }
+        }
+        jellyDance(_0x16d735) {
+            var _0x4823e8;
+            var _0x1f2cd7 = (currentFrameTime - _0x16d735.start) / playerEmotes[_0x16d735.id].duration;
+            if (1 <= (_0x1f2cd7 = _0x1f2cd7 < 0 ? 0 : 1 < _0x1f2cd7 ? 1 : _0x1f2cd7)) {
+                _0x16d735.id = 0;
+            } else {
+                _0x4823e8 = this.getTransform();
+                _0x16d735 = _0x1f2cd7 * Math.PI * 14;
+                _0x1f2cd7 = 1 - 0.5 * _0x1f2cd7;
+                _0x1f2cd7 = 0.11 * Math.sin(_0x16d735) * _0x1f2cd7;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x4823e8.s = true;
+                }
+                _0x4823e8.sx *= 1 + _0x1f2cd7;
+                _0x4823e8.sy *= 1 - _0x1f2cd7;
+            }
+        }
+        moonwalkDance(_0x23eae2) {
+            var _0x58a48c;
+            var _0x47385d;
+            var _0x57dc6d = (currentFrameTime - _0x23eae2.start) / playerEmotes[_0x23eae2.id].duration;
+            if (1 <= (_0x57dc6d = _0x57dc6d < 0 ? 0 : 1 < _0x57dc6d ? 1 : _0x57dc6d)) {
+                _0x23eae2.id = 0;
+            } else {
+                _0x58a48c = this.getTransform();
+                _0x47385d = _0x57dc6d * Math.PI * 11;
+                _0x23eae2 = 1 - 0.35 * _0x57dc6d;
+                _0x57dc6d = Math.max(42, 0.35 * this.size) * _0x23eae2;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x58a48c.t = _0x58a48c.r = true;
+                }
+                _0x58a48c.tx -= (0.45 + 0.55 * Math.abs(Math.sin(_0x47385d))) * _0x57dc6d;
+                _0x58a48c.ty += Math.sin(2 * _0x47385d) * _0x57dc6d * 0.12;
+                _0x58a48c.rz -= 0.045 * Math.sin(_0x47385d) * _0x23eae2;
+            }
+        }
+        helixDance(_0x4308c3) {
+            var _0xd1f60b;
+            var _0x51a609 = (currentFrameTime - _0x4308c3.start) / playerEmotes[_0x4308c3.id].duration;
+            if (1 <= (_0x51a609 = _0x51a609 < 0 ? 0 : 1 < _0x51a609 ? 1 : _0x51a609)) {
+                _0x4308c3.id = 0;
+            } else {
+                _0xd1f60b = this.getTransform();
+                _0x4308c3 = _0x51a609 * Math.PI * 10;
+                _0x51a609 = 1 - 0.55 * _0x51a609;
+                _0x51a609 = Math.max(14, 0.1 * this.size) * _0x51a609;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0xd1f60b.t = true;
+                }
+                _0xd1f60b.tx += Math.cos(_0x4308c3) * _0x51a609;
+                _0xd1f60b.ty += Math.sin(2 * _0x4308c3) * _0x51a609 * 0.5;
+            }
+        }
+        hiccupDance(_0x23eb07) {
+            var _0x2ce6f4;
+            var _0x242553 = (currentFrameTime - _0x23eb07.start) / playerEmotes[_0x23eb07.id].duration;
+            if (1 <= (_0x242553 = _0x242553 < 0 ? 0 : 1 < _0x242553 ? 1 : _0x242553)) {
+                _0x23eb07.id = 0;
+            } else {
+                _0x2ce6f4 = this.getTransform();
+                _0x23eb07 = 1 - 0.65 * _0x242553;
+                _0x242553 = (_0x242553 = (_0x242553 = 4 * _0x242553) - Math.floor(_0x242553)) < 0.22 ? 1 - _0x242553 / 0.22 : 0;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x2ce6f4.t = _0x2ce6f4.s = true;
+                }
+                _0x2ce6f4.ty -= Math.max(18, 0.14 * this.size) * _0x242553 * _0x23eb07;
+                _0x2ce6f4.sx *= 1 + 0.06 * _0x242553 * _0x23eb07;
+                _0x2ce6f4.sy *= 1 - 0.05 * _0x242553 * _0x23eb07;
+            }
+        }
+        expandDance(_0x5a7020) {
+            var _0x1ff164;
+            var _0xac2775 = (currentFrameTime - _0x5a7020.start) / playerEmotes[_0x5a7020.id].duration;
+            if (1 <= (_0xac2775 = _0xac2775 < 0 ? 0 : 1 < _0xac2775 ? 1 : _0xac2775)) {
+                _0x5a7020.id = 0;
+            } else {
+                _0x1ff164 = this.getTransform();
+                _0x5a7020 = 1 - 0.4 * _0xac2775;
+                _0x5a7020 = 1 + 0.45 * Math.sin(_0xac2775 * Math.PI) * _0x5a7020;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x1ff164.s = true;
+                }
+                _0x1ff164.sx *= _0x5a7020;
+                _0x1ff164.sy *= _0x5a7020;
+            }
+        }
+        collapseDance(_0x1b2e1e) {
+            var _0x41038a = (currentFrameTime - _0x1b2e1e.start) / playerEmotes[_0x1b2e1e.id].duration;
+            if (1 <= (_0x41038a = _0x41038a < 0 ? 0 : 1 < _0x41038a ? 1 : _0x41038a)) {
+                _0x1b2e1e.id = 0;
+            } else {
+                _0x1b2e1e = this.getTransform();
+                _0x41038a = 1 - 0.42 * Math.sin(_0x41038a * Math.PI);
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x1b2e1e.s = true;
+                }
+                _0x1b2e1e.sx *= _0x41038a;
+                _0x1b2e1e.sy *= _0x41038a;
+            }
+        }
+        slinkyDance(_0x279d5f) {
+            var _0x648be7;
+            var _0x4580f0;
+            var _0x56fb1b = (currentFrameTime - _0x279d5f.start) / playerEmotes[_0x279d5f.id].duration;
+            if (1 <= (_0x56fb1b = _0x56fb1b < 0 ? 0 : 1 < _0x56fb1b ? 1 : _0x56fb1b)) {
+                _0x279d5f.id = 0;
+            } else {
+                _0x648be7 = this.getTransform();
+                _0x4580f0 = _0x56fb1b * Math.PI * 16;
+                _0x279d5f = 1 - 0.5 * _0x56fb1b;
+                _0x56fb1b = 0.18 * Math.sin(_0x4580f0) * _0x279d5f;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x648be7.s = _0x648be7.t = true;
+                }
+                _0x648be7.sx *= 1 + _0x56fb1b;
+                _0x648be7.sy *= 1 - _0x56fb1b;
+                _0x648be7.ty += Math.cos(_0x4580f0) * Math.max(10, 0.08 * this.size) * _0x279d5f;
+            }
+        }
+        vortexDance(_0x315757) {
+            var _0x10ca4e;
+            var _0x24f8a7;
+            var _0x31e93b = (currentFrameTime - _0x315757.start) / playerEmotes[_0x315757.id].duration;
+            if (1 <= (_0x31e93b = _0x31e93b < 0 ? 0 : 1 < _0x31e93b ? 1 : _0x31e93b)) {
+                _0x315757.id = 0;
+            } else {
+                _0x10ca4e = this.getTransform();
+                _0x24f8a7 = _0x31e93b * Math.PI * 9;
+                _0x315757 = 1 - 0.4 * _0x31e93b;
+                _0x31e93b = Math.max(26, 0.18 * this.size) * (1 - _0x31e93b) * _0x315757;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x10ca4e.t = _0x10ca4e.r = _0x10ca4e.s = true;
+                }
+                _0x10ca4e.tx += Math.cos(_0x24f8a7) * _0x31e93b;
+                _0x10ca4e.ty += Math.sin(1.35 * _0x24f8a7) * _0x31e93b * 0.8;
+                _0x10ca4e.rz += (0.22 + 0.08 * Math.sin(0.5 * _0x24f8a7)) * _0x315757;
+                _0x315757 = 0.1 * Math.sin(1.1 * _0x24f8a7) * _0x315757;
+                _0x10ca4e.sx *= 1 + _0x315757;
+                _0x10ca4e.sy *= 1 - 0.7 * _0x315757;
+            }
+        }
+        glitchDance(_0x4521d1) {
+            var _0x161765;
+            var _0x30ef81;
+            var _0x1eb5da = (currentFrameTime - _0x4521d1.start) / playerEmotes[_0x4521d1.id].duration;
+            if (1 <= (_0x1eb5da = _0x1eb5da < 0 ? 0 : 1 < _0x1eb5da ? 1 : _0x1eb5da)) {
+                _0x4521d1.id = 0;
+            } else {
+                _0x161765 = this.getTransform();
+                _0x30ef81 = ~~(22 * _0x1eb5da);
+                _0x4521d1 = 1 - 0.55 * _0x1eb5da;
+                _0x1eb5da = Math.max(8, 0.09 * this.size) * _0x4521d1;
+                if (gameSettings.sGraphics < 3 && gameSettings.sCellAnimations) {
+                    _0x161765.t = _0x161765.s = _0x161765.r = true;
+                }
+                if (_0x30ef81 % 4 == 0) {
+                    _0x161765.tx += _0x1eb5da;
+                    _0x161765.ty -= 0.45 * _0x1eb5da;
+                } else if (_0x30ef81 % 4 == 1) {
+                    _0x161765.tx -= 1.15 * _0x1eb5da;
+                    _0x161765.ty += 0.3 * _0x1eb5da;
+                } else if (_0x30ef81 % 4 == 2) {
+                    _0x161765.tx += 0.55 * _0x1eb5da;
+                    _0x161765.ty += 0.75 * _0x1eb5da;
+                } else {
+                    _0x161765.tx -= 0.35 * _0x1eb5da;
+                    _0x161765.ty -= 0.6 * _0x1eb5da;
+                }
+                _0x161765.sx *= 1 + (_0x1eb5da = _0x30ef81 % 2 == 0 ? 0.09 : -0.09) * _0x4521d1;
+                _0x161765.sy *= 1 - _0x1eb5da * _0x4521d1;
+                _0x161765.rz += (_0x30ef81 % 2 == 0 ? 0.07 : -0.07) * _0x4521d1;
+            }
+        }
         tt(_0x1406e4, _0x5dc4ed, _0x5228a3, _0x418319) {
-            var _0x52d848 = (currentFrameTime - _0x1406e4.te) / playerEmotes[_0x1406e4.ee].duration;
+            var _0x52d848 = (currentFrameTime - _0x1406e4.start) / playerEmotes[_0x1406e4.id].duration;
             if (1 <= (_0x52d848 = _0x52d848 < 0 ? 0 : 1 < _0x52d848 ? 1 : _0x52d848) || this.fe) {
-                _0x1406e4.ee = 0;
+                _0x1406e4.id = 0;
             } else {
                 _0x5dc4ed.globalAlpha = (gameSettings.sDark ? 0.25 : 0.18) * (_0x52d848 < 0.05 ? _0x52d848 / 0.05 : _0x52d848 < 0.5 ? 1 : 1 - (_0x52d848 - 0.5) / 0.5);
                 _0x5dc4ed.lineWidth = Math.min(30 + 30 * Math.max(1 - 2 * _0x3e50d9, 0), this.size);
@@ -4723,9 +5066,9 @@ class Cell {
             }
         }
         it(_0xd35b2b, _0xe5b6db, _0x4f5fbc, _0xad7024) {
-            var _0x2522fb = (currentFrameTime - _0xd35b2b.te) / playerEmotes[_0xd35b2b.ee].duration;
+            var _0x2522fb = (currentFrameTime - _0xd35b2b.start) / playerEmotes[_0xd35b2b.id].duration;
             if (1 <= (_0x2522fb = _0x2522fb < 0 ? 0 : 1 < _0x2522fb ? 1 : _0x2522fb) || this.fe || this.Ie) {
-                _0xd35b2b.ee = 0;
+                _0xd35b2b.id = 0;
             } else {
                 _0xe5b6db.globalAlpha = _0x2522fb < 0.5 ? 1 : 1 - (_0x2522fb - 0.5) / 0.5;
                 _0xe5b6db.lineWidth = 30;
@@ -4735,7 +5078,7 @@ class Cell {
             }
         }
         ot(_0x133747, _0x580a26, _0x4101ed, _0x3d84b9) {
-            _0x133747.ee = 0;
+            _0x133747.id = 0;
             _0x580a26.globalAlpha = 0.5;
             _0x580a26.fillStyle = "#FFFFFF";
             _0x580a26.fill();
@@ -4746,34 +5089,34 @@ class Cell {
             var _0x2f2e1c;
             var _0x3854da;
             var _0x48bf90;
-            var _0x254cec = (currentFrameTime - _0x19b597.te) / playerEmotes[_0x19b597.ee].duration;
+            var _0x254cec = (currentFrameTime - _0x19b597.start) / playerEmotes[_0x19b597.id].duration;
             if (1 <= (_0x254cec = _0x254cec < 0 ? 0 : 1 < _0x254cec ? 1 : _0x254cec) || this.fe) {
-                _0x19b597.ee = 0;
+                _0x19b597.id = 0;
             } else if (gameSettings.sCellAnimations && ((_0x14aef6 = (_0x19b597 = this.transform) && (_0x19b597.s || _0x19b597.r)) && (_0x2acef5.restore(), _0x2acef5.save(), _0x19b597.t) && _0x2acef5.translate(_0x19b597.tx, _0x19b597.ty), (_0x210819 = flashAnimations) && _0x210819.complete && 0 != _0x210819.width && (_0x48bf90 = this.size / 20, _0x3854da = _0x210819.width * _0x48bf90 * (_0x2f2e1c = _0x254cec < 0.2 ? _0x254cec / 0.2 : 1 - (_0x254cec - 0.2) / 0.8), _0x48bf90 = _0x210819.height * _0x48bf90 * _0x2f2e1c, _0x2acef5.globalAlpha = 0.7 * _0x2f2e1c * _0x2f2e1c, _0x2acef5.drawImage(_0x210819, _0x5c3fed - _0x3854da / 2, _0x5720a0 - _0x48bf90 / 2, _0x3854da, _0x48bf90)), _0x254cec < 0.9 && (_0x2f2e1c = _0x254cec / 0.9, _0x2acef5.beginPath(), this.size < 0 && (console.log("ERROR #2: THIS_SIZE < 0"), this.size = 0), _0x2acef5.arc(_0x5c3fed, _0x5720a0, 1.3 * this.size + 500 * _0x2f2e1c, 0, 2 * Math.PI, false), _0x2acef5.globalAlpha = 0.2 * (1 - _0x2f2e1c) * (1 - _0x2f2e1c), _0x2acef5.lineWidth = ~~(20 + 0.02 * this.size), _0x2acef5.strokeStyle = "#90A0FF", _0x2acef5.stroke()), _0x14aef6) && (_0x19b597.s && _0x2acef5.scale(_0x19b597.sx, _0x19b597.sy), _0x19b597.r)) {
                 _0x2acef5.rotate(_0x19b597.rz);
             }
         }
         ct(_0x263a12, _0x27b177, _0x16f54b, _0x3e0001) {
             var _0x228f94;
-            var _0x279b6b = (currentFrameTime - _0x263a12.te) / playerEmotes[_0x263a12.ee].duration;
+            var _0x279b6b = (currentFrameTime - _0x263a12.start) / playerEmotes[_0x263a12.id].duration;
             var _0x57f290 = {
                 x: this.hx,
                 y: this.hy
             };
             if (1 <= (_0x279b6b = _0x279b6b < 0 ? 0 : 1 < _0x279b6b ? 1 : _0x279b6b)) {
-                _0x263a12.ee = 0;
+                _0x263a12.id = 0;
             } else if (gameSettings.sCellAnimations && (_0x263a12.pos || (_0x263a12.pos = _0x57f290), _0x16f54b = _0x263a12.pos.x, _0x3e0001 = _0x263a12.pos.y, (_0x228f94 = (_0x263a12 = this.transform) && (_0x263a12.t || _0x263a12.s || _0x263a12.r)) && (_0x27b177.restore(), _0x27b177.save()), _0x27b177.beginPath(), this.size < 0 && (console.log("ERROR #3: THIS_SIZE < 0"), this.size = 0), _0x27b177.arc(_0x16f54b, _0x3e0001, this.size + 1340 * _0x279b6b, 0, 2 * Math.PI, false), _0x27b177.globalAlpha = 0.5 * (1 - _0x279b6b) * (1 - _0x279b6b), _0x27b177.fillStyle = gameSettings.sDark ? "#FFFFFF" : "#777777", _0x27b177.fill(), _0x228f94) && (_0x263a12.t && _0x27b177.translate(_0x263a12.tx, _0x263a12.ty), _0x263a12.s && _0x27b177.scale(_0x263a12.sx, _0x263a12.sy), _0x263a12.r)) {
                 _0x27b177.rotate(_0x263a12.rz);
             }
         }
         st(_0xdf8471, _0x41acbd, _0x13b9e6, _0x3d2a0d) {
-            var _0x421db6 = playerEmotes[_0xdf8471.ee].u;
-            var _0x5d0f77 = (currentFrameTime - _0xdf8471.te) / playerEmotes[_0xdf8471.ee].duration;
+            var _0x421db6 = playerEmotes[_0xdf8471.id].u;
+            var _0x5d0f77 = (currentFrameTime - _0xdf8471.start) / playerEmotes[_0xdf8471.id].duration;
             if (1 <= (_0x5d0f77 < 0 ? 0 : 1 < _0x5d0f77 ? 1 : _0x5d0f77) || this.fe || !_0x421db6 || _0x421db6.m < 1 || _0x421db6.h < 1) {
-                _0xdf8471.ee = 0;
+                _0xdf8471.id = 0;
             } else {
                 if (_0x421db6.canvas && _0x421db6.canvas.complete) {
-                    _0x5d0f77 = ~~(60 * (currentFrameTime - _0xdf8471.te) / 1000 - 1);
+                    _0x5d0f77 = ~~(60 * (currentFrameTime - _0xdf8471.start) / 1000 - 1);
                     let _0x24d439 = ~~((_0x5d0f77 = _0x5d0f77 < 0 ? 0 : _0x5d0f77) / _0x421db6.v);
                     let _0x355a00;
                     let _0x1b66bf;
@@ -4786,8 +5129,8 @@ class Cell {
                         _0x24d439 %= _0x421db6.m;
                     }
                     if (_0x24d439 > _0x421db6.m - 1) {
-                        _0xdf8471.ee = 0;
-                    } else if (gameSettings.sCellAnimations || playerEmotes[_0xdf8471.ee].ut) {
+                        _0xdf8471.id = 0;
+                    } else if (gameSettings.sCellAnimations || playerEmotes[_0xdf8471.id].ut) {
                         _0x355a00 = _0x421db6.canvas.width / _0x421db6.h;
                         _0x1b66bf = _0x421db6.canvas.height / Math.ceil(_0x421db6.m / _0x421db6.h);
                         _0x27e6d4 = _0x355a00 * (_0x38b488 = 2 * _0x421db6.scale * this.strokeSize / Math.max(_0x355a00, _0x1b66bf));
@@ -4802,9 +5145,9 @@ class Cell {
         nt(_0x267d4a, _0xe60ca6, _0x9bb609, _0x5377cf) {
             var _0x26f399;
             var _0x57d5bc;
-            var _0x3f06ab = (currentFrameTime - _0x267d4a.te) / playerEmotes[_0x267d4a.ee].duration;
+            var _0x3f06ab = (currentFrameTime - _0x267d4a.start) / playerEmotes[_0x267d4a.id].duration;
             if (1 <= (_0x3f06ab = _0x3f06ab < 0 ? 0 : 1 < _0x3f06ab ? 1 : _0x3f06ab)) {
-                _0x267d4a.ee = 0;
+                _0x267d4a.id = 0;
             } else if (gameSettings.sCellAnimations && (_0x267d4a = hitAnimations) && _0x267d4a.complete && 0 != _0x267d4a.width) {
                 _0x26f399 = 1 - _0x3f06ab;
                 _0x3f06ab = this.strokeSize * _0x3f06ab * 0.015;
@@ -4815,9 +5158,9 @@ class Cell {
             }
         }
         et(_0x42aaca, _0x559267, _0x3d73f2, _0x56a4f1) {
-            var _0x330383 = (currentFrameTime - _0x42aaca.te) / playerEmotes[_0x42aaca.ee].duration;
+            var _0x330383 = (currentFrameTime - _0x42aaca.start) / playerEmotes[_0x42aaca.id].duration;
             if (1 <= (_0x330383 < 0 ? 0 : 1 < _0x330383 ? 1 : _0x330383) || this.fe) {
-                _0x42aaca.ee = 0;
+                _0x42aaca.id = 0;
             } else {
                 if (!_0x42aaca.wt) {
                     _0x42aaca.wt = [];
@@ -4959,23 +5302,27 @@ class Cell {
             var _0x556074 = this.hy;
             if (this.Ae) {
                 for (var _0x52074e = 0; _0x52074e < this.Ae.length; _0x52074e++) {
-                    switch ((_0x407dc4 = this.Ae[_0x52074e]).ee) {
-                        case 3:
-                            this.He(_0x407dc4);
-                            break;
-                        case 6:
-                            this.Xe(_0x407dc4);
-                            break;
-                        case 7:
-                            this.Ze(_0x407dc4);
-                            break;
-                        case 8:
-                            this.o(_0x407dc4);
-                            break;
-                        case 11:
-                            this.Ke(_0x407dc4);
+                    switch ((_0x407dc4 = this.Ae[_0x52074e]).id) {
+                        case 3:   this.spin(_0x407dc4);          break;
+                        case 6:   this.flip(_0x407dc4);          break;
+                        case 7:   this.flipCoin(_0x407dc4);      break;
+                        case 8:   this.shake(_0x407dc4);         break;
+                        case 11:  this.jump(_0x407dc4);          break;
+                        case 90:  this.orbit(_0x407dc4);         break;
+                        case 91:  this.wobble(_0x407dc4);        break;
+                        case 92:  this.pulseDance(_0x407dc4);    break;
+                        case 93:  this.driftWave(_0x407dc4);     break;
+                        case 94:  this.quakeDance(_0x407dc4);    break;
+                        case 95:  this.swayDance(_0x407dc4);     break;
+                        case 96:  this.jellyDance(_0x407dc4);    break;
+                        case 97:  this.moonwalkDance(_0x407dc4); break;
+                        case 98:  this.helixDance(_0x407dc4);    break;
+                        case 99:  this.hiccupDance(_0x407dc4);   break;
+                        case 102: this.slinkyDance(_0x407dc4);   break;
+                        case 103: this.vortexDance(_0x407dc4);   break;
+                        case 104: this.glitchDance(_0x407dc4);   break;
                     }
-                    if (0 == _0x407dc4.ee) {
+                    if (0 == _0x407dc4.id) {
                         this.Ae.splice(_0x52074e, 1);
                         _0x52074e--;
                     }
@@ -5026,7 +5373,7 @@ class Cell {
             }
             if (this.Ae) {
                 for (_0x52074e = 0; _0x52074e < this.Ae.length; _0x52074e++) {
-                    switch ((_0x407dc4 = this.Ae[_0x52074e]).ee) {
+                    switch ((_0x407dc4 = this.Ae[_0x52074e]).id) {
                         case 9:
                             this.nt(_0x407dc4, _0x5be4cd, _0x57c74d, _0x556074);
                             _0x39d073(_0x5be4cd, _0x449d3e);
@@ -5044,13 +5391,13 @@ class Cell {
                             this.st(_0x407dc4, _0x5be4cd, _0x57c74d, _0x556074);
                             _0x39d073(_0x5be4cd, _0x449d3e);
                     }
-                    if (0 == _0x407dc4.ee) {
+                    if (0 == _0x407dc4.id) {
                         this.Ae.splice(_0x52074e, 1);
                         _0x52074e--;
                     }
                 }
                 for (_0x52074e = 0; _0x52074e < this.Ae.length; _0x52074e++) {
-                    switch ((_0x407dc4 = this.Ae[_0x52074e]).ee) {
+                    switch ((_0x407dc4 = this.Ae[_0x52074e]).id) {
                         case 1:
                             this.rt(_0x407dc4, _0x5be4cd, _0x57c74d, _0x556074);
                             _0x39d073(_0x5be4cd, _0x449d3e);
@@ -5059,7 +5406,7 @@ class Cell {
                             this.ct(_0x407dc4, _0x5be4cd, _0x57c74d, _0x556074);
                             _0x39d073(_0x5be4cd, _0x449d3e);
                     }
-                    if (0 == _0x407dc4.ee) {
+                    if (0 == _0x407dc4.id) {
                         this.Ae.splice(_0x52074e, 1);
                         _0x52074e--;
                     }
@@ -5389,8 +5736,8 @@ function wsOnMessage(_0x2ba470) {
                                 }
                             } else if (13 === _0x534ff6) {
                                 cell.we({
-                                    "ee": 7,
-                                    "te": playerEmotes[7].time(-~~(2000 * Math.random())),
+                                    "id": 7,
+                                    "start": playerEmotes[7].time(-~~(2000 * Math.random())),
                                     "received": ++_0x57f5d0
                                 });
                             } else if (4 === _0x534ff6) {
@@ -5461,8 +5808,8 @@ function wsOnMessage(_0x2ba470) {
                 var _0x5c6537 = allCells[_0x37f254] || _0x37d117[_0x37f254];
                 var _0x2242da = allCells[pkt.getUint32()];
                 if (_0x2242da && (_0x5c6537 ? (_0x2242da.destroy(true), _0x2242da.ox = _0x2242da.x, _0x2242da.oy = _0x2242da.y, _0x2242da.ge = _0x2242da.size, _0x5c6537 !== _0x2242da && (_0x2242da.hx = _0x5c6537.x, _0x2242da.hy = _0x5c6537.y), _0x2242da.nSize = _0x2242da.size, _0x2242da.Fe = currentFrameTime, _0x5c6537.isCloaked && !_0x5c6537.Ie && 0 === _0x2242da.i && _0x2242da.l !== _0x5c6537.l && (_0x5c6537.dt(16), _0x5c6537.we({
-                        "ee": 16,
-                        "te": playerEmotes[16].time(),
+                        "id": 16,
+                        "start": playerEmotes[16].time(),
                         "received": ++_0x57f5d0
                     }))) : _0x2242da.destroy(false), 1 !== _0x2242da.i)) {
                     _0x37d117[_0x37f254] = _0x2242da;
@@ -5556,11 +5903,11 @@ function wsOnMessage(_0x2ba470) {
                         } else {
                             _0x5bd0ee = playerEmotes[_0x3d8b30];
                             _0x57f54c = {
-                                "ee": _0x3d8b30,
-                                "te": _0x5bd0ee.time(-_0x346550),
+                                "id": _0x3d8b30,
+                                "start": _0x5bd0ee.time(-_0x346550),
                                 "received": _0x57f5d0
                             };
-                            if (_0x5bd0ee.time() < _0x57f54c.te + _0x5bd0ee.duration) {
+                            if (_0x5bd0ee.time() < _0x57f54c.start + _0x5bd0ee.duration) {
                                 if (_0x5013c6) {
                                     _0x5013c6.we(_0x57f54c);
                                 }
@@ -5578,11 +5925,11 @@ function wsOnMessage(_0x2ba470) {
                             } else {
                                 _0x5bd0ee = playerEmotes[_0x3d8b30];
                                 _0x57f54c = {
-                                    "ee": _0x3d8b30,
-                                    "te": _0x5bd0ee.time(-_0x346550),
+                                    "id": _0x3d8b30,
+                                    "start": _0x5bd0ee.time(-_0x346550),
                                     "received": _0x57f5d0
                                 };
-                                if (_0x5bd0ee.time() < _0x57f54c.te + _0x5bd0ee.duration) {
+                                if (_0x5bd0ee.time() < _0x57f54c.start + _0x5bd0ee.duration) {
                                     _0x5013c6.we(_0x57f54c);
                                 }
                             }
@@ -5598,11 +5945,11 @@ function wsOnMessage(_0x2ba470) {
                     } else {
                         _0x5bd0ee = playerEmotes[_0x3d8b30];
                         _0x57f54c = {
-                            "ee": _0x3d8b30,
-                            "te": _0x5bd0ee.time(-_0x346550),
+                            "id": _0x3d8b30,
+                            "start": _0x5bd0ee.time(-_0x346550),
                             "received": _0x57f5d0
                         };
-                        if (_0x5bd0ee.time() < _0x57f54c.te + _0x5bd0ee.duration) {
+                        if (_0x5bd0ee.time() < _0x57f54c.start + _0x5bd0ee.duration) {
                             _0x14cfd2(_0x2a3116, _0x399168, _0x57f54c);
                         }
                     }
@@ -5731,6 +6078,11 @@ function wsOnMessage(_0x2ba470) {
                     _0x52383b += 1;
                     _0x9db55f(0);
                 }
+                if (currentServerId === 48 && secretWorldPassword)
+                    new PacketWriter(3 + 2 * secretWorldPassword.length)
+                        .setUint8(134)
+                        .setString(secretWorldPassword)
+                        .send(true);
             } else {
                 _0x13d7e0();
                 wsOnClose();
@@ -6629,7 +6981,7 @@ function wsOnMessage(_0x2ba470) {
             var _0x1711bf = !!(8 & _0x3988b2);
             chatMessages.push({
                 "Y": _0x3884cc,
-                "$": _0x826efd,
+                "$": currentServerId,
                 "l": _0x24a818,
                 "R": _0x2712a9,
                 "O": _0x3b0d92,
@@ -6856,7 +7208,7 @@ function wsOnMessage(_0x2ba470) {
                     if (newGameservers[i].isCurrent) {
                         currentServer = newGameservers[i];
                         _0x40eece(newGameservers[i].gamemode);
-                        _0x826efd = _0x395b2d;
+                        currentServerId = _0x395b2d;
                     }
                 }
                 if (!_0x8e4a8e) {
@@ -7076,7 +7428,7 @@ function wsOnMessage(_0x2ba470) {
             _0x26039d = _0x26039d.getString();
             chatMessages.push({
                 "Y": true,
-                "$": _0x826efd,
+                "$": currentServerId,
                 "l": _0x2d1f83,
                 "R": _0x4e4df3,
                 "O": _0x4e4df3,
@@ -7137,6 +7489,13 @@ function wsOnMessage(_0x2ba470) {
                 });
             }
             break;
+        case 133: {
+            const address = pkt.getString();
+            secretWorldPassword = pkt.getString() || '';
+            // 4+1+1+1 useless bytes
+            if (address) connectserver(address, "Secret World");
+            break;
+        }
         case 209:
             _0x311374 = pkt.getUint16();
             _0x2f2313 = pkt.getUint16();
@@ -7217,7 +7576,7 @@ function _0x1afbd7() {
         data: JSON.stringify({
             friendlist: _0x468d84,
             activeTab: $("#requestList").hasClass('active') ? 1 : 0,
-            Jt: _0x5b3d82
+            Le: _0x5b3d82
         })
     }, function(res) {
         if (_0x598dfa < _0x244e69) {
@@ -7794,6 +8153,7 @@ function _0x2bb62d(level, xp) {
         }
         accountRessources.level = level;
         accountRessources.exp = xp;
+        window.refreshDanceMenuLocks();
     }
 }
 
@@ -7825,7 +8185,7 @@ function _0x468acc(_0x1edd5f, _0x1f5b67, _0x2ee8ab) {
             _0xfb52a(_0x1edd5f, _0x1f5b67);
         } else {
             for (var _0x14ce5d = 0; _0x14ce5d < _0x32de60.length; _0x14ce5d++) {
-                if (_0x32de60[_0x14ce5d].ee == _0x2ee8ab) {
+                if (_0x32de60[_0x14ce5d].id == _0x2ee8ab) {
                     _0x32de60.splice(_0x14ce5d, 1);
                     _0x14ce5d--;
                 }
@@ -7850,8 +8210,8 @@ function _0xfb52a(_0x20a150, _0x259096) {
 function _0x580067(_0x4f43ee) {
     var _0x1033ca = _0x36887a - _0x2263d7 * _0x3e50d9;
     var _0xca52f8 = _0x19f1c7 - _0x223539 * _0x3e50d9;
-    if (isReady() && !_0x4400ec && (Math.max(_0x2df455 < _0x28fccb ? _0x28fccb - _0x2df455 : _0x2df455 - _0x28fccb, _0x58d9ac < _0x4bd57d ? _0x4bd57d - _0x58d9ac : _0x58d9ac - _0x4bd57d) > 0.01 && 0 <= _0x1033ca * _0x1033ca + _0xca52f8 * _0xca52f8 - 64 || _0x4f43ee)) {
-        (_0x1033ca = new PacketWriter(9 + debugDataSize)).setUint8(0).setInt32(_0x2df455).setInt32(_0x58d9ac);
+    if (isReady() && !_0x4400ec && (Math.max(X < _0x28fccb ? _0x28fccb - X : X - _0x28fccb, Y < _0x4bd57d ? _0x4bd57d - Y : Y - _0x4bd57d) > 0.01 && 0 <= _0x1033ca * _0x1033ca + _0xca52f8 * _0xca52f8 - 64 || _0x4f43ee)) {
+        (_0x1033ca = new PacketWriter(9 + debugDataSize)).setUint8(0).setInt32(X).setInt32(Y);
         if (0 < debugDataSize) { // NOTE: is it possible that this is what bans you ?
             if (window.useDebugPrints) {
                 console.log("! Including debug data in packet");
@@ -7859,8 +8219,8 @@ function _0x580067(_0x4f43ee) {
             _0x1033ca.setUint8(Number(_0x4400ec)).setUint8(Number(_0x4f43ee));
         }
         _0x1033ca.send();
-        _0x28fccb = _0x2df455;
-        _0x4bd57d = _0x58d9ac;
+        _0x28fccb = X;
+        _0x4bd57d = Y;
     }
     if (_0x181957) {
         _0x4574cb(_0x4f43ee);
@@ -9183,8 +9543,8 @@ function _0x3c6fac(_0x4bd4a8) {
 function _0x4bfb7f(_0x4c8c78) {
     _0x4c8c78.setUint32(_0x9b1a41(2) + (() => {
         var _0x1251b9 = 0;
-        for (var _0x463729 = 2; _0x463729 < _0xaee6f6.length; _0x463729++) {
-            _0x1251b9 += ~~(_0x52383b / _0xaee6f6[_0x463729] - _0xaee6f6[_0x463729] % _0xa19eb5);
+        for (var i = 2; i < _0xaee6f6.length; i++) {
+            _0x1251b9 += ~~(_0x52383b / _0xaee6f6[i] - _0xaee6f6[i] % _0xa19eb5);
         }
         return _0x1251b9;
     })() + _0xa19eb5 + 1);
@@ -9380,8 +9740,8 @@ var _0x57f5d0 = 0;
 var chatMessages = [];
 var _0x36887a = 0;
 var _0x19f1c7 = 0;
-var _0x2df455 = -1;
-var _0x58d9ac = -1;
+var X = -1;
+var Y = -1;
 var _0x4400ec = false;
 var _0x312d0a = 0;
 var _0x2435c4 = 0;
@@ -9535,7 +9895,7 @@ var _0x3e53e0 = 0;
 var _0x6c92d3 = 0;
 var _0xd85888 = 0;
 var gameservers = [];
-var _0x826efd = 0;
+var currentServerId = 0;
 var _0x38891d = '';
 var _0x46c79d = '';
 var _0x518a09 = '';
@@ -11971,16 +12331,49 @@ window.setLeaderboard = function(isEnabled) {
     _0x3c3250 = true;
 };
 window.toggleEmojis = function(isEnabled) {
-    if (isEnabled) {
+    if (2 === isEnabled) {
         $("#emojisBox").hide();
-        $("#animatedEmojisBox").show();
-    } else {
-        $("#emojisBox").show();
         $("#animatedEmojisBox").hide();
+        $("#danceEmojisBox").show();
+        window.refreshDanceMenuLocks();
+    } else {
+        if (isEnabled) {
+            $("#emojisBox").hide();
+            $("#animatedEmojisBox").show();
+        } else {
+            $("#emojisBox").show();
+            $("#animatedEmojisBox").hide();
+        }
+        $("#danceEmojisBox").hide();
+    }
+};
+window.refreshDanceMenuLocks = function() {
+    var _0x4e9d51 = document.querySelectorAll("#danceEmojisBox td[data-dance-req]");
+    for (var i = 0; i < _0x4e9d51.length; i++) {
+        var _0x429f02 = _0x4e9d51[i];
+        var _0x1588d9 = parseInt(_0x429f02.getAttribute("data-dance-req") || "0", 10) || 0;
+        var _0x236603 = _0x429f02.querySelector("div");
+        var _0xed6124 = _0x1588d9 <= accountRessources.level;
+        _0x429f02.title = _0xed6124 ? "/" + (_0x429f02.getAttribute("data-dance-cmd") || '') : "Requires level " + _0x1588d9;
+        if (_0x236603) {
+            _0x236603.style.opacity = _0xed6124 ? "1" : ".45";
+            _0x236603.style.filter = _0xed6124 ? "none" : "grayscale(35%)";
+            _0x236603.style.cursor = _0xed6124 ? "pointer" : "not-allowed";
+        }
     }
 };
 window.plEA = function(_0x5cfec2) {
     return 0 == _0x5cfec2 ? swal("This emote is locked. You can unlock it by completing a challenge :) More information coming in a future update") : 50 == _0x5cfec2 && true ? swal("This emote requires level 400 to unlock or 20 completed challenges that will be released in the future") : void(_0x5cfec2 && Number.isInteger(_0x5cfec2) && isReady() && new PacketWriter(2).setUint8(179).setUint8(_0x5cfec2).send());
+};
+window.plDA = function(_0x5d5106) {
+    var _0x3c3c10;
+    if (_0x5d5106) {
+        if (accountRessources.level < (_0x3c3c10 = playerDances[_0x5d5106] || 0)) {
+            curserMessage("Dance '/" + _0x5d5106 + "' requires level " + _0x3c3c10, false, true, 0, 4);
+        } else {
+            _0x483c7e("/" + _0x5d5106);
+        }
+    }
 };
 window.setChat = function(isEnabled) {
     if (gameSettings.sChat = isEnabled) {
@@ -12782,7 +13175,7 @@ $(function() {
     _0x11f3e0 = document.getElementById("chtScrollbar");
     _0x243c1f = document.getElementById("chtScrollbarThumb");
     var _0x394ee1;
-    var _0x5e2db3 = "<div style=\" background: rgba(68,68,68,.5); border-radius: 1px; \"><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;\" onclick=\"toggleEmojis(0)\" \">Chat</button><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; margin-left: 5px; \" onclick=\"toggleEmojis(1)\" \">Cell</button> </div><div style='overflow-y:scroll;height:165px;'><table><tbody id='emojisBox'>";
+    var _0x5e2db3 = "<div style=\" background: rgba(68,68,68,.5); border-radius: 1px; \"><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;\" onclick=\"toggleEmojis(0)\" \">Chat</button><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; margin-left: 5px; \" onclick=\"toggleEmojis(1)\" \">Cell</button><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; margin-left: 5px; \" onclick=\"toggleEmojis(2)\" \">Dance</button> </div><div style='overflow-y:scroll;height:165px;'><table><tbody id='emojisBox'>";
     var _0x3ecf43 = 0;
     for (var _0x8f1d4f = 0; _0x8f1d4f < emoList.length; _0x8f1d4f++) {
         _0x394ee1 = emoList[_0x8f1d4f];
@@ -12798,7 +13191,22 @@ $(function() {
     if (0 != _0x3ecf43) {
         _0x5e2db3 += "</tr>";
     }
-    _0x5e2db3 += "</tbody> <tbody id=\"animatedEmojisBox\"><tr><td onclick=\"plEA(32);\"> <img width=\"28\" src=\"./emotes/anim/icon_hearts.png\"></img></td><td onclick=\"plEA(30);\"> <img width=\"28\" src=\"./emotes/anim/icon_wave.png\"></img></td><td onclick=\"plEA(12);\"> <img width=\"28\" src=\"./emotes/anim/icon_wacky.png\"></img></td><td onclick=\"plEA(31);\"> <img width=\"28\" src=\"./emotes/anim/icon_explo_head.png\"></img></td><td onclick=\"plEA(44);\"> <img width=\"28\" src=\"./emotes/anim/icon_threm.png\"></img></td><td onclick=\"plEA(45);\"> <img width=\"28\" src=\"./emotes/anim/icon_sweatface.png\"></img></td><td onclick=\"plEA(46);\"> <img width=\"28\" src=\"./emotes/anim/icon_tearsjoy.png\"></img></td></tr> <tr><td onclick=\"plEA(47);\"> <img width=\"28\" src=\"./emotes/anim/icon_nono.png\"></img></td><td onclick=\"plEA(48);\"> <img width=\"28\" src=\"./emotes/anim/icon_clap.png\"></img></td><td onclick=\"plEA(49);\"><img width=\"28\" src=\"./emotes/anim/icon_crying.png\"></img></td><td onclick=\"plEA(50);\"><img width=\"28\" src=\"./emotes/anim/icon_devsmile.png\"></img></td><td onclick=\"plEA(0);\"><img width=\"28\" src=\"./emotes/anim/icon_eatman.png\"></img></td><td onclick=\"plEA(52);\"><img width=\"28\" src=\"./emotes/anim/icon_trophy.png\"></img></td><td onclick=\"plEA(53);\"><img width=\"28\" src=\"./emotes/anim/icon_heartsv.png\"></img></td></tr></tbody></table></div><p style='padding:10px 5px 0px;color:#444444;font-size:9px;font-weight:bold;'></p>";
+    const _0x9a0ff1 = [
+        [{ c: "spin", l: "Spin" }, { c: "jump", l: "Jump" }, { c: "flip", l: "Flip" }, { c: "shake", l: "Shake" }, { c: "quake", l: "Quake" }],
+        [{ c: "orbit", l: "Orbit" }, { c: "drift", l: "Drift" }, { c: "sway", l: "Sway" }, { c: "vortex", l: "Vortex" }, { c: "glitch", l: "Glitch" }],
+        [{ c: "moonwalk", l: "Moonwalk" }, { c: "jelly", l: "Jelly" }, { c: "slinky", l: "Slinky" }, { c: "helix", l: "Helix" }, { c: "hiccup", l: "Hiccup" }],
+        [{ c: "boogie", l: "Boogie" }, { c: "crazy", l: "Crazy" }, { c: "funny", l: "Funny" }, { c: "zigzag", l: "Zigzag" }, { c: "pulse", l: "Pulse" }]
+    ];
+    var _0x2a3d82 = "<tbody id=\"danceEmojisBox\" style=\"display:none\">";
+    for (const row of _0x9a0ff1) {
+        _0x2a3d82 += "<tr>";
+        for (const { c: _0x2b919c, l: _0xef3925 } of row) {
+            const level = playerDances[_0x2b919c] || 0;
+            _0x2a3d82 += "<td data-dance-cmd='" + _0x2b919c + "' data-dance-req='" + level + "' onclick=\"plDA('" + _0x2b919c + "');\" title='/" + _0x2b919c + "'><div style=\"padding:4px 6px;background:#243041;border:1px solid #3d4f66;border-radius:4px;color:#c9ddff;font-size:11px;text-align:center;\">" + (0 < level ? _0xef3925 + "<br><span style='font-size:10px;color:#aeb8c7'>Lvl " + level + "</span>" : _0xef3925) + "</div></td>";
+        }
+        _0x2a3d82 += "</tr>";
+    }
+    _0x5e2db3 += "</tbody> <tbody id=\"animatedEmojisBox\"><tr><td onclick=\"plEA(32);\"> <img width=\"28\" src=\"./emotes/anim/icon_hearts.png\"></img></td><td onclick=\"plEA(30);\"> <img width=\"28\" src=\"./emotes/anim/icon_wave.png\"></img></td><td onclick=\"plEA(12);\"> <img width=\"28\" src=\"./emotes/anim/icon_wacky.png\"></img></td><td onclick=\"plEA(31);\"> <img width=\"28\" src=\"./emotes/anim/icon_explo_head.png\"></img></td><td onclick=\"plEA(44);\"> <img width=\"28\" src=\"./emotes/anim/icon_threm.png\"></img></td><td onclick=\"plEA(45);\"> <img width=\"28\" src=\"./emotes/anim/icon_sweatface.png\"></img></td><td onclick=\"plEA(46);\"> <img width=\"28\" src=\"./emotes/anim/icon_tearsjoy.png\"></img></td></tr> <tr><td onclick=\"plEA(47);\"> <img width=\"28\" src=\"./emotes/anim/icon_nono.png\"></img></td><td onclick=\"plEA(48);\"> <img width=\"28\" src=\"./emotes/anim/icon_clap.png\"></img></td><td onclick=\"plEA(49);\"><img width=\"28\" src=\"./emotes/anim/icon_crying.png\"></img></td><td onclick=\"plEA(50);\"><img width=\"28\" src=\"./emotes/anim/icon_devsmile.png\"></img></td><td onclick=\"plEA(0);\"><img width=\"28\" src=\"./emotes/anim/icon_eatman.png\"></img></td><td onclick=\"plEA(52);\"><img width=\"28\" src=\"./emotes/anim/icon_trophy.png\"></img></td><td onclick=\"plEA(53);\"><img width=\"28\" src=\"./emotes/anim/icon_heartsv.png\"></img></td></tr></tbody>" + _0x2a3d82 + "</tbody></table></div><p style='padding:10px 5px 0px;color:#444444;font-size:9px;font-weight:bold;'></p>";
     document.getElementById("emojiDropdown").innerHTML = _0x5e2db3;
     _0x4b57bd(undefined !== window.localStorage && parseInt(window.localStorage.gmbCollapsed) || 0);
     _0x5ccb42(undefined !== window.localStorage && parseInt(window.localStorage.chatDimmed) || 0);
@@ -12826,7 +13234,7 @@ $(function() {
             cv: 4 * _0x556e60,
             ch: _0x950276,
             ccv: _0x556e60 - 2,
-            vv: 157
+            vv: 158
         })
     }, function(_0x21e509) {
         if (window.emgaa && _0x21e509 && !isNaN(_0x21e509) && (_0x2b8278 = (_0x38337e => {
