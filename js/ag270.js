@@ -182,7 +182,9 @@ const playerEmotes = {
 };
 const skinImagesHigh = {};
 const skinImagesLow = {};
-const wearablesAndObjectsImages = {};
+const wearablesAndObjectsImages = {
+    mobileIcon: newImage("img/animations/mobIcon.png")
+};
 const foodCellRandomShapes = [5, 3, 6, 6, 6, 3, 4, 6, 6, 3, 6, 5, 5, 4, 3, 6, 4, 6, 6, 5, 6, 6, 5, 4, 4, 5, 5, 6, 4, 5, 3, 5, 6, 5, 4, 6, 6, 5, 4, 6, 5, 5, 6, 4, 6, 5, 6, 5, 5, 4, 6, 6, 4, 4, 6, 4, 3, 5, 6, 4, 4, 3, 5, 4, 3, 4, 5, 3, 4, 6, 4, 3, 3, 3, 4, 5, 4, 6, 5, 6, 5, 5, 4, 3, 5, 6, 5, 5, 5, 5, 6, 6, 4, 3, 5, 4, 3, 4, 6, 5];
 const cellStrokeSizeMultiplier = [1, 1, 1, 1.25, 1.12, 1.07, 1.05, 1.04, 1.03, 1.02, 1.02, 1.01, 1.01, 1.01, 1, 1];
 
@@ -1440,7 +1442,7 @@ function _0x3169a6(_0x4dc13e) {
             $("#contextSpectate").removeClass("enabled");
             $("#contextModerate").removeClass("enabled");
         }
-        if (0 < _0x55ce89.length) {
+        if (0 < currentParty.length) {
             $("#contextPartyMessage").addClass("enabled");
             $("#contextPartyLeave").addClass("enabled");
         } else {
@@ -2848,7 +2850,7 @@ function _0x13d7e0() {
         _0x47ccce = _0x11de32 = _0x52d414 = _0x29f86a = _0x4512d9 = _0x2873c2 = _0x576526 = _0x38ea95 = _0x852ff = _0x273de7 = _0x30bfdb = _0x4a4cf7 = _0x24af02 = _0x3b8888 = lastSpawn = respawnCooldown = _0x5a219c = 0;
         $(".inventory-box").removeClass("activatedInv");
         _0x37e4a8 = _0xb1583e = _0x31962a = _0x5ea511 = _0x5a5860 = _0x3c6854 = 0;
-        isSpectating = _0x2c99f2 = _0x211844 = _0x1ec523 = !(_0x55ce89 = []);
+        isSpectating = _0x2c99f2 = _0x211844 = _0x1ec523 = !(currentParty = []);
         _0x2c6f91 = _0x3c3250 = true;
         setBattleRoyaleInfos();
         _0x593148();
@@ -3836,7 +3838,7 @@ function _0x215896() {
             if (3 != _0x2c9685.type && 1 != _0x2c9685.type || _0x2c9685.shouldUpdate && (_0x2c9685.x != _0x2c9685.hx || _0x2c9685.y != _0x2c9685.hy))
                 _0x2c9685.drawMinimapCell(_0x51f702);
         }
-        if (0 < (_0x476ebb = _0x55ce89.length) && _0x2332bb) {
+        if (0 < (_0x476ebb = currentParty.length) && _0x2332bb) {
             var _0x577a49;
             var _0xf8346e;
             var _0x518f8e;
@@ -3845,7 +3847,7 @@ function _0x215896() {
             var _0x39e9c3 = ~~(15 * _0x28ad4b + 0.5);
             var _0x1dfed6 = ~~(3 * _0x28ad4b + 0.5);
             for (var i = 0; i < _0x476ebb; i++) {
-                if ((_0x2c9685 = _0x55ce89[i]).ke) {
+                if ((_0x2c9685 = currentParty[i]).showPos) {
                     _0xf8346e = _0x2c9685.pp;
                     _0x518f8e = (i + 1).toString();
                     if (_0xf8346e) {
@@ -4594,7 +4596,18 @@ class Cell {
                             this.anim = null;
                         }
                     }
-                    if (0 == this.type && (this.singleCellPlayer ? 10 : 20) < this.size * _0x3e50d9 && (gameSettings.sMinionNames || !this.isMinion || 125 < this.size) && (_0x25b838 < this.size || this.singleCellPlayer && 30 <= this.size) && !this.destroyed && _0x2332bb && (_0x2c5c7d = gameSettings.sNames && (this.name || 0 < this.stars), _0x222c9e = gameSettings.sMass && (this.ownCell || 0 == mainPlayerCells.length || this.sameParty) && 60 < this.size * _0x3e50d9, _0x2c5c7d || _0x222c9e)) {
+                    if (
+                        0 == this.type &&
+                        (this.singleCellPlayer ? 10 : 20) < this.size * _0x3e50d9 &&
+                        (gameSettings.sMinionNames || !this.isMinion || 125 < this.size) &&
+                        (_0x25b838 < this.size || this.singleCellPlayer && 30 <= this.size) &&
+                        !this.destroyed &&
+                        _0x2332bb && (
+                            _0x2c5c7d = gameSettings.sNames && (this.name || 0 < this.stars),
+                            _0x222c9e = gameSettings.sMass && (this.ownCell || 0 == mainPlayerCells.length || this.sameParty) && 60 < this.size * _0x3e50d9,
+                            _0x2c5c7d || _0x222c9e
+                        )
+                    ) {
                         if (this.textDrawn || _0x164fe5 == this) {
                             if (!_0x33867d) {
                                 _0xb14342.save();
@@ -5229,6 +5242,29 @@ class Cell {
         var _0x1eaef0 = gameSettings.sLargeNames ? 50 + ~~(0.3 * this.size) : Math.max(~~(0.3 * this.size), 24);
         var _0x6261ce = 1;
         _0x2d721a.globalAlpha = this.ga * (this.isCloaked ? 0.01 : 1);
+
+        let _0x2be382, _0x4121a4;
+        if (currentParty.length && this.sameParty && !this.ownCell && !this.destroyed) {
+            _0x4121a4 = Math.max(44, Math.min(180, 1.35 * this.size));
+            _0x2be382 = _0x3ddd98 - this.size - _0x4121a4 - 10;
+            _0x2d721a.save();
+            _0x2d721a.globalAlpha = Math.min(1, this.ga * (this.isCloaked ? 0.2 : 0.98));
+            _0x2d721a.beginPath();
+            _0x2d721a.moveTo(_0x4631dd - 0.92 * _0x4121a4, _0x2be382 - 0.24 * _0x4121a4);
+            _0x2d721a.lineTo(_0x4631dd, _0x2be382 + 0.82 * _0x4121a4);
+            _0x2d721a.lineTo(_0x4631dd + 0.92 * _0x4121a4, _0x2be382 - 0.24 * _0x4121a4);
+            _0x2d721a.closePath();
+            _0x2d721a.fillStyle = "rgba(255, 230, 60, 0.98)";
+            _0x2d721a.fill();
+            _0x2d721a.lineWidth = Math.max(4, 0.09 * _0x4121a4);
+            _0x2d721a.strokeStyle = "rgba(120, 90, 0, 0.92)";
+            _0x2d721a.stroke();
+            _0x2d721a.restore();
+        }
+        if (this.touchUser && (_0x2be382 = wearablesAndObjectsImages.mobileIcon) && _0x2be382.complete) {
+            _0x2d721a.drawImage(_0x2be382, _0x4631dd - (_0x4121a4 = 1.4 * ~~(_0x1eaef0 / 2 + 0.5)) / 2, _0x3ddd98 - 2.6 * _0x4121a4 - 6, _0x4121a4, _0x4121a4);
+        }
+
         if (_0x265307) {
             _0x265307 = 0 < this.stars;
             if (_0x265307 || this.clanPart) {
@@ -6249,29 +6285,29 @@ function wsOnMessage(_0x2ba470) {
             flags = pkt.getUint8();
             _0x435e7a = pkt.getUint16();
             _0x1ec523 = !!(1 & flags);
-            _0x55ce89 = [];
+            currentParty = [];
             for (i = 0; i < _0x435e7a; ++i) {
                 flags = pkt.getUint8();
                 var _0x1740e2 = pkt.getString();
                 _0x427639 = _0x1740e2;
-                _0x55ce89.push({
-                    "name": _0x1740e2,
-                    "Wt": $("<div/>").text(_0x427639).html(),
-                    "accepted": !!(1 & flags),
-                    "ke": false,
-                    "cx": 0,
-                    "cy": 0,
-                    "pp": null
+                currentParty.push({
+                    name: _0x1740e2,
+                    Wt: $("<div/>").text(_0x427639).html(),
+                    accepted: !!(1 & flags),
+                    showPos: false,
+                    cx: 0,
+                    cy: 0,
+                    pp: null
                 });
             }
             _0x1a0f0b();
             break;
         case 86:
             _0x435e7a = pkt.getUint16();
-            for (i = 0; i < _0x435e7a && i < _0x55ce89.length; ++i) {
-                var _0x13c64b = _0x55ce89[i];
+            for (i = 0; i < _0x435e7a && i < currentParty.length; ++i) {
+                var _0x13c64b = currentParty[i];
                 var flags = pkt.getUint8();
-                _0x13c64b.ke = !!(1 & flags);
+                _0x13c64b.showPos = !!(1 & flags);
                 _0x13c64b.cx = pkt.getInt32();
                 _0x13c64b.cy = pkt.getInt32();
             }
@@ -9012,25 +9048,25 @@ function _0x39b68a() {
 }
 
 function _0x1a0f0b() {
-    var _0x5bcc45 = Math.min(_0x55ce89.length, 12);
+    var _0x5bcc45 = Math.min(currentParty.length, 12);
     var _0x588307 = '';
     if (!_0x22bf19) {
-        if (0 < _0x55ce89.length) {
+        if (0 < currentParty.length) {
             _0x588307 += _0x1ec523 ? "<p style=\"padding-bottom:9px;\">Party invitation:</p>" : "<p style=\"padding-bottom:9px;\">You are in a party:</p>";
         } else {
             _0x588307 += "<p style=\"margin-bottom:-4px;\">Party ended</p>";
             _0x211844 = false;
         }
         for (var _0xa17f22 = 0; _0xa17f22 < _0x5bcc45; _0xa17f22++) {
-            var _0x172831 = _0x55ce89[_0xa17f22];
+            var _0x172831 = currentParty[_0xa17f22];
             _0x588307 += _0x211844 ? "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.Wt || "Agma.io Player") + "<button class=\"partyKickBtn\" value=\"" + _0xa17f22 + "\" onclick=\"kickPartyMember($(this))\">x</button></p>" : "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.Wt || "Agma.io Player") + "</p>";
         }
-        if (_0x55ce89.length > _0x5bcc45) {
-            _0x588307 += "<p style=\"margin-bottom:-6px;\">+ " + (_0x55ce89.length - _0x5bcc45).toString() + " more players...</p>";
+        if (currentParty.length > _0x5bcc45) {
+            _0x588307 += "<p style=\"margin-bottom:-6px;\">+ " + (currentParty.length - _0x5bcc45).toString() + " more players...</p>";
         }
     }
     $("#partyContent").html(_0x588307);
-    if (0 < _0x55ce89.length && _0x1ec523 && !_0x22bf19) {
+    if (0 < currentParty.length && _0x1ec523 && !_0x22bf19) {
         if (!_0x561770) {
             $("#partyButtons").show();
             _0x561770 = true;
@@ -9039,7 +9075,7 @@ function _0x1a0f0b() {
         $("#partyButtons").hide();
         _0x561770 = false;
     }
-    if (0 < _0x55ce89.length) {
+    if (0 < currentParty.length) {
         if (!_0x5c9745) {
             if (_0x24d21a) {
                 clearTimeout(_0x24d21a);
@@ -9869,7 +9905,7 @@ var _0x496adb = true;
 var _0x4289a6 = 0;
 var _0x114a07 = null;
 var _0x1ec523 = false;
-var _0x55ce89 = [];
+var currentParty = [];
 var _0x211844 = false;
 var _0xde408 = {};
 var _0xd835b8 = 0;
