@@ -2757,7 +2757,7 @@ function _0x411213(_0x9db3a7) {
             "cv": 2 * _0x556e60,
             "ch": _0x950276,
             "ccv2": _0x556e60 - 2,
-            "abl": 322, // encodeURIComponent(_0xced9a0).length
+            "abl": 389, // encodeURIComponent(_0x1f004b).length
             "cp": 62,
             "vv": 158
         })
@@ -7575,7 +7575,7 @@ function _0x1afbd7() {
         data: JSON.stringify({
             friendlist: _0x468d84,
             activeTab: $("#requestList").hasClass('active') ? 1 : 0,
-            Le: _0x5b3d82
+            Ye: _0x5b3d82
         })
     }, function(res) {
         if (_0x598dfa < _0x244e69) {
@@ -10085,7 +10085,7 @@ function _0x25616a(_0x4c87a1, _0x100e5c) {
     }
 }
 
-function _0xeb755c(_0x4519ed, _0x5068c3, _0x592927) {
+function login(_0x4519ed, _0x5068c3, _0x592927) {
     $("#password").val('');
     _0x592927 = 1 == _0x592927 ? _0x5068c3 : md5(_0x5068c3);
     _0x5068c3 = _0x5b6b18 = _0x4519ed;
@@ -10739,7 +10739,7 @@ function autoLogin(_0x3bd3de, _0x5ccbf5) {
         _0x582d99 = 0;
     }
     if (!isLoggedIn) {
-        if ((_0x3bd3de = _0x3bd3de || localStorage.getItem("username"), _0x5ccbf5 || (_0x5a69a7 = localStorage.getItem("drum"), _0x5ccbf5 = (_0x3bd3de && null !== _0x5a69a7 ? localStorage.getItem(md5(_0x5a69a7)) : null) || localStorage.getItem("password")), null !== _0x3bd3de) && null !== _0x5ccbf5 && (_0xeb755c(_0x3bd3de, _0x5ccbf5, 1), isReady()) && !$("#dashPanel").is(":visible") && $("#login").is(":visible")) {
+        if ((_0x3bd3de = _0x3bd3de || localStorage.getItem("username"), _0x5ccbf5 || (_0x5a69a7 = localStorage.getItem("drum"), _0x5ccbf5 = (_0x3bd3de && null !== _0x5a69a7 ? localStorage.getItem(md5(_0x5a69a7)) : null) || localStorage.getItem("password")), null !== _0x3bd3de) && null !== _0x5ccbf5 && (login(_0x3bd3de, _0x5ccbf5, 1), isReady()) && !$("#dashPanel").is(":visible") && $("#login").is(":visible")) {
             $("#loginError p").replaceWith("<p>Attempting autologin...<br>(Press Esc to cancel)</p>");
             $("#loginError").fadeIn();
             $("#username").val(_0x3bd3de);
@@ -12927,7 +12927,7 @@ $(function() {
     _0x163879.addEventListener("input", _0x3efb70, true);
     _0x1a021f.addEventListener("click", function(_0x1b56b6) {
         if (!_0xe579d8(_0x1a021f)) {
-            _0xeb755c(_0x4142f2.value, _0x163879.value, 0);
+            login(_0x4142f2.value, _0x163879.value, 0);
         }
         _0x1b56b6.stopImmediatePropagation();
     }, true);
