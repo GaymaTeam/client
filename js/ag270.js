@@ -6129,36 +6129,36 @@ function wsOnMessage(_0x2ba470) {
                 flags = pkt.getUint8();
                 customServerInfos = {
                     phase: pkt.getUint8(),
-                    Ct: timeFormat(pkt.getUint32()),
-                    Tt: pkt.getUint32(),
-                    Et: !!(1 & flags),
+                    runningTime: timeFormat(pkt.getUint32()),
+                    phaseTimer: pkt.getUint32(),
+                    isShrinking: !!(1 & flags),
                     shrinkTimer: pkt.getUint16(),
                     players: pkt.getUint16(),
                     maxPlayers: pkt.getUint16(),
                     spectators: pkt.getUint16(),
                     coinRewards: [pkt.getUint32(), pkt.getUint32(), pkt.getUint32()],
                     isParticipant: !!(2 & flags),
-                    At: !!(4 & flags),
-                    Pt: pkt.getUint16(),
+                    isEliminated: !!(4 & flags),
+                    finishPosition: pkt.getUint16(),
                     kills: pkt.getUint16(),
                     isGhosted: !!(8 & flags),
-                    Ut: pkt.getUint16(),
-                    Dt: pkt.getUint16(),
-                    zt: pkt.getUint16(),
-                    Rt: pkt.getUint32(),
-                    Ot: pkt.getUint32()
+                    ghostedTimer: pkt.getUint16(),
+                    totalMatches: pkt.getUint16(),
+                    totalWins: pkt.getUint16(),
+                    totalPoints: pkt.getUint32(),
+                    totalKills: pkt.getUint32()
                 };
                 setBattleRoyaleInfos();
                 _0x2d6730();
             } else if (!(17 != currentServerMode && 18 != currentServerMode && 22 != currentServerMode)) {
                 flags = pkt.getUint8();
                 customServerInfos = {
-                    Gt: timeFormat(pkt.getUint32()),
-                    Lt: pkt.getUint16(),
-                    Yt: pkt.getUint16(),
+                    timeLeft: timeFormat(pkt.getUint32()),
+                    infected: pkt.getUint16(),
+                    uninfected: pkt.getUint16(),
                     isParticipant: !!(1 & flags),
                     kills: pkt.getUint16(),
-                    qt: pkt.getUint16()
+                    othersInfected: pkt.getUint16()
                 };
                 _0x2d6730();
             }
@@ -8772,20 +8772,20 @@ function setBattleRoyaleInfos() {
                 break;
             case 1:
                 image = "timer";
-                timer = timeFormat(customServerInfos.Tt);
+                timer = timeFormat(customServerInfos.phaseTimer);
                 break;
             case 2:
                 image = "join";
-                timer = timeFormat(customServerInfos.Tt);
+                timer = timeFormat(customServerInfos.phaseTimer);
                 break;
             case 3:
-                image = customServerInfos.Et ? "nuclear_red" : "nuclear_yellow";
+                image = customServerInfos.isShrinking ? "nuclear_red" : "nuclear_yellow";
                 timer = timeFormat(customServerInfos.shrinkTimer);
-                redTimer = customServerInfos.Et;
+                redTimer = customServerInfos.isShrinking;
                 break;
             case 4:
                 image = "finished";
-                timer = timeFormat(customServerInfos.Tt);
+                timer = timeFormat(customServerInfos.phaseTimer);
         }
         if ('' != image) {
             $("#brTimerImg").css("background-image", "url('img/game_" + image + ".png')");
@@ -8798,13 +8798,13 @@ function setBattleRoyaleInfos() {
         $("#brKillsValue").text(customServerInfos.kills);
         var _0x3ebced = false;
         if (customServerInfos.isParticipant) {
-            if (customServerInfos.At) {
-                $("#brExtraImg").css("background-image", "url('img/game_star_" + (1 == customServerInfos.Pt ? "gold" : "grey") + ".png')");
-                $("#brExtraValue").text("You finished #" + customServerInfos.Pt);
+            if (customServerInfos.isEliminated) {
+                $("#brExtraImg").css("background-image", "url('img/game_star_" + (1 == customServerInfos.finishPosition ? "gold" : "grey") + ".png')");
+                $("#brExtraValue").text("You finished #" + customServerInfos.finishPosition);
                 _0x3ebced = true;
             } else if (customServerInfos.isGhosted) {
                 $("#brExtraImg").css("background-image", "url('img/game_ghost.png')");
-                $("#brExtraValue").html("Ghost time left    <span class=\"" + (customServerInfos.Ut <= 10 ? "red" : "orange") + "\">" + timeFormat(customServerInfos.Ut) + "</span>");
+                $("#brExtraValue").html("Ghost time left    <span class=\"" + (customServerInfos.ghostedTimer <= 10 ? "red" : "orange") + "\">" + timeFormat(customServerInfos.ghostedTimer) + "</span>");
                 _0x3ebced = true;
             }
         }
@@ -8856,26 +8856,34 @@ function _0x2d6730() {
                         break;
                     case 2:
                     case 3:
-                        _0x306fb1 += "<p><span class=\"col-left\">Running:</span>&nbsp;" + customServerInfos.Ct + "</p>";
+                        _0x306fb1 += "<p><span class=\"col-left\">Running:</span>&nbsp;" + customServerInfos.runningTime + "</p>";
                         _0x3fe65e++;
                         break;
                     case 4:
-                        _0x306fb1 += "<p><span class=\"col-left\">Finished:</span>&nbsp;" + customServerInfos.Ct + "</p>";
+                        _0x306fb1 += "<p><span class=\"col-left\">Finished:</span>&nbsp;" + customServerInfos.runningTime + "</p>";
                         _0x3fe65e++;
                 }
                 _0x3fe65e++;
                 _0x306fb1 = (_0x306fb1 += "<p><span class=\"col-left\">Players:</span>&nbsp;" + customServerInfos.players + "/" + customServerInfos.maxPlayers + "</p>") + ("<p><span class=\"col-left\">Spectators:</span>&nbsp;" + customServerInfos.spectators.toString() + "</p>");
                 _0x3fe65e++;
-                if (1 <= customServerInfos.phase && 0 < customServerInfos.coinRewards[0] && (_0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">REWARDS</span>&nbsp;</p>") + "<p><span class=\"col-left\">1st place:</span>&nbsp;" + customServerInfos.coinRewards[0].toString() + " coins</p>", _0x3fe65e++, 0 < customServerInfos.coinRewards[1] && (_0x306fb1 += "<p><span class=\"col-left\">2nd place:</span>&nbsp;" + customServerInfos.coinRewards[1].toString() + " coins</p>", _0x3fe65e++), 0 < customServerInfos.coinRewards[2])) {
+                if (1 <= customServerInfos.phase && 0 < customServerInfos.coinRewards[0] && (
+                    _0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">REWARDS</span>&nbsp;</p>") + "<p><span class=\"col-left\">1st place:</span>&nbsp;" + customServerInfos.coinRewards[0].toString() + " coins</p>",
+                    _0x3fe65e++,
+                    0 < customServerInfos.coinRewards[1] && (
+                        _0x306fb1 += "<p><span class=\"col-left\">2nd place:</span>&nbsp;" + customServerInfos.coinRewards[1].toString() + " coins</p>",
+                        _0x3fe65e++
+                    ),
+                    0 < customServerInfos.coinRewards[2]
+                )) {
                     _0x306fb1 += "<p><span class=\"col-left\">3rd place:</span>&nbsp;" + customServerInfos.coinRewards[2].toString() + " coins</p>";
                     _0x3fe65e++;
                 }
-                if (0 < customServerInfos.Dt) {
+                if (0 < customServerInfos.totalMatches) {
                     _0x3fe65e++;
                     _0x3fe65e++;
                     _0x3fe65e++;
                     _0x3fe65e++;
-                    _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR STATS</span>&nbsp;</p>") + "<p><span class=\"col-left\">Matches:</span>&nbsp;" + customServerInfos.Dt.toString() + "</p>") + "<p><span class=\"col-left\">Wins:</span>&nbsp;" + customServerInfos.zt.toString() + "</p>") + "<p><span class=\"col-left\">Points:</span>&nbsp;" + customServerInfos.Rt.toString() + "</p>") + "<p><span class=\"col-left\">Kills:</span>&nbsp;" + customServerInfos.Ot.toString() + "</p>";
+                    _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR STATS</span>&nbsp;</p>") + "<p><span class=\"col-left\">Matches:</span>&nbsp;" + customServerInfos.totalMatches.toString() + "</p>") + "<p><span class=\"col-left\">Wins:</span>&nbsp;" + customServerInfos.totalWins.toString() + "</p>") + "<p><span class=\"col-left\">Points:</span>&nbsp;" + customServerInfos.totalPoints.toString() + "</p>") + "<p><span class=\"col-left\">Kills:</span>&nbsp;" + customServerInfos.totalKills.toString() + "</p>";
                     _0x3fe65e++;
                 }
             } else if (17 == currentServerMode) {
@@ -8885,7 +8893,7 @@ function _0x2d6730() {
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">INFECTION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.Gt + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.Yt + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.Lt + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>") + "<p><span class=\"col-left\">You infected:</span>&nbsp;" + customServerInfos.qt.toString() + "</p>";
+                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">INFECTION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.infected + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>") + "<p><span class=\"col-left\">You infected:</span>&nbsp;" + customServerInfos.othersInfected.toString() + "</p>";
                 _0x3fe65e++;
             } else if (18 == currentServerMode) {
                 _0x3fe65e++;
@@ -8893,7 +8901,7 @@ function _0x2d6730() {
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.Gt + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.Yt + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.Lt + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>";
+                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.infected + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>";
                 _0x3fe65e++;
             } else if (22 == currentServerMode) {
                 _0x3fe65e++;
@@ -8902,7 +8910,7 @@ function _0x2d6730() {
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.Gt + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.Yt + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.Lt + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You Hit:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>") + "<p><span class=\"col-left\">You Failed to Dodge:</span>&nbsp;" + customServerInfos.qt.toString() + "</p>";
+                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.infected + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You Hit:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>") + "<p><span class=\"col-left\">You Failed to Dodge:</span>&nbsp;" + customServerInfos.othersInfected.toString() + "</p>";
                 _0x3fe65e++;
             }
         }
