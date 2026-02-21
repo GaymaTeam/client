@@ -1334,7 +1334,7 @@ function _0x3169a6(_0x4dc13e) {
         };
         if (selectedMessage || _0x5c09e8) {
             if (selectedMessage) {
-                if (isReady() && selectedMessage.$ == currentServerId && 0 != selectedMessage.pid) {
+                if (isReady() && selectedMessage.sid == currentServerId && 0 != selectedMessage.pid) {
                     new PacketWriter(6).setUint8(60).setUint8(0).setUint32(selectedMessage.pid).send();
                 }
                 $("#contextPlayerSkin").css({
@@ -1346,7 +1346,7 @@ function _0x3169a6(_0x4dc13e) {
                 if (selectedMessage.goldMember) {
                     $("#contextPlayerName").addClass("gold");
                 }
-                if (selectedMessage.$ == currentServerId && 0 != selectedMessage.pid) {
+                if (selectedMessage.sid == currentServerId && 0 != selectedMessage.pid) {
                     $("#contextPartyInvite").addClass("enabled");
                     $("#contextFriendAdd").addClass("enabled");
                     $("#contextUserProfile").addClass("enabled");
@@ -1701,7 +1701,7 @@ function _0x460313() {
                 break;
             case "contextMute":
                 if (selectedMessage) {
-                    _0x3addca(selectedMessage.R, selectedMessage.O, selectedMessage.name);
+                    _0x3addca(selectedMessage.uid, selectedMessage.iid, selectedMessage.name);
                 } else {
                     sendSignal(109);
                 }
@@ -1867,11 +1867,11 @@ function _0x432cde() {
                     var _0x53dbfd = _0x19fdd4[_0x174ccf.id];
                     if (_0x53dbfd) {
                         _0x5e5c13.remove(_0x53dbfd);
-                        if (_0x2f707e[_0x53dbfd.R] && (_0x2f707e[_0x53dbfd.R]--, _0x2f707e[_0x53dbfd.R] <= 0)) {
-                            delete _0x2f707e[_0x53dbfd.R];
+                        if (_0x2f707e[_0x53dbfd.uid] && (_0x2f707e[_0x53dbfd.uid]--, _0x2f707e[_0x53dbfd.uid] <= 0)) {
+                            delete _0x2f707e[_0x53dbfd.uid];
                         }
-                        if (_0x538120[_0x53dbfd.O] && (_0x538120[_0x53dbfd.O]--, _0x538120[_0x53dbfd.O] <= 0)) {
-                            delete _0x538120[_0x53dbfd.O];
+                        if (_0x538120[_0x53dbfd.iid] && (_0x538120[_0x53dbfd.iid]--, _0x538120[_0x53dbfd.iid] <= 0)) {
+                            delete _0x538120[_0x53dbfd.iid];
                         }
                         curserMessage("Unmuted " + _0x53dbfd.name, false, false, 1, 10);
                     } else {
@@ -1981,8 +1981,8 @@ function _0x3addca(_0x56aa7e, _0x53ceee, _0x48d9c8) {
     var _0x4b9b10 = _0x56aa7e != _0x4e4df3 && !_0x2f707e[_0x56aa7e];
     var _0x4be0a6 = _0x53ceee != _0x4e4df3 && !_0x538120[_0x53ceee];
     var _0x5384f7 = {
-        R: _0x56aa7e,
-        O: _0x53ceee,
+        uid: _0x56aa7e,
+        iid: _0x53ceee,
         name: _0x48d9c8
     };
     if (_0x4b9b10 || _0x4be0a6) {
@@ -2901,22 +2901,22 @@ function _0x564895(_0x98e624) {
 
 function wsOnOpen() {
     chatMessages.push({
-        "Y": false,
-        "$": 0,
+        "selectable": false,
+        "sid": 0,
         "pid": 0,
-        "R": _0x4e4df3,
-        "O": _0x4e4df3,
+        "uid": _0x4e4df3,
+        "iid": _0x4e4df3,
         "name": "Agma.io",
         "receiver": '',
         "color": "#0AFF0A",
         "message": "Connected to server " + _0x38891d,
         "category": 0,
         "goldMember": 0,
-        "q": 0,
-        "j": 0,
-        "J": 0,
+        "moderator": 0,
+        "donator": 0,
+        "yt": 0,
         "touchUser": 0,
-        "K": 0,
+        "shout": 0,
         "time": Date.now(),
         "cache": null
     });
@@ -3160,7 +3160,7 @@ function _0x215896() {
                 var _0x4aac3c;
                 var _0xb4b953;
                 for (var _0x461e7e = 0; _0x461e7e < _0x47744f; _0x461e7e++) {
-                    (_0x53a19d = chatMessages[_0x461e7e]).filter = !(0 != _0xd835b8 && (_0xd835b8 != _0x53a19d.category || 1 != _0xd835b8 && '' != _0x1723aa && _0x1723aa.toLowerCase() != _0x53a19d.name.toLowerCase() && _0x1723aa.toLowerCase() != _0x53a19d.receiver.toLowerCase()) || _0x53a19d.R != _0x4e4df3 && _0x2f707e[_0x53a19d.R] || _0x53a19d.O != _0x4e4df3 && _0x538120[_0x53a19d.O]);
+                    (_0x53a19d = chatMessages[_0x461e7e]).filter = !(0 != _0xd835b8 && (_0xd835b8 != _0x53a19d.category || 1 != _0xd835b8 && '' != _0x1723aa && _0x1723aa.toLowerCase() != _0x53a19d.name.toLowerCase() && _0x1723aa.toLowerCase() != _0x53a19d.receiver.toLowerCase()) || _0x53a19d.uid != _0x4e4df3 && _0x2f707e[_0x53a19d.uid] || _0x53a19d.iid != _0x4e4df3 && _0x538120[_0x53a19d.iid]);
                     if (_0x53a19d.filter) {
                         _0x5b2664++;
                     }
@@ -3168,7 +3168,7 @@ function _0x215896() {
                         _0x67fcf = [];
                         _0x587292 = [];
                         _0xb4b953 = (_0x4aac3c = ": ").length;
-                        if (_0x53a19d.K) {
+                        if (_0x53a19d.shout) {
                             _0x4aac3c += _0x53a19d.message;
                         } else {
                             _0x4aac3c += _0x53a19d.message.replace(emoRegExp, function(_0x458e26, _0x328eaf) {
@@ -3181,37 +3181,37 @@ function _0x215896() {
                                 return "     ";
                             });
                         }
-                        if (2 == _0x53a19d.K) {
+                        if (2 == _0x53a19d.shout) {
                             _0x587292.push(13);
-                        } else if (_0x53a19d.K) {
+                        } else if (_0x53a19d.shout) {
                             _0x587292.push(0);
                         }
                         if (4 == _0x53a19d.category) _0x587292.push(14);
                         if (!(1 != _0x53a19d.category && 2 != _0x53a19d.category)) _0x587292.push(1 == _0x53a19d.category ? 1 : 2);
-                        if (!(1 != _0x53a19d.q && 2 != _0x53a19d.q)) _0x587292.push(1 == _0x53a19d.q ? 4 : 3);
+                        if (!(1 != _0x53a19d.moderator && 2 != _0x53a19d.moderator)) _0x587292.push(1 == _0x53a19d.moderator ? 4 : 3);
                         if (_0x53a19d.goldMember) _0x587292.push(5);
-                        if (_0x53a19d.j) _0x587292.push(1 == _0x53a19d.j ? 6 : 2 == _0x53a19d.j ? 7 : 4 == _0x53a19d.j ? 11 : 5 == _0x53a19d.j ? 12 : 6 == _0x53a19d.j ? 15 : 8);
-                        if (_0x53a19d.J) _0x587292.push(9);
+                        if (_0x53a19d.donator) _0x587292.push(1 == _0x53a19d.donator ? 6 : 2 == _0x53a19d.donator ? 7 : 4 == _0x53a19d.donator ? 11 : 5 == _0x53a19d.donator ? 12 : 6 == _0x53a19d.donator ? 15 : 8);
+                        if (_0x53a19d.yt) _0x587292.push(9);
                         if (_0x53a19d.touchUser) _0x587292.push(10);
                         _0x53a19d.cache = {
                             "displayName": _0x53a19d.name,
-                            "re": _0x4aac3c,
-                            "ce": _0x67fcf,
+                            "parsedMessage": _0x4aac3c,
+                            "emo": _0x67fcf,
                             "icons": _0x587292,
-                            "le": 0,
-                            "de": 0,
+                            "width0": 0,
+                            "width1": 0,
                             "width2": 0,
-                            "ue": false,
+                            "clip1": false,
                             "color2": '',
                             "scale": _0x5952c4,
                             "dpr": _0x358119,
-                            "me": false,
+                            "hovered": false,
                             "selected": false,
                             "complete": false,
                             "canvas": null,
                             "ctx": null,
                             "drawn": 0,
-                            "he": true
+                            "needsRedraw": true
                         };
                     }
                 }
@@ -3220,30 +3220,30 @@ function _0x215896() {
                     var _0x53a19d = chatMessages[_0x461e7e];
                     if (_0x53a19d.filter && ~~_0x290625 <= ++_0x232de1 - 1) {
                         var _0x56941e = _0x53a19d.cache;
-                        _0x4f2a5f = _0x56941e.me;
+                        _0x4f2a5f = _0x56941e.hovered;
                         _0x546ce1 = _0x56941e.selected;
-                        _0x56941e.me = _0x53a19d === _0x10e53d;
+                        _0x56941e.hovered = _0x53a19d === _0x10e53d;
                         _0x56941e.selected = _0x53a19d === selectedMessage;
                         if (null == _0x56941e.canvas) {
                             _0x56941e.canvas = document.createElement("canvas");
                             _0x56941e.ctx = _0x56941e.canvas.getContext("2d");
-                            _0x56941e.he = true;
+                            _0x56941e.needsRedraw = true;
                         } else {
-                            _0x56941e.he = _0x56941e.drawn < 3 || !_0x56941e.complete || _0x56941e.color2 != _0x11e944 || _0x56941e.drawn % 30 == 0 || _0x56941e.me != _0x4f2a5f || _0x56941e.selected != _0x546ce1 || _0x56941e.canvas.width < ~~(Math.min(_0x56941e.le + _0x56941e.de + _0x56941e.width2, clientWidth - 10) * _0x358119 + 0.5) || 0.001 < Math.abs(_0x56941e.scale - _0x5952c4) || 0.001 < Math.abs(_0x56941e.dpr - _0x358119);
+                            _0x56941e.needsRedraw = _0x56941e.drawn < 3 || !_0x56941e.complete || _0x56941e.color2 != _0x11e944 || _0x56941e.drawn % 30 == 0 || _0x56941e.hovered != _0x4f2a5f || _0x56941e.selected != _0x546ce1 || _0x56941e.canvas.width < ~~(Math.min(_0x56941e.width0 + _0x56941e.width1 + _0x56941e.width2, clientWidth - 10) * _0x358119 + 0.5) || 0.001 < Math.abs(_0x56941e.scale - _0x5952c4) || 0.001 < Math.abs(_0x56941e.dpr - _0x358119);
                         }
-                        if (_0x56941e.he) {
+                        if (_0x56941e.needsRedraw) {
                             var _0x4e5846 = 0;
-                            for (var _0x5b4ab7 = _0x56941e.ce; _0x4e5846 < _0x5b4ab7.length; _0x4e5846++) {
-                                (_0x366a09 = _0x5b4ab7[_0x4e5846]).x0 = _0x44020a.measureText(_0x56941e.re.substring(0, _0x366a09.pos)).width;
+                            for (var _0x5b4ab7 = _0x56941e.emo; _0x4e5846 < _0x5b4ab7.length; _0x4e5846++) {
+                                (_0x366a09 = _0x5b4ab7[_0x4e5846]).x0 = _0x44020a.measureText(_0x56941e.parsedMessage.substring(0, _0x366a09.pos)).width;
                             }
                             _0x56941e.canvas.height = Math.max(~~(23 * _0x5952c4 * _0x358119 + 0.5), 1);
-                            _0x56941e.le = _0x56941e.icons.length * ~~(22 * _0x5952c4 + 0.5);
-                            _0x56941e.de = ~~((_0x56941e.displayName ? _0x44020a.measureText(_0x56941e.displayName).width + 6 * _0x5952c4 : 2 * _0x5952c4) + 0.5);
-                            if (_0x56941e.de > ~~(400 * _0x5952c4)) {
-                                _0x56941e.de = ~~(400 * _0x5952c4);
-                                _0x56941e.ue = true;
+                            _0x56941e.width0 = _0x56941e.icons.length * ~~(22 * _0x5952c4 + 0.5);
+                            _0x56941e.width1 = ~~((_0x56941e.displayName ? _0x44020a.measureText(_0x56941e.displayName).width + 6 * _0x5952c4 : 2 * _0x5952c4) + 0.5);
+                            if (_0x56941e.width1 > ~~(400 * _0x5952c4)) {
+                                _0x56941e.width1 = ~~(400 * _0x5952c4);
+                                _0x56941e.clip1 = true;
                             }
-                            _0x56941e.width2 = ~~(_0x44020a.measureText(_0x56941e.re).width + 6 * _0x5952c4 + 0.5);
+                            _0x56941e.width2 = ~~(_0x44020a.measureText(_0x56941e.parsedMessage).width + 6 * _0x5952c4 + 0.5);
                             if (0 == _0x56941e.icons[0]) {
                                 _0x56941e.color2 = b72;
                             } else if (13 == _0x56941e.icons[0]) {
@@ -3254,8 +3254,8 @@ function _0x215896() {
                             _0x56941e.scale = _0x5952c4;
                             _0x56941e.dpr = _0x358119;
                         }
-                        if (_0x74f54b < _0x56941e.le + _0x56941e.de + _0x56941e.width2) {
-                            _0x74f54b = _0x56941e.le + _0x56941e.de + _0x56941e.width2;
+                        if (_0x74f54b < _0x56941e.width0 + _0x56941e.width1 + _0x56941e.width2) {
+                            _0x74f54b = _0x56941e.width0 + _0x56941e.width1 + _0x56941e.width2;
                         }
                         _0x2f227f.push(_0x53a19d);
                         if (_0x1ee7cb + (0 < _0x290625 ? 1 : 0) <= _0x2f227f.length) {
@@ -3308,16 +3308,16 @@ function _0x215896() {
                 }
                 _0x44020a.globalAlpha = gameSettings.sDark ? 0.8 : 0.95;
                 for (_0x461e7e = 0; _0x461e7e < _0x232de1; _0x461e7e++) {
-                    if ((_0x56941e = (_0x53a19d = _0x2f227f[_0x461e7e]).cache).he) {
-                        _0x56941e.canvas.width = Math.max(~~(Math.min(_0x56941e.le + _0x56941e.de + _0x56941e.width2, clientWidth - 10) * _0x358119 + 0.5), 1);
+                    if ((_0x56941e = (_0x53a19d = _0x2f227f[_0x461e7e]).cache).needsRedraw) {
+                        _0x56941e.canvas.width = Math.max(~~(Math.min(_0x56941e.width0 + _0x56941e.width1 + _0x56941e.width2, clientWidth - 10) * _0x358119 + 0.5), 1);
                         _0x56941e.complete = true;
                         var _0x20347b;
                         var _0x4f84bc = _0x56941e.ctx;
                         _0x4f84bc.scale(_0x358119, _0x358119);
-                        if (_0x56941e.me || _0x56941e.selected) {
+                        if (_0x56941e.hovered || _0x56941e.selected) {
                             _0x4f84bc.globalAlpha = _0x56941e.selected ? 0.9 : 0.4;
                             _0x4f84bc.fillStyle = "#999999";
-                            _0x4f84bc.fillRect(0, 0, ~~(Math.max(_0x56941e.le + _0x56941e.de + _0x5952c4, 10 * _0x5952c4) + 0.5), ~~(23 * _0x5952c4 + 0.5));
+                            _0x4f84bc.fillRect(0, 0, ~~(Math.max(_0x56941e.width0 + _0x56941e.width1 + _0x5952c4, 10 * _0x5952c4) + 0.5), ~~(23 * _0x5952c4 + 0.5));
                         }
                         _0x4f84bc.font = _0x8e2e84 + "px Ubuntu";
                         _0x4f84bc.globalAlpha = 1;
@@ -3334,25 +3334,25 @@ function _0x215896() {
                         _0x4f84bc.lineWidth = 3 * _0x5952c4;
                         _0x4f84bc.strokeStyle = "#000000";
                         _0x4f84bc.fillStyle = _0x53a19d.color;
-                        if (_0x56941e.ue) {
+                        if (_0x56941e.clip1) {
                             _0x4f84bc.save();
                             _0x4f84bc.beginPath();
-                            _0x4f84bc.rect(_0x56941e.le, 0, _0x56941e.de, ~~(23 * _0x5952c4 + 0.5));
+                            _0x4f84bc.rect(_0x56941e.width0, 0, _0x56941e.width1, ~~(23 * _0x5952c4 + 0.5));
                             _0x4f84bc.clip();
                         }
-                        _0x4f84bc.strokeText(_0x56941e.displayName, _0x56941e.le + ~~(3 * _0x5952c4 + 0.5), ~~(17 * _0x5952c4 + 0.5));
-                        _0x4f84bc.fillText(_0x56941e.displayName, _0x56941e.le + ~~(3 * _0x5952c4 + 0.5), ~~(17 * _0x5952c4 + 0.5));
-                        if (_0x56941e.ue) {
+                        _0x4f84bc.strokeText(_0x56941e.displayName, _0x56941e.width0 + ~~(3 * _0x5952c4 + 0.5), ~~(17 * _0x5952c4 + 0.5));
+                        _0x4f84bc.fillText(_0x56941e.displayName, _0x56941e.width0 + ~~(3 * _0x5952c4 + 0.5), ~~(17 * _0x5952c4 + 0.5));
+                        if (_0x56941e.clip1) {
                             _0x4f84bc.restore();
                         }
                         _0x4f84bc.fillStyle = _0x56941e.color2;
-                        _0x4f84bc.fillText(_0x56941e.re, _0x56941e.le + _0x56941e.de + ~~(3 * _0x5952c4 + 0.5), ~~(17 * _0x5952c4 + 0.5));
-                        if (0 < _0x56941e.ce.length) {
+                        _0x4f84bc.fillText(_0x56941e.parsedMessage, _0x56941e.width0 + _0x56941e.width1 + ~~(3 * _0x5952c4 + 0.5), ~~(17 * _0x5952c4 + 0.5));
+                        if (0 < _0x56941e.emo.length) {
                             if ((_0x20347b = emojisheetEmotes) && _0x20347b.complete && 0 != _0x20347b.width) {
                                 _0x4e5846 = 0;
-                                for (_0x5b4ab7 = _0x56941e.ce; _0x4e5846 < _0x5b4ab7.length; _0x4e5846++) {
+                                for (_0x5b4ab7 = _0x56941e.emo; _0x4e5846 < _0x5b4ab7.length; _0x4e5846++) {
                                     var _0x366a09 = _0x5b4ab7[_0x4e5846];
-                                    _0x4f84bc.drawImage(_0x20347b, _0x366a09.index % 8 * 20, 20 * ~~(_0x366a09.index / 8), 20, 20, ~~(_0x56941e.le + _0x56941e.de + 2 * _0x5952c4 + _0x366a09.x0 + 0.5), 0, ~~(20 * _0x5952c4 + 0.5), ~~(20 * _0x5952c4 + 0.5));
+                                    _0x4f84bc.drawImage(_0x20347b, _0x366a09.index % 8 * 20, 20 * ~~(_0x366a09.index / 8), 20, 20, ~~(_0x56941e.width0 + _0x56941e.width1 + 2 * _0x5952c4 + _0x366a09.x0 + 0.5), 0, ~~(20 * _0x5952c4 + 0.5), ~~(20 * _0x5952c4 + 0.5));
                                 }
                             } else {
                                 _0x56941e.complete = false;
@@ -3362,12 +3362,12 @@ function _0x215896() {
                     _0x56941e.drawn++;
                     _0x4f2a5f = ~~(20 * _0x5952c4 + 0.5) * (_0x2d4b3a - _0x461e7e - 1) + ~~(~~(20 * _0x5952c4 + 0.5) * _0x290625 + 0.5);
                     _0x44020a.drawImage(_0x56941e.canvas, 0, ~~(_0x4f2a5f * _0x358119 + 0.5));
-                    if (_0x53a19d.Y) {
+                    if (_0x53a19d.selectable) {
                         _0x1937c1.push({
                             "ch": _0x53a19d,
                             "x0": 0,
                             "y0": _0x4f2a5f + _0x5952c4,
-                            "x1": Math.max(_0x56941e.le + _0x56941e.de + _0x5952c4, 10 * _0x5952c4),
+                            "x1": Math.max(_0x56941e.width0 + _0x56941e.width1 + _0x5952c4, 10 * _0x5952c4),
                             "y1": _0x4f2a5f + 21 * _0x5952c4
                         });
                     }
@@ -3920,22 +3920,22 @@ function _0x215896() {
 function wsOnClose() {
     var _0x40966e;
     chatMessages.push({
-        "Y": false,
-        "$": 0,
+        "selectable": false,
+        "sid": 0,
         "pid": 0,
-        "R": _0x4e4df3,
-        "O": _0x4e4df3,
+        "uid": _0x4e4df3,
+        "iid": _0x4e4df3,
         "name": "Agma.io",
         "receiver": '',
         "color": "#FF0A0A",
         "message": "Disconnected from server",
         "category": 0,
         "goldMember": 0,
-        "q": 0,
-        "j": 0,
-        "J": 0,
+        "moderator": 0,
+        "donator": 0,
+        "yt": 0,
         "touchUser": 0,
-        "K": 0,
+        "shout": 0,
         "time": Date.now(),
         "cache": null
     });
@@ -6062,10 +6062,10 @@ function wsOnMessage(_0x2ba470) {
             pkt.getUint8();
             break;
         case 64:
-            _0x5c1aa9 = mapInfos.left = mapInfos.vt = mapInfos.kt = pkt.getUint32();
-            _0x4ba286 = mapInfos.top = mapInfos.$t = mapInfos.yt = pkt.getUint32();
-            _0x28f6af = mapInfos.right = mapInfos.xt = mapInfos.nRight = pkt.getUint32();
-            _0x500945 = mapInfos.bottom = mapInfos.St = mapInfos.Mt = pkt.getUint32();
+            _0x5c1aa9 = mapInfos.left = mapInfos.oLeft = mapInfos.nLeft = pkt.getUint32();
+            _0x4ba286 = mapInfos.top = mapInfos.oTop = mapInfos.nTop = pkt.getUint32();
+            _0x28f6af = mapInfos.right = mapInfos.oRight = mapInfos.nRight = pkt.getUint32();
+            _0x500945 = mapInfos.bottom = mapInfos.oBottom = mapInfos.nBottom = pkt.getUint32();
             mapInfos.draw = false;
             _0x53b8b0 = _0x46ac7b = _0x40e81b = (_0x5c1aa9 + _0x28f6af) / 2;
             _0x464afc = _0x2c7938 = _0x6c7bce = (_0x4ba286 + _0x500945) / 2;
@@ -6124,10 +6124,10 @@ function wsOnMessage(_0x2ba470) {
             }
             break;
         case 65:
-            _0x5c1aa9 = mapInfos.left = mapInfos.vt = mapInfos.kt = pkt.getFloat64();
-            _0x4ba286 = mapInfos.top = mapInfos.$t = mapInfos.yt = pkt.getFloat64();
-            _0x28f6af = mapInfos.right = mapInfos.xt = mapInfos.nRight = pkt.getFloat64();
-            _0x500945 = mapInfos.bottom = mapInfos.St = mapInfos.Mt = pkt.getFloat64();
+            _0x5c1aa9 = mapInfos.left = mapInfos.oLeft = mapInfos.nLeft = pkt.getFloat64();
+            _0x4ba286 = mapInfos.top = mapInfos.oTop = mapInfos.nTop = pkt.getFloat64();
+            _0x28f6af = mapInfos.right = mapInfos.oRight = mapInfos.nRight = pkt.getFloat64();
+            _0x500945 = mapInfos.bottom = mapInfos.oBottom = mapInfos.nBottom = pkt.getFloat64();
             mapInfos.draw = false;
             _0x27fdb0 = Date.now();
             _0x2c6f91 = true;
@@ -6139,22 +6139,22 @@ function wsOnMessage(_0x2ba470) {
             var _0x571f96 = pkt.getFloat64();
             var _0x435e7a = Date.now();
             if (!mapInfos.draw || 3600 < _0x435e7a - mapInfos.updateTime) {
-                mapInfos.left = mapInfos.vt = mapInfos.kt = _0x3205e2;
-                mapInfos.top = mapInfos.$t = mapInfos.yt = _0xb790f3;
-                mapInfos.right = mapInfos.xt = mapInfos.nRight = _0x46fd3a;
-                mapInfos.bottom = mapInfos.St = mapInfos.Mt = _0x571f96;
+                mapInfos.left = mapInfos.oLeft = mapInfos.nLeft = _0x3205e2;
+                mapInfos.top = mapInfos.oTop = mapInfos.nTop = _0xb790f3;
+                mapInfos.right = mapInfos.oRight = mapInfos.nRight = _0x46fd3a;
+                mapInfos.bottom = mapInfos.oBottom = mapInfos.nBottom = _0x571f96;
                 mapInfos.ga = 0;
                 mapInfos.createTime = _0x435e7a;
             } else {
                 _0x4f401c(_0x435e7a);
-                mapInfos.vt = mapInfos.left;
-                mapInfos.$t = mapInfos.top;
-                mapInfos.xt = mapInfos.right;
-                mapInfos.St = mapInfos.bottom;
-                mapInfos.kt = _0x3205e2;
-                mapInfos.yt = _0xb790f3;
+                mapInfos.oLeft = mapInfos.left;
+                mapInfos.oTop = mapInfos.top;
+                mapInfos.oRight = mapInfos.right;
+                mapInfos.oBottom = mapInfos.bottom;
+                mapInfos.nLeft = _0x3205e2;
+                mapInfos.nTop = _0xb790f3;
                 mapInfos.nRight = _0x46fd3a;
-                mapInfos.Mt = _0x571f96;
+                mapInfos.nBottom = _0x571f96;
             }
             mapInfos.updateTime = _0x435e7a;
             mapInfos.draw = true;
@@ -7015,22 +7015,22 @@ function wsOnMessage(_0x2ba470) {
             var _0x469523 = null;
             var _0x1711bf = !!(8 & _0x3988b2);
             chatMessages.push({
-                "Y": _0x3884cc,
-                "$": currentServerId,
+                "selectable": _0x3884cc,
+                "sid": currentServerId,
                 "pid": _0x24a818,
-                "R": _0x2712a9,
-                "O": _0x3b0d92,
+                "uid": _0x2712a9,
+                "iid": _0x3b0d92,
                 "name": _0x4c6837,
                 "receiver": _0x3626db,
                 "color": _0x2cc170,
                 "message": pkt.getString(),
                 "category": 1 & _0x3988b2 ? 1 : 2 & _0x3988b2 ? 2 : 0,
                 "goldMember": !!(16 & _0x3988b2),
-                "q": 32 & _0x3988b2 ? 1 : 64 & _0x3988b2 ? 2 : 0,
-                "j": 1 & _0x1124f6 ? 1 : 2 & _0x1124f6 ? 2 : 4 & _0x1124f6 ? 3 : 8 & _0x1124f6 ? 4 : 16 & _0x1124f6 ? 5 : 32 & _0x1124f6 ? 6 : 0,
-                "J": !!(64 & _0x1124f6),
+                "moderator": 32 & _0x3988b2 ? 1 : 64 & _0x3988b2 ? 2 : 0,
+                "donator": 1 & _0x1124f6 ? 1 : 2 & _0x1124f6 ? 2 : 4 & _0x1124f6 ? 3 : 8 & _0x1124f6 ? 4 : 16 & _0x1124f6 ? 5 : 32 & _0x1124f6 ? 6 : 0,
+                "yt": !!(64 & _0x1124f6),
                 "touchUser": !!(128 & _0x1124f6),
-                "K": _0x1711bf && _0x238c81,
+                "shout": _0x1711bf && _0x238c81,
                 "time": Date.now(),
                 "cache": null
             });
@@ -7095,6 +7095,7 @@ function wsOnMessage(_0x2ba470) {
                 }
             }
             if (friendListChanged) {
+                console.log(_0x5e7de3);
                 _0x468d84 = _0x5e7de3;
                 _0x5b3d82 = isLoggedIn;
                 _0x3ebb17 = _0xea465f;
@@ -7462,22 +7463,22 @@ function wsOnMessage(_0x2ba470) {
             _0x17a702 = _0x26039d.getString();
             _0x26039d = _0x26039d.getString();
             chatMessages.push({
-                "Y": true,
-                "$": currentServerId,
+                "selectable": true,
+                "sid": currentServerId,
                 "pid": _0x2d1f83,
-                "R": _0x4e4df3,
-                "O": _0x4e4df3,
+                "uid": _0x4e4df3,
+                "iid": _0x4e4df3,
                 "name": _0x17a702,
                 "receiver": '',
                 "color": "#3b87cc",
                 "message": _0x26039d,
                 "category": 4,
                 "goldMember": !!(16 & _0x3c2960),
-                "q": 32 & _0x3c2960 ? 1 : 64 & _0x3c2960 ? 2 : 0,
-                "j": 1 & _0x15ca97 ? 1 : 2 & _0x15ca97 ? 2 : 4 & _0x15ca97 ? 3 : 8 & _0x15ca97 ? 4 : 16 & _0x15ca97 ? 5 : 32 & _0x15ca97 ? 6 : 0,
-                "J": !!(64 & _0x15ca97),
+                "moderator": 32 & _0x3c2960 ? 1 : 64 & _0x3c2960 ? 2 : 0,
+                "donator": 1 & _0x15ca97 ? 1 : 2 & _0x15ca97 ? 2 : 4 & _0x15ca97 ? 3 : 8 & _0x15ca97 ? 4 : 16 & _0x15ca97 ? 5 : 32 & _0x15ca97 ? 6 : 0,
+                "yt": !!(64 & _0x15ca97),
                 "touchUser": !!(128 & _0x15ca97),
-                "K": false,
+                "shout": false,
                 "time": Date.now(),
                 "cache": null,
                 "sender": _0x17a702,
@@ -9616,10 +9617,10 @@ function _0x489880() {
 
 function _0x4f401c(_0x4aa53c) {
     var _0x2e6191 = (_0x4aa53c - mapInfos.updateTime) / 1100;
-    mapInfos.left = (_0x2e6191 = _0x2e6191 < 0 ? 0 : 1 < _0x2e6191 ? 1 : _0x2e6191) * (mapInfos.kt - mapInfos.vt) + mapInfos.vt;
-    mapInfos.top = _0x2e6191 * (mapInfos.yt - mapInfos.$t) + mapInfos.$t;
-    mapInfos.right = _0x2e6191 * (mapInfos.nRight - mapInfos.xt) + mapInfos.xt;
-    mapInfos.bottom = _0x2e6191 * (mapInfos.Mt - mapInfos.St) + mapInfos.St;
+    mapInfos.left = (_0x2e6191 = _0x2e6191 < 0 ? 0 : 1 < _0x2e6191 ? 1 : _0x2e6191) * (mapInfos.nLeft - mapInfos.oLeft) + mapInfos.oLeft;
+    mapInfos.top = _0x2e6191 * (mapInfos.nTop - mapInfos.oTop) + mapInfos.oTop;
+    mapInfos.right = _0x2e6191 * (mapInfos.nRight - mapInfos.oRight) + mapInfos.oRight;
+    mapInfos.bottom = _0x2e6191 * (mapInfos.nBottom - mapInfos.oBottom) + mapInfos.oBottom;
 }
 
 function _0x1e72ef(_0x4dd855) {
@@ -9812,22 +9813,22 @@ var _0x4ba286 = 0;
 var _0x28f6af = 10000;
 var _0x500945 = 10000;
 var mapInfos = {
-    "left": _0x5c1aa9,
-    "top": _0x4ba286,
-    "right": _0x28f6af,
-    "bottom": _0x500945,
-    "vt": _0x5c1aa9,
-    "$t": _0x4ba286,
-    "xt": _0x28f6af,
-    "St": _0x500945,
-    "kt": _0x5c1aa9,
-    "yt": _0x4ba286,
-    "nRight": _0x28f6af,
-    "Mt": _0x500945,
-    "ga": 1,
-    "createTime": 0,
-    "updateTime": 0,
-    "draw": false
+    left: _0x5c1aa9,
+    top: _0x4ba286,
+    right: _0x28f6af,
+    bottom: _0x500945,
+    oLeft: _0x5c1aa9,
+    oTop: _0x4ba286,
+    oRight: _0x28f6af,
+    oBottom: _0x500945,
+    nLeft: _0x5c1aa9,
+    nTop: _0x4ba286,
+    nRight: _0x28f6af,
+    nBottom: _0x500945,
+    ga: 1,
+    createTime: 0,
+    updateTime: 0,
+    draw: false
 };
 var currentServerMode = -1;
 var _0x3df17b = false;
