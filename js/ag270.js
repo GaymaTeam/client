@@ -6186,7 +6186,7 @@ function wsOnMessage(_0x2ba470) {
                 };
                 setBattleRoyaleInfos();
                 _0x2d6730();
-            } else if (!(17 != currentServerMode && 18 != currentServerMode && 22 != currentServerMode)) {
+            } else if (17 === currentServerMode || 22 === currentServerMode) {
                 flags = pkt.getUint8();
                 customServerInfos = {
                     timeLeft: timeFormat(pkt.getUint32()),
@@ -6196,6 +6196,128 @@ function wsOnMessage(_0x2ba470) {
                     kills: pkt.getUint16(),
                     othersInfected: pkt.getUint16()
                 };
+                _0x2d6730();
+            } else if (18 === currentServerMode) {
+                // Domination Beta
+                flags = pkt.getUint8();
+                customServerInfos = {
+                    timeLeft: timeFormat(pkt.getUint32()),
+                    infected: pkt.getUint16(),
+                    uninfected: pkt.getUint16(),
+                    isParticipant: !!(1 & flags),
+                    kills: pkt.getUint16(),
+                    othersInfected: pkt.getUint16(),
+                    redBases: 0,
+                    greenBases: 0,
+                    baseMarkers: [],
+                    portalMarkers: [],
+                    domLevel: 1,
+                    domXp: 0,
+                    domXpNext: 1,
+                    domStars: 0,
+                    domUpgrades: [0, 0, 0, 0, 0, 0],
+                    renewAvailable: 0,
+                    renewVotes: 0,
+                    renewNeeded: 0,
+                    renewCooldown: 0,
+                    domPoints: 0,
+                    domMageUnlocked: 0,
+                    domMageStaff: 0,
+                    spellCdFreeze: 0,
+                    spellCdFire: 0,
+                    spellCdAnti: 0,
+                    spellCdFireBolt: 0,
+                    spellCdIceBolt: 0,
+                    spellCdTeleBase: 0,
+                    spellCdTeleRandom: 0,
+                    spellCdTeleCursor: 0,
+                    spellCdPush: 0,
+                    spellCdMirror: 0,
+                    spellCdSilence: 0,
+                    spellCdDrain: 0,
+                    domMissionType: 0,
+                    domMissionProgress: 0,
+                    domMissionTarget: 0,
+                    domMissionRewardXp: 0,
+                    domMissionCompleted: 0,
+                    domMissionText: '',
+                    mvpTop: []
+                };
+                if (2 <= pkt.buffer.byteLength - pkt.position) {
+                    customServerInfos.redBases = pkt.getUint8();
+                    customServerInfos.greenBases = pkt.getUint8();
+                    for (var i = 0; i < 4 && !(pkt.buffer.byteLength - pkt.position < 12); i++) {
+                        customServerInfos.baseMarkers.push({
+                            team: pkt.getUint8(),
+                            progress: pkt.getUint8(),
+                            pushTeam: pkt.getUint8(),
+                            phase: pkt.getUint8(),
+                            x: pkt.getInt32(),
+                            y: pkt.getInt32()
+                        });
+                    }
+                    if (8 & flags && 1 <= pkt.buffer.byteLength - pkt.position) {
+                        var _0x130fdf = pkt.getUint8();
+                        for (var i = 0; i < _0x130fdf && !(pkt.buffer.byteLength - pkt.position < 10); i++) {
+                            customServerInfos.portalMarkers.push({
+                                team: pkt.getUint8(),
+                                hp: pkt.getUint8(),
+                                x: pkt.getInt32(),
+                                y: pkt.getInt32()
+                            });
+                        }
+                    }
+                    if (11 <= pkt.buffer.byteLength - pkt.position) {
+                        customServerInfos.domLevel = pkt.getUint16();
+                        customServerInfos.domXp = pkt.getUint32();
+                        customServerInfos.domXpNext = pkt.getUint32();
+                        customServerInfos.domStars = pkt.getUint8();
+                        for (var i = 0; i < 6; i++)
+                            customServerInfos.domUpgrades[i] = pkt.getUint8();
+                        if (5 <= pkt.buffer.byteLength - pkt.position) {
+                            customServerInfos.renewAvailable = pkt.getUint8();
+                            customServerInfos.renewVotes = pkt.getUint8();
+                            customServerInfos.renewNeeded = pkt.getUint8();
+                            customServerInfos.renewCooldown = pkt.getUint16();
+                            if (8 <= pkt.buffer.byteLength - pkt.position) {
+                                customServerInfos.domPoints = pkt.getUint16();
+                                customServerInfos.domMageUnlocked = pkt.getUint8();
+                                customServerInfos.domMageStaff = pkt.getUint8();
+                                customServerInfos.spellCdFreeze = pkt.getUint16();
+                                customServerInfos.spellCdFire = pkt.getUint16();
+                                if (4 & flags && 18 <= pkt.buffer.byteLength - pkt.position) {
+                                    customServerInfos.spellCdAnti = pkt.getUint16();
+                                    customServerInfos.spellCdFireBolt = pkt.getUint16();
+                                    customServerInfos.spellCdIceBolt = pkt.getUint16();
+                                    customServerInfos.spellCdTeleBase = pkt.getUint16();
+                                    customServerInfos.spellCdTeleRandom = pkt.getUint16();
+                                    customServerInfos.spellCdTeleCursor = pkt.getUint16();
+                                    customServerInfos.spellCdPush = pkt.getUint16();
+                                    customServerInfos.spellCdMirror = pkt.getUint16();
+                                    customServerInfos.spellCdSilence = pkt.getUint16();
+                                    if (16 & flags && 2 <= pkt.buffer.byteLength - pkt.position) {
+                                        customServerInfos.spellCdDrain = pkt.getUint16();
+                                    }
+                                }
+                                if (2 & flags && 8 <= pkt.buffer.byteLength - pkt.position) {
+                                    customServerInfos.domMissionType = pkt.getUint8();
+                                    customServerInfos.domMissionProgress = pkt.getUint16();
+                                    customServerInfos.domMissionTarget = pkt.getUint16();
+                                    customServerInfos.domMissionRewardXp = pkt.getUint16();
+                                    customServerInfos.domMissionCompleted = pkt.getUint8();
+                                    if (2 <= pkt.buffer.byteLength - pkt.position) {
+                                        customServerInfos.domMissionText = pkt.getString();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    for (var i = 0; i < 3 && 2 <= pkt.buffer.byteLength - pkt.position; i++) {
+                        let score = pkt.getUint16(), name = 2 <= pkt.buffer.byteLength - pkt.position ? pkt.getString() : '';
+                        customServerInfos.mvpTop.push({ name, score });
+                    }
+                }
+                // update domination stats
                 _0x2d6730();
             }
             break;
@@ -7095,7 +7217,6 @@ function wsOnMessage(_0x2ba470) {
                 }
             }
             if (friendListChanged) {
-                console.log(_0x5e7de3);
                 _0x468d84 = _0x5e7de3;
                 _0x5b3d82 = isLoggedIn;
                 _0x3ebb17 = _0xea465f;
@@ -7421,26 +7542,18 @@ function wsOnMessage(_0x2ba470) {
             $("#contextModerate").addClass("enabled");
             break;
         case 122:
-            var _0x280d4d = pkt.getUint8();
-            var _0x49adef = pkt.getUint32();
-            var _0x2e4161 = pkt.getUint32();
-            var _0x437b88 = pkt.getUint32();
-            var _0x5180de = pkt.getUint32();
-            var _0x5381b4 = pkt.getUint32();
-            var _0x5e72c3 = pkt.getUint32();
-            var _0x25fc81 = {
-                mass: _0x437b88,
-                coins: _0x5180de,
-                sp: _0x5381b4,
-                powerup: _0x5e72c3
-            };
-            var _0x1bf8a5 = {
-                thievingLevel: _0x280d4d,
-                thievingXp: _0x49adef,
-                thievingXpForNextLevel: _0x2e4161,
-                lastThievingTime: _0x25fc81
-            };
-            _0xe6d81(_0x51e494 = _0x1bf8a5);
+            _0xe6d81(_0x51e494 = {
+                thievingLevel: pkt.getUint8(),
+                thievingXp: pkt.getUint32(),
+                thievingXpForNextLevel: pkt.getUint32(),
+                lastThievingTime: {
+                    mass: pkt.getUint32(),
+                    coins: pkt.getUint32(),
+                    sp: pkt.getUint32(),
+                    powerup: pkt.getUint32(),
+                    minions: 4 <= pkt.buffer.byteLength - pkt.position ? pkt.getUint32() : 0
+                }
+            });
             break;
         case 125:
             _0x3a4da8 = (_0x184d89 = pkt).getString();
@@ -8933,13 +9046,16 @@ function _0x2d6730() {
                 _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">INFECTION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.infected + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>") + "<p><span class=\"col-left\">You infected:</span>&nbsp;" + customServerInfos.othersInfected.toString() + "</p>";
                 _0x3fe65e++;
             } else if (18 == currentServerMode) {
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.infected + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>";
-                _0x3fe65e++;
+                _0x306fb1 = "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p>"
+                    + "<p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>"
+                    + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>"
+                    + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.infected + "</p>"
+                    + "<p><span class=\"col-left\">Green bases:</span>&nbsp;" + (customServerInfos.greenBases || 0) + "</p>"
+                    + "<p><span class=\"col-left\">Red bases:</span>&nbsp;" + (customServerInfos.redBases || 0) + "</p>"
+                    + "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>"
+                    + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>"
+                    + "<p><span class=\"col-left\">Level:</span>&nbsp;" + (customServerInfos.domLevel || 1) + "</p>"
+                    + "<p><span class=\"col-left\">Points:</span>&nbsp;" + (customServerInfos.domPoints || 0) + "</p>";
             } else if (22 == currentServerMode) {
                 _0x3fe65e++;
                 _0x3fe65e++;
