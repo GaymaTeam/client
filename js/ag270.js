@@ -1572,7 +1572,7 @@ function _0xe6d81(_0x3d27c7) {
     $("#contextSubMenu > ul").html(_0x2fd022
         + item(0, 'Mass', 'mass')
         + item(20, 'Coins', 'coins')
-        + item(30, 'SP', 'sp')
+        + item(30, 'Sp', 'sp')
         + item(50, 'Powerups', 'pow')
         + item(60, 'Minions', 'minions')
         + '</div>');
