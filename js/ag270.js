@@ -236,7 +236,7 @@ Math.clamp = function(a, value, b) {
 debugDataSize = 0;
 debugFail = false;
 let ws;
-let secretWorldPassword; // 'sw_mljlfx94_7olfmf';
+let secretWorldPassword; // 'sw_mljlfx94_7olfmf', 'sw_mm2qfwyc_9l17s1'
 
 function isReady(force) {
     return ws && ws.readyState === WebSocket.OPEN && (isWebSocketAccepted && ws.bufferedAmount < 8192 || force);
@@ -4782,7 +4782,7 @@ class Cell {
     }
     orbit(_0x682ae7) {
         var _0x5a632f;
-        var _0x35bfd8 = (currentFrameTime - _0x682ae7.start) / playerEmotes[_0x682ae7.id].a;
+        var _0x35bfd8 = (currentFrameTime - _0x682ae7.start) / playerEmotes[_0x682ae7.id].duration;
         if (1 <= (_0x35bfd8 = _0x35bfd8 < 0 ? 0 : 1 < _0x35bfd8 ? 1 : _0x35bfd8)) {
             _0x682ae7.id = 0;
         } else {
