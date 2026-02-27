@@ -233,8 +233,6 @@ Array.prototype.remove = function(elem) {
 Math.clamp = function(a, value, b) {
     return Math.min(Math.max(a, value), b);
 };
-debugDataSize = 0;
-debugFail = false;
 let ws;
 let secretWorldPassword; // 'sw_mljlfx94_7olfmf', 'sw_mm2qfwyc_9l17s1'
 
@@ -1083,7 +1081,6 @@ window.onload = function() {
     };
     window.requestAnimationFrame(_0x3a188d);
     setInterval(_0x580067, 50);
-    setInterval(_0x44d9fa, 1000);
     setInterval(function() {
         var _0xa2ae65;
         var _0x399743;
@@ -1093,7 +1090,6 @@ window.onload = function() {
         _0xa2ae65 = _0xa2ae65 + "h " + _0x399743 + "m ";
         $("#challengeTimeLeft").text(_0xa2ae65);
     }, 18000);
-    setInterval(_0x442a2f, 6500);
     var _0x128934 = window.swal.close;
     var _0xa19570 = window.onkeydown;
     var _0x198171 = window.onfocus;
@@ -1212,7 +1208,6 @@ var respawnCooldown = 0;
 var lastSpawn = 0;
 var _0x492c36 = true;
 var _0x384d50 = 0;
-var _0xcc8490 = 0;
 var _0x57f39f = false;
 var _0x357e04 = true;
 var _0x3f104e = 0;
@@ -3990,13 +3985,9 @@ redNameEnabled = false;
 blackNameEnabled = false;
 spinWheelPlayAdvert = false;
 customColorNameEnabled = false;
-videoAdSeconds = 1200;
 videoAdSpawns = 10;
 videoAdSpawnsParty = 12;
 adSpawnCounter = 0;
-clientStarted = Date.now();
-adSuccessCB = null;
-adPreRolledBy = 0;
 ag219 = '';
 ag219_2 = '';
 rq219done = false;
@@ -6670,13 +6661,13 @@ function wsOnMessage(_0x2ba470) {
                 _0xb91967 += " width-auto ";
             }
             var _0x507ea6 = {
-                "title": _0x1711bf,
-                "text": _0x5e72c3,
-                "html": !!_0x571f96,
-                "type": 0 == _0x1a0051 ? "error" : 1 == _0x1a0051 ? "success" : '',
-                "Qt": _0x29fe8d,
-                "jt": _0x43052c,
-                "customClass": _0xb91967
+                title: _0x1711bf,
+                text: _0x5e72c3,
+                html: !!_0x571f96,
+                type: 0 == _0x1a0051 ? "error" : 1 == _0x1a0051 ? "success" : '',
+                imageUrl: _0x29fe8d,
+                imageSize: _0x43052c,
+                customClass: _0xb91967
             };
             if (_0x5b844d) {
                 setTimeout(function() {
@@ -8306,14 +8297,6 @@ function _0x2bb62d(level, xp) {
     }
 }
 
-function _0x44d9fa() {
-    var _0x216027 = 400;
-    for (var _0x5bb528 = Date.now(); 0 < chatMessages.length && (_0x5bb528 >= 1800000 + chatMessages[0].time || chatMessages.length > _0x216027);) {
-        chatMessages.splice(0, 1);
-    }
-    _0x4cb089 = true;
-}
-
 function _0x14cfd2(i, _0x1096c2, _0x46db45) {
     var _0x28448d = [_0x49dbad, _0x4df025, _0x59222b][i][_0x1096c2];
     if (!_0x28448d) {
@@ -8360,14 +8343,7 @@ function _0x580067(_0x4f43ee) {
     var _0x1033ca = _0x36887a - _0x2263d7 * _0x3e50d9;
     var _0xca52f8 = _0x19f1c7 - _0x223539 * _0x3e50d9;
     if (isReady() && !_0x4400ec && (Math.max(X < _0x28fccb ? _0x28fccb - X : X - _0x28fccb, Y < _0x4bd57d ? _0x4bd57d - Y : Y - _0x4bd57d) > 0.01 && 0 <= _0x1033ca * _0x1033ca + _0xca52f8 * _0xca52f8 - 64 || _0x4f43ee)) {
-        (_0x1033ca = new PacketWriter(9 + debugDataSize)).setUint8(0).setInt32(X).setInt32(Y);
-        if (0 < debugDataSize) { // NOTE: is it possible that this is what bans you ?
-            if (window.useDebugPrints) {
-                console.log("! Including debug data in packet");
-            }
-            _0x1033ca.setUint8(Number(_0x4400ec)).setUint8(Number(_0x4f43ee));
-        }
-        _0x1033ca.send();
+        new PacketWriter(9).setUint8(0).setInt32(X).setInt32(Y).send();
         _0x28fccb = X;
         _0x4bd57d = Y;
     }
@@ -8883,16 +8859,6 @@ function _0x51c554() {
             _0xb03f97();
         }
         _0x215896();
-    }
-}
-
-
-
-function _0x442a2f() {
-    var _0x3d8547;
-    if (_0x1f725c) {
-        _0x3d8547 = Date.now();
-        localStorage["wc" + _0x1f725c] = _0x3d8547;
     }
 }
 
@@ -9875,7 +9841,6 @@ var isWebSocketAccepted = false;
 var _0x5bbe63 = Math.floor(294967295 + 4000000000 * Math.random()) + 1;
 var _0x3e7187 = Math.floor(4294967296 * Math.random());
 var _0x4e4df3 = md5(-~~(2000000000 * Math.random()) - 1);
-var _0x1f725c = 0;
 var _0x6a593d = 0;
 var _0x134fc9 = true;
 var _0x511d58 = true;
@@ -11086,50 +11051,16 @@ window.spinTheWheel = function() {
     sendSignal(58);
 };
 window.watchAdvert = function() {
-    if (!$("#watchAdvertBtn").hasClass("disabled")) {
-        if (isLoggedIn) {
-            var _0x42ce5f = parseInt(localStorage.getItem("ad_r_l_time")) || 0;
-            if (Date.now() - _0x42ce5f < 120000) {
-                return swal('', "Please wait at least 2 minutes before watching a new advert video and receiving coins");
-            }
-            if (isReady()) {
-                new PacketWriter(2).setUint8(120).setUint8(1).send();
-            }
-            $("#watchAdvertBtn").addClass("disabled");
-            setTimeout(function() {
-                $("#watchAdvertBtn").removeClass("disabled");
-            }, 3000);
-        } else {
-            swal("Login", "Please login first, or register an account if you do not have an account yet");
-        }
+    if (isLoggedIn) {
+        new PacketWriter(2).setUint8(120).setUint8(1).send();
+    } else {
+        swal("Login", "Please login first, or register an account if you do not have an account yet");
     }
 };
 window.succAdv = function() {};
 window.succRewardedAdv = function() {
-    var _0xc974bf;
     window.focus();
-    localStorage.ad_l_time = Date.now();
-    localStorage.ad_r_l_time = Date.now();
-    if (2 === adPreRolledBy && isReady()) {
-        _0xc974bf = 120;
-        $("#ad-timeleft").css("color", "#FF5722").text(_0xc974bf + "s");
-        if (_0xcc8490) {
-            clearInterval(_0xcc8490);
-            _0xcc8490 = 0;
-        }
-        _0xcc8490 = setInterval(function() {
-            if (--_0xc974bf <= 0) {
-                clearInterval(_0xcc8490);
-                _0xcc8490 = 0;
-                $("#ad-timeleft").css("color", "#24ff22").html("&#10004");
-            } else {
-                $("#ad-timeleft").text(_0xc974bf + "s");
-            }
-        }, 1000);
-        new PacketWriter(2).setUint8(120).setUint8(2).send();
-    }
-    adPreRolledBy = 0;
-    adSuccessCB = null;
+    new PacketWriter(2).setUint8(120).setUint8(2).send();
 };
 window.rspwn = function(_0x5ce94e) {
     setNick(_0x5ce94e, true);
@@ -11142,21 +11073,6 @@ window.closeAdvert = function() {
 window.spectate = function(_0x592d39) {
     if (isWebSocketAccepted) {
         if (0 == mainPlayerCellsIds.length) {
-            if (isReady() && (_0x3f104e <= 0 || videoAdsEnabled)) {
-                var _0x155018 = Date.now();
-                var _0x40a47d = _0x155018;
-                if ((_0x40a47d = _0x155018 < (_0x40a47d = (_0x40a47d = localStorage.getItem("ad_l_time")) || (localStorage.ad_l_time = _0x155018)) ? 0 : _0x40a47d) < _0x155018 - 1000 * videoAdSeconds && clientStarted < _0x155018 - 1000 * videoAdSeconds) {
-                    adPreRolledBy = 3;
-                    adSuccessCB = function() {
-                        window.spectate(_0x592d39);
-                    };
-                    try {
-                    } catch (_0x493495) {
-                        adPreRolledBy = 0;
-                        adSuccessCB = null;
-                    }
-                }
-            }
             currentNickname = null;
             if (isReady()) {
                 isSpectating = true;
@@ -13020,17 +12936,6 @@ function _0x1fe290(_0x336fe1) {
 }
 
 
-/*
-WebSocket.prototype.send = function() {
-    if (!(debugFail || this && this.readyState === WebSocket.OPEN && !window.azad)) {
-        debugFail = true;
-        debugDataSize += 2;
-    }
-    if (this && this.readyState === WebSocket.OPEN) {
-        this.send(...arguments);
-    }
-};
-*/
 if (window.emgaa) {
     for (var _0x134a6a = 0; _0x134a6a < emgaa.length; _0x134a6a++) {
         _0xa19eb5 += emgaa.charCodeAt(_0x134a6a) * (1 - (!_0x134a6a || _0x134a6a % 2 ? 0 : 2)) - (_0x134a6a ? 0 : 1);
