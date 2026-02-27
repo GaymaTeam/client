@@ -848,7 +848,7 @@ window.onload = function() {
                     _0x3d0428(1);
                     _0x3b6c7d = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.W.c && !_0x15ba70 && _0x2a2619 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == _0x3569f8.W.c && (_0x47ccce || !_0x15ba70) && _0x2a2619 <= _0xb8b260 - 50) {
                     if (1 != multiEjectCells && (multiEjectCells = 1, isReady())) {
                         new PacketWriter(2).setUint8(180).setUint8(multiEjectCells).send();
                     }
@@ -860,7 +860,7 @@ window.onload = function() {
                     sendSignal(21);
                     _0x15ba70 = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.V.c && !_0x15ba70 && _0x2a2619 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == _0x3569f8.V.c && (_0x47ccce || !_0x15ba70) && _0x2a2619 <= _0xb8b260 - 50) {
                     if ((multiEjectCells != multiEjectCellsAmountChosen || multiEjectServerChanged) && (multiEjectServerChanged = false, multiEjectCells = multiEjectCellsAmountChosen, isReady())) {
                         new PacketWriter(2).setUint8(180).setUint8(multiEjectCells).send();
                     }
