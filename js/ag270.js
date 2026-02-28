@@ -7365,6 +7365,9 @@ function wsOnMessage(_0x2ba470) {
                     _0x9db55f(_0x950276);
                 }
                 fallbackGameservers = [];
+
+                for (const server of gameservers)
+                    $("#serverPlayers" + server.id).text(server.players + "/" + server.maxPlayers);
             }
             break;
         case 111:
