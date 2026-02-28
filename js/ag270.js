@@ -751,8 +751,23 @@ window.onload = function() {
             _0x2f7348();
         }
     };
-    _0x243c1f.onmousedown = _0xe944ac;
-    _0x11f3e0.onmousedown = _0x4ae55c;
+    _0x243c1f.onmousedown = function(event) {
+        if (0 == event.button) {
+            _0x544018 = true;
+            _0x194e11 = event.pageY;
+            document.body.addEventListener("mousemove", _0x51ee3c, false);
+            document.body.addEventListener("mouseup", _0x3d16b2, false);
+        }
+    };
+    _0x11f3e0.onmousedown = function(event) {
+        if (!_0x544018 && 0 === event.button) {
+            if (event.offsetY < _0x365042 - _0x50ced8 - _0x46411c) {
+                _0x590515(_0x46411c + _0x43e0d0);
+            } else if (event.offsetY > _0x365042 - _0x46411c) {
+                _0x590515(_0x46411c - _0x43e0d0);
+            }
+        }
+    };
     _0x492d1e.addEventListener("wheel", _0x3359de, false);
     var _0x3b6c7d = false;
     var _0x15ba70 = false;
@@ -2155,19 +2170,9 @@ function updateTab(_0x5b1a3b) {
     }
 }
 
-function _0xe944ac(_0x5c0bf3) {
-    var _0x2dd031;
-    if (0 == _0x5c0bf3.button) {
-        _0x544018 = true;
-        _0x194e11 = _0x5c0bf3.pageY;
-        document.body.addEventListener("mousemove", _0x51ee3c, false);
-        document.body.addEventListener("mouseup", _0x3d16b2, false);
-    }
-}
-
-function _0x51ee3c(_0x14afe0) {
+function _0x51ee3c(event) {
     if (_0x544018) {
-        _0x590515(_0x46411c + _0x194e11 - _0x14afe0.pageY);
+        _0x590515(_0x46411c + _0x194e11 - event.pageY);
     }
 }
 
@@ -2177,17 +2182,6 @@ function _0x3d16b2(_0xd33a46) {
         _0x590515(_0x46411c + _0x194e11 - _0xd33a46.pageY);
         document.body.removeEventListener("mousemove", _0x51ee3c, false);
         document.body.removeEventListener("mouseup", _0x3d16b2, false);
-    }
-}
-
-function _0x4ae55c(_0x5d4a9d) {
-    var _0x23596b;
-    if (!(_0x544018 || 0 != _0x5d4a9d.button)) {
-        if (_0x5d4a9d.offsetY < _0x365042 - _0x50ced8 - _0x46411c) {
-            _0x590515(_0x46411c + _0x43e0d0);
-        } else if (_0x5d4a9d.offsetY > _0x365042 - _0x46411c) {
-            _0x590515(_0x46411c - _0x43e0d0);
-        }
     }
 }
 
@@ -13087,6 +13081,10 @@ $(function() {
     _0x5e49f7 = _0x321590.getContext("2d");
     _0x11f3e0 = document.getElementById("chtScrollbar");
     _0x243c1f = document.getElementById("chtScrollbarThumb");
+    chtCanvas.addEventListener('wheel', event => {
+        _0x590515(_0x46411c + (event.deltaY < 0 ? 1 : -1));
+        event.stopPropagation();
+    }, { passive: true });
     var _0x394ee1;
     var _0x5e2db3 = "<div style=\" background: rgba(68,68,68,.5); border-radius: 1px; \"><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;\" onclick=\"toggleEmojis(0)\" \">Chat</button><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; margin-left: 5px; \" onclick=\"toggleEmojis(1)\" \">Cell</button><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; margin-left: 5px; \" onclick=\"toggleEmojis(2)\" \">Dance</button> </div><div style='overflow-y:scroll;height:165px;'><table><tbody id='emojisBox'>";
     var _0x3ecf43 = 0;
