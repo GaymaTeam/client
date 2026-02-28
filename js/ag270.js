@@ -105,14 +105,7 @@ const defaultGameservers = [
     { id: 39, name: 'MegaSplit AS',      description: '', address: 's39.agma.io:452',  location: 2, gamemode: getModeFromId(2),  players: 0, maxPlayers: 150, isCurrent: false },
     { id: 40, name: 'Infection EU',      description: '', address: 's40.agma.io:451',  location: 0, gamemode: getModeFromId(17), players: 0, maxPlayers: 150, isCurrent: false }
 ];
-const wearableClasses = {
-    0: "center",
-    1: "top",
-    2: "bottom",
-    3: "left",
-    4: "right",
-    5: "max"
-};
+const wearableClasses = ["center", "top", "bottom", "left", "right", "max"];
 const nicknameColors = ["#FFFFFF", "#FFD700", "#22FF22", "#2299FF", "#FF9922", "#FF2222", "#000000", "#800080", "#800080", "#0086b9"];
 const nicknameStrokeColors = ["#000000", "#5C4D00", "#000000", "#000000", "#000000", "#000000", "#777777", "#f5e666", "#2533ed", "#06ffda"];
 const flashAnimations = newImage("img/animations/flash.png");
@@ -138,13 +131,13 @@ const playerEmotes = {
     11: { time: animationTimeFunctionB, duration: 2200 },
     12: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/wacky2.png"), m: 20, h: 5, v: 2.4, k: 2.75, scale: 1.1, xOffset: 0, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
     13: { time: animationTimeFunctionA, duration: 1 },
-    14: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/iced.png"), m: 1, h: 1, v: 200, k: 1, scale: 1.45, xOffset: 0, yOffset: 41, globalAlpha: 1, globalAlphaBub: 0.7, fade: _0x1bc6b1 } },
+    14: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/iced.png"), m: 1, h: 1, v: 200, k: 1, scale: 1.45, xOffset: 0, yOffset: 41, globalAlpha: 1, globalAlphaBub: 0.7, fade: { ht: 150, ft: 200, bt: 0, gt: 1 } } },
     15: { time: animationTimeFunctionB, duration: 10300 },
     16: { time: animationTimeFunctionB, duration: 400 },
     17: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/upgrade.png"), m: 25, h: 5, v: 3, k: 1, scale: 1.5, xOffset: 0, yOffset: 0, globalAlpha: 0.7, globalAlphaBub: 0.5 } },
     18: { time: animationTimeFunctionB, duration: 800 },
-    20: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/anti_iced.png"), m: 1, h: 1, v: 200, k: 1, scale: 1.45, xOffset: 0, yOffset: 41, globalAlpha: 1, globalAlphaBub: 0.7, fade: _0xee63ec } },
-    21: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/anti_rec.png"), m: 1, h: 1, v: 250, k: 1, scale: 1.35, xOffset: 0, yOffset: 41, globalAlpha: 0.5, globalAlphaBub: 0.2, fade: _0x4bca2e } },
+    20: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/anti_iced.png"), m: 1, h: 1, v: 200, k: 1, scale: 1.45, xOffset: 0, yOffset: 41, globalAlpha: 1, globalAlphaBub: 0.7, fade: { ht: 150, ft: 200, bt: 0, gt: 1 } } },
+    21: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/anti_rec.png"), m: 1, h: 1, v: 250, k: 1, scale: 1.35, xOffset: 0, yOffset: 41, globalAlpha: 0.5, globalAlphaBub: 0.2, fade: { ht: 200, ft: 250, bt: 0, gt: 1 } } },
     23: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/shield_blue2.png"), m: 15, h: 5, v: 7, k: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
     24: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/shield_green2.png"), m: 10, h: 5, v: 10, k: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
     25: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/shield_red2.png"), m: 10, h: 5, v: 10, k: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
@@ -2841,7 +2834,7 @@ function _0x13d7e0() {
         _0x170269 = _0x5b6b18 = '';
         _0x522c0e();
         _0x4400ec = _0x11c29c = _0x52da56 = _0x506037 = _0x43802f = _0x53176c = !(_0x568853 = -1);
-        _0x114b07 = true;
+        server360ShotDisabled = true;
         _0x47ccce = _0x11de32 = _0x52d414 = _0x29f86a = _0x4512d9 = _0x2873c2 = _0x576526 = _0x38ea95 = _0x852ff = _0x273de7 = _0x30bfdb = _0x4a4cf7 = _0x24af02 = _0x3b8888 = lastSpawn = respawnCooldown = _0x5a219c = 0;
         $(".inventory-box").removeClass("activatedInv");
         _0x37e4a8 = _0xb1583e = _0x31962a = _0x5ea511 = _0x5a5860 = _0x3c6854 = 0;
@@ -5726,7 +5719,7 @@ function wsOnMessage(_0x2ba470) {
                     allCells[_0x269ac7] = cell;
                     if (_0x13100f) {
                         if (1 === _0x534ff6) {
-                            (_0x2c474f <= _0x2fc5e8 ? (cell.smallFood = true, allFoodCells) : allNonFoodCells).push(cell);
+                            (_0x2c474f <= serverFoodMaxSize ? (cell.smallFood = true, allFoodCells) : allNonFoodCells).push(cell);
                             // cell.smallFood = true;
                             // allFoodCells.push(cell);
                             if (gameSettings.sFoodHalf && (drawHalfFood = !drawHalfFood)) {
@@ -6064,30 +6057,24 @@ function wsOnMessage(_0x2ba470) {
             var _0x571f96 = pkt.getUint32();
             var flags = pkt.getUint8();
             _0x42a8fa = !!(1 & flags);
-            _0x114b07 = !!(2 & flags);
+            server360ShotDisabled = !!(2 & flags);
             _0x3df17b = !!(4 & flags);
             _0x247d2d = 2 * pkt.getUint32();
             _0x2cd9d1 = 2 * pkt.getUint32();
             _0x25b838 = pkt.getUint16();
-            _0x2fc5e8 = pkt.getUint16();
+            serverFoodMaxSize = pkt.getUint16();
             _0x27fdb0 = Date.now();
             _0x2c6f91 = true;
             if (17 == currentServerMode) {
-                for (i = 15; i <= 19; i++) {
-                    if (!wearablesAndObjectsImages[i]) {
+                for (i = 15; i <= 19; i++) // walls
+                    if (!wearablesAndObjectsImages[i])
                         _0x1cb610(i, 16);
-                    }
-                }
-                for (i = 100; i <= 103; i++) {
-                    if (!wearablesAndObjectsImages[i]) {
+                for (i = 100; i <= 103; i++) // infection
+                    if (!wearablesAndObjectsImages[i])
                         _0x1cb610(i, 0);
-                    }
-                }
-                for (i = 110; i <= 112; i++) {
-                    if (!wearablesAndObjectsImages[i]) {
+                for (i = 110; i <= 112; i++) // dodgeball
+                    if (!wearablesAndObjectsImages[i])
                         _0x1cb610(i, 0);
-                    }
-                }
             }
             if (gameSettings.sFixedZoom) {
                 _0xb03f97();
@@ -9415,7 +9402,7 @@ function _0x465950(_0x2c4b45, _0x5e4a11) {
             break;
         case 1:
             if (1 != _0x47ccce) {
-                if (!_0x114b07 || _0x11de32 <= 0) {
+                if (!server360ShotDisabled || _0x11de32 <= 0) {
                     return;
                 }
                 _0x47ccce = 1;
@@ -9912,7 +9899,7 @@ var _0x42a8fa = true;
 var _0x247d2d = 1920;
 var _0x2cd9d1 = 1080;
 var _0x25b838 = 60;
-var _0x2fc5e8 = 25;
+var serverFoodMaxSize = 25;
 var _0x2e06e0 = true;
 var _0x52383b = -1;
 var _0x556e60 = 1 + ~~(53550 + 600000 * Math.random());
@@ -9967,7 +9954,7 @@ var _0x4512d9 = 0;
 var _0x29f86a = 0;
 var _0x52d414 = 0;
 var _0x11de32 = 0;
-var _0x114b07 = true;
+var server360ShotDisabled = true;
 var _0x47ccce = 0;
 var _0x3c6854 = 0;
 var _0x5a5860 = 0;
@@ -12848,24 +12835,6 @@ window.hotkeyClear = function(_0x44054d) {
         _0x4204cb();
     }
     _0x44054d.preventDefault();
-};
-var _0x1bc6b1 = {
-    ht: 150,
-    ft: 200,
-    bt: 0,
-    gt: 1
-};
-var _0xee63ec = {
-    ht: 150,
-    ft: 200,
-    bt: 0,
-    gt: 1
-};
-var _0x4bca2e = {
-    ht: 200,
-    ft: 250,
-    bt: 0,
-    gt: 1
 };
 var _0xf1d309 = 500;
 
