@@ -2825,7 +2825,7 @@ function _0x13d7e0() {
         allNonFoodCells = [];
         mainPlayerCellsIds = [];
         mainPlayerCells = [];
-        _0x2a6acb = [];
+        leaderboard = [];
         allCells = {};
         allFoodCells = [];
         deletedFood = [];
@@ -3016,8 +3016,8 @@ function _0x215896() {
             var _0x19f04f = ~~(Math.max(18 * Math.min(1.6 * clientHeight, clientWidth, 1400) / 1400, 8) + 0.5);
             var _0x2d45ca = ~~(Math.max(200 * Math.min(1.6 * clientHeight, clientWidth, 1400) / 1400, 90) + 0.5) / 200;
             var _0x139239 = ~~(200 * _0x2d45ca + 0.5);
-            var _0x3ea109 = ~~((_0x634c41 ? 240 : 50 + 25 * _0x2a6acb.length) * _0x2d45ca + 0.5);
-            var _0x15f2d8 = !_0x634c41 && 0 < _0x2a6acb.length ? _0x2a6acb[0].cell : null;
+            var _0x3ea109 = ~~((_0x634c41 ? 240 : 50 + 25 * leaderboard.length) * _0x2d45ca + 0.5);
+            var _0x15f2d8 = !_0x634c41 && 0 < leaderboard.length ? leaderboard[0].cell : null;
             var _0x1fd0b5 = "Leaderboard";
             _0x321590.width = ~~(_0x139239 * _0x358119 + 0.5);
             _0x321590.height = ~~(_0x3ea109 * _0x358119 + 0.5);
@@ -3062,12 +3062,12 @@ function _0x215896() {
                     _0x5e49f7.scale(_0x2d45ca, _0x2d45ca);
                     _0x5e49f7.beginPath();
                     _0x5e49f7.arc(22, 22, 11, 0, 2 * Math.PI, false);
-                    _0x5e49f7.fillStyle = _0x15f2d8.oe;
+                    _0x5e49f7.fillStyle = _0x15f2d8.cellcolor;
                     _0x5e49f7.fill();
                     _0x5e49f7.beginPath();
                     _0x5e49f7.arc(22, 22, 10, 0, 2 * Math.PI, false);
                     _0x5e49f7.lineWidth = 1;
-                    _0x5e49f7.strokeStyle = _0x15f2d8.ie;
+                    _0x5e49f7.strokeStyle = _0x15f2d8.dimcolor;
                     _0x5e49f7.stroke();
                     if (_0x15f2d8.skinId && gameSettings.sSkins && ((_0x2e4d3d = skinImagesHigh[_0x15f2d8.skinId + "_lo"]) || (_0x58d0e1(_0x15f2d8.skinId), _0x2e4d3d = skinImagesHigh[_0x15f2d8.skinId + "_lo"]), _0x2e4d3d) && _0x2e4d3d.complete && 0 != _0x2e4d3d.width) {
                         _0x5e49f7.beginPath();
@@ -3096,10 +3096,10 @@ function _0x215896() {
                     _0x5e49f7.restore();
                 }
                 if (_0x2332bb) {
-                    for (_0x1e1569 = 0; _0x1e1569 < _0x2a6acb.length; ++_0x1e1569) {
-                        if (!(_0x15f2d8 = _0x2a6acb[_0x1e1569]).empty) {
+                    for (_0x1e1569 = 0; _0x1e1569 < leaderboard.length; ++_0x1e1569) {
+                        if (!(_0x15f2d8 = leaderboard[_0x1e1569]).empty) {
                             _0x1fd0b5 = _0x15f2d8.name;
-                            _0xf261be = _0x15f2d8.se;
+                            _0xf261be = _0x15f2d8.textcolor;
                             _0x416571 = _0x15f2d8.pos;
                             if (!_0x4a720f) {
                                 _0x1fd0b5 = (0 < _0x416571 ? _0x416571 : _0x1e1569 + 1) + ". " + (_0x1fd0b5 = _0x1fd0b5 || "Agma.io Player");
@@ -3957,7 +3957,7 @@ allowPartyInvite = true;
 allowPartyAnimations = false;
 gldNickEnabled = true;
 gldCrownEnabled = true;
-largeRenderDistance = false;
+largeRenderDistance = true;
 throwSnowball = false;
 autoFeedEnabled = true;
 minionSkins = false;
@@ -3972,10 +3972,10 @@ can_red_name = false;
 can_black_name = false;
 can_custom_color_name = false;
 custom_color_name = 0;
-abilityFreeze = false;
-abilityCloak = false;
-abilityDoubleSpawnSize = false;
-abilityDoubleExp = false;
+abilityFreeze = true;
+abilityCloak = true;
+abilityDoubleSpawnSize = true;
+abilityDoubleExp = true;
 iconDRankEnabled = true;
 iconYTEnabled = true;
 greenNameEnabled = false;
@@ -5989,40 +5989,35 @@ function wsOnMessage(_0x2ba470) {
         case 48:
             _0x4a720f = true;
         case 49:
-            if (49 == pkt.buffer.getUint8(pkt.position - 1)) {
-                _0x4a720f = false;
-            }
+            if (49 == pkt.buffer.getUint8(pkt.position - 1)) _0x4a720f = false;
             _0x634c41 = null;
             var _0x435e7a = pkt.getUint16();
-            _0x2a6acb = [];
+            leaderboard = [];
             for (i = 0; i < _0x435e7a; ++i) {
-                var _0x35aab7;
-                var _0x135b2d;
-                var _0xc93166 = 0;
-                var _0x253ecd = 0;
-                if (1 & (flags = pkt.getUint8())) {
-                    _0x253ecd = pkt.getUint8();
-                }
-                if (2 & flags) {
-                    _0xc93166 = pkt.getUint16();
-                }
-                var _0x59cc1c = pkt.getString();
-                var _0xaf794f = null;
+                let cellcolor,
+                    dimcolor,
+                    cell = null,
+                    pos = 0,
+                    textcolor = 0;
+                flags = pkt.getUint8()
+                if (1 & flags) textcolor = pkt.getUint8();
+                if (2 & flags) pos = pkt.getUint16();
+                const name = pkt.getString();
                 if (8 & flags) {
-                    [_0x35aab7, _0x135b2d] = pkt.getColorTags();
-                    _0xaf794f = {
-                        "oe": _0x35aab7,
-                        "ie": _0x135b2d,
-                        "skinId": pkt.getUint16(),
-                        "wears": pkt.getWearables()
+                    [cellcolor, dimcolor] = pkt.getColorTags();
+                    cell = {
+                        cellcolor,
+                        dimcolor,
+                        skinId: pkt.getUint16(),
+                        wears: pkt.getWearables()
                     };
                 }
-                _0x2a6acb.push({
-                    "name": _0x59cc1c,
-                    "se": _0x253ecd,
-                    "pos": _0xc93166,
-                    "empty": !!(4 & flags),
-                    "cell": _0xaf794f
+                leaderboard.push({
+                    name,
+                    textcolor: textcolor,
+                    pos,
+                    empty: !!(4 & flags),
+                    cell
                 });
             }
             _0x3c3250 = true;
@@ -7301,7 +7296,7 @@ function wsOnMessage(_0x2ba470) {
                 _0x1d3023 = 0;
             }
             var _0xc93166 = +new Date();
-            var _0x311374 = true;
+            var _0x311374 = true, _0x253ecd;
             if (_0x311374 = undefined === window.localStorage || null != window.localStorage.reloadTime && _0xc93166 < (_0x253ecd = JSON.parse(window.localStorage.reloadTime) + 3600000) ? false : _0x311374) {
                 window.localStorage.reloadTime = JSON.stringify(_0xc93166);
                 try {
@@ -9850,7 +9845,7 @@ var mainPlayerCells = [];
 var mainPlayerCellsIds = [];
 var allNonFoodCells = [];
 var allFoodCells = [];
-var _0x2a6acb = [];
+var leaderboard = [];
 var deletedFood = [];
 var allCells = {};
 var playersByOid = {};
@@ -12319,14 +12314,14 @@ window.setDark = function(isEnabled) {
         b = parseInt(color.substr(4, 2), 16);
         _0x2fadfd.colorDimmed = rgbToHex(r * gameBrightness, g * gameBrightness, b * gameBrightness);
     }
-    if (0 < _0x2a6acb.length && (_0x2fadfd = _0x2a6acb[0].cell)) {
-        if ((color = String(_0x2fadfd.oe).replace(/[^0-9a-f]/gi, '')).length < 6) {
+    if (0 < leaderboard.length && (_0x2fadfd = leaderboard[0].cell)) {
+        if ((color = String(_0x2fadfd.cellcolor).replace(/[^0-9a-f]/gi, '')).length < 6) {
             color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2];
         }
         r = parseInt(color.substr(0, 2), 16);
         g = parseInt(color.substr(2, 2), 16);
         b = parseInt(color.substr(4, 2), 16);
-        _0x2fadfd.ie = rgbToHex(r * gameBrightness, g * gameBrightness, b * gameBrightness);
+        _0x2fadfd.dimcolor = rgbToHex(r * gameBrightness, g * gameBrightness, b * gameBrightness);
     }
     _0x2c6f91 = _0x4cb089 = _0x3c3250 = true;
 };
