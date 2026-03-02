@@ -213,6 +213,8 @@ const playerDances = {
     pulse:    2000
 };
 
+const numberFormat = Intl.NumberFormat("en-US");
+
 function rgbToHex(r, g, b) {
     return "#" + (r << 16 | g << 8 | b).toString(16).padStart(6, "0");
 }
@@ -1388,7 +1390,7 @@ function _0x3169a6(_0x4dc13e) {
                     if (0 == _0x5c09e8.skinId || _0x3df17b) {
                         $("#contextPlayerSkin").css("background-image", "url(skins/objects/" + _0x5c09e8.N.toString() + "_lo.png?v=" + objectsApiVersion + ")");
                     } else {
-                        $("#contextPlayerSkin").css("background-image", "url(skins/" + _0x5c09e8.skinId.toString() + "_lo.png?u=" + (_0x48a780[_0x5c09e8.skinId] || 0) + ")");
+                        $("#contextPlayerSkin").css("background-image", "url(skins/" + _0x5c09e8.skinId.toString() + "_lo.png?u=" + (skinsChangedUnix[_0x5c09e8.skinId] || 0) + ")");
                     }
                 } else {
                     $("#contextPlayerSkin").css("background-image", '');
@@ -4146,7 +4148,7 @@ class Cell {
                 if (gameSettings.sSkins && gameSettings.sSkinAnimations) {
                     if (!(_0x5d0bce = skinImagesLow[this.skinId + "_lo"])) {
                         _0x3991a0 = this.skinId;
-                        _0x2a03ce = (_0x48a780[_0x3991a0] || 0).toString();
+                        _0x2a03ce = (skinsChangedUnix[_0x3991a0] || 0).toString();
                         skinImagesLow[_0x3991a0 + "_lo"] = loadAPNG("skins/" + _0x3991a0.toString() + "_lo.png?u=" + _0x2a03ce);
                         skinImagesLow[_0x3991a0] = loadAPNG("skins/" + _0x3991a0.toString() + ".png?u=" + _0x2a03ce);
                         _0x5d0bce = skinImagesLow[this.skinId + "_lo"];
@@ -6416,7 +6418,7 @@ function wsOnMessage(_0x2ba470) {
             var _0x49adef = pkt.getUint32();
             var _0x1711bf = pkt.getUint16();
             swal({
-                "title": "<img src=\"" + (_0x1711bf ? "skins/" + _0x1711bf.toString() + "_lo.png?u=" + (_0x48a780[_0x1711bf] || 0).toString() : "img/userprofile.png") + "\" width=\"64\" height=\"64\" style=\"border-radius:50%;\"><br><br><span style=\"" + (_0x5bff26 ? "color:#f22;" : _0x469523 ? "color:" + nicknameColors[_0x469523] : '') + "\">" + _0x571f96 + "</span><span style=\"display:block; margin:-10px 0px 15px; font-size:12px; line-height:normal;\">" + (_0x2f2313 ? "<br><span style=\"padding:2px 5px; font-size:10px; background:#999; color:#000; border-radius:10px;\">Hidden</span><br>" : '') + (_0x31ab56 ? "<br><span style=\"color:#f9f;\">&#9734;&#9734; Staff &#9734;&#9734;</span>" : '') + (_0x5bff26 ? "<br><span style=\"color:#f22;\">&#9734;&#9734; YouTuber &#9734;&#9734;</span>" : '') + (_0x2e4161 ? "<br><span style=\"color:#ffa;\">&#9734;&#9734; Gold Member &#9734;&#9734;</span>" : '') + (_0x311374 ? "<br><span style=\"color:#4f4;\">&#9734;&#9734; <img src=\"img/navpage/" + (1 == _0x311374 ? "super" : 6 == _0x311374 ? "valentines" : 5 == _0x311374 ? "black2" : 4 == _0x311374 ? "black" : 2 == _0x311374 ? "legendary" : "hot") + "_donator_ico.png\" width=\"16\" height=\"16\"> Donator &#9734;&#9734;</span>" : '') + "</span>",
+                "title": "<img src=\"" + (_0x1711bf ? "skins/" + _0x1711bf.toString() + "_lo.png?u=" + (skinsChangedUnix[_0x1711bf] || 0).toString() : "img/userprofile.png") + "\" width=\"64\" height=\"64\" style=\"border-radius:50%;\"><br><br><span style=\"" + (_0x5bff26 ? "color:#f22;" : _0x469523 ? "color:" + nicknameColors[_0x469523] : '') + "\">" + _0x571f96 + "</span><span style=\"display:block; margin:-10px 0px 15px; font-size:12px; line-height:normal;\">" + (_0x2f2313 ? "<br><span style=\"padding:2px 5px; font-size:10px; background:#999; color:#000; border-radius:10px;\">Hidden</span><br>" : '') + (_0x31ab56 ? "<br><span style=\"color:#f9f;\">&#9734;&#9734; Staff &#9734;&#9734;</span>" : '') + (_0x5bff26 ? "<br><span style=\"color:#f22;\">&#9734;&#9734; YouTuber &#9734;&#9734;</span>" : '') + (_0x2e4161 ? "<br><span style=\"color:#ffa;\">&#9734;&#9734; Gold Member &#9734;&#9734;</span>" : '') + (_0x311374 ? "<br><span style=\"color:#4f4;\">&#9734;&#9734; <img src=\"img/navpage/" + (1 == _0x311374 ? "super" : 6 == _0x311374 ? "valentines" : 5 == _0x311374 ? "black2" : 4 == _0x311374 ? "black" : 2 == _0x311374 ? "legendary" : "hot") + "_donator_ico.png\" width=\"16\" height=\"16\"> Donator &#9734;&#9734;</span>" : '') + "</span>",
                 "text": "<span style=\"color:#ffa;\"><br>Level: " + _0x26baf3 + "<br>Rank: " + (50000 < _0x49adef ? ">50000" : _0x49adef) + "<br><br></span>",
                 "type": '',
                 "customClass": _0x2e4161 ? "swal-title-gold" : "swal-title-white",
@@ -7007,7 +7009,7 @@ function wsOnMessage(_0x2ba470) {
                 if (4647 == _0x3a4da8) {
                     _0x3a4da8 = 13371337;
                 }
-                $("#skinMegaWidget").css("background-image", "url('skins/" + _0x3a4da8.toString() + "_lo.png?u=" + (_0x48a780[_0x3a4da8] || 0) + "')");
+                $("#skinMegaWidget").css("background-image", "url('skins/" + _0x3a4da8.toString() + "_lo.png?u=" + (skinsChangedUnix[_0x3a4da8] || 0) + "')");
             } else {
                 $("#skinMegaWidget").css("background-image", "none");
             }
@@ -7425,7 +7427,7 @@ function wsOnMessage(_0x2ba470) {
                     var _0x1819b7 = pkt.getUint16();
                     var _0x3af9db = pkt.getUint8();
                     var _0x3a3464 = pkt.getUint32();
-                    _0x2e4195.push({
+                    const skin = {
                         "id": _0x1819b7,
                         "type": _0x3af9db,
                         "name": pkt.getString(),
@@ -7441,43 +7443,40 @@ function wsOnMessage(_0x2ba470) {
                         "changeAllowed": !!(32 & flags),
                         "popularity": 0,
                         "enabled": !!(1 & flags)
-                    });
+                    };
+                    _0x2e4195.push(skin);
                     if (1 == _0x3af9db) {
-                        _0x2e4195[_0x2e4195.length - 1].levelRequired = pkt.getUint16();
+                        skin.levelRequired = pkt.getUint16();
                     } else if (3 == _0x3af9db) {
-                        _0x2e4195[_0x2e4195.length - 1].vipLevelRequired = pkt.getUint8();
+                        skin.vipLevelRequired = pkt.getUint8();
                     } else if (2 == _0x3af9db) {
-                        _0x2e4195[_0x2e4195.length - 1].price = pkt.getUint32();
+                        skin.price = pkt.getUint32();
                     } else if (4 == _0x3af9db) {
                         if (8 & flags) {
-                            _0x2e4195[_0x2e4195.length - 1].pendingApproval = pkt.getUint8();
-                            _0x2e4195[_0x2e4195.length - 1].changedDaysAgo = pkt.getUint16();
+                            skin.pendingApproval = pkt.getUint8();
+                            skin.changedDaysAgo = pkt.getUint16();
                         } else if (16 & flags && 1 & flags) {
-                            _0x2e4195[_0x2e4195.length - 1].popularity = pkt.getUint16();
+                            skin.popularity = pkt.getUint16();
                         }
                     }
-                    _0x48a780[_0x1819b7] = _0x3a3464;
+                    skinsChangedUnix[_0x1819b7] = _0x3a3464;
                 }
                 if (0 < (_0xc93166 = pkt.getUint32())) {
                     _0x520472 = _0xc93166;
                 }
-                _0x2aa794();
                 _0x64a0d5 = false;
                 _0x4506fc = _0xea465f;
             }
             break;
         case 116:
             if (0 < (_0x435e7a = pkt.getUint16())) {
-                _0x48a780 = {};
-                for (i = 0; i < _0x435e7a; ++i) {
-                    _0x1819b7 = pkt.getUint16();
-                    _0x48a780[_0x1819b7] = pkt.getUint32();
-                }
+                skinsChangedUnix = {};
+                for (i = 0; i < _0x435e7a; ++i)
+                    skinsChangedUnix[pkt.getUint16()] = pkt.getUint32();
                 _0x435e7a = pkt.getUint16();
                 _0x2645ec = {};
-                for (i = 0; i < _0x435e7a; ++i) {
+                for (i = 0; i < _0x435e7a; ++i)
                     _0x2645ec[pkt.getUint16()] = true;
-                }
             }
             break;
         case 117:
@@ -7978,12 +7977,8 @@ let gotSkins = false;
 function _0x4b2336() {
     if (gotSkins) return;
     gotSkins = true;
-    if (isReady()) {
-        sendSignal(115);
-    } else if (0 < _0x2e4195.length) {
-        _0x2e4195 = [];
-        _0x2aa794();
-    }
+    console.log("HELLO", gotSkins, isReady())
+    isReady() && sendSignal(115);
 }
 
 function _0x5df715(skinId) {
@@ -8105,7 +8100,7 @@ function _0x4e199b() {
 
 function _0x113238() {
     if (gameSettings.skinId) {
-        $(".cell-example .skin-example").css("background-image", "url('skins/" + gameSettings.skinId.toString() + "_lo.png?u=" + (_0x48a780[gameSettings.skinId] || 0) + "')");
+        $(".cell-example .skin-example").css("background-image", "url('skins/" + gameSettings.skinId.toString() + "_lo.png?u=" + (skinsChangedUnix[gameSettings.skinId] || 0) + "')");
     } else {
         $(".cell-example .skin-example").css("background-image", "none");
         $("#skinExampleMenu").css("background-image", "url('skins/0_lo.png?u=0')");
@@ -10008,7 +10003,7 @@ var _0x8e4a8e = true;
 var _0x34761e = false;
 var _0x12c3b0 = 0;
 var _0x7f089d = false;
-var _0x48a780 = {};
+var skinsChangedUnix = {};
 var _0x2645ec = {};
 var _0x520472 = 0;
 var _0x2e4195 = [];
@@ -10210,7 +10205,7 @@ window.setTopMass = function(_0x29926a) {
     } else {
         $("#cellsAmount").css("color", "#f44");
     }
-    $("#topMass").css("color", "#2d2").text(Intl.NumberFormat("en-US").format(Math.round(~~(_0x29926a / 100))));
+    $("#topMass").css("color", "#2d2").text(numberFormat.format(Math.round(~~(_0x29926a / 100))));
 };
 window.playSounds = function(_0x3672c0, _0x1081e4, _0x27820b) {
     if (gameSettings.sSounds) {
@@ -10388,7 +10383,7 @@ window.setMegaphoneText = function() {
         $("#megaphone_cell_name").addClass("black");
     }
     if (gameSettings.skinId) {
-        $("#skinMegaDialog").css("background-image", "url('skins/" + gameSettings.skinId.toString() + "_lo.png?u=" + (_0x48a780[gameSettings.skinId] || 0) + "')");
+        $("#skinMegaDialog").css("background-image", "url('skins/" + gameSettings.skinId.toString() + "_lo.png?u=" + (skinsChangedUnix[gameSettings.skinId] || 0) + "')");
     } else {
         $("#skinMegaDialog").css("background-image", "none");
     }
@@ -12784,7 +12779,7 @@ function _0xa8fda8(_0x2568bf) {
 }
 
 function _0x58d0e1(_0x3ecf57) {
-    var _0x334a34 = (_0x48a780[_0x3ecf57] || 0).toString();
+    var _0x334a34 = (skinsChangedUnix[_0x3ecf57] || 0).toString();
     skinImagesHigh[_0x3ecf57 + "_lo"] = newImage("skins/" + _0x3ecf57.toString() + "_lo.png?u=" + _0x334a34);
     skinImagesHigh[_0x3ecf57] = newImage("skins/" + _0x3ecf57.toString() + ".png?u=" + _0x334a34);
 }
