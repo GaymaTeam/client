@@ -7420,7 +7420,7 @@ function wsOnMessage(_0x2ba470) {
             }
             break;
         case 115:
-            if (0 < (_0x435e7a = pkt.getUint16())) {
+            if (_0x64a0d5 && 0 < (_0x435e7a = pkt.getUint16())) { // only 1 parse
                 _0x2e4195 = [];
                 for (i = 0; i < _0x435e7a; ++i) {
                     var flags = pkt.getUint8();
@@ -7466,6 +7466,7 @@ function wsOnMessage(_0x2ba470) {
                 }
                 _0x64a0d5 = false;
                 _0x4506fc = _0xea465f;
+                // render here
             }
             break;
         case 116:
@@ -7967,7 +7968,6 @@ function _0x2aa794() {
 }
 
 function _0x5b3bf2() {
-    _0x64a0d5 = true;
     if (_0x173277 && $("#skinsTab").hasClass("active")) {
         _0x4b2336();
     }

@@ -1,0 +1,182 @@
+<div id="skinBrowser" class="tab-content">
+    <div id="skinsFree" class="tab-pane fade in active">
+        <!-- type === 0 -->
+        <div class="skin-data">
+            <table>
+                <tr>
+                    <td id="skinContainer${id}" class="skin-container ">
+                        <img src="skins/${id}_lo.png?u=${changedUnix}" alt="">
+                        <h4>${name}</h4>
+                        <button id="skinUseBtn${id}" class="btn btn-primary skinuse-btn" onclick="toggleSkin(${id});">Use</button>
+                    </td>
+                    <!-- ... -->
+                </tr>
+                <!-- ... -->
+            </table>
+        </div>
+    </div>
+    <div id="skinsLevel" class="tab-pane fade ">
+        <!-- type === 1 -->
+        <div class="skin-data">
+            <table>
+                <tr>
+                    <td id="skinContainer${id}" class="skin-container ">
+                        <img src="skins/${id}_lo.png?u=${changedUnix}" alt="">
+                        <h4>${name}</h4>
+                        <!-- if has level ok -->
+                        <button id="skinUseBtn${id}" class="btn btn-primary skinuse-btn" onclick="toggleSkin(${id});">Use</button>
+                        <!-- else -->
+                        <p>&#128274;<br>(Level 250)</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="skinsBuy" class="tab-pane fade ">
+        <!-- type === 2 -->
+        <div class="skin-data">
+            <h3 class="skin-subcategory">Owned</h3>
+            <table>
+                <!-- userAssigned -->
+                <tr>
+                    <td id="skinContainer${id}" class="skin-container ">
+                        <img src="skins/${id}_lo.png?u=${changedUnix}" alt="">
+                        <h4>${name}</h4>
+                        <button id="skinUseBtn${id}" class="btn btn-primary skinuse-btn" onclick="toggleSkin(${id});">Use</button>
+                    </td>
+                </tr>
+            </table>
+            <h3 class="skin-subcategory">Skin Store</h3>
+            <table>
+                <tr>
+                    <td id="skinContainer${id}" class="skin-container ">
+                        <img src="skins/${id}_lo.png?u=${changedUnix}" alt="">
+                        <h4>${name}</h4>
+                        <!-- if price === 99999999 -->
+                        <p>&#128274;<br>(Limited Edition)</p>
+                        <!-- else -->
+                        <button id="skinPurchaseBtn${id}" class="btn btn-warning" onclick="purchaseSkin(${price}, ${id});">Buy (${Intl.NumberFormat("en-US").format(price)})</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="skinsVIP" class="tab-pane fade ">
+        <div class="skin-data" title="These skins are only available for gold upgraded members. Click Upgrade in main menu to become gold member.">
+            <table>
+                <tr>
+                    <td id="skinContainer${id}" class="skin-container ${isGoldMember ? 'faded' : ''}">
+                        <img src="skins/${id}_lo.png?u=${changedUnix}" alt="">
+                        <h4>Snow Cat</h4>
+                        <p>(Gold Members)</p>
+                        <button id="skinUseBtn${id}" class="btn btn-primary skinuse-btn" onclick="toggleSkin(${id});">Use</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="skinsCustom" class="tab-pane fade ">
+        <div class="skin-data">
+            <div style="text-align:left; margin-left:10px;">
+                <p style="font-size:24px; margin-bottom:0px; text-shadow:2px 2px 2px #000;">Upload your own skins here!</p>
+                <p style="font-size:12px; opacity:0.5;">
+                    (scroll down for <a href="#customSkinInstructions">instructions</a>
+                    )
+                </p>
+                <p style="font-size:12px;opacity:0.5;color: #ff5d49;">24.April.2022: If you upload a skin that breaks the rules, your skin slot may be removed. Read the rules (at the bottom) carefully before submitting a skin for review.</p>
+                <p>
+            </div>
+            <h3 class="skin-subcategory">Your Custom Skins</h3>
+            <table>
+                <tr>
+                    <td id="skinContainer${id}" class="skin-container  saved-mode approved-mode enabled-mode" data-pendingapproval="0">
+                        <img id="skinCustomImg${id}" src="skins/${id}_lo.png?u=1768623604" alt="">
+                        <h4 id="skinName${id}" class="saved-control">${name}</h4>
+                        <p id="skinSharedPublic${id}" class="skinsharedpublic saved-control " title="All players can play with this skin">Public Skin</p>
+                        <button id="skinUploadBtn${id}" class="btn btn-link skinupload-btn edit-control" onclick="uploadCustomSkin(${id}); return false;" ondragenter="dragFileOverSkin(event, ${id});" ondragover="dragFileOverSkin(event, ${id});" ondragleave="dragFileLeaveSkin(event, ${id});" ondrop="dropFileOnSkin(event, ${id});">
+                            <span>
+                                Choose Image...<br>or drag it here
+                            </span>
+                        </button>
+                        <input id="skinNameInput${id}" type="text" class="skinname-input form-control edit-control" placeholder="Skinname" maxlength="30" value="">
+                        <div class="checkbox checkbox-warning edit-control">
+                            <input id="skinSharedPublicInput${id}" type="checkbox" class="skinsharedpublic-checkbox" checked>
+                            <label for="skinSharedPublicInput${id}" title="Allows all players to play with your skin">Share Public</label>
+                        </div>
+                        <button id="skinSaveBtn${id}" class="btn btn-success edit-control" onclick="saveCustomSkin(${id}); return false;">Save</button>
+                        <button id="skinChangeBtn${id}" class="btn btn-danger saved-control" onclick="editCustomSkin(${id}); return false;">Change Skin</button>
+                        <p class="saved-control nonapproved-control">
+                            <span class="rejected-control" title="This skin was rejected. Please make sure your skin meets the image requirements at the bottom of this page. You can either change your skin or contact staff at agarioforums.net.">
+                                &#128274;<br>(Sorry, this skin was rejected)
+                            </span>
+                            <span class="pending-control" title="This skin will soon be reviewed by moderators. Please wait a couple days and check back here.">
+                                &#128274;<br>(Pending Approval)
+                            </span>
+                        </p>
+                        <button id="skinUseBtn${id}" class="btn btn-primary skinuse-btn saved-control enabled-control" onclick="toggleSkin(${id});">Use</button>
+                    </td>
+                    <td id="skinContainerCustom" class="skin-container custom-slot">
+                        <img src="img/customskin.png" alt="">
+                        <h4>Custom Skin</h4>
+                        <button id="skinPurchaseCustomBtn" class="btn btn-warning" onclick="purchaseCustomSkin(1000000);">Buy (1,000,000)</button>
+                    </td>
+                </tr>
+            </table>
+            <h3 id="publicSkinsHeader" class="skin-subcategory">Public Custom Skins (shared by other players)</h3>
+            <br>
+            <div id="publicSkinsPageContentNew" style="display:none;"></div>
+            <div id="publicSkinsPageContentPopular" style="display:none;">
+            <div id="publicSkinsPageContent1" class="publicskins-page-content" style="display:none;"></div>
+            <div class="publicskins-nav-bar">
+                Pages: <button class="btn btn-default publicskins-nav-btn publicskins-nav-btn-new" onclick="showPublicSkinsPage('New');">New</button>
+                <button class="btn btn-primary publicskins-nav-btn publicskins-nav-btn-popular" onclick="showPublicSkinsPage('Popular');">Popular</button>
+                <button class="btn btn-primary publicskins-nav-btn publicskins-nav-btn-1" onclick="showPublicSkinsPage('${page}');">${page}</button>
+                <!-- ... -->
+            </div>
+            <br>
+            <div id="publicSkinsPage">
+                <!-- publicSkinsPageContentNew -->
+            </div>
+            <div class="publicskins-nav-bar">
+                Pages: <button class="btn btn-default publicskins-nav-btn publicskins-nav-btn-new" onclick="showPublicSkinsPage('New');">New</button>
+                <button class="btn btn-primary publicskins-nav-btn publicskins-nav-btn-popular" onclick="showPublicSkinsPage('Popular');">Popular</button>
+                <button class="btn btn-primary publicskins-nav-btn publicskins-nav-btn-1" onclick="showPublicSkinsPage('${page}');">${page}</button>
+                <!-- ... -->
+            </div>
+            <br>
+            <h3 id="customSkinInstructions" class="skin-subcategory">Instructions</h3>
+            <div style="text-align:left; margin-left:10px;">
+                <p style="font-size:13px;">
+                    <br>
+                    <span style="font-size:18px;">Watch YouTube Tutorial:</span>
+                    <br>
+                    <a href="https://www.youtube.com/watch?v=Q-RaEtQ0IKo" target="_blank">YouTube Tutorial - How to get a custom skin</a>
+                    <br>
+                    <br>
+                    <span style="font-size:18px;">How it works:</span>
+                    <br>
+                    1. <a href="#" onclick="purchaseCustomSkin(1000000);">Buy</a>
+                    one or more Custom Skin slots (you can <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg8">get coins here</a>
+                    )<br>
+                    2. Upload an image of your choice and enter a skinname<br>
+                    3. Choose either to share your skin public for everyone to use, or keep it for private use only<br>
+                    4. Press Save button when you are ready<br>
+                    5. After saving your skin it must be approved by staff before use (can take a few days)<br>
+                    6. Play with your skin after approval *<br>
+                    <br>
+                    <span style="font-size:18px;">Image requirements & Rules:</span>
+                    <br>
+                    - PNG-files only (JPG-files are also allowed but not recommended)<br>
+                    - Maximum file size: 1MB (max size for JPG is 0.5MB)<br>
+                    - Recommended dimension: 512 x 512 pixels (min = 128 x 128, max = 1024 x 1024)<br>
+                    - NO copyright images (sorry no skins from other io games)<br>
+                    - NO abusive or inappropriate content<br>
+                    - NO smoking, cleavage/sensual skin, bood
+                    <br>
+                    <span style="color:#999; font-style:italic;">* Your custom skin does not expire.  Once approved, your skin cannot be changed anymore for a period of 30 days.  After 30 days you will have the option to change the skin again.  Please note that changed skins must be approved again before use.</span>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
