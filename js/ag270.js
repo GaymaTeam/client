@@ -7483,7 +7483,7 @@ function wsOnMessage(_0x2ba470) {
         case 117:
             var _0x393c4a = pkt.getUint8();
             var _0xfb04c = [];
-            for (let _0x2c414a = 0; _0x2c414a < _0x393c4a; _0x2c414a++) {
+            for (let i = 0; i < _0x393c4a; i++) {
                 var _0x3db38d = pkt.getString();
                 let _0x23e93d = pkt.getUint32();
                 var _0x119ca7 = pkt.getString();
@@ -7496,14 +7496,13 @@ function wsOnMessage(_0x2ba470) {
                         "qty": _0x58ad9b[_0xe7e300],
                         "id": _0xe7e300
                     });
-                } catch (_0xb4dac5) {}
-                var _0x4facd7 = {
+                } catch {}
+                _0xfb04c.push({
                     from: _0x3db38d,
                     date: _0x2e2fa7,
                     coins: _0x23e93d,
                     powerups: _0x42a858
-                };
-                _0xfb04c.push(_0x4facd7);
+                });
             }
             window.loadGiftUI(_0xfb04c);
             break;
@@ -10308,12 +10307,10 @@ window.univPcc = function(_0x434e22, ..._0x29ed12) {
     }
 };
 window.requestGiftLogs = function(_0x18f89e) {
-    var _0x57d9ee;
-    if (isReady()) {
-        (_0x57d9ee = new PacketWriter(2)).setUint8(141);
-        _0x57d9ee.setUint8(_0x18f89e);
-        _0x57d9ee.send();
-    }
+    if (isReady()) new PacketWriter(2)
+        .setUint8(141)
+        .setUint8(_0x18f89e)
+        .send();
 };
 window.loadGiftUI = function(_0x219024) {
     var _0x1fbe68 = {
@@ -10351,22 +10348,16 @@ window.loadGiftUI = function(_0x219024) {
 window.sendGiftToGoldMember = function(_0x1f01ed, _0x7b71d0) {
     if (_0x1f01ed < 5000 && Object.keys(_0x7b71d0).length < 1) {
         swal("Please enter a value to gift");
-    } else {
-        if (isReady()) {
-            var _0xf61365;
-            var _0x11aa54;
-            var _0x7b71d0 = Object.entries(_0x7b71d0);
-            var _0x532e9c = 6 + 2 * _0x7b71d0.length;
-            var _0x4e2af3 = new PacketWriter(_0x532e9c);
-            _0x4e2af3.setUint8(49);
-            _0x4e2af3.setUint32(_0x1f01ed);
-            _0x4e2af3.setUint8(_0x7b71d0.length);
-            for ([_0xf61365, _0x11aa54] of _0x7b71d0) {
-                _0x4e2af3.setUint8(parseInt(_0xf61365));
-                _0x4e2af3.setUint8(parseInt(_0x11aa54));
-            }
-            _0x4e2af3.send();
-        }
+    } else if (isReady()) {
+        var _0x7b71d0 = Object.entries(_0x7b71d0);
+        const pkt = new PacketWriter(6 + 2 * _0x7b71d0.length)
+            .setUint8(49)
+            .setUint32(_0x1f01ed)
+            .setUint8(_0x7b71d0.length);
+        for (const [id, qty] of _0x7b71d0) pkt
+            .setUint8(parseInt(id))
+            .setUint8(parseInt(qty));
+        pkt.send();
     }
 };
 window.purchaseItem = function(_0x4237f6, _0x1d2d9e) {
