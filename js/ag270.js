@@ -10322,8 +10322,8 @@ window.loadGiftUI = function(_0x219024) {
         "6": "img/inv_portal2.png",
         "7": "img/inv_freeze2.png",
         "8": "img/inv_anti_recombine2.png",
-        "9": "img/inv_shield2.png",
-        "10": "img/inv_frozenvirus2.png"
+        "9": "img/inv_shield5.png",
+        "10": "img/inv_frozen_virus2.png"
     };
     let _0x2032fd = document.getElementById("giftLogsContainer");
     _0x2032fd.innerHTML = '';
