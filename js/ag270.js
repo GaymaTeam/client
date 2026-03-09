@@ -213,6 +213,21 @@ const playerDances = {
     pulse:    2000
 };
 
+const giftLogs = [];
+let giftLogsPage = 1;
+const giftLogsPowersIcons = [
+    "recombine2",
+    "speed2",
+    "growth2",
+    "virus2",
+    "mothercell2",
+    "portal2",
+    "freeze2",
+    "anti_recombine2",
+    "shield5",
+    "frozen_virus2"
+];
+
 function rgbToHex(r, g, b) {
     return "#" + (r << 16 | g << 8 | b).toString(16).padStart(6, "0");
 }
@@ -7480,30 +7495,28 @@ function wsOnMessage(_0x2ba470) {
             }
             break;
         case 117:
+            if (!giftLogsPage || giftLogsPage === 1) giftLogs.length = 0;
             var _0x393c4a = pkt.getUint8();
-            var _0xfb04c = [];
             for (let i = 0; i < _0x393c4a; i++) {
-                var _0x3db38d = pkt.getString();
-                let _0x23e93d = pkt.getUint32();
-                var _0x119ca7 = pkt.getString();
-                var _0x2e2fa7 = pkt.getString();
-                var _0x42a858 = [];
+                const from = pkt.getString();
+                const coins = pkt.getUint32();
+                const _0x119ca7 = pkt.getString();
+                const date = pkt.getString().split(' ')[1]; // NOTE: we don't care about the day since we are GM of the day for only 1 day
+                const powerups = [];
                 try {
-                    var _0xe7e300;
                     var _0x58ad9b = JSON.parse(_0x119ca7);
-                    for (_0xe7e300 in _0x58ad9b) _0x42a858.push({
-                        "qty": _0x58ad9b[_0xe7e300],
-                        "id": _0xe7e300
+                    for (const id in _0x58ad9b) powerups.push({
+                        qty: _0x58ad9b[id],
+                        id
                     });
                 } catch {}
-                _0xfb04c.push({
-                    from: _0x3db38d,
-                    date: _0x2e2fa7,
-                    coins: _0x23e93d,
-                    powerups: _0x42a858
-                });
+                giftLogs.push({ from, date, coins, powerups });
             }
-            window.loadGiftUI(_0xfb04c);
+            if (_0x393c4a) {
+                if (_0x393c4a === 5)
+                    setTimeout(window.requestGiftLogs, 3000, giftLogsPage + 1);
+                window.loadGiftUI();
+            }
             break;
         case 118:
             _0x6dd07a = true;
@@ -10305,43 +10318,30 @@ window.univPcc = function(_0x434e22, ..._0x29ed12) {
         _0x1f631b.send();
     }
 };
-window.requestGiftLogs = function(_0x18f89e) {
+window.requestGiftLogs = function(page = 1) {
     if (isReady()) new PacketWriter(2)
         .setUint8(141)
-        .setUint8(_0x18f89e)
+        .setUint8(giftLogsPage = page)
         .send();
 };
-window.loadGiftUI = function(_0x219024) {
-    var _0x1fbe68 = {
-        "1": "img/inv_recombine2.png",
-        "2": "img/inv_speed2.png",
-        "3": "img/inv_growth2.png",
-        "4": "img/inv_virus2.png",
-        "5": "img/inv_mothercell2.png",
-        "6": "img/inv_portal2.png",
-        "7": "img/inv_freeze2.png",
-        "8": "img/inv_anti_recombine2.png",
-        "9": "img/inv_shield5.png",
-        "10": "img/inv_frozen_virus2.png"
-    };
-    let _0x2032fd = document.getElementById("giftLogsContainer");
-    _0x2032fd.innerHTML = '';
-    _0x219024.forEach(_0x1f4704 => {
-        var _0x5c9996 = document.createElement("div");
-        _0x5c9996.className = "gift-log-entry";
-        var _0x1ab07d = "<div class=\"from-date\"><span>From: " + _0x1f4704.from + "</span><span>" + _0x1f4704.date + "</span></div>";
-        var _0x53f476 = _0x1f4704.coins ? "<span class=\"coin\">" + _0x1f4704.coins.toLocaleString() + " Coins</span>" : '';
-        var _0x1f4704 = _0x1f4704.powerups.map(_0x2a24f3 => {
-            var _0x3fe08a = _0x1fbe68[_0x2a24f3.id] || '';
-            return "<span class=\"powerup-icon\">" + _0x2a24f3.qty + "× <img src=\"" + _0x3fe08a + "\" alt=\"\"></span>";
-        }).join('');
-        _0x5c9996.innerHTML = _0x1ab07d + ("<div class=\"rewards\">" + _0x53f476 + _0x1f4704 + "</div>");
-        _0x2032fd.appendChild(_0x5c9996);
-    });
-    if (_0x219024 && 0 !== _0x219024.length) {
-        document.getElementById("logsPagination").innerHTML = "<button onclick=\"requestGiftLogs(1)\">1</button><button onclick=\"requestGiftLogs(2)\">2</button><button onclick=\"requestGiftLogs(3)\">3</button>";
+window.loadGiftUI = function() {
+    const giftLogsContainer = document.getElementById("giftLogsContainer");
+    if (giftLogs.length) {
+        giftLogsContainer.innerHTML = '';
+        const total = { coins: 0, powerups: Array(10).fill(0) };
+        let n = giftLogs.length;
+        for (const logData of giftLogs) {
+            const log = document.createElement("div");
+            log.className = "gift-log-entry";
+            log.innerHTML = `<div class="from-date"><span style="font-weight:bold">°${n--}</span><span>From: ${logData.from}</span><span>${logData.date}</span></div><div class="rewards">${logData.coins ? '<span class="coin">' + logData.coins.toLocaleString() + " Coins</span>" : ''}${logData.powerups.map(power => `<span class="powerup-icon">${power.qty}× <img src="img/inv_${giftLogsPowersIcons[power.id - 1]}.png"></span>`).join('')}</div>`;
+            giftLogsContainer.appendChild(log);
+            total.coins += logData.coins;
+            for (const { id, qty } of logData.powerups)
+                total.powerups[id - 1] += qty;
+        }
+        logsPagination.innerHTML = `<div class="gift-log-entry"><div class="from-date">Total</div><div class="rewards"><span class="coin">${total.coins.toLocaleString()} Coins</span>${total.powerups.map((qty, id) => `<span class="powerup-icon">${qty}× <img src="img/inv_${giftLogsPowersIcons[id]}.png"></span>`).join('')}</div></div>`;
     } else {
-        _0x2032fd.innerHTML = "<div class=\"gift-log-entry\"><div class=\"from-date\"><p>No gifts received yet 🕵️‍♂️. This panel shows powerups and coins sent to you by other players when you're chosen as the 🏆 Gold Member of the Day.<br><small style=\"color:grey\">You must be a gold member for this feature!</small></p></div></div>";
+        giftLogsContainer.innerHTML = '<div class="gift-log-entry"><div class="from-date"><p>No gifts received yet 🕵️‍♂️. This panel shows powerups and coins sent to you by other players when you\'re chosen as the 🏆 Gold Member of the Day.<br><small style="color:grey">You must be a gold member for this feature!</small></p></div></div>';
     }
 };
 window.sendGiftToGoldMember = function(_0x1f01ed, _0x7b71d0) {
