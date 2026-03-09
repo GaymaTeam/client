@@ -6381,7 +6381,6 @@ function wsOnMessage(_0x2ba470) {
                 _0x427639 = _0x1740e2;
                 currentParty.push({
                     name: _0x1740e2,
-                    Wt: $("<div/>").text(_0x427639).html(),
                     accepted: !!(1 & flags),
                     showPos: false,
                     cx: 0,
@@ -7419,13 +7418,13 @@ function wsOnMessage(_0x2ba470) {
             break;
         case 115:
             if (0 < (_0x435e7a = pkt.getUint16())) {
-                _0x2e4195 = [];
+                skins = [];
                 for (i = 0; i < _0x435e7a; ++i) {
                     var flags = pkt.getUint8();
                     var _0x1819b7 = pkt.getUint16();
                     var _0x3af9db = pkt.getUint8();
                     var _0x3a3464 = pkt.getUint32();
-                    _0x2e4195.push({
+                    skins.push({
                         "id": _0x1819b7,
                         "type": _0x3af9db,
                         "name": pkt.getString(),
@@ -7443,17 +7442,17 @@ function wsOnMessage(_0x2ba470) {
                         "enabled": !!(1 & flags)
                     });
                     if (1 == _0x3af9db) {
-                        _0x2e4195[_0x2e4195.length - 1].levelRequired = pkt.getUint16();
+                        skins[skins.length - 1].levelRequired = pkt.getUint16();
                     } else if (3 == _0x3af9db) {
-                        _0x2e4195[_0x2e4195.length - 1].vipLevelRequired = pkt.getUint8();
+                        skins[skins.length - 1].vipLevelRequired = pkt.getUint8();
                     } else if (2 == _0x3af9db) {
-                        _0x2e4195[_0x2e4195.length - 1].price = pkt.getUint32();
+                        skins[skins.length - 1].price = pkt.getUint32();
                     } else if (4 == _0x3af9db) {
                         if (8 & flags) {
-                            _0x2e4195[_0x2e4195.length - 1].pendingApproval = pkt.getUint8();
-                            _0x2e4195[_0x2e4195.length - 1].changedDaysAgo = pkt.getUint16();
+                            skins[skins.length - 1].pendingApproval = pkt.getUint8();
+                            skins[skins.length - 1].changedDaysAgo = pkt.getUint16();
                         } else if (16 & flags && 1 & flags) {
-                            _0x2e4195[_0x2e4195.length - 1].popularity = pkt.getUint16();
+                            skins[skins.length - 1].popularity = pkt.getUint16();
                         }
                     }
                     _0x48a780[_0x1819b7] = _0x3a3464;
@@ -7930,7 +7929,7 @@ function _0x2aa794() {
     var _0x513e33 = ++_0x36e61c;
     $.post("skins.php", {
         "data": JSON.stringify({
-            "skins": _0x2e4195,
+            "skins": skins,
             "activeTab": _0x4f2e5c,
             "currentSkin": gameSettings.skinId,
             "customSkinPrice": _0x520472,
@@ -7979,8 +7978,8 @@ function _0x4b2336() {
     gotSkins = true;
     if (isReady()) {
         sendSignal(115);
-    } else if (0 < _0x2e4195.length) {
-        _0x2e4195 = [];
+    } else if (0 < skins.length) {
+        skins = [];
         _0x2aa794();
     }
 }
@@ -9120,7 +9119,7 @@ function _0x1a0f0b() {
         }
         for (var _0xa17f22 = 0; _0xa17f22 < _0x5bcc45; _0xa17f22++) {
             var _0x172831 = currentParty[_0xa17f22];
-            _0x588307 += _0x211844 ? "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.Wt || "Agma.io Player") + "<button class=\"partyKickBtn\" value=\"" + _0xa17f22 + "\" onclick=\"kickPartyMember($(this))\">x</button></p>" : "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.Wt || "Agma.io Player") + "</p>";
+            _0x588307 += _0x211844 ? "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.name || "Agma.io Player") + "<button class=\"partyKickBtn\" value=\"" + _0xa17f22 + "\" onclick=\"kickPartyMember($(this))\">x</button></p>" : "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.Wt || "Agma.io Player") + "</p>";
         }
         if (currentParty.length > _0x5bcc45) {
             _0x588307 += "<p style=\"margin-bottom:-6px;\">+ " + (currentParty.length - _0x5bcc45).toString() + " more players...</p>";
@@ -10010,7 +10009,7 @@ var _0x7f089d = false;
 var _0x48a780 = {};
 var _0x2645ec = {};
 var _0x520472 = 0;
-var _0x2e4195 = [];
+var skins = [];
 var _0x64a0d5 = true;
 var _0x16de9b = null;
 var _0x4506fc = '';
