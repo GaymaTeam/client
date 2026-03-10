@@ -2843,7 +2843,7 @@ function _0x13d7e0() {
         _0x170269 = _0x5b6b18 = '';
         _0x522c0e();
         _0x4400ec = _0x11c29c = _0x52da56 = _0x506037 = _0x43802f = _0x53176c = !(_0x568853 = -1);
-        server360ShotDisabled = true;
+        server360ShotEnabled = true;
         _0x47ccce = _0x11de32 = _0x52d414 = _0x29f86a = _0x4512d9 = _0x2873c2 = _0x576526 = _0x38ea95 = _0x852ff = _0x273de7 = _0x30bfdb = _0x4a4cf7 = _0x24af02 = _0x3b8888 = lastSpawn = respawnCooldown = _0x5a219c = 0;
         $(".inventory-box").removeClass("activatedInv");
         _0x37e4a8 = _0xb1583e = _0x31962a = _0x5ea511 = _0x5a5860 = _0x3c6854 = 0;
@@ -6066,7 +6066,7 @@ function wsOnMessage(_0x2ba470) {
             var _0x571f96 = pkt.getUint32();
             var flags = pkt.getUint8();
             _0x42a8fa = !!(1 & flags);
-            server360ShotDisabled = !!(2 & flags);
+            server360ShotEnabled = !!(2 & flags);
             _0x3df17b = !!(4 & flags);
             _0x247d2d = 2 * pkt.getUint32();
             _0x2cd9d1 = 2 * pkt.getUint32();
@@ -9410,9 +9410,7 @@ function _0x465950(_0x2c4b45, _0x5e4a11) {
             break;
         case 1:
             if (1 != _0x47ccce) {
-                if (!server360ShotDisabled || _0x11de32 <= 0) {
-                    return;
-                }
+                if (!server360ShotEnabled || _0x11de32 <= 0) return;
                 _0x47ccce = 1;
                 $(".inventory-box").removeClass("activatedInv");
                 $("#inv360Shot").addClass("activatedInv");
@@ -9431,9 +9429,7 @@ function _0x465950(_0x2c4b45, _0x5e4a11) {
             break;
         case 3:
             if (3 != _0x47ccce) {
-                if (_0x31962a <= 0) {
-                    return;
-                }
+                if (_0x31962a <= 0) return;
                 _0x47ccce = 3;
                 $(".inventory-box").removeClass("activatedInv");
                 $("#invFrozenVirus").addClass("activatedInv");
@@ -9962,7 +9958,7 @@ var _0x4512d9 = 0;
 var _0x29f86a = 0;
 var _0x52d414 = 0;
 var _0x11de32 = 0;
-var server360ShotDisabled = true;
+var server360ShotEnabled = true;
 var _0x47ccce = 0;
 var _0x3c6854 = 0;
 var _0x5a5860 = 0;
