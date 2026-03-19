@@ -1,6 +1,7 @@
 // TODO: remove chat canvas
 // TODO: remove leaderboard canvas
 // FIXME: localStorage.ag218 is also a ban factor
+// FIXME: user settings arent saved to storage
 
 const FRAMERATE = 1000 / 60;
 const gameSettings = Object.assign({
@@ -9132,7 +9133,7 @@ function _0x1a0f0b() {
         }
         for (var _0xa17f22 = 0; _0xa17f22 < _0x5bcc45; _0xa17f22++) {
             var _0x172831 = currentParty[_0xa17f22];
-            _0x588307 += _0x211844 ? "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.name || "Agma.io Player") + "<button class=\"partyKickBtn\" value=\"" + _0xa17f22 + "\" onclick=\"kickPartyMember($(this))\">x</button></p>" : "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.Wt || "Agma.io Player") + "</p>";
+            _0x588307 += _0x211844 ? "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.name || "Agma.io Player") + "<button class=\"partyKickBtn\" value=\"" + _0xa17f22 + "\" onclick=\"kickPartyMember($(this))\">x</button></p>" : "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.name || "Agma.io Player") + "</p>";
         }
         if (currentParty.length > _0x5bcc45) {
             _0x588307 += "<p style=\"margin-bottom:-6px;\">+ " + (currentParty.length - _0x5bcc45).toString() + " more players...</p>";
