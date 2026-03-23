@@ -275,6 +275,7 @@ window.onload = function() {
     var _0xbbfdd2 = false;
     var _0x4a595d = false;
     canEditGameSettings = false;
+    $('#nick').prop('value', gameSettings.nickname);
     _0x5df715(gameSettings.skinId);
     _0x5cfc91(gameSettings.wearablesSelected);
     $("#cSkins").prop("checked", gameSettings.sSkins).change();
@@ -292,8 +293,8 @@ window.onload = function() {
     $("#cSectionGrid").prop("checked", gameSettings.sSectionGrid).change();
     $("#cGrid").prop("checked", gameSettings.sGrid).change();
     $("#cCustomBack").prop("checked", gameSettings.sCustomBack).change();
-    $("input[name=customBackType][value=0]").prop("checked", gameSettings.sCustomBackType).change();
-    $("#customBackOpacitySlider").val(gameSettings.sustomBackOpacitySlider).change();
+    $(`input[name=customBackType][value=${gameSettings.sCustomBackType}]`).prop("checked", gameSettings.sCustomBackType).change();
+    $("#customBackOpacitySlider").val(Math.clamp(~~(100 * (parseFloat(gameSettings.sCustomBackOpacity) || 0) + 0.5), 0, 100)).change();
     $("#cCustomBackClip").prop("checked", gameSettings.sCustomBackClip).change();
     $("#cCustomBackEnableColor").prop("checked", gameSettings.sCustomBackEnableColor).change();
     $("#customBackColorPicker").val(gameSettings.sCustomBackColor).change();
