@@ -844,7 +844,28 @@ window.onload = function() {
             if (_0xf6ede0) {
                 if (13 == _0xd60e14.keyCode || 27 == _0xd60e14.keyCode) {
                     _0x4204cb();
-                } else if (_0x83c4c2 = "keySplit" == _0xf6ede0.id ? _0x3569f8.Space : "keyDoubleSplit" == _0xf6ede0.id ? _0x3569f8.D : "keyTripleSplit" == _0xf6ede0.id ? _0x3569f8.T : "keyRespawn" == _0xf6ede0.id ? _0x3569f8.M : "keyMacroSplit" == _0xf6ede0.id ? _0x3569f8.Z : "keyMacroFeed" == _0xf6ede0.id ? _0x3569f8.W : "keyMultiFeed" == _0xf6ede0.id ? _0x3569f8.V : "keyFixedMouse" == _0xf6ede0.id ? _0x3569f8.C : "keyToggleCamera" == _0xf6ede0.id ? _0x3569f8.Q : "keyFreezeCamera" == _0xf6ede0.id ? _0x3569f8.F : "keyRecombine" == _0xf6ede0.id ? _0x3569f8.E : "keySpeed" == _0xf6ede0.id ? _0x3569f8.S : "key360" == _0xf6ede0.id ? _0x3569f8.W360 : "keyFreezeSelf" == _0xf6ede0.id ? _0x3569f8.F : "keyInvisibility" == _0xf6ede0.id ? _0x3569f8.I : "keyToggleControlBots" == _0xf6ede0.id ? _0x3569f8.Q : "keySplitBots" == _0xf6ede0.id ? _0x3569f8.A : "keyFeedBots" == _0xf6ede0.id ? _0x3569f8.X : "keyDropWall" == _0xf6ede0.id ? _0x3569f8.DW : null) {
+                } else if (_0x83c4c2 = (
+                    "keySplit"             == _0xf6ede0.id ? _0x3569f8.Space :
+                    "keyDoubleSplit"       == _0xf6ede0.id ? _0x3569f8.D :
+                    "keyTripleSplit"       == _0xf6ede0.id ? _0x3569f8.T :
+                    "keyRespawn"           == _0xf6ede0.id ? _0x3569f8.M :
+                    "keyMacroSplit"        == _0xf6ede0.id ? _0x3569f8.Z :
+                    "keyMacroFeed"         == _0xf6ede0.id ? _0x3569f8.W :
+                    "keyMultiFeed"         == _0xf6ede0.id ? _0x3569f8.V :
+                    "keyFixedMouse"        == _0xf6ede0.id ? _0x3569f8.C :
+                    "keyToggleCamera"      == _0xf6ede0.id ? _0x3569f8.Q :
+                    "keyFreezeCamera"      == _0xf6ede0.id ? _0x3569f8.F :
+                    "keyRecombine"         == _0xf6ede0.id ? _0x3569f8.E :
+                    "keySpeed"             == _0xf6ede0.id ? _0x3569f8.S :
+                    "key360"               == _0xf6ede0.id ? _0x3569f8.W360 :
+                    "keyFreezeSelf"        == _0xf6ede0.id ? _0x3569f8.F :
+                    "keyInvisibility"      == _0xf6ede0.id ? _0x3569f8.I :
+                    "keyToggleControlBots" == _0xf6ede0.id ? _0x3569f8.Q :
+                    "keySplitBots"         == _0xf6ede0.id ? _0x3569f8.A :
+                    "keyFeedBots"          == _0xf6ede0.id ? _0x3569f8.X :
+                    "keyDropWall"          == _0xf6ede0.id ? _0x3569f8.DW :
+                    null
+                )) {
                     _0x83c4c2.c = _0xd60e14.keyCode;
                     _0x83c4c2.d = _0x5f2da0[_0xd60e14.keyCode] || _0xd60e14.key || '';
                     (_0x572def = _0x58bb5b(_0xf6ede0)).addClass("updated");
@@ -10156,14 +10177,12 @@ function _0x11c620() {
 }
 
 function _0x161cd2() {
-    var _0x44a2c1;
-    var _0x40a549 = {
-        sAPInv: allowPartyInvite,
-        sAPAni: allowPartyAnimations,
-        sAuFdEn: autoFeedEnabled
-    };
     if (_0x597133) {
-        _0x44a2c1 = _0x40a549;
+        const _0x44a2c1 = {
+            sAPInv: allowPartyInvite,
+            sAPAni: allowPartyAnimations,
+            sAuFdEn: autoFeedEnabled
+        };
         if (2 == _0x3f104e) {
             _0x44a2c1.sLargeRenderDistance = largeRenderDistance;
             _0x44a2c1.sGldNickEnabled = gldNickEnabled;
@@ -10631,24 +10650,12 @@ window.setGreenName = function(_0x5054e2) {
         }
         if (greenNameEnabled && _0x597133) {
             _0x597133 = false;
-            if (2 == _0x3f104e) {
-                setSetting("cGoldName", false);
-            }
-            if (can_blue_name) {
-                setSetting("cBlueName", false);
-            }
-            if (can_orange_name) {
-                setSetting("cOrangeName", false);
-            }
-            if (can_red_name) {
-                setSetting("cRedName", false);
-            }
-            if (can_black_name) {
-                setSetting("cBlackName", false);
-            }
-            if (can_custom_color_name) {
-                setSetting("cCustomColorName", false);
-            }
+            if (2 == _0x3f104e) setSetting("cGoldName", false);
+            if (can_blue_name) setSetting("cBlueName", false);
+            if (can_orange_name) setSetting("cOrangeName", false);
+            if (can_red_name) setSetting("cRedName", false);
+            if (can_black_name) setSetting("cBlackName", false);
+            if (can_custom_color_name) setSetting("cCustomColorName", false);
             _0x597133 = true;
         }
         _0x161cd2();
@@ -10663,24 +10670,12 @@ window.setBlueName = function(_0x3e8618) {
         }
         if (blueNameEnabled && _0x597133) {
             _0x597133 = false;
-            if (2 == _0x3f104e) {
-                setSetting("cGoldName", false);
-            }
-            if (can_green_name) {
-                setSetting("cGreenName", false);
-            }
-            if (can_orange_name) {
-                setSetting("cOrangeName", false);
-            }
-            if (can_red_name) {
-                setSetting("cRedName", false);
-            }
-            if (can_black_name) {
-                setSetting("cBlackName", false);
-            }
-            if (can_custom_color_name) {
-                setSetting("cCustomColorName", false);
-            }
+            if (2 == _0x3f104e) setSetting("cGoldName", false);
+            if (can_green_name) setSetting("cGreenName", false);
+            if (can_orange_name) setSetting("cOrangeName", false);
+            if (can_red_name) setSetting("cRedName", false);
+            if (can_black_name) setSetting("cBlackName", false);
+            if (can_custom_color_name) setSetting("cCustomColorName", false);
             _0x597133 = true;
         }
         _0x161cd2();
@@ -10695,24 +10690,12 @@ window.setOrangeName = function(_0x4a3695) {
         }
         if (orangeNameEnabled && _0x597133) {
             _0x597133 = false;
-            if (2 == _0x3f104e) {
-                setSetting("cGoldName", false);
-            }
-            if (can_green_name) {
-                setSetting("cGreenName", false);
-            }
-            if (can_blue_name) {
-                setSetting("cBlueName", false);
-            }
-            if (can_red_name) {
-                setSetting("cRedName", false);
-            }
-            if (can_black_name) {
-                setSetting("cBlackName", false);
-            }
-            if (can_custom_color_name) {
-                setSetting("cCustomColorName", false);
-            }
+            if (2 == _0x3f104e) setSetting("cGoldName", false);
+            if (can_green_name) setSetting("cGreenName", false);
+            if (can_blue_name) setSetting("cBlueName", false);
+            if (can_red_name) setSetting("cRedName", false);
+            if (can_black_name) setSetting("cBlackName", false);
+            if (can_custom_color_name) setSetting("cCustomColorName", false);
             _0x597133 = true;
         }
         _0x161cd2();
@@ -10727,24 +10710,12 @@ window.setRedName = function(_0x488cf0) {
         }
         if (redNameEnabled && _0x597133) {
             _0x597133 = false;
-            if (2 == _0x3f104e) {
-                setSetting("cGoldName", false);
-            }
-            if (can_green_name) {
-                setSetting("cGreenName", false);
-            }
-            if (can_blue_name) {
-                setSetting("cBlueName", false);
-            }
-            if (can_orange_name) {
-                setSetting("cOrangeName", false);
-            }
-            if (can_black_name) {
-                setSetting("cBlackName", false);
-            }
-            if (can_custom_color_name) {
-                setSetting("cCustomColorName", false);
-            }
+            if (2 == _0x3f104e) setSetting("cGoldName", false);
+            if (can_green_name) setSetting("cGreenName", false);
+            if (can_blue_name) setSetting("cBlueName", false);
+            if (can_orange_name) setSetting("cOrangeName", false);
+            if (can_black_name) setSetting("cBlackName", false);
+            if (can_custom_color_name) setSetting("cCustomColorName", false);
             _0x597133 = true;
         }
         _0x161cd2();
@@ -10759,24 +10730,12 @@ window.setBlackName = function(_0x23a5b3) {
         }
         if (blackNameEnabled && _0x597133) {
             _0x597133 = false;
-            if (2 == _0x3f104e) {
-                setSetting("cGoldName", false);
-            }
-            if (can_green_name) {
-                setSetting("cGreenName", false);
-            }
-            if (can_blue_name) {
-                setSetting("cBlueName", false);
-            }
-            if (can_orange_name) {
-                setSetting("cOrangeName", false);
-            }
-            if (can_red_name) {
-                setSetting("cRedName", false);
-            }
-            if (can_custom_color_name) {
-                setSetting("cCustomColorName", false);
-            }
+            if (2 == _0x3f104e) setSetting("cGoldName", false);
+            if (can_green_name) setSetting("cGreenName", false);
+            if (can_blue_name) setSetting("cBlueName", false);
+            if (can_orange_name) setSetting("cOrangeName", false);
+            if (can_red_name) setSetting("cRedName", false);
+            if (can_custom_color_name) setSetting("cCustomColorName", false);
             _0x597133 = true;
         }
         _0x161cd2();
@@ -10791,24 +10750,12 @@ window.setCustomColorName = function(_0x31b40d) {
         }
         if (customColorNameEnabled && _0x597133) {
             _0x597133 = false;
-            if (2 == _0x3f104e) {
-                setSetting("cGoldName", false);
-            }
-            if (can_green_name) {
-                setSetting("cGreenName", false);
-            }
-            if (can_blue_name) {
-                setSetting("cBlueName", false);
-            }
-            if (can_orange_name) {
-                setSetting("cOrangeName", false);
-            }
-            if (can_red_name) {
-                setSetting("cRedName", false);
-            }
-            if (can_black_name) {
-                setSetting("cBlackName", false);
-            }
+            if (2 == _0x3f104e) setSetting("cGoldName", false);
+            if (can_green_name) setSetting("cGreenName", false);
+            if (can_blue_name) setSetting("cBlueName", false);
+            if (can_orange_name) setSetting("cOrangeName", false);
+            if (can_red_name) setSetting("cRedName", false);
+            if (can_black_name) setSetting("cBlackName", false);
             _0x597133 = true;
         }
         _0x161cd2();
