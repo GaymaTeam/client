@@ -1583,6 +1583,8 @@ function _0x548e1b() {
     var _0x4cd152 = _0x507d30 % 60;
     var _0x56b8c5 = Math.floor(_0x373787 / 60);
     var _0x197f26 = _0x373787 % 60;
+    var minutesLeftMinions = Math.floor(_0x551cbe / 60);
+    var secondsLeftMinions = _0x551cbe % 60;
     return {
         "mass": 0 < _0x4c32dc ? " (" + _0x3e8e1d + "m " + _0x3c5736 + "s left)" : '',
         "coins": 0 < _0x39dfe9 ? " (" + _0x1f960f + "m " + _0x59ed77 + "s left)" : '',
