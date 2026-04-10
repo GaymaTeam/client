@@ -62,6 +62,7 @@ const objectsApiVersion = 2;
 const wearablesApiVersion = 9;
 const badwords = ["hitler", "nazi", "porno", "fuck", "lul", "eikel", "isis", "penis", "sora", "admin", "administrator", "hate", "terrorist"];
 const accountRessources = { level: 0, exp: 0, coins: 0 };
+const pageByType = { "0": 1, "1": 1, "2": 1, "3": 1, "4": 1, "5": 1 };
 const customBackgroundColor = { r: 0, g: 0, b: 0 };
 const youtubeChannels = [
     { skinId: 56, id: 'UCTB0RGol-BnYKe0XliITlYg', verified: true },
@@ -495,6 +496,9 @@ window.onload = function() {
         if (_0x1518ea) {
             _0x5a2fbe();
         }
+    });
+    $(document).on("shown.bs.tab", "#menugold a[data-toggle=\"tab\"]", function() {
+        _0x39d606($("#skinsOwnedTab").hasClass("active") ? 5 : $("#skinsCustomTab").hasClass("active") ? 4 : $("#skinsVIPTab").hasClass("active") ? 3 : $("#skinsBuyTab").hasClass("active") ? 2 : $("#skinsLevelTab").hasClass("active") ? 1 : 0);
     });
     _0x2216eb.onclick = function(_0xd6bc5) {
         showSkin(gameSettings.skinId, false);
@@ -7498,7 +7502,7 @@ function wsOnMessage(_0x2ba470) {
                     _0x48a780[_0x1819b7] = _0x3a3464;
                 }
                 if (0 < (_0xc93166 = pkt.getUint32())) {
-                    _0x520472 = _0xc93166;
+                    customSkinPrice = _0xc93166;
                 }
                 _0x2aa794();
                 _0x64a0d5 = false;
@@ -7962,37 +7966,114 @@ function _0x38aef7() {
     }
 }
 
+function _0x58e393() {
+    var _0x66d086;
+    var _0x292201;
+    var _0x586196 = $("#menugold");
+    if (_0x586196.length) {
+        if (!$("#skinsOwnedTab").length) {
+            _0x66d086 = "<li id=\"skinsOwnedTab\"><a data-toggle=\"tab\" href=\"#skinsOwned\">Owned</a></li>";
+            if (!(_0x292201 = _0x586196.find("li").first().parent()).length) {
+                _0x292201 = _0x586196;
+            }
+            if ($("#skinsBuyTab").length) {
+                $("#skinsBuyTab").after(_0x66d086);
+            } else {
+                _0x292201.append(_0x66d086);
+            }
+        }
+        if (!_0x58e393.bound) {
+            $(document).on("click", "#skinsOwnedTab a", function(_0x29ba1f) {
+                _0x29ba1f.preventDefault();
+                var _0x4f507c = $(this);
+                var _0x232ec3 = $("#skinsOwned");
+                if (!_0x232ec3.length) {
+                    if ((_0x29ba1f = $("#skinBrowser")).length) {
+                        _0x29ba1f.append("<div id=\"skinsOwned\" class=\"tab-pane fade\"><div class=\"skin-data\"><p style=\"padding:10px;opacity:0.9;\">Loading owned skins...</p></div></div>");
+                        _0x232ec3 = $("#skinsOwned");
+                    }
+                    _0x16de9b = function() {
+                        var _0x5cb995 = $("#skinsOwnedTab a");
+                        if (_0x5cb995.length) {
+                            _0x5cb995.first().trigger("click");
+                        }
+                    };
+                    _0x2aa794();
+                }
+                if ("function" == typeof _0x4f507c.tab) {
+                    _0x4f507c.tab("show");
+                }
+                $("#menugold li").removeClass("active");
+                $("#skinsOwnedTab").addClass("active");
+                $("#skinBrowser div.tab-pane").removeClass("in active");
+                _0x232ec3.addClass("in active");
+                _0x39d606(5);
+            });
+            _0x58e393.bound = true;
+        }
+    }
+}
+
+function _0x21b7ee(_0x18da98) {
+    if (_0x18da98 && _0x18da98.length) {
+        _0x18da98.find("img[data-src]").each(function() {
+            var _0x31117b = this.getAttribute("src") || '';
+            var _0x26b52b = this.getAttribute("data-src") || '';
+            if (!(!_0x26b52b || '' !== _0x31117b && 0 !== _0x31117b.indexOf("data:image/gif;base64,"))) {
+                this.setAttribute("src", _0x26b52b);
+            }
+        });
+    }
+}
+
+function _0x39d606(_0x95fcf3) {
+    _0x21b7ee($(5 == (_0x95fcf3 = _0x95fcf3) ? "#skinsOwned" : 4 == _0x95fcf3 ? "#skinsCustom" : 3 == _0x95fcf3 ? "#skinsVIP" : 2 == _0x95fcf3 ? "#skinsBuy" : 1 == _0x95fcf3 ? "#skinsLevel" : "#skinsFree"));
+}
+
 function _0x2aa794() {
-    var _0x4f2e5c = $("#skinsCustomTab").hasClass("active") ? 4 : $("#skinsVIPTab").hasClass("active") ? 3 : $("#skinsBuyTab").hasClass("active") ? 2 : $("#skinsLevelTab").hasClass("active") ? 1 : 0;
+    _0x58e393();
+    const activeTab = $("#skinsOwnedTab").hasClass("active") ? 5 : $("#skinsCustomTab").hasClass("active") ? 4 : $("#skinsVIPTab").hasClass("active") ? 3 : $("#skinsBuyTab").hasClass("active") ? 2 : $("#skinsLevelTab").hasClass("active") ? 1 : 0;
     var _0x513e33 = ++_0x36e61c;
     $.post("skins.php", {
         "data": JSON.stringify({
-            "skins": skins,
-            "activeTab": _0x4f2e5c,
+            skins,
+            activeTab,
             "currentSkin": gameSettings.skinId,
-            "customSkinPrice": _0x520472,
-            "supportFileDragAndDrop": supportFileDragAndDrop
+            customSkinPrice,
+            supportFileDragAndDrop,
+            pageByType
         })
     }, function(_0xe09ea3) {
         if (_0xcda4aa < _0x513e33) {
-            document.getElementById("phpSkins").innerHTML = _0xe09ea3;
-            if (!localStorage.fbSkin) {
-                $("#skinUseBtn73").text("Facebook Like").attr("onclick", "fbLikeSkin();");
-            }
-            if (!localStorage.ytSkin) {
-                $("#skinUseBtn71").text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(71);");
-            }
-            for (var _0x43e1a0 = 0; _0x43e1a0 < youtubeChannels.length; _0x43e1a0++) {
-                var _0x49df12 = youtubeChannels[_0x43e1a0];
-                if (!localStorage["ytSkin" + _0x49df12.skinId]) {
-                    $("#skinUseBtn" + _0x49df12.skinId).text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(" + _0x49df12.skinId + ", '" + _0x49df12.id + "');");
+            const _0xe8dc3 = "string" == typeof _0xe09ea3 && -1 !== _0xe09ea3.indexOf("id=\"skinsOwned\"");
+            const _0x408464 = "string" == typeof _0xe09ea3 && -1 !== _0xe09ea3.indexOf("skin-tab-pager");
+            if (!_0xe8dc3 || !_0x408464) {
+                console.warn("Skin endpoint response missing. Existing shop HTML.", {
+                    "hasOwnedPane": _0xe8dc3,
+                    "hasPagerMarkup": _0x408464
+                });
+                curserMessage("Skin shop response mismatch.", false, false, 0, 8);
+            } else {
+                document.getElementById("phpSkins").innerHTML = _0xe09ea3;
+                if (!localStorage.fbSkin) {
+                    $("#skinUseBtn73").text("Facebook Like").attr("onclick", "fbLikeSkin();");
                 }
-                $("#skinContainer" + _0x49df12.skinId).append("<a href=\"https://www.youtube.com/channel/" + _0x49df12.id + "\" target=\"_blank\" title=\"YouTuber Skin\"><div class=\"skin-tag skin-tag-yt\"></div>" + (_0x49df12.verified ? "<div title=\"Agma.io Content Creator\" class=\"skin-tag skin-tag-star\"></div>" : '') + "</a>");
-            }
-            _0xe09ea3 = $($("#menugold li.active a").attr("href"));
-            if (_0xe09ea3 && !_0xe09ea3.hasClass("in active")) {
-                $("#skinBrowser div.tab-pane").removeClass("in active");
-                _0xe09ea3.addClass("in active");
+                if (!localStorage.ytSkin) {
+                    $("#skinUseBtn71").text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(71);");
+                }
+                for (var _0x43e1a0 = 0; _0x43e1a0 < youtubeChannels.length; _0x43e1a0++) {
+                    var _0x49df12 = youtubeChannels[_0x43e1a0];
+                    if (!localStorage["ytSkin" + _0x49df12.skinId]) {
+                        $("#skinUseBtn" + _0x49df12.skinId).text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(" + _0x49df12.skinId + ", '" + _0x49df12.id + "');");
+                    }
+                    $("#skinContainer" + _0x49df12.skinId).append("<a href=\"https://www.youtube.com/channel/" + _0x49df12.id + "\" target=\"_blank\" title=\"YouTuber Skin\"><div class=\"skin-tag skin-tag-yt\"></div>" + (_0x49df12.verified ? "<div title=\"Agma.io Content Creator\" class=\"skin-tag skin-tag-star\"></div>" : '') + "</a>");
+                }
+                _0xe09ea3 = $($("#menugold li.active a").attr("href"));
+                if (_0xe09ea3 && !_0xe09ea3.hasClass("in active")) {
+                    $("#skinBrowser div.tab-pane").removeClass("in active");
+                    _0xe09ea3.addClass("in active");
+                }
+                _0x39d606(activeTab);
             }
             _0xcda4aa = _0x513e33;
             if (_0x16de9b) {
@@ -8372,6 +8453,19 @@ $.post("gmshtout.php", {}, function(_0x4e0944) {
         _0x346608.textContent = _0x4e0944;
     }
 }, "html");
+window.changeSkinsTabPage = function(_0x475da7, _0x5b5ffd) {
+    _0x475da7 = parseInt(_0x475da7, 10);
+    _0x5b5ffd = parseInt(_0x5b5ffd, 10);
+    if (!(isNaN(_0x475da7) || _0x475da7 < 0 || 5 < _0x475da7)) {
+        if (isNaN(_0x5b5ffd) || _0x5b5ffd < 1) {
+            _0x5b5ffd = 1;
+        }
+        if (pageByType[_0x475da7] !== _0x5b5ffd) {
+            pageByType[_0x475da7] = _0x5b5ffd;
+            _0x2aa794();
+        }
+    }
+};
 window.resetMasterTooltips = function(_0x4132db) {
     $((_0x4132db || '') + " .masterTooltip").hover(function(_0x53477a) {
         var _0x358f02 = '';
@@ -8420,6 +8514,72 @@ window.showSkin = function(_0x56bb91, _0x263a38) {
                 }).tab("show");
             }
             _0x457f56();
+        }
+    }
+    function _0x48d723() {
+        if (!_0xc4a55e) {
+            if (!document.getElementById("skinContainer" + _0x56bb91)) {
+                var _0x94b26f = function(_0x365441) {
+                    var skin;
+                    var n = 0;
+                    for (var i = 0; i < _0x5efd88.length; i++)
+                        if (0 == (skin = _0x5efd88[i]).type && -1 === String(skin.name || '').indexOf("Gacha")) {
+                            if (parseInt(skin.id, 10) === _0x365441)
+                                return { tab: 0, page: Math.floor(n / 60) + 1 };
+                            n++;
+                        }
+                    for (i = n = 0; i < _0x5efd88.length; i++)
+                        if (1 == (skin = _0x5efd88[i]).type) {
+                            if (parseInt(skin.id, 10) === _0x365441)
+                                return { tab: 1, page: Math.floor(n / 60) + 1 };
+                            n++;
+                        }
+                    for (i = n = 0; i < _0x5efd88.length; i++)
+                        if (2 == (skin = _0x5efd88[i]).type && !skin.enabled) {
+                            if (parseInt(skin.id, 10) === _0x365441)
+                                return { tab: 2, page: Math.floor(n / 60) + 1 };
+                            n++;
+                        }
+                    for (i = n = 0; i < _0x5efd88.length; i++)
+                        if (2 == (skin = _0x5efd88[i]).type && skin.enabled) {
+                            if (parseInt(skin.id, 10) === _0x365441)
+                                return { tab: 5, page: Math.floor(n / 60) + 1 };
+                            n++;
+                        }
+                    for (i = n = 0; i < _0x5efd88.length; i++)
+                        if (3 == (skin = _0x5efd88[i]).type) {
+                            if (parseInt(skin.id, 10) === _0x365441)
+                                return { tab: 3, page: Math.floor(n / 60) + 1 };
+                            n++;
+                        }
+                    return null;
+                }(parseInt(_0x56bb91, 10));
+                if (_0x94b26f) {
+                    var _0x58f568 = ($("#skinsOwnedTab").hasClass("active") ? 5 : $("#skinsCustomTab").hasClass("active") ? 4 : $("#skinsVIPTab").hasClass("active") ? 3 : $("#skinsBuyTab").hasClass("active") ? 2 : $("#skinsLevelTab").hasClass("active") ? 1 : 0) !== _0x94b26f.tab;
+                    if (pageByType[_0x94b26f.tab] != _0x94b26f.page || _0x58f568) {
+                        pageByType[_0x94b26f.tab] = _0x94b26f.page;
+                        _0x16de9b = _0x48d723;
+                        return void _0x2aa794();
+                    }
+                }
+            }
+            var _0x20a24c;
+            var _0x94b26f = $("#skinContainer" + _0x56bb91).closest("#skinBrowser div.tab-pane");
+            if (0 < _0x94b26f.length) {
+                _0x20a24c = $("#menugold li a[href=\"#" + _0x94b26f[0].id + "\"]");
+            } else if (0 < (_0x94b26f = $("#skinBrowser div.publicskins-page-content:contains(skinContainer" + _0x56bb91 + ")")).length) {
+                showPublicSkinsPage(_0x94b26f[0].id.substring(22));
+                _0x20a24c = $("#skinsCustomTab a");
+            }
+            if (_0x20a24c) {
+                if (!(_0xc4a55e = _0x20a24c.parent("li").hasClass("active"))) {
+                    _0x20a24c.one("shown.bs.tab", function() {
+                        _0xc4a55e = true;
+                        _0x457f56();
+                    }).tab("show");
+                }
+                _0x457f56();
+            }
         }
     }
 
@@ -10042,7 +10202,7 @@ var _0x12c3b0 = 0;
 var _0x7f089d = false;
 var _0x48a780 = {};
 var _0x2645ec = {};
-var _0x520472 = 0;
+var customSkinPrice = 0;
 var skins = [];
 var _0x64a0d5 = true;
 var _0x16de9b = null;
@@ -11709,6 +11869,7 @@ window.showPublicSkinsPage = function(_0x79939c) {
     if (isReady()) {
         $("#skinsCustom .publicskins-nav-btn").addClass("btn-primary").filter(".publicskins-nav-btn-" + _0x79939c.toLowerCase()).removeClass("btn-primary").addClass("btn-default");
         document.getElementById("publicSkinsPage").innerHTML = document.getElementById("publicSkinsPageContent" + _0x79939c).textContent;
+        _0x21b7ee($("#publicSkinsPage"));
         $("#publicSkinsPage .skin-container").removeClass("selected");
         $("#publicSkinsPage .skinuse-btn").removeClass("btn-default").addClass("btn-primary").text("Use");
         if (gameSettings.skinId) {
