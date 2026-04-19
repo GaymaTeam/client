@@ -12371,7 +12371,10 @@ window.setCustomBackColor = function(color) {
     customBackgroundColor.r = parseInt(color.substr(0, 2), 16);
     customBackgroundColor.g = parseInt(color.substr(2, 2), 16);
     customBackgroundColor.b = parseInt(color.substr(4, 2), 16);
-    document.getElementById("customBackColorHex").innerHTML = gameSettings.sCustomBackColor = rgbToHex(0, 0, 0);
+    document.getElementById("customBackColorHex").innerHTML = gameSettings.sCustomBackColor = rgbToHex(
+        customBackgroundColor.r,
+        customBackgroundColor.g,
+        customBackgroundColor.r);
     reloadBackground();
 };
 window.setMultiEjectCellsAmount = function(amount) {
