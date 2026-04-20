@@ -7466,7 +7466,7 @@ function wsOnMessage(_0x2ba470) {
                 }
                 _0x64a0d5 = false;
                 _0x4506fc = _0xea465f;
-                // render here
+                _0x2aa794();
             }
             break;
         case 116:
@@ -7946,12 +7946,10 @@ function _0x2aa794() {
             if (!localStorage.ytSkin) {
                 $("#skinUseBtn71").text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(71);");
             }
-            for (var _0x43e1a0 = 0; _0x43e1a0 < youtubeChannels.length; _0x43e1a0++) {
-                var _0x49df12 = youtubeChannels[_0x43e1a0];
-                if (!localStorage["ytSkin" + _0x49df12.skinId]) {
-                    $("#skinUseBtn" + _0x49df12.skinId).text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(" + _0x49df12.skinId + ", '" + _0x49df12.id + "');");
-                }
-                $("#skinContainer" + _0x49df12.skinId).append("<a href=\"https://www.youtube.com/channel/" + _0x49df12.id + "\" target=\"_blank\" title=\"YouTuber Skin\"><div class=\"skin-tag skin-tag-yt\"></div>" + (_0x49df12.verified ? "<div title=\"Agma.io Content Creator\" class=\"skin-tag skin-tag-star\"></div>" : '') + "</a>");
+            for (const channel of youtubeChannels) {
+                if (!localStorage["ytSkin" + channel.skinId])
+                    $("#skinUseBtn" + channel.skinId).text("YouTube Subscribe").attr("onclick", "YouTubeSubSkin(" + channel.skinId + ", '" + channel.id + "');");
+                $("#skinContainer" + channel.skinId).append("<a href=\"https://www.youtube.com/channel/" + channel.id + "\" target=\"_blank\" title=\"YouTuber Skin\"><div class=\"skin-tag skin-tag-yt\"></div>" + (channel.verified ? "<div title=\"Agma.io Content Creator\" class=\"skin-tag skin-tag-star\"></div>" : '') + "</a>");
             }
             _0xe09ea3 = $($("#menugold li.active a").attr("href"));
             if (_0xe09ea3 && !_0xe09ea3.hasClass("in active")) {
