@@ -1261,7 +1261,7 @@ var _0x384d50 = 0;
 var _0x57f39f = false;
 var _0x357e04 = true;
 var _0x3f104e = 0;
-var _0x35cd4a = 0;
+var moderator_level = 0;
 var _0x6dd07a = 0;
 var _0x51e494 = {};
 
@@ -1396,7 +1396,7 @@ function _0x3169a6(_0x4dc13e) {
                     $("#contextFriendAdd").addClass("enabled");
                     $("#contextUserProfile").addClass("enabled");
                     $("#contextPrivateMessage").addClass("enabled");
-                    if (0 < _0x35cd4a || _0x6dd07a) {
+                    if (0 < moderator_level || _0x6dd07a) {
                         $("#contextModerate").addClass("enabled");
                     } else {
                         $("#contextModerate").removeClass("enabled");
@@ -1463,7 +1463,7 @@ function _0x3169a6(_0x4dc13e) {
                 $("#contextPrivateMessage").addClass("enabled");
                 $("#contextPickpocket").addClass("enabled");
                 $("#contextMute").addClass("enabled");
-                if (0 < _0x35cd4a || _0x6dd07a) {
+                if (0 < moderator_level || _0x6dd07a) {
                     $("#contextModerate").addClass("enabled");
                 } else {
                     $("#contextModerate").removeClass("enabled");
@@ -1796,9 +1796,9 @@ function _0x460313() {
             case "contextModerate":
                 _0x19fdd4 = {};
                 _0x5e3793 = '';
-                if (0 < _0x35cd4a || _0x6dd07a) {
+                if (0 < moderator_level || _0x6dd07a) {
                     _0x5e3793 += "<hr><li id=\"contextWarn\" class=\"contextmenu-item enabled\"><p>Warn user</p></li><hr><li id=\"contextWarnFreeze\" class=\"contextmenu-item enabled\"><p>Freeze teamer</p></li><hr><li id=\"contextMuteUser\" class=\"contextmenu-item enabled\"><p>Mute (unmute on disconnect)</p></li><hr>";
-                    if (0 < _0x35cd4a) {
+                    if (0 < moderator_level) {
                         _0x5e3793 += "<li id=\"contextMuteUserIp\" class=\"contextmenu-item enabled\"><p>Mute by IP</p></li><hr><li id=\"contextBanUser\" class=\"contextmenu-item enabled\"><p>Ban ip 24h</p></li><hr><li id=\"contextBanUserAcc\" class=\"contextmenu-item enabled\"><p>Ban acc 1h</p></li><hr><li id=\"contextBanUserAcc2\" class=\"contextmenu-item enabled\"><p>Ban acc 24h</p></li><hr><li id=\"contextBanUserAcc3\" class=\"contextmenu-item enabled\"><p>Ban acc 72h</p></li><hr>";
                     }
                     _0x5e3793 += "<li id=\"contextRmshout\" class=\"contextmenu-item enabled\"><p>/rmshout (remove megashout)</p></li><hr><li id=\"contextBanShout\" class=\"contextmenu-item enabled\"><p>/banshout (ban prev shout 2hrs)</p></li><hr><li id=\"contextLastShout\" class=\"contextmenu-item enabled\"><p>/lastshout (see last shout)</p></li>";
@@ -4546,6 +4546,9 @@ class Cell {
                             }
                         }
                     }
+
+
+
                     if (this.anim) {
                         for (_0x433539 = 0; _0x433539 < this.anim.length; _0x433539++) {
                             switch ((_0x282a29 = this.anim[_0x433539]).id) {
@@ -6842,9 +6845,9 @@ function wsOnMessage(_0x2ba470) {
             var _0x191e79 = pkt.getUint32();
             var _0x49adef = pkt.getUint32();
             _0x3f104e = pkt.getUint8();
-            _0x35cd4a = pkt.getUint8();
+            moderator_level = pkt.getUint8();
             $(".sora-points-inv").text(_0x191e79);
-            if (0 < _0x35cd4a) {
+            if (0 < moderator_level) {
                 $("#contextModerate").show();
                 if (!$("#contextFBan").length) {
                     $("#contextSpectate").after("<li id=\"contextFBan\" style=\"display:none\" class=\"contextmenu-item enabled\"><div class=\"context-icon\"></div><p>Fast Ban</p></li>");
@@ -6908,9 +6911,9 @@ function wsOnMessage(_0x2ba470) {
             }
             $("#roleSettings input[type=\"checkbox\"]").prop("disabled", true);
             $("#roleSettings .role-setting").hide();
-            if (0 < _0x35cd4a || hasDRank || can_yt_icon || can_green_name || can_blue_name || can_orange_name || can_red_name || can_black_name || can_custom_color_name) {
+            if (0 < moderator_level || hasDRank || can_yt_icon || can_green_name || can_blue_name || can_orange_name || can_red_name || can_black_name || can_custom_color_name) {
                 $("#roleSettings").show();
-                if (0 < _0x35cd4a) {
+                if (0 < moderator_level) {
                     $("#cModeratorIconChat").prop("disabled", false).parents("div.role-setting").show();
                     setModeratorIconChat(modIconEnabled);
                 }
@@ -7108,8 +7111,8 @@ function wsOnMessage(_0x2ba470) {
             } else {
                 _0x425b4b();
             }
-            if (0 < _0x35cd4a || _0x6dd07a) {
-                if (0 < _0x35cd4a) {
+            if (0 < moderator_level || _0x6dd07a) {
+                if (0 < moderator_level) {
                     $("#megaholder").append("<button style=\"position: absolute;top: 122px;left: -44px;color: black;\" onclick=\"rmShout();\">Rm1</button>");
                 }
                 $("#megaholder").append("<button style=\"position: absolute;top: 155px;left: -44px;color: black;\" onclick=\"rmShout(2);\">Rm2</button>");
@@ -10353,7 +10356,7 @@ function _0x161cd2() {
             _0x44a2c1.sMinionSkins = minionSkins;
             _0x44a2c1.sVideoAdsEnabled = videoAdsEnabled;
         }
-        if (0 < _0x35cd4a)         _0x44a2c1.sModIconEnabled = modIconEnabled;
+        if (0 < moderator_level)         _0x44a2c1.sModIconEnabled = modIconEnabled;
         if (hasDRank)              _0x44a2c1.sIconDRankEnabled = iconDRankEnabled;
         if (can_yt_icon)           _0x44a2c1.sIconYTEnabled = iconYTEnabled;
         if (can_green_name)        _0x44a2c1.sGreenNameEnabled = greenNameEnabled;
@@ -10943,7 +10946,7 @@ function autoLogin(_0x3bd3de, _0x5ccbf5) {
 
 function _0x522c0e() {
     _0xea465f = '';
-    hasDRank = !(_0x357e04 = !(_0x35cd4a = _0x6dd07a = _0x3f104e = _0x107e7f = 0));
+    hasDRank = !(_0x357e04 = !(moderator_level = _0x6dd07a = _0x3f104e = _0x107e7f = 0));
     can_yt_icon = isLoggedIn = false;
     can_green_name = false;
     can_blue_name = false;
