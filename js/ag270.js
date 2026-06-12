@@ -1139,6 +1139,8 @@ window.onload = function() {
         _0x399743 = 60 - new Date().getUTCMinutes();
         _0xa2ae65 = _0xa2ae65 + "h " + _0x399743 + "m ";
         $("#challengeTimeLeft").text(_0xa2ae65);
+        if (deletedFood && deletedFood.length >= 50)
+            deletedFood.splice(0, deletedFood.length - Math.ceil(0.2 * deletedFood.length));
     }, 18000);
     var _0x128934 = window.swal.close;
     var _0xa19570 = window.onkeydown;
