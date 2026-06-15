@@ -8354,9 +8354,8 @@ function _0x54ad2a(_0x36ae78) {
 }
 
 function _0x483791(_0x3ea76f) {
-    var _0x5c20fb;
-    if (0 != _0x3ea76f) {
-        _0x5c20fb = _0x3ea76f.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    if (accountRessources.coins != _0x3ea76f) {
+        const _0x5c20fb = _0x3ea76f.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         $("#coinsDash").text(_0x5c20fb);
         $(".progress-bar-coins").text(_0x5c20fb);
         accountRessources.coins = _0x3ea76f;
