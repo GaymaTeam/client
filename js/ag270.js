@@ -2974,7 +2974,12 @@ function _0xf937a3(buffer, a, b, offset) {
     return n + 3;
 }
 
+var debug = false;
+let lastShow = 0;
+const timesTotal = Array(50).fill(0), timesCycle = [];
+
 function _0x215896() {
+    if (debug) timesCycle.length = 0;
     var _0x4cb1e7;
     var _0x476ebb;
     var _0x12c6d8;
@@ -3673,18 +3678,17 @@ function _0x215896() {
             _0x1a33c5--;
         }
     }
+    if (debug) timesCycle.push(performance.now());
     _0x1a33c5 = allFoodCells.length;
     for (i = 0; i < _0x1a33c5; i++)
         allFoodCells[i].drawCell();
-    const s0 = performance.now();
+    if (debug) timesCycle.push(performance.now());
     allNonFoodCells.sort(_0x24f2c9);
-    if (window.debug) {
-        console.log(performance.now() - s0);
-        debug = false;
-    }
+    if (debug) timesCycle.push(performance.now());
     _0x1a33c5 = allNonFoodCells.length;
     for (i = 0; i < _0x1a33c5; i++)
         allNonFoodCells[i].drawCell(); // this needs to be optimized
+    if (debug) timesCycle.push(performance.now());
     _0xb14342.restore();
     if (_0x5ae1b6 = (() => {
             var _0x1fa510 = 0;
@@ -3943,6 +3947,26 @@ function _0x215896() {
     }
     _0xb66c8e = Math.min(Math.max(_0xb66c8e, 0.4), 1);
     _0x10d812 = Math.min(Math.max(_0x10d812, 0), 1);
+
+    if (debug) {
+        let c = timesCycle[0];
+        for (let i = 1; i < timesCycle.length; i++)
+            timesTotal[i - 1] += -c + (c = timesCycle[i]);
+        if (timesCycle[0] - lastShow >= 10000) {
+            const timesLocal = timesTotal.slice(0, timesCycle.length - 1);
+            console.log(
+                timesLocal.map(t => (t / 10).toFixed(1).padEnd(7)).join(' ') +
+                '  |  ' +
+                (timesLocal.reduce((a, b) => a + b) / 10).toFixed(2).padEnd(8) +
+                '  |  ' +
+                allNonFoodCells.length +
+                '  |  ' +
+                allFoodCells.length
+            );
+            timesTotal.fill(0);
+            lastShow = timesCycle[0];
+        }
+    }
 }
 
 function wsOnClose() {
