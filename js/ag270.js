@@ -2721,8 +2721,10 @@ function _0x1b0f36() {
     }
 }
 
-function _0x24f2c9(_0x577228, _0x10adf7) {
-    return _0x577228.size - _0x10adf7.size || _0x577228.id - _0x10adf7.id || _0x577228.createTime - _0x10adf7.createTime;
+function _0x24f2c9(a, b) {
+    if (a.type === 4 || b.type === 4)
+        return (a.type === 4) - (b.type === 4);
+    return a.size - b.size || a.id - b.id || a.createTime - b.createTime;
 }
 
 function onPlayerDeath() {
