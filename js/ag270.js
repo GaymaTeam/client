@@ -1428,9 +1428,9 @@ function _0x3169a6(_0x4dc13e) {
                     new PacketWriter(6).setUint8(60).setUint8(1).setUint32(_0x5c09e8.pid).send();
                 }
                 $("#contextPlayerSkin").css("background-color", _0x5c09e8.color);
-                if (_0x5c09e8._ && gameSettings.sSkins && (0 != _0x5c09e8.skinId && !_0x3df17b || 0 != _0x5c09e8.N)) {
+                if (_0x5c09e8.hasImage && gameSettings.sSkins && (0 != _0x5c09e8.skinId && !_0x3df17b || 0 != _0x5c09e8.imageId)) {
                     if (0 == _0x5c09e8.skinId || _0x3df17b) {
-                        $("#contextPlayerSkin").css("background-image", "url(skins/objects/" + _0x5c09e8.N.toString() + "_lo.png?v=" + objectsApiVersion + ")");
+                        $("#contextPlayerSkin").css("background-image", "url(skins/objects/" + _0x5c09e8.imageId.toString() + "_lo.png?v=" + objectsApiVersion + ")");
                     } else {
                         $("#contextPlayerSkin").css("background-image", "url(skins/" + _0x5c09e8.skinId.toString() + "_lo.png?u=" + (_0x48a780[_0x5c09e8.skinId] || 0) + ")");
                     }
@@ -1440,7 +1440,7 @@ function _0x3169a6(_0x4dc13e) {
                 for (var _0x5673e8 = 1; _0x5673e8 <= 5; _0x5673e8++) {
                     if (_0x5c09e8.wears && gameSettings.sWearables && _0x5673e8 <= _0x5c09e8.wears.length) {
                         var _0x77372b = _0x5c09e8.wears[_0x5673e8 - 1];
-                        var _0x37c0a3 = wearableClasses[_0x77372b.P] || '';
+                        var _0x37c0a3 = wearableClasses[_0x77372b.wearArea] || '';
                         try {
                             $("#contextPlayerWear" + _0x5673e8).css("background-image", "url(wearables/" + _0x77372b.wearId.toString() + "_lo.png?v=" + wearablesApiVersion + ")").removeClass("center top bottom left right max".replace(_0x37c0a3, '')).addClass(_0x37c0a3).show();
                         } catch (_0x343cc0) {
@@ -3127,7 +3127,7 @@ function _0x215896() {
                                 _0x2e4d3d = wearablesAndObjectsImages["W" + _0x168ad3.wearId + "_lo"];
                             }
                             if (_0x2e4d3d && _0x2e4d3d.complete && 0 != _0x2e4d3d.width) {
-                                _0x168ad3 = _0x168ad3.P;
+                                _0x168ad3 = _0x168ad3.wearArea;
                                 _0x2a2cb4 = 5 == _0x168ad3 ? 55 : 33;
                                 _0x5e49f7.drawImage(_0x2e4d3d, 22 - 11 * (3 == _0x168ad3 || 5 == _0x168ad3 ? 2.5 : 4 == _0x168ad3 ? 0.5 : 1.5), 22 - 11 * (1 == _0x168ad3 || 5 == _0x168ad3 ? 2.5 : 2 == _0x168ad3 ? 0.5 : 1.5), _0x2a2cb4, _0x2a2cb4);
                             }
@@ -4110,10 +4110,10 @@ class Cell {
         this.clanPart = null;
         this.nameSize = 0;
         this.skinId = 0;
-        this.ye = null;
-        this._ = false;
-        this.xe = null;
-        this.Se = null;
+        this.skinFrames = null;
+        this.hasImage = false;
+        this.imgLoadedLo = null;
+        this.imgLoaded = null;
         this.wears = null;
         this.Me = null;
         this.Ce = null;
@@ -4135,7 +4135,7 @@ class Cell {
         this.be = null;
         this.Ne = null;
         this.spiked = 0;
-        this.N = 0;
+        this.imageId = 0;
         this.anim = null;
         this.transform = null;
         this.singleCellPlayer = false;
@@ -4173,24 +4173,24 @@ class Cell {
         var _0x3991a0;
         var _0x2a03ce;
         if (0 == this.skinId || _0x3df17b) {
-            if (0 != this.N) {
+            if (0 != this.imageId) {
                 _0x5f2385 = _0x5d0bce = null;
                 if (!(!gameSettings.sSkins && 0 == this.type)) {
-                    if (!(_0x5d0bce = wearablesAndObjectsImages[this.N + "_lo"])) {
-                        _0x1cb610(this.N, this.type);
-                        _0x5d0bce = wearablesAndObjectsImages[this.N + "_lo"];
+                    if (!(_0x5d0bce = wearablesAndObjectsImages[this.imageId + "_lo"])) {
+                        _0x1cb610(this.imageId, this.type);
+                        _0x5d0bce = wearablesAndObjectsImages[this.imageId + "_lo"];
                     }
-                    _0x5f2385 = wearablesAndObjectsImages[this.N];
+                    _0x5f2385 = wearablesAndObjectsImages[this.imageId];
                 }
-                this._ = true;
-                this.xe = _0x5d0bce && _0x5d0bce.complete && 0 != _0x5d0bce.width ? _0x5d0bce : null;
-                this.Se = _0x5f2385 && _0x5f2385.complete && 0 != _0x5f2385.width ? _0x5f2385 : null;
+                this.hasImage = true;
+                this.imgLoadedLo = _0x5d0bce && _0x5d0bce.complete && 0 != _0x5d0bce.width ? _0x5d0bce : null;
+                this.imgLoaded = _0x5f2385 && _0x5f2385.complete && 0 != _0x5f2385.width ? _0x5f2385 : null;
             } else {
-                this._ = false;
-                this.xe = null;
-                this.Se = null;
+                this.hasImage = false;
+                this.imgLoadedLo = null;
+                this.imgLoaded = null;
             }
-            this.ye = null;
+            this.skinFrames = null;
         } else {
             _0x5f2385 = _0x5d0bce = null;
             if (gameSettings.sSkins) {
@@ -4200,18 +4200,18 @@ class Cell {
                 }
                 _0x5f2385 = skinImagesHigh[this.skinId];
             }
-            this._ = true;
-            this.xe = _0x5d0bce && _0x5d0bce.complete && 0 != _0x5d0bce.width ? _0x5d0bce : null;
-            this.Se = _0x5f2385 && _0x5f2385.complete && 0 != _0x5f2385.width ? _0x5f2385 : null;
+            this.hasImage = true;
+            this.imgLoadedLo = _0x5d0bce && _0x5d0bce.complete && 0 != _0x5d0bce.width ? _0x5d0bce : null;
+            this.imgLoaded = _0x5f2385 && _0x5f2385.complete && 0 != _0x5f2385.width ? _0x5f2385 : null;
             if (_0x2645ec[this.skinId]) {
-                if (!(this.ye && this.ye.skinId == this.skinId)) {
-                    this.ye = {
-                        "skinId": this.skinId,
-                        "Ye": null,
-                        "qe": null,
-                        "We": 0,
-                        "Qe": 0,
-                        "je": 0
+                if (!(this.skinFrames && this.skinFrames.skinId == this.skinId)) {
+                    this.skinFrames = {
+                        skinId: this.skinId,
+                        apngLoadedLo: null,
+                        apngLoaded: null,
+                        zeroTime: 0,
+                        runTime: 0,
+                        currentFrame: 0
                     };
                 }
                 _0x5d0bce = _0x5f2385 = null;
@@ -4225,10 +4225,10 @@ class Cell {
                     }
                     _0x5f2385 = skinImagesLow[this.skinId];
                 }
-                this.ye.Ye = _0x5d0bce && _0x5d0bce.complete && 0 != _0x5d0bce.width ? _0x5d0bce : null;
-                this.ye.qe = _0x5f2385 && _0x5f2385.complete && 0 != _0x5f2385.width ? _0x5f2385 : null;
+                this.skinFrames.apngLoadedLo = _0x5d0bce && _0x5d0bce.complete && 0 != _0x5d0bce.width ? _0x5d0bce : null;
+                this.skinFrames.apngLoaded = _0x5f2385 && _0x5f2385.complete && 0 != _0x5f2385.width ? _0x5f2385 : null;
             } else {
-                this.ye = null;
+                this.skinFrames = null;
             }
         }
     }
@@ -4242,8 +4242,8 @@ class Cell {
             }
             _0x5d0660 = wearablesAndObjectsImages["W" + _0x59e23e.wearId];
         }
-        _0x59e23e.xe = _0x463750 && _0x463750.complete && 0 != _0x463750.width ? _0x463750 : null;
-        _0x59e23e.Se = _0x5d0660 && _0x5d0660.complete && 0 != _0x5d0660.width ? _0x5d0660 : null;
+        _0x59e23e.imgLoadedLo = _0x463750 && _0x463750.complete && 0 != _0x463750.width ? _0x463750 : null;
+        _0x59e23e.imgLoaded = _0x5d0660 && _0x5d0660.complete && 0 != _0x5d0660.width ? _0x5d0660 : null;
     }
     calcPins() {
         var _0x4c019b = this.be;
@@ -4518,41 +4518,41 @@ class Cell {
                     _0xb14342.stroke();
                 }
                 if (1 != this.type) {
-                    if (this._ && (gameSettings.sSkins || 0 != this.type) && !_0x222c9e && !this.isGhosted) {
+                    if (this.hasImage && (gameSettings.sSkins || 0 != this.type) && !_0x222c9e && !this.isGhosted) {
                         if ((_0x282a29 = _0x683945 ? this.strokeSize * cellStrokeSizeMultiplier[this.shape] : this.coronaSpikes ? this.strokeSize * (1.275 + 0.075 * Math.abs(currentFrameTime % 500 / 250 - 1)) : 11 == this.type ? 1.28 * this.strokeSize : this.strokeSize) < this.size) {
                             _0x282a29 = this.size;
                         }
-                        if (this.ye && gameSettings.sSkinAnimations) {
-                            var _0x433539 = this.ye;
-                            var _0x5d47a4 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? _0x433539.Ye : _0x433539.qe;
+                        if (this.skinFrames && gameSettings.sSkinAnimations) {
+                            var _0x433539 = this.skinFrames;
+                            var _0x5d47a4 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? _0x433539.apngLoadedLo : _0x433539.apngLoaded;
                             if (!_0x5d47a4) {
                                 this.reloadImage();
-                                _0x5d47a4 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? _0x433539.Ye : _0x433539.qe;
+                                _0x5d47a4 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? _0x433539.apngLoadedLo : _0x433539.apngLoaded;
                             }
                             if (_0x5d47a4) {
-                                if (0 == _0x433539.We) {
-                                    _0x433539.We = currentFrameTime;
+                                if (0 == _0x433539.zeroTime) {
+                                    _0x433539.zeroTime = currentFrameTime;
                                 }
-                                _0x433539.Qe = currentFrameTime - _0x433539.We;
-                                if (_0x433539.Qe >= _0x5d47a4.playTime) {
-                                    _0x433539.We += ~~(_0x433539.Qe / _0x5d47a4.playTime) * _0x5d47a4.playTime;
-                                    _0x433539.Qe %= _0x5d47a4.playTime;
-                                    _0x433539.je = 0;
+                                _0x433539.runTime = currentFrameTime - _0x433539.zeroTime;
+                                if (_0x433539.runTime >= _0x5d47a4.playTime) {
+                                    _0x433539.zeroTime += ~~(_0x433539.runTime / _0x5d47a4.playTime) * _0x5d47a4.playTime;
+                                    _0x433539.runTime %= _0x5d47a4.playTime;
+                                    _0x433539.currentFrame = 0;
                                 }
-                                if (_0x433539.je >= _0x5d47a4.frames.length) {
-                                    _0x433539.je = 0;
+                                if (_0x433539.currentFrame >= _0x5d47a4.frames.length) {
+                                    _0x433539.currentFrame = 0;
                                 }
-                                for (var _0x2aee00 = _0x5d47a4.frames[_0x433539.je]; _0x433539.Qe >= _0x2aee00.end && _0x433539.je < _0x5d47a4.frames.length - 1;) {
-                                    _0x2aee00 = _0x5d47a4.frames[++_0x433539.je];
+                                for (var _0x2aee00 = _0x5d47a4.frames[_0x433539.currentFrame]; _0x433539.runTime >= _0x2aee00.end && _0x433539.currentFrame < _0x5d47a4.frames.length - 1;) {
+                                    _0x2aee00 = _0x5d47a4.frames[++_0x433539.currentFrame];
                                 }
                                 _0x3d1099 = _0x2aee00.canvas;
                             }
                         }
-                        if (!(_0x3d1099 = _0x3d1099 || (2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? this.xe : this.Se))) {
+                        if (!(_0x3d1099 = _0x3d1099 || (2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? this.imgLoadedLo : this.imgLoaded))) {
                             this.reloadImage();
-                            _0x3d1099 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? this.xe : this.Se;
+                            _0x3d1099 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? this.imgLoadedLo : this.imgLoaded;
                         }
-                        if (_0x3d1099 && (_0x433539 = this.ga * (this.isCloaked ? 0.01 : gameSettings.sBubbleCells ? 0 != this.N ? 0.5 : 0.3 : 0 != this.N ? 0.85 : 1), _0xb14342.globalAlpha = this.destroyed ? _0x433539 * (1 - _0x58ffc6) : _0x433539, _0x473372 = _0x282a29, _0x472af5 = false, 16 == this.type ? (_0x473372 = _0x282a29 / 8, 1 == this.orientation && (_0xb14342.save(), _0x472af5 = true, _0xb14342.translate(_0x1b2b2f, _0x52fc0c), _0xb14342.rotate(Math.PI / 2), _0xb14342.translate(-_0x1b2b2f, -_0x52fc0c))) : 11 == this.type || (_0xb14342.save(), _0x472af5 = true, _0xb14342.clip()), _0xb14342.drawImage(_0x3d1099, _0x1b2b2f - _0x282a29, _0x52fc0c - _0x473372, 2 * _0x282a29, 2 * _0x473372), _0x472af5)) {
+                        if (_0x3d1099 && (_0x433539 = this.ga * (this.isCloaked ? 0.01 : gameSettings.sBubbleCells ? 0 != this.imageId ? 0.5 : 0.3 : 0 != this.imageId ? 0.85 : 1), _0xb14342.globalAlpha = this.destroyed ? _0x433539 * (1 - _0x58ffc6) : _0x433539, _0x473372 = _0x282a29, _0x472af5 = false, 16 == this.type ? (_0x473372 = _0x282a29 / 8, 1 == this.orientation && (_0xb14342.save(), _0x472af5 = true, _0xb14342.translate(_0x1b2b2f, _0x52fc0c), _0xb14342.rotate(Math.PI / 2), _0xb14342.translate(-_0x1b2b2f, -_0x52fc0c))) : 11 == this.type || (_0xb14342.save(), _0x472af5 = true, _0xb14342.clip()), _0xb14342.drawImage(_0x3d1099, _0x1b2b2f - _0x282a29, _0x52fc0c - _0x473372, 2 * _0x282a29, 2 * _0x473372), _0x472af5)) {
                             _0xb14342.restore();
                         }
                     }
@@ -4561,11 +4561,11 @@ class Cell {
                         for (var _0x46c353 = 0; _0x46c353 < this.wears.length; _0x46c353++) {
                             var _0x3d1099;
                             var _0x557f3e = this.wears[_0x46c353];
-                            var _0x2e5cdf = _0x557f3e.P;
+                            var _0x2e5cdf = _0x557f3e.wearArea;
                             var _0x4a5fdf = 5 == _0x2e5cdf ? 5 * _0x282a29 : 3 * _0x282a29;
-                            if (!(_0x3d1099 = _0x4a5fdf * _0x3e50d9 * _0x28ad4b <= 128 ? _0x557f3e.xe : _0x557f3e.Se)) {
+                            if (!(_0x3d1099 = _0x4a5fdf * _0x3e50d9 * _0x28ad4b <= 128 ? _0x557f3e.imgLoadedLo : _0x557f3e.imgLoaded)) {
                                 this.reloadWear(_0x557f3e);
-                                _0x3d1099 = _0x4a5fdf * _0x3e50d9 * _0x28ad4b <= 128 ? _0x557f3e.xe : _0x557f3e.Se;
+                                _0x3d1099 = _0x4a5fdf * _0x3e50d9 * _0x28ad4b <= 128 ? _0x557f3e.imgLoadedLo : _0x557f3e.imgLoaded;
                             }
                             if (_0x3d1099) {
                                 _0x433539 = this.ga * (this.isCloaked ? 0.01 : gameSettings.sBubbleCells ? 0.7 : 0.95);
@@ -5661,7 +5661,7 @@ class PacketReader {
         for (let i = 0; i < n; i++)
             wearables.push({
                 wearId: this.getUint16(),
-                P: this.getUint8()
+                wearArea: this.getUint8()
             });
         return wearables;
     }
@@ -5700,6 +5700,7 @@ class PacketReader {
         return this.buffer.getFloat64((this.position += 8) - 8, this.littleEndian);
     }
 }
+const PLAYERS = {};
 
 function wsOnMessage(_0x2ba470) {
     var _0x427639;
@@ -5848,7 +5849,7 @@ function wsOnMessage(_0x2ba470) {
                 cell.nSize = _0x2c474f;
                 cell.updateTime = currentFrameTime;
                 if (_0x13100f && (cell.color = _0x24ed2e, cell.colorDimmed = cell.smallFood ? _0x24ed2e : _0x5eed3f, cell.spiked = _0x1d95fc ? 2 === _0x534ff6 || 9 === _0x534ff6 || 22 === _0x534ff6 ? 2 : 1 : 0, 1 !== (cell.type = _0x534ff6))) {
-                    cell.N = _0x1bf5f0;
+                    cell.imageId = _0x1bf5f0;
                     if (0 === _0x534ff6) {
                         if (
                             !cell.ownCell &&
@@ -6490,11 +6491,11 @@ function wsOnMessage(_0x2ba470) {
             var _0x49adef = pkt.getUint32();
             var _0x1711bf = pkt.getUint16();
             swal({
-                "title": "<img src=\"" + (_0x1711bf ? "skins/" + _0x1711bf.toString() + "_lo.png?u=" + (_0x48a780[_0x1711bf] || 0).toString() : "img/userprofile.png") + "\" width=\"64\" height=\"64\" style=\"border-radius:50%;\"><br><br><span style=\"" + (_0x5bff26 ? "color:#f22;" : _0x469523 ? "color:" + nicknameColors[_0x469523] : '') + "\">" + _0x571f96 + "</span><span style=\"display:block; margin:-10px 0px 15px; font-size:12px; line-height:normal;\">" + (_0x2f2313 ? "<br><span style=\"padding:2px 5px; font-size:10px; background:#999; color:#000; border-radius:10px;\">Hidden</span><br>" : '') + (_0x31ab56 ? "<br><span style=\"color:#f9f;\">&#9734;&#9734; Staff &#9734;&#9734;</span>" : '') + (_0x5bff26 ? "<br><span style=\"color:#f22;\">&#9734;&#9734; YouTuber &#9734;&#9734;</span>" : '') + (_0x2e4161 ? "<br><span style=\"color:#ffa;\">&#9734;&#9734; Gold Member &#9734;&#9734;</span>" : '') + (_0x311374 ? "<br><span style=\"color:#4f4;\">&#9734;&#9734; <img src=\"img/navpage/" + (1 == _0x311374 ? "super" : 6 == _0x311374 ? "valentines" : 5 == _0x311374 ? "black2" : 4 == _0x311374 ? "black" : 2 == _0x311374 ? "legendary" : "hot") + "_donator_ico.png\" width=\"16\" height=\"16\"> Donator &#9734;&#9734;</span>" : '') + "</span>",
-                "text": "<span style=\"color:#ffa;\"><br>Level: " + _0x26baf3 + "<br>Rank: " + (50000 < _0x49adef ? ">50000" : _0x49adef) + "<br><br></span>",
-                "type": '',
-                "customClass": _0x2e4161 ? "swal-title-gold" : "swal-title-white",
-                "html": true
+                title: `<img src="${_0x1711bf ? `skins/${_0x1711bf}_lo.png?u=${_0x48a780[_0x1711bf] || 0}` : "img/userprofile.png"}" width="64" height="64" style="border-radius:50%;"><br><br><span style="${_0x5bff26 ? "color:#f22;" : _0x469523 ? "color:" + nicknameColors[_0x469523] : ''}">${_0x571f96}</span><span style="display:block; margin:-10px 0px 15px; font-size:12px; line-height:normal;">${_0x2f2313 ? '<br><span style="padding:2px 5px; font-size:10px; background:#999; color:#000; border-radius:10px;">Hidden</span><br>' : ''}${_0x31ab56 ? '<br><span style="color:#f9f;">&#9734;&#9734; Staff &#9734;&#9734;</span>' : ''}${_0x5bff26 ? '<br><span style="color:#f22;">&#9734;&#9734; YouTuber &#9734;&#9734;</span>' : ''}${_0x2e4161 ? '<br><span style="color:#ffa;">&#9734;&#9734; Gold Member &#9734;&#9734;</span>' : ''}${_0x311374 ? `<br><span style="color:#4f4;">&#9734;&#9734; <img src="img/navpage/${1 === _0x311374 ? "super" : 6 === _0x311374 ? "valentines" : 5 === _0x311374 ? "black2" : 4 === _0x311374 ? "black" : 2 === _0x311374 ? "legendary" : "hot"}_donator_ico.png" width="16" height="16"> Donator &#9734;&#9734;</span>` : ''}</span>`,
+                text: `<span style="color:#ffa;"><br>Level: ${_0x26baf3}<br>Rank: ${50000 < _0x49adef ? ">50000" : _0x49adef}<br><br></span>`,
+                type: '',
+                customClass: _0x2e4161 ? "swal-title-gold" : "swal-title-white",
+                html: true
             });
             break;
         case 89:
@@ -7040,14 +7041,7 @@ function wsOnMessage(_0x2ba470) {
             var _0x5180de = pkt.getString();
             var _0x5381b4 = pkt.getUint8();
             var _0x3a4da8 = pkt.getUint16();
-            var _0x47722c = pkt.getUint8();
-            var _0x486edc = [];
-            for (var _0x435e7a = 0; _0x435e7a < _0x47722c; _0x435e7a++) {
-                _0x486edc.push({
-                    "wearId": pkt.getUint16(),
-                    "P": pkt.getUint8()
-                });
-            }
+            var _0x486edc = pkt.getWearables() || [];
             $("#megaphone_name").text(_0x5180de).css("color", 1 < _0x5381b4 ? nicknameColors[_0x5381b4] : '').removeClass("gold black");
             if (1 == _0x5381b4) {
                 $("#megaphone_name").addClass("gold");
@@ -7088,7 +7082,7 @@ function wsOnMessage(_0x2ba470) {
             for (_0x435e7a = 1; _0x435e7a <= 5; _0x435e7a++) {
                 if (_0x435e7a <= _0x486edc.length) {
                     var _0x44a850 = _0x486edc[_0x435e7a - 1];
-                    var _0x3b16a0 = wearableClasses[_0x44a850.P] || '';
+                    var _0x3b16a0 = wearableClasses[_0x44a850.wearArea] || '';
                     try {
                         $("#wearMegaWidget" + _0x435e7a).css("background-image", "url('wearables/" + _0x44a850.wearId.toString() + "_lo.png?v=" + wearablesApiVersion + "')").removeClass("center top bottom left right max".replace(_0x3b16a0, '')).addClass(_0x3b16a0).show();
                     } catch (_0x689691) {
@@ -8206,7 +8200,7 @@ function _0x5f4edb(_0x42f503, _0x21ad86, _0x1c70b7, _0x55241a, _0x5e7c26) {
     }
     var _0x1f6a9f = {
         wearId: _0x42f503,
-        P: _0x21ad86,
+        wearArea: _0x21ad86,
         zIndex: _0x1c70b7,
         wearGroup: _0x55241a,
         wearTry: _0x5e7c26
@@ -8237,7 +8231,7 @@ function _0x94dbbc() {
 function _0x5cfc91(_0x30baa2) {
     _0x94dbbc();
     for (var _0x27f368 = 0; _0x27f368 < _0x30baa2.length; _0x27f368++) {
-        _0x5f4edb(_0x30baa2[_0x27f368].wearId, _0x30baa2[_0x27f368].P, _0x30baa2[_0x27f368].zIndex, _0x30baa2[_0x27f368].wearGroup, _0x30baa2[_0x27f368].wearTry);
+        _0x5f4edb(_0x30baa2[_0x27f368].wearId, _0x30baa2[_0x27f368].wearArea, _0x30baa2[_0x27f368].zIndex, _0x30baa2[_0x27f368].wearGroup, _0x30baa2[_0x27f368].wearTry);
     }
 }
 
@@ -8261,7 +8255,7 @@ function _0x113238() {
     for (var i = 1; i <= 5; i++) {
         if (i <= gameSettings.wearablesSelected.length) {
             var _0x3bf6ee = gameSettings.wearablesSelected[i - 1];
-            var _0x4304c3 = wearableClasses[_0x3bf6ee.P] || '';
+            var _0x4304c3 = wearableClasses[_0x3bf6ee.wearArea] || '';
             try {
                 $(".cell-example .wear-example-" + i).css("background-image", "url('wearables/" + _0x3bf6ee.wearId.toString() + "_lo.png?v=" + wearablesApiVersion + "')").removeClass("center top bottom left right max".replace(_0x4304c3, '')).addClass(_0x4304c3).show();
             } catch (_0x4709fb) {
@@ -8344,7 +8338,7 @@ function _0x54ad2a(_0x36ae78) {
                 _0x44b7f4 = wearablesAndObjectsImages["W" + _0x2cb37c.wearId + "_lo"];
             }
             if (_0x44b7f4 && _0x44b7f4.complete && 0 != _0x44b7f4.width) {
-                var _0x5c8542 = _0x2cb37c.P;
+                var _0x5c8542 = _0x2cb37c.wearArea;
                 var _0x116ce6 = 5 == _0x5c8542 ? 204 : 122;
                 var _0x37eca3 = _0x2ed271.getImageData(_0x3f4eb6 - 2, _0xb388cb - 2, 5, 5).data;
                 for (var _0x362355 = 0; _0x362355 < 25; _0x362355++) {
@@ -8803,47 +8797,47 @@ function _0x10236d() {
 function _0x483c7e(_0x4bd171) {
     var _0x3d2512 = {
         wearId: 61,
-        P: 1
+        wearArea: 1
     };
     var _0x49f824 = {
         wearId: 62,
-        P: 1
+        wearArea: 1
     };
     var _0x2b1c0c = {
         wearId: 46,
-        P: 1
+        wearArea: 1
     };
     var _0x24b1c0 = {
         wearId: 37,
-        P: 1
+        wearArea: 1
     };
     var _0x2297bc = {
         wearId: 25,
-        P: 1
+        wearArea: 1
     };
     var _0xe28e5 = {
         wearId: 28,
-        P: 1
+        wearArea: 1
     };
     var _0x5526fb = {
         wearId: 60,
-        P: 0
+        wearArea: 0
     };
     var _0x3d6a07 = {
         wearId: 58,
-        P: 0
+        wearArea: 0
     };
     var _0x5735f3 = {
         wearId: 57,
-        P: 0
+        wearArea: 0
     };
     var _0x18e0f0 = {
         wearId: 15,
-        P: 0
+        wearArea: 0
     };
     var _0x59ab1b = {
         wearId: 38,
-        P: 0
+        wearArea: 0
     };
     var _0x48b4f1 = _0x4bd171.trim().toLowerCase();
     var _0x4e2ef9 = [5797, 5810];
@@ -8864,13 +8858,13 @@ function _0x483c7e(_0x4bd171) {
             tskngc(_0x1b76cc);
             var _0xdc8e74 = 0;
             for (var _0x47f09d = 0; _0x47f09d < _0x27324d.length; _0x47f09d++) {
-                if (1 == _0x27324d[_0x47f09d].P) {
+                if (1 == _0x27324d[_0x47f09d].wearArea) {
                     _0xdc8e74 = 1;
                 }
             }
             if (mainPlayerCells) {
                 for (_0x47f09d = 0; _0x47f09d < mainPlayerCells.length; _0x47f09d++) {
-                    if (mainPlayerCells[_0x47f09d].wears && 1 == mainPlayerCells[_0x47f09d].wears.P) {
+                    if (mainPlayerCells[_0x47f09d].wears && 1 == mainPlayerCells[_0x47f09d].wears.wearArea) {
                         _0xdc8e74 = 1;
                     }
                 }
@@ -8890,12 +8884,12 @@ function _0x483c7e(_0x4bd171) {
                 curserMessage("Secret command... enjoy the skins!", false, true, 1, 5);
                 var _0xe1693f = 0;
                 for (var _0x47f09d = 0; _0x47f09d < _0x27324d.length; _0x47f09d++) {
-                    if (0 == _0x27324d[_0x47f09d].P) {
+                    if (0 == _0x27324d[_0x47f09d].wearArea) {
                         _0xe1693f = 1;
                     }
                 }
                 for (_0x47f09d = 0; _0x47f09d < mainPlayerCells.length; _0x47f09d++) {
-                    if (mainPlayerCells[_0x47f09d].wears && 0 == mainPlayerCells[_0x47f09d].wears.P) {
+                    if (mainPlayerCells[_0x47f09d].wears && 0 == mainPlayerCells[_0x47f09d].wears.wearArea) {
                         _0xe1693f = 1;
                     }
                 }
@@ -9787,7 +9781,7 @@ function _0x4801bb() {
             _0x114a07.color = rgbToHex(_0x4f9aca.r, _0x4f9aca.g, _0x4f9aca.b);
             _0x114a07.colorDimmed = rgbToHex(_0x4f9aca.r * gameBrightness, _0x4f9aca.g * gameBrightness, _0x4f9aca.b * gameBrightness);
             _0x114a07.spiked = _0x2cb7b3;
-            _0x114a07.N = _0x4ce9ff;
+            _0x114a07.imageId = _0x4ce9ff;
             _0x114a07.reloadImage();
             _0x114a07.ga = 0.5;
         }
@@ -10595,7 +10589,7 @@ window.setMegaphoneText = function() {
     for (var _0x1f2a13 = 1; _0x1f2a13 <= 5; _0x1f2a13++) {
         if (_0x1f2a13 <= gameSettings.wearablesSelected.length) {
             var _0x5908dd = gameSettings.wearablesSelected[_0x1f2a13 - 1];
-            var _0x57dd3b = wearableClasses[_0x5908dd.P] || '';
+            var _0x57dd3b = wearableClasses[_0x5908dd.wearArea] || '';
             try {
                 $("#wearMegaDialog" + _0x1f2a13).css("background-image", "url('wearables/" + _0x5908dd.wearId.toString() + "_lo.png?v=" + wearablesApiVersion + "')").removeClass("center top bottom left right max".replace(_0x57dd3b, '')).addClass(_0x57dd3b).show();
             } catch (_0x1d7f79) {
