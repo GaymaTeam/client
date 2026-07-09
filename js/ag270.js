@@ -6914,10 +6914,10 @@ function wsOnMessage(_0x2ba470) {
                         }
                     }, 600);
                 }
-                $(".memberType").html("<p style=\"margin: 0 auto;text-align: center;color: #fffe12; text-shadow: 0px 0px 10px #c7920d; /*background: transparent url(img/particles.gif);*/\">GOLD MEMBER</p>");
+                $(".memberType").html("<p style=\"margin: 0 auto;text-align: center;color: #fffe12; text-shadow: 0px 0px 10px #c7920d; background: url(img/particles.gif);\">GOLD MEMBER</p>");
             } else {
                 $(".username").removeClass("goldBar");
-                $(".memberType").html("<a href=\"member.php?camp=3\" target=\"_blank\"><p style=\"margin: 0 auto;text-align: center;color: white; font-size: 12px; font-weight: bold; text-shadow: 0px 0px 10px #2196F3;\">NOT A GOLD MEMBER</p></a>");
+                $(".memberType").html("<p style=\"margin: 0 auto;text-align: center;color: white; text-shadow: 0px 0px 10px #2196F3;\">NO MONEY FOR SORA</p>");
             }
             $("#visibilityStatus").show();
             $("#cVisibilityStatus").prop("disabled", false);
