@@ -184,11 +184,13 @@ const foodCellRandomShapes = [5, 3, 6, 6, 6, 3, 4, 6, 6, 3, 6, 5, 5, 4, 3, 6, 4,
 const cellStrokeSizeMultiplier = [1, 1, 1, 1.25, 1.12, 1.07, 1.05, 1.04, 1.03, 1.02, 1.02, 1.01, 1.01, 1.01, 1, 1];
 
 for (var i = 0; i <= 255; i++) {
-    var _0x6b1cd1;
-    var _0x355a83 = playerEmotes[i];
-    if (_0x355a83 && ((_0x6b1cd1 = _0x355a83.sprites) && (_0x355a83.duration = _0x6b1cd1.nFrames * _0x6b1cd1.ticksPerFrame * _0x6b1cd1.nLoops * 1000 / 60), 0 == _0x355a83.duration)) {
-        _0x355a83.duration = _0x355a83.time === animationTimeFunctionA ? 1800 : 30000;
-    }
+    var animation = playerEmotes[i];
+    if (!animation) continue;
+    var sprites = animation.sprites
+    if (sprites)
+        animation.duration = sprites.nFrames * sprites.ticksPerFrame * sprites.nLoops * 1000 / 60;
+    if (0 == animation.duration)
+        animation.duration = animation.time === animationTimeFunctionA ? 1800 : 30000;
 }
 
 const playerDances = {
