@@ -123,43 +123,43 @@ const playerEmotes = {
     1: { time: animationTimeFunctionB, duration: 800 },
     2: { time: animationTimeFunctionB, duration: 800 },
     3: { time: animationTimeFunctionB, duration: 2000 },
-    4: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/360shot2.png"), m: 6, h: 3, v: 7, k: 1, scale: 1.8, xOffset: 0, yOffset: 0, globalAlpha: 0.7, globalAlphaBub: 0.5 } },
-    5: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/levelUp2.png"), m: 21, h: 7, v: 7, k: 1, scale: 2, xOffset: 0, yOffset: -70, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
+    4: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/360shot2.png"), nFrames: 6, nCols: 3, ticksPerFrame: 7, nLoops: 1, scale: 1.8, xOffset: 0, yOffset: 0, globalAlpha: 0.7, globalAlphaBub: 0.5 } },
+    5: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/levelUp2.png"), nFrames: 21, nCols: 7, ticksPerFrame: 7, nLoops: 1, scale: 2, xOffset: 0, yOffset: -70, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
     6: { time: animationTimeFunctionB, duration: 3000 },
     7: { time: animationTimeFunctionB, duration: 0 },
     8: { time: animationTimeFunctionB, duration: 2000 },
     9: { time: animationTimeFunctionB, duration: 400 },
-    10: { time: animationTimeFunctionB, duration: 1, ut: true, u: { canvas: newCanvasImage("img/animations/medal_1st.png"), m: 1, h: 1, v: 200, k: 0, scale: 0.4, xOffset: 0, yOffset: -480, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
+    10: { time: animationTimeFunctionB, duration: 1, ignoreAnimSetting: true, sprites: { canvas: newCanvasImage("img/animations/medal_1st.png"), nFrames: 1, nCols: 1, ticksPerFrame: 200, nLoops: 0, scale: 0.4, xOffset: 0, yOffset: -480, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
     11: { time: animationTimeFunctionB, duration: 2200 },
-    12: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/wacky2.png"), m: 20, h: 5, v: 2.4, k: 2.75, scale: 1.1, xOffset: 0, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
+    12: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/wacky2.png"), nFrames: 20, nCols: 5, ticksPerFrame: 2.4, nLoops: 2.75, scale: 1.1, xOffset: 0, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
     13: { time: animationTimeFunctionA, duration: 1 },
-    14: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/iced.png"), m: 1, h: 1, v: 200, k: 1, scale: 1.45, xOffset: 0, yOffset: 41, globalAlpha: 1, globalAlphaBub: 0.7, fade: { ht: 150, ft: 200, bt: 0, gt: 1 } } },
+    14: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/iced.png"), nFrames: 1, nCols: 1, ticksPerFrame: 200, nLoops: 1, scale: 1.45, xOffset: 0, yOffset: 41, globalAlpha: 1, globalAlphaBub: 0.7, fade: { tickFrom: 150, tickTo: 200, fadeFrom: 0, fadeTo: 1 } } },
     15: { time: animationTimeFunctionB, duration: 10300 },
     16: { time: animationTimeFunctionB, duration: 400 },
-    17: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/upgrade.png"), m: 25, h: 5, v: 3, k: 1, scale: 1.5, xOffset: 0, yOffset: 0, globalAlpha: 0.7, globalAlphaBub: 0.5 } },
+    17: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/upgrade.png"), nFrames: 25, nCols: 5, ticksPerFrame: 3, nLoops: 1, scale: 1.5, xOffset: 0, yOffset: 0, globalAlpha: 0.7, globalAlphaBub: 0.5 } },
     18: { time: animationTimeFunctionB, duration: 800 },
-    20: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/anti_iced.png"), m: 1, h: 1, v: 200, k: 1, scale: 1.45, xOffset: 0, yOffset: 41, globalAlpha: 1, globalAlphaBub: 0.7, fade: { ht: 150, ft: 200, bt: 0, gt: 1 } } },
-    21: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/anti_rec.png"), m: 1, h: 1, v: 250, k: 1, scale: 1.35, xOffset: 0, yOffset: 41, globalAlpha: 0.5, globalAlphaBub: 0.2, fade: { ht: 200, ft: 250, bt: 0, gt: 1 } } },
-    23: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/shield_blue2.png"), m: 15, h: 5, v: 7, k: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
-    24: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/shield_green2.png"), m: 10, h: 5, v: 10, k: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
-    25: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/shield_red2.png"), m: 10, h: 5, v: 10, k: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
-    26: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/shield_purple2.png"), m: 10, h: 5, v: 10, k: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
-    30: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/wave.png"), m: 4, h: 4, v: 5, k: 8, scale: 1.25, xOffset: 25, yOffset: -24, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
-    31: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/explo_head2.png"), m: 60, h: 5, v: 3, k: 1, scale: 1.28, xOffset: 0, yOffset: -5, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
-    32: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/hearts.png"), m: 6, h: 3, v: 7, k: 5, scale: 1.37, xOffset: -5, yOffset: -2, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
-    41: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/angry_pumpkin6.png"), m: 22, h: 5, v: 4, k: 2, scale: 1.88, xOffset: 0, yOffset: -36, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    42: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/scared_pumpkin3.png"), m: 34, h: 5, v: 3, k: 2, scale: 1.8, xOffset: 0, yOffset: -15, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    43: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/yawn_pumpkin3.png"), m: 28, h: 5, v: 5, k: 1, scale: 1.8, xOffset: 0, yOffset: -18, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    44: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/threm2.png"), m: 11, h: 5, v: 10, k: 1, scale: 1.2, xOffset: 0, yOffset: 25, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    45: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/sweatface.png"), m: 9, h: 5, v: 10, k: 2, scale: 1.05, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    46: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/tearsjoy.png"), m: 9, h: 5, v: 10, k: 2, scale: 1.05, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    47: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/nono.png"), m: 7, h: 5, v: 5, k: 6, scale: 1.15, xOffset: 0, yOffset: -5, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    48: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/clap.png"), m: 16, h: 5, v: 3, k: 3, scale: 1.25, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    49: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/crying.png"), m: 32, h: 5, v: 3, k: 2, scale: 1.22, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    50: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/devsmile.png"), m: 48, h: 5, v: 3, k: 1, scale: 1.39, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    51: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/eatman.png"), m: 12, h: 5, v: 3, k: 3, scale: 1, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    52: { time: animationTimeFunctionB, duration: 1, u: { canvas: newCanvasImage("img/animations/trophy.png"), m: 33, h: 5, v: 3, k: 2, scale: 1.7, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
-    53: { time: animationTimeFunctionB, duration: 2, u: { canvas: newCanvasImage("img/animations/heartsv.png"), m: 44, h: 5, v: 3, k: 2, scale: 1.2, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    20: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/anti_iced.png"), nFrames: 1, nCols: 1, ticksPerFrame: 200, nLoops: 1, scale: 1.45, xOffset: 0, yOffset: 41, globalAlpha: 1, globalAlphaBub: 0.7, fade: { tickFrom: 150, tickTo: 200, fadeFrom: 0, fadeTo: 1 } } },
+    21: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/anti_rec.png"), nFrames: 1, nCols: 1, ticksPerFrame: 250, nLoops: 1, scale: 1.35, xOffset: 0, yOffset: 41, globalAlpha: 0.5, globalAlphaBub: 0.2, fade: { tickFrom: 200, tickTo: 250, fadeFrom: 0, fadeTo: 1 } } },
+    23: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/shield_blue2.png"), nFrames: 15, nCols: 5, ticksPerFrame: 7, nLoops: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
+    24: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/shield_green2.png"), nFrames: 10, nCols: 5, ticksPerFrame: 10, nLoops: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
+    25: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/shield_red2.png"), nFrames: 10, nCols: 5, ticksPerFrame: 10, nLoops: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
+    26: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/shield_purple2.png"), nFrames: 10, nCols: 5, ticksPerFrame: 10, nLoops: 3, scale: 1.7, xOffset: -9, yOffset: 0, globalAlpha: 0.9, globalAlphaBub: 0.9 } },
+    30: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/wave.png"), nFrames: 4, nCols: 4, ticksPerFrame: 5, nLoops: 8, scale: 1.25, xOffset: 25, yOffset: -24, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
+    31: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/explo_head2.png"), nFrames: 60, nCols: 5, ticksPerFrame: 3, nLoops: 1, scale: 1.28, xOffset: 0, yOffset: -5, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
+    32: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/hearts.png"), nFrames: 6, nCols: 3, ticksPerFrame: 7, nLoops: 5, scale: 1.37, xOffset: -5, yOffset: -2, globalAlpha: 0.9, globalAlphaBub: 0.7 } },
+    41: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/angry_pumpkin6.png"), nFrames: 22, nCols: 5, ticksPerFrame: 4, nLoops: 2, scale: 1.88, xOffset: 0, yOffset: -36, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    42: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/scared_pumpkin3.png"), nFrames: 34, nCols: 5, ticksPerFrame: 3, nLoops: 2, scale: 1.8, xOffset: 0, yOffset: -15, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    43: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/yawn_pumpkin3.png"), nFrames: 28, nCols: 5, ticksPerFrame: 5, nLoops: 1, scale: 1.8, xOffset: 0, yOffset: -18, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    44: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/threm2.png"), nFrames: 11, nCols: 5, ticksPerFrame: 10, nLoops: 1, scale: 1.2, xOffset: 0, yOffset: 25, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    45: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/sweatface.png"), nFrames: 9, nCols: 5, ticksPerFrame: 10, nLoops: 2, scale: 1.05, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    46: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/tearsjoy.png"), nFrames: 9, nCols: 5, ticksPerFrame: 10, nLoops: 2, scale: 1.05, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    47: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/nono.png"), nFrames: 7, nCols: 5, ticksPerFrame: 5, nLoops: 6, scale: 1.15, xOffset: 0, yOffset: -5, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    48: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/clap.png"), nFrames: 16, nCols: 5, ticksPerFrame: 3, nLoops: 3, scale: 1.25, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    49: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/crying.png"), nFrames: 32, nCols: 5, ticksPerFrame: 3, nLoops: 2, scale: 1.22, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    50: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/devsmile.png"), nFrames: 48, nCols: 5, ticksPerFrame: 3, nLoops: 1, scale: 1.39, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    51: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/eatman.png"), nFrames: 12, nCols: 5, ticksPerFrame: 3, nLoops: 3, scale: 1, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    52: { time: animationTimeFunctionB, duration: 1, sprites: { canvas: newCanvasImage("img/animations/trophy.png"), nFrames: 33, nCols: 5, ticksPerFrame: 3, nLoops: 2, scale: 1.7, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
+    53: { time: animationTimeFunctionB, duration: 2, sprites: { canvas: newCanvasImage("img/animations/heartsv.png"), nFrames: 44, nCols: 5, ticksPerFrame: 3, nLoops: 2, scale: 1.2, xOffset: 0, yOffset: 0, globalAlpha: 1, globalAlphaBub: 0.7 } },
 
     90: { time: animationTimeFunctionB, duration: 2600 },
     91: { time: animationTimeFunctionB, duration: 2200 },
@@ -186,7 +186,7 @@ const cellStrokeSizeMultiplier = [1, 1, 1, 1.25, 1.12, 1.07, 1.05, 1.04, 1.03, 1
 for (var i = 0; i <= 255; i++) {
     var _0x6b1cd1;
     var _0x355a83 = playerEmotes[i];
-    if (_0x355a83 && ((_0x6b1cd1 = _0x355a83.u) && (_0x355a83.duration = _0x6b1cd1.m * _0x6b1cd1.v * _0x6b1cd1.k * 1000 / 60), 0 == _0x355a83.duration)) {
+    if (_0x355a83 && ((_0x6b1cd1 = _0x355a83.sprites) && (_0x355a83.duration = _0x6b1cd1.nFrames * _0x6b1cd1.ticksPerFrame * _0x6b1cd1.nLoops * 1000 / 60), 0 == _0x355a83.duration)) {
         _0x355a83.duration = _0x355a83.time === animationTimeFunctionA ? 1800 : 30000;
     }
 }
@@ -5176,14 +5176,14 @@ class Cell {
         }
     }
     drawSprites(_0xdf8471, _0x41acbd, _0x13b9e6, _0x3d2a0d) {
-        var _0x421db6 = playerEmotes[_0xdf8471.id].u;
+        var animation = playerEmotes[_0xdf8471.id].sprites;
         var _0x5d0f77 = (currentFrameTime - _0xdf8471.start) / playerEmotes[_0xdf8471.id].duration;
-        if (1 <= (_0x5d0f77 < 0 ? 0 : 1 < _0x5d0f77 ? 1 : _0x5d0f77) || this.destroyed || !_0x421db6 || _0x421db6.m < 1 || _0x421db6.h < 1) {
+        if (1 <= (_0x5d0f77 < 0 ? 0 : 1 < _0x5d0f77 ? 1 : _0x5d0f77) || this.destroyed || !animation || animation.nFrames < 1 || animation.nCols < 1) {
             _0xdf8471.id = 0;
         } else {
-            if (_0x421db6.canvas && _0x421db6.canvas.complete) {
+            if (animation.canvas && animation.canvas.complete) {
                 _0x5d0f77 = ~~(60 * (currentFrameTime - _0xdf8471.start) / 1000 - 1);
-                let _0x24d439 = ~~((_0x5d0f77 = _0x5d0f77 < 0 ? 0 : _0x5d0f77) / _0x421db6.v);
+                let _0x24d439 = ~~((_0x5d0f77 = _0x5d0f77 < 0 ? 0 : _0x5d0f77) / animation.ticksPerFrame);
                 let _0x355a00;
                 let _0x1b66bf;
                 let _0x38b488;
@@ -5191,19 +5191,19 @@ class Cell {
                 let _0x15e709;
                 let _0x349a68;
                 let _0x3f97aa;
-                if (_0x421db6.k <= 0 || 1 < _0x421db6.k && _0x24d439 < _0x421db6.m * _0x421db6.k) {
-                    _0x24d439 %= _0x421db6.m;
+                if (animation.nLoops <= 0 || 1 < animation.nLoops && _0x24d439 < animation.nFrames * animation.nLoops) {
+                    _0x24d439 %= animation.nFrames;
                 }
-                if (_0x24d439 > _0x421db6.m - 1) {
+                if (_0x24d439 > animation.nFrames - 1) {
                     _0xdf8471.id = 0;
-                } else if (gameSettings.sCellAnimations || playerEmotes[_0xdf8471.id].ut) {
-                    _0x355a00 = _0x421db6.canvas.width / _0x421db6.h;
-                    _0x1b66bf = _0x421db6.canvas.height / Math.ceil(_0x421db6.m / _0x421db6.h);
-                    _0x27e6d4 = _0x355a00 * (_0x38b488 = 2 * _0x421db6.scale * this.strokeSize / Math.max(_0x355a00, _0x1b66bf));
+                } else if (gameSettings.sCellAnimations || playerEmotes[_0xdf8471.id].ignoreAnimSetting) {
+                    _0x355a00 = animation.canvas.width / animation.nCols;
+                    _0x1b66bf = animation.canvas.height / Math.ceil(animation.nFrames / animation.nCols);
+                    _0x27e6d4 = _0x355a00 * (_0x38b488 = 2 * animation.scale * this.strokeSize / Math.max(_0x355a00, _0x1b66bf));
                     _0x15e709 = _0x1b66bf * _0x38b488;
-                    _0x3f97aa = !(_0x349a68 = _0x421db6.fade) || _0x5d0f77 < _0x349a68.ht ? 0 : _0x5d0f77 >= _0x349a68.ft ? _0x349a68.gt : _0x349a68.bt + (_0x349a68.gt - _0x349a68.bt) * (_0x5d0f77 - _0x349a68.ht) / (_0x349a68.ft - _0x349a68.ht);
-                    _0x41acbd.globalAlpha = (gameSettings.sBubbleCells ? _0x421db6.globalAlphaBub : _0x421db6.globalAlpha) * (1 - _0x3f97aa);
-                    _0x41acbd.drawImage(_0x421db6.canvas, _0x24d439 % _0x421db6.h * _0x355a00, ~~(_0x24d439 / _0x421db6.h) * _0x1b66bf, _0x355a00, _0x1b66bf, _0x13b9e6 - _0x27e6d4 / 2 + _0x421db6.xOffset * _0x38b488, _0x3d2a0d - _0x15e709 / 2 + _0x421db6.yOffset * _0x38b488, _0x27e6d4, _0x15e709);
+                    _0x3f97aa = !(_0x349a68 = animation.fade) || _0x5d0f77 < _0x349a68.tickFrom ? 0 : _0x5d0f77 >= _0x349a68.tickTo ? _0x349a68.fadeTo : _0x349a68.fadeFrom + (_0x349a68.fadeTo - _0x349a68.fadeFrom) * (_0x5d0f77 - _0x349a68.tickFrom) / (_0x349a68.tickTo - _0x349a68.tickFrom);
+                    _0x41acbd.globalAlpha = (gameSettings.sBubbleCells ? animation.globalAlphaBub : animation.globalAlpha) * (1 - _0x3f97aa);
+                    _0x41acbd.drawImage(animation.canvas, _0x24d439 % animation.nCols * _0x355a00, ~~(_0x24d439 / animation.nCols) * _0x1b66bf, _0x355a00, _0x1b66bf, _0x13b9e6 - _0x27e6d4 / 2 + animation.xOffset * _0x38b488, _0x3d2a0d - _0x15e709 / 2 + animation.yOffset * _0x38b488, _0x27e6d4, _0x15e709);
                 }
             }
         }
