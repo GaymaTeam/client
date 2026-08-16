@@ -4506,7 +4506,7 @@ class Cell {
                 }
                 _0x282a29 = ((this.spiked ? 0.03 : 0.05) < _0x3e50d9 || 0 == this.id) && (60 < this.size || this.spiked || !this.smallFood && 25 < this.size && 0.15 < _0x3e50d9 || gameSettings.sBubbleCells && (0.4 < _0x3e50d9 || 20 < this.size));
                 if (!_0x222c9e) {
-                    _0x433539 = this.ga * (this.isCloaked ? 0.04 : this.isGhosted ? 0.2 : gameSettings.sBubbleCells ? !_0x282a29 && this.smallFood ? 1 : this.spiked && false ? 0.7 : 0.4 : this.smallFood ? 1 : this.spiked && true || 14 == this.type ? 0.7 : 0.4 < _0x3e50d9 || 60 < this.size ? 0.95 : 1);
+                    _0x433539 = this.ga * (this.isCloaked ? 0.04 : this.isGhosted ? 0.2 : gameSettings.sBubbleCells ? !_0x282a29 && this.smallFood ? 1 : this.spiked && !gameSettings.sTransparentViruses ? 0.7 : 0.4 : this.smallFood ? 1 : this.spiked && gameSettings.sTransparentViruses || 14 == this.type ? 0.7 : 0.4 < _0x3e50d9 || 60 < this.size ? 0.95 : 1);
                     _0xb14342.globalAlpha = this.destroyed ? _0x433539 * (1 - _0x58ffc6) : _0x433539;
                     _0xb14342.fillStyle = this.isGhosted ? "#AAAAAA" : gameSettings.sColors ? this.color : "#FFFFFF";
                     _0xb14342.fill();
@@ -6734,6 +6734,7 @@ function wsOnMessage(_0x2ba470) {
             _0x2f2313 = pkt.getUint8();
             $("#registerSuccess").finish().hide();
             if (1 == _0x2f2313) {
+                console.log('LOGGED', Date.now() - window.loginTime);
                 $("#login").fadeOut("slow", function() {});
                 isLoggedIn = true;
                 _0x186b83 = 0;
@@ -10405,6 +10406,7 @@ function login(_0x4519ed, _0x5068c3, _0x592927) {
     _0x4519ed = _0x170269 = _0x592927;
     if (isReady()) {
         new PacketWriter(5 + 2 * _0x5068c3.length + 2 * _0x4519ed.length).setUint8(2).setString(_0x5068c3).setUint16(0).setString(_0x4519ed).setUint16(0).send();
+        window.loginTime = Date.now();
     }
     $("#sent").attr("disabled", "disabled");
     if (_0x4ade31) {
@@ -12545,7 +12547,7 @@ window.refreshDanceMenuLocks = function() {
     }
 };
 window.plEA = function(_0x5cfec2) {
-    return 0 == _0x5cfec2 ? swal("This emote is locked. You can unlock it by completing a challenge :) More information coming in a future update") : 50 == _0x5cfec2 && true ? swal("This emote requires level 400 to unlock or 20 completed challenges that will be released in the future") : void(_0x5cfec2 && Number.isInteger(_0x5cfec2) && isReady() && new PacketWriter(2).setUint8(179).setUint8(_0x5cfec2).send());
+    return 0 == _0x5cfec2 ? swal("This emote is locked. You can unlock it by completing a challenge :) More information coming in a future update") : 50 == _0x5cfec2 && accountRessources.level < 400 ? swal("This emote requires level 400 to unlock or 20 completed challenges that will be released in the future") : void(_0x5cfec2 && Number.isInteger(_0x5cfec2) && isReady() && new PacketWriter(2).setUint8(179).setUint8(_0x5cfec2).send());
 };
 window.plDA = function(_0x5d5106) {
     var _0x3c3c10;
