@@ -1752,7 +1752,7 @@ function _0x460313() {
                 break;
             case "contextMute":
                 if (selectedMessage) {
-                    _0x3addca(selectedMessage.uid, selectedMessage.iid, selectedMessage.name);
+                    mutePlayer(selectedMessage.uid, selectedMessage.iid, selectedMessage.name);
                 } else {
                     sendSignal(109);
                 }
@@ -2028,21 +2028,16 @@ function _0x432cde() {
     var _0x337d0c;
 }
 
-function _0x3addca(_0x56aa7e, _0x53ceee, _0x48d9c8) {
-    var _0x4b9b10 = _0x56aa7e != _0x4e4df3 && !_0x2f707e[_0x56aa7e];
-    var _0x4be0a6 = _0x53ceee != _0x4e4df3 && !_0x538120[_0x53ceee];
-    var _0x5384f7 = {
-        uid: _0x56aa7e,
-        iid: _0x53ceee,
-        name: _0x48d9c8
-    };
+function mutePlayer(uid, iid, name) {
+    var _0x4b9b10 = uid != randomMD5 && !_0x2f707e[uid];
+    var _0x4be0a6 = iid != randomMD5 && !_0x538120[iid];
     if (_0x4b9b10 || _0x4be0a6) {
-        _0x5e5c13.push(_0x5384f7);
-        _0x2f707e[_0x56aa7e] = (_0x2f707e[_0x56aa7e] || 0) + 1;
-        _0x538120[_0x53ceee] = (_0x538120[_0x53ceee] || 0) + 1;
-        curserMessage("Muted " + _0x48d9c8, !(_0x4cb089 = true), false, 0, 10);
+        _0x5e5c13.push({ uid, iid, name });
+        _0x2f707e[uid] = (_0x2f707e[uid] || 0) + 1;
+        _0x538120[iid] = (_0x538120[iid] || 0) + 1;
+        curserMessage("Muted " + name, !(_0x4cb089 = true), false, 0, 10);
     } else {
-        curserMessage(_0x56aa7e != _0x4e4df3 || _0x53ceee != _0x4e4df3 ? "That player is already muted" : "You cannot mute that player", false, false, 0, 10);
+        curserMessage(uid != randomMD5 || iid != randomMD5 ? "That player is already muted" : "You cannot mute that player", false, false, 0, 10);
     }
 }
 
@@ -2936,8 +2931,8 @@ function wsOnOpen() {
         "selectable": false,
         "sid": 0,
         "pid": 0,
-        "uid": _0x4e4df3,
-        "iid": _0x4e4df3,
+        "uid": randomMD5,
+        "iid": randomMD5,
         "name": "Agma.io",
         "receiver": '',
         "color": "#0AFF0A",
@@ -3197,7 +3192,7 @@ function _0x215896() {
                 var _0x4aac3c;
                 var _0xb4b953;
                 for (var _0x461e7e = 0; _0x461e7e < _0x47744f; _0x461e7e++) {
-                    (_0x53a19d = chatMessages[_0x461e7e]).filter = !(0 != _0xd835b8 && (_0xd835b8 != _0x53a19d.category || 1 != _0xd835b8 && '' != _0x1723aa && _0x1723aa.toLowerCase() != _0x53a19d.name.toLowerCase() && _0x1723aa.toLowerCase() != _0x53a19d.receiver.toLowerCase()) || _0x53a19d.uid != _0x4e4df3 && _0x2f707e[_0x53a19d.uid] || _0x53a19d.iid != _0x4e4df3 && _0x538120[_0x53a19d.iid]);
+                    (_0x53a19d = chatMessages[_0x461e7e]).filter = !(0 != _0xd835b8 && (_0xd835b8 != _0x53a19d.category || 1 != _0xd835b8 && '' != _0x1723aa && _0x1723aa.toLowerCase() != _0x53a19d.name.toLowerCase() && _0x1723aa.toLowerCase() != _0x53a19d.receiver.toLowerCase()) || _0x53a19d.uid != randomMD5 && _0x2f707e[_0x53a19d.uid] || _0x53a19d.iid != randomMD5 && _0x538120[_0x53a19d.iid]);
                     if (_0x53a19d.filter) {
                         _0x5b2664++;
                     }
@@ -3979,8 +3974,8 @@ function wsOnClose() {
         "selectable": false,
         "sid": 0,
         "pid": 0,
-        "uid": _0x4e4df3,
-        "iid": _0x4e4df3,
+        "uid": randomMD5,
+        "iid": randomMD5,
         "name": "Agma.io",
         "receiver": '',
         "color": "#FF0A0A",
@@ -7155,17 +7150,17 @@ function wsOnMessage(_0x2ba470) {
             var _0x1124f6 = pkt.getUint16();
             var _0x3884cc = !!(4 & _0x3988b2);
             var _0x24a818 = 0;
-            var _0x2712a9 = _0x4e4df3;
-            var _0x3b0d92 = _0x4e4df3;
+            var _0x2712a9 = randomMD5;
+            var _0x3b0d92 = randomMD5;
             var _0x238c81 = 1;
             if (8 & _0x3988b2 && 1 & (colorChatPickp = pkt.getUint8())) {
                 _0x238c81 = 2;
             }
-            if (_0x3884cc && (_0x24a818 = pkt.getUint32(), 128 & _0x3988b2 && (_0x2712a9 = md5(((4294967296 + (pkt.getUint32() ^ _0x3e7187)) % 4294967296).toString(36))), !(2 & _0x3988b2))) {
+            if (_0x3884cc && (_0x24a818 = pkt.getUint32(), 128 & _0x3988b2 && (_0x2712a9 = md5(((4294967296 + (pkt.getUint32() ^ randomBytesB)) % 4294967296).toString(36))), !(2 & _0x3988b2))) {
                 var _0x3da123 = 256 & _0x1124f6 ? pkt.getUint8() : 1;
                 var _0x36786a = [];
                 for (var _0x1dc8b4 = 0; _0x1dc8b4 < _0x3da123; _0x1dc8b4++) {
-                    _0x36786a.push(((4294967296 + (pkt.getUint32() ^ _0x3e7187)) % 4294967296).toString(36));
+                    _0x36786a.push(((4294967296 + (pkt.getUint32() ^ randomBytesB)) % 4294967296).toString(36));
                 }
                 _0x3b0d92 = md5(1 < _0x36786a.length ? JSON.stringify(_0x36786a) : _0x36786a[0]);
             }
@@ -7367,19 +7362,16 @@ function wsOnMessage(_0x2ba470) {
             curserMessage('You got banned', false, false, 0, 5);
             break;
         case 109:
+            console.log(pkt);
             var flags = pkt.getUint8();
-            var _0x2f2313 = _0x4e4df3;
+            var _0x2f2313 = randomMD5;
+            if (2 & flags)
+                _0x2f2313 = md5(((4294967296 + (pkt.getUint32() ^ randomBytesB)) % 4294967296).toString(36));
             var _0x435e7a = 1 & flags ? pkt.getUint8() : 1;
             var _0xba74db = [];
-            for (var i = 0; i < _0x435e7a; ++i) {
-                var flags;
-                var _0x2f2313;
-                var _0x435e7a;
-                var _0xba74db;
-                var i;
-                _0xba74db.push(((4294967296 + (pkt.getUint32() ^ _0x3e7187)) % 4294967296).toString(36));
-            }
-            _0x3addca(_0x2f2313, _0xba74db = md5(1 < _0xba74db.length ? JSON.stringify(_0xba74db) : _0xba74db[0]), pkt.getString());
+            for (var i = 0; i < _0x435e7a; ++i)
+                _0xba74db.push(((4294967296 + (pkt.getUint32() ^ randomBytesB)) % 4294967296).toString(36));
+            mutePlayer(_0x2f2313, md5(1 < _0xba74db.length ? JSON.stringify(_0xba74db) : _0xba74db[0]), pkt.getString());
             break;
         case 110:
             var currentServer = 0;
@@ -7617,8 +7609,8 @@ function wsOnMessage(_0x2ba470) {
                 "selectable": true,
                 "sid": currentServerId,
                 "pid": _0x2d1f83,
-                "uid": _0x4e4df3,
-                "iid": _0x4e4df3,
+                "uid": randomMD5,
+                "iid": randomMD5,
                 "name": _0x17a702,
                 "receiver": '',
                 "color": "#3b87cc",
@@ -8183,32 +8175,25 @@ function _0x5a2fbe() {
     }
 }
 
-function _0x5f4edb(_0x42f503, _0x21ad86, _0x1c70b7, _0x55241a, _0x5e7c26) {
-    _0x5e7c26 = !!_0x5e7c26;
+function _0x5f4edb(wearId, wearArea, zIndex, wearGroup, wearTry) {
+    wearTry = !!wearTry;
     for (var i = 0; i < gameSettings.wearablesSelected.length; i++) {
-        if (gameSettings.wearablesSelected[i].wearId == _0x42f503) {
+        if (gameSettings.wearablesSelected[i].wearId == wearId) {
             gameSettings.wearablesSelected.splice(i, 1);
             break;
         }
     }
-    $("#wearableContainer" + _0x42f503).addClass("selected");
-    $("#wearableUseBtn" + _0x42f503).removeClass("btn-primary").addClass("btn-default").text("Cancel");
-    $("#wearableTryBtn" + _0x42f503).removeClass("btn-primary").addClass("btn-default").text("Cancel");
+    $("#wearableContainer" + wearId).addClass("selected");
+    $("#wearableUseBtn" + wearId).removeClass("btn-primary").addClass("btn-default").text("Cancel");
+    $("#wearableTryBtn" + wearId).removeClass("btn-primary").addClass("btn-default").text("Cancel");
     var _0x457b8 = 0;
     for (var i = gameSettings.wearablesSelected.length - 1; 0 <= i; i--) {
-        if (gameSettings.wearablesSelected[i].zIndex <= _0x1c70b7) {
+        if (gameSettings.wearablesSelected[i].zIndex <= zIndex) {
             _0x457b8 = i + 1;
             break;
         }
     }
-    var _0x1f6a9f = {
-        wearId: _0x42f503,
-        wearArea: _0x21ad86,
-        zIndex: _0x1c70b7,
-        wearGroup: _0x55241a,
-        wearTry: _0x5e7c26
-    };
-    gameSettings.wearablesSelected.splice(_0x457b8, 0, _0x1f6a9f);
+    gameSettings.wearablesSelected.splice(_0x457b8, 0, { wearId, wearArea, zIndex, wearGroup, wearTry });
     _0x113238();
 }
 
@@ -10036,9 +10021,9 @@ var _0xaade67 = false;
 var _0x358119 = window.devicePixelRatio || 1;
 var _0x28ad4b = _0x358119;
 var isWebSocketAccepted = false;
-var _0x5bbe63 = Math.floor(294967295 + 4000000000 * Math.random()) + 1;
-var _0x3e7187 = Math.floor(4294967296 * Math.random());
-var _0x4e4df3 = md5(-~~(2000000000 * Math.random()) - 1);
+var randomBytesA = Math.floor(294967295 + 4000000000 * Math.random()) + 1;
+var randomBytesB = Math.floor(4294967296 * Math.random());
+var randomMD5 = md5(-~~(2000000000 * Math.random()) - 1);
 var _0x6a593d = 0;
 var _0x134fc9 = true;
 var _0x511d58 = true;
@@ -11912,22 +11897,22 @@ window.tgWblGc = function(_0x164aab, _0x2c53fd, _0x4286f5, _0x1b40b7, _0x18a457)
         _0x5f4edb(_0x164aab, _0x2c53fd, _0x4286f5, _0x1b40b7, _0x18a457);
     }
 };
-window.toggleWearable = function(_0x3acdc5, _0x75f1be, _0x1acae1, _0x26b773, _0x25e189) {
+window.toggleWearable = function(wearId, wearArea, _0x1acae1, wearGroup, _0x25e189) {
     if (_0x3e08c0 && _0x529909 && isReady()) {
         var _0x551068 = false;
         for (var _0x3e19ac = 0; _0x3e19ac < gameSettings.wearablesSelected.length; _0x3e19ac++) {
-            if (gameSettings.wearablesSelected[_0x3e19ac].wearId == _0x3acdc5) {
+            if (gameSettings.wearablesSelected[_0x3e19ac].wearId == wearId) {
                 _0x551068 = true;
                 break;
             }
         }
         if (_0x551068) {
-            _0x5eb440(_0x3acdc5);
+            _0x5eb440(wearId);
         } else {
-            if (0 != _0x26b773) {
+            if (0 != wearGroup) {
                 var _0x323f5e = gameSettings.wearablesSelected.length;
                 for (var _0xe8fbe7 = 0; _0xe8fbe7 < _0x323f5e; _0xe8fbe7++) {
-                    if (gameSettings.wearablesSelected[_0xe8fbe7].wearGroup == _0x26b773 && (_0x5eb440(gameSettings.wearablesSelected[_0xe8fbe7].wearId), gameSettings.wearablesSelected.length < _0x323f5e)) {
+                    if (gameSettings.wearablesSelected[_0xe8fbe7].wearGroup == wearGroup && (_0x5eb440(gameSettings.wearablesSelected[_0xe8fbe7].wearId), gameSettings.wearablesSelected.length < _0x323f5e)) {
                         _0x323f5e--;
                         _0xe8fbe7--;
                     }
@@ -11936,7 +11921,7 @@ window.toggleWearable = function(_0x3acdc5, _0x75f1be, _0x1acae1, _0x26b773, _0x
             if (5 <= gameSettings.wearablesSelected.length) {
                 return void curserMessage("You cannot select more than 5 wearables. Please remove one before selecting another wearable.", false, false, 0, 10);
             }
-            _0x5f4edb(_0x3acdc5, _0x75f1be, _0x1acae1, _0x26b773, _0x25e189);
+            _0x5f4edb(wearId, wearArea, _0x1acae1, wearGroup, _0x25e189);
             if (!gameSettings.sWearables) {
                 setSetting("cWearables", true);
             }
@@ -12064,7 +12049,7 @@ window.checkUserLoggedIn = function() {
     return !!isLoggedIn || (swal("Login first", "Please log in on agma or register a new user account to use this functionality"), false);
 };
 window.coinsXopen = function(_0x34f7cb) {
-    _0x34f7cb = "cprd=" + (_0x34f7cb = _0x34f7cb || 1) + "&cpn=" + _0xea465f + "&cpcid=" + _0x5bbe63;
+    _0x34f7cb = "cprd=" + (_0x34f7cb = _0x34f7cb || 1) + "&cpn=" + _0xea465f + "&cpcid=" + randomBytesA;
     if ('' == _0xea465f) {
         return swal("Login first", "Please log in on agma or register a new user account to use this functionality");
     }
@@ -13257,9 +13242,9 @@ $(function() {
     $("#overlays").fadeIn(1000);
     az(0, 2);
     if (localStorage.cid) {
-        _0x5bbe63 = localStorage.cid;
+        randomBytesA = localStorage.cid;
     } else {
-        localStorage.cid = _0x5bbe63;
+        localStorage.cid = randomBytesA;
     }
     $("#inventory").find(".inventory-box").tooltip({ delay: { show: 500, hide: 0 } });
     if (1 < _0x255800.length) {
