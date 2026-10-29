@@ -625,8 +625,8 @@ window.onload = function() {
                 var _0x2f8185 = _0x34757a;
                 if (!_0x3e08c0 && !_0x181957 && 0 < mainPlayerCellsIds.length) {
                     var _0x5deb31 = null;
-                    var _0x5ec5a8 = (_0x2f8185.pageX - clientWidth / 2) / _0x3e50d9 + viewX;
-                    var _0x12065b = (_0x2f8185.pageY - clientHeight / 2) / _0x3e50d9 + viewY;
+                    var _0x5ec5a8 = (_0x2f8185.pageX - clientWidth / 2) / currentZoom + viewX;
+                    var _0x12065b = (_0x2f8185.pageY - clientHeight / 2) / currentZoom + viewY;
                     for (var i = allNonFoodCells.length - 1; 0 <= i; i--) {
                         var cell = allNonFoodCells[i];
                         if (0 == cell.type) {
@@ -970,10 +970,10 @@ window.onload = function() {
                     sendSignal(28);
                     _0x23f8db = true;
                 }
-                if (!(_0x244728.keyCode != _0x3569f8.C.c || _0x4400ec)) {
-                    _0x312d0a = _0x28fccb;
-                    _0x2435c4 = _0x4bd57d;
-                    _0x4400ec = true;
+                if (!(_0x244728.keyCode != _0x3569f8.C.c || isMouseFixed)) {
+                    mouseFixedX = _0x28fccb;
+                    mouseFixedY = _0x4bd57d;
+                    isMouseFixed = true;
                 }
                 if (_0x244728.keyCode == _0x3569f8.D.c && !_0x16195f && _0x27d666 <= _0xb8b260 - 50) {
                     _0x27d666 = _0xb8b260;
@@ -1118,7 +1118,7 @@ window.onload = function() {
             _0x4ae953 = false;
         }
         if (_0xe5126b.keyCode == _0x3569f8.I.c) _0x23f8db = false;
-        if (_0xe5126b.keyCode == _0x3569f8.C.c && _0x4400ec) _0x580067(!(_0x4400ec = false));
+        if (_0xe5126b.keyCode == _0x3569f8.C.c && isMouseFixed) _0x580067(!(isMouseFixed = false));
         if (_0xe5126b.keyCode == _0x3569f8.D.c) _0x16195f = false;
         if (_0xe5126b.keyCode == _0x3569f8.T.c) _0x1f5d9c = false;
         if (_0xe5126b.keyCode == _0x3569f8.M.c) _0x4ad9fe = false;
@@ -1129,7 +1129,7 @@ window.onload = function() {
         if (_0x15ba70) sendSignal(36);
         if (_0x24ef11) sendSignal(38);
         if (_0x4ae953) sendSignal(40);
-        _0x3b6c7d = _0x15ba70 = _0x24ef11 = _0xad8aa9 = _0x38584f = _0x2bf6bb = _0x13ad94 = _0x5a26dc = _0x4ae953 = _0x23f8db = _0x4400ec = _0x16195f = _0x1f5d9c = _0x4ad9fe = _0x1c4ea8 = _0x1f7f29 = false;
+        _0x3b6c7d = _0x15ba70 = _0x24ef11 = _0xad8aa9 = _0x38584f = _0x2bf6bb = _0x13ad94 = _0x5a26dc = _0x4ae953 = _0x23f8db = isMouseFixed = _0x16195f = _0x1f5d9c = _0x4ad9fe = _0x1c4ea8 = _0x1f7f29 = false;
     };
     window.requestAnimationFrame(_0x3a188d);
     setInterval(_0x580067, 50);
@@ -1363,8 +1363,8 @@ function _0x3169a6(_0x4dc13e) {
         document.getElementById("chtbox").blur();
         var _0x5c09e8 = null;
         if (!selectedMessage) {
-            var _0x3e0f5a = (_0x4dc13e.pageX - clientWidth / 2) / _0x3e50d9 + viewX;
-            var _0x56bce2 = (_0x4dc13e.pageY - clientHeight / 2) / _0x3e50d9 + viewY;
+            var _0x3e0f5a = (_0x4dc13e.pageX - clientWidth / 2) / currentZoom + viewX;
+            var _0x56bce2 = (_0x4dc13e.pageY - clientHeight / 2) / currentZoom + viewY;
             for (var n = allNonFoodCells.length - 1; 0 <= n; n--) {
                 var cell = allNonFoodCells[n];
                 if (0 == cell.type) {
@@ -2435,8 +2435,8 @@ function _0x3b18da(_0x3796f1) {
 }
 
 function _0x28c1e5() {
-    _0x21548d = _0x34f96a / _0x3e50d9 + viewX - _0x2263d7;
-    _0x1598a0 = _0x5079ce / _0x3e50d9 + viewY - _0x223539;
+    _0x21548d = _0x34f96a / currentZoom + viewX - _0x2263d7;
+    _0x1598a0 = _0x5079ce / currentZoom + viewY - _0x223539;
 }
 
 function _0x377f81(_0x491a10, _0x4bb605, _0x4099ec) {
@@ -2632,8 +2632,8 @@ function _0x3359de(_0x5f4291) {
 
 function _0x1450ce() {
     var _0x2b58c0 = gameSettings.sZoom ? 0.001 : 1;
-    if (4 < (_0x423e1a = _0x423e1a < _0x2b58c0 ? _0x2b58c0 : _0x423e1a) * _0x3e50d9) {
-        _0x423e1a = 4 / _0x3e50d9;
+    if (4 < (_0x423e1a = _0x423e1a < _0x2b58c0 ? _0x2b58c0 : _0x423e1a) * currentZoom) {
+        _0x423e1a = 4 / currentZoom;
     }
     if (gameSettings.sFixedZoom && 0 < framesCounter) {
         gameSettings.fixedZoomScale = 0.2 * _0x585560();
@@ -2641,8 +2641,8 @@ function _0x1450ce() {
 }
 
 function _0x368208() {
-    X = viewX + _0x36887a / _0x3e50d9 - _0x2263d7;
-    Y = viewY + _0x19f1c7 / _0x3e50d9 - _0x223539;
+    X = viewX + _0x36887a / currentZoom - _0x2263d7;
+    Y = viewY + _0x19f1c7 / currentZoom - _0x223539;
 }
 
 function _0x8f51f1() {
@@ -2872,7 +2872,7 @@ function _0x13d7e0() {
         customServerInfos = _0x634c41 = _0x4eac2b = null;
         _0x170269 = _0x5b6b18 = '';
         _0x522c0e();
-        _0x4400ec = _0x11c29c = _0x52da56 = _0x506037 = _0x43802f = _0x53176c = !(_0x568853 = -1);
+        isMouseFixed = _0x11c29c = _0x52da56 = _0x506037 = _0x43802f = _0x53176c = !(_0x568853 = -1);
         server360ShotEnabled = true;
         _0x47ccce = _0x11de32 = _0x52d414 = _0x29f86a = _0x4512d9 = _0x2873c2 = _0x576526 = _0x38ea95 = _0x852ff = _0x273de7 = _0x30bfdb = _0x4a4cf7 = _0x24af02 = _0x3b8888 = lastSpawn = respawnCooldown = _0x5a219c = 0;
         $(".inventory-box").removeClass("activatedInv");
@@ -3017,9 +3017,9 @@ function _0x215896() {
     _0x417591 = null;
     _0x41e1d9();
     _0x2c9685 = 9 * _0x587d52;
-    _0x3e50d9 = (_0x2c9685 * _0x3e50d9 + _0xd28f67) / (_0x2c9685 + 1);
-    _0x2263d7 = clientWidth / 2 / _0x3e50d9;
-    _0x223539 = clientHeight / 2 / _0x3e50d9;
+    currentZoom = (_0x2c9685 * currentZoom + _0xd28f67) / (_0x2c9685 + 1);
+    _0x2263d7 = clientWidth / 2 / currentZoom;
+    _0x223539 = clientHeight / 2 / currentZoom;
     var _0x514393 = mainPlayerCells.length;
     if (0 < _0x514393) {
         var _0x539378;
@@ -3039,7 +3039,7 @@ function _0x215896() {
     }
     viewX = ((_0x2c9685 = 3 * _0x587d52) * viewX + _0x53b8b0) / (_0x2c9685 + 1);
     viewY = (_0x2c9685 * viewY + _0x464afc) / (_0x2c9685 + 1);
-    _0x2c9685 = Math.ceil(10 * _0x28ad4b * _0x3e50d9 * _0x28ad4b) / (10 * _0x28ad4b);
+    _0x2c9685 = Math.ceil(10 * _0x28ad4b * currentZoom * _0x28ad4b) / (10 * _0x28ad4b);
     if (Math.abs(_0x34bd4c - _0x2c9685) > 0.5 * Math.abs(_0x34bd4c - _0xd28f67)) {
         _0x34bd4c = _0x2c9685;
     }
@@ -3417,19 +3417,19 @@ function _0x215896() {
     }
     var _0x3a579c;
     var _0x243b5e = _0xb14342.globalAlpha = 1;
-    var _0x4d7270 = _0x3e50d9 * _0x28ad4b;
+    var _0x4d7270 = currentZoom * _0x28ad4b;
     var _0x236d05 = 0;
     if (_0x3b1e5e = gameSettings.sFancyGrid || gameSettings.sSectionGrid || gameSettings.sGrid || gameSettings.sCustomBack) {
         if (gameSettings.sFancyGrid || gameSettings.sCustomBack && 2 == gameSettings.sCustomBackType) {
             _0x243b5e = 0.375 < _0x4d7270 ? 1 : 0.1875 < _0x4d7270 ? 2 : 0.09375 < _0x4d7270 ? 4 : 0.046875 < _0x4d7270 ? 8 : 0.0234375 < _0x4d7270 ? 16 : 32;
-            _0x3b1e5e = (_0x236d05 = 0.046875) / 2 < _0x3e50d9 * _0x358119;
+            _0x3b1e5e = (_0x236d05 = 0.046875) / 2 < currentZoom * _0x358119;
         } else if (gameSettings.sSectionGrid || gameSettings.sCustomBack && 2 != gameSettings.sCustomBackType) {
             _0x3c5dfa = _0x28f6af - _0x5c1aa9;
             _0x31da46 = _0x500945 - _0x4ba286;
             _0x4d7270 = Math.max(_0x3c5dfa, _0x31da46) * _0x4d7270;
-            _0x243b5e = gameSettings.sSectionGrid ? 3000 < _0x4d7270 ? 1 : 1500 < _0x4d7270 ? 2 : 750 < _0x4d7270 ? 4 : 8 : (gameSettings.sCustomBack && 2 != gameSettings.sCustomBackType && (null == (_0x3a579c = _0x46d4aa[_0x62fded = "customback_fit1"]) && (_0x4c0e03(), _0x3a579c = _0x46d4aa[_0x62fded]), _0x3b1e5e = _0x3a579c && _0x3a579c.complete) && (_0x330e7f = _0x3a579c.width / _0x3a579c.height, _0x4d7270 = (1 < _0x330e7f ? _0x3c5dfa / _0x31da46 < _0x330e7f ? _0x31da46 * _0x330e7f : _0x3c5dfa : _0x330e7f < _0x3c5dfa / _0x31da46 ? _0x3c5dfa / _0x330e7f : _0x31da46) * _0x3e50d9), 3072 < _0x4d7270 ? 1 : 1536 < _0x4d7270 ? 2 : 768 < _0x4d7270 ? 4 : 8);
+            _0x243b5e = gameSettings.sSectionGrid ? 3000 < _0x4d7270 ? 1 : 1500 < _0x4d7270 ? 2 : 750 < _0x4d7270 ? 4 : 8 : (gameSettings.sCustomBack && 2 != gameSettings.sCustomBackType && (null == (_0x3a579c = _0x46d4aa[_0x62fded = "customback_fit1"]) && (_0x4c0e03(), _0x3a579c = _0x46d4aa[_0x62fded]), _0x3b1e5e = _0x3a579c && _0x3a579c.complete) && (_0x330e7f = _0x3a579c.width / _0x3a579c.height, _0x4d7270 = (1 < _0x330e7f ? _0x3c5dfa / _0x31da46 < _0x330e7f ? _0x31da46 * _0x330e7f : _0x3c5dfa : _0x330e7f < _0x3c5dfa / _0x31da46 ? _0x3c5dfa / _0x330e7f : _0x31da46) * currentZoom), 3072 < _0x4d7270 ? 1 : 1536 < _0x4d7270 ? 2 : 768 < _0x4d7270 ? 4 : 8);
         } else if (gameSettings.sGrid) {
-            _0x3b1e5e = 0.1 < _0x3e50d9 * _0x358119;
+            _0x3b1e5e = 0.1 < currentZoom * _0x358119;
         }
     }
     var _0x4d7270 = gameSettings.sFancyGrid && _0x3b1e5e;
@@ -3487,13 +3487,13 @@ function _0x215896() {
     if (_0x3b1e5e) {
         if (_0x4d7270 || _0xccf34) {
             var _0x330e7f = 2 * _0x243b5e;
-            var _0x62fded = _0x3e50d9 * _0x358119 < _0x236d05 ? Math.max((_0x3e50d9 * _0x358119 - _0x236d05 / 2) / (_0x236d05 / 2), 0) : 1;
+            var _0x62fded = currentZoom * _0x358119 < _0x236d05 ? Math.max((currentZoom * _0x358119 - _0x236d05 / 2) / (_0x236d05 / 2), 0) : 1;
             var _0x3c5dfa = (-viewX + _0x2263d7) % (_0x3a579c.width * _0x330e7f);
             var _0x31da46 = (-viewY + _0x223539) % (_0x3a579c.height * _0x330e7f);
             var _0x2058b6 = 0;
             var _0x20b8b1 = 0;
-            var _0x5b5b68 = clientWidth / _0x3e50d9;
-            var _0x547c24 = clientHeight / _0x3e50d9;
+            var _0x5b5b68 = clientWidth / currentZoom;
+            var _0x547c24 = clientHeight / currentZoom;
             if (0 < _0x3c5dfa) {
                 _0x3c5dfa -= _0x3a579c.width * _0x330e7f;
             }
@@ -3514,7 +3514,7 @@ function _0x215896() {
                 }
                 _0xb14342.fillStyle = _0x1bc408;
                 _0xb14342.save();
-                _0xb14342.scale(_0x330e7f * _0x3e50d9, _0x330e7f * _0x3e50d9);
+                _0xb14342.scale(_0x330e7f * currentZoom, _0x330e7f * currentZoom);
                 _0xb14342.translate(_0x3c5dfa / _0x330e7f, _0x31da46 / _0x330e7f);
                 _0xb14342.fillRect((_0x2058b6 - _0x3c5dfa) / _0x330e7f, (_0x20b8b1 - _0x31da46) / _0x330e7f, _0x5b5b68 / _0x330e7f, _0x547c24 / _0x330e7f);
                 _0xb14342.restore();
@@ -3534,8 +3534,8 @@ function _0x215896() {
                 }
                 var _0x965bf3 = (viewX - _0x2263d7 - _0x5c1aa9) * _0x3a579c.width / _0x3c5dfa;
                 var _0x3b1e5e = (viewY - _0x223539 - _0x4ba286) * _0x3a579c.height / _0x31da46;
-                var _0x4d7270 = clientWidth / _0x3e50d9 * _0x3a579c.width / _0x3c5dfa;
-                var _0x236d05 = clientHeight / _0x3e50d9 * _0x3a579c.height / _0x31da46;
+                var _0x4d7270 = clientWidth / currentZoom * _0x3a579c.width / _0x3c5dfa;
+                var _0x236d05 = clientHeight / currentZoom * _0x3a579c.height / _0x31da46;
                 var _0x2058b6 = 0;
                 var _0x20b8b1 = 0;
                 var _0x5b5b68 = clientWidth;
@@ -3543,22 +3543,22 @@ function _0x215896() {
                 if (_0x965bf3 < 0) {
                     _0x4d7270 += _0x965bf3;
                     _0x965bf3 = 0;
-                    _0x5b5b68 -= _0x2058b6 = (-viewX + _0x2263d7 + _0x5c1aa9) * _0x3e50d9;
+                    _0x5b5b68 -= _0x2058b6 = (-viewX + _0x2263d7 + _0x5c1aa9) * currentZoom;
                 }
                 if (_0x3b1e5e < 0) {
                     _0x236d05 += _0x3b1e5e;
                     _0x3b1e5e = 0;
-                    _0x547c24 -= _0x20b8b1 = (-viewY + _0x223539 + _0x4ba286) * _0x3e50d9;
+                    _0x547c24 -= _0x20b8b1 = (-viewY + _0x223539 + _0x4ba286) * currentZoom;
                 }
                 if (_0x965bf3 + _0x4d7270 > _0x3a579c.width) {
                     _0x4d7270 = _0x3a579c.width - _0x965bf3;
-                    _0x5b5b68 = (-viewX + _0x2263d7 + _0x3c5dfa + _0x5c1aa9) * _0x3e50d9 - _0x2058b6;
+                    _0x5b5b68 = (-viewX + _0x2263d7 + _0x3c5dfa + _0x5c1aa9) * currentZoom - _0x2058b6;
                 }
                 if (_0x3b1e5e + _0x236d05 > _0x3a579c.height) {
                     _0x236d05 = _0x3a579c.height - _0x3b1e5e;
-                    _0x547c24 = (-viewY + _0x223539 + _0x31da46 + _0x4ba286) * _0x3e50d9 - _0x20b8b1;
+                    _0x547c24 = (-viewY + _0x223539 + _0x31da46 + _0x4ba286) * currentZoom - _0x20b8b1;
                 }
-                if (_0x5bd130 && 1 == gameSettings.sCustomBackType && gameSettings.sCustomBackClip && 0 < _0x5b5b68 && 0 < _0x547c24 && (_0x62fded = (_0x28f6af - Math.max(_0x5c1aa9, viewX - _0x2263d7)) * _0x3e50d9, _0x4f95d4 = (_0x500945 - Math.max(_0x4ba286, viewY - _0x223539)) * _0x3e50d9, _0x62fded < _0x5b5b68 && (_0x4d7270 *= _0x62fded / _0x5b5b68, _0x5b5b68 = _0x62fded), _0x4f95d4 < _0x547c24)) {
+                if (_0x5bd130 && 1 == gameSettings.sCustomBackType && gameSettings.sCustomBackClip && 0 < _0x5b5b68 && 0 < _0x547c24 && (_0x62fded = (_0x28f6af - Math.max(_0x5c1aa9, viewX - _0x2263d7)) * currentZoom, _0x4f95d4 = (_0x500945 - Math.max(_0x4ba286, viewY - _0x223539)) * currentZoom, _0x62fded < _0x5b5b68 && (_0x4d7270 *= _0x62fded / _0x5b5b68, _0x5b5b68 = _0x62fded), _0x4f95d4 < _0x547c24)) {
                     _0x236d05 *= _0x4f95d4 / _0x547c24;
                     _0x547c24 = _0x4f95d4;
                 }
@@ -3568,7 +3568,7 @@ function _0x215896() {
                 }
             } else {
                 if (_0x5db90e) {
-                    _0xb14342.lineWidth = 1 / _0x3e50d9;
+                    _0xb14342.lineWidth = 1 / currentZoom;
                     var _0x4da7fc = {
                         r: 17,
                         g: 17,
@@ -3589,14 +3589,14 @@ function _0x215896() {
                         g: 0,
                         b: 0
                     };
-                    var _0xccf34 = Math.min(0.25 * Math.max(_0x3e50d9 * _0x358119 - 0.05, 0), 0.3);
+                    var _0xccf34 = Math.min(0.25 * Math.max(currentZoom * _0x358119 - 0.05, 0), 0.3);
                     var _0x1bc408 = gameSettings.sCustomBackEnableColor ? customBackgroundColor : gameSettings.sDark ? _0x4da7fc : _0x1f0f3e;
                     var _0x90bd87 = gameSettings.sDark ? _0x52da49 : _0x20488f;
                     _0xb14342.strokeStyle = rgbToHex(~~(_0x1bc408.r + (_0x90bd87.r - _0x1bc408.r) * _0xccf34), ~~(_0x1bc408.g + (_0x90bd87.g - _0x1bc408.g) * _0xccf34), ~~(_0x1bc408.b + (_0x90bd87.b - _0x1bc408.b) * _0xccf34));
                     _0xb14342.save();
-                    _0xb14342.scale(_0x3e50d9, _0x3e50d9);
-                    var _0x31da46 = clientWidth / _0x3e50d9;
-                    var _0x3c5dfa = clientHeight / _0x3e50d9;
+                    _0xb14342.scale(currentZoom, currentZoom);
+                    var _0x31da46 = clientWidth / currentZoom;
+                    var _0x3c5dfa = clientHeight / currentZoom;
                     var _0x4f95d4 = 200 * _0x243b5e;
                     _0xb14342.beginPath();
                     for (let _0x4d7c46 = (_0x2263d7 - viewX) % _0x4f95d4; _0x4d7c46 < _0x31da46; _0x4d7c46 += _0x4f95d4) {
@@ -3628,18 +3628,18 @@ function _0x215896() {
     if (mapInfos.draw && (_0x4f401c(currentFrameTime), _0x25fdfa = mapInfos.top > viewY - _0x223539 || mapInfos.right < viewX + _0x2263d7 || mapInfos.bottom < viewY + _0x223539 || mapInfos.left > viewX - _0x2263d7)) {
         _0xb14342.beginPath();
         _0xb14342.rect(0, 0, clientWidth, clientHeight);
-        _0xb14342.rect(Math.max(mapInfos.left - viewX + _0x2263d7, 0) * _0x3e50d9, Math.max(mapInfos.top - viewY + _0x223539, 0) * _0x3e50d9, (Math.min(mapInfos.right, viewX + _0x2263d7) - Math.max(mapInfos.left, viewX - _0x2263d7)) * _0x3e50d9, (Math.min(mapInfos.bottom, viewY + _0x223539) - Math.max(mapInfos.top, viewY - _0x223539)) * _0x3e50d9);
+        _0xb14342.rect(Math.max(mapInfos.left - viewX + _0x2263d7, 0) * currentZoom, Math.max(mapInfos.top - viewY + _0x223539, 0) * currentZoom, (Math.min(mapInfos.right, viewX + _0x2263d7) - Math.max(mapInfos.left, viewX - _0x2263d7)) * currentZoom, (Math.min(mapInfos.bottom, viewY + _0x223539) - Math.max(mapInfos.top, viewY - _0x223539)) * currentZoom);
         _0xb14342.globalAlpha = 0.3;
         _0xb14342.fillStyle = "#CC3030";
         _0xb14342.fill("evenodd");
     }
-    _0xb14342.scale(_0x3e50d9, _0x3e50d9);
+    _0xb14342.scale(currentZoom, currentZoom);
     _0xb14342.translate(-viewX + _0x2263d7, -viewY + _0x223539);
     if (gameSettings.sMapBorder) {
-        _0x2c9685 = Math.max(20, 1 / _0x3e50d9);
+        _0x2c9685 = Math.max(20, 1 / currentZoom);
         _0xb14342.lineWidth = _0x2c9685;
         _0xb14342.globalAlpha = 1;
-        _0x330e7f = Math.clamp(5 * _0x3e50d9 * _0x358119, mapInfos.draw && _0x25fdfa ? 0.5 : 0.2, 1);
+        _0x330e7f = Math.clamp(5 * currentZoom * _0x358119, mapInfos.draw && _0x25fdfa ? 0.5 : 0.2, 1);
         _0x62fded = gameSettings.sCustomBackEnableColor ? customBackgroundColor : gameSettings.sDark ? _0x2b9f9d : _0x214596;
         _0xb14342.strokeStyle = rgbToHex(~~(_0x62fded.r + (204 - _0x62fded.r) * _0x330e7f), ~~(_0x62fded.g + (48 - _0x62fded.g) * _0x330e7f), ~~(_0x62fded.b + (48 - _0x62fded.b) * _0x330e7f));
         if (mapInfos.top + _0x2c9685 / 2 > viewY - _0x223539) {
@@ -3745,9 +3745,9 @@ function _0x215896() {
             _0xb14342.drawImage(_0x12c6d8, 12, (_0x4386c1 ? 60 : 80) - ~~(16 * _0x3a579c + 0.5), _0x12c6d8.width / _0x351ad0.scale, _0x12c6d8.height / _0x351ad0.scale);
         }
     }
-    if (_0x4400ec && (_0x13a1ae = fixedMouseImage) && _0x13a1ae.complete && 0 != _0x13a1ae.width) {
+    if (isMouseFixed && (_0x13a1ae = fixedMouseImage) && _0x13a1ae.complete && 0 != _0x13a1ae.width) {
         _0xb14342.globalAlpha = 1;
-        _0xb14342.drawImage(_0x13a1ae, (_0x312d0a - viewX + _0x2263d7) * _0x3e50d9 - 20, (_0x2435c4 - viewY + _0x223539) * _0x3e50d9 - 10, 50, 50);
+        _0xb14342.drawImage(_0x13a1ae, (mouseFixedX - viewX + _0x2263d7) * currentZoom - 20, (mouseFixedY - viewY + _0x223539) * currentZoom - 10, 50, 50);
     }
     if (_0x181957 && (
         _0x28c1e5(),
@@ -3761,23 +3761,23 @@ function _0x215896() {
             ),
             _0x34eb69 = 4 == _0x114a07.type ? 0.83 * _0x114a07.size : _0x114a07.size,
             _0x51f702 = 0 == _0x489844 && _0x496adb && 0 != _0x4289a6 && _0x114a07.sizeScale
-                ? _0x34eb69 * _0x3e50d9 < 4
+                ? _0x34eb69 * currentZoom < 4
                     ? 4 / _0x34eb69
-                    : _0x3e50d9
+                    : currentZoom
                 : (16 == _0x114a07.type ? 23 : 14) * (_0x4386c1 ? 0.7 : 1) / _0x34eb69,
             _0x2c9685 = +_0x587d52,
             _0x114a07.sizeScale = _0x114a07.sizeScale
                 ? (_0x2c9685 * _0x114a07.sizeScale + _0x51f702) / (_0x2c9685 + 1)
                 : _0x51f702,
             (_0x25fdfa = _0x114a07.getTransform()).t = _0x25fdfa.s = true,
-            _0x25fdfa.sx = _0x25fdfa.sy = _0x114a07.sizeScale / _0x3e50d9,
+            _0x25fdfa.sx = _0x25fdfa.sy = _0x114a07.sizeScale / currentZoom,
             _0xb14342.save(),
-            _0xb14342.scale(_0x3e50d9, _0x3e50d9),
+            _0xb14342.scale(currentZoom, currentZoom),
             _0xb14342.translate(-viewX + _0x2263d7, -viewY + _0x223539),
             false && _0x496adb && 0 == _0x489844 && ( // mobile
                 _0xb14342.beginPath(),
-                _0xb14342.arc(_0x114a07.x, _0x114a07.y, 60 / _0x3e50d9, 0, 2 * Math.PI, false),
-                _0xb14342.arc(_0x114a07.x, _0x114a07.y, 50 / _0x3e50d9, 0, 2 * Math.PI, false),
+                _0xb14342.arc(_0x114a07.x, _0x114a07.y, 60 / currentZoom, 0, 2 * Math.PI, false),
+                _0xb14342.arc(_0x114a07.x, _0x114a07.y, 50 / currentZoom, 0, 2 * Math.PI, false),
                 _0xb14342.globalAlpha = 0.2,
                 _0xb14342.fillStyle = _0x496adb ? "#00FF00" : "#FF0000",
                 _0xb14342.fill("evenodd")
@@ -3847,7 +3847,7 @@ function _0x215896() {
 
         _0x5be4cd.scale(_0x51f702, _0x51f702);
         _0x5be4cd.translate(-_0x5c1aa9, -_0x4ba286);
-        _0x25fdfa = _0x51f702 * _0x51f702 * clientWidth * clientHeight / (_0x3e50d9 * _0x3e50d9 * 200 * 200 * _0x34eb69 * _0x34eb69);
+        _0x25fdfa = _0x51f702 * _0x51f702 * clientWidth * clientHeight / (currentZoom * currentZoom * 200 * 200 * _0x34eb69 * _0x34eb69);
         if (gameSettings.sDark) {
             _0x5be4cd.globalAlpha = 0.4 <= _0x25fdfa ? 0.04 : 0.06 * (1 - _0x25fdfa / 0.4) + 0.04;
             _0x5be4cd.fillStyle = "#CCCCCC";
@@ -3855,7 +3855,7 @@ function _0x215896() {
             _0x5be4cd.globalAlpha = 0.4 <= _0x25fdfa ? 0.02 : 0.04 * (1 - _0x25fdfa / 0.4) + 0.02;
             _0x5be4cd.fillStyle = "#FFFFFF";
         }
-        _0x5be4cd.fillRect(viewX - _0x2263d7, viewY - _0x223539, clientWidth / _0x3e50d9, clientHeight / _0x3e50d9);
+        _0x5be4cd.fillRect(viewX - _0x2263d7, viewY - _0x223539, clientWidth / currentZoom, clientHeight / currentZoom);
         _0x39d073(_0x5be4cd, _0x51f702);
         _0x476ebb = allFoodCells.length;
         for (i = 0; i < _0x476ebb; i++) {
@@ -4312,7 +4312,7 @@ class Cell {
         delete allCells[this.id];
         this.destroyed = 1;
         this.shouldUpdate = true;
-        if (_0x445cfe && (gameSettings.sFood || !this.smallFood || _0x4400ec)) {
+        if (_0x445cfe && (gameSettings.sFood || !this.smallFood || isMouseFixed)) {
             deletedFood.push(this);
         }
     }
@@ -4344,7 +4344,7 @@ class Cell {
     drawCell() {
         var _0x282a29 = (this.wears && gameSettings.sWearables ? 2.5 * this.size : this.size) + 40;
         if (
-            !gameSettings.sFood && this.smallFood && (!this.shouldUpdate || this.x == this.hx && this.y == this.hy) && !_0x4400ec ||
+            !gameSettings.sFood && this.smallFood && (!this.shouldUpdate || this.x == this.hx && this.y == this.hy) && !isMouseFixed ||
             this.x + _0x282a29 < viewX - _0x2263d7 ||
             this.y + _0x282a29 < viewY - _0x223539 ||
             this.x - _0x282a29 > viewX + _0x2263d7 ||
@@ -4358,7 +4358,7 @@ class Cell {
             if (!gameSettings.sFoodHalf || !this.smallFood || -1 != this.shouldDraw) {
                 var _0x222c9e = gameSettings.sLineShapes && 2 == this.shape;
                 var _0x683945 = gameSettings.sPolygonShapes && 3 <= this.shape || _0x222c9e;
-                var _0x2c5c7d = !this.spiked || !gameSettings.sCellSpikes || _0x683945 || _0x3e50d9 < (gameSettings.sClassicViruses || 2 != this.spiked ? 0.2 : 0.06) && 0 != this.id;
+                var _0x2c5c7d = !this.spiked || !gameSettings.sCellSpikes || _0x683945 || currentZoom < (gameSettings.sClassicViruses || 2 != this.spiked ? 0.2 : 0.06) && 0 != this.id;
                 var _0x58ffc6 = this.shouldUpdate ? this.updatePos() : 1;
                 var _0x33867d = false;
                 var _0x1b2b2f = this.x;
@@ -4423,7 +4423,7 @@ class Cell {
                 _0xb14342.beginPath();
                 if (_0x2c5c7d) {
                     if (0 == this.type && _0x42a8fa) {
-                        _0x433539 = _0x587d52 * (_0x3e50d9 < 0.4 ? 15 * _0x3e50d9 : 6);
+                        _0x433539 = _0x587d52 * (currentZoom < 0.4 ? 15 * currentZoom : 6);
                         if (this.size < this.strokeSize) {
                             _0x433539 /= 3;
                         }
@@ -4499,19 +4499,19 @@ class Cell {
                     }
                     _0xb14342.closePath();
                 }
-                _0x282a29 = ((this.spiked ? 0.03 : 0.05) < _0x3e50d9 || 0 == this.id) && (60 < this.size || this.spiked || !this.smallFood && 25 < this.size && 0.15 < _0x3e50d9 || gameSettings.sBubbleCells && (0.4 < _0x3e50d9 || 20 < this.size));
+                _0x282a29 = ((this.spiked ? 0.03 : 0.05) < currentZoom || 0 == this.id) && (60 < this.size || this.spiked || !this.smallFood && 25 < this.size && 0.15 < currentZoom || gameSettings.sBubbleCells && (0.4 < currentZoom || 20 < this.size));
                 if (!_0x222c9e) {
-                    _0x433539 = this.ga * (this.isCloaked ? 0.04 : this.isGhosted ? 0.2 : gameSettings.sBubbleCells ? !_0x282a29 && this.smallFood ? 1 : this.spiked && !gameSettings.sTransparentViruses ? 0.7 : 0.4 : this.smallFood ? 1 : this.spiked && gameSettings.sTransparentViruses || 14 == this.type ? 0.7 : 0.4 < _0x3e50d9 || 60 < this.size ? 0.95 : 1);
+                    _0x433539 = this.ga * (this.isCloaked ? 0.04 : this.isGhosted ? 0.2 : gameSettings.sBubbleCells ? !_0x282a29 && this.smallFood ? 1 : this.spiked && !gameSettings.sTransparentViruses ? 0.7 : 0.4 : this.smallFood ? 1 : this.spiked && gameSettings.sTransparentViruses || 14 == this.type ? 0.7 : 0.4 < currentZoom || 60 < this.size ? 0.95 : 1);
                     _0xb14342.globalAlpha = this.destroyed ? _0x433539 * (1 - _0x58ffc6) : _0x433539;
                     _0xb14342.fillStyle = this.isGhosted ? "#AAAAAA" : gameSettings.sColors ? this.color : "#FFFFFF";
                     _0xb14342.fill();
                 }
-                if (this.isCloaked ? this.ownCell || _0x4400ec : _0x282a29 && (gameSettings.sCellBorders || this.spiked) || _0x222c9e) {
+                if (this.isCloaked ? this.ownCell || isMouseFixed : _0x282a29 && (gameSettings.sCellBorders || this.spiked) || _0x222c9e) {
                     _0x433539 = this.ga;
                     _0xb14342.globalAlpha = this.destroyed ? _0x433539 * (1 - _0x58ffc6) : _0x433539;
-                    _0xb14342.lineWidth = this.isCloaked && (this.ownCell || _0x4400ec) ? 30 : this.smallFood ? 4 : gameSettings.sBubbleCells ? this.spiked || 25 < this.size ? 6 : 4 : this.spiked && this.size < 80 ? 8 : 10;
+                    _0xb14342.lineWidth = this.isCloaked && (this.ownCell || isMouseFixed) ? 30 : this.smallFood ? 4 : gameSettings.sBubbleCells ? this.spiked || 25 < this.size ? 6 : 4 : this.spiked && this.size < 80 ? 8 : 10;
                     _0xb14342.lineJoin = this.spiked && (gameSettings.sClassicViruses || 2 != this.spiked || this.size < 70) ? "miter" : "round";
-                    _0xb14342.strokeStyle = this.isCloaked && (this.ownCell || _0x4400ec) ? gameSettings.sDark ? "#333333" : "#DDDDDD" : this.isGhosted || !gameSettings.sColors ? "#AAAAAA" : gameSettings.sBubbleCells ? this.color : this.colorDimmed;
+                    _0xb14342.strokeStyle = this.isCloaked && (this.ownCell || isMouseFixed) ? gameSettings.sDark ? "#333333" : "#DDDDDD" : this.isGhosted || !gameSettings.sColors ? "#AAAAAA" : gameSettings.sBubbleCells ? this.color : this.colorDimmed;
                     _0xb14342.stroke();
                 }
                 if (1 != this.type) {
@@ -4521,10 +4521,10 @@ class Cell {
                         }
                         if (this.skinFrames && gameSettings.sSkinAnimations) {
                             var _0x433539 = this.skinFrames;
-                            var _0x5d47a4 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? _0x433539.apngLoadedLo : _0x433539.apngLoaded;
+                            var _0x5d47a4 = 2 * _0x282a29 * currentZoom * _0x28ad4b <= 128 ? _0x433539.apngLoadedLo : _0x433539.apngLoaded;
                             if (!_0x5d47a4) {
                                 this.reloadImage();
-                                _0x5d47a4 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? _0x433539.apngLoadedLo : _0x433539.apngLoaded;
+                                _0x5d47a4 = 2 * _0x282a29 * currentZoom * _0x28ad4b <= 128 ? _0x433539.apngLoadedLo : _0x433539.apngLoaded;
                             }
                             if (_0x5d47a4) {
                                 if (0 == _0x433539.zeroTime) {
@@ -4545,9 +4545,9 @@ class Cell {
                                 _0x3d1099 = _0x2aee00.canvas;
                             }
                         }
-                        if (!(_0x3d1099 = _0x3d1099 || (2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? this.imgLoadedLo : this.imgLoaded))) {
+                        if (!(_0x3d1099 = _0x3d1099 || (2 * _0x282a29 * currentZoom * _0x28ad4b <= 128 ? this.imgLoadedLo : this.imgLoaded))) {
                             this.reloadImage();
-                            _0x3d1099 = 2 * _0x282a29 * _0x3e50d9 * _0x28ad4b <= 128 ? this.imgLoadedLo : this.imgLoaded;
+                            _0x3d1099 = 2 * _0x282a29 * currentZoom * _0x28ad4b <= 128 ? this.imgLoadedLo : this.imgLoaded;
                         }
                         if (_0x3d1099 && (_0x433539 = this.ga * (this.isCloaked ? 0.01 : gameSettings.sBubbleCells ? 0 != this.imageId ? 0.5 : 0.3 : 0 != this.imageId ? 0.85 : 1), _0xb14342.globalAlpha = this.destroyed ? _0x433539 * (1 - _0x58ffc6) : _0x433539, _0x473372 = _0x282a29, _0x472af5 = false, 16 == this.type ? (_0x473372 = _0x282a29 / 8, 1 == this.orientation && (_0xb14342.save(), _0x472af5 = true, _0xb14342.translate(_0x1b2b2f, _0x52fc0c), _0xb14342.rotate(Math.PI / 2), _0xb14342.translate(-_0x1b2b2f, -_0x52fc0c))) : 11 == this.type || (_0xb14342.save(), _0x472af5 = true, _0xb14342.clip()), _0xb14342.drawImage(_0x3d1099, _0x1b2b2f - _0x282a29, _0x52fc0c - _0x473372, 2 * _0x282a29, 2 * _0x473372), _0x472af5)) {
                             _0xb14342.restore();
@@ -4560,9 +4560,9 @@ class Cell {
                             var _0x557f3e = this.wears[_0x46c353];
                             var _0x2e5cdf = _0x557f3e.wearArea;
                             var _0x4a5fdf = 5 == _0x2e5cdf ? 5 * _0x282a29 : 3 * _0x282a29;
-                            if (!(_0x3d1099 = _0x4a5fdf * _0x3e50d9 * _0x28ad4b <= 128 ? _0x557f3e.imgLoadedLo : _0x557f3e.imgLoaded)) {
+                            if (!(_0x3d1099 = _0x4a5fdf * currentZoom * _0x28ad4b <= 128 ? _0x557f3e.imgLoadedLo : _0x557f3e.imgLoaded)) {
                                 this.reloadWear(_0x557f3e);
-                                _0x3d1099 = _0x4a5fdf * _0x3e50d9 * _0x28ad4b <= 128 ? _0x557f3e.imgLoadedLo : _0x557f3e.imgLoaded;
+                                _0x3d1099 = _0x4a5fdf * currentZoom * _0x28ad4b <= 128 ? _0x557f3e.imgLoadedLo : _0x557f3e.imgLoaded;
                             }
                             if (_0x3d1099) {
                                 _0x433539 = this.ga * (this.isCloaked ? 0.01 : gameSettings.sBubbleCells ? 0.7 : 0.95);
@@ -4648,13 +4648,13 @@ class Cell {
                     }
                     if (
                         0 == this.type &&
-                        (this.singleCellPlayer ? 10 : 20) < this.size * _0x3e50d9 &&
+                        (this.singleCellPlayer ? 10 : 20) < this.size * currentZoom &&
                         (gameSettings.sMinionNames || !this.isMinion || 125 < this.size) &&
                         (_0x25b838 < this.size || this.singleCellPlayer && 30 <= this.size) &&
                         !this.destroyed &&
                         _0x2332bb && (
                             _0x2c5c7d = gameSettings.sNames && (this.name || 0 < this.stars),
-                            _0x222c9e = gameSettings.sMass && (this.ownCell || 0 == mainPlayerCells.length || this.sameParty) && 60 < this.size * _0x3e50d9,
+                            _0x222c9e = gameSettings.sMass && (this.ownCell || 0 == mainPlayerCells.length || this.sameParty) && 60 < this.size * currentZoom,
                             _0x2c5c7d || _0x222c9e
                         )
                     ) {
@@ -5122,7 +5122,7 @@ class Cell {
             _0x1406e4.id = 0;
         } else {
             _0x5dc4ed.globalAlpha = (gameSettings.sDark ? 0.25 : 0.18) * (_0x52d848 < 0.05 ? _0x52d848 / 0.05 : _0x52d848 < 0.5 ? 1 : 1 - (_0x52d848 - 0.5) / 0.5);
-            _0x5dc4ed.lineWidth = Math.min(30 + 30 * Math.max(1 - 2 * _0x3e50d9, 0), this.size);
+            _0x5dc4ed.lineWidth = Math.min(30 + 30 * Math.max(1 - 2 * currentZoom, 0), this.size);
             _0x5dc4ed.lineJoin = this.spiked ? "miter" : "round";
             _0x5dc4ed.strokeStyle = gameSettings.sDark ? "#FFFFFF" : "#000000";
             _0x5dc4ed.stroke();
@@ -5216,7 +5216,7 @@ class Cell {
             _0x3f06ab = this.strokeSize * _0x3f06ab * 0.015;
             _0x57d5bc = _0x267d4a.width * _0x3f06ab;
             _0x3f06ab = _0x267d4a.height * _0x3f06ab;
-            _0xe60ca6.globalAlpha = Math.clamp(100 / (this.strokeSize * _0x3e50d9), 0.5, 0.9) * _0x26f399 * _0x26f399 * (this.destroyed ? 0.5 : 1);
+            _0xe60ca6.globalAlpha = Math.clamp(100 / (this.strokeSize * currentZoom), 0.5, 0.9) * _0x26f399 * _0x26f399 * (this.destroyed ? 0.5 : 1);
             _0xe60ca6.drawImage(_0x267d4a, _0x9bb609 + (Math.random() - 0.5) * this.strokeSize * 0.05 - _0x57d5bc / 2, _0x5377cf + (Math.random() - 0.5) * this.strokeSize * 0.05 - _0x3f06ab / 2, _0x57d5bc, _0x3f06ab);
         }
     }
@@ -5256,7 +5256,7 @@ class Cell {
                 _0x42aaca.wt.splice(0, 1);
             }
             if (1 < _0x42aaca.wt.length && gameSettings.sCellAnimations) {
-                if (_0x585fc2 * _0x3e50d9 <= 16) {
+                if (_0x585fc2 * currentZoom <= 16) {
                     if ((_0x2c21f4 = speedcirclesAnimations) && _0x2c21f4.complete && 0 != _0x2c21f4.width) {
                         for (var _0xd5008b = 0; _0xd5008b < _0x42aaca.wt.length; _0xd5008b++) {
                             _0x24d1be = _0x42aaca.wt[_0xd5008b];
@@ -5750,14 +5750,18 @@ function wsOnMessage(_0x2ba470) {
                 var _0x2c474f = pkt.getUint16();
                 var _0x447e2a = pkt.getUint8();
                 var _0x13100f = !!(1 & _0x447e2a);
-                let _0x1d95fc;
+                let _0x1d95fc = !!(2 & _0x447e2a);
                 let _0x534ff6;
                 let _0x1bf5f0;
                 let _0x24ed2e;
                 let _0x5eed3f;
                 let _0x3a2844;
-                if (_0x13100f && (_0x1d95fc = !!(2 & _0x447e2a), _0x534ff6 = pkt.getUint8(), _0x1bf5f0 = 8 & _0x447e2a ? pkt.getUint8() : 0, [_0x24ed2e, _0x5eed3f] = pkt.getColorTags(), 0 === _0x534ff6)) {
-                    _0x3a2844 = _0x409f62[pkt.getUint16()];
+                if (_0x13100f) {
+                    _0x534ff6 = pkt.getUint8();
+                    _0x1bf5f0 = 8 & _0x447e2a ? pkt.getUint8() : 0;
+                    [_0x24ed2e, _0x5eed3f] = pkt.getColorTags()
+                    if (0 === _0x534ff6)
+                        _0x3a2844 = _0x409f62[pkt.getUint16()];
                 }
                 let cell = !_0x13100f || Object.prototype.hasOwnProperty.call(allCells, _0x269ac7) ? allCells[_0x269ac7] : null;
                 if (cell) {
@@ -6117,7 +6121,7 @@ function wsOnMessage(_0x2ba470) {
             _0x464afc = _0x2c7938 = _0x6c7bce = (_0x4ba286 + _0x500945) / 2;
             _0x29c97b = 1;
             if (!(mapCenterSet || (mapCenterSet = true, viewX = _0x53b8b0, viewY = _0x464afc, gameSettings.sFixedZoom))) {
-                _0x3e50d9 = _0xd28f67 = 1;
+                currentZoom = _0xd28f67 = 1;
             }
             currentServerMode = pkt.getInt16();
             var _0x435e7a = pkt.getUint32();
@@ -8448,9 +8452,9 @@ function _0xfb52a(_0x20a150, _0x259096) {
 }
 
 function _0x580067(_0x4f43ee) {
-    var _0x1033ca = _0x36887a - _0x2263d7 * _0x3e50d9;
-    var _0xca52f8 = _0x19f1c7 - _0x223539 * _0x3e50d9;
-    if (isReady() && !_0x4400ec && (Math.max(X < _0x28fccb ? _0x28fccb - X : X - _0x28fccb, Y < _0x4bd57d ? _0x4bd57d - Y : Y - _0x4bd57d) > 0.01 && 0 <= _0x1033ca * _0x1033ca + _0xca52f8 * _0xca52f8 - 64 || _0x4f43ee)) {
+    var _0x1033ca = _0x36887a - _0x2263d7 * currentZoom;
+    var _0xca52f8 = _0x19f1c7 - _0x223539 * currentZoom;
+    if (isReady() && !isMouseFixed && (Math.max(X < _0x28fccb ? _0x28fccb - X : X - _0x28fccb, Y < _0x4bd57d ? _0x4bd57d - Y : Y - _0x4bd57d) > 0.01 && 0 <= _0x1033ca * _0x1033ca + _0xca52f8 * _0xca52f8 - 64 || _0x4f43ee)) {
         new PacketWriter(9).setUint8(0).setInt32(X).setInt32(Y).send();
         _0x28fccb = X;
         _0x4bd57d = Y;
@@ -10050,9 +10054,9 @@ var _0x36887a = 0;
 var _0x19f1c7 = 0;
 var X = -1;
 var Y = -1;
-var _0x4400ec = false;
-var _0x312d0a = 0;
-var _0x2435c4 = 0;
+var isMouseFixed = false;
+var mouseFixedX = 0;
+var mouseFixedY = 0;
 var _0x34f96a = 0;
 var _0x5079ce = 0;
 var _0x21548d = 0;
@@ -10106,7 +10110,7 @@ var _0x52383b = -1;
 var _0x556e60 = 1 + ~~(53550 + 600000 * Math.random());
 var _0xaee6f6 = [128, 129, 130, 131, 132];
 var _0xa19eb5 = 41;
-var _0x3e50d9 = 1;
+var currentZoom = 1;
 var _0xd28f67 = 1;
 var _0x34bd4c = 1;
 var _0x164fe5 = null;
