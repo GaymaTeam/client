@@ -5712,67 +5712,66 @@ function wsOnMessage(_0x2ba470) {
             _0x2c6f91 = !(_0x29246b = false);
             var _0x50a1de = pkt.getUint16();
             var _0x409f62 = [];
-            for (let _0x35b8f9 = 0; _0x35b8f9 < _0x50a1de; _0x35b8f9++) {
-                var _0x483b2e = pkt.getUint8();
-                var _0x45e923 = 2 & _0x483b2e ? pkt.getUint8() : 0;
-                var _0x33f876 = 32 & _0x483b2e ? pkt.getUint8() : 0;
-                var _0x5a0928 = pkt.getUint32();
-                var _0x3d9855 = 1 & _0x483b2e ? pkt.getUint32() : _0x5a0928;
-                var _0x2b26c8 = pkt.getString();
-                var _0x3db74e = pkt.getUint16();
-                var _0x3fb60f = pkt.getUint8();
-                let _0x257e81 = pkt.getWearables();
-                if (0 < _0x27324d.length && mainPlayerCells && 0 < mainPlayerCells.length && mainPlayerCells[0].pid === _0x5a0928) {
-                    _0x257e81 = _0x27324d;
+            for (let i = 0; i < _0x50a1de; i++) {
+                const flags = pkt.getUint8();
+                const colorIndexName = 2 & flags ? pkt.getUint8() : 0;
+                const stars = 32 & flags ? pkt.getUint8() : 0;
+                const pid = pkt.getUint32();
+                const oid = 1 & flags ? pkt.getUint32() : pid;
+                const n = pkt.getString();
+                const s = pkt.getUint16();
+                const touchUser = pkt.getUint8();
+                let w = pkt.getWearables();
+                if (0 < _0x27324d.length && mainPlayerCells && 0 < mainPlayerCells.length && mainPlayerCells[0].pid === pid) {
+                    w = _0x27324d;
                 }
                 _0x409f62.push({
-                    pid: _0x5a0928,
-                    oid: _0x3d9855,
-                    n: _0x2b26c8,
-                    s: _0x3db74e,
-                    w: _0x257e81,
-                    colorIndexName: _0x45e923,
-                    isMinion: !!(1 & _0x483b2e),
-                    isGhosted: !!(4 & _0x483b2e),
-                    isCloaked: !!(8 & _0x483b2e),
-                    coronaSpikes: !!(16 & _0x483b2e),
-                    stars: _0x33f876,
-                    touchUser: _0x3fb60f
+                    pid,
+                    oid,
+                    n,
+                    s,
+                    w,
+                    colorIndexName,
+                    isMinion: !!(1 & flags),
+                    isGhosted: !!(4 & flags),
+                    isCloaked: !!(8 & flags),
+                    coronaSpikes: !!(16 & flags),
+                    stars,
+                    touchUser
                 });
             }
             for (;;) {
-                var _0x269ac7 = pkt.getUint32();
-                if (0 === _0x269ac7) {
-                    break;
-                }
-                var _0x29879a = pkt.getInt32();
-                var _0x1da5bc = pkt.getInt32();
-                var _0x2c474f = pkt.getUint16();
-                var _0x447e2a = pkt.getUint8();
-                var _0x13100f = !!(1 & _0x447e2a);
-                let _0x1d95fc = !!(2 & _0x447e2a);
-                let _0x534ff6;
-                let _0x1bf5f0;
-                let _0x24ed2e;
-                let _0x5eed3f;
+                const id = pkt.getUint32();
+                if (0 === id) break;
+                const x = pkt.getInt32();
+                const y = pkt.getInt32();
+                const size = pkt.getUint16();
+                const flags = pkt.getUint8();
+                const isNew = !!(1 & flags);
+                let isSpiked;
+                let type;
+                let imageId;
+                let color;
+                let strokeColor;
                 let _0x3a2844;
-                if (_0x13100f) {
-                    _0x534ff6 = pkt.getUint8();
-                    _0x1bf5f0 = 8 & _0x447e2a ? pkt.getUint8() : 0;
-                    [_0x24ed2e, _0x5eed3f] = pkt.getColorTags()
-                    if (0 === _0x534ff6)
+                if (isNew) {
+                    isSpiked = !!(2 & flags);
+                    type = pkt.getUint8();
+                    imageId = 8 & flags ? pkt.getUint8() : 0;
+                    [color, strokeColor] = pkt.getColorTags()
+                    if (0 === type)
                         _0x3a2844 = _0x409f62[pkt.getUint16()];
                 }
-                let cell = !_0x13100f || Object.prototype.hasOwnProperty.call(allCells, _0x269ac7) ? allCells[_0x269ac7] : null;
+                let cell = !isNew || Object.prototype.hasOwnProperty.call(allCells, id) ? allCells[id] : null;
                 if (cell) {
                     /* TODO: sort
                     const ii = allNonFoodCells.indexOf(cell);
                     let i = ii;
-                    if (_0x2c474f < cell.size) {
-                        while (i > 0 && allFoodCells[i - 1]?.size > _0x2c474f) i--;
+                    if (size < cell.size) {
+                        while (i > 0 && allFoodCells[i - 1]?.size > size) i--;
                     } else {
                         const n = allNonFoodCells.length - 1;
-                        while (i < n && allFoodCells[i + 1]?.size < _0x2c474f) i++;
+                        while (i < n && allFoodCells[i + 1]?.size < size) i++;
                     }
                     if (i !== ii) {
                         allNonFoodCells.splice(ii, 1);
@@ -5786,11 +5785,11 @@ function wsOnMessage(_0x2ba470) {
                     cell.oy = cell.y;
                     cell.oSize = cell.size;
                 } else {
-                    cell = new Cell(_0x269ac7, _0x29879a, _0x1da5bc, _0x2c474f);
-                    allCells[_0x269ac7] = cell;
-                    if (_0x13100f) {
-                        if (1 === _0x534ff6) {
-                            (_0x2c474f <= serverFoodMaxSize ? (cell.smallFood = true, allFoodCells) : allNonFoodCells).push(cell);
+                    cell = new Cell(id, x, y, size);
+                    allCells[id] = cell;
+                    if (isNew) {
+                        if (1 === type) {
+                            (size <= serverFoodMaxSize ? (cell.smallFood = true, allFoodCells) : allNonFoodCells).push(cell);
                             // cell.smallFood = true;
                             // allFoodCells.push(cell);
                             if (gameSettings.sFoodHalf && (drawHalfFood = !drawHalfFood)) {
@@ -5800,15 +5799,15 @@ function wsOnMessage(_0x2ba470) {
                             allNonFoodCells.push(cell);
                             /*const n = allNonFoodCells.length;
                             let i = 0;
-                            while (i < n && allFoodCells[i]?.size < _0x2c474f) i++;
+                            while (i < n && allFoodCells[i]?.size < size) i++;
                             allNonFoodCells.splice(i - 1, 0, cell);*/
 
-                            if (_0x49dbad[_0x269ac7]) {
-                                for (let i = 0; i < _0x49dbad[_0x269ac7].length; i++) {
-                                    cell.setAnimation(_0x49dbad[_0x269ac7][i]);
+                            if (_0x49dbad[id]) {
+                                for (let i = 0; i < _0x49dbad[id].length; i++) {
+                                    cell.setAnimation(_0x49dbad[id][i]);
                                 }
                             }
-                            if (0 === _0x534ff6) {
+                            if (0 === type) {
                                 cell.pid = _0x3a2844.pid;
                                 cell.oid = _0x3a2844.oid;
                                 var _0x3ac3de = _0x3a2844.isMinion ? minionsByOid : playersByOid;
@@ -5824,17 +5823,17 @@ function wsOnMessage(_0x2ba470) {
                                         cell.setAnimation(_0x59222b[cell.oid][i]);
                                     }
                                 }
-                            } else if (13 === _0x534ff6) {
+                            } else if (13 === type) {
                                 cell.setAnimation({
                                     "id": 7,
                                     "start": playerEmotes[7].time(-~~(2000 * Math.random())),
                                     "received": ++_0x57f5d0
                                 });
-                            } else if (4 === _0x534ff6) {
-                                cell.strokeSize = 0.83 * _0x2c474f;
+                            } else if (4 === type) {
+                                cell.strokeSize = 0.83 * size;
                             }
-                            if (!(!gameSettings.sPolygonShapes && !gameSettings.sLineShapes || 0 !== _0x534ff6 && 3 !== _0x534ff6)) {
-                                cell.shape = gameSettings.sLineShapes ? 2 : foodCellRandomShapes[_0x269ac7 % 100];
+                            if (!(!gameSettings.sPolygonShapes && !gameSettings.sLineShapes || 0 !== type && 3 !== type)) {
+                                cell.shape = gameSettings.sLineShapes ? 2 : foodCellRandomShapes[id % 100];
                                 cell.rotation = (2 * Math.random() - 1) * Math.PI;
                             }
                             if (gameSettings.sSlowMotion) {
@@ -5845,16 +5844,16 @@ function wsOnMessage(_0x2ba470) {
                     }
                     cell.createTime = currentFrameTime;
                 }
-                cell.hx = _0x29879a;
-                cell.hy = _0x1da5bc;
-                cell.nSize = _0x2c474f;
+                cell.hx = x;
+                cell.hy = y;
+                cell.nSize = size;
                 cell.updateTime = currentFrameTime;
-                if (_0x13100f && (cell.color = _0x24ed2e, cell.colorDimmed = cell.smallFood ? _0x24ed2e : _0x5eed3f, cell.spiked = _0x1d95fc ? 2 === _0x534ff6 || 9 === _0x534ff6 || 22 === _0x534ff6 ? 2 : 1 : 0, 1 !== (cell.type = _0x534ff6))) {
-                    cell.imageId = _0x1bf5f0;
-                    if (0 === _0x534ff6) {
+                if (isNew && (cell.color = color, cell.colorDimmed = cell.smallFood ? color : strokeColor, cell.spiked = isSpiked ? 2 === type || 9 === type || 22 === type ? 2 : 1 : 0, 1 !== (cell.type = type))) {
+                    cell.imageId = imageId;
+                    if (0 === type) {
                         if (
                             !cell.ownCell &&
-                            -1 !== mainPlayerCellsIds.indexOf(_0x269ac7) &&
+                            -1 !== mainPlayerCellsIds.indexOf(id) &&
                             -1 === mainPlayerCells.indexOf(cell)
                         ) {
                             mainPlayerCells.push(cell);
@@ -5882,11 +5881,11 @@ function wsOnMessage(_0x2ba470) {
                                 cell.reloadWear(cell.wears[i]);
                     }
                     cell.reloadImage();
-                    cell.orientation = 16 & _0x447e2a ? 1 : 0;
+                    cell.orientation = 16 & flags ? 1 : 0;
                 }
                 if (0 === cell.type) {
-                    cell.singleCellPlayer = !!(4 & _0x447e2a);
-                    cell.sameParty = !!(64 & _0x447e2a);
+                    cell.singleCellPlayer = !!(4 & flags);
+                    cell.sameParty = !!(64 & flags);
                 }
             }
             break;
