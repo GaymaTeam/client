@@ -13202,10 +13202,6 @@ $(function() {
     _0x5e49f7 = _0x321590.getContext("2d");
     _0x11f3e0 = document.getElementById("chtScrollbar");
     _0x243c1f = document.getElementById("chtScrollbarThumb");
-    chtCanvas.addEventListener('wheel', event => {
-        _0x590515(_0x46411c + (event.deltaY < 0 ? 1 : -1));
-        event.stopPropagation();
-    }, { passive: true });
     var _0x394ee1;
     var _0x5e2db3 = "<div style=\" background: rgba(68,68,68,.5); border-radius: 1px; \"><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;\" onclick=\"toggleEmojis(0)\" \">Chat</button><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; margin-left: 5px; \" onclick=\"toggleEmojis(1)\" \">Cell</button><button style=\" display: inline-block; background-color: #2e3138ad; border: 0.5px solid #222328; border-radius: 2px; box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; margin-left: 5px; \" onclick=\"toggleEmojis(2)\" \">Dance</button> </div><div style='overflow-y:scroll;height:165px;'><table><tbody id='emojisBox'>";
     var _0x3ecf43 = 0;
