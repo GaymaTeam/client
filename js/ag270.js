@@ -3,6 +3,7 @@
 // FIXME: localStorage.ag218 is also a ban factor
 // FIXME: user settings arent saved to storage
 
+var ACTIVE = false;
 const FRAMERATE = 1000 / 60;
 const gameSettings = Object.assign({
     version:                2,
@@ -568,7 +569,7 @@ window.onload = function() {
         _0x15803d.css("position", "relative");
         for (var _0x2ab861 = 0; _0x2ab861 < _0x5de99e + 1; _0x2ab861++) {
             _0x15803d.animate({
-                "left": _0x2ab861 % 2 == 0 ? _0x36c5ab : -1 * _0x36c5ab
+                left: _0x2ab861 % 2 == 0 ? _0x36c5ab : -1 * _0x36c5ab
             }, _0x5312fa);
         }
         var _0x5594a9 = {
@@ -1377,10 +1378,6 @@ function _0x3169a6(_0x4dc13e) {
                 }
             }
         }
-        var _0x2ca1ee = {
-            "background-image": '',
-            "background-color": ''
-        };
         if (selectedMessage || _0x5c09e8) {
             if (selectedMessage) {
                 if (isReady() && selectedMessage.sid == currentServerId && 0 != selectedMessage.pid) {
@@ -1479,7 +1476,10 @@ function _0x3169a6(_0x4dc13e) {
                 }
             }
         } else {
-            $("#contextPlayerSkin").css(_0x2ca1ee);
+            $("#contextPlayerSkin").css({
+                "background-image": '',
+                "background-color": ''
+            });
             $(".context-player-wear").css("background-image", '').hide();
             $("#contextPlayerName").text("(no player selected)").css("color", '').removeClass("gold black");
             $("#contextPartyInvite").removeClass("enabled");
@@ -1594,11 +1594,11 @@ function _0x548e1b() {
     var minutesLeftMinions = Math.floor(_0x551cbe / 60);
     var secondsLeftMinions = _0x551cbe % 60;
     return {
-        "mass": 0 < _0x4c32dc ? " (" + _0x3e8e1d + "m " + _0x3c5736 + "s left)" : '',
-        "coins": 0 < _0x39dfe9 ? " (" + _0x1f960f + "m " + _0x59ed77 + "s left)" : '',
-        "sp": 0 < _0x507d30 ? " (" + _0x3ee2c1 + "m " + _0x4cd152 + "s left)" : '',
-        "powerups": 0 < _0x373787 ? " (" + _0x56b8c5 + "m " + _0x197f26 + "s left)" : '',
-        "minions": 0 < _0x551cbe ? " (" + minutesLeftMinions + "m " + secondsLeftMinions + "s left)" : ''
+        mass: 0 < _0x4c32dc ? " (" + _0x3e8e1d + "m " + _0x3c5736 + "s left)" : '',
+        coins: 0 < _0x39dfe9 ? " (" + _0x1f960f + "m " + _0x59ed77 + "s left)" : '',
+        sp: 0 < _0x507d30 ? " (" + _0x3ee2c1 + "m " + _0x4cd152 + "s left)" : '',
+        powerups: 0 < _0x373787 ? " (" + _0x56b8c5 + "m " + _0x197f26 + "s left)" : '',
+        minions: 0 < _0x551cbe ? " (" + minutesLeftMinions + "m " + secondsLeftMinions + "s left)" : ''
     };
 }
 
@@ -1641,7 +1641,7 @@ function _0x46c13b(_0x15d440) {
         top: 0
     };
     if (_0x15d440 && (_0x15d440.currentTarget && (_0x1901e4 = (_0x38ea75 = $(_0x15d440.currentTarget)).outerHeight(), clientHeight < _0x1901e4) && (_0x15d440.pageY > clientHeight - 10 && _0x15d440.pageY < clientHeight ? _0x38ea75.is(":animated") || _0x38ea75.animate({
-            "top": clientHeight - _0x1901e4
+            top: clientHeight - _0x1901e4
         }, 1000) : _0x15d440.pageY < 10 && 0 < _0x15d440.pageY ? _0x38ea75.is(":animated") || _0x38ea75.animate(_0x3a9878, 1000) : _0x38ea75.stop(true, false)), _0x15d440.target) && "LI" == _0x15d440.target.tagName && !(_0x506925 = $(_0x15d440.target)).hasClass("enabled")) {
         _0x506925 = null;
     }
@@ -1706,11 +1706,11 @@ function _0x194510(_0x141d9a) {
         _0x318516 = _0x141d9a.outerHeight();
         if (clientHeight - 2 < _0x538e54 + _0x318516) {
             _0x4ed63b.stop(true, false).css({
-                "top": "-=" + (_0x538e54 + _0x318516 - clientHeight + 2)
+                top: "-=" + (_0x538e54 + _0x318516 - clientHeight + 2)
             });
         } else if (_0x538e54 < 2) {
             _0x4ed63b.stop(true, false).css({
-                "top": "-=" + (_0x538e54 - 2)
+                top: "-=" + (_0x538e54 - 2)
             });
         }
     }
@@ -1969,13 +1969,13 @@ function _0x432cde() {
                 case "contextPickpocket":
                     if (0 == _0x19fdd4[_0x174ccf.id]) {
                         swal({
-                            "title": "<img src='img/icons/pickpocket.png' width='80' height='80' style='border-radius:50%; display:block; margin:auto;'><br><span style='font-weight:bold; color:#f8b400;'>Pickpocketing Information</span>",
-                            "html": true,
-                            "text": "<div style='text-align:left;'>Pickpocketing is a shady skill that allows you to steal from other players to gain XP and various items, such as mass, coins, SP, and power-ups. Each action has a waiting time and a certain chance of success, which increases as you level up.<br><br><strong>XP Gained:</strong> Varies by action and success.<br><strong>Cooldown:</strong> Even the sneakiest thief needs a tea break. Waiting time between each action is 10 minutes for mass and a tad longer for shinier items.<br><strong>Success Rate:</strong> Starts at a humble 20% and increases up to 80% for levels above 80. Then you really are a shadow in the night. Protect yourself from pickpockets by leveling up, that decreases the opponents success rate of stealing from you.<br><br>As your thieving level increases, you unlock the ability to steal more valuable items and the chance of a successful steal improves, allowing you to master the art of pickpocketing. Wear the Face Mask wearable to higher your chance of success during stealing.</div>",
-                            "type": '',
-                            "customClass": "swal-custom-class",
-                            "confirmButtonColor": "#f8b400",
-                            "confirmButtonText": "Close"
+                            title: "<img src='img/icons/pickpocket.png' width='80' height='80' style='border-radius:50%; display:block; margin:auto;'><br><span style='font-weight:bold; color:#f8b400;'>Pickpocketing Information</span>",
+                            html: true,
+                            text: "<div style='text-align:left;'>Pickpocketing is a shady skill that allows you to steal from other players to gain XP and various items, such as mass, coins, SP, and power-ups. Each action has a waiting time and a certain chance of success, which increases as you level up.<br><br><strong>XP Gained:</strong> Varies by action and success.<br><strong>Cooldown:</strong> Even the sneakiest thief needs a tea break. Waiting time between each action is 10 minutes for mass and a tad longer for shinier items.<br><strong>Success Rate:</strong> Starts at a humble 20% and increases up to 80% for levels above 80. Then you really are a shadow in the night. Protect yourself from pickpockets by leveling up, that decreases the opponents success rate of stealing from you.<br><br>As your thieving level increases, you unlock the ability to steal more valuable items and the chance of a successful steal improves, allowing you to master the art of pickpocketing. Wear the Face Mask wearable to higher your chance of success during stealing.</div>",
+                            type: '',
+                            customClass: "swal-custom-class",
+                            confirmButtonColor: "#f8b400",
+                            confirmButtonText: "Close"
                         });
                     } else if ((1 <= _0x19fdd4[_0x174ccf.id] || _0x19fdd4[_0x174ccf.id] < 6) && isReady()) {
                         new PacketWriter(2).setUint8(188).setUint8(_0x19fdd4[_0x174ccf.id]).send();
@@ -2005,7 +2005,7 @@ function _0x432cde() {
                             _0x2b63fd();
                             _0x460313();
                             $("#contextSubMenu").css({
-                                "top": _0x16e8e8
+                                top: _0x16e8e8
                             });
                             $("#" + _0x382cc9 + ".enabled").addClass("hover");
                         } else {
@@ -2066,8 +2066,8 @@ function curserMessage(message, isHtml, isBold, color, fadeAfter) {
         _0x4b1b06.text(message);
     }
     _0x4b1b06.css({
-        "fontSize": isBold ? "24px" : "18px",
-        "color": 2 == color ? "#999999" : 1 == color ? "#00C000" : "#FF0000"
+        fontSize: isBold ? "24px" : "18px",
+        color: 2 == color ? "#999999" : 1 == color ? "#00C000" : "#FF0000"
     });
     if (!_0x4243db) {
         _0x4b1b06.finish().slideDown(50);
@@ -2782,13 +2782,13 @@ function _0x3200d3() {
 
 function _0x411213(_0x9db3a7) {
     $.post("ag219.php", {
-        "data": JSON.stringify({
-            "cv": 2 * _0x556e60,
-            "ch": _0x950276,
-            "ccv2": _0x556e60 - 2,
-            "abl": 389, // encodeURIComponent(_0x1f004b).length
-            "cp": 62,
-            "vv": 158
+        data: JSON.stringify({
+            cv: 2 * _0x556e60,
+            ch: _0x950276,
+            ccv2: _0x556e60 - 2,
+            abl: 389, // encodeURIComponent(_0x1f004b).length
+            cp: 62,
+            vv: 158
         })
     }, function(_0x1579ab) {
         if (_0x1579ab) {
@@ -2810,6 +2810,11 @@ function wsConnect() {
     };
     if (window.location && window.location.host && "127.0.0.1" == window.location.host) {
         _0x5be478 = "ws://127.0.0.1:451";
+    }
+    if (window.location.protocol === 'http:') {
+        // _0x5be478 = "ws://78.141.211.96:2053"; // EU TOURN
+        // _0x5be478 = "ws://95.179.149.84:451"; // EU SF
+        _0x5be478 = "ws://209.250.255.3:451"; // EU SF RB
     }
     if (windowIsLoaded && _0x256390 && (_0x13d7e0(), 0 != _0x2b8278)) {
         if (!ws) {
@@ -2928,24 +2933,24 @@ function _0x564895(_0x98e624) {
 
 function wsOnOpen() {
     chatMessages.push({
-        "selectable": false,
-        "sid": 0,
-        "pid": 0,
-        "uid": randomMD5,
-        "iid": randomMD5,
-        "name": "Agma.io",
-        "receiver": '',
-        "color": "#0AFF0A",
-        "message": "Connected to server " + _0x38891d,
-        "category": 0,
-        "goldMember": 0,
-        "moderator": 0,
-        "donator": 0,
-        "yt": 0,
-        "touchUser": 0,
-        "shout": 0,
-        "time": Date.now(),
-        "cache": null
+        selectable: false,
+        sid: 0,
+        pid: 0,
+        uid: randomMD5,
+        iid: randomMD5,
+        name: "Agma.io",
+        receiver: '',
+        color: "#0AFF0A",
+        message: "Connected to server " + _0x38891d,
+        category: 0,
+        goldMember: 0,
+        moderator: 0,
+        donator: 0,
+        yt: 0,
+        touchUser: 0,
+        shout: 0,
+        time: Date.now(),
+        cache: null
     });
     _0x4cb089 = true;
     _0xf1d309 = 2000;
@@ -3205,9 +3210,9 @@ function _0x215896() {
                         } else {
                             _0x4aac3c += _0x53a19d.message.replace(emoRegExp, function(_0x458e26, _0x328eaf) {
                                 _0x67fcf.push({
-                                    "pos": _0x328eaf + _0xb4b953,
-                                    "index": emoMapIndex[_0x458e26],
-                                    "x0": 0
+                                    pos: _0x328eaf + _0xb4b953,
+                                    index: emoMapIndex[_0x458e26],
+                                    x0: 0
                                 });
                                 _0xb4b953 += 5 - _0x458e26.length;
                                 return "     ";
@@ -3226,24 +3231,24 @@ function _0x215896() {
                         if (_0x53a19d.yt) _0x587292.push(9);
                         if (_0x53a19d.touchUser) _0x587292.push(10);
                         _0x53a19d.cache = {
-                            "displayName": _0x53a19d.name,
-                            "parsedMessage": _0x4aac3c,
-                            "emo": _0x67fcf,
-                            "icons": _0x587292,
-                            "width0": 0,
-                            "width1": 0,
-                            "width2": 0,
-                            "clip1": false,
-                            "color2": '',
-                            "scale": _0x5952c4,
-                            "dpr": _0x358119,
-                            "hovered": false,
-                            "selected": false,
-                            "complete": false,
-                            "canvas": null,
-                            "ctx": null,
-                            "drawn": 0,
-                            "needsRedraw": true
+                            displayName: _0x53a19d.name,
+                            parsedMessage: _0x4aac3c,
+                            emo: _0x67fcf,
+                            icons: _0x587292,
+                            width0: 0,
+                            width1: 0,
+                            width2: 0,
+                            clip1: false,
+                            color2: '',
+                            scale: _0x5952c4,
+                            dpr: _0x358119,
+                            hovered: false,
+                            selected: false,
+                            complete: false,
+                            canvas: null,
+                            ctx: null,
+                            drawn: 0,
+                            needsRedraw: true
                         };
                     }
                 }
@@ -3396,11 +3401,11 @@ function _0x215896() {
                     _0x44020a.drawImage(_0x56941e.canvas, 0, ~~(_0x4f2a5f * _0x358119 + 0.5));
                     if (_0x53a19d.selectable) {
                         _0x1937c1.push({
-                            "ch": _0x53a19d,
-                            "x0": 0,
-                            "y0": _0x4f2a5f + _0x5952c4,
-                            "x1": Math.max(_0x56941e.width0 + _0x56941e.width1 + _0x5952c4, 10 * _0x5952c4),
-                            "y1": _0x4f2a5f + 21 * _0x5952c4
+                            ch: _0x53a19d,
+                            x0: 0,
+                            y0: _0x4f2a5f + _0x5952c4,
+                            x1: Math.max(_0x56941e.width0 + _0x56941e.width1 + _0x5952c4, 10 * _0x5952c4),
+                            y1: _0x4f2a5f + 21 * _0x5952c4
                         });
                     }
                 }
@@ -3717,12 +3722,12 @@ function _0x215896() {
                 _0x12c6d8 = document.createElement("canvas");
                 _0x5d45ba = _0x12c6d8.getContext("2d");
                 _0x351ad0 = {
-                    "canvas": _0x12c6d8,
-                    "ctx": _0x5d45ba,
-                    "value": '',
-                    "color": '',
-                    "size": 0,
-                    "scale": 1
+                    canvas: _0x12c6d8,
+                    ctx: _0x5d45ba,
+                    value: '',
+                    color: '',
+                    size: 0,
+                    scale: 1
                 };
             }
             if (!(_0x351ad0.value == _0x5bd130 && _0x351ad0.color == _0x965bf3 && _0x351ad0.size == _0x3b1e5e && _0x351ad0.scale == _0x236d05)) {
@@ -3800,9 +3805,9 @@ function _0x215896() {
         }
         if (_0x4cb1e7) {
             _0x4cb1e7.setAnimation({
-                "id": 13,
-                "start": playerEmotes[13].time(),
-                "received": ++_0x57f5d0
+                id: 13,
+                start: playerEmotes[13].time(),
+                received: ++_0x57f5d0
             });
         }
     }
@@ -3820,7 +3825,8 @@ function _0x215896() {
             _0x1138be.globalAlpha = 0.9;
             _0x1138be.fillStyle = "#000000";
             _0x1138be.fillRect(0, 0, _0x51f702, _0x51f702);
-            if ((_0x13a1ae = null == (_0x13a1ae = wearablesAndObjectsImages.minimap) ? wearablesAndObjectsImages.minimap = newImage("img/minimap.png") : _0x13a1ae) && _0x13a1ae.complete && 0 != _0x13a1ae.width) {
+            _0x13a1ae = wearablesAndObjectsImages.minimap ||= newImage("img/minimap.png");
+            if (_0x13a1ae && _0x13a1ae.complete && 0 != _0x13a1ae.width) {
                 _0x1138be.globalAlpha = 1;
                 _0x1138be.drawImage(_0x13a1ae, 0, 0, _0x51f702, _0x51f702);
                 _0x4b4b51.complete = true;
@@ -3887,11 +3893,11 @@ function _0x215896() {
                     } else {
                         _0x577a49 = (_0x4cb1e7 = document.createElement("canvas")).getContext("2d");
                         _0xf8346e = _0x2c9685.pp = {
-                            "canvas": _0x4cb1e7,
-                            "ctx": _0x577a49,
-                            "value": '',
-                            "size": 0,
-                            "strokeWidth": 0
+                            canvas: _0x4cb1e7,
+                            ctx: _0x577a49,
+                            value: '',
+                            size: 0,
+                            strokeWidth: 0
                         };
                     }
                     if (!(_0xf8346e.value == _0x518f8e && _0xf8346e.size == _0x39e9c3 && _0xf8346e.strokeWidth == _0x1dfed6)) {
@@ -3971,24 +3977,24 @@ function _0x215896() {
 function wsOnClose() {
     var _0x40966e;
     chatMessages.push({
-        "selectable": false,
-        "sid": 0,
-        "pid": 0,
-        "uid": randomMD5,
-        "iid": randomMD5,
-        "name": "Agma.io",
-        "receiver": '',
-        "color": "#FF0A0A",
-        "message": "Disconnected from server",
-        "category": 0,
-        "goldMember": 0,
-        "moderator": 0,
-        "donator": 0,
-        "yt": 0,
-        "touchUser": 0,
-        "shout": 0,
-        "time": Date.now(),
-        "cache": null
+        selectable: false,
+        sid: 0,
+        pid: 0,
+        uid: randomMD5,
+        iid: randomMD5,
+        name: "Agma.io",
+        receiver: '',
+        color: "#FF0A0A",
+        message: "Disconnected from server",
+        category: 0,
+        goldMember: 0,
+        moderator: 0,
+        donator: 0,
+        yt: 0,
+        touchUser: 0,
+        shout: 0,
+        time: Date.now(),
+        cache: null
     });
     _0x4cb089 = true;
     _0x30cebd();
@@ -4269,8 +4275,8 @@ class Cell {
             _0x4c019b.p = _0x4433fd;
             for (_0x53c65a.length > _0x4433fd && _0x53c65a.splice(_0x4433fd); _0x53c65a.length < _0x4433fd;) {
                 _0x53c65a.push({
-                    "x": this.x,
-                    "y": this.y
+                    x: this.x,
+                    y: this.y
                 });
             }
             for (var _0x48b136 = 0; _0x48b136 < _0x4433fd; ++_0x48b136) {
@@ -4369,10 +4375,10 @@ class Cell {
                             this.be = null;
                         }
                     } else if (!(this.be || (_0x433539 = 4 == this.type ? 0.83 * this.size : this.size, this.be = {
-                            "x": 0,
-                            "y": 0,
-                            "s": _0x433539,
-                            "p": 0
+                            x: 0,
+                            y: 0,
+                            s: _0x433539,
+                            p: 0
                         }, this.Ne))) {
                         this.Ne = [];
                     }
@@ -4683,9 +4689,9 @@ class Cell {
     setAnimation(_0xb44e93) {
         if (1 != this.type) {
             _0xb44e93 = {
-                "id": _0xb44e93.id,
-                "start": _0xb44e93.start,
-                "received": _0xb44e93.received
+                id: _0xb44e93.id,
+                start: _0xb44e93.start,
+                received: _0xb44e93.received
             };
             if (this.anim) {
                 for (var i = 0; i < this.anim.length; i++) {
@@ -5243,10 +5249,10 @@ class Cell {
             }
             if (_0x20e1c6 = _0x20e1c6 || 2500 < (_0x5d5f7c = _0x3d73f2 - (_0x24d1be = _0x42aaca.wt[_0x42aaca.wt.length - 1]).x) * _0x5d5f7c + (_0x545632 = _0x56a4f1 - _0x24d1be.y) * _0x545632) {
                 _0x42aaca.wt.push({
-                    "x": _0x3d73f2,
-                    "y": _0x56a4f1,
-                    "time": currentFrameTime,
-                    "rd": 0
+                    x: _0x3d73f2,
+                    y: _0x56a4f1,
+                    time: currentFrameTime,
+                    rd: 0
                 });
             } else if (1 < _0x42aaca.wt.length && (_0x24d1be = _0x42aaca.wt[0], _0x330383 = _0x42aaca.wt[1], _0x20e1c6 = _0x24d1be.rd + Math.min(_0x330383.time - _0x24d1be.time, 1000), currentFrameTime - _0x42aaca.wt[_0x42aaca.wt.length - 1].time > _0x20e1c6)) {
                 _0x330383.rd = _0x20e1c6;
@@ -5360,15 +5366,15 @@ class Cell {
                 } else {
                     _0x4ac589 = (_0x5f0ab0 = document.createElement("canvas")).getContext("2d");
                     _0x1503a9(_0x5f0ab0 = {
-                        "canvas": _0x5f0ab0,
-                        "ctx": _0x4ac589,
-                        "value": _0xc5a1bb,
-                        "color": "#FFFFFF",
-                        "strokeColor": "#000000",
-                        "size": _0x4714e5,
-                        "scale": _0x34bd4c,
-                        "stroke": gameSettings.sNameOutlines,
-                        "appliedScale": _0x34bd4c
+                        canvas: _0x5f0ab0,
+                        ctx: _0x4ac589,
+                        value: _0xc5a1bb,
+                        color: "#FFFFFF",
+                        strokeColor: "#000000",
+                        size: _0x4714e5,
+                        scale: _0x34bd4c,
+                        stroke: gameSettings.sNameOutlines,
+                        appliedScale: _0x34bd4c
                     });
                 }
                 return _0x5f0ab0;
@@ -5537,16 +5543,16 @@ function _0x2182a7(_0x592c9b, _0x20c7ad, _0x2ea14e, _0xf0f1a1, _0x30d885) {
     var _0x592c9b = document.createElement("canvas");
     var _0x5bcece = _0x592c9b.getContext("2d");
     _0x1503a9(_0x53afa8 = _0x411cfe[_0x30d885] = {
-        "canvas": _0x592c9b,
-        "ctx": _0x5bcece,
-        "value": _0x20c7ad,
-        "color": _0x2ea14e,
-        "strokeColor": _0xf0f1a1,
-        "size": _0x30d885,
-        "scale": _0x34bd4c,
-        "stroke": gameSettings.sNameOutlines,
-        "appliedScale": _0x34bd4c,
-        "timestamp": currentFrameTime
+        canvas: _0x592c9b,
+        ctx: _0x5bcece,
+        value: _0x20c7ad,
+        color: _0x2ea14e,
+        strokeColor: _0xf0f1a1,
+        size: _0x30d885,
+        scale: _0x34bd4c,
+        stroke: gameSettings.sNameOutlines,
+        appliedScale: _0x34bd4c,
+        timestamp: currentFrameTime
     });
     return _0x53afa8;
 }
@@ -5761,6 +5767,13 @@ function wsOnMessage(_0x2ba470) {
                     [color, strokeColor] = pkt.getColorTags()
                     if (0 === type)
                         _0x3a2844 = _0x409f62[pkt.getUint16()];
+                    if (ACTIVE && (type === 5 || type === 6 || type === 7)) {
+                        console.log(['RECOMBINE', 'GROWTH', 'SPEED'][type - 5], x, y, Date.now());
+                        mouseFixedX = x;
+                        mouseFixedY = y;
+                        isMouseFixed = true;
+                        new PacketWriter(9).setUint8(0).setInt32(x).setInt32(y).send();
+                    }
                 }
                 let cell = !isNew || Object.prototype.hasOwnProperty.call(allCells, id) ? allCells[id] : null;
                 if (cell) {
@@ -5825,9 +5838,9 @@ function wsOnMessage(_0x2ba470) {
                                 }
                             } else if (13 === type) {
                                 cell.setAnimation({
-                                    "id": 7,
-                                    "start": playerEmotes[7].time(-~~(2000 * Math.random())),
-                                    "received": ++_0x57f5d0
+                                    id: 7,
+                                    start: playerEmotes[7].time(-~~(2000 * Math.random())),
+                                    received: ++_0x57f5d0
                                 });
                             } else if (4 === type) {
                                 cell.strokeSize = 0.83 * size;
@@ -5897,9 +5910,9 @@ function wsOnMessage(_0x2ba470) {
                 var _0x5c6537 = allCells[_0x37f254] || _0x37d117[_0x37f254];
                 var _0x2242da = allCells[pkt.getUint32()];
                 if (_0x2242da && (_0x5c6537 ? (_0x2242da.destroy(true), _0x2242da.ox = _0x2242da.x, _0x2242da.oy = _0x2242da.y, _0x2242da.oSize = _0x2242da.size, _0x5c6537 !== _0x2242da && (_0x2242da.hx = _0x5c6537.x, _0x2242da.hy = _0x5c6537.y), _0x2242da.nSize = _0x2242da.size, _0x2242da.updateTime = currentFrameTime, _0x5c6537.isCloaked && !_0x5c6537.ownCell && 0 === _0x2242da.type && _0x2242da.pid !== _0x5c6537.pid && (_0x5c6537.clearAnimation(16), _0x5c6537.setAnimation({
-                        "id": 16,
-                        "start": playerEmotes[16].time(),
-                        "received": ++_0x57f5d0
+                        id: 16,
+                        start: playerEmotes[16].time(),
+                        received: ++_0x57f5d0
                     }))) : _0x2242da.destroy(false), 1 !== _0x2242da.type)) {
                     _0x37d117[_0x37f254] = _0x2242da;
                 }
@@ -5992,9 +6005,9 @@ function wsOnMessage(_0x2ba470) {
                         } else {
                             _0x5bd0ee = playerEmotes[_0x3d8b30];
                             _0x57f54c = {
-                                "id": _0x3d8b30,
-                                "start": _0x5bd0ee.time(-_0x346550),
-                                "received": _0x57f5d0
+                                id: _0x3d8b30,
+                                start: _0x5bd0ee.time(-_0x346550),
+                                received: _0x57f5d0
                             };
                             if (_0x5bd0ee.time() < _0x57f54c.start + _0x5bd0ee.duration) {
                                 if (_0x5013c6) {
@@ -6014,9 +6027,9 @@ function wsOnMessage(_0x2ba470) {
                             } else {
                                 _0x5bd0ee = playerEmotes[_0x3d8b30];
                                 _0x57f54c = {
-                                    "id": _0x3d8b30,
-                                    "start": _0x5bd0ee.time(-_0x346550),
-                                    "received": _0x57f5d0
+                                    id: _0x3d8b30,
+                                    start: _0x5bd0ee.time(-_0x346550),
+                                    received: _0x57f5d0
                                 };
                                 if (_0x5bd0ee.time() < _0x57f54c.start + _0x5bd0ee.duration) {
                                     _0x5013c6.setAnimation(_0x57f54c);
@@ -6034,9 +6047,9 @@ function wsOnMessage(_0x2ba470) {
                     } else {
                         _0x5bd0ee = playerEmotes[_0x3d8b30];
                         _0x57f54c = {
-                            "id": _0x3d8b30,
-                            "start": _0x5bd0ee.time(-_0x346550),
-                            "received": _0x57f5d0
+                            id: _0x3d8b30,
+                            start: _0x5bd0ee.time(-_0x346550),
+                            received: _0x57f5d0
                         };
                         if (_0x5bd0ee.time() < _0x57f54c.start + _0x5bd0ee.duration) {
                             _0x14cfd2(_0x2a3116, _0x399168, _0x57f54c);
@@ -6404,7 +6417,9 @@ function wsOnMessage(_0x2ba470) {
             _0x11c29c = _0x311374;
             _0x30bfdb = _0x2f2313;
             if (_0x26baf3) {
+                if (_0x469523 - _0x273de7 === 1) console.log('GOT RECOMBINE', Date.now());
                 _0x273de7 = _0x469523;
+                if (_0x49adef - _0x852ff === 1) console.log('GOT SPEED', Date.now());
                 _0x852ff = _0x49adef;
                 _0x38ea95 = _0x1711bf;
                 _0x576526 = _0x2581c0;
@@ -6514,12 +6529,6 @@ function wsOnMessage(_0x2ba470) {
             var _0x280d4d = !!(1 & (flags = pkt.getUint8()));
             var _0x2581c0 = pkt.getUint8();
             var _0xf64257 = pkt.getUint16();
-            var _0x3933ea = {
-                "zoom": 0.8
-            };
-            var _0x58fa0d = {
-                zoom: 1
-            };
             if ("sFX_nuke" == _0x5e72c3) {
                 playSounds("sounds/infection_nuke.mp3?v=2", 0.07);
                 $("#canvas").css("animation", "shake 0.5s");
@@ -6568,7 +6577,7 @@ function wsOnMessage(_0x2ba470) {
             } else if ("gg_lastman" == _0x5e72c3) {
                 $("#gamemode_messages").fadeIn(1000);
                 $("#gamemode_messages").html("<img src=\"./img/animations/last_man.png\" style=\"position: absolute; top: 60px; left: 50%; transform: translate(-50%, 0%) rotate(-14deg); width: 425px; z-index: 200; -webkit-filter: drop-shadow(1px 1px 2px rgba(0,0,0,1)); filter: drop-shadow(1px 1px 2px rgba(0,0,0,1));\">");
-                $("#gamemode_messages").animate(_0x3933ea, 400).delay(100).animate(_0x58fa0d, 400);
+                $("#gamemode_messages").animate({ zoom: 0.8 }, 400).delay(100).animate({ zoom: 1 }, 400);
                 $("#gamemode_messages").o(100, 20, 10);
                 $("#gamemode_messages").fadeOut(1000);
                 $("#gamemode_messages").hide(5000);
@@ -7096,16 +7105,10 @@ function wsOnMessage(_0x2ba470) {
             }
 
             function _0x425b4b() {
-                var _0x4a1fd2 = {
-                    "margin-right": "10px"
-                };
                 $("#megaholder").stop(true, false).show(0);
-                $("#megaphone").animate(_0x4a1fd2, function() {
+                $("#megaphone").animate({ "margin-right": "10px" }, function() {
                     _0x32316b = setTimeout(function() {
-                        var _0x21ffca = {
-                            "margin-right": "-350px"
-                        };
-                        $("#megaphone").animate(_0x21ffca);
+                        $("#megaphone").animate({ "margin-right": "-350px" });
                         $("#megaholder").delay(900).hide(0);
                     }, 30000);
                 });
@@ -7173,24 +7176,24 @@ function wsOnMessage(_0x2ba470) {
             var _0x469523 = null;
             var _0x1711bf = !!(8 & _0x3988b2);
             chatMessages.push({
-                "selectable": _0x3884cc,
-                "sid": currentServerId,
-                "pid": _0x24a818,
-                "uid": _0x2712a9,
-                "iid": _0x3b0d92,
-                "name": _0x4c6837,
-                "receiver": _0x3626db,
-                "color": _0x2cc170,
-                "message": pkt.getString(),
-                "category": 1 & _0x3988b2 ? 1 : 2 & _0x3988b2 ? 2 : 0,
-                "goldMember": !!(16 & _0x3988b2),
-                "moderator": 32 & _0x3988b2 ? 1 : 64 & _0x3988b2 ? 2 : 0,
-                "donator": 1 & _0x1124f6 ? 1 : 2 & _0x1124f6 ? 2 : 4 & _0x1124f6 ? 3 : 8 & _0x1124f6 ? 4 : 16 & _0x1124f6 ? 5 : 32 & _0x1124f6 ? 6 : 0,
-                "yt": !!(64 & _0x1124f6),
-                "touchUser": !!(128 & _0x1124f6),
-                "shout": _0x1711bf && _0x238c81,
-                "time": Date.now(),
-                "cache": null
+                selectable: _0x3884cc,
+                sid: currentServerId,
+                pid: _0x24a818,
+                uid: _0x2712a9,
+                iid: _0x3b0d92,
+                name: _0x4c6837,
+                receiver: _0x3626db,
+                color: _0x2cc170,
+                message: pkt.getString(),
+                category: 1 & _0x3988b2 ? 1 : 2 & _0x3988b2 ? 2 : 0,
+                goldMember: !!(16 & _0x3988b2),
+                moderator: 32 & _0x3988b2 ? 1 : 64 & _0x3988b2 ? 2 : 0,
+                donator: 1 & _0x1124f6 ? 1 : 2 & _0x1124f6 ? 2 : 4 & _0x1124f6 ? 3 : 8 & _0x1124f6 ? 4 : 16 & _0x1124f6 ? 5 : 32 & _0x1124f6 ? 6 : 0,
+                yt: !!(64 & _0x1124f6),
+                touchUser: !!(128 & _0x1124f6),
+                shout: _0x1711bf && _0x238c81,
+                time: Date.now(),
+                cache: null
             });
             if (1 & _0x3988b2) {
                 _0x469523 = document.getElementById("chtTabParty");
@@ -7225,12 +7228,12 @@ function wsOnMessage(_0x2ba470) {
             for (var i = 0; i < _0x435e7a; ++i) {
                 flags = pkt.getUint8();
                 _0x5e7de3.push({
-                    "name": pkt.getString(),
-                    "accepted": !!(1 & flags),
-                    "isRequester": !!(2 & flags),
-                    "loginStatus": !!(4 & flags),
-                    "goldMember": !!(16 & flags),
-                    "serverName": 4 & flags ? pkt.getString() : ''
+                    name: pkt.getString(),
+                    accepted: !!(1 & flags),
+                    isRequester: !!(2 & flags),
+                    loginStatus: !!(4 & flags),
+                    goldMember: !!(16 & flags),
+                    serverName: 4 & flags ? pkt.getString() : ''
                 });
                 if ((_0x1740e2 = _0x5e7de3[i]).accepted || !_0x1740e2.isRequester) {
                     if (_0x1740e2.loginStatus) {
@@ -7385,15 +7388,15 @@ function wsOnMessage(_0x2ba470) {
                     var flags = pkt.getUint8();
                     var _0x395b2d = pkt.getUint16();
                     newGameservers.push({
-                        "id": _0x395b2d,
-                        "name": pkt.getString(),
-                        "description": pkt.getString(),
-                        "address": pkt.getString(),
-                        "location": pkt.getUint8(),
-                        "gamemode": getModeFromId(pkt.getUint8()),
-                        "players": pkt.getUint16(),
-                        "maxPlayers": pkt.getUint16(),
-                        "isCurrent": !!(1 & flags)
+                        id: _0x395b2d,
+                        name: pkt.getString(),
+                        description: pkt.getString(),
+                        address: pkt.getString(),
+                        location: pkt.getUint8(),
+                        gamemode: getModeFromId(pkt.getUint8()),
+                        players: pkt.getUint16(),
+                        maxPlayers: pkt.getUint16(),
+                        isCurrent: !!(1 & flags)
                     });
                     if (newGameservers[i].isCurrent) {
                         currentServer = newGameservers[i];
@@ -7457,18 +7460,18 @@ function wsOnMessage(_0x2ba470) {
                     var _0x1819b7 = pkt.getUint16();
                     var _0x3af9db = pkt.getUint8();
                     _0x51aa44.push({
-                        "id": _0x1819b7,
-                        "type": _0x3af9db,
-                        "name": pkt.getString(),
-                        "area": pkt.getUint8(),
-                        "zIndex": pkt.getUint16(),
-                        "group": pkt.getUint16(),
-                        "levelRequired": 0,
-                        "vipLevelRequired": 0,
-                        "price": 0,
-                        "approved": !!(2 & flags),
-                        "pendingApproval": !!(4 & flags),
-                        "enabled": !!(1 & flags)
+                        id: _0x1819b7,
+                        type: _0x3af9db,
+                        name: pkt.getString(),
+                        area: pkt.getUint8(),
+                        zIndex: pkt.getUint16(),
+                        group: pkt.getUint16(),
+                        levelRequired: 0,
+                        vipLevelRequired: 0,
+                        price: 0,
+                        approved: !!(2 & flags),
+                        pendingApproval: !!(4 & flags),
+                        enabled: !!(1 & flags)
                     });
                     if (1 == _0x3af9db) {
                         _0x51aa44[_0x51aa44.length - 1].levelRequired = pkt.getUint16();
@@ -7492,21 +7495,21 @@ function wsOnMessage(_0x2ba470) {
                     var _0x3af9db = pkt.getUint8();
                     var _0x3a3464 = pkt.getUint32();
                     skins.push({
-                        "id": _0x1819b7,
-                        "type": _0x3af9db,
-                        "name": pkt.getString(),
-                        "levelRequired": 0,
-                        "vipLevelRequired": 0,
-                        "price": 0,
-                        "approved": !!(2 & flags),
-                        "pendingApproval": 0,
-                        "userAssigned": !!(8 & flags),
-                        "sharedPublic": !!(16 & flags),
-                        "changedUnix": _0x3a3464,
-                        "changedDaysAgo": 0,
-                        "changeAllowed": !!(32 & flags),
-                        "popularity": 0,
-                        "enabled": !!(1 & flags)
+                        id: _0x1819b7,
+                        type: _0x3af9db,
+                        name: pkt.getString(),
+                        levelRequired: 0,
+                        vipLevelRequired: 0,
+                        price: 0,
+                        approved: !!(2 & flags),
+                        pendingApproval: 0,
+                        userAssigned: !!(8 & flags),
+                        sharedPublic: !!(16 & flags),
+                        changedUnix: _0x3a3464,
+                        changedDaysAgo: 0,
+                        changeAllowed: !!(32 & flags),
+                        popularity: 0,
+                        enabled: !!(1 & flags)
                     });
                     if (1 == _0x3af9db) {
                         skins[skins.length - 1].levelRequired = pkt.getUint16();
@@ -7609,26 +7612,26 @@ function wsOnMessage(_0x2ba470) {
             _0x17a702 = _0x26039d.getString();
             _0x26039d = _0x26039d.getString();
             chatMessages.push({
-                "selectable": true,
-                "sid": currentServerId,
-                "pid": _0x2d1f83,
-                "uid": randomMD5,
-                "iid": randomMD5,
-                "name": _0x17a702,
-                "receiver": '',
-                "color": "#3b87cc",
-                "message": _0x26039d,
-                "category": 4,
-                "goldMember": !!(16 & _0x3c2960),
-                "moderator": 32 & _0x3c2960 ? 1 : 64 & _0x3c2960 ? 2 : 0,
-                "donator": 1 & _0x15ca97 ? 1 : 2 & _0x15ca97 ? 2 : 4 & _0x15ca97 ? 3 : 8 & _0x15ca97 ? 4 : 16 & _0x15ca97 ? 5 : 32 & _0x15ca97 ? 6 : 0,
-                "yt": !!(64 & _0x15ca97),
-                "touchUser": !!(128 & _0x15ca97),
-                "shout": false,
-                "time": Date.now(),
-                "cache": null,
-                "sender": _0x17a702,
-                "groupId": _0x55cf4d
+                selectable: true,
+                sid: currentServerId,
+                pid: _0x2d1f83,
+                uid: randomMD5,
+                iid: randomMD5,
+                name: _0x17a702,
+                receiver: '',
+                color: "#3b87cc",
+                message: _0x26039d,
+                category: 4,
+                goldMember: !!(16 & _0x3c2960),
+                moderator: 32 & _0x3c2960 ? 1 : 64 & _0x3c2960 ? 2 : 0,
+                donator: 1 & _0x15ca97 ? 1 : 2 & _0x15ca97 ? 2 : 4 & _0x15ca97 ? 3 : 8 & _0x15ca97 ? 4 : 16 & _0x15ca97 ? 5 : 32 & _0x15ca97 ? 6 : 0,
+                yt: !!(64 & _0x15ca97),
+                touchUser: !!(128 & _0x15ca97),
+                shout: false,
+                time: Date.now(),
+                cache: null,
+                sender: _0x17a702,
+                groupId: _0x55cf4d
             });
             if (!(b4 = document.getElementById("groupChat-" + _0x55cf4d))) {
                 _0x2c01ea(_0x55cf4d, '', '');
@@ -7842,8 +7845,8 @@ function _0x4d3094() {
     var _0x4abb41 = $("#friendDialog");
     _0x4ebe0d = _0x363e25 ? (_0x22af33 = _0x4abb41.outerHeight() * (_0x4386c1 ? 0.7 : 1), _0x39f84e = _0x4abb41.outerWidth() * (_0x4386c1 ? 0.7 : 1), _0x5990ff = (_0x4ebe0d = _0x4abb41.offset()).top, _0x4ebe0d = _0x4ebe0d.left, _0x5990ff = Math.clamp(_0x5990ff, 0, clientHeight - _0x22af33), Math.clamp(clientWidth - _0x4ebe0d - _0x39f84e, 0, clientWidth - _0x39f84e)) : (_0x5990ff = 12 + (_0x22af33 = _0x4386c1 ? 28 : 40), _0x4386c1 ? 0 : _0x5dd920 + _0x22af33);
     _0x4abb41.css({
-        "right": _0x4ebe0d + "px",
-        "top": _0x5990ff + "px"
+        right: _0x4ebe0d + "px",
+        top: _0x5990ff + "px"
     });
 }
 
@@ -7856,8 +7859,8 @@ function _0x569497(_0x429c2c) {
     function _0xaea786(_0x4fa54d) {
         if (_0x363e25) {
             _0x5b76e2.css({
-                "right": clientWidth - (_0x4fa54d.pageX - _0x46fcff) + "px",
-                "top": _0x4fa54d.pageY - _0x38035e + "px"
+                right: clientWidth - (_0x4fa54d.pageX - _0x46fcff) + "px",
+                top: _0x4fa54d.pageY - _0x38035e + "px"
             });
         } else {
             _0x5c83f9();
@@ -7901,9 +7904,9 @@ function _0x20ddff(_0x22b948) {
             _0x2de48c = Math.clamp(_0x3caddb + (_0x1e003d.clientX - _0x330bf8) / (_0x4386c1 ? 0.7 : 1), 200, clientWidth);
             _0x517404 = Math.clamp(_0x36ed80 + (_0x1e003d.clientY - _0x25ffd4) / (_0x4386c1 ? 0.7 : 1), 240, clientHeight);
             _0x48b630.css({
-                "width": _0x2de48c + "px",
-                "height": _0x517404 + "px",
-                "right": _0x1c3998 - (_0x2de48c - _0x3caddb) * (_0x4386c1 ? 0.7 : 1) + "px"
+                width: _0x2de48c + "px",
+                height: _0x517404 + "px",
+                right: _0x1c3998 - (_0x2de48c - _0x3caddb) * (_0x4386c1 ? 0.7 : 1) + "px"
             });
         } else {
             _0x5e3774();
@@ -8058,10 +8061,10 @@ function _0x2aa794() {
     const activeTab = $("#skinsOwnedTab").hasClass("active") ? 5 : $("#skinsCustomTab").hasClass("active") ? 4 : $("#skinsVIPTab").hasClass("active") ? 3 : $("#skinsBuyTab").hasClass("active") ? 2 : $("#skinsLevelTab").hasClass("active") ? 1 : 0;
     var _0x513e33 = ++_0x36e61c;
     $.post("skins.php", {
-        "data": JSON.stringify({
+        data: JSON.stringify({
             skins,
             activeTab,
-            "currentSkin": gameSettings.skinId,
+            currentSkin: gameSettings.skinId,
             customSkinPrice,
             supportFileDragAndDrop,
             pageByType
@@ -8072,8 +8075,8 @@ function _0x2aa794() {
             const _0x408464 = "string" == typeof _0xe09ea3 && -1 !== _0xe09ea3.indexOf("skin-tab-pager");
             if (!_0xe8dc3 || !_0x408464) {
                 console.warn("Skin endpoint response missing. Existing shop HTML.", {
-                    "hasOwnedPane": _0xe8dc3,
-                    "hasPagerMarkup": _0x408464
+                    hasOwnedPane: _0xe8dc3,
+                    hasPagerMarkup: _0x408464
                 });
                 curserMessage("Skin shop response mismatch.", false, false, 0, 8);
             } else {
@@ -8146,7 +8149,7 @@ function _0x568cd2() {
         _0x71f2bc.push(gameSettings.wearablesSelected[i].wearId);
     var _0x1ac90e = ++_0x35e5f6;
     $.post("wearables.php", {
-        "data": JSON.stringify({
+        data: JSON.stringify({
             wearables: _0x51aa44,
             currentWearables: _0x71f2bc,
             version: 9
@@ -8339,8 +8342,8 @@ function _0x54ad2a(_0x36ae78) {
                     var _0x362355;
                     if (24 < _0x37eca3[4 * _0x362355 + 3]) {
                         return {
-                            "skinId": -1,
-                            "wearId": _0x2cb37c.wearId
+                            skinId: -1,
+                            wearId: _0x2cb37c.wearId
                         };
                     }
                 }
@@ -8375,14 +8378,6 @@ function _0x483791(_0x3ea76f) {
 
 function _0x2bb62d(level, xp) {
     var _0x1d75bb;
-    var _0x199ef8 = {
-        "box-shadow": "0px 0px 30px 0px #69e32c",
-        margin: "0px -5px 0px"
-    };
-    var _0x4d6dc2 = {
-        "box-shadow": '',
-        margin: ''
-    };
     if (!(0 == level && 0 == xp)) {
         _0x1d75bb = level <= 0 ? 0 : Math.min(100 * xp / (1000 * level), 100);
         $(".progress-bar").css("width", _0x1d75bb.toString() + "%");
@@ -8395,9 +8390,9 @@ function _0x2bb62d(level, xp) {
                 _0x1d75bb.css("background", '');
             }
             if (80 <= level) {
-                $("#level").css(_0x199ef8);
+                $("#level").css({ "box-shadow": "0px 0px 30px 0px #69e32c", margin: "0px -5px 0px" });
             } else {
-                $("#level").css(_0x4d6dc2);
+                $("#level").css({ "box-shadow": '', margin: '' });
             }
             _0x5b3bf2();
             _0x464ade();
@@ -8498,18 +8493,18 @@ window.resetMasterTooltips = function(_0x4132db) {
         var _0x55aa11 = $(this).attr("title");
         $(this).data("tipText", _0x55aa11).removeAttr("title");
         $("<p class=\"tooltip1\"></p>").text(_0x55aa11).prepend(_0xad7dd8 || _0x358f02 ? "<div class=\"tooltip1-header\">" + _0xad7dd8 + "  " + _0x358f02 + "</div>" : '').appendTo("body").fadeIn("slow").css({
-            "top": _0x53477a.pageY + 10,
-            "left": _0x53477a.pageX + 20,
-            "maxWidth": Math.min(window.innerWidth - _0x53477a.pageX - 40, 300) + "px"
+            top: _0x53477a.pageY + 10,
+            left: _0x53477a.pageX + 20,
+            maxWidth: Math.min(window.innerWidth - _0x53477a.pageX - 40, 300) + "px"
         });
     }, function() {
         $(this).attr("title", $(this).data("tipText"));
         $(".tooltip1").remove();
     }).mousemove(function(_0xda58c8) {
         $(".tooltip1").css({
-            "top": _0xda58c8.pageY + 10,
-            "left": _0xda58c8.pageX + 20,
-            "maxWidth": Math.min(window.innerWidth - _0xda58c8.pageX - 40, 300) + "px"
+            top: _0xda58c8.pageY + 10,
+            left: _0xda58c8.pageX + 20,
+            maxWidth: Math.min(window.innerWidth - _0xda58c8.pageX - 40, 300) + "px"
         });
     });
 };
@@ -8914,8 +8909,8 @@ function _0x483c7e(_0x4bd171) {
                 curserMessage("Secret command... enjoy the skins!", false, true, 1, 5);
             } else if (/^(?:\/fps)/.test(_0x48b4f1)) {
                 _0x495b59({
-                    "tagName": "KBD",
-                    "innerHTML": "/fps"
+                    tagName: "KBD",
+                    innerHTML: "/fps"
                 });
             } else if (/^(?:\/ping)/.test(_0x48b4f1)) {
                 _0x495b59(_0x239f05);
@@ -9038,8 +9033,8 @@ function _0x51c554() {
     hideContextMenu();
     if ((0 < _0x2de48c || 0 < _0x517404) && (_0x2de48c = Math.clamp(_0x2de48c, 200, clientWidth), _0x517404 = Math.clamp(_0x517404, 200, clientHeight), _0x363e25)) {
         $("#friendDialog").css({
-            "width": _0x2de48c + "px",
-            "height": _0x517404 + "px"
+            width: _0x2de48c + "px",
+            height: _0x517404 + "px"
         });
     }
     _0x4d3094();
@@ -9387,11 +9382,11 @@ function _0x38c054(_0x52aa22, _0x126949) {
         _0xa9f7bb = $("#challengeInfoBox");
         if (_0x52aa22) {
             _0xa9f7bb.css({
-                "top": ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
+                top: ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
             });
         } else {
             _0xa9f7bb.animate({
-                "top": ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
+                top: ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
             }, 200);
         }
         _0x1caff2 += _0xa9f7bb[0].getBoundingClientRect().height + 10 * _0x17003b;
@@ -9400,11 +9395,11 @@ function _0x38c054(_0x52aa22, _0x126949) {
         _0xa9f7bb = $("#infoBox");
         if (_0x52aa22) {
             _0xa9f7bb.css({
-                "top": ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
+                top: ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
             });
         } else {
             _0xa9f7bb.animate({
-                "top": ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
+                top: ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
             }, 200);
         }
         _0x1caff2 += _0xa9f7bb[0].getBoundingClientRect().height + 10 * _0x17003b;
@@ -9413,11 +9408,11 @@ function _0x38c054(_0x52aa22, _0x126949) {
         _0xa9f7bb = $("#partyBox");
         if (_0x126949) {
             _0xa9f7bb.css({
-                "top": ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
+                top: ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
             });
         } else {
             _0xa9f7bb.animate({
-                "top": ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
+                top: ~~(_0x1caff2 * _0x358119 + 0.5) / _0x358119 + "px"
             }, 200);
         }
         _0xa9f7bb[0].getBoundingClientRect().height;
@@ -10457,33 +10452,33 @@ window.univPcc = function(_0x434e22, ..._0x29ed12) {
                 if (_0x25c213 <= 255) {
                     _0x30c7a0 += 1;
                     _0x573b03.push({
-                        "type": "uint8",
-                        "value": _0x25c213
+                        type: "uint8",
+                        value: _0x25c213
                     });
                 } else if (_0x25c213 <= 65535) {
                     _0x30c7a0 += 2;
                     _0x573b03.push({
-                        "type": "uint16",
-                        "value": _0x25c213
+                        type: "uint16",
+                        value: _0x25c213
                     });
                 } else {
                     _0x30c7a0 += 4;
                     _0x573b03.push({
-                        "type": "uint32",
-                        "value": _0x25c213
+                        type: "uint32",
+                        value: _0x25c213
                     });
                 }
             } else if ("string" == typeof _0x25c213) {
             _0x30c7a0 += 2 + 2 * _0x25c213.length;
             _0x573b03.push({
-                "type": "string",
-                "value": _0x25c213
+                type: "string",
+                value: _0x25c213
             });
         } else if (Array.isArray(_0x25c213)) {
             _0x30c7a0 += 1 + 2 * _0x25c213.length;
             _0x573b03.push({
-                "type": "array",
-                "value": _0x25c213
+                type: "array",
+                value: _0x25c213
             });
         }
         var _0x4c308b;
@@ -10663,13 +10658,13 @@ window.rfrc = function() {
 };
 window.clmFr = function(_0xe5e1ee) {
     swal({
-        "title": $("#freeReward" + _0xe5e1ee).text(),
-        "text": "Are you sure you want to claim this reward?",
-        "type": "warning",
-        "showCancelButton": true,
-        "confirmButtonColor": "#4CAF50",
-        "confirmButtonText": "Yes, claim now",
-        "cancelButtonText": "Cancel"
+        title: $("#freeReward" + _0xe5e1ee).text(),
+        text: "Are you sure you want to claim this reward?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#4CAF50",
+        confirmButtonText: "Yes, claim now",
+        cancelButtonText: "Cancel"
     }, function() {
         if (isReady()) {
             new PacketWriter(2).setUint8(10).setUint8(_0xe5e1ee).send();
@@ -11254,13 +11249,13 @@ var _0xdf2e2d = -1;
 
 function _0x416ef7(_0x46e069, _0x3a2784) {
     return {
-        "url": "uploadskin.php",
-        "type": "post",
-        "cache": false,
-        "contentType": false,
-        "processData": false,
-        "data": _0x3a2784,
-        "success": function(_0x439b93) {
+        url: "uploadskin.php",
+        type: "post",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: _0x3a2784,
+        success: function(_0x439b93) {
             try {
                 var _0x50746b = !!(_0x439b93 = JSON.parse(_0x439b93)).errorCode;
                 var _0x57712b = _0x439b93.errorMessage;
@@ -11286,10 +11281,10 @@ function _0x416ef7(_0x46e069, _0x3a2784) {
                 $("#skinContainer" + _0x46e069).attr("data-pendingapproval", _0x1a6b64);
             }
         },
-        "error": function() {
+        error: function() {
             curserMessage("Error: unable to upload file to server. Please contact staff at the forums.", false, false, 0, 10);
         },
-        "complete": function() {
+        complete: function() {
             $("#skinContainer" + _0x46e069).removeClass("is-uploading");
             document.body.style.cursor = "default";
             _0x7f089d = false;
@@ -11448,7 +11443,7 @@ function reloadBackground(_0x16b03a) {
         _0x1ff456.css("background-image", "url(\"" + _0x16b03a + "\")").hide(0).show(0);
     }
     _0x1ff456.css({
-        "opacity": (_0x1cf392 ? Math.max(gameSettings.sCustomBackOpacity, 0.1) : gameSettings.sCustomBackOpacity).toString(),
+        opacity: (_0x1cf392 ? Math.max(gameSettings.sCustomBackOpacity, 0.1) : gameSettings.sCustomBackOpacity).toString(),
         "background-size": 2 == gameSettings.sCustomBackType ? (_0x8862f2 ? Math.clamp(~~(50 * _0x5a7db6.width / 1024 + 0.5), 2, 50) : 50).toString() + "%" : 1 == gameSettings.sCustomBackType ? "cover" : "100% 100%",
         "background-repeat": 2 == gameSettings.sCustomBackType ? "repeat" : "no-repeat"
     });
@@ -11725,13 +11720,13 @@ window.clearVideo = function() {
 window.purchaseSkin = function(_0x1e4706, _0x24b987) {
     if (isReady()) {
         swal({
-            "title": "Confirm",
-            "text": "If you click \"Buy\", you will purchase this skin. It costs " + _0x1e4706,
-            "type": "warning",
-            "showCancelButton": true,
-            "confirmButtonColor": "#4CAF50",
-            "confirmButtonText": "Yes, confirm purchase",
-            "cancelButtonText": "No, cancel purchase"
+            title: "Confirm",
+            text: "If you click \"Buy\", you will purchase this skin. It costs " + _0x1e4706,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#4CAF50",
+            confirmButtonText: "Yes, confirm purchase",
+            cancelButtonText: "No, cancel purchase"
         }, function() {
             if (isReady()) {
                 new PacketWriter(3).setUint8(44).setUint16(_0x24b987).send();
@@ -11742,14 +11737,14 @@ window.purchaseSkin = function(_0x1e4706, _0x24b987) {
 window.purchaseCustomSkin = function(_0x50e431) {
     if (isReady()) {
         swal({
-            "title": "Confirm",
-            "text": "If you click \"Yes\", you will purchase a new custom skin slot. It costs " + _0x50e431 + "<br><span style=\"font-size:13px;\"><br>(click here for <a href=\"#customSkinInstructions\" onclick=\"swal.close();\">instructions</a>)</span><br><br>",
-            "type": "warning",
-            "html": true,
-            "showCancelButton": true,
-            "confirmButtonColor": "#4CAF50",
-            "confirmButtonText": "Yes, confirm purchase",
-            "cancelButtonText": "No, cancel purchase"
+            title: "Confirm",
+            text: "If you click \"Yes\", you will purchase a new custom skin slot. It costs " + _0x50e431 + "<br><span style=\"font-size:13px;\"><br>(click here for <a href=\"#customSkinInstructions\" onclick=\"swal.close();\">instructions</a>)</span><br><br>",
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#4CAF50",
+            confirmButtonText: "Yes, confirm purchase",
+            cancelButtonText: "No, cancel purchase"
         }, function() {
             sendSignal(50);
         });
@@ -11768,13 +11763,13 @@ window.editCustomSkin = function(_0x332f75) {
     if (isReady() && isLoggedIn && !_0x7f089d) {
         if ($("#skinContainer" + _0x332f75).hasClass("enabled-mode")) {
             swal({
-                "title": "Confirm",
-                "text": "Are you sure you want to change this skin? Please be reminded if you press Yes, you cannot play with this skin anymore until it is re-approved by staff.",
-                "type": "warning",
-                "showCancelButton": true,
-                "confirmButtonColor": "#4CAF50",
-                "confirmButtonText": "Yes, change skin",
-                "cancelButtonText": "Cancel"
+                title: "Confirm",
+                text: "Are you sure you want to change this skin? Please be reminded if you press Yes, you cannot play with this skin anymore until it is re-approved by staff.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#4CAF50",
+                confirmButtonText: "Yes, change skin",
+                cancelButtonText: "Cancel"
             }, _0x352370);
         } else {
             _0x352370();
@@ -11819,9 +11814,9 @@ window.uploadCustomSkin = function(_0x4fd1d3) {
                 document.body.style.cursor = "progress";
                 $("#uploadMaxFileSize").val(1048576);
                 _0x375b8d = {
-                    "username": _0xea465f,
-                    "password": _0x170269,
-                    "skinId": _0x4fd1d3
+                    username: _0xea465f,
+                    password: _0x170269,
+                    skinId: _0x4fd1d3
                 };
                 $("#uploadForm").ajaxSubmit(_0x416ef7(_0x4fd1d3, _0x375b8d));
             }
@@ -11934,13 +11929,13 @@ window.toggleWearable = function(wearId, wearArea, _0x1acae1, wearGroup, _0x25e1
 window.purchaseWearable = function(_0x1d3ed8, _0x27391e) {
     if (_0x529909 && isReady()) {
         swal({
-            "title": "Confirm",
-            "text": "If you click \"Buy\", you will purchase this wearable. It costs " + _0x1d3ed8,
-            "type": "warning",
-            "showCancelButton": true,
-            "confirmButtonColor": "#4CAF50",
-            "confirmButtonText": "Yes, confirm purchase",
-            "cancelButtonText": "No, cancel purchase"
+            title: "Confirm",
+            text: "If you click \"Buy\", you will purchase this wearable. It costs " + _0x1d3ed8,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#4CAF50",
+            confirmButtonText: "Yes, confirm purchase",
+            cancelButtonText: "No, cancel purchase"
         }, function() {
             if (isReady()) {
                 _0x5eb440(_0x27391e);
@@ -11981,8 +11976,8 @@ window.animateExpReward = function() {
         fill: "forwards"
     };
     _0x341dc0.animate([_0x2666d3, {
-        "transform": "translate(" + _0x519db9 + "px, " + _0x2d1dc8 + "px)",
-        "opacity": 0.9
+        transform: "translate(" + _0x519db9 + "px, " + _0x2d1dc8 + "px)",
+        opacity: 0.9
     }], _0x59deeb).onfinish = () => {
         _0x2959f4.classList.add("highlight");
         setTimeout(() => {
@@ -12057,11 +12052,11 @@ window.coinsXopen = function(_0x34f7cb) {
         return swal("Login first", "Please log in on agma or register a new user account to use this functionality");
     }
     $.ajax({
-        "type": "GET",
-        "url": "../xsl/gtk.php",
-        "data": _0x34f7cb,
-        "beforeSend": function() {},
-        "success": function(_0x5b9f71) {
+        type: "GET",
+        url: "../xsl/gtk.php",
+        data: _0x34f7cb,
+        beforeSend: function() {},
+        success: function(_0x5b9f71) {
             if ("error" != _0x5b9f71) {
                 if ("noUser" == _0x5b9f71) {
                     swal("Login or Register", "Please log in to agma or register a new user account to use this functionality");
@@ -12070,7 +12065,7 @@ window.coinsXopen = function(_0x34f7cb) {
                 }
             }
         },
-        "complete": function(_0x285dda) {}
+        complete: function(_0x285dda) {}
     });
 };
 window.logXOpn = function(_0x461e52) {
@@ -12992,8 +12987,8 @@ var _0x41c319 = [];
 var _0x37972d = 2 * Math.PI / 10000;
 for (var _0x29653b = 0; _0x29653b < 10000; _0x29653b++) {
     _0x41c319.push({
-        "cos": Math.cos(_0x29653b * _0x37972d),
-        "sin": Math.sin(_0x29653b * _0x37972d)
+        cos: Math.cos(_0x29653b * _0x37972d),
+        sin: Math.sin(_0x29653b * _0x37972d)
     });
 }
 
@@ -13095,13 +13090,13 @@ $(function() {
             $(".pwresetalertdanger").hide(0).text("Please enter a username or email first").fadeIn(600);
         } else {
             swal({
-                "title": "Please confirm",
-                "text": "Do you want to send an email with a password reset link to '" + _0x2aaecd + "'?",
-                "type": "warning",
-                "showCancelButton": true,
-                "confirmButtonColor": "#4CAF50",
-                "confirmButtonText": "Yes, continue",
-                "cancelButtonText": "No, cancel"
+                title: "Please confirm",
+                text: "Do you want to send an email with a password reset link to '" + _0x2aaecd + "'?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#4CAF50",
+                confirmButtonText: "Yes, continue",
+                cancelButtonText: "No, cancel"
             }, function() {
                 if (12 < ++_0x1aa57f) {
                     return swal("Sorry", "Too many attempts. Please try again later.", "error");
@@ -13109,17 +13104,17 @@ $(function() {
                 var _0xd49b2e = isLoggedIn && _0xea465f.trim().toLowerCase() == _0x2aaecd.trim().toLowerCase() ? _0x170269 : '';
                 $("#resetPw").prop("disabled", true).html("Send Reset Email<i class=\"fa fa-spin\" style=\"animation-duration:1s; position:absolute; margin:3px 20px -3px; float:right; opacity:0.7;\"><img src=\"img/loading3.png\" style=\"width:20px;\"></i>").css("opacity", "0.7");
                 $.ajax({
-                    "type": "GET",
-                    "url": "../pass-reset/request_pass_reset.php",
-                    "data": "usernameEmail=" + _0x2aaecd + "&cp=" + _0xd49b2e,
-                    "beforeSend": function() {},
-                    "success": function(_0x46ac18) {
+                    type: "GET",
+                    url: "../pass-reset/request_pass_reset.php",
+                    data: "usernameEmail=" + _0x2aaecd + "&cp=" + _0xd49b2e,
+                    beforeSend: function() {},
+                    success: function(_0x46ac18) {
                         ("success" == _0x46ac18.substring(0, 7) ? ($("#reset-pw-row").hide(), $(".pwresetalertdanger").hide(), $(".pwresetalert").html(_0x46ac18.substring(7))) : $(".pwresetalertdanger").hide(0).text(_0x46ac18)).fadeIn(600);
                     },
-                    "error": function(_0x4ce0ff) {
+                    error: function(_0x4ce0ff) {
                         $(".pwresetalertdanger").hide(0).text("Error: an unexpected ajax error occurred").fadeIn(600);
                     },
-                    "complete": function(_0x453f71) {
+                    complete: function(_0x453f71) {
                         $("#resetPw").prop("disabled", false).text("Send Reset Email").css("opacity", '');
                     }
                 });
@@ -13257,7 +13252,7 @@ $(function() {
     --_0xa19eb5;
     _0xaee6f6 = [ 126, 57, 139, 92, 346, 36 ];
     $.post("client.php", {
-        "data": JSON.stringify({
+        data: JSON.stringify({
             cv: 4 * _0x556e60,
             ch: _0x950276,
             ccv: _0x556e60 - 2,
