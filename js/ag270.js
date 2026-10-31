@@ -1510,12 +1510,11 @@ function _0x3169a6(_0x4dc13e) {
         var _0x4dc13e = _0x4dc13e.pageX;
         var _0x327cd3 = Math.max(clientHeight < _0x327cd3 + _0x24ed85 && 0 <= _0x327cd3 - _0x24ed85 + 1 ? _0x327cd3 - _0x24ed85 + 1 : Math.min(_0x327cd3, clientHeight - _0x24ed85), 0);
         var _0x4dc13e = Math.clamp(_0x4dc13e, 0, clientWidth - _0x12641b);
-        var _0x46542c = {
+        _0x46f984.show();
+        _0x46f984.css({
             top: _0x327cd3,
             left: _0x4dc13e
-        };
-        _0x46f984.show();
-        _0x46f984.css(_0x46542c);
+        });
         contextMenuVisible = true;
     }
 }
@@ -1532,12 +1531,11 @@ function _0x337253(_0x1c5f0b) {
     var _0x5b5cdd = _0x21ba99.outerWidth();
     var _0x5a7084 = Math.max(clientHeight < _0x563d51 - 4 + _0x299143 && 0 <= _0x563d51 + 4 + _0x5a7084 - _0x299143 ? _0x563d51 + 4 + _0x5a7084 - _0x299143 : Math.min(_0x563d51 - 4, clientHeight - _0x299143), 0);
     var _0x563d51 = Math.max(clientWidth < _0x9a3a28 - 4 + _0x21a675 + _0x5b5cdd ? 0 <= _0x9a3a28 + 4 - _0x5b5cdd ? _0x9a3a28 + 4 - _0x5b5cdd : _0x9a3a28 <= clientWidth - _0x9a3a28 - _0x21a675 ? clientWidth - _0x5b5cdd : 0 : Math.min(_0x9a3a28 - 4 + _0x21a675, clientWidth - _0x5b5cdd), 0);
-    var _0x50776 = {
+    _0x21ba99.show();
+    _0x21ba99.css({
         top: _0x5a7084,
         left: _0x563d51
-    };
-    _0x21ba99.show();
-    _0x21ba99.css(_0x50776);
+    });
     if (_0x352baf) {
         clearTimeout(_0x352baf);
         _0x352baf = 0;
@@ -3193,8 +3191,8 @@ function _0x215896() {
             b73 = gameSettings.sDark ? "#9fc5e8" : "#6fa8dc";
             if (gameSettings.sChat && 0 < _0x47744f) {
                 _0x44020a.font = _0x8e2e84 + "px Ubuntu, serif";
-                var _0x67fcf;
-                var _0x4aac3c;
+                var emojis;
+                var parsedMessage;
                 var _0xb4b953;
                 for (var _0x461e7e = 0; _0x461e7e < _0x47744f; _0x461e7e++) {
                     (_0x53a19d = chatMessages[_0x461e7e]).filter = !(0 != _0xd835b8 && (_0xd835b8 != _0x53a19d.category || 1 != _0xd835b8 && '' != _0x1723aa && _0x1723aa.toLowerCase() != _0x53a19d.name.toLowerCase() && _0x1723aa.toLowerCase() != _0x53a19d.receiver.toLowerCase()) || _0x53a19d.uid != randomMD5 && _0x2f707e[_0x53a19d.uid] || _0x53a19d.iid != randomMD5 && _0x538120[_0x53a19d.iid]);
@@ -3202,14 +3200,14 @@ function _0x215896() {
                         _0x5b2664++;
                     }
                     if (null == _0x53a19d.cache) {
-                        _0x67fcf = [];
+                        emojis = [];
                         _0x587292 = [];
-                        _0xb4b953 = (_0x4aac3c = ": ").length;
+                        _0xb4b953 = (parsedMessage = ": ").length;
                         if (_0x53a19d.shout) {
-                            _0x4aac3c += _0x53a19d.message;
+                            parsedMessage += _0x53a19d.message;
                         } else {
-                            _0x4aac3c += _0x53a19d.message.replace(emoRegExp, function(_0x458e26, _0x328eaf) {
-                                _0x67fcf.push({
+                            parsedMessage += _0x53a19d.message.replace(emoRegExp, function(_0x458e26, _0x328eaf) {
+                                emojis.push({
                                     pos: _0x328eaf + _0xb4b953,
                                     index: emoMapIndex[_0x458e26],
                                     x0: 0
@@ -3232,8 +3230,8 @@ function _0x215896() {
                         if (_0x53a19d.touchUser) _0x587292.push(10);
                         _0x53a19d.cache = {
                             displayName: _0x53a19d.name,
-                            parsedMessage: _0x4aac3c,
-                            emo: _0x67fcf,
+                            parsedMessage,
+                            emo: emojis,
                             icons: _0x587292,
                             width0: 0,
                             width1: 0,
