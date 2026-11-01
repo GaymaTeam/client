@@ -6617,31 +6617,28 @@ function wsOnMessage(_0x2ba470) {
                 animateExpReward();
                 playSounds("sounds/challenge_complete.mp3", 1);
             } else if (9 == _0x3b0d92) {
-                _0x184d89 = pkt.getUint16();
-                _0x5180de = pkt.getUint16();
-                _0x5381b4 = pkt.getUint16();
-                _0x3a4da8 = pkt.getUint16();
-                _0x3988b2 = pkt.getUint16();
-                _0x1124f6 = pkt.getUint16();
-                _0x3884cc = pkt.getUint16();
-                _0x24a818 = pkt.getUint16();
-                _0x38a139 = pkt.getUint16();
-                _0x2712a9 = pkt.getUint16();
-                $(".challenge-level").text(_0x184d89);
-                $(".challenge-stars").text(_0x5180de);
-                $(".challenge-stars-total").text(_0x5381b4);
-                $(".mystery-keys").text(_0x3a4da8);
-                $(".challenges-completed").text(_0x3988b2);
-                $(".chall-reward-xp").text("+" + _0x38a139 + "%");
-                $(".challenges-easy").text(_0x1124f6);
-                $(".challenges-medium").text(_0x3884cc);
-                $(".challenges-hard").text(_0x24a818);
-                $(".sora-points-inv").text(_0x2712a9);
-            } else if (10 == _0x3b0d92 && (_0x33d2a7 = pkt.getUint32(), _0x238c81 = Math.min(Math.round(_0x33d2a7 / _0x352c3f * 100), 100), $(".progress-bar-challenge").css("width", _0x238c81.toString() + "%"), $(".challenge-bar").text(~~_0x238c81 + "%"), _0x4c6837 = (_0x2cc170 = 24 - new Date().getUTCHours()) + "h " + (60 - new Date().getUTCMinutes()) + "m ", _0x58c913 || _0x4c5e78(1, _0x1e9905, challengeImageId, _0x170049, _0x352c3f, _0x4c6837, _0x33d2a7), _0x352c3f <= _0x33d2a7) && !_0x9533e2 && !_0x536680) {
-                setTimeout(function() {
-                    _0x9533e2 = true;
-                    _0x39f84f(1);
-                }, 5000);
+                $(".challenge-level").text(pkt.getUint16());
+                $(".challenge-stars").text(pkt.getUint16());
+                $(".challenge-stars-total").text(pkt.getUint16());
+                $(".mystery-keys").text(pkt.getUint16());
+                $(".challenges-completed").text(pkt.getUint16());
+                $(".challenges-easy").text(pkt.getUint16());
+                $(".challenges-medium").text(pkt.getUint16());
+                $(".challenges-hard").text(pkt.getUint16());
+                $(".chall-reward-xp").text("+" + pkt.getUint16() + "%");
+                $(".sora-points-inv").text(pkt.getUint16());
+            } else if (10 == _0x3b0d92) {
+                _0x33d2a7 = pkt.getUint32();
+                _0x238c81 = Math.min(Math.round(_0x33d2a7 / _0x352c3f * 100), 100);
+                $(".progress-bar-challenge").css("width", _0x238c81.toString() + "%");
+                $(".challenge-bar").text(~~_0x238c81 + "%");
+                _0x4c6837 = (_0x2cc170 = 24 - new Date().getUTCHours()) + "h " + (60 - new Date().getUTCMinutes()) + "m ";
+                _0x58c913 || _0x4c5e78(1, _0x1e9905, challengeImageId, _0x170049, _0x352c3f, _0x4c6837, _0x33d2a7);
+                if (_0x352c3f <= _0x33d2a7 && !_0x9533e2 && !_0x536680)
+                    setTimeout(function() {
+                        _0x9533e2 = true;
+                        _0x39f84f(1);
+                    }, 5000);
             }
             break;
         case 94:
