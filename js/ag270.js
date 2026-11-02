@@ -7449,12 +7449,12 @@ function wsOnMessage(_0x2ba470) {
             break;
         case 114:
             if (0 < (_0x435e7a = pkt.getUint16())) {
-                _0x51aa44 = [];
+                wearables = [];
                 for (i = 0; i < _0x435e7a; ++i) {
                     var flags = pkt.getUint8();
                     var _0x1819b7 = pkt.getUint16();
                     var _0x3af9db = pkt.getUint8();
-                    _0x51aa44.push({
+                    wearables.push({
                         id: _0x1819b7,
                         type: _0x3af9db,
                         name: pkt.getString(),
@@ -7469,11 +7469,11 @@ function wsOnMessage(_0x2ba470) {
                         enabled: !!(1 & flags)
                     });
                     if (1 == _0x3af9db) {
-                        _0x51aa44[_0x51aa44.length - 1].levelRequired = pkt.getUint16();
+                        wearables[wearables.length - 1].levelRequired = pkt.getUint16();
                     } else if (3 == _0x3af9db) {
-                        _0x51aa44[_0x51aa44.length - 1].vipLevelRequired = pkt.getUint8();
+                        wearables[wearables.length - 1].vipLevelRequired = pkt.getUint8();
                     } else if (2 == _0x3af9db) {
-                        _0x51aa44[_0x51aa44.length - 1].price = pkt.getUint32();
+                        wearables[wearables.length - 1].price = pkt.getUint32();
                     }
                 }
                 _0x568cd2();
@@ -8139,14 +8139,14 @@ function _0x5df715(skinId) {
 }
 
 function _0x568cd2() {
-    var _0x71f2bc = [];
+    var currentWearables = [];
     for (var i = 0; i < gameSettings.wearablesSelected.length; i++)
-        _0x71f2bc.push(gameSettings.wearablesSelected[i].wearId);
+        currentWearables.push(gameSettings.wearablesSelected[i].wearId);
     var _0x1ac90e = ++_0x35e5f6;
     $.post("wearables.php", {
         data: JSON.stringify({
-            wearables: _0x51aa44,
-            currentWearables: _0x71f2bc,
+            wearables,
+            currentWearables,
             version: 9
         })
     }, function(_0x42c4b7) {
@@ -8170,8 +8170,8 @@ function _0x5a2fbe() {
     gotWearables = true;
     if (isReady()) {
         sendSignal(114);
-    } else if (0 < _0x51aa44.length) {
-        _0x51aa44 = [];
+    } else if (0 < wearables.length) {
+        wearables = [];
         _0x568cd2();
     }
 }
@@ -10212,7 +10212,7 @@ var skins = [];
 var _0x64a0d5 = true;
 var _0x16de9b = null;
 var _0x4506fc = '';
-var _0x51aa44 = [];
+var wearables = [];
 var _0x1518ea = true;
 var _0x529909 = false;
 var _0x3730e0 = null;
