@@ -572,10 +572,7 @@ window.onload = function() {
                 left: _0x2ab861 % 2 == 0 ? _0x36c5ab : -1 * _0x36c5ab
             }, _0x5312fa);
         }
-        var _0x5594a9 = {
-            left: 0
-        };
-        return _0x15803d.animate(_0x5594a9, _0x5312fa);
+        return _0x15803d.animate({ left: 0 }, _0x5312fa);
     };
     if (supportFileDragAndDrop) {
         (_0x2216eb = document.getElementById("customBackBtn")).ondragenter = _0x2216eb.ondragover = _0xc081b2;
@@ -1635,12 +1632,9 @@ function _0x46c13b(_0x15d440) {
     var _0x38ea75;
     var _0x1901e4;
     var _0x506925 = null;
-    var _0x3a9878 = {
-        top: 0
-    };
     if (_0x15d440 && (_0x15d440.currentTarget && (_0x1901e4 = (_0x38ea75 = $(_0x15d440.currentTarget)).outerHeight(), clientHeight < _0x1901e4) && (_0x15d440.pageY > clientHeight - 10 && _0x15d440.pageY < clientHeight ? _0x38ea75.is(":animated") || _0x38ea75.animate({
             top: clientHeight - _0x1901e4
-        }, 1000) : _0x15d440.pageY < 10 && 0 < _0x15d440.pageY ? _0x38ea75.is(":animated") || _0x38ea75.animate(_0x3a9878, 1000) : _0x38ea75.stop(true, false)), _0x15d440.target) && "LI" == _0x15d440.target.tagName && !(_0x506925 = $(_0x15d440.target)).hasClass("enabled")) {
+        }, 1000) : _0x15d440.pageY < 10 && 0 < _0x15d440.pageY ? _0x38ea75.is(":animated") || _0x38ea75.animate({ top: 0 }, 1000) : _0x38ea75.stop(true, false)), _0x15d440.target) && "LI" == _0x15d440.target.tagName && !(_0x506925 = $(_0x15d440.target)).hasClass("enabled")) {
         _0x506925 = null;
     }
     if (_0x352baf) {
@@ -2297,17 +2291,13 @@ function _0x370ab1(_0x1fbfdd) {
 }
 
 function _0x397340(_0x3f495b) {
-    var _0x293a68 = {
-        x: 0,
-        y: 0
-    };
     _0x6da0af();
     if (0 < _0x3f495b.changedTouches.length && null === _0x1c0802 && !_0x3e08c0) {
         _0x3f495b = _0x3f495b.changedTouches[0];
         _0x1c0802 = _0x3f495b.identifier;
         _0x262c61.x = _0x3f495b.clientX;
         _0x262c61.y = _0x3f495b.clientY;
-        _0xff0f52 = _0x293a68;
+        _0xff0f52 = { x: 0, y: 0 };
         _0x319c86.style.left = 0 - _0x4d2bd2 / 2 + "px";
         _0x319c86.style.top = 0 - _0x4d2bd2 / 2 + "px";
         _0x116b73.style.left = 0 - _0xd04953 / 2 + "px";
@@ -2587,7 +2577,8 @@ function _0x483372(_0x46c5a9) {
         _0x221763 = _0x46c5a9.currentTarget;
         _0x5c3445 = _0x46c5a9.changedTouches[0];
         _0x1e6b2c = setTimeout(function() {
-            var _0x19a9c1 = {
+            _0x5f11fd();
+            _0x221763.dispatchEvent(new MouseEvent("contextmenu", {
                 bubbles: true,
                 cancelable: true,
                 clientX: _0x5c3445.clientX,
@@ -2596,9 +2587,7 @@ function _0x483372(_0x46c5a9) {
                 pageY: _0x5c3445.pageY,
                 screenX: _0x5c3445.screenX,
                 screenY: _0x5c3445.screenY
-            };
-            _0x5f11fd();
-            _0x221763.dispatchEvent(new MouseEvent("contextmenu", _0x19a9c1));
+            }));
         }, 750);
     }
 }
@@ -2803,9 +2792,6 @@ function _0x411213(_0x9db3a7) {
 
 function wsConnect() {
     var _0x5be478 = "wss://" + _0x256390;
-    var _0x425173 = {
-        value: true
-    };
     if (window.location && window.location.host && "127.0.0.1" == window.location.host) {
         _0x5be478 = "ws://127.0.0.1:451";
     }
@@ -2833,7 +2819,7 @@ function wsConnect() {
             _0x57735d();
             ws = new WebSocket(_0x5be478, ["WebSocket"]);
             if (Object.defineProperty) {
-                Object.defineProperty(ws, "aSocket", _0x425173);
+                Object.defineProperty(ws, "aSocket", { value: true });
             } else {
                 ws.aSocket = true;
             }
@@ -7756,7 +7742,7 @@ function _0x1afbd7() {
         data: JSON.stringify({
             friendlist: _0x468d84,
             activeTab: $("#requestList").hasClass('active') ? 1 : 0,
-            Ye: _0x5b3d82
+            loggedIn: _0x5b3d82
         })
     }, function(res) {
         if (_0x598dfa < _0x244e69) {
@@ -8776,57 +8762,25 @@ function _0x10236d() {
 }
 
 function _0x483c7e(_0x4bd171) {
-    var _0x3d2512 = {
-        wearId: 61,
-        wearArea: 1
-    };
-    var _0x49f824 = {
-        wearId: 62,
-        wearArea: 1
-    };
-    var _0x2b1c0c = {
-        wearId: 46,
-        wearArea: 1
-    };
-    var _0x24b1c0 = {
-        wearId: 37,
-        wearArea: 1
-    };
-    var _0x2297bc = {
-        wearId: 25,
-        wearArea: 1
-    };
-    var _0xe28e5 = {
-        wearId: 28,
-        wearArea: 1
-    };
-    var _0x5526fb = {
-        wearId: 60,
-        wearArea: 0
-    };
-    var _0x3d6a07 = {
-        wearId: 58,
-        wearArea: 0
-    };
-    var _0x5735f3 = {
-        wearId: 57,
-        wearArea: 0
-    };
-    var _0x18e0f0 = {
-        wearId: 15,
-        wearArea: 0
-    };
-    var _0x59ab1b = {
-        wearId: 38,
-        wearArea: 0
-    };
     var _0x48b4f1 = _0x4bd171.trim().toLowerCase();
-    var _0x4e2ef9 = [5797, 5810];
-    var _0x1b76cc = _0x4e2ef9[1];
-    var _0x4e2ef9 = _0x4e2ef9[0];
+    var _0x1b76cc = 5810;
+    var _0x4e2ef9 = 5797;
     var _0x1b76cc = Math.floor(Math.random() * (_0x1b76cc - _0x4e2ef9 + 1)) + _0x4e2ef9;
-    var _0x4e2ef9 = [_0x3d2512, _0x49f824, _0x2b1c0c, _0x24b1c0, _0x2297bc, _0xe28e5];
-    var _0x2df53d = [_0x5526fb, _0x3d6a07, _0x5735f3, _0x18e0f0, _0x59ab1b];
+    var _0x4e2ef9 = [
+        { wearId: 61, wearArea: 1 },
+        { wearId: 62, wearArea: 1 },
+        { wearId: 46, wearArea: 1 },
+        { wearId: 37, wearArea: 1 },
+        { wearId: 25, wearArea: 1 },
+        { wearId: 28, wearArea: 1 }
+    ];
+    var _0x2df53d = [
+        { wearId: 60, wearArea: 0 },
+        { wearId: 58, wearArea: 0 },
+        { wearId: 57, wearArea: 0 },
+        { wearId: 15, wearArea: 0 },
+        { wearId: 38, wearArea: 0 }
+    ];
     var _0x4e2ef9 = _0x4e2ef9[Math.floor(Math.random() * _0x4e2ef9.length)];
     var _0x2df53d = _0x2df53d[Math.floor(Math.random() * _0x2df53d.length)];
     var _0x239f05 = {
@@ -9055,7 +9009,6 @@ function _0x585560() {
 }
 
 function setBattleRoyaleInfos() {
-
     if (customServerInfos && 15 == currentServerMode) {
         $("#brPlayersValue").text(customServerInfos.players);
         var image = '';
@@ -9647,110 +9600,40 @@ function _0x4801bb() {
         _0x4289a6 = 0;
         switch (_0x2f4fb3 = _0x489844) {
             case 1:
-                var _0x4672f3 = {
-                    r: 255,
-                    g: 0,
-                    b: 0
-                };
-                _0x277ade(5, 32, _0x4672f3, 1, 2);
+                _0x277ade(5, 32, { r: 255, g: 0, b: 0 }, 1, 2);
                 break;
             case 2:
-                var _0xc360d7 = {
-                    r: 255,
-                    g: 224,
-                    b: 0
-                };
-                _0x277ade(7, 32, _0xc360d7, 1, 4);
+                _0x277ade(7, 32, { r: 255, g: 224, b: 0 }, 1, 4);
                 break;
             case 3:
-                var _0x704bbc = {
-                    r: 128,
-                    g: 224,
-                    b: 32
-                };
-                _0x277ade(6, 42, _0x704bbc, 0, 3);
+                _0x277ade(6, 42, { r: 128, g: 224, b: 32 }, 0, 3);
                 break;
             case 4:
-                var _0x4b9c23 = {
-                    r: 25,
-                    g: 160,
-                    b: 204
-                };
-                var _0x561f50 = {
-                    r: 0,
-                    g: 255,
-                    b: 0
-                };
-                _0x277ade(2, 100, 17 == currentServerMode ? _0x4b9c23 : _0x561f50, 2, 0);
+                _0x277ade(2, 100, 17 == currentServerMode ? { r: 25, g: 160, b: 204 } : { r: 0, g: 255, b: 0 }, 2, 0);
                 break;
             case 5:
-                var _0x28e585 = {
-                    r: 240,
-                    g: 48,
-                    b: 48
-                };
-                var _0x27f7f5 = {
-                    r: 205,
-                    g: 85,
-                    b: 100
-                };
-                _0x277ade(9, 224, 17 == currentServerMode ? _0x28e585 : _0x27f7f5, 2, 0);
+                _0x277ade(9, 224, 17 == currentServerMode ? { r: 240, g: 48, b: 48 } : { r: 205, g: 85, b: 100 }, 2, 0);
                 break;
             case 6:
-                var _0x1aeb72 = {
-                    r: 98,
-                    g: 35,
-                    b: 115
-                };
-                _0x277ade(4, 224, _0x1aeb72, 1, 1);
+                _0x277ade(4, 224, { r: 98, g: 35, b: 115 }, 1, 1);
                 break;
             case 8:
-                var _0x1e488f = {
-                    r: 0,
-                    g: 192,
-                    b: 255
-                };
-                _0x277ade(12, 32, _0x1e488f, 1, 12);
+                _0x277ade(12, 32, { r: 0, g: 192, b: 255 }, 1, 12);
                 break;
             case 9:
-                var _0x2905b6 = {
-                    r: 255,
-                    g: 215,
-                    b: 0
-                };
-                _0x277ade(11, 224, _0x2905b6, 0, 10);
+                _0x277ade(11, 224, { r: 255, g: 215, b: 0 }, 0, 10);
                 break;
             case 10:
-                var _0x4375c3 = {
-                    r: 158,
-                    g: 104,
-                    b: 63
-                };
-                _0x277ade(16, 708, _0x4375c3, 0, 15);
+                _0x277ade(16, 708, { r: 158, g: 104, b: 63 }, 0, 15);
                 break;
             case 11:
-                var _0x589487 = {
-                    r: 100,
-                    g: 0,
-                    b: 0
-                };
-                _0x277ade(20, 32, _0x589487, 0, 20);
+                _0x277ade(20, 32, { r: 100, g: 0, b: 0 }, 0, 20);
                 break;
             case 12:
-                var _0x3c7aad = {
-                    r: 100,
-                    g: 0,
-                    b: 0
-                };
-                _0x277ade(21, 32, _0x3c7aad, 0, 21);
+                _0x277ade(21, 32, { r: 100, g: 0, b: 0 }, 0, 21);
                 break;
             case 14:
-                var _0x112a0a = {
-                    r: 10,
-                    g: 50,
-                    b: 150
-                };
-                _0x277ade(23, 100, _0x112a0a, 0, 23);
+                _0x277ade(23, 100, { r: 10, g: 50, b: 150 }, 0, 23);
         }
 
         function _0x277ade(_0x48bba7, _0x57d355, _0x4f9aca, _0x2cb7b3, _0x4ce9ff) {
@@ -10358,7 +10241,7 @@ function _0x161cd2() {
             _0x44a2c1.sMinionSkins = minionSkins;
             _0x44a2c1.sVideoAdsEnabled = videoAdsEnabled;
         }
-        if (0 < moderator_level)         _0x44a2c1.sModIconEnabled = modIconEnabled;
+        if (0 < moderator_level)   _0x44a2c1.sModIconEnabled = modIconEnabled;
         if (hasDRank)              _0x44a2c1.sIconDRankEnabled = iconDRankEnabled;
         if (can_yt_icon)           _0x44a2c1.sIconYTEnabled = iconYTEnabled;
         if (can_green_name)        _0x44a2c1.sGreenNameEnabled = greenNameEnabled;
@@ -11677,14 +11560,8 @@ function _0x5ccb42(_0x3c154e) {
 function setSetting(_0x27a0fe, _0x427b0f) {
     $("#" + _0x27a0fe).prop("checked", _0x427b0f).change();
     _0x427b0f = $("#" + _0x27a0fe).closest("label", document.getElementById("settings"));
-    var _0x35377f = {
-        paddingLeft: "5px"
-    };
-    var _0x41a17f = {
-        paddingLeft: "0px"
-    };
     if (_0x427b0f) {
-        _0x427b0f.finish().animate(_0x35377f, 50).animate(_0x41a17f, 150);
+        _0x427b0f.finish().animate({ paddingLeft: "5px" }, 50).animate({ paddingLeft: "0px" }, 150);
     }
 }
 window.prevVideo = function() {
@@ -11802,18 +11679,16 @@ window.uploadCustomSkin = function(_0x4fd1d3) {
         _0x12c3b0 = Date.now() + 1000;
         $("#skinUploadBtn" + _0x4fd1d3).blur();
         $("#uploadFile").off("change").val('').attr("accept", ".png, .jpg, .jpeg").one("change", function() {
-            var _0x375b8d;
             if (isLoggedIn) {
                 _0x34efff(_0x7f089d = true);
                 $("#skinContainer" + _0x4fd1d3).addClass("is-uploading");
                 document.body.style.cursor = "progress";
                 $("#uploadMaxFileSize").val(1048576);
-                _0x375b8d = {
+                $("#uploadForm").ajaxSubmit(_0x416ef7(_0x4fd1d3, {
                     username: _0xea465f,
                     password: _0x170269,
                     skinId: _0x4fd1d3
-                };
-                $("#uploadForm").ajaxSubmit(_0x416ef7(_0x4fd1d3, _0x375b8d));
+                }));
             }
         }).trigger("click");
     }
@@ -11961,19 +11836,17 @@ window.animateExpReward = function() {
     var _0x415edb = _0x2959f4.getBoundingClientRect();
     var _0x519db9 = _0x415edb.left - _0x2d1dc8.left + _0x415edb.width / 2;
     var _0x2d1dc8 = _0x415edb.top - _0x2d1dc8.top + _0x415edb.height / 2;
-    var _0x2666d3 = {
+    _0x341dc0.animate([{
         transform: "translate(0, 0)",
         opacity: 1
-    };
-    var _0x59deeb = {
+    }, {
+        transform: "translate(" + _0x519db9 + "px, " + _0x2d1dc8 + "px)",
+        opacity: 0.9
+    }], {
         duration: 1500,
         easing: "ease-out",
         fill: "forwards"
-    };
-    _0x341dc0.animate([_0x2666d3, {
-        transform: "translate(" + _0x519db9 + "px, " + _0x2d1dc8 + "px)",
-        opacity: 0.9
-    }], _0x59deeb).onfinish = () => {
+    }).onfinish = () => {
         _0x2959f4.classList.add("highlight");
         setTimeout(() => {
             _0x2959f4.classList.remove("highlight");
@@ -11982,38 +11855,32 @@ window.animateExpReward = function() {
         _0x341dc0.style.transform = "translate(0, 100%)";
     };
     let _0xd7fb0a = document.getElementById("notificationc");
-    var _0x5ee026 = {
-        transform: "translateY(100%)",
-        opacity: 0
-    };
-    var _0x2c4b54 = {
-        transform: "translateY(0)",
-        opacity: 1
-    };
-    var _0xbd00e0 = {
-        duration: 500,
-        easing: "ease-out",
-        fill: "forwards"
-    };
     _0xd7fb0a.textContent = "Congratulations, completed reward!";
     _0xd7fb0a.style.display = "block";
     _0xd7fb0a.style.opacity = 1;
-    _0xd7fb0a.animate([_0x5ee026, _0x2c4b54], _0xbd00e0);
+    _0xd7fb0a.animate([{
+        transform: "translateY(100%)",
+        opacity: 0
+    }, {
+        transform: "translateY(0)",
+        opacity: 1
+    }], {
+        duration: 500,
+        easing: "ease-out",
+        fill: "forwards"
+    });
     setTimeout(() => {
-        var _0x38cf42 = {
+        _0xd7fb0a.animate([{
             transform: "translateY(0)",
             opacity: 1
-        };
-        var _0x22a6b5 = {
+        }, {
             transform: "translateY(100%)",
             opacity: 0
-        };
-        var _0x59ace1 = {
+        }], {
             duration: 500,
             easing: "ease-out",
             fill: "forwards"
-        };
-        _0xd7fb0a.animate([_0x38cf42, _0x22a6b5], _0x59ace1).onfinish = () => {
+        }).onfinish = () => {
             _0xd7fb0a.style.display = "none";
             _0xd7fb0a.style.opacity = 1;
         };
