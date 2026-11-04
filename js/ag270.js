@@ -335,12 +335,12 @@ window.onload = function() {
         function _0x2f0e62() {
             try {
                 var _0xc9f244 = _0x123859.transaction(_0x116508, "readonly").objectStore(_0x116508).get(_0x2ae0ae);
-                _0xc9f244.onsuccess = function(_0x5b13cf) {
+                _0xc9f244.onsuccess = function() {
                     if ("function" == typeof _0x3958df) {
                         _0x3958df(_0xc9f244.result);
                     }
                 };
-            } catch (_0x20ead8) {}
+            } catch {}
         }
         if (_0x123859) {
             _0x2f0e62();
@@ -452,7 +452,7 @@ window.onload = function() {
         }
         _0x302385.stopPropagation();
     };
-    $("#reg").on("show.bs.tab", function(_0x55803b) {
+    $("#reg").on("show.bs.tab", function() {
         if (window.AG && window.AG.showCaptchaReg) {
             window.AG.showCaptchaReg();
         }
@@ -490,12 +490,12 @@ window.onload = function() {
     _0x1e0756.onfocus = function() {
         _0x4a595d = true;
     };
-    $("#skinsTab a").on("show.bs.tab", function(_0x1a13e2) {
+    $("#skinsTab a").on("show.bs.tab", function() {
         if (_0x64a0d5) {
             _0x4b2336();
         }
     });
-    $("#wearablesTab a").on("show.bs.tab", function(_0xe997f1) {
+    $("#wearablesTab a").on("show.bs.tab", function() {
         if (_0x1518ea) {
             _0x5a2fbe();
         }
@@ -533,7 +533,7 @@ window.onload = function() {
             _0x480ba7.preventDefault();
         }
     };
-    document.getElementById("megaholder").onclick = function(_0x535e31) {
+    document.getElementById("megaholder").onclick = function() {
         $("#megaholder").hide();
     };
     $(".hotkey-input:not(.hotkey-unchangeable)").click(hotkeySelect).contextmenu(hotkeyClear);
@@ -549,13 +549,13 @@ window.onload = function() {
         }
     };
     _0x118a13.oncontextmenu = _0x4c920b;
-    _0x118a13.onmouseenter = _0x118a13.onmousemove = function(_0x43b52c) {
+    _0x118a13.onmouseenter = _0x118a13.onmousemove = function() {
         if (!_0x1cf392) {
             _0x1cf392 = true;
             reloadBackground();
         }
     };
-    _0x118a13.onmouseleave = function(_0x7beeb1) {
+    _0x118a13.onmouseleave = function() {
         if (_0x1cf392) {
             _0x1cf392 = false;
             reloadBackground();
@@ -593,7 +593,7 @@ window.onload = function() {
             _0xe31aef = currentFrameTime;
         }
     };
-    _0x4110a1.onmouseout = function(_0x4b76a6) {
+    _0x4110a1.onmouseout = function() {
         if (_0x10e53d) {
             _0x4cb089 = !(_0x10e53d = null);
         }
@@ -744,7 +744,7 @@ window.onload = function() {
     };
     _0x3ac4f2.onclick = function() {
         if (!(15 != _0x14f2d3 || _0x3e08c0)) {
-            _0x1f73d2();
+            sendSignal(28);
         }
     };
     _0x5c6f1b.onmouseleave = function() {
@@ -828,7 +828,6 @@ window.onload = function() {
     window.addEventListener("click", _0x1c81ac, true);
     window.addEventListener("change", _0x11d4f6, true);
     window.addEventListener("mousedown", function(_0x38b092) {
-        _0x53cfb7 = _0x2e944b;
         if (!(!_0xf6ede0 || $(_0x38b092.target).hasClass("hotkey-input") && $(_0x38b092.target).hasClass("selected"))) {
             _0x4204cb();
         }
@@ -837,7 +836,6 @@ window.onload = function() {
         var _0xd60e14;
         var _0x83c4c2;
         var _0x572def;
-        _0x53cfb7 = _0x2e944b;
         if (!(undefined !== _0x5f057a.isTrusted && !_0x5f057a.isTrusted)) {
             _0x36acf7 = _0x5f057a.keyCode;
         }
@@ -1224,7 +1222,6 @@ if (!window.performance.now) {
 }
 var _0x4df5e1 = !!document.documentMode;
 var _0x4386c1 = false;
-var _0x1c0802 = null;
 var _0x5a219c = 0;
 var _0xff0f52 = { x: 0, y: 0 };
 var _0x27324d = [];
@@ -1254,11 +1251,8 @@ var _0x32316b = 0;
 var _0x386e1f = 0;
 var _0x1a6afb = false;
 var _0x38c122 = 0;
-var _0x5c9b82 = 0;
 var _0x1fc846 = false;
-var respawnCooldown = 0;
 var lastSpawn = 0;
-var _0x492c36 = true;
 var _0x384d50 = 0;
 var _0x57f39f = false;
 var _0x357e04 = true;
@@ -2228,208 +2222,9 @@ function _0x590515(_0x1785ac) {
     _0x4cb089 = true;
 }
 
-function _0xc55078(_0x132deb) {
-    function _0x5d12b6() {
-        _0x423e1a *= 0.98;
-        _0x1450ce();
-    }
-    _0x6da0af();
-    _0x35fff4(_0x132deb);
-    _0x38c122 = setInterval(_0x5d12b6, FRAMERATE);
-    _0x5d12b6();
-    $("#zoomBtnMinus").addClass("active");
-}
-
-function _0x71452a(_0x51c52b) {
-    function _0x3d19d2() {
-        _0x423e1a /= 0.98;
-        _0x1450ce();
-    }
-    _0x6da0af();
-    _0x35fff4(_0x51c52b);
-    _0x38c122 = setInterval(_0x3d19d2, FRAMERATE);
-    _0x3d19d2();
-    $("#zoomBtnPlus").addClass("active");
-}
-
-function _0x35fff4(_0x8d2a1b) {
-    _0x8d2a1b.preventDefault();
-    _0x8d2a1b.stopPropagation();
-    if (_0x38c122) {
-        clearInterval(_0x38c122);
-        _0x38c122 = 0;
-    }
-    $(".zoom-btn").removeClass("active");
-}
-
-function _0x2b5d79(_0xb5a2e2) {
-    _0x6da0af();
-    _0xb5a2e2.preventDefault();
-    _0xb5a2e2.stopPropagation();
-    if (0 < _0xb5a2e2.changedTouches.length && null === _0x399c6b && !_0x3e08c0) {
-        _0xb5a2e2 = _0xb5a2e2.changedTouches[0];
-        _0x399c6b = _0xb5a2e2.identifier;
-        $("#btnToggleQ").addClass("active");
-    }
-}
-
-function _0x370ab1(_0x1fbfdd) {
-    _0x1fbfdd.preventDefault();
-    _0x1fbfdd.stopPropagation();
-    for (var _0x212ebd = 0; _0x212ebd < _0x1fbfdd.changedTouches.length; _0x212ebd++) {
-        var _0x253690 = _0x1fbfdd.changedTouches[_0x212ebd];
-        if (_0x399c6b == _0x253690.identifier) {
-            _0x399c6b = null;
-            _0x253690 = _0x377f81(_0x253690.clientX, _0x253690.clientY, "#btnToggleQ");
-            if (_0x253690 && "btnToggleQ" === _0x253690.id && !_0x3e08c0) {
-                sendSignal(18);
-            }
-            $("#btnToggleQ").removeClass("active");
-            break;
-        }
-    }
-}
-
-function _0x397340(_0x3f495b) {
-    _0x6da0af();
-    if (0 < _0x3f495b.changedTouches.length && null === _0x1c0802 && !_0x3e08c0) {
-        _0x3f495b = _0x3f495b.changedTouches[0];
-        _0x1c0802 = _0x3f495b.identifier;
-        _0x262c61.x = _0x3f495b.clientX;
-        _0x262c61.y = _0x3f495b.clientY;
-        _0xff0f52 = { x: 0, y: 0 };
-        _0x319c86.style.left = 0 - _0x4d2bd2 / 2 + "px";
-        _0x319c86.style.top = 0 - _0x4d2bd2 / 2 + "px";
-        _0x116b73.style.left = 0 - _0xd04953 / 2 + "px";
-        _0x116b73.style.top = 0 - _0xd04953 / 2 + "px";
-        $("#touchPad").show();
-        $("#touchPadThumb").show();
-    }
-}
-
-function _0x405de7(_0x35d9de) {
-    if (0 == ~~(window.innerHeight - document.documentElement.clientHeight)) {
-        _0x35d9de.preventDefault();
-    }
-    for (var _0x576d9f = 0; _0x576d9f < _0x35d9de.changedTouches.length; _0x576d9f++) {
-        var _0x54d5e9 = _0x35d9de.changedTouches[_0x576d9f];
-        if (_0x1c0802 == _0x54d5e9.identifier && !_0x3e08c0) {
-            _0xff0f52.x = _0x54d5e9.clientX;
-            _0xff0f52.y = _0x54d5e9.clientY;
-            _0xff0f52.x -= 0;
-            _0xff0f52.y -= 0;
-            var _0x54d5e9 = _0xff0f52.x * _0xff0f52.x + _0xff0f52.y * _0xff0f52.y;
-            if (isSpectating && (_0xce750 = Math.min(clientWidth, clientHeight) / 2) * _0xce750 < _0x54d5e9) {
-                _0xff0f52.x *= _0xce750 / Math.sqrt(_0x54d5e9);
-                _0xff0f52.y *= _0xce750 / Math.sqrt(_0x54d5e9);
-                _0x54d5e9 = _0xff0f52.x * _0xff0f52.x + _0xff0f52.y * _0xff0f52.y;
-            }
-            _0x462522();
-            var _0xce750 = _0x4d2bd2 / 2;
-            var _0x54d5e9 = _0xce750 * _0xce750 < _0x54d5e9 ? _0xce750 / Math.sqrt(_0x54d5e9) : 1;
-            _0x116b73.style.left = 0 + _0xff0f52.x * _0x54d5e9 - _0xd04953 / 2 + "px";
-            _0x116b73.style.top = 0 + _0xff0f52.y * _0x54d5e9 - _0xd04953 / 2 + "px";
-            break;
-        }
-    }
-}
-
-function _0x39b514(_0x595756) {
-    for (var _0x41143c = 0; _0x41143c < _0x595756.changedTouches.length; _0x41143c++) {
-        var _0x144c51 = _0x595756.changedTouches[_0x41143c];
-        if (_0x1c0802 == _0x144c51.identifier) {
-            _0x1c0802 = null;
-            _0xff0f52.x = 0;
-            _0xff0f52.y = 0;
-            $("#touchPad").hide();
-            $("#touchPadThumb").hide();
-            break;
-        }
-    }
-}
-
-function _0x462522() {
-    _0x36887a = 2 * _0xff0f52.x * _0x29f519 / _0x4d2bd2 + clientWidth / 2;
-    _0x19f1c7 = 2 * _0xff0f52.y * _0x29f519 / _0x4d2bd2 + clientHeight / 2;
-    _0x368208();
-}
-
-function _0x2537e8(_0x20fafc, _0x1b9471, _0x1b99b2) {
-    _0x6da0af();
-    _0x20fafc.preventDefault();
-    if (null === _0x47bcb0 && (_0x3c3adc = _0x1b9471, _0x541b5c = _0x20fafc.currentTarget, _0x1f4eee = _0x1b99b2 || null)) {
-        _0x54aa2f(_0x1b9471);
-    }
-}
-
-function _0x1cb96b(_0x103746) {
-    _0x103746.preventDefault();
-    _0x103746.stopPropagation();
-    if (0 < _0x103746.changedTouches.length && null === _0x47bcb0 && !_0x3e08c0) {
-        _0x103746 = _0x103746.changedTouches[0];
-        _0x47bcb0 = _0x103746.identifier;
-        _0x34f96a = _0x103746.clientX;
-        _0x5079ce = _0x103746.clientY;
-        _0x28c1e5();
-        $(_0x541b5c).addClass("active hover");
-        _0x4c710c(_0x3c3adc);
-        _0x4801bb();
-    }
-}
-
-function _0x595a05(_0x209c7a) {
-    _0x209c7a.preventDefault();
-    _0x209c7a.stopPropagation();
-    for (var _0x2f1ea = 0; _0x2f1ea < _0x209c7a.changedTouches.length; _0x2f1ea++) {
-        var _0xe11359 = _0x209c7a.changedTouches[_0x2f1ea];
-        if (_0x47bcb0 == _0xe11359.identifier && !_0x3e08c0) {
-            _0x34f96a = _0xe11359.clientX;
-            _0x5079ce = _0xe11359.clientY;
-            _0x28c1e5();
-            $(".inventory-box.hover").removeClass("hover");
-            _0xe11359 = _0x377f81(_0xe11359.clientX, _0xe11359.clientY, ".inventory-box");
-            if (_0xe11359) {
-                $(_0xe11359).addClass("hover");
-                _0x4c710c(_0x3c3adc);
-                if (_0xe11359.id !== _0x541b5c.id) {
-                    _0x14f2d3 = 0;
-                }
-            } else {
-                _0x4c710c(0);
-            }
-            break;
-        }
-    }
-}
-
-function _0x3b18da(_0x3796f1) {
-    _0x3796f1.preventDefault();
-    _0x3796f1.stopPropagation();
-    for (var _0x5ab232 = 0; _0x5ab232 < _0x3796f1.changedTouches.length; _0x5ab232++) {
-        var _0x4f9092 = _0x3796f1.changedTouches[_0x5ab232];
-        if (_0x47bcb0 == _0x4f9092.identifier) {
-            _0x47bcb0 = null;
-            _0x34f96a = _0x4f9092.clientX;
-            _0x5079ce = _0x4f9092.clientY;
-            _0x28c1e5();
-            $(_0x541b5c).removeClass("active");
-            $(".inventory-box.hover").removeClass("hover");
-            _0x4f9092 = _0x377f81(_0x4f9092.clientX, _0x4f9092.clientY, ".inventory-box");
-            (_0x4f9092 ? (_0x1f4eee && !_0x3e08c0 && _0x14f2d3 == _0x3c3adc && _0x4f9092.id === _0x541b5c.id && _0x1f4eee(), _0x492dec) : _0x2f7348)();
-            _0x1f4eee = null;
-            break;
-        }
-    }
-}
-
 function _0x28c1e5() {
     _0x21548d = _0x34f96a / currentZoom + viewX - _0x2263d7;
     _0x1598a0 = _0x5079ce / currentZoom + viewY - _0x223539;
-}
-
-function _0x377f81(_0x491a10, _0x4bb605, _0x4099ec) {
-    _0x491a10 = document.elementFromPoint(_0x491a10, _0x4bb605);
-    return _0x491a10 && _0x4099ec ? 0 < (_0x4bb605 = $(_0x491a10).closest(_0x4099ec)).length ? _0x4bb605[0] : null : _0x491a10;
 }
 
 function _0x3d0428(_0x3f6cf5) {
@@ -2448,117 +2243,12 @@ function _0x3d0428(_0x3f6cf5) {
     }
 }
 
-function _0x3f6aca(_0x2d577c) {
-    _0x6da0af();
-    _0x2d577c.preventDefault();
-    _0x2d577c.stopPropagation();
-    _0x341b50 = true;
-    _0x3d0428(1);
-    _0x23c28a();
-    $("#touchSplitBtn").addClass("active");
-}
-
-function _0x44dd1e(_0x25d9f2) {
-    _0x25d9f2.preventDefault();
-    _0x25d9f2.stopPropagation();
-    _0x341b50 = false;
-    sendSignal(38);
-    _0x207bfb();
-    $("#touchSplitBtn").removeClass("active");
-}
-
-function _0x22e6a6(_0x782fcc) {
-    _0x6da0af();
-    _0x782fcc.preventDefault();
-    _0x782fcc.stopPropagation();
-    _0x32aefa = true;
-    if (_0x13535d) {
-        _0x13535d = false;
-        $("#touchEjectLockBtn").removeClass("active");
-    }
-    _0x580067();
-    sendSignal(21);
-    if (_0x341b50) {
-        _0x23c28a();
-    }
-    $("#touchEjectBtn").addClass("active");
-}
-
-function _0x1bd91c(_0x5b2c7d) {
-    _0x5b2c7d.preventDefault();
-    _0x5b2c7d.stopPropagation();
-    _0x32aefa = false;
-    sendSignal(36);
-    $("#touchEjectBtn").removeClass("active");
-}
-
-function _0x2594cd(_0x4f10b4) {
-    _0x6da0af();
-    _0x4f10b4.preventDefault();
-    _0x4f10b4.stopPropagation();
-    if (_0x13535d = !_0x13535d) {
-        _0x580067();
-        sendSignal(21);
-        if (_0x341b50) {
-            _0x23c28a();
-        }
-        $("#touchEjectLockBtn").addClass("active");
-    } else {
-        sendSignal(36);
-        $("#touchEjectLockBtn").removeClass("active");
-    }
-}
-
 function _0x4fbf9e() {
     if (_0x13535d) {
         _0x13535d = false;
         sendSignal(36);
         $("#touchEjectLockBtn").removeClass("active");
     }
-}
-
-function _0x399411(_0x232656) {
-    _0x6da0af();
-    _0x232656.preventDefault();
-    _0x232656.stopPropagation();
-    _0x37ee0c = !_0x37ee0c;
-    sendSignal(35);
-    if (_0x37ee0c) {
-        _0x580067();
-        $("#touchFreezeBtn").addClass("active");
-    } else {
-        $("#touchFreezeBtn").removeClass("active");
-    }
-    if (_0x5c9b82) {
-        clearTimeout(_0x5c9b82);
-        _0x5c9b82 = 0;
-    }
-}
-
-function _0x3731ff() {
-    var _0x187636 = _0x53176c ? _0x506037 : _0x43802f;
-    if (_0x37ee0c != _0x187636) {
-        if (_0x37ee0c = _0x187636) {
-            $("#touchFreezeBtn").addClass("active");
-        } else {
-            $("#touchFreezeBtn").removeClass("active");
-        }
-    }
-}
-
-function _0x2b2be7() {
-    if (_0x37ee0c) {
-        _0x37ee0c = false;
-        $("#touchFreezeBtn").removeClass("active");
-    }
-}
-
-function _0x23c28a() {
-    _0x207bfb();
-    _0x1cbb14 = setTimeout(function() {
-        _0x580067();
-        sendSignal(37);
-    }, _0x32aefa || _0x13535d ? 120 : 500);
 }
 
 function _0x207bfb() {
@@ -2568,46 +2258,11 @@ function _0x207bfb() {
     }
 }
 
-function _0x483372(_0x46c5a9) {
-    var _0x221763;
-    var _0x5c3445;
-    _0x5f11fd();
-    _0x46c5a9.stopPropagation();
-    if (1 == _0x46c5a9.touches.length && 1 == _0x46c5a9.changedTouches.length) {
-        _0x221763 = _0x46c5a9.currentTarget;
-        _0x5c3445 = _0x46c5a9.changedTouches[0];
-        _0x1e6b2c = setTimeout(function() {
-            _0x5f11fd();
-            _0x221763.dispatchEvent(new MouseEvent("contextmenu", {
-                bubbles: true,
-                cancelable: true,
-                clientX: _0x5c3445.clientX,
-                clientY: _0x5c3445.clientY,
-                pageX: _0x5c3445.pageX,
-                pageY: _0x5c3445.pageY,
-                screenX: _0x5c3445.screenX,
-                screenY: _0x5c3445.screenY
-            }));
-        }, 750);
-    }
-}
-
 function _0x5f11fd() {
     if (_0x1e6b2c) {
         clearTimeout(_0x1e6b2c);
         _0x1e6b2c = 0;
     }
-}
-
-function _0x5d968e(_0x583e58, _0x2e98dc) {
-    _0x583e58.addEventListener("touchstart", _0x483372, false);
-    _0x583e58.addEventListener("touchmove", _0x5f11fd, false);
-    _0x583e58.addEventListener("touchend", _0x5f11fd, false);
-    _0x583e58.addEventListener("touchcancel", _0x5f11fd, false);
-    _0x583e58.addEventListener("contextmenu", function(_0x15b8f6) {
-        _0x5f11fd();
-        _0x2e98dc(_0x15b8f6);
-    }, false);
 }
 
 function _0x3359de(_0x5f4291) {
@@ -2646,7 +2301,6 @@ function _0x8f51f1() {
             }
             _0x4de013.setString(currentNickname).send();
             if (0 === mainPlayerCells.length) {
-                _0x492c36 = false;
                 if (_0x384d50) {
                     clearTimeout(_0x384d50);
                     _0x384d50 = 0;
@@ -2659,49 +2313,6 @@ function _0x8f51f1() {
             $("#minionUi").removeClass("minimized");
         }
         _0x203625();
-    }
-}
-
-function _0x4e7152() {
-    var _0x4dda73 = document.documentElement;
-    if (_0x4dda73.requestFullscreen) {
-        _0x4dda73.requestFullscreen();
-    } else if (_0x4dda73.mozRequestFullScreen) {
-        _0x4dda73.mozRequestFullScreen();
-    } else if (_0x4dda73.webkitRequestFullscreen) {
-        _0x4dda73.webkitRequestFullscreen();
-    } else if (_0x4dda73.msRequestFullscreen) {
-        _0x4dda73.msRequestFullscreen();
-    }
-    $("#fullscreenBtn").addClass("inFullscreen");
-    if (undefined !== window.localStorage) {
-        window.localStorage.fullscreen = 1;
-    }
-}
-
-function _0x1b0f36() {
-    if ($("#fullscreenBtn").hasClass("inFullscreen")) {
-        if (document.exitFullscreen) {
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
-            }
-        } else if (document.mozCancelFullScreen) {
-            if (document.mozFullScreenElement) {
-                document.mozCancelFullScreen();
-            }
-        } else if (document.webkitExitFullscreen) {
-            if (document.webkitFullscreenElement) {
-                document.webkitExitFullscreen();
-            }
-        } else if (document.msExitFullscreen && document.msFullscreenElement) {
-            document.msExitFullscreen();
-        }
-        $("#fullscreenBtn").removeClass("inFullscreen");
-        if (undefined !== window.localStorage) {
-            window.localStorage.fullscreen = 0;
-        }
-    } else {
-        _0x4e7152();
     }
 }
 
@@ -2842,7 +2453,7 @@ function _0x13d7e0() {
         ws.onopen = ws.onmessage = ws.onclose = null;
         try {
             ws.close();
-        } catch (_0x210764) {}
+        } catch {}
         allNonFoodCells = [];
         mainPlayerCellsIds = [];
         mainPlayerCells = [];
@@ -2863,7 +2474,7 @@ function _0x13d7e0() {
         _0x522c0e();
         isMouseFixed = _0x11c29c = _0x52da56 = _0x506037 = _0x43802f = _0x53176c = !(_0x568853 = -1);
         server360ShotEnabled = true;
-        _0x47ccce = _0x11de32 = _0x52d414 = _0x29f86a = _0x4512d9 = _0x2873c2 = _0x576526 = _0x38ea95 = _0x852ff = _0x273de7 = _0x30bfdb = _0x4a4cf7 = _0x24af02 = _0x3b8888 = lastSpawn = respawnCooldown = _0x5a219c = 0;
+        _0x47ccce = _0x11de32 = _0x52d414 = _0x29f86a = _0x4512d9 = _0x2873c2 = _0x576526 = _0x38ea95 = _0x852ff = _0x273de7 = _0x30bfdb = _0x4a4cf7 = _0x24af02 = _0x3b8888 = lastSpawn = _0x5a219c = 0;
         $(".inventory-box").removeClass("activatedInv");
         _0x37e4a8 = _0xb1583e = _0x31962a = _0x5ea511 = _0x5a5860 = _0x3c6854 = 0;
         isSpectating = _0x2c99f2 = _0x211844 = _0x1ec523 = !(currentParty = []);
@@ -3095,13 +2706,19 @@ function _0x215896() {
                     _0x5e49f7.lineWidth = 1;
                     _0x5e49f7.strokeStyle = _0x15f2d8.dimcolor;
                     _0x5e49f7.stroke();
-                    if (_0x15f2d8.skinId && gameSettings.sSkins && ((_0x2e4d3d = skinImagesHigh[_0x15f2d8.skinId + "_lo"]) || (_0x58d0e1(_0x15f2d8.skinId), _0x2e4d3d = skinImagesHigh[_0x15f2d8.skinId + "_lo"]), _0x2e4d3d) && _0x2e4d3d.complete && 0 != _0x2e4d3d.width) {
-                        _0x5e49f7.beginPath();
-                        _0x5e49f7.arc(22, 22, 11, 0, 2 * Math.PI, false);
-                        _0x5e49f7.save();
-                        _0x5e49f7.clip();
-                        _0x5e49f7.drawImage(_0x2e4d3d, 11, 11, 22, 22);
-                        _0x5e49f7.restore();
+                    if (_0x15f2d8.skinId && gameSettings.sSkins) {
+                        if (!(_0x2e4d3d = skinImagesHigh[_0x15f2d8.skinId + "_lo"])) {
+                            _0x58d0e1(_0x15f2d8.skinId);
+                            _0x2e4d3d = skinImagesHigh[_0x15f2d8.skinId + "_lo"];
+                        }
+                        if (_0x2e4d3d && _0x2e4d3d.complete && 0 != _0x2e4d3d.width) {
+                            _0x5e49f7.beginPath();
+                            _0x5e49f7.arc(22, 22, 11, 0, 2 * Math.PI, false);
+                            _0x5e49f7.save();
+                            _0x5e49f7.clip();
+                            _0x5e49f7.drawImage(_0x2e4d3d, 11, 11, 22, 22);
+                            _0x5e49f7.restore();
+                        }
                     }
                     if (_0x15f2d8.wears && gameSettings.sWearables) {
                         for (_0x3ea109 = 0; _0x3ea109 < _0x15f2d8.wears.length; _0x3ea109++) {
@@ -5106,7 +4723,7 @@ class Cell {
             _0x161765.rz += (_0x30ef81 % 2 == 0 ? 0.07 : -0.07) * _0x4521d1;
         }
     }
-    drawHighlight(_0x1406e4, _0x5dc4ed, _0x5228a3, _0x418319) {
+    drawHighlight(_0x1406e4, _0x5dc4ed) {
         var _0x52d848 = (currentFrameTime - _0x1406e4.start) / playerEmotes[_0x1406e4.id].duration;
         if (1 <= (_0x52d848 = _0x52d848 < 0 ? 0 : 1 < _0x52d848 ? 1 : _0x52d848) || this.destroyed) {
             _0x1406e4.id = 0;
@@ -5118,7 +4735,7 @@ class Cell {
             _0x5dc4ed.stroke();
         }
     }
-    drawCloakHighlight(_0xd35b2b, _0xe5b6db, _0x4f5fbc, _0xad7024) {
+    drawCloakHighlight(_0xd35b2b, _0xe5b6db) {
         var _0x2522fb = (currentFrameTime - _0xd35b2b.start) / playerEmotes[_0xd35b2b.id].duration;
         if (1 <= (_0x2522fb = _0x2522fb < 0 ? 0 : 1 < _0x2522fb ? 1 : _0x2522fb) || this.destroyed || this.ownCell) {
             _0xd35b2b.id = 0;
@@ -5130,7 +4747,7 @@ class Cell {
             _0xe5b6db.stroke();
         }
     }
-    drawDragOver(_0x133747, _0x580a26, _0x4101ed, _0x3d84b9) {
+    drawDragOver(_0x133747, _0x580a26) {
         _0x133747.id = 0;
         _0x580a26.globalAlpha = 0.5;
         _0x580a26.fillStyle = "#FFFFFF";
@@ -5687,10 +5304,8 @@ class PacketReader {
         return this.buffer.getFloat64((this.position += 8) - 8, this.littleEndian);
     }
 }
-const PLAYERS = {};
 
 function wsOnMessage(_0x2ba470) {
-    var _0x427639;
     var pkt = new PacketReader(_0x2ba470, 0);
     if (240 === pkt.buffer.getUint8(0)) {
         pkt.position += 5;
@@ -5858,7 +5473,6 @@ function wsOnMessage(_0x2ba470) {
                             if (1 === mainPlayerCells.length) {
                                 viewX = (0.1 * viewX + cell.x) / 1.1;
                                 viewY = (0.1 * viewY + cell.y) / 1.1;
-                                _0x248dac = true;
                                 sendSignal(13);
                                 _0x10236d()
                             }
@@ -6453,7 +6067,6 @@ function wsOnMessage(_0x2ba470) {
             for (i = 0; i < _0x435e7a; ++i) {
                 flags = pkt.getUint8();
                 var _0x1740e2 = pkt.getString();
-                _0x427639 = _0x1740e2;
                 currentParty.push({
                     name: _0x1740e2,
                     accepted: !!(1 & flags),
@@ -6892,7 +6505,6 @@ function wsOnMessage(_0x2ba470) {
             ignoreTrustedEvent = true;
             _0xea465f = _0x5e72c3;
             _0x11c620();
-            _0x134fc9 = true;
             if (2 == _0x3f104e) {
                 if (!$(".username").hasClass("goldBar")) {
                     $(".username").addClass("goldBar");
@@ -7330,12 +6942,12 @@ function wsOnMessage(_0x2ba470) {
                 _0x1d3023 = 0;
             }
             var _0xc93166 = +new Date();
-            var _0x311374 = true, _0x253ecd;
-            if (_0x311374 = undefined === window.localStorage || null != window.localStorage.reloadTime && _0xc93166 < (_0x253ecd = JSON.parse(window.localStorage.reloadTime) + 3600000) ? false : _0x311374) {
+            var _0x311374 = true;
+            if (_0x311374 = undefined === window.localStorage || null != window.localStorage.reloadTime && _0xc93166 < JSON.parse(window.localStorage.reloadTime) + 3600000 ? false : _0x311374) {
                 window.localStorage.reloadTime = JSON.stringify(_0xc93166);
                 try {
                     window.location.reload(true);
-                } catch (_0x8aca61) {}
+                } catch {}
             }
             break;
         case 107:
@@ -8316,12 +7928,8 @@ function _0x54ad2a(_0x36ae78) {
                 var _0x5c8542 = _0x2cb37c.wearArea;
                 var _0x116ce6 = 5 == _0x5c8542 ? 204 : 122;
                 var _0x37eca3 = _0x2ed271.getImageData(_0x3f4eb6 - 2, _0xb388cb - 2, 5, 5).data;
-                for (var _0x362355 = 0; _0x362355 < 25; _0x362355++) {
-                    var _0x5c8542;
-                    var _0x116ce6;
-                    var _0x37eca3;
-                    var _0x362355;
-                    if (24 < _0x37eca3[4 * _0x362355 + 3]) {
+                for (var i = 0; i < 25; i++) {
+                    if (24 < _0x37eca3[4 * i + 3]) {
                         return {
                             skinId: -1,
                             wearId: _0x2cb37c.wearId
@@ -8332,12 +7940,11 @@ function _0x54ad2a(_0x36ae78) {
         } else {
             _0x44b7f4 = 102 - _0x3f4eb6;
             _0x5c8542 = 102 - _0xb388cb;
-            var _0x24dadd = {
-                skinId: gameSettings.skinId,
-                wearId: -1
-            };
             if (_0x44b7f4 * _0x44b7f4 + _0x5c8542 * _0x5c8542 <= 1764) {
-                return _0x24dadd;
+                return {
+                    skinId: gameSettings.skinId,
+                    wearId: -1
+                };
             }
         }
     }
@@ -8758,7 +8365,6 @@ function _0x10236d() {
         clearTimeout(_0x384d50);
         _0x384d50 = 0;
     }
-    _0x492c36 = true;
 }
 
 function _0x483c7e(_0x4bd171) {
@@ -9711,7 +9317,6 @@ function _0x3c6fac(_0x4bd4a8) {
         return false;
     }
     if (!_0x2a60cc) {
-        _0x53cfb7 = _0x2e944b;
     }
     if (!_0x3e08c0) {
         _0x36887a = _0x4bd4a8.clientX;
@@ -9874,8 +9479,6 @@ var _0x4b4b51;
 var _0x1138be;
 var _0x3b426e;
 var _0x2ed271;
-var _0x319c86;
-var _0x116b73;
 var clientWidth;
 var clientHeight;
 var _0x2263d7;
@@ -9889,7 +9492,6 @@ var _0x107e7f = _0x18fde3 = 0;
 var _0x5b6b18 = '';
 var _0x170269 = '';
 var _0x4d2bd2 = 0;
-var _0xd04953 = 0;
 var _0x3c3250 = false;
 var _0x4cb089 = false;
 var _0x2c6f91 = false;
@@ -9900,8 +9502,6 @@ var isWebSocketAccepted = false;
 var randomBytesA = Math.floor(294967295 + 4000000000 * Math.random()) + 1;
 var randomBytesB = Math.floor(4294967296 * Math.random());
 var randomMD5 = md5(-~~(2000000000 * Math.random()) - 1);
-var _0x6a593d = 0;
-var _0x134fc9 = true;
 var _0x511d58 = true;
 var viewX = 0;
 var viewY = 0;
@@ -9935,15 +9535,10 @@ var _0x21548d = 0;
 var _0x1598a0 = 0;
 var _0x31d2d6 = 0;
 var _0x34aaf6 = 0;
-var _0x47bcb0 = null;
-var _0x3c3adc = 0;
-var _0x541b5c = null;
 var _0x19bc6d = false;
-var _0x1f4eee = null;
 var _0x14f2d3 = 0;
 var _0x94a128 = 0;
 var _0x4587e2 = {};
-var _0x399c6b = null;
 var framesCounter = 0;
 var currentFrameTime = 0;
 var _0x2d2df0 = 0;
@@ -9999,12 +9594,10 @@ var _0x6c7bce = _0x464afc;
 var _0xab2d2b = 0;
 var _0x29c97b = 1;
 var _0x634c41 = null;
-var _0x37a723 = false;
 var windowIsLoaded = false;
 var _0x2332bb = false;
 var _0x3e08c0 = true;
 var _0x21d872 = ["#F03030", "#30F030", "#606060", "#F0F030", "#20E8F8", "#F020E8", "#1060F0"];
-var _0x405489 = '';
 var customServerInfos = null;
 var _0x568853 = -1;
 var _0x521316 = 0;
@@ -10060,7 +9653,6 @@ var _0x46411c = 0;
 var _0x190280 = 1;
 var _0x194e11 = 0;
 var _0x43e0d0 = 0;
-var _0x2106d0 = null;
 var _0xe31aef = 0;
 var _0x10e53d = null;
 var selectedMessage = null;
@@ -10149,8 +9741,6 @@ var _0x1c50f8 = true;
 var _0x423e1a = 1;
 var _0x284f1f = false;
 var _0x27fdb0 = 0;
-var _0x53cfb7 = 0;
-var _0x2e944b = 0;
 var _0x2a60cc = false;
 var _0x950276 = 50;
 var _0x2b8278 = 0;
@@ -10158,15 +9748,9 @@ var _0x22a146 = performance.now();
 var _0x2b6e3f = 0;
 var _0xe31776 = 0;
 var _0xe01c9e = false;
-var _0x5c595d = 0;
 var _0x29f519 = 0;
-var _0xccb7e = 0;
-var _0x42e389 = 0;
-var _0x248dac = true;
-var _0x341b50 = false;
 var _0x32aefa = false;
 var _0x13535d = false;
-var _0x37ee0c = false;
 var _0x1cbb14 = 0;
 var _0xd3e364 = 0;
 var _0x5a74d9 = 0;
@@ -10921,7 +10505,6 @@ function _0x26af75() {
             clearInterval(_0x53e3b2);
             _0x53e3b2 = 0;
         }
-        _0x134fc9 = false;
         if (_0xd3f6e4) {
             clearTimeout(_0xd3f6e4);
             _0xd3f6e4 = 0;
@@ -10933,7 +10516,6 @@ function _0x26af75() {
         _0x4b6359 = setTimeout(function() {
             if (!isLoggedIn) {
                 _0x315275(true);
-                _0x134fc9 = true;
             }
         }, 3000);
     }
@@ -10999,17 +10581,6 @@ function _0x203625() {
     _0x1919ba.hide();
 }
 
-function _0x1f73d2() {
-    sendSignal(28);
-}
-
-function _0xf4910b() {
-    sendSignal(30);
-}
-
-function _0x2b1b31() {
-    sendSignal(31);
-}
 window.spinTheWheel = function() {
     if (!isLoggedIn)
         return swal("Login", "Please login to spin the wheel, or register an account if you do not have an account yet");
@@ -11094,29 +10665,26 @@ window.shuffleGameTips = function() {
 };
 window.shuffleGameAds = function() {
     var _0x4b8269 = Math.floor(4 * Math.random()) + 1;
-    var _0x8fc911 = Math.floor(11 * Math.random()) + 1;
-    var _0x612774 = Math.floor(11 * Math.random()) + 1;
-    var _0x51a8ba = Math.floor(15 * Math.random()) + 1;
-    var _0x22954e = Math.floor(15 * Math.random()) + 1;
-    var _0x30f458 = Math.floor(11 * Math.random()) + 1;
-    var _0x430ea7 = Math.floor(11 * Math.random()) + 1;
-    var _0x253e6b = Math.floor(6 * Math.random()) + 1;
-    var _0x55446d = Math.floor(6 * Math.random()) + 1;
     if (1 == _0x4b8269) {
         if (_0x3f104e < 2) {
+            const _0x8fc911 = Math.floor(11 * Math.random()) + 1;
             $("#agmaAdHref").attr("href", "member.php?c=" + _0x8fc911);
             $("#zoomItem").attr("src", "img/agmaAd/gold/" + _0x8fc911 + ".png?v=1");
         } else {
             shuffleGameAds();
         }
     } else if (2 == _0x4b8269) {
+        const _0x51a8ba = Math.floor(15 * Math.random()) + 1;
+        const _0x22954e = Math.floor(15 * Math.random()) + 1;
         $("#agmaAdHref").attr("href", "coins.php?c=" + _0x51a8ba);
         $("#zoomItem").attr("src", "img/agmaAd/coins/" + _0x51a8ba + ".png?v=1");
         $("#AGM_agma-io_300x250").html("<a href=\"coins.php?d=" + _0x22954e + "\" target=\"_blank\"><img style=\"" + "margin: 0 auto;margin-top: 15px;border: 2px solid #002c40;min-width: 150px;max-width: 85%;height: 100%;max-height: 200px;transition: all .5s ease 0s;" + "\" src=\"img/agmaAd/coins/" + _0x22954e + ".png\"></a>");
     } else if (3 == _0x4b8269) {
+        const _0x30f458 = Math.floor(11 * Math.random()) + 1;
         $("#agmaAdHref").attr("href", "bots.php?clickId=" + _0x30f458);
         $("#zoomItem").attr("src", "img/agmaAd/bots/" + _0x30f458 + ".png?v=1");
     } else {
+        const _0x253e6b = Math.floor(6 * Math.random()) + 1;
         $("#agmaAdHref").attr("href", "items.php?clickId=" + _0x253e6b);
         $("#zoomItem").attr("src", "img/agmaAd/items/" + _0x253e6b + ".png?v=1");
     }
@@ -11139,7 +10707,7 @@ function _0x416ef7(_0x46e069, _0x3a2784) {
                 var _0x57712b = _0x439b93.errorMessage;
                 var _0x1a6b64 = parseInt(_0x439b93.newPendingApproval);
                 var _0x2b3b30 = !!_0x439b93.imageChanged;
-            } catch (_0x979aa1) {
+            } catch {
                 _0x50746b = true;
                 _0x57712b = "Error: an unexpected error occurred. Please make sure your file is less than 1MB.";
                 _0x1a6b64 = -1;
@@ -11220,7 +10788,7 @@ function _0x24c563(_0x468277) {
         };
         try {
             _0x176d4a.readAsDataURL(_0x468277);
-        } catch (_0x5dbbe7) {
+        } catch {
             curserMessage("Error: an unexpected error occurred with the selected file", false, false, 0, 10);
             _0x236671();
         }
@@ -11288,7 +10856,7 @@ function _0x350e59(_0xf3cb18, _0x4062b1) {
                 _0x37e4bf = false;
             };
             _0x35c5f.src = _0xf3cb18;
-        } catch (_0x48bca4) {
+        } catch {
             curserMessage("Error: something went wrong while loading the background image", false, false, 0, 10);
             _0x37e4bf = false;
         }
@@ -11457,11 +11025,11 @@ function _0xbe31b4(_0x2d5cb7) {
         } else {
             try {
                 var _0x528aaf = window.indexedDB.open("AgmaDB", 1);
-                _0x528aaf.onsuccess = function(_0x47659b) {
-                    (_0x123859 = _0x528aaf.result).onclose = function(_0x1efd6b) {
+                _0x528aaf.onsuccess = function() {
+                    (_0x123859 = _0x528aaf.result).onclose = function() {
                         _0x123859 = null;
                     };
-                    _0x123859.onversionchange = function(_0x2a7b9a) {
+                    _0x123859.onversionchange = function() {
                         _0x123859.close();
                         _0x123859 = null;
                     };
@@ -11475,7 +11043,7 @@ function _0xbe31b4(_0x2d5cb7) {
                         _0x29f845.createObjectStore("general");
                     }
                 };
-            } catch (_0x28e305) {}
+            } catch {}
         }
     }
 }
@@ -11483,12 +11051,12 @@ function _0xbe31b4(_0x2d5cb7) {
 function _0x3da849(_0x2f4860, _0x2262ae, _0x185f55, _0x59fa77) {
     function _0x31da82() {
         try {
-            _0x123859.transaction(_0x2f4860, "readwrite").objectStore(_0x2f4860).put(_0x185f55, _0x2262ae).onsuccess = function(_0x574974) {
+            _0x123859.transaction(_0x2f4860, "readwrite").objectStore(_0x2f4860).put(_0x185f55, _0x2262ae).onsuccess = function() {
                 if ("function" == typeof _0x59fa77) {
                     _0x59fa77();
                 }
             };
-        } catch (_0xedd220) {}
+        } catch {}
     }
     if (_0x123859) {
         _0x31da82();
@@ -11927,18 +11495,18 @@ window.coinsXopen = function(_0x34f7cb) {
                 }
             }
         },
-        complete: function(_0x285dda) {}
+        complete: function() {}
     });
 };
-window.logXOpn = function(_0x461e52) {
+window.logXOpn = function() {
     var _0x341e71 = "&cpn=" + _0xea465f;
     var _0x304c53 = {
         type: "GET",
         url: "../xsl/logXopen.php",
         data: _0x341e71,
         beforeSend: function() {},
-        success: function(_0x38ac54) {},
-        complete: function(_0x2c0de7) {}
+        success: function() {},
+        complete: function() {}
     };
     $.ajax(_0x304c53);
 };
@@ -11948,8 +11516,8 @@ window.logXd = function(_0x2ba0e0) {
         url: "../xsl/logXd.php",
         data: "dt=" + _0x2ba0e0,
         beforeSend: function() {},
-        success: function(_0x142511) {},
-        complete: function(_0x43be9c) {}
+        success: function() {},
+        complete: function() {}
     };
     $.ajax(_0x4ee68d);
 };
@@ -11963,7 +11531,7 @@ window.loadXPlayer = function(_0x564d05) {
     _0x564d05.type = "text/javascript";
     _0x564d05.async = true;
     _0x564d05.src = "//static.xsolla.com/embed/paystation/1.0.7/widget.min.js";
-    _0x564d05.addEventListener("load", function(_0x28f77e) {
+    _0x564d05.addEventListener("load", function() {
         XPayStationWidget.init(_0x446413);
         XPayStationWidget.open();
         $(".bs-example-modal-lg").modal("hide");
@@ -12706,64 +12274,13 @@ function newCanvasImage(_0x3ce60c) {
     return _0x520ec4;
 }
 
-function _0xc51e38(_0x12fc52, _0x841769) {
-    var _0x400e7e = document.createElement("canvas");
-    var _0x2c8a7b = new Image();
-    _0x2c8a7b.onload = function() {
-        var _0x289a9d;
-        var _0x173028;
-        var _0x521eb0;
-        if (_0x2c8a7b && _0x2c8a7b.complete && 0 != _0x2c8a7b.width) {
-            _0x289a9d = _0x400e7e.getContext("2d");
-            _0x173028 = Math.min(_0x2c8a7b.width, _0x2c8a7b.height);
-            _0x521eb0 = 1 != _0x841769 ? Math.max(~~(_0x173028 * _0x841769 + 0.5), 1) : _0x173028;
-            _0x400e7e.width = _0x400e7e.height = _0x521eb0;
-            _0x289a9d.beginPath();
-            _0x289a9d.arc(_0x521eb0 / 2, _0x521eb0 / 2, _0x521eb0 / 2, 0, 2 * Math.PI, false);
-            _0x289a9d.fill();
-            _0x289a9d.globalCompositeOperation = "source-in";
-            if (1 != _0x841769) {
-                _0x289a9d.drawImage(_0x2c8a7b, Math.round(-(_0x173028 - _0x521eb0) / 2), Math.round(-(_0x173028 - _0x521eb0) / 2), _0x173028, _0x173028);
-            } else {
-                _0x289a9d.drawImage(_0x2c8a7b, 0, 0, _0x521eb0, _0x521eb0);
-            }
-            _0x400e7e.complete = true;
-        }
-        _0x2c8a7b = null;
-    };
-    _0x2c8a7b.src = _0x12fc52;
-    return _0x400e7e;
-}
-
-function _0xa8fda8(_0x2568bf) {
-    if (_0x2568bf) {
-        for (var _0x3c9ef5 = 0; _0x3c9ef5 < _0x2568bf.frames.length; _0x3c9ef5++) {
-            var _0x2854e6 = _0x2568bf.frames[_0x3c9ef5].canvas;
-            var _0x4023f8 = _0x2854e6.getContext("2d");
-            var _0x3a0f49 = _0x2854e6.width;
-            var _0x2854e6 = _0x2854e6.height;
-            var _0xc12a46 = Math.min(_0x3a0f49, _0x2854e6);
-            _0x4023f8.beginPath();
-            _0x4023f8.rect(-1, -1, _0x3a0f49 + 2, _0x2854e6 + 2);
-            if (_0x3a0f49 != _0x2854e6) {
-                _0x4023f8.scale(_0x3a0f49 / _0xc12a46, _0x2854e6 / _0xc12a46);
-            }
-            _0x4023f8.arc(_0xc12a46 / 2, _0xc12a46 / 2, _0xc12a46 / 2, 0, 2 * Math.PI, false);
-            _0x4023f8.globalAlpha = 1;
-            _0x4023f8.globalCompositeOperation = "destination-out";
-            _0x4023f8.fillStyle = "#000000";
-            _0x4023f8.fill("evenodd");
-        }
-    }
-}
-
 function _0x58d0e1(_0x3ecf57) {
     var _0x334a34 = (_0x48a780[_0x3ecf57] || 0).toString();
     skinImagesHigh[_0x3ecf57 + "_lo"] = newImage("skins/" + _0x3ecf57.toString() + "_lo.png?u=" + _0x334a34);
     skinImagesHigh[_0x3ecf57] = newImage("skins/" + _0x3ecf57.toString() + ".png?u=" + _0x334a34);
 }
 
-function _0x1cb610(_0x3d1bc7, _0x3fc0c5) {
+function _0x1cb610(_0x3d1bc7) {
     wearablesAndObjectsImages[_0x3d1bc7 + "_lo"] = newImage("skins/objects/" + _0x3d1bc7.toString() + "_lo.png?v=" + objectsApiVersion);
     wearablesAndObjectsImages[_0x3d1bc7] = newImage("skins/objects/" + _0x3d1bc7.toString() + ".png?v=" + objectsApiVersion);
 }
@@ -12854,18 +12371,10 @@ for (var _0x29653b = 0; _0x29653b < 10000; _0x29653b++) {
     });
 }
 
-function _0x2b377f(_0xf321b8) {
-    try {
-        return window.atob ? atob(_0xf321b8) : '';
-    } catch (_0x12d946) {
-        return '';
-    }
-}
-
 function _0x1fe290(_0x336fe1) {
     try {
         return window.btoa ? btoa(_0x336fe1) : '';
-    } catch (_0x47c151) {
+    } catch {
         return '';
     }
 }
@@ -12882,8 +12391,6 @@ if (!window.requestAnimationFrame) {
     };
 }
 $(function() {
-    _0x37a723 = true;
-
     function _0xe579d8(_0x5c1fe3) {
         var _0x5669f1 = _0x5c1fe3.onclick || _0x5c1fe3.onmousedown || _0x5c1fe3.onmouseup || _0x5c1fe3.onkeydown || _0x5c1fe3.onkeyup || _0x5c1fe3.onkeypress || _0x5c1fe3.oninput || _0x5c1fe3.onchange || _0x5c1fe3.onfocus || _0x5c1fe3.onblur || _0x5c1fe3.onfocusin || _0x5c1fe3.onfocusout;
         if (_0x5669f1) {
@@ -12973,10 +12480,10 @@ $(function() {
                     success: function(_0x46ac18) {
                         ("success" == _0x46ac18.substring(0, 7) ? ($("#reset-pw-row").hide(), $(".pwresetalertdanger").hide(), $(".pwresetalert").html(_0x46ac18.substring(7))) : $(".pwresetalertdanger").hide(0).text(_0x46ac18)).fadeIn(600);
                     },
-                    error: function(_0x4ce0ff) {
+                    error: function() {
                         $(".pwresetalertdanger").hide(0).text("Error: an unexpected ajax error occurred").fadeIn(600);
                     },
-                    complete: function(_0x453f71) {
+                    complete: function() {
                         $("#resetPw").prop("disabled", false).text("Send Reset Email").css("opacity", '');
                     }
                 });
@@ -13000,7 +12507,7 @@ $(function() {
     _0x1a021f.addEventListener("mouseup", _0x1023c6, true);
     _0x1a021f.addEventListener("focus", _0x1023c6, true);
     _0x1a021f.addEventListener("focusin", _0x1023c6, true);
-    _0x16dbb1.addEventListener("mousedown", function(_0x4d6c27) {
+    _0x16dbb1.addEventListener("mousedown", function() {
         if (1 < _0x5ca670.children.length) {
             _0x4142f2.value = _0x163879.value = '';
         }
@@ -13149,7 +12656,7 @@ $(function() {
         }
     }, "text");
 });
-window.addEventListener("beforeunload", function(_0xf46263) {
+window.addEventListener("beforeunload", function() {
     windowIsLoaded = false;
     _0x13d7e0();
     window.localStorage.settings = JSON.stringify(gameSettings);
