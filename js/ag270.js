@@ -7927,6 +7927,12 @@ function _0x54ad2a(_0x36ae78) {
             if (_0x44b7f4 && _0x44b7f4.complete && 0 != _0x44b7f4.width) {
                 var _0x5c8542 = _0x2cb37c.wearArea;
                 var _0x116ce6 = 5 == _0x5c8542 ? 204 : 122;
+                _0x2ed271.drawImage(_0x44b7f4,
+                    ~~(102 - (3 == _0x5c8542 || 5 == _0x5c8542 ? 2.5 : 4 == _0x5c8542 ? 0.5 : 1.5) * 204 * 0.2),
+                    ~~(102 - (1 == _0x5c8542 || 5 == _0x5c8542 ? 2.5 : 2 == _0x5c8542 ? 0.5 : 1.5) * 204 * 0.2),
+                    _0x116ce6,
+                    _0x116ce6
+                );
                 var _0x37eca3 = _0x2ed271.getImageData(_0x3f4eb6 - 2, _0xb388cb - 2, 5, 5).data;
                 for (var i = 0; i < 25; i++) {
                     if (24 < _0x37eca3[4 * i + 3]) {
