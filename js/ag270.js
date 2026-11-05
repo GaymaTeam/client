@@ -1223,7 +1223,6 @@ if (!window.performance.now) {
 var _0x4df5e1 = !!document.documentMode;
 var _0x4386c1 = false;
 var _0x5a219c = 0;
-var _0xff0f52 = { x: 0, y: 0 };
 var _0x27324d = [];
 var _0x32f181 = 0;
 var _0x10e829 = 0;
@@ -1245,12 +1244,10 @@ var _0xd3f6e4 = 0;
 var _0x4fd0d2 = 0;
 var _0x352baf = 0;
 var _0x3902ef = 0;
-var _0x1e6b2c = 0;
 var _0x44a9fb = 0;
 var _0x32316b = 0;
 var _0x386e1f = 0;
 var _0x1a6afb = false;
-var _0x38c122 = 0;
 var _0x1fc846 = false;
 var lastSpawn = 0;
 var _0x384d50 = 0;
@@ -2248,20 +2245,6 @@ function _0x4fbf9e() {
         _0x13535d = false;
         sendSignal(36);
         $("#touchEjectLockBtn").removeClass("active");
-    }
-}
-
-function _0x207bfb() {
-    if (_0x1cbb14) {
-        clearTimeout(_0x1cbb14);
-        _0x1cbb14 = 0;
-    }
-}
-
-function _0x5f11fd() {
-    if (_0x1e6b2c) {
-        clearTimeout(_0x1e6b2c);
-        _0x1e6b2c = 0;
     }
 }
 
@@ -9497,7 +9480,6 @@ var _0xea465f = '';
 var _0x107e7f = _0x18fde3 = 0;
 var _0x5b6b18 = '';
 var _0x170269 = '';
-var _0x4d2bd2 = 0;
 var _0x3c3250 = false;
 var _0x4cb089 = false;
 var _0x2c6f91 = false;
@@ -9754,10 +9736,7 @@ var _0x22a146 = performance.now();
 var _0x2b6e3f = 0;
 var _0xe31776 = 0;
 var _0xe01c9e = false;
-var _0x29f519 = 0;
-var _0x32aefa = false;
 var _0x13535d = false;
-var _0x1cbb14 = 0;
 var _0xd3e364 = 0;
 var _0x5a74d9 = 0;
 var _0x20546f = 0;
