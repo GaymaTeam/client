@@ -3629,7 +3629,6 @@ blueNameEnabled = false;
 orangeNameEnabled = false;
 redNameEnabled = false;
 blackNameEnabled = false;
-spinWheelPlayAdvert = false;
 customColorNameEnabled = false;
 videoAdSpawns = 10;
 videoAdSpawnsParty = 12;
@@ -5689,9 +5688,8 @@ function wsOnMessage(_0x2ba470) {
             break;
         case 53:
             var _0x435e7a = pkt.getUint16();
-            var _0xb790f3 = pkt.getUint8();
-            spinWheelPlayAdvert = 1 == _0x435e7a && _0xb790f3;
             $("#remainingSpins").text(_0x435e7a);
+            if (_0x435e7a) sendSignal(58);
             break;
         case 54:
             var _0x46fd3a = pkt.getUint8();
@@ -6594,6 +6592,7 @@ function wsOnMessage(_0x2ba470) {
             $(".ranking span").text("Your rank: " + _0x2e4161);
             _0x483791(_0x437b88);
             _0x2bb62d(_0x2b96e1, _0x26039d);
+            if (_0x2b96e1 > 5) sendSignal(57);
             _0x4a5541();
             $("#dashPanel").fadeIn("slow");
             $("#dashTab").show();
@@ -12516,9 +12515,7 @@ $(function() {
     $(".bs-example-modal-lg3").on("show.bs.modal", function() {
         _0x1a6d5d = true;
         $("#remainingSpins").text(0);
-        if (isLoggedIn) {
-            sendSignal(57);
-        }
+        if (isLoggedIn) sendSignal(57);
         loadSpinWheelAudio();
     }).on("hide.bs.modal", function() {
         _0x1a6d5d = false;
