@@ -3648,6 +3648,7 @@ _0x1e9905 = '';
 challengeImageId = _0x38a139 = _0x1d4fed = _0x54207c = _0x20546f = 0;
 arrayOfKeyCodes = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
 drawHalfFood = false;
+timerInfectionModal = 0;
 if (void(_0x33d2a7 = _0x352c3f = _0x170049 = 0) !== window.localStorage && window.localStorage.getItem("crcx2") && 5 < window.localStorage.getItem("crcx2").length) {
     ag219_2 = window.localStorage.getItem("crcx2");
 }
@@ -5456,7 +5457,7 @@ function wsOnMessage(_0x2ba470) {
                                 viewX = (0.1 * viewX + cell.x) / 1.1;
                                 viewY = (0.1 * viewY + cell.y) / 1.1;
                                 sendSignal(13);
-                                _0x10236d()
+                                _0x10236d();
                             }
                         }
                         (_0x3a2844.n || cell.name) && cell.parseName(_0x3a2844.n);
@@ -5714,7 +5715,7 @@ function wsOnMessage(_0x2ba470) {
             if (!(mapCenterSet || (mapCenterSet = true, viewX = _0x53b8b0, viewY = _0x464afc, gameSettings.sFixedZoom))) {
                 currentZoom = _0xd28f67 = 1;
             }
-            currentServerMode = pkt.getInt16();
+            serverGamemode = pkt.getInt16();
             var _0x435e7a = pkt.getUint32();
             var _0x571f96 = pkt.getUint32();
             var flags = pkt.getUint8();
@@ -5727,7 +5728,7 @@ function wsOnMessage(_0x2ba470) {
             serverFoodMaxSize = pkt.getUint16();
             _0x27fdb0 = Date.now();
             _0x2c6f91 = true;
-            if (17 == currentServerMode) {
+            if (17 == serverGamemode) {
                 for (i = 15; i <= 19; i++) // walls
                     if (!wearablesAndObjectsImages[i])
                         _0x1cb610(i, 16);
@@ -5796,7 +5797,7 @@ function wsOnMessage(_0x2ba470) {
             _0x2c6f91 = true;
             break;
         case 75:
-            if (15 == currentServerMode) {
+            if (15 == serverGamemode) {
                 flags = pkt.getUint8();
                 customServerInfos = {
                     phase: pkt.getUint8(),
@@ -5821,7 +5822,7 @@ function wsOnMessage(_0x2ba470) {
                 };
                 setBattleRoyaleInfos();
                 _0x2d6730();
-            } else if (17 === currentServerMode || 22 === currentServerMode) {
+            } else if (17 === serverGamemode || 22 === serverGamemode) {
                 flags = pkt.getUint8();
                 customServerInfos = {
                     timeLeft: timeFormat(pkt.getUint32()),
@@ -5832,7 +5833,7 @@ function wsOnMessage(_0x2ba470) {
                     othersInfected: pkt.getUint16()
                 };
                 _0x2d6730();
-            } else if (18 === currentServerMode) {
+            } else if (18 === serverGamemode) {
                 // Domination Beta
                 flags = pkt.getUint8();
                 customServerInfos = {
@@ -8603,7 +8604,7 @@ function _0x585560() {
 }
 
 function setBattleRoyaleInfos() {
-    if (customServerInfos && 15 == currentServerMode) {
+    if (customServerInfos && 15 == serverGamemode) {
         $("#brPlayersValue").text(customServerInfos.players);
         var image = '';
         var timer = '';
@@ -8667,7 +8668,7 @@ function setBattleRoyaleInfos() {
 }
 
 function _0x593148() {
-    if (0 <= _0x568853 && (17 == currentServerMode || 18 == currentServerMode || 22 == currentServerMode)) {
+    if (0 <= _0x568853 && (17 == serverGamemode || 18 == serverGamemode || 22 == serverGamemode)) {
         $("#infBarProgress").width(100 * _0x568853 + "%");
         if (!_0x5141de) {
             $("#infGameContainer").show();
@@ -8685,7 +8686,7 @@ function _0x2d6730() {
     var _0x306fb1 = '';
     if (customServerInfos) {
         if (!_0x2412c8) {
-            if (15 == currentServerMode) {
+            if (15 == serverGamemode) {
                 _0x306fb1 += "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">BATTLE ROYALE</span>&nbsp;</p>";
                 _0x3fe65e++;
                 switch (customServerInfos.phase) {
@@ -8729,7 +8730,7 @@ function _0x2d6730() {
                     _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR STATS</span>&nbsp;</p>") + "<p><span class=\"col-left\">Matches:</span>&nbsp;" + customServerInfos.totalMatches.toString() + "</p>") + "<p><span class=\"col-left\">Wins:</span>&nbsp;" + customServerInfos.totalWins.toString() + "</p>") + "<p><span class=\"col-left\">Points:</span>&nbsp;" + customServerInfos.totalPoints.toString() + "</p>") + "<p><span class=\"col-left\">Kills:</span>&nbsp;" + customServerInfos.totalKills.toString() + "</p>";
                     _0x3fe65e++;
                 }
-            } else if (17 == currentServerMode) {
+            } else if (17 == serverGamemode) {
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
@@ -8738,7 +8739,7 @@ function _0x2d6730() {
                 _0x3fe65e++;
                 _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">INFECTION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.infected + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>") + "<p><span class=\"col-left\">You infected:</span>&nbsp;" + customServerInfos.othersInfected.toString() + "</p>";
                 _0x3fe65e++;
-            } else if (18 == currentServerMode) {
+            } else if (18 == serverGamemode) {
                 _0x306fb1 = "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p>"
                     + "<p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>"
                     + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>"
@@ -8749,7 +8750,7 @@ function _0x2d6730() {
                     + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>"
                     + "<p><span class=\"col-left\">Level:</span>&nbsp;" + (customServerInfos.domLevel || 1) + "</p>"
                     + "<p><span class=\"col-left\">Points:</span>&nbsp;" + (customServerInfos.domPoints || 0) + "</p>";
-            } else if (22 == currentServerMode) {
+            } else if (22 == serverGamemode) {
                 _0x3fe65e++;
                 _0x3fe65e++;
                 _0x3fe65e++;
@@ -9203,10 +9204,10 @@ function _0x4801bb() {
                 _0x277ade(6, 42, { r: 128, g: 224, b: 32 }, 0, 3);
                 break;
             case 4:
-                _0x277ade(2, 100, 17 == currentServerMode ? { r: 25, g: 160, b: 204 } : { r: 0, g: 255, b: 0 }, 2, 0);
+                _0x277ade(2, 100, 17 == serverGamemode ? { r: 25, g: 160, b: 204 } : { r: 0, g: 255, b: 0 }, 2, 0);
                 break;
             case 5:
-                _0x277ade(9, 224, 17 == currentServerMode ? { r: 240, g: 48, b: 48 } : { r: 205, g: 85, b: 100 }, 2, 0);
+                _0x277ade(9, 224, 17 == serverGamemode ? { r: 240, g: 48, b: 48 } : { r: 205, g: 85, b: 100 }, 2, 0);
                 break;
             case 6:
                 _0x277ade(4, 224, { r: 98, g: 35, b: 115 }, 1, 1);
@@ -9552,7 +9553,7 @@ var mapInfos = {
     updateTime: 0,
     draw: false
 };
-var currentServerMode = -1;
+var serverGamemode = -1;
 var _0x3df17b = false;
 var _0x42a8fa = true;
 var _0x247d2d = 1920;
