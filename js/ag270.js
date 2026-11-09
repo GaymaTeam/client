@@ -7254,7 +7254,8 @@ function wsOnMessage(_0x2ba470) {
             const address = pkt.getString();
             secretWorldPassword = pkt.getString() || '';
             // 4+1+1+1 useless bytes
-            if (address) connectserver(address, "Secret World");
+            // if (address) connectserver(address, "Secret World");
+            console.debug('Tried to go in SECRET SERVER but it is down');
             break;
         }
         case 209:
@@ -7937,11 +7938,10 @@ function _0x54ad2a(_0x36ae78) {
             }
         }
     }
-    var _0x4b17bd = {
+    return {
         skinId: -1,
         wearId: -1
     };
-    return _0x4b17bd;
 }
 
 function _0x483791(_0x3ea76f) {
