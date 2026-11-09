@@ -2460,13 +2460,13 @@ function _0x13d7e0() {
         _0x47ccce = _0x11de32 = _0x52d414 = _0x29f86a = _0x4512d9 = _0x2873c2 = _0x576526 = _0x38ea95 = _0x852ff = _0x273de7 = _0x30bfdb = _0x4a4cf7 = _0x24af02 = _0x3b8888 = lastSpawn = _0x5a219c = 0;
         $(".inventory-box").removeClass("activatedInv");
         _0x37e4a8 = _0xb1583e = _0x31962a = _0x5ea511 = _0x5a5860 = _0x3c6854 = 0;
-        isSpectating = _0x2c99f2 = _0x211844 = _0x1ec523 = !(currentParty = []);
+        isSpectating = _0x2c99f2 = isPartyLeader = _0x1ec523 = !(currentParty = []);
         _0x2c6f91 = _0x3c3250 = true;
         setBattleRoyaleInfos();
         _0x593148();
-        _0x2d6730();
-        _0x39b68a();
-        _0x1a0f0b();
+        updateGamemodeSlideBox();
+        updateInfoSlideBox();
+        updatePartySlideBox();
         _0x4a5541();
         _0x492dec();
         _0x203625();
@@ -3607,7 +3607,7 @@ largeRenderDistance = true;
 throwSnowball = false;
 autoFeedEnabled = true;
 minionSkins = false;
-videoAdsEnabled = true;
+videoAdsEnabled = false;
 modIconEnabled = true;
 hasDRank = false;
 can_yt_icon = false;
@@ -5821,7 +5821,7 @@ function wsOnMessage(_0x2ba470) {
                     totalKills: pkt.getUint32()
                 };
                 setBattleRoyaleInfos();
-                _0x2d6730();
+                updateGamemodeSlideBox();
             } else if (17 === serverGamemode || 22 === serverGamemode) {
                 flags = pkt.getUint8();
                 customServerInfos = {
@@ -5832,7 +5832,7 @@ function wsOnMessage(_0x2ba470) {
                     kills: pkt.getUint16(),
                     othersInfected: pkt.getUint16()
                 };
-                _0x2d6730();
+                updateGamemodeSlideBox();
             } else if (18 === serverGamemode) {
                 // Domination Beta
                 flags = pkt.getUint8();
@@ -5954,7 +5954,7 @@ function wsOnMessage(_0x2ba470) {
                     }
                 }
                 // update domination stats
-                _0x2d6730();
+                updateGamemodeSlideBox();
             }
             break;
         case 76:
@@ -6030,7 +6030,7 @@ function wsOnMessage(_0x2ba470) {
             }
             $(".sora-points-inv").text(_0x191e79);
             _0x483791(_0x2712a9);
-            _0x39b68a();
+            updateInfoSlideBox();
             _0x203625();
             break;
         case 82:
@@ -6058,7 +6058,7 @@ function wsOnMessage(_0x2ba470) {
                     pp: null
                 });
             }
-            _0x1a0f0b();
+            updatePartySlideBox();
             break;
         case 86:
             _0x435e7a = pkt.getUint16();
@@ -6071,7 +6071,7 @@ function wsOnMessage(_0x2ba470) {
             }
             break;
         case 87:
-            _0x211844 = pkt.getUint8();
+            isPartyLeader = pkt.getUint8();
             break;
         case 88:
             var _0x571f96 = pkt.getString();
@@ -8680,91 +8680,66 @@ function _0x593148() {
     }
 }
 
-function _0x2d6730() {
+function updateGamemodeSlideBox() {
     var _0x14056b = _0x521316;
-    var _0x3fe65e = 0;
-    var _0x306fb1 = '';
+    let lines = 0;
+    let content = '';
     if (customServerInfos) {
-        if (!_0x2412c8) {
+        if (!isGamemodeSlideBoxCollapsed) {
             if (15 == serverGamemode) {
-                _0x306fb1 += "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">BATTLE ROYALE</span>&nbsp;</p>";
-                _0x3fe65e++;
+                content += '<p style="padding-bottom:10px;"><span class="col-left" style="color:#fa4;">BATTLE ROYALE</span>&nbsp;</p>';
+                lines++;
                 switch (customServerInfos.phase) {
                     case 0:
-                        _0x306fb1 += "<p><span class=\"col-left\">Not running</span>&nbsp;</p>";
-                        _0x3fe65e++;
+                        content += '<p><span class="col-left">Not running</span>&nbsp;</p>';
+                        lines++;
                         break;
                     case 1:
-                        _0x306fb1 += "<p><span class=\"col-left\">Registration</span>&nbsp;</p>";
-                        _0x3fe65e++;
+                        content += '<p><span class="col-left">Registration</span>&nbsp;</p>';
+                        lines++;
                         break;
                     case 2:
                     case 3:
-                        _0x306fb1 += "<p><span class=\"col-left\">Running:</span>&nbsp;" + customServerInfos.runningTime + "</p>";
-                        _0x3fe65e++;
+                        content += `<p><span class="col-left">Running:</span>&nbsp;${customServerInfos.runningTime}</p>`;
+                        lines++;
                         break;
                     case 4:
-                        _0x306fb1 += "<p><span class=\"col-left\">Finished:</span>&nbsp;" + customServerInfos.runningTime + "</p>";
-                        _0x3fe65e++;
+                        content += `<p><span class="col-left">Finished:</span>&nbsp;${customServerInfos.runningTime}</p>`;
+                        lines++;
                 }
-                _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 += "<p><span class=\"col-left\">Players:</span>&nbsp;" + customServerInfos.players + "/" + customServerInfos.maxPlayers + "</p>") + ("<p><span class=\"col-left\">Spectators:</span>&nbsp;" + customServerInfos.spectators.toString() + "</p>");
-                _0x3fe65e++;
-                if (1 <= customServerInfos.phase && 0 < customServerInfos.coinRewards[0] && (
-                    _0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">REWARDS</span>&nbsp;</p>") + "<p><span class=\"col-left\">1st place:</span>&nbsp;" + customServerInfos.coinRewards[0].toString() + " coins</p>",
-                    _0x3fe65e++,
-                    0 < customServerInfos.coinRewards[1] && (
-                        _0x306fb1 += "<p><span class=\"col-left\">2nd place:</span>&nbsp;" + customServerInfos.coinRewards[1].toString() + " coins</p>",
-                        _0x3fe65e++
-                    ),
-                    0 < customServerInfos.coinRewards[2]
-                )) {
-                    _0x306fb1 += "<p><span class=\"col-left\">3rd place:</span>&nbsp;" + customServerInfos.coinRewards[2].toString() + " coins</p>";
-                    _0x3fe65e++;
+                content += `<p><span class="col-left">Players:</span>&nbsp;${customServerInfos.players}/${customServerInfos.maxPlayers}</p><p><span class="col-left">Spectators:</span>&nbsp;${customServerInfos.spectators}</p>`;
+                lines += 2;
+                if (1 <= customServerInfos.phase && 0 < customServerInfos.coinRewards[0]) {
+                    content += `<p style="padding-top:10px;"><span class="col-left" style="color:#fa4;">REWARDS</span>&nbsp;</p><p><span class="col-left">1st place:</span>&nbsp;${customServerInfos.coinRewards[0]} coins</p>`;
+                    lines++;
+                    if (0 < customServerInfos.coinRewards[1]) {
+                        content += `<p><span class="col-left">2nd place:</span>&nbsp;${customServerInfos.coinRewards[1]} coins</p>`;
+                        lines++;
+                    }
+                    if (0 < customServerInfos.coinRewards[2]) {
+                        content += `<p><span class="col-left">3rd place:</span>&nbsp;${customServerInfos.coinRewards[2]} coins</p>`;
+                        lines++;
+                    }
                 }
                 if (0 < customServerInfos.totalMatches) {
-                    _0x3fe65e++;
-                    _0x3fe65e++;
-                    _0x3fe65e++;
-                    _0x3fe65e++;
-                    _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 += "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR STATS</span>&nbsp;</p>") + "<p><span class=\"col-left\">Matches:</span>&nbsp;" + customServerInfos.totalMatches.toString() + "</p>") + "<p><span class=\"col-left\">Wins:</span>&nbsp;" + customServerInfos.totalWins.toString() + "</p>") + "<p><span class=\"col-left\">Points:</span>&nbsp;" + customServerInfos.totalPoints.toString() + "</p>") + "<p><span class=\"col-left\">Kills:</span>&nbsp;" + customServerInfos.totalKills.toString() + "</p>";
-                    _0x3fe65e++;
+                    content += `<p style="padding-top:10px;"><span class="col-left" style="color:#fa4;">YOUR STATS</span>&nbsp;</p><p><span class="col-left">Matches:</span>&nbsp;${customServerInfos.totalMatches}</p><p><span class="col-left">Wins:</span>&nbsp;${customServerInfos.totalWins}</p><p><span class="col-left">Points:</span>&nbsp;${customServerInfos.totalPoints}</p><p><span class="col-left">Kills:</span>&nbsp;${customServerInfos.totalKills}</p>`;
+                    lines += 5;
                 }
             } else if (17 == serverGamemode) {
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">INFECTION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.infected + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>") + "<p><span class=\"col-left\">You infected:</span>&nbsp;" + customServerInfos.othersInfected.toString() + "</p>";
-                _0x3fe65e++;
+                content += `<p style="padding-bottom:10px;"><span class="col-left" style="color:#fa4;">INFECTION</span>&nbsp;</p><p><span class="col-left">Time remaining:</span>&nbsp;${customServerInfos.timeLeft}</p><p><span class="col-left">Green players:</span>&nbsp;${customServerInfos.uninfected}</p><p><span class="col-left">Red players:</span>&nbsp;${customServerInfos.infected}</p><p style="padding-top:10px;"><span class="col-left" style="color:#fa4;">YOUR SESSION</span>&nbsp;</p><p><span class="col-left">You killed:</span>&nbsp;${customServerInfos.kills}</p><p><span class="col-left">You infected:</span>&nbsp;${customServerInfos.othersInfected}</p>`;
+                lines += 7;
             } else if (18 == serverGamemode) {
-                _0x306fb1 = "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p>"
-                    + "<p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>"
-                    + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>"
-                    + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.infected + "</p>"
-                    + "<p><span class=\"col-left\">Green bases:</span>&nbsp;" + (customServerInfos.greenBases || 0) + "</p>"
-                    + "<p><span class=\"col-left\">Red bases:</span>&nbsp;" + (customServerInfos.redBases || 0) + "</p>"
-                    + "<p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>"
-                    + "<p><span class=\"col-left\">You killed:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>"
-                    + "<p><span class=\"col-left\">Level:</span>&nbsp;" + (customServerInfos.domLevel || 1) + "</p>"
-                    + "<p><span class=\"col-left\">Points:</span>&nbsp;" + (customServerInfos.domPoints || 0) + "</p>";
+                content += `<p style="padding-bottom:10px;"><span class="col-left" style="color:#fa4;">DOMINATION</span>&nbsp;</p><p><span class="col-left">Time remaining:</span>&nbsp;${customServerInfos.timeLeft}</p><p><span class="col-left">Green players:</span>&nbsp;${customServerInfos.uninfected}</p><p><span class="col-left">Red players:</span>&nbsp;${customServerInfos.infected}</p><p><span class="col-left">Green bases:</span>&nbsp;${customServerInfos.greenBases || 0}</p><p><span class="col-left">Red bases:</span>&nbsp;${customServerInfos.redBases || 0}</p><p style="padding-top:10px;"><span class="col-left" style="color:#fa4;">YOUR SESSION</span>&nbsp;</p><p><span class="col-left">You killed:</span>&nbsp;${customServerInfos.kills}</p><p><span class="col-left">Level:</span>&nbsp;${customServerInfos.domLevel || 1}</p><p><span class="col-left">Points:</span>&nbsp;${customServerInfos.domPoints || 0}</p>`;
+                lines += 10;
             } else if (22 == serverGamemode) {
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x3fe65e++;
-                _0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = (_0x306fb1 = _0x306fb1 + "<p style=\"padding-bottom:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">DOMINATION</span>&nbsp;</p><p><span class=\"col-left\">Time remaining:</span>&nbsp;" + customServerInfos.timeLeft + "</p>") + "<p><span class=\"col-left\">Green players:</span>&nbsp;" + customServerInfos.uninfected + "</p>") + "<p><span class=\"col-left\">Red players:</span>&nbsp;" + customServerInfos.infected + "</p><p style=\"padding-top:10px;\"><span class=\"col-left\" style=\"color:#fa4;\">YOUR SESSION</span>&nbsp;</p>") + "<p><span class=\"col-left\">You Hit:</span>&nbsp;" + customServerInfos.kills.toString() + "</p>") + "<p><span class=\"col-left\">You Failed to Dodge:</span>&nbsp;" + customServerInfos.othersInfected.toString() + "</p>";
-                _0x3fe65e++;
+                content += `<p style="padding-bottom:10px;"><span class="col-left" style="color:#fa4;">DOMINATION</span>&nbsp;</p><p><span class="col-left">Time remaining:</span>&nbsp;${customServerInfos.timeLeft}</p><p><span class="col-left">Green players:</span>&nbsp;${customServerInfos.uninfected}</p><p><span class="col-left">Red players:</span>&nbsp;${customServerInfos.infected}</p><p style="padding-top:10px;"><span class="col-left" style="color:#fa4;">YOUR SESSION</span>&nbsp;</p><p><span class="col-left">You Hit:</span>&nbsp;${customServerInfos.kills}</p><p><span class="col-left">You Failed to Dodge:</span>&nbsp;${customServerInfos.othersInfected}</p>`;
+                lines += 7;
             }
         }
-        $("#gamemodeContent").html(_0x306fb1);
-        _0x521316 = _0x3fe65e;
+        $("#gamemodeContent").html(content);
+        _0x521316 = lines;
         if (_0x56ca1f) {
-            if (_0x3fe65e != _0x14056b) {
+            if (lines != _0x14056b) {
                 _0x38c054();
             }
         } else {
@@ -8811,25 +8786,49 @@ function _0x4c5e78(_0x310df0, _0x11afca, _0x2ae329, _0x1c6466, _0x3d20ab, _0x45a
     }
 }
 
-function _0x39b68a() {
-    var _0x48c140;
-    var _0x2dfda5;
-    var _0x40f2a8;
+function updateInfoSlideBox() {
     var _0x3c4cd5 = _0x7017e4;
-    var _0x544400 = 0;
-    for (var _0xa8b1e9 = ''; _0x296920.length < 8;) {
-        _0x296920.push(false);
+    let lines = 0;
+    let content = '';
+    for (; showInfoLines.length < 8;)
+        showInfoLines.push(false);
+    if (!isInfoSlideBoxCollapsed) {
+        if (0 < _0x24af02 || showInfoLines[0]) {
+            showInfoLines[0] = showInfoLines[1] = showInfoLines[2] = true;
+            content += `<p>Minions: <span style="color:${0 < _0x24af02 ? "#4f4" : "#f44"};">${_0x24af02}</span></p><p>Minion Time: <span style="color:${0 < _0x4a4cf7 ? "#4f4" : "#f44"};">${timeFormat(_0x4a4cf7)}</span></p><p>You control: <span style="color:${_0x53176c ? "#f44" : "#4f4"};">${_0x53176c ? "Minions" : "Yourself"}</span></p>`;
+            lines += 3;
+        }
+        if (_0x43802f || showInfoLines[3]) {
+            showInfoLines[3] = true;
+            content += `<p>Frozen: <span style="color:${_0x43802f ? "#4f4" : "#f44"};">${_0x43802f ? "On" : "Off"}</span></p>`;
+            lines++;
+        }
+        if ((_0x506037 || showInfoLines[4]) && showInfoLines[0]) {
+            showInfoLines[4] = true;
+            content += `<p>Frozen minions: <span style="color:${_0x506037 ? "#4f4" : "#f44"};">${_0x506037 ? "On" : "Off"}</span></p>`;
+            lines++;
+        }
+        if (_0x52da56 || showInfoLines[5]) {
+            showInfoLines[5] = true;
+            content += `<p>Cloaked: <span style="color:${_0x52da56 ? "#4f4" : "#f44"};">${_0x52da56 ? "On" : "Off"}</span></p>`;
+            lines++;
+        }
+        if ((_0x11c29c || showInfoLines[6]) && showInfoLines[0]) {
+            showInfoLines[6] = true;
+            content += `<p>Cloaked minions: <span style="color:${_0x11c29c ? "#4f4" : "#f44"};">${_0x11c29c ? "On" : "Off"}</span></p>`;
+            lines++;
+        }
+        if (showInfoLines[5] || showInfoLines[6]) {
+            showInfoLines[7] = true;
+            content += `<p>Cloak Time: <span style="color:${0 < _0x30bfdb ? "#4f4" : "#f44"};">${timeFormat(_0x30bfdb)}</span></p>`;
+            lines++;
+        }
     }
-    if (!_0x2fe589 && ((0 < _0x24af02 || _0x296920[0]) && (_0x296920[0] = _0x296920[1] = _0x296920[2] = true, _0x544400++, _0x544400++, _0xa8b1e9 = (_0xa8b1e9 = (_0xa8b1e9 += "<p>Minions: <span style=\"color:" + (0 < _0x24af02 ? "#4f4" : "#f44") + ";\">" + _0x24af02.toString() + "</span></p>") + "<p>Minion Time: <span style=\"color:" + (0 < _0x4a4cf7 ? "#4f4" : "#f44") + ";\">" + (_0x48c140 = _0x4a4cf7, _0x48c140 = Number(_0x48c140), _0x2dfda5 = Math.floor(_0x48c140 / 3600), _0x40f2a8 = Math.floor(_0x48c140 % 3600 / 60), _0x48c140 = Math.floor(_0x48c140 % 3600 % 60), _0x2dfda5 < 10 ? "0" : '') + _0x2dfda5 + ":" + (_0x40f2a8 < 10 ? "0" : '') + _0x40f2a8 + ":" + (_0x48c140 < 10 ? "0" : '') + _0x48c140 + "</span></p>") + "<p>You control: <span style=\"color:" + (_0x53176c ? "#f44" : "#4f4") + ";\">" + (_0x53176c ? "Minions" : "Yourself") + "</span></p>", _0x544400++), (_0x43802f || _0x296920[3]) && (_0x296920[3] = true, _0xa8b1e9 += "<p>Frozen: <span style=\"color:" + (_0x43802f ? "#4f4" : "#f44") + ";\">" + (_0x43802f ? "On" : "Off") + "</span></p>", _0x544400++), (_0x506037 || _0x296920[4]) && _0x296920[0] && (_0x296920[4] = true, _0xa8b1e9 += "<p>Frozen minions: <span style=\"color:" + (_0x506037 ? "#4f4" : "#f44") + ";\">" + (_0x506037 ? "On" : "Off") + "</span></p>", _0x544400++), (_0x52da56 || _0x296920[5]) && (_0x296920[5] = true, _0xa8b1e9 += "<p>Cloaked: <span style=\"color:" + (_0x52da56 ? "#4f4" : "#f44") + ";\">" + (_0x52da56 ? "On" : "Off") + "</span></p>", _0x544400++), (_0x11c29c || _0x296920[6]) && _0x296920[0] && (_0x296920[6] = true, _0xa8b1e9 += "<p>Cloaked minions: <span style=\"color:" + (_0x11c29c ? "#4f4" : "#f44") + ";\">" + (_0x11c29c ? "On" : "Off") + "</span></p>", _0x544400++), _0x296920[5] || _0x296920[6])) {
-        _0x296920[7] = true;
-        _0xa8b1e9 += "<p>Cloak Time: <span style=\"color:" + (0 < _0x30bfdb ? "#4f4" : "#f44") + ";\">" + timeFormat(_0x30bfdb) + "</span></p>";
-        _0x544400++;
-    }
-    $("#infoContent").html(_0xa8b1e9);
-    _0x7017e4 = _0x544400;
+    $("#infoContent").html(content);
+    _0x7017e4 = lines;
     if (0 < _0x24af02 || _0x43802f || _0x52da56) {
         if (_0x3d0314) {
-            if (_0x544400 != _0x3c4cd5) {
+            if (lines != _0x3c4cd5) {
                 _0x38c054();
             }
         } else {
@@ -8843,9 +8842,8 @@ function _0x39b68a() {
     } else if (_0x3d0314) {
         _0x7895bb = setTimeout(function() {
             $("#infoBox").stop(true, false).removeClass("visible").delay(400).hide(0);
-            for (var _0x301167 = 0; _0x301167 < _0x296920.length; _0x301167++) {
-                _0x296920[_0x301167] = false;
-            }
+            for (let i = 0; i < showInfoLines.length; i++)
+                showInfoLines[i] = false;
             _0x7017e4 = 0;
             if (_0x1f573a) {
                 clearTimeout(_0x1f573a);
@@ -8858,26 +8856,28 @@ function _0x39b68a() {
     }
 }
 
-function _0x1a0f0b() {
-    var _0x5bcc45 = Math.min(currentParty.length, 12);
-    var _0x588307 = '';
-    if (!_0x22bf19) {
+function updatePartySlideBox() {
+    const maxShownPartyMembers = Math.min(currentParty.length, 12);
+    let content = '';
+    if (!isPartySlideBoxCollapsed) {
         if (0 < currentParty.length) {
-            _0x588307 += _0x1ec523 ? "<p style=\"padding-bottom:9px;\">Party invitation:</p>" : "<p style=\"padding-bottom:9px;\">You are in a party:</p>";
+            content += _0x1ec523 ? "<p style=\"padding-bottom:9px;\">Party invitation:</p>" : "<p style=\"padding-bottom:9px;\">You are in a party:</p>";
         } else {
-            _0x588307 += "<p style=\"margin-bottom:-4px;\">Party ended</p>";
-            _0x211844 = false;
+            content += "<p style=\"margin-bottom:-4px;\">Party ended</p>";
+            isPartyLeader = false;
         }
-        for (var _0xa17f22 = 0; _0xa17f22 < _0x5bcc45; _0xa17f22++) {
-            var _0x172831 = currentParty[_0xa17f22];
-            _0x588307 += _0x211844 ? "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.name || "Agma.io Player") + "<button class=\"partyKickBtn\" value=\"" + _0xa17f22 + "\" onclick=\"kickPartyMember($(this))\">x</button></p>" : "<p style=\"height:20px; color:" + (_0x172831.accepted ? "#fff" : "#555") + ";\">" + (_0xa17f22 + 1).toString() + ". " + (_0x172831.name || "Agma.io Player") + "</p>";
+        for (let i = 0; i < maxShownPartyMembers; i++) {
+            const member = currentParty[i];
+            content += `<p style="height:20px;color:${member.accepted ? "#fff" : "#555"};">${i + 1}. ${member.name || "Agma.io Player"}`;
+            if (isPartyLeader) content += `<button class="partyKickBtn" value="${i}" onclick="kickPartyMember($(this))">x</button>`;
+            content += '</p>';
         }
-        if (currentParty.length > _0x5bcc45) {
-            _0x588307 += "<p style=\"margin-bottom:-6px;\">+ " + (currentParty.length - _0x5bcc45).toString() + " more players...</p>";
+        if (currentParty.length > maxShownPartyMembers) {
+            content += `<p style="margin-bottom:-6px;">+ ${currentParty.length - maxShownPartyMembers} more players...</p>`;
         }
     }
-    $("#partyContent").html(_0x588307);
-    if (0 < currentParty.length && _0x1ec523 && !_0x22bf19) {
+    $("#partyContent").html(content);
+    if (0 < currentParty.length && _0x1ec523 && !isPartySlideBoxCollapsed) {
         if (!_0x561770) {
             $("#partyButtons").show();
             _0x561770 = true;
@@ -8894,7 +8894,7 @@ function _0x1a0f0b() {
             }
             $("#partyBox").stop(true, false).show(0).addClass("visible");
             _0x38c054(!(_0x5c9745 = true), true);
-            if (_0x22bf19) {
+            if (isPartySlideBoxCollapsed) {
                 _0x1deadf(0);
             }
         }
@@ -9589,16 +9589,16 @@ var _0x21d872 = ["#F03030", "#30F030", "#606060", "#F0F030", "#20E8F8", "#F020E8
 var customServerInfos = null;
 var _0x568853 = -1;
 var _0x521316 = 0;
-var _0x2412c8 = 0;
-var _0x41140e = 0;
-var _0x2fe589 = 0;
-var _0x22bf19 = 0;
+var isGamemodeSlideBoxCollapsed = 0;
+var isChallengeSlideBoxCollapsed = 0;
+var isInfoSlideBoxCollapsed = 0;
+var isPartySlideBoxCollapsed = 0;
 var _0x24af02 = 0;
 var _0x4a4cf7 = 0;
 var _0x53176c = false;
 var _0x43802f = false;
 var _0x506037 = false;
-var _0x296920 = [];
+var showInfoLines = [];
 var _0x7017e4 = 0;
 var _0x52da56 = false;
 var _0x11c29c = false;
@@ -9628,7 +9628,7 @@ var _0x4289a6 = 0;
 var _0x114a07 = null;
 var _0x1ec523 = false;
 var currentParty = [];
-var _0x211844 = false;
+var isPartyLeader = false;
 var _0xde408 = {};
 var _0xd835b8 = 0;
 var _0x1723aa = '';
@@ -11051,18 +11051,18 @@ function _0x3da849(_0x2f4860, _0x2262ae, _0x185f55, _0x59fa77) {
 }
 
 function _0x4b57bd(_0x28c810) {
-    if (_0x2412c8 != _0x28c810) {
-        _0x2412c8 = _0x28c810;
-        $("#gamemodeCollapse > i").removeClass("fa-caret-" + (_0x2412c8 ? "left" : "right")).addClass("fa-caret-" + (_0x2412c8 ? "right" : "left"));
-        if (_0x2412c8) {
+    if (isGamemodeSlideBoxCollapsed != _0x28c810) {
+        isGamemodeSlideBoxCollapsed = _0x28c810;
+        $("#gamemodeCollapse > i").removeClass("fa-caret-" + (isGamemodeSlideBoxCollapsed ? "left" : "right")).addClass("fa-caret-" + (isGamemodeSlideBoxCollapsed ? "right" : "left"));
+        if (isGamemodeSlideBoxCollapsed) {
             $("#gamemodeBox").addClass("collapsed");
         } else {
             $("#gamemodeBox").removeClass("collapsed");
         }
         if (undefined !== window.localStorage) {
-            window.localStorage.gmbCollapsed = _0x2412c8;
+            window.localStorage.gmbCollapsed = isGamemodeSlideBoxCollapsed;
         }
-        _0x2d6730();
+        updateGamemodeSlideBox();
     }
 }
 
@@ -11073,34 +11073,34 @@ function _0x39f84f(_0x397ccf) {
         $(".challenges-modal-btn").show();
     }
     _0x536680 = true;
-    if (_0x41140e != _0x397ccf) {
-        _0x41140e = _0x397ccf;
-        $("#challengeInfoCollapse > i").removeClass("fa-caret-" + (_0x41140e ? "left" : "right")).addClass("fa-caret-" + (_0x41140e ? "right" : "left"));
-        if (_0x41140e) {
+    if (isChallengeSlideBoxCollapsed != _0x397ccf) {
+        isChallengeSlideBoxCollapsed = _0x397ccf;
+        $("#challengeInfoCollapse > i").removeClass("fa-caret-" + (isChallengeSlideBoxCollapsed ? "left" : "right")).addClass("fa-caret-" + (isChallengeSlideBoxCollapsed ? "right" : "left"));
+        if (isChallengeSlideBoxCollapsed) {
             $("#challengeInfoBox").addClass("collapsed");
         } else {
             $("#challengeInfoBox").removeClass("collapsed");
         }
-        if (_0x41140e) {
+        if (isChallengeSlideBoxCollapsed) {
             $("#challengeInfoCollapse").css("margin-top", "1px");
         } else {
             $("#challengeInfoCollapse").css("margin-top", "8px");
         }
-        _0x4c5e78(_0x41140e ? 0 : 2);
-        _0x58c913 = !!_0x41140e;
+        _0x4c5e78(isChallengeSlideBoxCollapsed ? 0 : 2);
+        _0x58c913 = !!isChallengeSlideBoxCollapsed;
     }
 }
 
 function _0x1deadf(_0xc59515) {
-    if (_0x22bf19 != _0xc59515) {
-        _0x22bf19 = _0xc59515;
-        $("#partyCollapse > i").removeClass("fa-caret-" + (_0x22bf19 ? "left" : "right")).addClass("fa-caret-" + (_0x22bf19 ? "right" : "left"));
-        if (_0x22bf19) {
+    if (isPartySlideBoxCollapsed != _0xc59515) {
+        isPartySlideBoxCollapsed = _0xc59515;
+        $("#partyCollapse > i").removeClass("fa-caret-" + (isPartySlideBoxCollapsed ? "left" : "right")).addClass("fa-caret-" + (isPartySlideBoxCollapsed ? "right" : "left"));
+        if (isPartySlideBoxCollapsed) {
             $("#partyBox").addClass("collapsed");
         } else {
             $("#partyBox").removeClass("collapsed");
         }
-        _0x1a0f0b();
+        updatePartySlideBox();
     }
 }
 
@@ -11368,10 +11368,10 @@ window.purchaseWearable = function(_0x1d3ed8, _0x27391e) {
     }
 };
 window.toggleGamemodeCollapse = function() {
-    _0x4b57bd(_0x2412c8 ? 0 : 1);
+    _0x4b57bd(isGamemodeSlideBoxCollapsed ? 0 : 1);
 };
 window.toggleChallengeInfoCollapse = function() {
-    _0x39f84f(_0x41140e ? 0 : 1);
+    _0x39f84f(isChallengeSlideBoxCollapsed ? 0 : 1);
 };
 window.animateExpReward = function() {
     let _0x341dc0 = document.getElementById("xpReward");
@@ -11441,19 +11441,19 @@ window.animateExpReward = function() {
 };
 window.toggleInfoCollapse = function() {
     var _0x165444;
-    if (_0x2fe589 != (_0x165444 = _0x2fe589 ? 0 : 1)) {
-        _0x2fe589 = _0x165444;
-        $("#infoCollapse > i").removeClass("fa-caret-" + (_0x2fe589 ? "left" : "right")).addClass("fa-caret-" + (_0x2fe589 ? "right" : "left"));
-        if (_0x2fe589) {
+    if (isInfoSlideBoxCollapsed != (_0x165444 = isInfoSlideBoxCollapsed ? 0 : 1)) {
+        isInfoSlideBoxCollapsed = _0x165444;
+        $("#infoCollapse > i").removeClass("fa-caret-" + (isInfoSlideBoxCollapsed ? "left" : "right")).addClass("fa-caret-" + (isInfoSlideBoxCollapsed ? "right" : "left"));
+        if (isInfoSlideBoxCollapsed) {
             $("#infoBox").addClass("collapsed");
         } else {
             $("#infoBox").removeClass("collapsed");
         }
-        _0x39b68a();
+        updateInfoSlideBox();
     }
 };
 window.togglePartyCollapse = function() {
-    _0x1deadf(_0x22bf19 ? 0 : 1);
+    _0x1deadf(isPartySlideBoxCollapsed ? 0 : 1);
 };
 window.toggleChatDimmed = function() {
     _0x5ccb42(_0x59182a ? 0 : 1);
