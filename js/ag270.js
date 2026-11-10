@@ -5688,9 +5688,7 @@ function wsOnMessage(_0x2ba470) {
             _0x3c3250 = true;
             break;
         case 53:
-            var _0x435e7a = pkt.getUint16();
-            $("#remainingSpins").text(_0x435e7a);
-            if (_0x435e7a) sendSignal(58);
+            $("#remainingSpins").text(pkt.getUint16());
             break;
         case 54:
             var _0x46fd3a = pkt.getUint8();
@@ -5997,9 +5995,9 @@ function wsOnMessage(_0x2ba470) {
             _0x11c29c = _0x311374;
             _0x30bfdb = _0x2f2313;
             if (_0x26baf3) {
-                if (_0x469523 - _0x273de7 === 1) console.log('GOT RECOMBINE', Date.now());
+                if (ACTIVE && _0x469523 - _0x273de7 === 1) console.log('GOT RECOMBINE', Date.now());
                 _0x273de7 = _0x469523;
-                if (_0x49adef - _0x852ff === 1) console.log('GOT SPEED', Date.now());
+                if (ACTIVE && _0x49adef - _0x852ff === 1) console.log('GOT SPEED', Date.now());
                 _0x852ff = _0x49adef;
                 _0x38ea95 = _0x1711bf;
                 _0x576526 = _0x2581c0;
@@ -6317,7 +6315,6 @@ function wsOnMessage(_0x2ba470) {
             _0x2f2313 = pkt.getUint8();
             $("#registerSuccess").finish().hide();
             if (1 == _0x2f2313) {
-                console.log('LOGGED', Date.now() - window.loginTime);
                 $("#login").fadeOut("slow", function() {});
                 isLoggedIn = true;
                 _0x186b83 = 0;
@@ -6588,12 +6585,10 @@ function wsOnMessage(_0x2ba470) {
             _0x2581c0 = Number(_0x2581c0);
             _0x536dbe = Math.floor(_0x2581c0 / 3600);
             _0xf64257 = Math.floor(_0x2581c0 % 3600 / 60);
-            Math.floor(_0x2581c0 % 3600 % 60);
             $(".timePlayed span").text("Time played: " + (0 < _0x536dbe ? _0x536dbe + " Hours & " + (_0xf64257 < 10 ? "0" : '') : '') + _0xf64257 + " Minutes");
             $(".ranking span").text("Your rank: " + _0x2e4161);
             _0x483791(_0x437b88);
             _0x2bb62d(_0x2b96e1, _0x26039d);
-            if (_0x2b96e1 > 5) sendSignal(57);
             _0x4a5541();
             $("#dashPanel").fadeIn("slow");
             $("#dashTab").show();
@@ -9836,7 +9831,6 @@ function login(_0x4519ed, _0x5068c3, _0x592927) {
     _0x4519ed = _0x170269 = _0x592927;
     if (isReady()) {
         new PacketWriter(5 + 2 * _0x5068c3.length + 2 * _0x4519ed.length).setUint8(2).setString(_0x5068c3).setUint16(0).setString(_0x4519ed).setUint16(0).send();
-        window.loginTime = Date.now();
     }
     $("#sent").attr("disabled", "disabled");
     if (_0x4ade31) {
