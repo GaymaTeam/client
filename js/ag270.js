@@ -281,7 +281,7 @@ window.onload = function() {
     canEditGameSettings = false;
     $('#nick').prop('value', gameSettings.nickname);
     _0x5df715(gameSettings.skinId);
-    _0x5cfc91(gameSettings.wearablesSelected);
+    setWearables(gameSettings.wearablesSelected);
     $("#cSkins").prop("checked", gameSettings.sSkins).change();
     $("#cWearables").prop("checked", gameSettings.sWearables).change();
     $("#cColors").prop("checked", gameSettings.sColors).change();
@@ -510,7 +510,7 @@ window.onload = function() {
     _0x2216eb.onmousedown = function(_0x29fb33) {
         if (2 == _0x29fb33.button) {
             _0x5df715(0);
-            _0x94dbbc();
+            clearWearables();
         }
     };
     _0x2216eb.oncontextmenu = _0x5f4cbe.oncontextmenu = _0x4c920b;
@@ -5364,10 +5364,10 @@ function wsOnMessage(_0x2ba470) {
                         _0x3a2844 = _0x409f62[pkt.getUint16()];
                     if (ACTIVE && (type === 5 || type === 6 || type === 7)) {
                         console.log(['RECOMBINE', 'GROWTH', 'SPEED'][type - 5], x, y, Date.now());
-                        mouseFixedX = x;
-                        mouseFixedY = y;
-                        isMouseFixed = true;
-                        new PacketWriter(9).setUint8(0).setInt32(x).setInt32(y).send();
+                        // mouseFixedX = x;
+                        // mouseFixedY = y;
+                        // isMouseFixed = true;
+                        // new PacketWriter(9).setUint8(0).setInt32(x).setInt32(y).send();
                     }
                 }
                 let cell = !isNew || Object.prototype.hasOwnProperty.call(allCells, id) ? allCells[id] : null;
@@ -6349,7 +6349,7 @@ function wsOnMessage(_0x2ba470) {
                     if (gameSettings.skinId)
                         _0x5df715(gameSettings.skinId);
                     if (gameSettings.wearablesSelected.length)
-                        _0x5cfc91(gameSettings.wearablesSelected);
+                        setWearables(gameSettings.wearablesSelected);
                 }
                 if (null === (_0x5bff26 = localStorage.getItem("drum"))) {
                     _0x5bff26 = (~~(2000000000 * Math.random())).toString();
@@ -7730,7 +7730,7 @@ function _0x5df715(skinId) {
             $("#skinContainer" + skinId).addClass("selected");
             $("#skinUseBtn" + skinId).removeClass("btn-primary").addClass("btn-default").text("Cancel");
         }
-        _0x113238();
+        updatePlayerPreview();
     }
 }
 
@@ -7746,7 +7746,7 @@ function _0x568cd2() {
             version: 9
         })
     }, function(_0x42c4b7) {
-        if (_0x2ad6ee < _0x1ac90e && (document.getElementById("phpWearables").innerHTML = _0x42c4b7, resetMasterTooltips("#phpWearables"), _0x529909 = true, _0x2ad6ee = _0x1ac90e, _0x3730e0)) {
+        if (_0x2ad6ee < _0x1ac90e && (document.getElementById("phpWearables").innerHTML = _0x42c4b7, resetMasterTooltips("#phpWearables"), _0x2ad6ee = _0x1ac90e, _0x3730e0)) {
             _0x3730e0();
             _0x3730e0 = null;
         }
@@ -7754,7 +7754,7 @@ function _0x568cd2() {
 }
 
 function _0x464ade() {
-    _0x529909 = !(_0x1518ea = true);
+    !(_0x1518ea = true);
     if (_0x173277 && $("#wearablesTab").hasClass("active")) {
         _0x5a2fbe();
     }
@@ -7772,9 +7772,9 @@ function _0x5a2fbe() {
     }
 }
 
-function _0x5f4edb(wearId, wearArea, zIndex, wearGroup, wearTry) {
+function equipWearable(wearId, wearArea, zIndex, wearGroup, wearTry) {
     wearTry = !!wearTry;
-    for (var i = 0; i < gameSettings.wearablesSelected.length; i++) {
+    for (let i = 0; i < gameSettings.wearablesSelected.length; i++) {
         if (gameSettings.wearablesSelected[i].wearId == wearId) {
             gameSettings.wearablesSelected.splice(i, 1);
             break;
@@ -7783,69 +7783,75 @@ function _0x5f4edb(wearId, wearArea, zIndex, wearGroup, wearTry) {
     $("#wearableContainer" + wearId).addClass("selected");
     $("#wearableUseBtn" + wearId).removeClass("btn-primary").addClass("btn-default").text("Cancel");
     $("#wearableTryBtn" + wearId).removeClass("btn-primary").addClass("btn-default").text("Cancel");
-    var _0x457b8 = 0;
-    for (var i = gameSettings.wearablesSelected.length - 1; 0 <= i; i--) {
+    let j = 0;
+    for (let i = gameSettings.wearablesSelected.length - 1; 0 <= i; i--) {
         if (gameSettings.wearablesSelected[i].zIndex <= zIndex) {
-            _0x457b8 = i + 1;
+            j = i + 1;
             break;
         }
     }
-    gameSettings.wearablesSelected.splice(_0x457b8, 0, { wearId, wearArea, zIndex, wearGroup, wearTry });
-    _0x113238();
+    gameSettings.wearablesSelected.splice(j, 0, { wearId, wearArea, zIndex, wearGroup, wearTry });
+    updatePlayerPreview();
 }
 
-function _0x5eb440(_0x51e372) {
-    for (var _0x49c412 = 0; _0x49c412 < gameSettings.wearablesSelected.length; _0x49c412++) {
-        if (gameSettings.wearablesSelected[_0x49c412].wearId == _0x51e372) {
-            $("#wearableContainer" + _0x51e372).removeClass("selected");
-            $("#wearableUseBtn" + _0x51e372).removeClass("btn-default").addClass("btn-primary").text("Use");
-            $("#wearableTryBtn" + _0x51e372).removeClass("btn-default").addClass("btn-primary").text("Try");
-            gameSettings.wearablesSelected.splice(_0x49c412, 1);
-            _0x113238();
+function unequipWearable(wearId) {
+    for (let i = 0; i < gameSettings.wearablesSelected.length; i++) {
+        if (gameSettings.wearablesSelected[i].wearId == wearId) {
+            $("#wearableContainer" + wearId).removeClass("selected");
+            $("#wearableUseBtn" + wearId).removeClass("btn-default").addClass("btn-primary").text("Use");
+            $("#wearableTryBtn" + wearId).removeClass("btn-default").addClass("btn-primary").text("Try");
+            gameSettings.wearablesSelected.splice(i, 1);
+            updatePlayerPreview();
             break;
         }
     }
 }
 
-function _0x94dbbc() {
+function clearWearables() {
     for (; 0 < gameSettings.wearablesSelected.length;) {
-        _0x5eb440(gameSettings.wearablesSelected[0].wearId);
+        unequipWearable(gameSettings.wearablesSelected[0].wearId);
     }
 }
 
-function _0x5cfc91(_0x30baa2) {
-    _0x94dbbc();
-    for (var _0x27f368 = 0; _0x27f368 < _0x30baa2.length; _0x27f368++) {
-        _0x5f4edb(_0x30baa2[_0x27f368].wearId, _0x30baa2[_0x27f368].wearArea, _0x30baa2[_0x27f368].zIndex, _0x30baa2[_0x27f368].wearGroup, _0x30baa2[_0x27f368].wearTry);
-    }
+function setWearables(wearables) {
+    clearWearables();
+    for (const wearable of wearables)
+        equipWearable(wearable.wearId, wearable.wearArea, wearable.zIndex, wearable.wearGroup, wearable.wearTry);
 }
 
 function _0x4e199b() {
-    var n = gameSettings.wearablesSelected.length;
-    for (var i = 0; i < n; i++) {
-        if (gameSettings.wearablesSelected[i].wearTry && (_0x5eb440(gameSettings.wearablesSelected[i].wearId), gameSettings.wearablesSelected.length < n)) {
-            n--;
-            i--;
+    let n = gameSettings.wearablesSelected.length;
+    for (let i = 0; i < n; i++) {
+        if (gameSettings.wearablesSelected[i].wearTry) {
+            unequipWearable(gameSettings.wearablesSelected[i].wearId);
+            if (gameSettings.wearablesSelected.length < n) {
+                n--;
+                i--;
+            }
         }
     }
 }
 
-function _0x113238() {
+function updatePlayerPreview() {
     if (gameSettings.skinId) {
-        $(".cell-example .skin-example").css("background-image", "url('skins/" + gameSettings.skinId.toString() + "_lo.png?u=" + (_0x48a780[gameSettings.skinId] || 0) + "')");
+        $(".cell-example .skin-example").css("background-image", `url('skins/${gameSettings.skinId}_lo.png?u=${_0x48a780[gameSettings.skinId] || 0}')`);
     } else {
         $(".cell-example .skin-example").css("background-image", "none");
         $("#skinExampleMenu").css("background-image", "url('skins/0_lo.png?u=0')");
     }
-    for (var i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 5; i++) {
         if (i <= gameSettings.wearablesSelected.length) {
-            var _0x3bf6ee = gameSettings.wearablesSelected[i - 1];
-            var _0x4304c3 = wearableClasses[_0x3bf6ee.wearArea] || '';
+            const wearable = gameSettings.wearablesSelected[i - 1];
+            const area = wearableClasses[wearable.wearArea] || '';
             try {
-                $(".cell-example .wear-example-" + i).css("background-image", "url('wearables/" + _0x3bf6ee.wearId.toString() + "_lo.png?v=" + wearablesApiVersion + "')").removeClass("center top bottom left right max".replace(_0x4304c3, '')).addClass(_0x4304c3).show();
-            } catch (_0x4709fb) {
+                $(".cell-example .wear-example-" + i)
+                    .css("background-image", `url('wearables/${wearable.wearId}_lo.png?v=${wearablesApiVersion}')`)
+                    .removeClass("center top bottom left right max".replace(area, ''))
+                    .addClass(area)
+                    .show();
+            } catch (error) {
                 console.log("ERROR IN wear.wearId.toString()");
-                console.log(_0x4709fb);
+                console.log(error);
             }
         } else {
             $(".cell-example .wear-example-" + i).css("background-image", "none").hide();
@@ -7896,7 +7902,7 @@ function _0x22a3b0(_0x1cfe4b) {
         if (0 < _0x2ad0f9.skinId) {
             _0x5df715(0);
         } else {
-            _0x5eb440(_0x2ad0f9.wearId);
+            unequipWearable(_0x2ad0f9.wearId);
         }
         _0x5eca46(_0x1cfe4b);
     }
@@ -8230,7 +8236,7 @@ window.showWearable = function(_0xf6251, _0x579537) {
         var _0x456608;
         var _0x416bee;
         var _0x57c909;
-        if (_0x48c41d && _0x51e042 && _0x529909 && (_0x456608 = document.getElementById("wearableDiv" + _0xf6251)) && (_0x456608.scrollIntoView(), 0 < (_0x416bee = $("#menuhoner .tab-container-section").first()).length && _0x416bee.scrollTop(_0x416bee.scrollTop() - 8), _0x579537) && 0 < (_0x57c909 = $(_0x456608)).length) {
+        if (_0x48c41d && _0x51e042 && (_0x456608 = document.getElementById("wearableDiv" + _0xf6251)) && (_0x456608.scrollIntoView(), 0 < (_0x416bee = $("#menuhoner .tab-container-section").first()).length && _0x416bee.scrollTop(_0x416bee.scrollTop() - 8), _0x579537) && 0 < (_0x57c909 = $(_0x456608)).length) {
             _0x57c909.off("webkitAnimationEnd animationEnd").removeClass("shopitem-highlight");
             setTimeout(function() {
                 _0x57c909.one("webkitAnimationEnd animationEnd", function() {
@@ -8259,9 +8265,7 @@ window.showWearable = function(_0xf6251, _0x579537) {
                 _0x133036();
             }).tab("show");
         }
-        if (!_0x529909) {
-            _0x3730e0 = _0x133036;
-        }
+        _0x3730e0 = _0x133036;
         _0x133036();
     }
 };
@@ -9691,7 +9695,6 @@ var _0x16de9b = null;
 var _0x4506fc = '';
 var wearables = [];
 var _0x1518ea = true;
-var _0x529909 = false;
 var _0x3730e0 = null;
 var _0x5cff0f = '';
 var _0x2530ff = 0;
@@ -10454,7 +10457,7 @@ function _0x315275(_0x3fff92) {
     $(".challenge-bar").text(~~_0x38925c + "%");
     _0x5df715(0);
     _0x5b3bf2();
-    _0x94dbbc();
+    clearWearables();
     _0x464ade();
     _0x2f6a16();
     _0x161cd2();
@@ -11326,47 +11329,49 @@ window.showPublicSkinsPage = function(_0x79939c) {
         document.getElementById("publicSkinsHeader").scrollIntoView();
     }
 };
-window.tgWblGc = function(_0x164aab, _0x2c53fd, _0x4286f5, _0x1b40b7, _0x18a457) {
-    if (isReady()) {
-        _0x5f4edb(_0x164aab, _0x2c53fd, _0x4286f5, _0x1b40b7, _0x18a457);
-    }
+window.tgWblGc = function(wearId, wearArea, zIndex, wearGroup, wearTry) {
+    if (isReady())
+        equipWearable(wearId, wearArea, zIndex, wearGroup, wearTry);
 };
-window.toggleWearable = function(wearId, wearArea, _0x1acae1, wearGroup, _0x25e189) {
-    if (_0x3e08c0 && _0x529909 && isReady()) {
-        var _0x551068 = false;
-        for (var _0x3e19ac = 0; _0x3e19ac < gameSettings.wearablesSelected.length; _0x3e19ac++) {
-            if (gameSettings.wearablesSelected[_0x3e19ac].wearId == wearId) {
-                _0x551068 = true;
+window.toggleWearable = function(wearId, wearArea, zIndex, wearGroup, wearTry) {
+    if (_0x3e08c0 && isReady()) { // inMenu && inWearablesTab
+        let isUsing = false;
+        for (const wearable of gameSettings.wearablesSelected) {
+            if (wearable.wearId == wearId) {
+                isUsing = true;
                 break;
             }
         }
-        if (_0x551068) {
-            _0x5eb440(wearId);
+        if (isUsing) {
+            unequipWearable(wearId);
         } else {
             if (0 != wearGroup) {
-                var _0x323f5e = gameSettings.wearablesSelected.length;
-                for (var _0xe8fbe7 = 0; _0xe8fbe7 < _0x323f5e; _0xe8fbe7++) {
-                    if (gameSettings.wearablesSelected[_0xe8fbe7].wearGroup == wearGroup && (_0x5eb440(gameSettings.wearablesSelected[_0xe8fbe7].wearId), gameSettings.wearablesSelected.length < _0x323f5e)) {
-                        _0x323f5e--;
-                        _0xe8fbe7--;
+                let n = gameSettings.wearablesSelected.length;
+                for (let i = 0; i < n; i++) {
+                    if (gameSettings.wearablesSelected[i].wearGroup == wearGroup) {
+                        unequipWearable(gameSettings.wearablesSelected[i].wearId);
+                        if (gameSettings.wearablesSelected.length < n) {
+                            n--;
+                            i--;
+                        }
                     }
                 }
             }
             if (5 <= gameSettings.wearablesSelected.length) {
                 return void curserMessage("You cannot select more than 5 wearables. Please remove one before selecting another wearable.", false, false, 0, 10);
             }
-            _0x5f4edb(wearId, wearArea, _0x1acae1, wearGroup, _0x25e189);
+            equipWearable(wearId, wearArea, zIndex, wearGroup, wearTry);
             if (!gameSettings.sWearables) {
                 setSetting("cWearables", true);
             }
         }
     }
 };
-window.purchaseWearable = function(_0x1d3ed8, _0x27391e) {
-    if (_0x529909 && isReady()) {
+window.purchaseWearable = function(price, wearId) {
+    if (isReady()) {
         swal({
             title: "Confirm",
-            text: "If you click \"Buy\", you will purchase this wearable. It costs " + _0x1d3ed8,
+            text: "If you click \"Buy\", you will purchase this wearable. It costs " + price,
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#4CAF50",
@@ -11374,8 +11379,8 @@ window.purchaseWearable = function(_0x1d3ed8, _0x27391e) {
             cancelButtonText: "No, cancel purchase"
         }, function() {
             if (isReady()) {
-                _0x5eb440(_0x27391e);
-                new PacketWriter(3).setUint8(43).setUint16(_0x27391e).send();
+                unequipWearable(wearId);
+                new PacketWriter(3).setUint8(43).setUint16(wearId).send();
             }
         });
     }
