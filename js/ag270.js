@@ -2277,12 +2277,13 @@ function _0x8f51f1() {
         $("#invisibleOverlay").hide();
         _0x284f1f = !(_0x1fc846 = false);
         if (isReady() && _0x284f1f && null != currentNickname) {
-            var _0x4de013 = new PacketWriter(4 + 2 * gameSettings.wearablesSelected.length + 2 * currentNickname.length);
-            _0x4de013.setUint8(1).setUint16(gameSettings.skinId).setUint8(gameSettings.wearablesSelected.length);
-            for (let _0xfae066 = 0; _0xfae066 < gameSettings.wearablesSelected.length; _0xfae066++) {
-                _0x4de013.setUint16(gameSettings.wearablesSelected[_0xfae066].wearId);
-            }
-            _0x4de013.setString(currentNickname).send();
+            const pkt = new PacketWriter(4 + 2 * gameSettings.wearablesSelected.length + 2 * currentNickname.length)
+                .setUint8(1)
+                .setUint16(gameSettings.skinId)
+                .setUint8(gameSettings.wearablesSelected.length);
+            for (const wearable of gameSettings.wearablesSelected)
+                pkt.setUint16(wearable.wearId);
+            pkt.setString(currentNickname).send();
             if (0 === mainPlayerCells.length) {
                 if (_0x384d50) {
                     clearTimeout(_0x384d50);
