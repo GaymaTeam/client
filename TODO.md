@@ -1,1 +1,0 @@
-- draw secret room borders
