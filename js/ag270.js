@@ -6331,126 +6331,129 @@ function wsOnMessage(_0x2ba470) {
             }
             break;
         case 95:
-            _0x2f2313 = pkt.getUint8();
             $("#registerSuccess").finish().hide();
-            if (1 == _0x2f2313) {
-                $("#login").fadeOut("slow", function() {});
-                isLoggedIn = true;
-                _0x186b83 = 0;
-                if ((_0xea465f = _0x5b6b18).toLowerCase() != _0x4506fc.toLowerCase()) {
-                    _0x5b3bf2();
-                }
-                if (_0xea465f.toLowerCase() != _0x5cff0f.toLowerCase()) {
-                    _0x464ade();
-                }
-                localStorage.setItem("username", _0x5b6b18);
-                localStorage.setItem("password", _0x1fe290(md5(_0x5b6b18)));
-                if (gameSettings.user.toLowerCase() == _0xea465f.toLowerCase()) {
-                    if (gameSettings.skinId)
-                        _0x5df715(gameSettings.skinId);
-                    if (gameSettings.wearablesSelected.length)
-                        setWearables(gameSettings.wearablesSelected);
-                }
-                if (null === (_0x5bff26 = localStorage.getItem("drum"))) {
-                    _0x5bff26 = (~~(2000000000 * Math.random())).toString();
-                    localStorage.setItem("drum", _0x5bff26);
-                }
-                localStorage.setItem(md5(_0x5bff26), _0x170269);
-                if (_0xea465f.toLowerCase() != _0x3ebb17.toLowerCase()) {
-                    $("#friendDialogMessage").text("Loading...");
-                }
-                if (_0x363e25) {
-                    if (_0x3f3ed9) {
-                        clearInterval(_0x3f3ed9);
-                        _0x3f3ed9 = 0;
+            switch (pkt.getUint8()) {
+                case 0:
+                    $("#loginError p").replaceWith("<p>Incorrect login <br> Wrong username or password.</p>");
+                    $("#loginError").fadeIn();
+                    break;
+                case 1:
+                    $("#login").fadeOut("slow", function() {});
+                    isLoggedIn = true;
+                    _0x186b83 = 0;
+                    if ((_0xea465f = _0x5b6b18).toLowerCase() != _0x4506fc.toLowerCase()) {
+                        _0x5b3bf2();
                     }
-                    _0x3f3ed9 = setInterval(_0xbcbc52, 28000);
+                    if (_0xea465f.toLowerCase() != _0x5cff0f.toLowerCase()) {
+                        _0x464ade();
+                    }
+                    localStorage.setItem("username", _0x5b6b18);
+                    localStorage.setItem("password", _0x1fe290(md5(_0x5b6b18)));
+                    if (gameSettings.user.toLowerCase() == _0xea465f.toLowerCase()) {
+                        if (gameSettings.skinId)
+                            _0x5df715(gameSettings.skinId);
+                        if (gameSettings.wearablesSelected.length)
+                            setWearables(gameSettings.wearablesSelected);
+                    }
+                    if (null === (_0x5bff26 = localStorage.getItem("drum"))) {
+                        _0x5bff26 = (~~(2000000000 * Math.random())).toString();
+                        localStorage.setItem("drum", _0x5bff26);
+                    }
+                    localStorage.setItem(md5(_0x5bff26), _0x170269);
                     if (_0xea465f.toLowerCase() != _0x3ebb17.toLowerCase()) {
-                        _0xbcbc52();
-                    } else {
-                        if (_0x53e3b2) {
-                            clearInterval(_0x53e3b2);
-                            _0x53e3b2 = 0;
-                        }
-                        _0x53e3b2 = setTimeout(function() {
-                            if (_0x363e25 && isLoggedIn && 5000 < Date.now() - _0x21e585) {
-                                _0xbcbc52();
-                            }
-                        }, 5000);
+                        $("#friendDialogMessage").text("Loading...");
                     }
-                }
-                if (_0x1a6d5d) {
-                    sendSignal(57);
-                }
-                _0x9db55f(_0x950276);
-                $("#loginError").finish().hide();
-            } else if (0 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Incorrect login <br> Wrong username or password.</p>");
-                $("#loginError").fadeIn();
-            } else if (2 == _0x2f2313) {
-                if (!isLoggedIn && Date.now() < _0x186b83) {
-                    _0x582d99 = setTimeout(function() {
-                        autoLogin(_0x5b6b18, _0x170269);
-                    }, 500);
-                } else {
-                    $("#loginError p").replaceWith("<p>Your account is already logged in... <br>Please wait a couple seconds. Make sure you're not logged in on another tab.</p>");
-                    $("#loginError").finish().fadeIn();
-                    $("#sent").removeAttr("disabled");
-                }
-            } else if (13 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Failed login <br> Login Server is down. Please try again later.</p>");
-                $("#loginError").fadeIn();
-            } else if (14 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Failed login</p>");
-                $("#loginError").fadeIn();
-            }
-            if (3 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Username too long... <br> Maximum is 20 characters</p>");
-                $("#loginError").fadeIn();
-            }
-            if (4 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Something went wrong with the encryption of your password. Please try again</p>");
-                $("#loginError").fadeIn();
-            }
-            if (5 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Email too long... <br> Maximum is 40 characters</p>");
-                $("#loginError").fadeIn();
-            }
-            if (6 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Wow that's a short username!<br> Please type a longer username</p>");
-                $("#loginError").fadeIn();
-            }
-            if (7 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Please enter a password<p>");
-                $("#loginError").fadeIn();
-            }
-            if (8 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Wow, that's a short email!<br> Did you forget to type an email?</p>");
-                $("#loginError").fadeIn();
-            }
-            if (11 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Username or Email contains invalid characters! Please try a different username or email.</p>");
-                $("#loginError").fadeIn();
-            }
-            if (9 == _0x2f2313) {
-                $("#loginError").finish().hide();
-                $("a[href=\"#home\"]").trigger("click");
-                $("#registerSuccess").fadeIn("slow").delay(10000).fadeOut("slow");
-                $("#password").val('');
-                $("#email").val('');
-                _0x311374 = $("#regUsername").val();
-                $("#username").val(_0x311374);
-                $("#regUsername").val('');
-                $("#regEmail").val('');
-                $("regPassword").val('');
-            }
-            if (10 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Username or email already exists.<br> Please try a different username or email</p>");
-                $("#loginError").fadeIn();
-            }
-            if (12 == _0x2f2313) {
-                $("#loginError p").replaceWith("<p>Are you a robot?<br> You did not verify the captcha challenge. Please verify 'Im not a robot'</p>");
-                $("#loginError").fadeIn();
+                    if (_0x363e25) {
+                        if (_0x3f3ed9) {
+                            clearInterval(_0x3f3ed9);
+                            _0x3f3ed9 = 0;
+                        }
+                        _0x3f3ed9 = setInterval(_0xbcbc52, 28000);
+                        if (_0xea465f.toLowerCase() != _0x3ebb17.toLowerCase()) {
+                            _0xbcbc52();
+                        } else {
+                            if (_0x53e3b2) {
+                                clearInterval(_0x53e3b2);
+                                _0x53e3b2 = 0;
+                            }
+                            _0x53e3b2 = setTimeout(function() {
+                                if (_0x363e25 && isLoggedIn && 5000 < Date.now() - _0x21e585) {
+                                    _0xbcbc52();
+                                }
+                            }, 5000);
+                        }
+                    }
+                    if (_0x1a6d5d) {
+                        sendSignal(57);
+                    }
+                    _0x9db55f(_0x950276);
+                    $("#loginError").finish().hide();
+                    break;
+                case 2:
+                    if (!isLoggedIn && Date.now() < _0x186b83) {
+                        _0x582d99 = setTimeout(function() {
+                            autoLogin(_0x5b6b18, _0x170269);
+                        }, 500);
+                    } else {
+                        $("#loginError p").replaceWith("<p>Your account is already logged in... <br>Please wait a couple seconds. Make sure you're not logged in on another tab.</p>");
+                        $("#loginError").finish().fadeIn();
+                        $("#sent").removeAttr("disabled");
+                    }
+                    break;
+                case 3:
+                    $("#loginError p").replaceWith("<p>Username too long... <br> Maximum is 20 characters</p>");
+                    $("#loginError").fadeIn();
+                    break;
+                case 4:
+                    $("#loginError p").replaceWith("<p>Something went wrong with the encryption of your password. Please try again</p>");
+                    $("#loginError").fadeIn();
+                    break;
+                case 5:
+                    $("#loginError p").replaceWith("<p>Email too long... <br> Maximum is 40 characters</p>");
+                    $("#loginError").fadeIn();
+                    break;
+                case 6:
+                    $("#loginError p").replaceWith("<p>Wow that's a short username!<br> Please type a longer username</p>");
+                    $("#loginError").fadeIn();
+                    break;
+                case 7:
+                    $("#loginError p").replaceWith("<p>Please enter a password<p>");
+                    $("#loginError").fadeIn();
+                    break;
+                case 8:
+                    $("#loginError p").replaceWith("<p>Wow, that's a short email!<br> Did you forget to type an email?</p>");
+                    $("#loginError").fadeIn();
+                    break;
+                case 9:
+                    $("#loginError").finish().hide();
+                    $("a[href=\"#home\"]").trigger("click");
+                    $("#registerSuccess").fadeIn("slow").delay(10000).fadeOut("slow");
+                    $("#password").val('');
+                    $("#email").val('');
+                    $("#username").val($("#regUsername").val());
+                    $("#regUsername").val('');
+                    $("#regEmail").val('');
+                    $("regPassword").val('');
+                    break;
+                case 10:
+                    $("#loginError p").replaceWith("<p>Username or email already exists.<br> Please try a different username or email</p>");
+                    $("#loginError").fadeIn();
+                    break;
+                case 11:
+                    $("#loginError p").replaceWith("<p>Username or Email contains invalid characters! Please try a different username or email.</p>");
+                    $("#loginError").fadeIn();
+                    break;
+                case 12:
+                    $("#loginError p").replaceWith("<p>Are you a robot?<br> You did not verify the captcha challenge. Please verify 'Im not a robot'</p>");
+                    $("#loginError").fadeIn();
+                case 13:
+                    $("#loginError p").replaceWith("<p>Failed login <br> Login Server is down. Please try again later.</p>");
+                    $("#loginError").fadeIn();
+                    break;
+                case 14:
+                    $("#loginError p").replaceWith("<p>Failed login</p>");
+                    $("#loginError").fadeIn();
+                    break;
             }
             break;
         case 96:
