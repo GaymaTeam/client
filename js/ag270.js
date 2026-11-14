@@ -3,7 +3,6 @@
 // FIXME: localStorage.ag218 is also a ban factor
 // FIXME: user settings arent saved to storage
 
-var ACTIVE = false;
 const FRAMERATE = 1000 / 60;
 const gameSettings = Object.assign({
     version:                2,
@@ -2387,14 +2386,6 @@ function _0x411213(_0x9db3a7) {
 
 function wsConnect() {
     var _0x5be478 = "wss://" + _0x256390;
-    if (window.location && window.location.host && "127.0.0.1" == window.location.host) {
-        _0x5be478 = "ws://127.0.0.1:451";
-    }
-    if (window.location.protocol === 'http:') {
-        // _0x5be478 = "ws://78.141.211.96:2053"; // EU TOURN
-        // _0x5be478 = "ws://95.179.149.84:451"; // EU SF
-        _0x5be478 = "ws://209.250.255.3:451"; // EU SF RB
-    }
     if (windowIsLoaded && _0x256390 && (_0x13d7e0(), 0 != _0x2b8278)) {
         if (!ws) {
             $("#agma_loading_bar").hide();
@@ -5363,29 +5354,9 @@ function wsOnMessage(_0x2ba470) {
                     [color, strokeColor] = pkt.getColorTags()
                     if (0 === type)
                         _0x3a2844 = _0x409f62[pkt.getUint16()];
-                    if (ACTIVE && (type === 5 || type === 6 || type === 7)) {
-                        console.log(['RECOMBINE', 'GROWTH', 'SPEED'][type - 5], x, y, Date.now());
-                        // mouseFixedX = x;
-                        // mouseFixedY = y;
-                        // isMouseFixed = true;
-                        // new PacketWriter(9).setUint8(0).setInt32(x).setInt32(y).send();
-                    }
                 }
                 let cell = !isNew || Object.prototype.hasOwnProperty.call(allCells, id) ? allCells[id] : null;
                 if (cell) {
-                    /* TODO: sort
-                    const ii = allNonFoodCells.indexOf(cell);
-                    let i = ii;
-                    if (size < cell.size) {
-                        while (i > 0 && allFoodCells[i - 1]?.size > size) i--;
-                    } else {
-                        const n = allNonFoodCells.length - 1;
-                        while (i < n && allFoodCells[i + 1]?.size < size) i++;
-                    }
-                    if (i !== ii) {
-                        allNonFoodCells.splice(ii, 1);
-                        allNonFoodCells.splice(i, 0, cell);
-                    }*/
                     if (cell.shouldUpdate) {
                         cell.updatePos();
                     }
@@ -5399,18 +5370,11 @@ function wsOnMessage(_0x2ba470) {
                     if (isNew) {
                         if (1 === type) {
                             (size <= serverFoodMaxSize ? (cell.smallFood = true, allFoodCells) : allNonFoodCells).push(cell);
-                            // cell.smallFood = true;
-                            // allFoodCells.push(cell);
                             if (gameSettings.sFoodHalf && (drawHalfFood = !drawHalfFood)) {
                                 cell.shouldDraw = -1;
                             }
                         } else {
                             allNonFoodCells.push(cell);
-                            /*const n = allNonFoodCells.length;
-                            let i = 0;
-                            while (i < n && allFoodCells[i]?.size < size) i++;
-                            allNonFoodCells.splice(i - 1, 0, cell);*/
-
                             if (_0x49dbad[id]) {
                                 for (let i = 0; i < _0x49dbad[id].length; i++) {
                                     cell.setAnimation(_0x49dbad[id][i]);
@@ -6015,9 +5979,7 @@ function wsOnMessage(_0x2ba470) {
             _0x11c29c = _0x311374;
             _0x30bfdb = _0x2f2313;
             if (_0x26baf3) {
-                if (ACTIVE && _0x469523 - _0x273de7 === 1) console.log('GOT RECOMBINE', Date.now());
                 _0x273de7 = _0x469523;
-                if (ACTIVE && _0x49adef - _0x852ff === 1) console.log('GOT SPEED', Date.now());
                 _0x852ff = _0x49adef;
                 _0x38ea95 = _0x1711bf;
                 _0x576526 = _0x2581c0;
@@ -6962,7 +6924,6 @@ function wsOnMessage(_0x2ba470) {
             curserMessage('You got banned', false, false, 0, 5);
             break;
         case 109:
-            console.log(pkt);
             var flags = pkt.getUint8();
             var _0x2f2313 = randomMD5;
             if (2 & flags)
