@@ -9850,13 +9850,19 @@ function _0x25616a(_0x4c87a1, _0x100e5c) {
     }
 }
 
-function login(_0x4519ed, _0x5068c3, _0x592927) {
+function login(username, password, shouldHash) {
     $("#password").val('');
-    _0x592927 = 1 == _0x592927 ? _0x5068c3 : md5(_0x5068c3);
-    _0x5068c3 = _0x5b6b18 = _0x4519ed;
-    _0x4519ed = _0x170269 = _0x592927;
+    const hashedPassword = shouldHash ? password : md5(password);
+    _0x5b6b18 = username;
+    _0x170269 = hashedPassword;
     if (isReady()) {
-        new PacketWriter(5 + 2 * _0x5068c3.length + 2 * _0x4519ed.length).setUint8(2).setString(_0x5068c3).setUint16(0).setString(_0x4519ed).setUint16(0).send();
+        new PacketWriter(5 + 2 * username.length + 2 * hashedPassword.length)
+            .setUint8(2)
+            .setString(username)
+            .setUint16(0)
+            .setString(hashedPassword)
+            .setUint16(0)
+            .send();
     }
     $("#sent").attr("disabled", "disabled");
     if (_0x4ade31) {
