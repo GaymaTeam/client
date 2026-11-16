@@ -5482,6 +5482,8 @@ function wsOnMessage(_0x2ba470) {
                     _0x37d117[_0x37f254] = _0x2242da;
                 }
             }
+            if (_0x29246b && 0 === mainPlayerCells.length)
+                onPlayerDeath();
             break;
         case 12:
             _0x50a1de = pkt.getUint32();
@@ -5491,9 +5493,8 @@ function wsOnMessage(_0x2ba470) {
                     _0x51781b.destroy(false);
                 }
             }
-            if (_0x29246b && 0 === mainPlayerCells.length) {
+            if (_0x29246b && 0 === mainPlayerCells.length)
                 onPlayerDeath();
-            }
             break;
         case 17:
             var _0xb790f3 = pkt.getFloat32();
