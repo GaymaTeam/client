@@ -280,7 +280,7 @@ window.onload = function() {
     canEditGameSettings = false;
     $('#nick').prop('value', gameSettings.nickname);
     _0x5df715(gameSettings.skinId);
-    setWearables(gameSettings.wearablesSelected);
+    overwriteWearables(gameSettings.wearablesSelected);
     $("#cSkins").prop("checked", gameSettings.sSkins).change();
     $("#cWearables").prop("checked", gameSettings.sWearables).change();
     $("#cColors").prop("checked", gameSettings.sColors).change();
@@ -6317,7 +6317,7 @@ function wsOnMessage(_0x2ba470) {
                         if (gameSettings.skinId)
                             _0x5df715(gameSettings.skinId);
                         if (gameSettings.wearablesSelected.length)
-                            setWearables(gameSettings.wearablesSelected);
+                            overwriteWearables(gameSettings.wearablesSelected);
                     }
                     if (null === (_0x5bff26 = localStorage.getItem("drum"))) {
                         _0x5bff26 = (~~(2000000000 * Math.random())).toString();
@@ -7779,7 +7779,7 @@ function clearWearables() {
     }
 }
 
-function setWearables(wearables) {
+function overwriteWearables(wearables) {
     clearWearables();
     for (const wearable of wearables)
         equipWearable(wearable.wearId, wearable.wearArea, wearable.zIndex, wearable.wearGroup, wearable.wearTry);
