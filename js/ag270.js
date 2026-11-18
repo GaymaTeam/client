@@ -6146,8 +6146,7 @@ function wsOnMessage(_0x2ba470) {
                 $("#zombieRemain1").attr("onclick", "zombieRemain(1," + _0x2581c0 + "); return false;");
                 $("#zombieRemain2").attr("onclick", "zombieRemain(2," + _0x2581c0 + "); return false;");
                 $("#infection_remain_zombie").stop(true, false).show(0).addClass("visible");
-                (_0x536dbe = new Audio("sounds/popup.ogg")).volume = 0.5;
-                _0x536dbe.play();
+                playSounds("sounds/popup.ogg", 0.5);
                 timerInfectionModal = setTimeout(function() {
                     $("#infection_remain_zombie").stop(true, false).removeClass("visible").delay(400).hide(0);
                 }, 1000 * _0xf64257);
@@ -9848,13 +9847,12 @@ window.setTopMass = function(_0x29926a) {
     }
     $("#topMass").css("color", "#2d2").text(Intl.NumberFormat("en-US").format(Math.round(~~(_0x29926a / 100))));
 };
-window.playSounds = function(_0x3672c0, _0x1081e4, _0x27820b) {
+window.playSounds = function(src, volume, offset) {
     if (gameSettings.sSounds) {
-        (_0x3672c0 = new Audio(_0x3672c0)).volume = _0x1081e4;
-        if (_0x27820b) {
-            _0x3672c0.currentTime = _0x27820b;
-        }
-        _0x3672c0.play();
+        const sound = new Audio(src);
+        sound.volume = volume;
+        if (offset) sound.currentTime = offset;
+        sound.play();
     }
 };
 window.setNick = function(nickname, respawn) {
