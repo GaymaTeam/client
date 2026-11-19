@@ -7744,10 +7744,7 @@ function _0x464ade() {
     }
 }
 
-let gotWearables = false;
 function _0x5a2fbe() {
-    if (gotWearables) return;
-    gotWearables = true;
     if (isReady()) {
         sendSignal(114);
     } else if (0 < wearables.length) {
