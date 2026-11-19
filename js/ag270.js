@@ -7927,22 +7927,22 @@ function _0x54ad2a(_0x36ae78) {
     };
 }
 
-function _0x483791(_0x3ea76f) {
-    if (accountRessources.coins != _0x3ea76f) {
-        const _0x5c20fb = _0x3ea76f.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+function _0x483791(coins) {
+    if (accountRessources.coins != coins) {
+        const _0x5c20fb = coins.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         $("#coinsDash").text(_0x5c20fb);
         $(".progress-bar-coins").text(_0x5c20fb);
-        accountRessources.coins = _0x3ea76f;
+        accountRessources.coins = coins;
     }
 }
 
 function _0x2bb62d(level, xp) {
     var _0x1d75bb;
-    if (!(0 == level && 0 == xp)) {
+    if (accountRessources.level != level || accountRessources.xp != xp) {
         _0x1d75bb = level <= 0 ? 0 : Math.min(100 * xp / (1000 * level), 100);
         $(".progress-bar").css("width", _0x1d75bb.toString() + "%");
         $(".exp-bar").text(~~_0x1d75bb + "%");
-        if (0 != level) {
+        if (accountRessources.level != level) {
             (_0x1d75bb = $("#level,#level2")).text(level);
             if (50 <= level) {
                 _0x1d75bb.css("background", "linear-gradient(to bottom, #e37655 50%, #d66249 50%)");
