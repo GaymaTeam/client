@@ -7695,10 +7695,7 @@ function _0x5b3bf2() {
     }
 }
 
-let gotSkins = false;
 function _0x4b2336() {
-    if (gotSkins) return;
-    gotSkins = true;
     if (isReady()) {
         sendSignal(115);
     } else if (0 < skins.length) {
