@@ -7634,6 +7634,8 @@ function _0x39d606(_0x95fcf3) {
     _0x21b7ee($(5 == (_0x95fcf3 = _0x95fcf3) ? "#skinsOwned" : 4 == _0x95fcf3 ? "#skinsCustom" : 3 == _0x95fcf3 ? "#skinsVIP" : 2 == _0x95fcf3 ? "#skinsBuy" : 1 == _0x95fcf3 ? "#skinsLevel" : "#skinsFree"));
 }
 
+// NOTE: those shitty apis (skins.php and wearables.php) takes ages to respond (~800ms)
+//       just to return code that can be generated client side
 function _0x2aa794() {
     _0x58e393();
     const activeTab = $("#skinsOwnedTab").hasClass("active") ? 5 : $("#skinsCustomTab").hasClass("active") ? 4 : $("#skinsVIPTab").hasClass("active") ? 3 : $("#skinsBuyTab").hasClass("active") ? 2 : $("#skinsLevelTab").hasClass("active") ? 1 : 0;
