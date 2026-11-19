@@ -5951,50 +5951,64 @@ function wsOnMessage(_0x2ba470) {
             var _0x5bff26 = !!(8 & _0x3626db);
             var _0x311374 = !!(16 & _0x3626db);
             var _0x2f2313 = pkt.getUint16();
-            var _0x469523 = pkt.getUint32();
-            var _0x49adef = pkt.getUint32();
-            var _0x1711bf = pkt.getUint32();
-            var _0x2581c0 = pkt.getUint32();
-            var _0x536dbe = pkt.getUint32();
-            var _0x3b0d92 = pkt.getUint32();
-            var _0x184d89 = pkt.getUint16();
-            var _0x5180de = 0;
-            if (128 & _0x3626db) {
-                _0x5180de = pkt.getUint16();
-            }
-            var _0x5381b4 = pkt.getUint32();
-            var _0x3a4da8 = pkt.getUint32();
-            var _0x3988b2 = pkt.getUint32();
-            var _0x1124f6 = pkt.getUint32();
-            var _0x24a818 = pkt.getUint32();
-            var _0x3884cc = pkt.getUint32();
+            const powerRecombineNewAmount = pkt.getUint32();
+            const powerSpeedNewAmount = pkt.getUint32();
+            const powerGrowthNewAmount = pkt.getUint32();
+            const powerSpawnVirusNewAmount = pkt.getUint32();
+            const powerSpawnMothercellNewAmount = pkt.getUint32();
+            const powerSpawnPortalNewAmount = pkt.getUint32();
+            const powerSpawnGoldOreNewAmount = pkt.getUint16();
+            const powerWallNewAmount = 128 & _0x3626db ? pkt.getUint16() : 0;
+            const power360ShotNewAmount = pkt.getUint32();
+            const powerFreezeNewAmount = pkt.getUint32();
+            const powerAntiFreezeNewAmount = pkt.getUint32();
+            const powerAntiRecombineNewAmount = pkt.getUint32();
+            const powerFrozenVirusNewAmount = pkt.getUint32();
+            const powerShieldNewAmount = pkt.getUint32();
             var _0x2712a9 = pkt.getUint32();
             var _0x191e79 = pkt.getUint32();
-            var _0x26baf3 = _0x273de7 != _0x469523 || _0x852ff != _0x49adef || _0x38ea95 != _0x1711bf || _0x576526 != _0x2581c0 || _0x2873c2 != _0x536dbe || _0x4512d9 != _0x3b0d92 || _0x29f86a != _0x184d89 || _0x52d414 != _0x5180de || _0x11de32 != _0x5381b4 || _0x3c6854 != _0x3a4da8 || _0x5a5860 != _0x3988b2 || _0x5ea511 != _0x1124f6 || _0x31962a != _0x24a818 || _0x3884cc != _0xb1583e || _0x53176c != _0x571f96 || _0x52da56 != _0x5bff26 || _0x11c29c != _0x311374;
             _0x53176c = _0x571f96;
             _0x43802f = _0x2e4161;
             _0x506037 = _0x31ab56;
             _0x52da56 = _0x5bff26;
             _0x11c29c = _0x311374;
             _0x30bfdb = _0x2f2313;
-            if (_0x26baf3) {
-                _0x273de7 = _0x469523;
-                _0x852ff = _0x49adef;
-                _0x38ea95 = _0x1711bf;
-                _0x576526 = _0x2581c0;
-                _0x2873c2 = _0x536dbe;
-                _0x4512d9 = _0x3b0d92;
-                _0x29f86a = _0x184d89;
-                _0x52d414 = _0x5180de;
-                if (0 == (_0x11de32 = _0x5381b4) && 1 == _0x47ccce) {
+            if (
+                _0x273de7 != powerRecombineNewAmount ||
+                _0x852ff != powerSpeedNewAmount ||
+                _0x38ea95 != powerGrowthNewAmount ||
+                _0x576526 != powerSpawnVirusNewAmount ||
+                _0x2873c2 != powerSpawnMothercellNewAmount ||
+                _0x4512d9 != powerSpawnPortalNewAmount ||
+                _0x29f86a != powerSpawnGoldOreNewAmount ||
+                _0x52d414 != powerWallNewAmount ||
+                _0x11de32 != power360ShotNewAmount ||
+                _0x3c6854 != powerFreezeNewAmount ||
+                _0x5a5860 != powerAntiFreezeNewAmount ||
+                _0x5ea511 != powerAntiRecombineNewAmount ||
+                _0x31962a != powerFrozenVirusNewAmount ||
+                _0xb1583e != powerShieldNewAmount ||
+                _0x53176c != _0x571f96 ||
+                _0x52da56 != _0x5bff26 ||
+                _0x11c29c != _0x311374
+            ) {
+                _0x273de7 = powerRecombineNewAmount;
+                _0x852ff = powerSpeedNewAmount;
+                _0x38ea95 = powerGrowthNewAmount;
+                _0x576526 = powerSpawnVirusNewAmount;
+                _0x2873c2 = powerSpawnMothercellNewAmount;
+                _0x4512d9 = powerSpawnPortalNewAmount;
+                _0x29f86a = powerSpawnGoldOreNewAmount;
+                _0x52d414 = powerWallNewAmount;
+                if (0 == (_0x11de32 = power360ShotNewAmount) && 1 == _0x47ccce) {
                     _0x47ccce = 0;
                     $("#inv360Shot").removeClass("activatedInv");
                 }
-                _0x3c6854 = _0x3a4da8;
-                _0x5a5860 = _0x3988b2;
-                _0x5ea511 = _0x1124f6;
-                _0xb1583e = _0x3884cc;
-                if (0 == (_0x31962a = _0x24a818) && 3 == _0x47ccce) {
+                _0x3c6854 = powerFreezeNewAmount;
+                _0x5a5860 = powerAntiFreezeNewAmount;
+                _0x5ea511 = powerAntiRecombineNewAmount;
+                _0xb1583e = powerShieldNewAmount;
+                if (0 == (_0x31962a = powerFrozenVirusNewAmount) && 3 == _0x47ccce) {
                     _0x47ccce = 0;
                     $("#invFrozenVirus").removeClass("activatedInv");
                 }
