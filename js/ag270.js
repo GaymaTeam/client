@@ -6066,25 +6066,35 @@ function wsOnMessage(_0x2ba470) {
         case 87:
             isPartyLeader = pkt.getUint8();
             break;
-        case 88:
-            var _0x571f96 = pkt.getString();
-            var _0x2e4161 = !!(2 & (flags = pkt.getUint16()));
-            var _0x31ab56 = 4 & flags ? 1 : 8 & flags ? 2 : 0;
-            var _0x5bff26 = !!(1 & flags);
-            var _0x311374 = 16 & flags ? 1 : 32 & flags ? 2 : 64 & flags ? 3 : 128 & flags ? 4 : 256 & flags ? 5 : 512 & flags ? 6 : 0;
-            var _0x2f2313 = !!(1024 & flags);
-            var _0x26baf3 = pkt.getUint16();
-            var _0x469523 = pkt.getUint16();
-            var _0x49adef = pkt.getUint32();
-            var _0x1711bf = pkt.getUint16();
+        case 88: {
+            const username = pkt.getString();
+            const flags = pkt.getUint16();
+            const goldMember = !!(2 & flags);
+            var authority = 4 & flags ? 1 : 8 & flags ? 2 : 0;
+            const youtuber = !!(1 & flags);
+            const donatorIcon = (
+                16 & flags ? 'super' :
+                32 & flags ? 'legendary' :
+                64 & flags ? 'hot' :
+                128 & flags ? 'black' :
+                256 & flags ? 'black2' :
+                512 & flags ? 'valentines' :
+                ''
+            );
+            const profileHidden = !!(1024 & flags);
+            const level = pkt.getUint16();
+            const nicknameColorIndex = pkt.getUint16();
+            const rank = pkt.getUint32();
+            const skindId = pkt.getUint16();
             swal({
-                title: `<img src="${_0x1711bf ? `skins/${_0x1711bf}_lo.png?u=${_0x48a780[_0x1711bf] || 0}` : "img/userprofile.png"}" width="64" height="64" style="border-radius:50%;"><br><br><span style="${_0x5bff26 ? "color:#f22;" : _0x469523 ? "color:" + nicknameColors[_0x469523] : ''}">${_0x571f96}</span><span style="display:block; margin:-10px 0px 15px; font-size:12px; line-height:normal;">${_0x2f2313 ? '<br><span style="padding:2px 5px; font-size:10px; background:#999; color:#000; border-radius:10px;">Hidden</span><br>' : ''}${_0x31ab56 ? '<br><span style="color:#f9f;">&#9734;&#9734; Staff &#9734;&#9734;</span>' : ''}${_0x5bff26 ? '<br><span style="color:#f22;">&#9734;&#9734; YouTuber &#9734;&#9734;</span>' : ''}${_0x2e4161 ? '<br><span style="color:#ffa;">&#9734;&#9734; Gold Member &#9734;&#9734;</span>' : ''}${_0x311374 ? `<br><span style="color:#4f4;">&#9734;&#9734; <img src="img/navpage/${1 === _0x311374 ? "super" : 6 === _0x311374 ? "valentines" : 5 === _0x311374 ? "black2" : 4 === _0x311374 ? "black" : 2 === _0x311374 ? "legendary" : "hot"}_donator_ico.png" width="16" height="16"> Donator &#9734;&#9734;</span>` : ''}</span>`,
-                text: `<span style="color:#ffa;"><br>Level: ${_0x26baf3}<br>Rank: ${50000 < _0x49adef ? ">50000" : _0x49adef}<br><br></span>`,
+                title: `<img src="${skindId ? `skins/${skindId}_lo.png?u=${_0x48a780[skindId] || 0}` : "img/userprofile.png"}" width="64" height="64" style="border-radius:50%;"><br><br><span style="${youtuber ? "color:#f22;" : nicknameColorIndex ? "color:" + nicknameColors[nicknameColorIndex] : ''}">${username}</span><span style="display:block; margin:-10px 0px 15px; font-size:12px; line-height:normal;">${profileHidden ? '<br><span style="padding:2px 5px; font-size:10px; background:#999; color:#000; border-radius:10px;">Hidden</span><br>' : ''}${authority ? '<br><span style="color:#f9f;">&#9734;&#9734; Staff &#9734;&#9734;</span>' : ''}${youtuber ? '<br><span style="color:#f22;">&#9734;&#9734; YouTuber &#9734;&#9734;</span>' : ''}${goldMember ? '<br><span style="color:#ffa;">&#9734;&#9734; Gold Member &#9734;&#9734;</span>' : ''}${donatorIcon ? `<br><span style="color:#4f4;">&#9734;&#9734; <img src="img/navpage/${donatorIcon}_donator_ico.png" width="16" height="16"> Donator &#9734;&#9734;</span>` : ''}</span>`,
+                text: `<span style="color:#ffa;"><br>Level: ${level}<br>Rank: ${50000 < rank ? ">50000" : rank}<br><br></span>`,
                 type: '',
-                customClass: _0x2e4161 ? "swal-title-gold" : "swal-title-white",
+                customClass: goldMember ? "swal-title-gold" : "swal-title-white",
                 html: true
             });
             break;
+        }
         case 89:
             var _0x5e72c3 = pkt.getString();
             var _0x280d4d = !!(1 & (flags = pkt.getUint8()));
