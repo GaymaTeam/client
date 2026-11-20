@@ -4,6 +4,8 @@
 // FIXME: user settings arent saved to storage
 
 const FRAMERATE = 1000 / 60;
+const BACKGROUND_DARK = { r: 17, g: 17, b: 17 };
+const BACKGROUND_WHITE = { r: 242, g: 251, b: 255 };
 const gameSettings = Object.assign({
     version:                2,
     nickname:               '',
@@ -57,6 +59,49 @@ const gameSettings = Object.assign({
     sMobileLeft:            false,
     sMobileFeedLock:        true
 }, window.localStorage.settings ? JSON.parse(window.localStorage.settings) : {});
+
+const defaultHotkeys = {
+    Space: { c: 32, d: "SPACE" },
+    W:     { c: 87, d: "W" },
+    V:     { c: 86, d: "V" },
+    Z:     { c: 90, d: "Z" },
+    F:     { c: 70, d: "F" },
+    Q:     { c: 81, d: "Q" },
+    E:     { c: 69, d: "E" },
+    S:     { c: 83, d: "S" },
+    A:     { c: 65, d: "A" },
+    X:     { c: 88, d: "X" },
+    I:     { c: 73, d: "I" },
+    C:     { c: 67, d: "C" },
+    D:     { c: 68, d: "D" },
+    T:     { c: 84, d: "T" },
+    M:     { c: 77, d: "M" },
+    W360:  { c: 87, d: "W" },
+    DW:    { c: 66, d: "B" }
+};
+let hotkeys = Object.assign(defaultHotkeys, window.localStorage.hotkeys ? JSON.parse(window.localStorage.hotkeys) : {});
+
+const idToHotkey = {
+    'keySplit':             'Space',
+    'keyDoubleSplit':       'D',
+    'keyTripleSplit':       'T',
+    'keyRespawn':           'M',
+    'keyMacroSplit':        'Z',
+    'keyMacroFeed':         'W',
+    'keyMultiFeed':         'V',
+    'keyFixedMouse':        'C',
+    'keyToggleCamera':      'Q',
+    'keyFreezeCamera':      'F',
+    'keyRecombine':         'E',
+    'keySpeed':             'S',
+    'key360':               'W360',
+    'keyFreezeSelf':        'F',
+    'keyInvisibility':      'I',
+    'keyToggleControlBots': 'Q',
+    'keySplitBots':         'A',
+    'keyFeedBots':          'X',
+    'keyDropWall':          'DW'
+};
 
 const objectsApiVersion = 2;
 const wearablesApiVersion = 9;
@@ -322,13 +367,7 @@ window.onload = function() {
     $("#cBubbleCells").prop("checked", gameSettings.sBubbleCells).change();
     $("#oGraphics").val(gameSettings.sGraphics).change();
     canEditGameSettings = true;
-    (() => {
-        var _0xde8d5d;
-        if (window.localStorage.hotkeys && (undefined !== (_0xde8d5d = JSON.parse(window.localStorage.hotkeys)).Space && (_0x3569f8.Space = _0xde8d5d.Space), undefined !== _0xde8d5d.W && (_0x3569f8.W = _0xde8d5d.W), undefined !== _0xde8d5d.V && (_0x3569f8.V = _0xde8d5d.V), undefined !== _0xde8d5d.Z && (_0x3569f8.Z = _0xde8d5d.Z), undefined !== _0xde8d5d.F && (_0x3569f8.F = _0xde8d5d.F), undefined !== _0xde8d5d.Q && (_0x3569f8.Q = _0xde8d5d.Q), undefined !== _0xde8d5d.E && (_0x3569f8.E = _0xde8d5d.E), undefined !== _0xde8d5d.S && (_0x3569f8.S = _0xde8d5d.S), undefined !== _0xde8d5d.A && (_0x3569f8.A = _0xde8d5d.A), undefined !== _0xde8d5d.X && (_0x3569f8.X = _0xde8d5d.X), undefined !== _0xde8d5d.I && (_0x3569f8.I = _0xde8d5d.I), undefined !== _0xde8d5d.C && (_0x3569f8.C = _0xde8d5d.C), undefined !== _0xde8d5d.D && (_0x3569f8.D = _0xde8d5d.D), undefined !== _0xde8d5d.T && (_0x3569f8.T = _0xde8d5d.T), undefined !== _0xde8d5d.M && (_0x3569f8.M = _0xde8d5d.M), undefined !== _0xde8d5d.W360 && (_0x3569f8.W360 = _0xde8d5d.W360), undefined !== _0xde8d5d.DW)) {
-            _0x3569f8.DW = _0xde8d5d.DW;
-        }
-        _0x3b71b7();
-    })();
+    setHotkeysDisplays();
     _0x11c620();
     ((_0x116508, _0x2ae0ae, _0x3958df) => {
         function _0x2f0e62() {
@@ -827,56 +866,35 @@ window.onload = function() {
     window.addEventListener("click", _0x1c81ac, true);
     window.addEventListener("change", _0x11d4f6, true);
     window.addEventListener("mousedown", function(_0x38b092) {
-        if (!(!_0xf6ede0 || $(_0x38b092.target).hasClass("hotkey-input") && $(_0x38b092.target).hasClass("selected"))) {
-            _0x4204cb();
+        if (!(!selectedHotkey || $(_0x38b092.target).hasClass("hotkey-input") && $(_0x38b092.target).hasClass("selected"))) {
+            unselectHotkeyChange();
         }
     }, true);
     window.addEventListener("keydown", function(_0x5f057a) {
         var _0xd60e14;
-        var _0x83c4c2;
+        var hotkey;
         var _0x572def;
         if (!(undefined !== _0x5f057a.isTrusted && !_0x5f057a.isTrusted)) {
             _0x36acf7 = _0x5f057a.keyCode;
         }
-        if (_0xf6ede0) {
+        if (selectedHotkey) {
             _0xd60e14 = _0x5f057a;
-            if (!(!_0xf6ede0 || _0x3e08c0 && $("#settingPage2").is(":visible"))) {
-                _0x4204cb();
+            if (!(!selectedHotkey || _0x3e08c0 && $("#settingPage2").is(":visible"))) {
+                unselectHotkeyChange();
             }
-            if (_0xf6ede0) {
+            if (selectedHotkey) {
                 if (13 == _0xd60e14.keyCode || 27 == _0xd60e14.keyCode) {
-                    _0x4204cb();
-                } else if (_0x83c4c2 = (
-                    "keySplit"             == _0xf6ede0.id ? _0x3569f8.Space :
-                    "keyDoubleSplit"       == _0xf6ede0.id ? _0x3569f8.D :
-                    "keyTripleSplit"       == _0xf6ede0.id ? _0x3569f8.T :
-                    "keyRespawn"           == _0xf6ede0.id ? _0x3569f8.M :
-                    "keyMacroSplit"        == _0xf6ede0.id ? _0x3569f8.Z :
-                    "keyMacroFeed"         == _0xf6ede0.id ? _0x3569f8.W :
-                    "keyMultiFeed"         == _0xf6ede0.id ? _0x3569f8.V :
-                    "keyFixedMouse"        == _0xf6ede0.id ? _0x3569f8.C :
-                    "keyToggleCamera"      == _0xf6ede0.id ? _0x3569f8.Q :
-                    "keyFreezeCamera"      == _0xf6ede0.id ? _0x3569f8.F :
-                    "keyRecombine"         == _0xf6ede0.id ? _0x3569f8.E :
-                    "keySpeed"             == _0xf6ede0.id ? _0x3569f8.S :
-                    "key360"               == _0xf6ede0.id ? _0x3569f8.W360 :
-                    "keyFreezeSelf"        == _0xf6ede0.id ? _0x3569f8.F :
-                    "keyInvisibility"      == _0xf6ede0.id ? _0x3569f8.I :
-                    "keyToggleControlBots" == _0xf6ede0.id ? _0x3569f8.Q :
-                    "keySplitBots"         == _0xf6ede0.id ? _0x3569f8.A :
-                    "keyFeedBots"          == _0xf6ede0.id ? _0x3569f8.X :
-                    "keyDropWall"          == _0xf6ede0.id ? _0x3569f8.DW :
-                    null
-                )) {
-                    _0x83c4c2.c = _0xd60e14.keyCode;
-                    _0x83c4c2.d = _0x5f2da0[_0xd60e14.keyCode] || _0xd60e14.key || '';
-                    (_0x572def = _0x58bb5b(_0xf6ede0)).addClass("updated");
+                    unselectHotkeyChange();
+                } else if (hotkey = hotkeys[idToHotkey[selectedHotkey.id]]) {
+                    hotkey.c = _0xd60e14.keyCode;
+                    hotkey.d = _0x5f2da0[_0xd60e14.keyCode] || _0xd60e14.key || '';
+                    (_0x572def = _0x58bb5b(selectedHotkey)).addClass("updated");
                     setTimeout(function() {
                         _0x572def.removeClass("updated");
                     }, 50);
-                    _0x3b71b7();
-                    _0x554f52();
-                    _0x4204cb();
+                    setHotkeysDisplays();
+                    saveHotkeys();
+                    unselectHotkeyChange();
                 }
             }
             _0x5f057a.stopImmediatePropagation();
@@ -887,7 +905,7 @@ window.onload = function() {
             var _0x5ad31e;
             var _0xb8b260 = Date.now();
             if (!_0x3e08c0) {
-                if (_0x244728.keyCode == _0x3569f8.Space.c && !_0x3b6c7d && _0x12210f <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.Space.c && !_0x3b6c7d && _0x12210f <= _0xb8b260 - 50) {
                     if (!_0x244728.isTrusted) {
                         return false;
                     }
@@ -895,31 +913,31 @@ window.onload = function() {
                     _0x3d0428(1);
                     _0x3b6c7d = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.W.c && (_0x47ccce || !_0x15ba70) && _0x2a2619 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.W.c && (_0x47ccce || !_0x15ba70) && _0x2a2619 <= _0xb8b260 - 50) {
                     if (1 != multiEjectCells && (multiEjectCells = 1, isReady())) {
                         new PacketWriter(2).setUint8(180).setUint8(multiEjectCells).send();
                     }
                     _0x2a2619 = _0xb8b260;
-                    if (1 == _0x47ccce && _0x3569f8.W.c != _0x3569f8.W360.c) {
+                    if (1 == _0x47ccce && hotkeys.W.c != hotkeys.W360.c) {
                         _0x465950(1, true);
                     }
                     _0x580067();
                     sendSignal(21);
                     _0x15ba70 = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.V.c && (_0x47ccce || !_0x15ba70) && _0x2a2619 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.V.c && (_0x47ccce || !_0x15ba70) && _0x2a2619 <= _0xb8b260 - 50) {
                     if ((multiEjectCells != multiEjectCellsAmountChosen || multiEjectServerChanged) && (multiEjectServerChanged = false, multiEjectCells = multiEjectCellsAmountChosen, isReady())) {
                         new PacketWriter(2).setUint8(180).setUint8(multiEjectCells).send();
                     }
                     _0x2a2619 = _0xb8b260;
-                    if (1 == _0x47ccce && _0x3569f8.V.c != _0x3569f8.W360.c) {
+                    if (1 == _0x47ccce && hotkeys.V.c != hotkeys.W360.c) {
                         _0x465950(1, true);
                     }
                     _0x580067();
                     sendSignal(21);
                     _0x15ba70 = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.Z.c && !_0x24ef11 && _0x3d1664 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.Z.c && !_0x24ef11 && _0x3d1664 <= _0xb8b260 - 50) {
                     if (!_0x244728.isTrusted) {
                         return false;
                     }
@@ -928,59 +946,59 @@ window.onload = function() {
                     sendSignal(37);
                     _0x24ef11 = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.F.c && !_0xad8aa9 && _0x5717ed <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.F.c && !_0xad8aa9 && _0x5717ed <= _0xb8b260 - 50) {
                     _0x5717ed = _0xb8b260;
                     sendSignal(35);
                     _0xad8aa9 = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.Q.c && !_0x38584f && _0x1374cb <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.Q.c && !_0x38584f && _0x1374cb <= _0xb8b260 - 50) {
                     _0x1374cb = _0xb8b260;
                     sendSignal(18);
                     _0x38584f = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.E.c && !_0x2bf6bb && _0x40d597 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.E.c && !_0x2bf6bb && _0x40d597 <= _0xb8b260 - 50) {
                     _0x40d597 = _0xb8b260;
                     sendSignal(30);
                     _0x2bf6bb = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.S.c && !_0x13ad94 && _0x449184 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.S.c && !_0x13ad94 && _0x449184 <= _0xb8b260 - 50) {
                     _0x449184 = _0xb8b260;
                     sendSignal(31);
                     _0x13ad94 = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.A.c && !_0x5a26dc && _0x4a16be <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.A.c && !_0x5a26dc && _0x4a16be <= _0xb8b260 - 50) {
                     _0x4a16be = _0xb8b260;
                     _0x580067();
                     sendSignal(32);
                     _0x5a26dc = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.X.c && !_0x4ae953 && _0x575e12 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.X.c && !_0x4ae953 && _0x575e12 <= _0xb8b260 - 50) {
                     _0x575e12 = _0xb8b260;
                     _0x580067();
                     sendSignal(39);
                     _0x4ae953 = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.I.c && !_0x23f8db && _0x451003 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.I.c && !_0x23f8db && _0x451003 <= _0xb8b260 - 50) {
                     _0x451003 = _0xb8b260;
                     sendSignal(28);
                     _0x23f8db = true;
                 }
-                if (!(_0x244728.keyCode != _0x3569f8.C.c || isMouseFixed)) {
+                if (!(_0x244728.keyCode != hotkeys.C.c || isMouseFixed)) {
                     mouseFixedX = _0x28fccb;
                     mouseFixedY = _0x4bd57d;
                     isMouseFixed = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.D.c && !_0x16195f && _0x27d666 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.D.c && !_0x16195f && _0x27d666 <= _0xb8b260 - 50) {
                     _0x27d666 = _0xb8b260;
                     _0x3d0428(2);
                     _0x16195f = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.T.c && !_0x1f5d9c && _0x10d51e <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.T.c && !_0x1f5d9c && _0x10d51e <= _0xb8b260 - 50) {
                     _0x10d51e = _0xb8b260;
                     _0x3d0428(3);
                     _0x1f5d9c = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.W360.c && !_0x1c4ea8 && _0x4d3e60 <= _0xb8b260 - 50 && !_0x15ba70 && _0x3569f8.W.c != _0x3569f8.W360.c) {
+                if (_0x244728.keyCode == hotkeys.W360.c && !_0x1c4ea8 && _0x4d3e60 <= _0xb8b260 - 50 && !_0x15ba70 && hotkeys.W.c != hotkeys.W360.c) {
                     _0x4d3e60 = _0xb8b260;
                     if (1 != _0x47ccce) {
                         _0x465950(1, true);
@@ -992,7 +1010,7 @@ window.onload = function() {
                     }
                     _0x1c4ea8 = true;
                 }
-                if (_0x244728.keyCode == _0x3569f8.DW.c && !_0x1f7f29 && _0x440cd8 <= _0xb8b260 - 50) {
+                if (_0x244728.keyCode == hotkeys.DW.c && !_0x1f7f29 && _0x440cd8 <= _0xb8b260 - 50) {
                     _0x440cd8 = _0xb8b260;
                     if (_0x181957 && _0x19bc6d) {
                         _0x492dec();
@@ -1010,13 +1028,13 @@ window.onload = function() {
                     _0x1f7f29 = true;
                 }
                 if (arrayOfKeyCodes.includes(_0x244728.keyCode)) {
-                    for (var _0x152558 in _0x3569f8)
-                        if (_0x244728.keyCode == _0x3569f8[_0x152558].c && -1 < arrayOfKeyCodes.indexOf(_0x3569f8[_0x152558].c)) {
-                            arrayOfKeyCodes.splice(arrayOfKeyCodes.indexOf(_0x3569f8[_0x152558].c), 1);
+                    for (const i in hotkeys)
+                        if (_0x244728.keyCode == hotkeys[i].c && -1 < arrayOfKeyCodes.indexOf(hotkeys[i].c)) {
+                            arrayOfKeyCodes.splice(arrayOfKeyCodes.indexOf(hotkeys[i].c), 1);
                         }
                 }
             }
-            if (_0x244728.keyCode == _0x3569f8.M.c && !_0x4ad9fe && _0x415203 <= _0xb8b260 - 50 && (!_0x3e08c0 || ("INPUT" != _0x244728.target.tagName || "checkbox" == _0x244728.target.type) && "TEXTAREA" != _0x244728.target.tagName && "SELECT" != _0x244728.target.tagName && 0 == $("div.modal.in:visible").length)) {
+            if (_0x244728.keyCode == hotkeys.M.c && !_0x4ad9fe && _0x415203 <= _0xb8b260 - 50 && (!_0x3e08c0 || ("INPUT" != _0x244728.target.tagName || "checkbox" == _0x244728.target.type) && "TEXTAREA" != _0x244728.target.tagName && "SELECT" != _0x244728.target.tagName && 0 == $("div.modal.in:visible").length)) {
                 _0x415203 = _0xb8b260;
                 if (!_0x244728.isTrusted) {
                     return false;
@@ -1090,35 +1108,35 @@ window.onload = function() {
         _0x36acf7 = 0;
     };
     window.onkeyup = function(_0xe5126b) {
-        if (_0xe5126b.keyCode == _0x3569f8.Space.c) _0x3b6c7d = false;
-        if (_0xe5126b.keyCode == _0x3569f8.W.c && _0x15ba70) {
+        if (_0xe5126b.keyCode == hotkeys.Space.c) _0x3b6c7d = false;
+        if (_0xe5126b.keyCode == hotkeys.W.c && _0x15ba70) {
             sendSignal(36);
             _0x15ba70 = false;
         }
-        if (_0xe5126b.keyCode == _0x3569f8.V.c && _0x15ba70) {
+        if (_0xe5126b.keyCode == hotkeys.V.c && _0x15ba70) {
             sendSignal(36);
             _0x15ba70 = false;
         }
-        if (_0xe5126b.keyCode == _0x3569f8.Z.c && _0x24ef11) {
+        if (_0xe5126b.keyCode == hotkeys.Z.c && _0x24ef11) {
             sendSignal(38);
             _0x24ef11 = false;
         }
-        if (_0xe5126b.keyCode == _0x3569f8.F.c) _0xad8aa9 = false;
-        if (_0xe5126b.keyCode == _0x3569f8.Q.c) _0x38584f = false;
-        if (_0xe5126b.keyCode == _0x3569f8.E.c) _0x2bf6bb = false;
-        if (_0xe5126b.keyCode == _0x3569f8.S.c) _0x13ad94 = false;
-        if (_0xe5126b.keyCode == _0x3569f8.A.c) _0x5a26dc = false;
-        if (_0xe5126b.keyCode == _0x3569f8.X.c && _0x4ae953) {
+        if (_0xe5126b.keyCode == hotkeys.F.c) _0xad8aa9 = false;
+        if (_0xe5126b.keyCode == hotkeys.Q.c) _0x38584f = false;
+        if (_0xe5126b.keyCode == hotkeys.E.c) _0x2bf6bb = false;
+        if (_0xe5126b.keyCode == hotkeys.S.c) _0x13ad94 = false;
+        if (_0xe5126b.keyCode == hotkeys.A.c) _0x5a26dc = false;
+        if (_0xe5126b.keyCode == hotkeys.X.c && _0x4ae953) {
             sendSignal(40);
             _0x4ae953 = false;
         }
-        if (_0xe5126b.keyCode == _0x3569f8.I.c) _0x23f8db = false;
-        if (_0xe5126b.keyCode == _0x3569f8.C.c && isMouseFixed) _0x580067(!(isMouseFixed = false));
-        if (_0xe5126b.keyCode == _0x3569f8.D.c) _0x16195f = false;
-        if (_0xe5126b.keyCode == _0x3569f8.T.c) _0x1f5d9c = false;
-        if (_0xe5126b.keyCode == _0x3569f8.M.c) _0x4ad9fe = false;
-        if (_0xe5126b.keyCode == _0x3569f8.W360.c) _0x1c4ea8 = false;
-        if (_0xe5126b.keyCode == _0x3569f8.DW.c) _0x1f7f29 = false;
+        if (_0xe5126b.keyCode == hotkeys.I.c) _0x23f8db = false;
+        if (_0xe5126b.keyCode == hotkeys.C.c && isMouseFixed) _0x580067(!(isMouseFixed = false));
+        if (_0xe5126b.keyCode == hotkeys.D.c) _0x16195f = false;
+        if (_0xe5126b.keyCode == hotkeys.T.c) _0x1f5d9c = false;
+        if (_0xe5126b.keyCode == hotkeys.M.c) _0x4ad9fe = false;
+        if (_0xe5126b.keyCode == hotkeys.W360.c) _0x1c4ea8 = false;
+        if (_0xe5126b.keyCode == hotkeys.DW.c) _0x1f7f29 = false;
     };
     window.onblur = function() {
         if (_0x15ba70) sendSignal(36);
@@ -2449,7 +2467,7 @@ function _0x13d7e0() {
         _0x522c0e();
         isMouseFixed = _0x11c29c = _0x52da56 = _0x506037 = _0x43802f = _0x53176c = !(_0x568853 = -1);
         server360ShotEnabled = true;
-        _0x47ccce = _0x11de32 = _0x52d414 = _0x29f86a = _0x4512d9 = _0x2873c2 = _0x576526 = _0x38ea95 = _0x852ff = _0x273de7 = _0x30bfdb = _0x4a4cf7 = _0x24af02 = _0x3b8888 = lastSpawn = _0x5a219c = 0;
+        _0x47ccce = _0x11de32 = _0x52d414 = _0x29f86a = _0x4512d9 = _0x2873c2 = _0x576526 = _0x38ea95 = _0x852ff = _0x273de7 = _0x30bfdb = _0x4a4cf7 = _0x24af02 = topMass = lastSpawn = _0x5a219c = 0;
         $(".inventory-box").removeClass("activatedInv");
         _0x37e4a8 = _0xb1583e = _0x31962a = _0x5ea511 = _0x5a5860 = _0x3c6854 = 0;
         isSpectating = _0x2c99f2 = isPartyLeader = _0x1ec523 = !(currentParty = []);
@@ -3150,43 +3168,27 @@ function _0x215896() {
             } else {
                 if (_0x5db90e) {
                     gameCtx.lineWidth = 1 / currentZoom;
-                    var _0x4da7fc = {
-                        r: 17,
-                        g: 17,
-                        b: 17
-                    };
-                    var _0x1f0f3e = {
-                        r: 242,
-                        g: 251,
-                        b: 255
-                    };
-                    var _0x52da49 = {
-                        r: 170,
-                        g: 170,
-                        b: 170
-                    };
-                    var _0x20488f = {
-                        r: 0,
-                        g: 0,
-                        b: 0
-                    };
                     var _0xccf34 = Math.min(0.25 * Math.max(currentZoom * _0x358119 - 0.05, 0), 0.3);
-                    var _0x1bc408 = gameSettings.sCustomBackEnableColor ? customBackgroundColor : gameSettings.sDark ? _0x4da7fc : _0x1f0f3e;
-                    var _0x90bd87 = gameSettings.sDark ? _0x52da49 : _0x20488f;
-                    gameCtx.strokeStyle = rgbToHex(~~(_0x1bc408.r + (_0x90bd87.r - _0x1bc408.r) * _0xccf34), ~~(_0x1bc408.g + (_0x90bd87.g - _0x1bc408.g) * _0xccf34), ~~(_0x1bc408.b + (_0x90bd87.b - _0x1bc408.b) * _0xccf34));
+                    var _0x1bc408 = gameSettings.sCustomBackEnableColor ? customBackgroundColor : gameSettings.sDark ? BACKGROUND_DARK : BACKGROUND_WHITE;
+                    var _0x90bd87 = gameSettings.sDark ? { r: 170, g: 170, b: 170 } : { r: 0, g: 0, b: 0 };
+                    gameCtx.strokeStyle = rgbToHex(
+                        ~~(_0x1bc408.r + (_0x90bd87.r - _0x1bc408.r) * _0xccf34),
+                        ~~(_0x1bc408.g + (_0x90bd87.g - _0x1bc408.g) * _0xccf34),
+                        ~~(_0x1bc408.b + (_0x90bd87.b - _0x1bc408.b) * _0xccf34)
+                    );
                     gameCtx.save();
                     gameCtx.scale(currentZoom, currentZoom);
                     var _0x31da46 = clientWidth / currentZoom;
                     var _0x3c5dfa = clientHeight / currentZoom;
                     var _0x4f95d4 = 200 * _0x243b5e;
                     gameCtx.beginPath();
-                    for (let _0x4d7c46 = (_0x2263d7 - viewX) % _0x4f95d4; _0x4d7c46 < _0x31da46; _0x4d7c46 += _0x4f95d4) {
-                        gameCtx.moveTo(_0x4d7c46, 0);
-                        gameCtx.lineTo(_0x4d7c46, _0x3c5dfa);
+                    for (let x = (_0x2263d7 - viewX) % _0x4f95d4; x < _0x31da46; x += _0x4f95d4) {
+                        gameCtx.moveTo(x, 0);
+                        gameCtx.lineTo(x, _0x3c5dfa);
                     }
-                    for (let _0x5d93ae = (_0x223539 - viewY) % _0x4f95d4; _0x5d93ae < _0x3c5dfa; _0x5d93ae += _0x4f95d4) {
-                        gameCtx.moveTo(0, _0x5d93ae);
-                        gameCtx.lineTo(_0x31da46, _0x5d93ae);
+                    for (let y = (_0x223539 - viewY) % _0x4f95d4; y < _0x3c5dfa; y += _0x4f95d4) {
+                        gameCtx.moveTo(0, y);
+                        gameCtx.lineTo(_0x31da46, y);
                     }
                     gameCtx.stroke();
                     gameCtx.restore();
@@ -3194,16 +3196,6 @@ function _0x215896() {
             }
         }
     }
-    var _0x2b9f9d = {
-        r: 17,
-        g: 17,
-        b: 17
-    };
-    var _0x214596 = {
-        r: 242,
-        g: 251,
-        b: 255
-    };
     gameCtx.lineCap = "round";
     gameCtx.save();
     if (mapInfos.draw && (_0x4f401c(currentFrameTime), _0x25fdfa = mapInfos.top > viewY - _0x223539 || mapInfos.right < viewX + _0x2263d7 || mapInfos.bottom < viewY + _0x223539 || mapInfos.left > viewX - _0x2263d7)) {
@@ -3221,7 +3213,7 @@ function _0x215896() {
         gameCtx.lineWidth = _0x2c9685;
         gameCtx.globalAlpha = 1;
         _0x330e7f = Math.clamp(5 * currentZoom * _0x358119, mapInfos.draw && _0x25fdfa ? 0.5 : 0.2, 1);
-        _0x62fded = gameSettings.sCustomBackEnableColor ? customBackgroundColor : gameSettings.sDark ? _0x2b9f9d : _0x214596;
+        _0x62fded = gameSettings.sCustomBackEnableColor ? customBackgroundColor : gameSettings.sDark ? BACKGROUND_DARK : BACKGROUND_WHITE;
         gameCtx.strokeStyle = rgbToHex(~~(_0x62fded.r + (204 - _0x62fded.r) * _0x330e7f), ~~(_0x62fded.g + (48 - _0x62fded.g) * _0x330e7f), ~~(_0x62fded.b + (48 - _0x62fded.b) * _0x330e7f));
         if (mapInfos.top + _0x2c9685 / 2 > viewY - _0x223539) {
             gameCtx.beginPath();
@@ -3271,19 +3263,16 @@ function _0x215896() {
     if (debug) timesCycle.push(performance.now());
     gameCtx.restore();
     if (_0x5ae1b6 = (() => {
-            var _0x1fa510 = 0;
-            for (var _0x1614fd = 0; _0x1614fd < mainPlayerCells.length; _0x1614fd++) {
-                var _0x41ff06 = mainPlayerCells[_0x1614fd];
-                _0x1fa510 += _0x41ff06.nSize * _0x41ff06.nSize;
-                if (_0x3b8888 < _0x1fa510) {
-                    _0x3b8888 = _0x1fa510;
-                    setTopMass(_0x3b8888);
-                } else {
-                    setCellsSplit();
-                }
+        let mass = 0;
+        for (const cell of mainPlayerCells) {
+            mass += cell.nSize * cell.nSize;
+            if (topMass < mass) {
+                setTopMass(topMass = mass);
             }
-            return _0x1fa510;
-        })()) {
+        }
+        setCellsSplit();
+        return mass;
+    })()) {
         _0x5bd130 = 0.01 * _0x5ae1b6;
         if (_0x2332bb) {
             _0x3a579c = Math.max(Math.min(1.6 * clientHeight, clientWidth, 1400) / 1400, 0.5);
@@ -3651,7 +3640,6 @@ window.azad = function(_0x1f19f5, _0x2aa3d0) {
     if ((
         _0x1f19f5 = !!_0x1f19f5,
         _0x1f19f5 = (
-            !_0x2a60cc &&
             0 == mainPlayerCellsIds.length &&
             !_0x1fc846 &&
             _0x3e08c0 != _0x1f19f5 ? true : _0x1f19f5
@@ -9306,8 +9294,6 @@ function _0x3c6fac(_0x4bd4a8) {
     if (_0x4bd4a8.synthetic) {
         return false;
     }
-    if (!_0x2a60cc) {
-    }
     if (!_0x3e08c0) {
         _0x36887a = _0x4bd4a8.clientX;
         _0x19f1c7 = _0x4bd4a8.clientY;
@@ -9571,7 +9557,7 @@ var _0xd28f67 = 1;
 var _0x34bd4c = 1;
 var _0x164fe5 = null;
 var _0x417591 = null;
-var _0x3b8888 = 0;
+var topMass = 0;
 var _0x29246b = false;
 var _0x5ae1b6 = 0;
 var _0x53b8b0 = viewX = ~~((_0x28f6af + _0x5c1aa9) / 2);
@@ -9729,7 +9715,6 @@ var _0x1c50f8 = true;
 var _0x423e1a = 1;
 var _0x284f1f = false;
 var _0x27fdb0 = 0;
-var _0x2a60cc = false;
 var _0x950276 = 50;
 var _0x2b8278 = 0;
 var _0x22a146 = performance.now();
@@ -9857,7 +9842,6 @@ window.setCellsSplit = function() {
     $("#cellsAmount").text(mainPlayerCells.length);
 };
 window.setTopMass = function(_0x29926a) {
-    $("#cellsAmount").text(mainPlayerCells.length);
     if (mainPlayerCells.length) {
         $("#cellsAmount").css("color", "#2d2");
     } else {
@@ -12107,7 +12091,7 @@ window.setDefaults = function() {
     $("#oGraphics").val('0').change();
     canEditGameSettings = true;
 };
-var _0x5f2da0 = {   
+var _0x5f2da0 = {
     "8": "BACKSPACE",
     "9": "TAB",
     "12": "CLEAR",
@@ -12177,68 +12161,33 @@ var _0x5f2da0 = {
     "144": "NUMLOCK",
     "145": "SCROLLLOCK"
 };
-var _0x3569f8 = {
-    Space: { c: 32, d: "SPACE" },
-    W:     { c: 87, d: "W" },
-    V:     { c: 86, d: "V" },
-    Z:     { c: 90, d: "Z" },
-    F:     { c: 70, d: "F" },
-    Q:     { c: 81, d: "Q" },
-    E:     { c: 69, d: "E" },
-    S:     { c: 83, d: "S" },
-    A:     { c: 65, d: "A" },
-    X:     { c: 88, d: "X" },
-    I:     { c: 73, d: "I" },
-    C:     { c: 67, d: "C" },
-    D:     { c: 68, d: "D" },
-    T:     { c: 84, d: "T" },
-    M:     { c: 77, d: "M" },
-    W360:  { c: 87, d: "W" },
-    DW:    { c: 66, d: "B" }
-};
-var _0xf6ede0 = null;
 
-function _0x4204cb() {
-    if (_0xf6ede0) {
+let selectedHotkey = null;
+
+function unselectHotkeyChange() {
+    if (selectedHotkey) {
         $(".hotkey-input").removeClass("selected").removeClass("invalid");
-        _0xf6ede0 = null;
+        selectedHotkey = null;
     }
 }
 
-function _0x58bb5b(_0x47e20c) {
-    _0x47e20c = $(_0x47e20c);
-    if (_0x47e20c.hasClass("hotkey-Q")) {
-        _0x47e20c = $(".hotkey-Q");
-    } else if (_0x47e20c.hasClass("hotkey-F")) {
-        _0x47e20c = $(".hotkey-F");
+function _0x58bb5b(hotkey) {
+    hotkey = $(hotkey);
+    if (hotkey.hasClass("hotkey-Q")) {
+        hotkey = $(".hotkey-Q");
+    } else if (hotkey.hasClass("hotkey-F")) {
+        hotkey = $(".hotkey-F");
     }
-    return _0x47e20c;
+    return hotkey;
 }
 
-function _0x3b71b7() {
-    $("#keySplit").text(_0x3569f8.Space.d);
-    $("#keyDoubleSplit").text(_0x3569f8.D.d);
-    $("#keyTripleSplit").text(_0x3569f8.T.d);
-    $("#keyRespawn").text(_0x3569f8.M.d);
-    $("#keyMacroSplit").text(_0x3569f8.Z.d);
-    $("#keyMacroFeed").text(_0x3569f8.W.d);
-    $("#keyMultiFeed").text(_0x3569f8.V.d);
-    $("#keyFixedMouse").text(_0x3569f8.C.d);
-    $("#keyToggleCamera").text(_0x3569f8.Q.d);
-    $("#keyFreezeCamera").text(_0x3569f8.F.d);
-    $("#keyRecombine").text(_0x3569f8.E.d);
-    $("#keySpeed").text(_0x3569f8.S.d);
-    $("#key360").text(_0x3569f8.W360.d);
-    $("#keyFreezeSelf").text(_0x3569f8.F.d);
-    $("#keyInvisibility").text(_0x3569f8.I.d);
-    $("#keyToggleControlBots").text(_0x3569f8.Q.d);
-    $("#keySplitBots").text(_0x3569f8.A.d);
-    $("#keyFeedBots").text(_0x3569f8.X.d);
-    $("#keyDropWall").text(_0x3569f8.DW.d);
+function setHotkeysDisplays() {
+    for (const id in idToHotkey)
+        $('#' + id).text(hotkeys[idToHotkey[id]].d);
 }
 
-function _0x554f52() {
-    window.localStorage.hotkeys = JSON.stringify(_0x3569f8);
+function saveHotkeys() {
+    window.localStorage.hotkeys = JSON.stringify(hotkeys);
 }
 
 function newImage(_0x5686e6) {
@@ -12288,20 +12237,20 @@ window.openSettingPage = function(_0x21487b) {
 };
 window.hotkeySelect = function(_0x11837f) {
     _0x11837f = _0x11837f.currentTarget;
-    if (_0xf6ede0) {
+    if (selectedHotkey) {
         if (_0x11837f && $(_0x11837f).hasClass("selected")) {
             _0x11837f = null;
         }
-        _0x4204cb();
+        unselectHotkeyChange();
     }
     if (_0x11837f) {
-        _0x58bb5b(_0xf6ede0 = _0x11837f).addClass("selected");
+        _0x58bb5b(selectedHotkey = _0x11837f).addClass("selected");
     }
 };
 window.hotkeyClear = function(_0x44054d) {
     var _0x50f19d;
     var _0x35cf11 = _0x44054d.currentTarget;
-    var _0x25c980 = "keySplit" == _0x35cf11.id ? _0x3569f8.Space : "keyDoubleSplit" == _0x35cf11.id ? _0x3569f8.D : "keyTripleSplit" == _0x35cf11.id ? _0x3569f8.T : "keyRespawn" == _0x35cf11.id ? _0x3569f8.M : "keyMacroSplit" == _0x35cf11.id ? _0x3569f8.Z : "keyMacroFeed" == _0x35cf11.id ? _0x3569f8.W : "keyMultiFeed" == _0x35cf11.id ? _0x3569f8.V : "keyFixedMouse" == _0x35cf11.id ? _0x3569f8.C : "keyToggleCamera" == _0x35cf11.id ? _0x3569f8.Q : "keyFreezeCamera" == _0x35cf11.id ? _0x3569f8.F : "keyRecombine" == _0x35cf11.id ? _0x3569f8.E : "keySpeed" == _0x35cf11.id ? _0x3569f8.S : "key360" == _0x35cf11.id ? _0x3569f8.W360 : "keyFreezeSelf" == _0x35cf11.id ? _0x3569f8.F : "keyInvisibility" == _0x35cf11.id ? _0x3569f8.I : "keyToggleControlBots" == _0x35cf11.id ? _0x3569f8.Q : "keySplitBots" == _0x35cf11.id ? _0x3569f8.A : "keyFeedBots" == _0x35cf11.id ? _0x3569f8.X : "keyDropWall" == _0x35cf11.id ? _0x3569f8.DW : null;
+    var _0x25c980 = hotkeys[idToHotkey[_0x35cf11.id]];
     if (_0x25c980) {
         _0x25c980.c = 0;
         _0x25c980.d = '';
@@ -12309,39 +12258,23 @@ window.hotkeyClear = function(_0x44054d) {
         setTimeout(function() {
             _0x50f19d.removeClass("updated");
         }, 50);
-        _0x3b71b7();
-        _0x554f52();
-        _0x4204cb();
+        setHotkeysDisplays();
+        saveHotkeys();
+        unselectHotkeyChange();
     }
     _0x44054d.preventDefault();
 };
 var _0xf1d309 = 500;
 
 window.hotkeySetDefaults = function() {
-    _0x3569f8.Space = { c: 32, d: "SPACE" };
-    _0x3569f8.W = { c: 87, d: "W" };
-    _0x3569f8.V = { c: 86, d: "V" };
-    _0x3569f8.Z = { c: 90, d: "Z" };
-    _0x3569f8.F = { c: 70, d: "F" };
-    _0x3569f8.Q = { c: 81, d: "Q" };
-    _0x3569f8.E = { c: 69, d: "E" };
-    _0x3569f8.S = { c: 83, d: "S" };
-    _0x3569f8.A = { c: 65, d: "A" };
-    _0x3569f8.X = { c: 88, d: "X" };
-    _0x3569f8.I = { c: 73, d: "I" };
-    _0x3569f8.C = { c: 67, d: "C" };
-    _0x3569f8.D = { c: 68, d: "D" };
-    _0x3569f8.T = { c: 84, d: "T" };
-    _0x3569f8.M = { c: 77, d: "M" };
-    _0x3569f8.W360 = { c: 87, d: "W" };
-    _0x3569f8.DW = { c: 66, d: "B" };
+    hotkeys = defaultHotkeys;
     $(".hotkey-input").addClass("updated");
     setTimeout(function() {
         $(".hotkey-input").removeClass("updated");
     }, 50);
-    _0x3b71b7();
-    _0x554f52();
-    _0x4204cb();
+    setHotkeysDisplays();
+    saveHotkeys();
+    unselectHotkeyChange();
 };
 
 var _0xf3d226 = false;
