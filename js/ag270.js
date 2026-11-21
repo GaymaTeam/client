@@ -2402,8 +2402,10 @@ function _0x411213(_0x9db3a7) {
     }, "text");
 }
 
+const IP_REGEX = /^\d+\.\d+\.\d+\.\d+:\d+$/;
+
 function wsConnect() {
-    var _0x5be478 = "wss://" + _0x256390;
+    var _0x5be478 = (_0x256390.match(IP_REGEX) ? 'ws' : 'wss') + "://" + _0x256390;
     if (windowIsLoaded && _0x256390 && (_0x13d7e0(), 0 != _0x2b8278)) {
         if (!ws) {
             $("#agma_loading_bar").hide();
