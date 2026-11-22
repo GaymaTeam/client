@@ -299,6 +299,10 @@ function isReady(force) {
 
 var _0x256390;
 window.onload = function() {
+    const xpReward = document.body.appendChild(document.createElement('div'));
+    xpReward.style = 'position:absolute;display:none;padding:5px 10px;background-color:#2faf00d9;color:#fff;border-radius:5px;z-index:9999;opacity:0;font-size:16px;transform-origin:center center;text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;top:183px;left:147px;';
+    xpReward.id = 'xpReward';
+
     windowIsLoaded = true;
     _0x4eac2b.focus();
     (function _0x353b54(_0x56e762) {
