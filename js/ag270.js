@@ -9016,21 +9016,19 @@ function _0x4a5541() {
 }
 
 function _0x4c710c(_0x181790, _0x2c83d2) {
-    if (!_0x2c83d2) {
-        if ((_0x489844 = _0x181790) != _0x14f2d3) {
-            _0x14f2d3 = 0;
+    if ((_0x489844 = _0x181790) != _0x14f2d3) {
+        _0x14f2d3 = 0;
+    }
+    if (_0x181957) {
+        $("#inventory").find(".inventory-box").tooltip("hide");
+    } else if (0 != _0x489844) {
+        if (_0x2029fe) {
+            clearTimeout(_0x2029fe);
+            _0x2029fe = 0;
         }
-        if (_0x181957) {
+        _0x2029fe = setTimeout(function() {
             $("#inventory").find(".inventory-box").tooltip("hide");
-        } else if (0 != _0x489844) {
-            if (_0x2029fe) {
-                clearTimeout(_0x2029fe);
-                _0x2029fe = 0;
-            }
-            _0x2029fe = setTimeout(function() {
-                $("#inventory").find(".inventory-box").tooltip("hide");
-            }, 4000);
-        }
+        }, 4000);
     }
 }
 
