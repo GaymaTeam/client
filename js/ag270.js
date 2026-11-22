@@ -575,11 +575,6 @@ window.onload = function() {
         $("#megaholder").hide();
     };
     $(".hotkey-input:not(.hotkey-unchangeable)").click(hotkeySelect).contextmenu(hotkeyClear);
-    $("input[type=\"checkbox\"]").click(function(_0x542603) {
-        if (_0x542603 && _0x542603.originalEvent && undefined !== _0x542603.originalEvent.isTrusted && !_0x542603.originalEvent.isTrusted) {
-            _0x542603.originalEvent.preventDefault();
-        }
-    });
     document.getElementById("invisibleOverlay").onclick = _0x234e04;
     _0x118a13.onmousedown = function(_0x1015a8) {
         if (2 == _0x1015a8.button) {
@@ -651,7 +646,6 @@ window.onload = function() {
         _0x19b525.stopPropagation();
     };
     _0x2baa42.onclick = function(_0x1b16bc) {
-        _0x11d4f6(_0x1b16bc);
         _0x432cde();
         _0x1b16bc.stopPropagation();
     };
@@ -684,44 +678,14 @@ window.onload = function() {
         }
     };
     _0x492d1e.onmousemove = _0x492d1e.onmouseenter = _0x3c6fac;
-    (_0x3ac4f2 = document.getElementById("invRecombine")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x17af86) {
-        if (_0x17af86.isTrusted) {
-            _0x4c710c(1);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invSpeed")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x77f344) {
-        if (_0x77f344.isTrusted) {
-            _0x4c710c(2);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invGrowth")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x29d3de) {
-        if (_0x29d3de.isTrusted) {
-            _0x4c710c(3);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invSpawnVirus")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x5f2e5c) {
-        if (_0x5f2e5c instanceof Event && _0x5f2e5c.isTrusted) {
-            _0x4c710c(4);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invSpawnMothercell")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x4a0120) {
-        if (_0x4a0120 instanceof Event && _0x4a0120.isTrusted) {
-            _0x4c710c(5);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invSpawnPortal")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x6da1cf) {
-        if (_0x6da1cf.isTrusted) {
-            _0x4c710c(6);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invSpawnGoldOre")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x2cb7fc) {
-        if (_0x2cb7fc.isTrusted) {
-            _0x4c710c(9);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invWall")).onmouseenter = function() {
-        _0x4c710c(10);
-    };
+    (_0x3ac4f2 = document.getElementById("invRecombine")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 1);
+    (_0x3ac4f2 = document.getElementById("invSpeed")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 2);
+    (_0x3ac4f2 = document.getElementById("invGrowth")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 3);
+    (_0x3ac4f2 = document.getElementById("invSpawnVirus")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 4);
+    (_0x3ac4f2 = document.getElementById("invSpawnMothercell")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 5);
+    (_0x3ac4f2 = document.getElementById("invSpawnPortal")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 6);
+    (_0x3ac4f2 = document.getElementById("invSpawnGoldOre")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 9);
+    (_0x3ac4f2 = document.getElementById("invWall")).onmouseenter = _0x4c710c.bind(null, 10);
     _0x3ac4f2.onmousedown = function(_0x187e32) {
         if (0 == _0x187e32.button) {
             _0x54aa2f(10);
@@ -733,47 +697,25 @@ window.onload = function() {
             _0x17c18f(_0x35cbe3.currentTarget, 10);
         }
     };
-    (_0x3ac4f2 = document.getElementById("inv360Shot")).onmouseenter = function() {
-        _0x4c710c(7);
-    };
+    (_0x3ac4f2 = document.getElementById("inv360Shot")).onmouseenter = _0x4c710c.bind(null, 7);
     _0x3ac4f2.onmousedown = function(_0x374298) {
         _0x4c710c(7);
         if (0 == _0x374298.button) {
             _0x465950(1);
         }
     };
-    (_0x3ac4f2 = document.getElementById("invFreeze")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x100c2c) {
-        if (_0x100c2c.isTrusted) {
-            _0x4c710c(8);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invAntiFreeze")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x5e7a1c) {
-        if (_0x5e7a1c.isTrusted) {
-            _0x4c710c(11);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invAntiRecombine")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x2b508e) {
-        if (_0x2b508e instanceof Event && _0x2b508e.isTrusted) {
-            _0x4c710c(12);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invShield")).onmouseenter = _0x3ac4f2.onmousedown = function(_0x264109) {
-        if (_0x264109.isTrusted) {
-            _0x4c710c(14);
-        }
-    };
-    (_0x3ac4f2 = document.getElementById("invFrozenVirus")).onmouseenter = function() {
-        _0x4c710c(13);
-    };
+    (_0x3ac4f2 = document.getElementById("invFreeze")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 8);
+    (_0x3ac4f2 = document.getElementById("invAntiFreeze")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 11);
+    (_0x3ac4f2 = document.getElementById("invAntiRecombine")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 12);
+    (_0x3ac4f2 = document.getElementById("invShield")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 14);
+    (_0x3ac4f2 = document.getElementById("invFrozenVirus")).onmouseenter = _0x4c710c.bind(null, 13);
     _0x3ac4f2.onmousedown = function(_0x286cda) {
         _0x4c710c(13);
         if (0 == _0x286cda.button) {
             _0x465950(3);
         }
     };
-    (_0x3ac4f2 = document.getElementById("invCloak")).onmouseenter = function() {
-        _0x4c710c(15);
-    };
+    (_0x3ac4f2 = document.getElementById("invCloak")).onmouseenter = _0x4c710c.bind(null, 15);
     _0x3ac4f2.onmousedown = function(_0x4e1adf) {
         if (0 == _0x4e1adf.button) {
             _0x54aa2f(15);
@@ -785,11 +727,9 @@ window.onload = function() {
             sendSignal(28);
         }
     };
-    _0x5c6f1b.onmouseleave = function() {
-        _0x4c710c(0);
-    };
+    _0x5c6f1b.onmouseleave = _0x4c710c.bind(null, 0);
     _0x5c6f1b.onmousedown = function(_0x26acb9) {
-        if (_0x26acb9.isTrusted && 0 == _0x26acb9.button) {
+        if (0 == _0x26acb9.button) {
             _0x34f96a = _0x26acb9.clientX;
             _0x5079ce = _0x26acb9.clientY;
             _0x28c1e5();
@@ -797,7 +737,7 @@ window.onload = function() {
         }
     };
     _0x5c6f1b.onmouseup = function(_0xc8c226) {
-        if (_0xc8c226.isTrusted && 0 == _0xc8c226.button) {
+        if (0 == _0xc8c226.button) {
             _0x492dec();
             _0xc8c226.stopPropagation();
         }
@@ -863,8 +803,6 @@ window.onload = function() {
     multiEjectCells = 1;
     multiEjectServerChanged = false;
     window.onresize = _0x51c554;
-    window.addEventListener("click", _0x1c81ac, true);
-    window.addEventListener("change", _0x11d4f6, true);
     window.addEventListener("mousedown", function(_0x38b092) {
         if (!(!selectedHotkey || $(_0x38b092.target).hasClass("hotkey-input") && $(_0x38b092.target).hasClass("selected"))) {
             unselectHotkeyChange();
@@ -874,9 +812,7 @@ window.onload = function() {
         var _0xd60e14;
         var hotkey;
         var _0x572def;
-        if (!(undefined !== _0x5f057a.isTrusted && !_0x5f057a.isTrusted)) {
-            _0x36acf7 = _0x5f057a.keyCode;
-        }
+        _0x36acf7 = _0x5f057a.keyCode;
         if (selectedHotkey) {
             _0xd60e14 = _0x5f057a;
             if (!(!selectedHotkey || _0x3e08c0 && $("#settingPage2").is(":visible"))) {
@@ -906,9 +842,6 @@ window.onload = function() {
             var _0xb8b260 = Date.now();
             if (!_0x3e08c0) {
                 if (_0x244728.keyCode == hotkeys.Space.c && !_0x3b6c7d && _0x12210f <= _0xb8b260 - 50) {
-                    if (!_0x244728.isTrusted) {
-                        return false;
-                    }
                     _0x12210f = _0xb8b260;
                     _0x3d0428(1);
                     _0x3b6c7d = true;
@@ -938,9 +871,6 @@ window.onload = function() {
                     _0x15ba70 = true;
                 }
                 if (_0x244728.keyCode == hotkeys.Z.c && !_0x24ef11 && _0x3d1664 <= _0xb8b260 - 50) {
-                    if (!_0x244728.isTrusted) {
-                        return false;
-                    }
                     _0x3d1664 = _0xb8b260;
                     _0x580067();
                     sendSignal(37);
@@ -1036,9 +966,6 @@ window.onload = function() {
             }
             if (_0x244728.keyCode == hotkeys.M.c && !_0x4ad9fe && _0x415203 <= _0xb8b260 - 50 && (!_0x3e08c0 || ("INPUT" != _0x244728.target.tagName || "checkbox" == _0x244728.target.type) && "TEXTAREA" != _0x244728.target.tagName && "SELECT" != _0x244728.target.tagName && 0 == $("div.modal.in:visible").length)) {
                 _0x415203 = _0xb8b260;
-                if (!_0x244728.isTrusted) {
-                    return false;
-                }
                 rspwn(document.getElementById("nick").value);
                 _0x4ad9fe = true;
             }
@@ -1069,7 +996,7 @@ window.onload = function() {
                 break;
             case 13:
                 if (contextMenuVisible) {
-                    (_0x218784 ? (_0x11d4f6(_0x244728), _0x432cde) : _0x460313)();
+                    (_0x218784 ? _0x432cde : _0x460313)();
                 } else if (_0xbbfdd2) {
                     _0x42b2d5();
                     _0x488b2a();
@@ -1194,7 +1121,6 @@ window.onload = function() {
     $("#overlays").show();
     ++framesCounter;
     _0x51c554();
-    ignoreTrustedEvent = false;
     $(".innerBoxDashboard2").show();
     $("#btnFriends").show();
     $("#settingsBtn").show();
@@ -3613,18 +3539,10 @@ orangeNameEnabled = false;
 redNameEnabled = false;
 blackNameEnabled = false;
 customColorNameEnabled = false;
-videoAdSpawns = 10;
-videoAdSpawnsParty = 12;
-adSpawnCounter = 0;
 ag219 = '';
 ag219_2 = '';
 rq219done = false;
 sentFirstTime = false;
-untrustedClick = false;
-untrustedClickResetTimer = 0;
-trustedEvent = false;
-ignoreTrustedEvent = true;
-trustedEventResetTimer = 0;
 mapCenterSet = false;
 isSpectating = false;
 _0x1e9905 = '';
@@ -3632,9 +3550,8 @@ challengeImageId = _0x38a139 = _0x1d4fed = _0x54207c = _0x20546f = 0;
 arrayOfKeyCodes = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
 drawHalfFood = false;
 timerInfectionModal = 0;
-if (void(_0x33d2a7 = _0x352c3f = _0x170049 = 0) !== window.localStorage && window.localStorage.getItem("crcx2") && 5 < window.localStorage.getItem("crcx2").length) {
+if (window.localStorage.getItem("crcx2") && 5 < window.localStorage.getItem("crcx2").length)
     ag219_2 = window.localStorage.getItem("crcx2");
-}
 window.topLeftClick = function() {
     azad(true);
 };
@@ -6478,7 +6395,6 @@ function wsOnMessage(_0x2ba470) {
             _0x107e7f = pkt.getUint32();
             var _0x280d4d = pkt.getUint32();
             var _0x5e72c3 = pkt.getString();
-            ignoreTrustedEvent = true;
             _0xea465f = _0x5e72c3;
             _0x11c620();
             if (2 == _0x3f104e) {
@@ -6611,7 +6527,6 @@ function wsOnMessage(_0x2ba470) {
             } else {
                 $("#abilityDoubleExp").removeClass("has-ability");
             }
-            ignoreTrustedEvent = false;
             break;
         case 97:
             var _0x184d89 = pkt.getUint8();
@@ -9101,7 +9016,7 @@ function _0x4a5541() {
 }
 
 function _0x4c710c(_0x181790, _0x2c83d2) {
-    if (!(_0x2c83d2 && untrustedClick)) {
+    if (!_0x2c83d2) {
         if ((_0x489844 = _0x181790) != _0x14f2d3) {
             _0x14f2d3 = 0;
         }
@@ -9364,32 +9279,6 @@ function _0x30cebd() {
     if (gameSettings.sFPS) {
         $("#ping").text("---");
         _0x1a6afb = false;
-    }
-}
-
-function _0x1c81ac(_0xd383d) {
-    if (!(undefined === _0xd383d.isTrusted || _0xd383d.isTrusted)) {
-        untrustedClick = true;
-        if (untrustedClickResetTimer) {
-            clearTimeout(untrustedClickResetTimer);
-            untrustedClickResetTimer = 0;
-        }
-        untrustedClickResetTimer = setTimeout(function() {
-            untrustedClick = false;
-        }, 0);
-    }
-}
-
-function _0x11d4f6(_0x1dfca0) {
-    if (!(trustedEvent || untrustedClick || undefined !== _0x1dfca0.isTrusted && !_0x1dfca0.isTrusted)) {
-        trustedEvent = true;
-        if (trustedEventResetTimer) {
-            clearTimeout(trustedEventResetTimer);
-            trustedEventResetTimer = 0;
-        }
-        trustedEventResetTimer = setTimeout(function() {
-            trustedEvent = false;
-        }, 0);
     }
 }
 
@@ -9741,7 +9630,7 @@ var _0x2c99f2 = false;
 var _0x4a720f = false;
 
 var canEditGameSettings = false;
-var _0x597133 = false;
+var canChangeSetting = false;
 var currentNickname = null;
 var fastBanEnabled = false;
 var gameBrightness = gameSettings.sDark ? 0.8 : 0.9;
@@ -9759,7 +9648,7 @@ function _0x11c620() {
     if (null != window.localStorage.userSettings && (undefined !== (_0x461b23 = JSON.parse(window.localStorage.userSettings)).sAPInv && (allowPartyInvite = _0x461b23.sAPInv), undefined !== _0x461b23.sAPAni && (allowPartyAnimations = _0x461b23.sAPAni), undefined !== _0x461b23.sAuFdEn && (autoFeedEnabled = _0x461b23.sAuFdEn), undefined !== _0x461b23.sGldNickEnabled && (gldNickEnabled = _0x461b23.sGldNickEnabled), undefined !== _0x461b23.sGldCrownEnabled && (gldCrownEnabled = _0x461b23.sGldCrownEnabled), undefined !== _0x461b23.sLargeRenderDistance && (largeRenderDistance = _0x461b23.sLargeRenderDistance), undefined !== _0x461b23.sMinionSkins && (minionSkins = _0x461b23.sMinionSkins), undefined !== _0x461b23.sVideoAdsEnabled && (videoAdsEnabled = _0x461b23.sVideoAdsEnabled), undefined !== _0x461b23.sModIconEnabled && (modIconEnabled = _0x461b23.sModIconEnabled), undefined !== _0x461b23.sIconDRankEnabled && (iconDRankEnabled = _0x461b23.sIconDRankEnabled), undefined !== _0x461b23.sIconYTEnabled && (iconYTEnabled = _0x461b23.sIconYTEnabled), undefined !== _0x461b23.sGreenNameEnabled && (greenNameEnabled = _0x461b23.sGreenNameEnabled), undefined !== _0x461b23.sBlueNameEnabled && (blueNameEnabled = _0x461b23.sBlueNameEnabled), undefined !== _0x461b23.sOrangeNameEnabled && (orangeNameEnabled = _0x461b23.sOrangeNameEnabled), undefined !== _0x461b23.sRedNameEnabled && (redNameEnabled = _0x461b23.sRedNameEnabled), undefined !== _0x461b23.sBlackNameEnabled && (blackNameEnabled = _0x461b23.sBlackNameEnabled), undefined !== _0x461b23.sCustomColorNameEnabled)) {
         customColorNameEnabled = _0x461b23.sCustomColorNameEnabled;
     }
-    _0x597133 = false;
+    canChangeSetting = false;
     showPartyInvite(allowPartyInvite);
     setPartyAnimations(allowPartyAnimations);
     setAutoFeedEnabled(autoFeedEnabled);
@@ -9777,14 +9666,14 @@ function _0x11c620() {
     setRedName(redNameEnabled);
     setBlackName(blackNameEnabled);
     setCustomColorName(customColorNameEnabled);
-    _0x597133 = true;
+    canChangeSetting = true;
     if (null == window.localStorage.userSettings) {
         _0x161cd2();
     }
 }
 
 function _0x161cd2() {
-    if (_0x597133) {
+    if (canChangeSetting) {
         const _0x44a2c1 = {
             sAPInv: allowPartyInvite,
             sAPAni: allowPartyAnimations,
@@ -10152,47 +10041,31 @@ window.setAutoFeedEnabled = function(_0x13a774) {
     _0x161cd2();
 };
 window.setGoldNickname = function(_0x20907a) {
-    if (!(_0x597133 && !trustedEvent && !ignoreTrustedEvent)) {
-        gldNickEnabled = _0x20907a;
-        $("#cGoldName").prop("checked", gldNickEnabled);
-        $("#cGoldName2").prop("checked", gldNickEnabled);
-        if (_0x597133) {
-            _0x25616a(1, gldNickEnabled ? 1 : 0);
-        }
-        if (gldNickEnabled && _0x597133) {
-            _0x597133 = false;
-            if (can_green_name) {
-                setSetting("cGreenName", false);
-            }
-            if (can_blue_name) {
-                setSetting("cBlueName", false);
-            }
-            if (can_orange_name) {
-                setSetting("cOrangeName", false);
-            }
-            if (can_red_name) {
-                setSetting("cRedName", false);
-            }
-            if (can_black_name) {
-                setSetting("cBlackName", false);
-            }
-            if (can_custom_color_name) {
-                setSetting("cCustomColorName", false);
-            }
-            _0x597133 = true;
-        }
-        _0x161cd2();
+    gldNickEnabled = _0x20907a;
+    $("#cGoldName").prop("checked", gldNickEnabled);
+    $("#cGoldName2").prop("checked", gldNickEnabled);
+    if (canChangeSetting) {
+        _0x25616a(1, gldNickEnabled ? 1 : 0);
     }
+    if (gldNickEnabled && canChangeSetting) {
+        canChangeSetting = false;
+        if (can_green_name) setSetting("cGreenName", false);
+        if (can_blue_name) setSetting("cBlueName", false);
+        if (can_orange_name) setSetting("cOrangeName", false);
+        if (can_red_name) setSetting("cRedName", false);
+        if (can_black_name) setSetting("cBlackName", false);
+        if (can_custom_color_name) setSetting("cCustomColorName", false);
+        canChangeSetting = true;
+    }
+    _0x161cd2();
 };
 window.setRenderDistance = function(_0x2deea8) {
-    if (!(_0x597133 && !trustedEvent && !ignoreTrustedEvent)) {
-        largeRenderDistance = _0x2deea8;
-        $("#cRenderDistance").prop("checked", largeRenderDistance);
-        if (_0x597133) {
-            _0x25616a(37, largeRenderDistance ? 1 : 0);
-        }
-        _0x161cd2();
+    largeRenderDistance = _0x2deea8;
+    $("#cRenderDistance").prop("checked", largeRenderDistance);
+    if (canChangeSetting) {
+        _0x25616a(37, largeRenderDistance ? 1 : 0);
     }
+    _0x161cd2();
 };
 window.setThrowSnowball = function(_0x16cbae) {
     throwSnowball = _0x16cbae;
@@ -10203,25 +10076,31 @@ window.setGoldCrownChat = function(_0x319467) {
     gldCrownEnabled = _0x319467;
     $("#cGoldCrownChat").prop("checked", gldCrownEnabled);
     $("#cGoldCrownChat2").prop("checked", gldCrownEnabled);
-    if (_0x597133) {
+    if (canChangeSetting) {
         _0x25616a(2, gldCrownEnabled ? 1 : 0);
     }
     _0x161cd2();
 };
 window.setMinionSkins = function(_0x12514f, _0x856542) {
-    if (!(_0x597133 && !trustedEvent && !ignoreTrustedEvent)) {
-        minionSkins = _0x12514f;
-        $("#cMinionSkinsStatus").prop("checked", minionSkins);
-        if (_0x597133 && (_0x25616a(5, minionSkins ? 1 : 0), _0x856542) && 0 < _0x24af02) {
-            $(_0x856542).prop("disabled", true).css("cursor", "progress").parent().css("cursor", "progress");
-            $("#loadingMinionSkins").html("<i class=\"fa fa-spin\" style=\"animation-duration:1s; margin:3px 0px -3px 10px; float:right; opacity:0.7;\"><img src=\"./img/loading3.png\" style=\"width:16px;\"></i>");
-            setTimeout(function() {
-                $(_0x856542).prop("disabled", false).css("cursor", '').parent().css("cursor", '');
-                $("#loadingMinionSkins").text('');
-            }, 2000);
-        }
-        _0x161cd2();
+    minionSkins = _0x12514f;
+    $("#cMinionSkinsStatus").prop("checked", minionSkins);
+    if (canChangeSetting && (_0x25616a(5, minionSkins ? 1 : 0), _0x856542) && 0 < _0x24af02) {
+        $(_0x856542)
+            .prop("disabled", true)
+            .css("cursor", "progress")
+            .parent()
+            .css("cursor", "progress");
+        $("#loadingMinionSkins").html('<i class="fa fa-spin" style="animation-duration:1s;margin:3px 0px -3px 10px;float:right;opacity:0.7;"><img src="./img/loading3.png" style="width:16px;"></i>');
+        setTimeout(function() {
+            $(_0x856542)
+                .prop("disabled", false)
+                .css("cursor", '')
+                .parent()
+                .css("cursor", '');
+            $("#loadingMinionSkins").text('');
+        }, 2000);
     }
+    _0x161cd2();
 };
 window.setVideoAds = function(_0x5562ee) {
     videoAdsEnabled = _0x5562ee;
@@ -10231,7 +10110,7 @@ window.setVideoAds = function(_0x5562ee) {
 window.setModeratorIconChat = function(_0x22a475) {
     modIconEnabled = _0x22a475;
     $("#cModeratorIconChat").prop("checked", modIconEnabled);
-    if (_0x597133) {
+    if (canChangeSetting) {
         _0x25616a(6, modIconEnabled ? 1 : 0);
     }
     _0x161cd2();
@@ -10239,7 +10118,7 @@ window.setModeratorIconChat = function(_0x22a475) {
 window.setIconDRank = function(_0x3fc5ef) {
     iconDRankEnabled = _0x3fc5ef;
     $("#cIconDRank").prop("checked", iconDRankEnabled);
-    if (_0x597133) {
+    if (canChangeSetting) {
         _0x25616a(9, iconDRankEnabled ? 1 : 0);
     }
     _0x161cd2();
@@ -10247,130 +10126,118 @@ window.setIconDRank = function(_0x3fc5ef) {
 window.setIconYT = function(_0x120e62) {
     iconYTEnabled = _0x120e62;
     $("#cIconYT").prop("checked", iconYTEnabled);
-    if (_0x597133) {
+    if (canChangeSetting) {
         _0x25616a(10, iconYTEnabled ? 1 : 0);
     }
     _0x161cd2();
 };
 window.setGreenName = function(_0x5054e2) {
-    if (!(_0x597133 && !trustedEvent && !ignoreTrustedEvent)) {
-        greenNameEnabled = _0x5054e2;
-        $("#cGreenName").prop("checked", greenNameEnabled);
-        if (_0x597133) {
-            _0x25616a(11, greenNameEnabled ? 1 : 0);
-        }
-        if (greenNameEnabled && _0x597133) {
-            _0x597133 = false;
-            if (2 == _0x3f104e) setSetting("cGoldName", false);
-            if (can_blue_name) setSetting("cBlueName", false);
-            if (can_orange_name) setSetting("cOrangeName", false);
-            if (can_red_name) setSetting("cRedName", false);
-            if (can_black_name) setSetting("cBlackName", false);
-            if (can_custom_color_name) setSetting("cCustomColorName", false);
-            _0x597133 = true;
-        }
-        _0x161cd2();
+    greenNameEnabled = _0x5054e2;
+    $("#cGreenName").prop("checked", greenNameEnabled);
+    if (canChangeSetting) {
+        _0x25616a(11, greenNameEnabled ? 1 : 0);
     }
+    if (greenNameEnabled && canChangeSetting) {
+        canChangeSetting = false;
+        if (2 == _0x3f104e) setSetting("cGoldName", false);
+        if (can_blue_name) setSetting("cBlueName", false);
+        if (can_orange_name) setSetting("cOrangeName", false);
+        if (can_red_name) setSetting("cRedName", false);
+        if (can_black_name) setSetting("cBlackName", false);
+        if (can_custom_color_name) setSetting("cCustomColorName", false);
+        canChangeSetting = true;
+    }
+    _0x161cd2();
 };
 window.setBlueName = function(_0x3e8618) {
-    if (!(_0x597133 && !trustedEvent && !ignoreTrustedEvent)) {
-        blueNameEnabled = _0x3e8618;
-        $("#cBlueName").prop("checked", blueNameEnabled);
-        if (_0x597133) {
-            _0x25616a(12, blueNameEnabled ? 1 : 0);
-        }
-        if (blueNameEnabled && _0x597133) {
-            _0x597133 = false;
-            if (2 == _0x3f104e) setSetting("cGoldName", false);
-            if (can_green_name) setSetting("cGreenName", false);
-            if (can_orange_name) setSetting("cOrangeName", false);
-            if (can_red_name) setSetting("cRedName", false);
-            if (can_black_name) setSetting("cBlackName", false);
-            if (can_custom_color_name) setSetting("cCustomColorName", false);
-            _0x597133 = true;
-        }
-        _0x161cd2();
+    blueNameEnabled = _0x3e8618;
+    $("#cBlueName").prop("checked", blueNameEnabled);
+    if (canChangeSetting) {
+        _0x25616a(12, blueNameEnabled ? 1 : 0);
     }
+    if (blueNameEnabled && canChangeSetting) {
+        canChangeSetting = false;
+        if (2 == _0x3f104e) setSetting("cGoldName", false);
+        if (can_green_name) setSetting("cGreenName", false);
+        if (can_orange_name) setSetting("cOrangeName", false);
+        if (can_red_name) setSetting("cRedName", false);
+        if (can_black_name) setSetting("cBlackName", false);
+        if (can_custom_color_name) setSetting("cCustomColorName", false);
+        canChangeSetting = true;
+    }
+    _0x161cd2();
 };
 window.setOrangeName = function(_0x4a3695) {
-    if (!(_0x597133 && !trustedEvent && !ignoreTrustedEvent)) {
-        orangeNameEnabled = _0x4a3695;
-        $("#cOrangeName").prop("checked", orangeNameEnabled);
-        if (_0x597133) {
-            _0x25616a(13, orangeNameEnabled ? 1 : 0);
-        }
-        if (orangeNameEnabled && _0x597133) {
-            _0x597133 = false;
-            if (2 == _0x3f104e) setSetting("cGoldName", false);
-            if (can_green_name) setSetting("cGreenName", false);
-            if (can_blue_name) setSetting("cBlueName", false);
-            if (can_red_name) setSetting("cRedName", false);
-            if (can_black_name) setSetting("cBlackName", false);
-            if (can_custom_color_name) setSetting("cCustomColorName", false);
-            _0x597133 = true;
-        }
-        _0x161cd2();
+    orangeNameEnabled = _0x4a3695;
+    $("#cOrangeName").prop("checked", orangeNameEnabled);
+    if (canChangeSetting) {
+        _0x25616a(13, orangeNameEnabled ? 1 : 0);
     }
+    if (orangeNameEnabled && canChangeSetting) {
+        canChangeSetting = false;
+        if (2 == _0x3f104e) setSetting("cGoldName", false);
+        if (can_green_name) setSetting("cGreenName", false);
+        if (can_blue_name) setSetting("cBlueName", false);
+        if (can_red_name) setSetting("cRedName", false);
+        if (can_black_name) setSetting("cBlackName", false);
+        if (can_custom_color_name) setSetting("cCustomColorName", false);
+        canChangeSetting = true;
+    }
+    _0x161cd2();
 };
 window.setRedName = function(_0x488cf0) {
-    if (!(_0x597133 && !trustedEvent && !ignoreTrustedEvent)) {
-        redNameEnabled = _0x488cf0;
-        $("#cRedName").prop("checked", redNameEnabled);
-        if (_0x597133) {
-            _0x25616a(14, redNameEnabled ? 1 : 0);
-        }
-        if (redNameEnabled && _0x597133) {
-            _0x597133 = false;
-            if (2 == _0x3f104e) setSetting("cGoldName", false);
-            if (can_green_name) setSetting("cGreenName", false);
-            if (can_blue_name) setSetting("cBlueName", false);
-            if (can_orange_name) setSetting("cOrangeName", false);
-            if (can_black_name) setSetting("cBlackName", false);
-            if (can_custom_color_name) setSetting("cCustomColorName", false);
-            _0x597133 = true;
-        }
-        _0x161cd2();
+    redNameEnabled = _0x488cf0;
+    $("#cRedName").prop("checked", redNameEnabled);
+    if (canChangeSetting) {
+        _0x25616a(14, redNameEnabled ? 1 : 0);
     }
+    if (redNameEnabled && canChangeSetting) {
+        canChangeSetting = false;
+        if (2 == _0x3f104e) setSetting("cGoldName", false);
+        if (can_green_name) setSetting("cGreenName", false);
+        if (can_blue_name) setSetting("cBlueName", false);
+        if (can_orange_name) setSetting("cOrangeName", false);
+        if (can_black_name) setSetting("cBlackName", false);
+        if (can_custom_color_name) setSetting("cCustomColorName", false);
+        canChangeSetting = true;
+    }
+    _0x161cd2();
 };
 window.setBlackName = function(_0x23a5b3) {
-    if (!(_0x597133 && !trustedEvent && !ignoreTrustedEvent)) {
-        blackNameEnabled = _0x23a5b3;
-        $("#cBlackName").prop("checked", blackNameEnabled);
-        if (_0x597133) {
-            _0x25616a(15, blackNameEnabled ? 1 : 0);
-        }
-        if (blackNameEnabled && _0x597133) {
-            _0x597133 = false;
-            if (2 == _0x3f104e) setSetting("cGoldName", false);
-            if (can_green_name) setSetting("cGreenName", false);
-            if (can_blue_name) setSetting("cBlueName", false);
-            if (can_orange_name) setSetting("cOrangeName", false);
-            if (can_red_name) setSetting("cRedName", false);
-            if (can_custom_color_name) setSetting("cCustomColorName", false);
-            _0x597133 = true;
-        }
-        _0x161cd2();
+    blackNameEnabled = _0x23a5b3;
+    $("#cBlackName").prop("checked", blackNameEnabled);
+    if (canChangeSetting) {
+        _0x25616a(15, blackNameEnabled ? 1 : 0);
     }
+    if (blackNameEnabled && canChangeSetting) {
+        canChangeSetting = false;
+        if (2 == _0x3f104e) setSetting("cGoldName", false);
+        if (can_green_name) setSetting("cGreenName", false);
+        if (can_blue_name) setSetting("cBlueName", false);
+        if (can_orange_name) setSetting("cOrangeName", false);
+        if (can_red_name) setSetting("cRedName", false);
+        if (can_custom_color_name) setSetting("cCustomColorName", false);
+        canChangeSetting = true;
+    }
+    _0x161cd2();
 };
 window.setCustomColorName = function(_0x31b40d) {
-    if (!(_0x597133 && !trustedEvent && !ignoreTrustedEvent)) {
-        customColorNameEnabled = _0x31b40d;
-        $("#cCustomColorName").prop("checked", customColorNameEnabled);
-        if (_0x597133) {
-            _0x25616a(16, customColorNameEnabled ? 1 : 0);
-        }
-        if (customColorNameEnabled && _0x597133) {
-            _0x597133 = false;
-            if (2 == _0x3f104e) setSetting("cGoldName", false);
-            if (can_green_name) setSetting("cGreenName", false);
-            if (can_blue_name) setSetting("cBlueName", false);
-            if (can_orange_name) setSetting("cOrangeName", false);
-            if (can_red_name) setSetting("cRedName", false);
-            if (can_black_name) setSetting("cBlackName", false);
-            _0x597133 = true;
-        }
-        _0x161cd2();
+    customColorNameEnabled = _0x31b40d;
+    $("#cCustomColorName").prop("checked", customColorNameEnabled);
+    if (canChangeSetting) {
+        _0x25616a(16, customColorNameEnabled ? 1 : 0);
     }
+    if (customColorNameEnabled && canChangeSetting) {
+        canChangeSetting = false;
+        if (2 == _0x3f104e) setSetting("cGoldName", false);
+        if (can_green_name) setSetting("cGreenName", false);
+        if (can_blue_name) setSetting("cBlueName", false);
+        if (can_orange_name) setSetting("cOrangeName", false);
+        if (can_red_name) setSetting("cRedName", false);
+        if (can_black_name) setSetting("cBlackName", false);
+        canChangeSetting = true;
+    }
+    _0x161cd2();
 };
 var _0x1aa57f = 0;
 
@@ -11454,21 +11321,20 @@ window.checkUserLoggedIn = function() {
     return !!isLoggedIn || (swal("Login first", "Please log in on agma or register a new user account to use this functionality"), false);
 };
 window.coinsXopen = function(_0x34f7cb) {
-    _0x34f7cb = "cprd=" + (_0x34f7cb = _0x34f7cb || 1) + "&cpn=" + _0xea465f + "&cpcid=" + randomBytesA;
     if ('' == _0xea465f) {
         return swal("Login first", "Please log in on agma or register a new user account to use this functionality");
     }
     $.ajax({
         type: "GET",
         url: "../xsl/gtk.php",
-        data: _0x34f7cb,
+        data: "cprd=" + (_0x34f7cb || 1) + "&cpn=" + _0xea465f + "&cpcid=" + randomBytesA,
         beforeSend: function() {},
-        success: function(_0x5b9f71) {
-            if ("error" != _0x5b9f71) {
-                if ("noUser" == _0x5b9f71) {
+        success: function(token) {
+            if ("error" != token) {
+                if ("noUser" == token) {
                     swal("Login or Register", "Please log in to agma or register a new user account to use this functionality");
                 } else {
-                    loadXPlayer(_0x5b9f71);
+                    loadXPlayer(token);
                 }
             }
         },
@@ -11476,45 +11342,37 @@ window.coinsXopen = function(_0x34f7cb) {
     });
 };
 window.logXOpn = function() {
-    var _0x341e71 = "&cpn=" + _0xea465f;
-    var _0x304c53 = {
+    $.ajax({
         type: "GET",
         url: "../xsl/logXopen.php",
-        data: _0x341e71,
+        data: "&cpn=" + _0xea465f,
         beforeSend: function() {},
         success: function() {},
         complete: function() {}
-    };
-    $.ajax(_0x304c53);
+    });
 };
 window.logXd = function(_0x2ba0e0) {
-    var _0x4ee68d = {
+    $.ajax({
         type: "GET",
         url: "../xsl/logXd.php",
         data: "dt=" + _0x2ba0e0,
         beforeSend: function() {},
         success: function() {},
         complete: function() {}
-    };
-    $.ajax(_0x4ee68d);
+    });
 };
-window.isBloc = function() {};
-window.loadXPlayer = function(_0x564d05) {
-    var _0x446413 = {
-        access_token: _0x564d05,
-        sandbox: false
-    };
+window.loadXPlayer = function(access_token) {
     var _0x564d05 = document.createElement("script");
     _0x564d05.type = "text/javascript";
     _0x564d05.async = true;
     _0x564d05.src = "//static.xsolla.com/embed/paystation/1.0.7/widget.min.js";
     _0x564d05.addEventListener("load", function() {
-        XPayStationWidget.init(_0x446413);
+        XPayStationWidget.init({ access_token, sandbox: false });
         XPayStationWidget.open();
         $(".bs-example-modal-lg").modal("hide");
         logXOpn();
-        XPayStationWidget.on(XPayStationWidget.eventTypes.STATUS, function(_0x32326e, _0x5830b3) {
-            logXd(_0x5830b3.paymentInfo);
+        XPayStationWidget.on(XPayStationWidget.eventTypes.STATUS, function(event, data) {
+            logXd(data.paymentInfo);
         });
     }, false);
     document.getElementsByTagName("head")[0].appendChild(_0x564d05);
