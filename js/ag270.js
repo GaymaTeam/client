@@ -1316,7 +1316,7 @@ function _0x3169a6(_0x4dc13e) {
         if (selectedMessage || _0x5c09e8) {
             if (selectedMessage) {
                 if (isReady() && selectedMessage.sid == currentServerId && 0 != selectedMessage.pid) {
-                    new PacketWriter(6).setUint8(60).setUint8(0).setUint32(selectedMessage.pid).send();
+                    new PacketWriter(6).setUint8(60).setUint8(1).setUint32(selectedMessage.pid).send();
                 }
                 $("#contextPlayerSkin").css({
                     "background-image": '',
@@ -1355,7 +1355,7 @@ function _0x3169a6(_0x4dc13e) {
                     }
                     $("#contextSpectate").removeClass("enabled");
                 }
-                $("#contextPickpocket").removeClass("enabled");
+                $("#contextPickpocket").addClass("enabled");
                 $("#contextMute").addClass("enabled");
             } else {
                 if (isReady()) {
