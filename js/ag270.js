@@ -9862,16 +9862,14 @@ window.loadGiftUI = function() {
         giftLogsContainer.innerHTML = '<div class="gift-log-entry"><div class="from-date"><p>No gifts received yet 🕵️‍♂️. This panel shows powerups and coins sent to you by other players when you\'re chosen as the 🏆 Gold Member of the Day.<br><small style="color:grey">You must be a gold member for this feature!</small></p></div></div>';
     }
 };
-window.sendGiftToGoldMember = function(_0x1f01ed, _0x7b71d0) {
-    if (_0x1f01ed < 5000 && Object.keys(_0x7b71d0).length < 1) {
-        swal("Please enter a value to gift");
-    } else if (isReady()) {
-        var _0x7b71d0 = Object.entries(_0x7b71d0);
-        const pkt = new PacketWriter(6 + 2 * _0x7b71d0.length)
+window.sendGiftToGoldMember = function(coins, items) {
+    if (isReady()) {
+        items = Object.entries(items);
+        const pkt = new PacketWriter(6 + 2 * items.length)
             .setUint8(49)
-            .setUint32(_0x1f01ed)
-            .setUint8(_0x7b71d0.length);
-        for (const [id, qty] of _0x7b71d0) pkt
+            .setUint32(coins)
+            .setUint8(items.length);
+        for (const [id, qty] of items) pkt
             .setUint8(parseInt(id))
             .setUint8(parseInt(qty));
         pkt.send();
