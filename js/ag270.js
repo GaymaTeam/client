@@ -1,3 +1,8 @@
+/* Important Notes: doing the following will get you banned
+- sending [104, 0, 104]
+- using normal ws.send bans (adds 2 fake bytes inside mouse packet)
+*/
+
 // TODO: remove chat canvas
 // TODO: remove leaderboard canvas
 // FIXME: localStorage.ag218 is also a ban factor
@@ -8159,9 +8164,7 @@ window.showWearable = function(_0xf6251, _0x579537) {
         _0x133036();
     }
 };
-var _0x14e1ef = [];
-var _0x54b7d3 = 0;
-var _0x4d35f1 = !(window.showShopItem = function(_0x3e0889, _0x259c72, _0x3f108f) {
+window.showShopItem = function(_0x3e0889, _0x259c72, _0x3f108f) {
     var _0x3eb999 = _0x173277;
     var _0x54659a = $("#" + _0x3e0889);
     var _0x1b4d11 = _0x54659a.hasClass("active");
@@ -8200,25 +8203,25 @@ var _0x4d35f1 = !(window.showShopItem = function(_0x3e0889, _0x259c72, _0x3f108f
             $("#" + _0x3e0889 + " a").tab("show");
         }
     }
-});
-let _0x523f93 = (_0x9f381 = []) => { // NOTE: tf is this
-    if (0 === _0x9f381.length) {
+};
+var ddMouseHistory = [];
+var _0x54b7d3 = 0;
+var _0x4d35f1 = false;
+let _0x523f93 = (history = []) => { // NOTE: tf is this
+    if (0 === history.length) {
         _0x54b7d3 = 0;
         return false;
     }
-    var _0x5c953c;
-    var _0x3577ba = _0x9f381[0][0];
-    var _0x290217 = _0x9f381[0][1];
-    let _0x5c5e96 = null;
-    for (let _0x86764a = 1; _0x86764a < _0x9f381.length; _0x86764a++) {
-        var _0x52cc90 = _0x9f381[_0x86764a][0];
-        var _0x22ac0f = _0x9f381[_0x86764a][1];
-        if (_0x52cc90 - _0x3577ba != 0) {
-            if (null === _0x5c5e96) {
-                _0x5c5e96 = +(_0x5c5e96 = (_0x22ac0f - _0x290217) / (_0x52cc90 - _0x3577ba)).toFixed(1);
+    let [ox, oy] = history[0];
+    let initialAvgDot = null;
+    for (let i = 1; i < history.length; i++) {
+        let [nx, ny] = history[i];
+        if (nx - ox != 0) {
+            const avgDot = +((ny - oy) / (nx - ox)).toFixed(1);
+            if (null === initialAvgDot) {
+                initialAvgDot = avgDot;
             } else {
-                let _0x223a07 = (_0x22ac0f - _0x290217) / (_0x52cc90 - _0x3577ba);
-                if ((_0x223a07 = +_0x223a07.toFixed(1)) != _0x5c5e96) {
+                if (avgDot != initialAvgDot) {
                     _0x54b7d3 = 0;
                     return false;
                 }
@@ -8226,14 +8229,13 @@ let _0x523f93 = (_0x9f381 = []) => { // NOTE: tf is this
         }
     }
     if (!(4 != ++_0x54b7d3 || _0x4d35f1)) {
-        _0x5c953c = Math.floor(10 * Math.random() + 10);
         _0x4d35f1 = true;
         setTimeout(function() {
-            sendSignal(163);
+            sendSignal(163); // does this ban ?
             setTimeout(function() {
                 _0x4d35f1 = false;
             }, 35000);
-        }, 1000 * _0x5c953c);
+        }, 1000 * Math.floor(10 * Math.random() + 10));
     }
     return true;
 };
@@ -8241,8 +8243,8 @@ let _0x523f93 = (_0x9f381 = []) => { // NOTE: tf is this
 function _0x4574cb(_0x10911a) {
     if (isReady() && ddEnabled && (Math.max(_0x21548d < _0x31d2d6 ? _0x31d2d6 - _0x21548d : _0x21548d - _0x31d2d6, _0x1598a0 < _0x34aaf6 ? _0x34aaf6 - _0x1598a0 : _0x1598a0 - _0x34aaf6) > 0.01 || _0x10911a)) {
         if (!bDropActive) {
-            if (_0x14e1ef.length < 30) {
-                _0x14e1ef.push([Math.round(_0x34f96a), Math.round(_0x5079ce)]);
+            if (ddMouseHistory.length < 30) {
+                ddMouseHistory.push([Math.round(_0x34f96a), Math.round(_0x5079ce)]);
             }
         }
         new PacketWriter(10).setUint8(73).setUint8(ddCell && 1 == ddCell.orientation ? 2 : 0).setInt32(_0x21548d).setInt32(_0x1598a0).send();
@@ -9193,9 +9195,9 @@ function _0x2f7348() {
         if (isReady() && !inOverlay) {
             _0x4574cb(true);
             if (!bDropActive && isDropAllowed && 1 != _0x2f4fb3 && 2 != _0x2f4fb3 && 3 != _0x2f4fb3 && 9 != _0x2f4fb3 && 10 != _0x2f4fb3) {
-                _0x523f93(_0x14e1ef);
+                _0x523f93(ddMouseHistory);
             }
-            _0x14e1ef = [];
+            ddMouseHistory = [];
             new PacketWriter(10).setUint8(72).setInt32(_0x21548d).setInt32(_0x1598a0).setUint8(_0x2f4fb3).send();
         }
         if (!bDropActive) {
