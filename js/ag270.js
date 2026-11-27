@@ -445,7 +445,7 @@ window.onload = function() {
     };
     _0x492d1e.onmousedown = function(_0x5d2ff5) {
         _0x6da0af();
-        if (2 == _0x5d2ff5.button && _0x181957) {
+        if (2 == _0x5d2ff5.button && ddEnabled) {
             _0x34f96a = _0x5d2ff5.clientX;
             _0x5079ce = _0x5d2ff5.clientY;
             _0x28c1e5();
@@ -626,7 +626,7 @@ window.onload = function() {
         _0xe31aef = currentFrameTime + 200;
     };
     _0x4110a1.onmousedown = function(_0x323b3f) {
-        if (!(0 != _0x323b3f.button || _0x3e08c0 || (!isSpectating && 1 != _0x47ccce || _0x191230(_0x323b3f.clientX, _0x323b3f.clientY) || (1 == _0x47ccce && _0xed8399(_0x323b3f), !isSpectating) || _0xed8399(_0x323b3f), _0x10e53d))) {
+        if (!(0 != _0x323b3f.button || inOverlay || (!isSpectating && 1 != _0x47ccce || _0x191230(_0x323b3f.clientX, _0x323b3f.clientY) || (1 == _0x47ccce && _0xed8399(_0x323b3f), !isSpectating) || _0xed8399(_0x323b3f), _0x10e53d))) {
             _0xe31aef = currentFrameTime;
         }
     };
@@ -657,7 +657,7 @@ window.onload = function() {
         if (0 == _0x34757a.button) {
             if (1 == _0x47ccce) {
                 var _0x2f8185 = _0x34757a;
-                if (!_0x3e08c0 && !_0x181957 && 0 < mainPlayerCellsIds.length) {
+                if (!inOverlay && !ddEnabled && 0 < mainPlayerCellsIds.length) {
                     var _0x5deb31 = null;
                     var _0x5ec5a8 = (_0x2f8185.pageX - clientWidth / 2) / currentZoom + viewX;
                     var _0x12065b = (_0x2f8185.pageY - clientHeight / 2) / currentZoom + viewY;
@@ -682,56 +682,56 @@ window.onload = function() {
         }
     };
     _0x492d1e.onmousemove = _0x492d1e.onmouseenter = _0x3c6fac;
-    (_0x3ac4f2 = document.getElementById("invRecombine")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 1);
-    (_0x3ac4f2 = document.getElementById("invSpeed")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 2);
-    (_0x3ac4f2 = document.getElementById("invGrowth")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 3);
-    (_0x3ac4f2 = document.getElementById("invSpawnVirus")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 4);
-    (_0x3ac4f2 = document.getElementById("invSpawnMothercell")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 5);
-    (_0x3ac4f2 = document.getElementById("invSpawnPortal")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 6);
-    (_0x3ac4f2 = document.getElementById("invSpawnGoldOre")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 9);
-    (_0x3ac4f2 = document.getElementById("invWall")).onmouseenter = _0x4c710c.bind(null, 10);
+    (_0x3ac4f2 = document.getElementById("invRecombine")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 1);
+    (_0x3ac4f2 = document.getElementById("invSpeed")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 2);
+    (_0x3ac4f2 = document.getElementById("invGrowth")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 3);
+    (_0x3ac4f2 = document.getElementById("invSpawnVirus")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 4);
+    (_0x3ac4f2 = document.getElementById("invSpawnMothercell")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 5);
+    (_0x3ac4f2 = document.getElementById("invSpawnPortal")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 6);
+    (_0x3ac4f2 = document.getElementById("invSpawnGoldOre")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 9);
+    (_0x3ac4f2 = document.getElementById("invWall")).onmouseenter = selectPowerup.bind(null, 10);
     _0x3ac4f2.onmousedown = function(_0x187e32) {
         if (0 == _0x187e32.button) {
             _0x54aa2f(10);
         }
-        _0x4c710c(10);
+        selectPowerup(10);
     };
     _0x3ac4f2.onclick = function(_0x35cbe3) {
-        if (!(10 != _0x14f2d3 || _0x3e08c0)) {
+        if (!(10 != _0x14f2d3 || inOverlay)) {
             _0x17c18f(_0x35cbe3.currentTarget, 10);
         }
     };
-    (_0x3ac4f2 = document.getElementById("inv360Shot")).onmouseenter = _0x4c710c.bind(null, 7);
+    (_0x3ac4f2 = document.getElementById("inv360Shot")).onmouseenter = selectPowerup.bind(null, 7);
     _0x3ac4f2.onmousedown = function(_0x374298) {
-        _0x4c710c(7);
+        selectPowerup(7);
         if (0 == _0x374298.button) {
             _0x465950(1);
         }
     };
-    (_0x3ac4f2 = document.getElementById("invFreeze")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 8);
-    (_0x3ac4f2 = document.getElementById("invAntiFreeze")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 11);
-    (_0x3ac4f2 = document.getElementById("invAntiRecombine")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 12);
-    (_0x3ac4f2 = document.getElementById("invShield")).onmouseenter = _0x3ac4f2.onmousedown = _0x4c710c.bind(null, 14);
-    (_0x3ac4f2 = document.getElementById("invFrozenVirus")).onmouseenter = _0x4c710c.bind(null, 13);
+    (_0x3ac4f2 = document.getElementById("invFreeze")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 8);
+    (_0x3ac4f2 = document.getElementById("invAntiFreeze")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 11);
+    (_0x3ac4f2 = document.getElementById("invAntiRecombine")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 12);
+    (_0x3ac4f2 = document.getElementById("invShield")).onmouseenter = _0x3ac4f2.onmousedown = selectPowerup.bind(null, 14);
+    (_0x3ac4f2 = document.getElementById("invFrozenVirus")).onmouseenter = selectPowerup.bind(null, 13);
     _0x3ac4f2.onmousedown = function(_0x286cda) {
-        _0x4c710c(13);
+        selectPowerup(13);
         if (0 == _0x286cda.button) {
             _0x465950(3);
         }
     };
-    (_0x3ac4f2 = document.getElementById("invCloak")).onmouseenter = _0x4c710c.bind(null, 15);
+    (_0x3ac4f2 = document.getElementById("invCloak")).onmouseenter = selectPowerup.bind(null, 15);
     _0x3ac4f2.onmousedown = function(_0x4e1adf) {
         if (0 == _0x4e1adf.button) {
             _0x54aa2f(15);
         }
-        _0x4c710c(15);
+        selectPowerup(15);
     };
     _0x3ac4f2.onclick = function() {
-        if (!(15 != _0x14f2d3 || _0x3e08c0)) {
+        if (!(15 != _0x14f2d3 || inOverlay)) {
             sendSignal(28);
         }
     };
-    _0x5c6f1b.onmouseleave = _0x4c710c.bind(null, 0);
+    _0x5c6f1b.onmouseleave = selectPowerup.bind(null, 0);
     _0x5c6f1b.onmousedown = function(_0x26acb9) {
         if (0 == _0x26acb9.button) {
             _0x34f96a = _0x26acb9.clientX;
@@ -819,7 +819,7 @@ window.onload = function() {
         _0x36acf7 = _0x5f057a.keyCode;
         if (selectedHotkey) {
             _0xd60e14 = _0x5f057a;
-            if (!(!selectedHotkey || _0x3e08c0 && $("#settingPage2").is(":visible"))) {
+            if (!(!selectedHotkey || inOverlay && $("#settingPage2").is(":visible"))) {
                 unselectHotkeyChange();
             }
             if (selectedHotkey) {
@@ -844,7 +844,7 @@ window.onload = function() {
         if (!_0xbbfdd2 && !_0x4a595d) {
             var _0x5ad31e;
             var _0xb8b260 = Date.now();
-            if (!_0x3e08c0) {
+            if (!inOverlay) {
                 if (_0x244728.keyCode == hotkeys.Space.c && !_0x3b6c7d && _0x12210f <= _0xb8b260 - 50) {
                     _0x12210f = _0xb8b260;
                     _0x3d0428(1);
@@ -946,7 +946,7 @@ window.onload = function() {
                 }
                 if (_0x244728.keyCode == hotkeys.DW.c && !_0x1f7f29 && _0x440cd8 <= _0xb8b260 - 50) {
                     _0x440cd8 = _0xb8b260;
-                    if (_0x181957 && _0x19bc6d) {
+                    if (ddEnabled && bDropActive) {
                         _0x492dec();
                     } else {
                         _0x5ad31e = _0x489844;
@@ -956,7 +956,7 @@ window.onload = function() {
                         _0x28c1e5();
                         _0x4801bb();
                         _0x489844 = _0x5ad31e;
-                        _0x19bc6d = true;
+                        bDropActive = true;
                         $("#invWall").addClass("active");
                     }
                     _0x1f7f29 = true;
@@ -968,7 +968,7 @@ window.onload = function() {
                         }
                 }
             }
-            if (_0x244728.keyCode == hotkeys.M.c && !_0x4ad9fe && _0x415203 <= _0xb8b260 - 50 && (!_0x3e08c0 || ("INPUT" != _0x244728.target.tagName || "checkbox" == _0x244728.target.type) && "TEXTAREA" != _0x244728.target.tagName && "SELECT" != _0x244728.target.tagName && 0 == $("div.modal.in:visible").length)) {
+            if (_0x244728.keyCode == hotkeys.M.c && !_0x4ad9fe && _0x415203 <= _0xb8b260 - 50 && (!inOverlay || ("INPUT" != _0x244728.target.tagName || "checkbox" == _0x244728.target.type) && "TEXTAREA" != _0x244728.target.tagName && "SELECT" != _0x244728.target.tagName && 0 == $("div.modal.in:visible").length)) {
                 _0x415203 = _0xb8b260;
                 rspwn(document.getElementById("nick").value);
                 _0x4ad9fe = true;
@@ -978,7 +978,7 @@ window.onload = function() {
             case 27:
                 var _0x4f6092 = $("div.modal.in:visible");
                 if (0 == _0x4f6092.length) {
-                    if (_0xbbfdd2 || _0x2bc2d5 || _0x29894d || contextMenuVisible || _0x181957 || _0x4a595d || _0x34cf3b) {
+                    if (_0xbbfdd2 || _0x2bc2d5 || _0x29894d || contextMenuVisible || ddEnabled || _0x4a595d || _0x34cf3b) {
                         _0x472070.blur();
                         _0x1e0756.blur();
                         _0x6da0af();
@@ -1246,7 +1246,7 @@ function _0x42b2d5() {
 
 function _0x191230(_0x5b7ebf, _0x3c2fed) {
     var _0x627fa6 = null;
-    if (!_0x3e08c0) {
+    if (!inOverlay) {
         var _0x39db36 = $("#chtCanvas").offset();
         if (_0x39db36) {
             _0x5b7ebf -= _0x39db36.left;
@@ -1265,13 +1265,13 @@ function _0x191230(_0x5b7ebf, _0x3c2fed) {
 
 function _0x491923(_0x4c7278) {
     var _0x203d30;
-    if (!_0x3e08c0 && (_0x203d30 = selectedMessage, selectedMessage = _0x191230(_0x4c7278.clientX, _0x4c7278.clientY), _0x203d30 || selectedMessage)) {
+    if (!inOverlay && (_0x203d30 = selectedMessage, selectedMessage = _0x191230(_0x4c7278.clientX, _0x4c7278.clientY), _0x203d30 || selectedMessage)) {
         _0x4cb089 = !(_0x10e53d = null);
     }
 }
 
 function _0x38ee8a(_0x42c4a5) {
-    if (!(_0x3e08c0 || _0x181957)) {
+    if (!(inOverlay || ddEnabled)) {
         _0x491923(_0x42c4a5);
         if (selectedMessage) {
             _0x3169a6(_0x42c4a5);
@@ -1284,7 +1284,7 @@ function _0x38ee8a(_0x42c4a5) {
 }
 
 function _0xed8399(_0x4c53ad) {
-    if (!(_0x3e08c0 || _0x181957 || !isSpectating || 0 != mainPlayerCellsIds.length)) {
+    if (!(inOverlay || ddEnabled || !isSpectating || 0 != mainPlayerCellsIds.length)) {
         hideContextMenu();
         _0x3169a6(_0x4c53ad);
         $("#contextMenu").find("li.hover").removeClass("hover");
@@ -1295,7 +1295,7 @@ function _0xed8399(_0x4c53ad) {
 }
 
 function _0x3169a6(_0x4dc13e) {
-    if (!_0x3e08c0 && (_0x4dc13e.preventDefault(), !_0x181957)) {
+    if (!inOverlay && (_0x4dc13e.preventDefault(), !ddEnabled)) {
         document.getElementById("chtbox").blur();
         var _0x5c09e8 = null;
         if (!selectedMessage) {
@@ -2196,7 +2196,7 @@ function _0x4fbf9e() {
 }
 
 function _0x3359de(_0x5f4291) {
-    if (!_0x3e08c0) {
+    if (!inOverlay) {
         _0x423e1a *= Math.exp(0.0008780042971485523 * (_0x5f4291.wheelDelta || (_0x5f4291.deltaY ? _0x5f4291.deltaY < 0 ? 120 : -120 : 0) || 0));
         _0x1450ce();
     }
@@ -2239,7 +2239,7 @@ function _0x8f51f1() {
                 _0x384d50 = setTimeout(_0x10236d, 3000);
             }
         }
-        _0x3e08c0 = false;
+        inOverlay = false;
         if (_0x1c50f8) {
             $("#minionUi").removeClass("minimized");
         }
@@ -2271,7 +2271,7 @@ function onPlayerDeath() {
     $("#advert").fadeIn(600);
     $("#overlays").hide();
     _0x1fc846 = true;
-    _0x3e08c0 = true;
+    inOverlay = true;
     currentNickname = null;
     sendSignal(14);
 }
@@ -2481,7 +2481,7 @@ function wsOnOpen() {
         _0x10e829 = 0;
     }
     _0x34efff();
-    if (!(_0x3e08c0 && !_0x1fc846)) {
+    if (!(inOverlay && !_0x1fc846)) {
         az();
     }
     _0x57735d();
@@ -2693,7 +2693,7 @@ function _0x215896() {
     if (0 != _0xe31aef && _0xe31aef <= currentFrameTime) {
         _0x243b5e = _0x36887a;
         _0x4d7270 = _0x19f1c7;
-        if (!(_0x3e08c0 || _0x10e53d || selectedMessage)) {
+        if (!(inOverlay || _0x10e53d || selectedMessage)) {
             if (_0x10e53d = _0x191230(_0x243b5e, _0x4d7270)) {
                 _0x4cb089 = true;
             }
@@ -3250,61 +3250,60 @@ function _0x215896() {
         gameCtx.globalAlpha = 1;
         gameCtx.drawImage(_0x13a1ae, (mouseFixedX - viewX + _0x2263d7) * currentZoom - 20, (mouseFixedY - viewY + _0x223539) * currentZoom - 10, 50, 50);
     }
-    if (_0x181957 && (
-        _0x28c1e5(),
-        _0x114a07 && (
-            _0x114a07.x = _0x114a07.ox = _0x114a07.hx = _0x21548d,
-            _0x114a07.y = _0x114a07.oy = _0x114a07.hy = _0x1598a0,
-            _0x114a07.nSize != _0x4289a6 && 0 != _0x4289a6 && (
-                _0x114a07.size = _0x114a07.oSize = _0x114a07.nSize = _0x114a07.strokeSize = _0x4289a6,
-                _0x114a07.be = null,
-                _0x114a07.sizeScale = 0
-            ),
-            _0x34eb69 = 4 == _0x114a07.type ? 0.83 * _0x114a07.size : _0x114a07.size,
-            _0x51f702 = 0 == _0x489844 && _0x496adb && 0 != _0x4289a6 && _0x114a07.sizeScale
-                ? _0x34eb69 * currentZoom < 4
-                    ? 4 / _0x34eb69
-                    : currentZoom
-                : (16 == _0x114a07.type ? 23 : 14) * (_0x4386c1 ? 0.7 : 1) / _0x34eb69,
-            _0x2c9685 = +_0x587d52,
-            _0x114a07.sizeScale = _0x114a07.sizeScale
-                ? (_0x2c9685 * _0x114a07.sizeScale + _0x51f702) / (_0x2c9685 + 1)
-                : _0x51f702,
-            (_0x25fdfa = _0x114a07.getTransform()).t = _0x25fdfa.s = true,
-            _0x25fdfa.sx = _0x25fdfa.sy = _0x114a07.sizeScale / currentZoom,
-            gameCtx.save(),
-            gameCtx.scale(currentZoom, currentZoom),
-            gameCtx.translate(-viewX + _0x2263d7, -viewY + _0x223539),
-            false && _0x496adb && 0 == _0x489844 && ( // mobile
-                gameCtx.beginPath(),
-                gameCtx.arc(_0x114a07.x, _0x114a07.y, 60 / currentZoom, 0, 2 * Math.PI, false),
-                gameCtx.arc(_0x114a07.x, _0x114a07.y, 50 / currentZoom, 0, 2 * Math.PI, false),
-                gameCtx.globalAlpha = 0.2,
-                gameCtx.fillStyle = _0x496adb ? "#00FF00" : "#FF0000",
-                gameCtx.fill("evenodd")
-            ),
-            _0x114a07.drawCell(),
-            gameCtx.restore()
-        ),
-        !_0x3e08c0
-    ) && 0 == _0x489844 && _0x496adb) {
-        _0x4cb1e7 = null;
-        for (_0x34eb69 = allNonFoodCells.length - 1; 0 <= _0x34eb69; _0x34eb69--) {
-            if (0 == (_0x25fdfa = allNonFoodCells[_0x34eb69]).type) {
-                var ox = _0x25fdfa.x - _0x21548d;
-                var oy = _0x25fdfa.y - _0x1598a0;
-                if (ox * ox + oy * oy < _0x25fdfa.size * _0x25fdfa.size) {
-                    _0x4cb1e7 = _0x25fdfa;
-                    break;
+    if (ddEnabled) {
+        _0x28c1e5();
+        if (ddCell) {
+            ddCell.x = ddCell.ox = ddCell.hx = _0x21548d; // NOTE: a bit stupid why not just use X,Y
+            ddCell.y = ddCell.oy = ddCell.hy = _0x1598a0;
+            if (ddCell.nSize != _0x4289a6 && 0 != _0x4289a6) {
+                ddCell.size = ddCell.oSize = ddCell.nSize = ddCell.strokeSize = _0x4289a6;
+                ddCell.be = null;
+                ddCell.sizeScale = 0;
+            }
+            _0x34eb69 = 4 == ddCell.type ? 0.83 * ddCell.size : ddCell.size;
+            _0x51f702 = 0 == _0x489844 && isDropAllowed && 0 != _0x4289a6 && ddCell.sizeScale
+                ? _0x34eb69 * currentZoom < 4 ? 4 / _0x34eb69 : currentZoom
+                : (16 == ddCell.type ? 23 : 14) * (_0x4386c1 ? 0.7 : 1) / _0x34eb69;
+            _0x2c9685 = +_0x587d52;
+            ddCell.sizeScale = ddCell.sizeScale
+                ? (_0x2c9685 * ddCell.sizeScale + _0x51f702) / (_0x2c9685 + 1)
+                : _0x51f702;
+            _0x25fdfa = ddCell.getTransform();
+            _0x25fdfa.t = _0x25fdfa.s = true;
+            _0x25fdfa.sx = _0x25fdfa.sy = ddCell.sizeScale / currentZoom;
+            gameCtx.save();
+            gameCtx.scale(currentZoom, currentZoom);
+            gameCtx.translate(-viewX + _0x2263d7, -viewY + _0x223539);
+            if (false && isDropAllowed && 0 == _0x489844) { // mobile
+                gameCtx.beginPath();
+                gameCtx.arc(ddCell.x, ddCell.y, 60 / currentZoom, 0, 2 * Math.PI, false);
+                gameCtx.arc(ddCell.x, ddCell.y, 50 / currentZoom, 0, 2 * Math.PI, false);
+                gameCtx.globalAlpha = 0.2;
+                gameCtx.fillStyle = isDropAllowed ? "#00FF00" : "#FF0000";
+                gameCtx.fill("evenodd");
+            }
+            ddCell.drawCell();
+            gameCtx.restore();
+        }
+        if (!inOverlay && 0 == _0x489844 && isDropAllowed) {
+            _0x4cb1e7 = null;
+            for (_0x34eb69 = allNonFoodCells.length - 1; 0 <= _0x34eb69; _0x34eb69--) {
+                if (0 == (_0x25fdfa = allNonFoodCells[_0x34eb69]).type) {
+                    var ox = _0x25fdfa.x - _0x21548d;
+                    var oy = _0x25fdfa.y - _0x1598a0;
+                    if (ox * ox + oy * oy < _0x25fdfa.size * _0x25fdfa.size) {
+                        _0x4cb1e7 = _0x25fdfa;
+                        break;
+                    }
                 }
             }
-        }
-        if (_0x4cb1e7) {
-            _0x4cb1e7.setAnimation({
-                id: 13,
-                start: playerEmotes[13].time(),
-                received: ++_0x57f5d0
-            });
+            if (_0x4cb1e7) {
+                _0x4cb1e7.setAnimation({
+                    id: 13,
+                    start: playerEmotes[13].time(),
+                    received: ++_0x57f5d0
+                });
+            }
         }
     }
     if (_0x2c6f91 && gameSettings.sMinimap && _0x12af20) {
@@ -3564,21 +3563,23 @@ window.azad = function(_0x1f19f5, _0x2aa3d0) {
         _0x1f19f5 = (
             0 == mainPlayerCellsIds.length &&
             !_0x1fc846 &&
-            _0x3e08c0 != _0x1f19f5 ? true : _0x1f19f5
+            inOverlay != _0x1f19f5 ? true : _0x1f19f5
         )
     )) {
         az(_0x2aa3d0, 2);
     }
 };
-window.az = function(_0x16507e, _0x1da941) {
+window.az = function(_0x16507e, panel) {
     _0x6da0af(_0x16507e);
     _0x492dec();
-    if (!(_0x3e08c0 && !_0x1fc846)) {
+    if (!inOverlay || _0x1fc846) {
         $("#minionUi").addClass("minimized");
     }
-    isSpectating = !(_0x3e08c0 = true);
-    if (_0x1da941 && _0x4386c1 && (1 === _0x1da941 && _0x5f12f2(), 2 === _0x1da941 && _0x3200d3(), 3 === _0x1da941)) {
-        _0x412b();
+    isSpectating = !(inOverlay = true);
+    if (panel && _0x4386c1) {
+        1 === panel && _0x5f12f2();
+        2 === panel && _0x3200d3();
+        3 === panel && _0x412b();
     }
     $("#overlays").fadeIn(200);
     $("#advert").hide();
@@ -5937,11 +5938,11 @@ function wsOnMessage(_0x2ba470) {
             _0x203625();
             break;
         case 82:
-            var _0x3626db = pkt.getUint8();
+            const newIsDropAllowed = !!(1 & pkt.getUint8());
             _0x4289a6 = pkt.getUint16();
-            if (_0x181957 && _0x496adb != !!(1 & _0x3626db)) {
-                _0x496adb = !!(1 & _0x3626db);
-                document.body.style.cursor = _0x496adb ? "default" : "not-allowed";
+            if (ddEnabled && isDropAllowed != newIsDropAllowed) {
+                isDropAllowed = newIsDropAllowed;
+                document.body.style.cursor = isDropAllowed ? "default" : "not-allowed";
             }
             break;
         case 85:
@@ -6486,7 +6487,7 @@ function wsOnMessage(_0x2ba470) {
             if (!_0x57f39f) {
                 if (Math.random() < 0.05) {
                     setTimeout(function() {
-                        if (_0x3e08c0) {
+                        if (inOverlay) {
                             $(".bs-example-modal-lg5").modal("show");
                         }
                     }, 2500);
@@ -6854,7 +6855,7 @@ function wsOnMessage(_0x2ba470) {
             curserMessage('You got banned', false, false, 0, 5);
             break;
         case 109:
-            const flags = pkt.getUint8();
+            var flags = pkt.getUint8();
             let accountHash = randomMD5;
             if (2 & flags) // target is online
                 accountHash = md5(((4294967296 + (pkt.getUint32() ^ randomBytesB)) % 4294967296).toString(36));
@@ -7939,7 +7940,7 @@ function _0x580067(_0x4f43ee) {
         _0x28fccb = X;
         _0x4bd57d = Y;
     }
-    if (_0x181957) {
+    if (ddEnabled) {
         _0x4574cb(_0x4f43ee);
     }
 }
@@ -8238,13 +8239,13 @@ let _0x523f93 = (_0x9f381 = []) => { // NOTE: tf is this
 };
 
 function _0x4574cb(_0x10911a) {
-    if (isReady() && _0x181957 && (Math.max(_0x21548d < _0x31d2d6 ? _0x31d2d6 - _0x21548d : _0x21548d - _0x31d2d6, _0x1598a0 < _0x34aaf6 ? _0x34aaf6 - _0x1598a0 : _0x1598a0 - _0x34aaf6) > 0.01 || _0x10911a)) {
-        if (!_0x19bc6d) {
+    if (isReady() && ddEnabled && (Math.max(_0x21548d < _0x31d2d6 ? _0x31d2d6 - _0x21548d : _0x21548d - _0x31d2d6, _0x1598a0 < _0x34aaf6 ? _0x34aaf6 - _0x1598a0 : _0x1598a0 - _0x34aaf6) > 0.01 || _0x10911a)) {
+        if (!bDropActive) {
             if (_0x14e1ef.length < 30) {
                 _0x14e1ef.push([Math.round(_0x34f96a), Math.round(_0x5079ce)]);
             }
         }
-        new PacketWriter(10).setUint8(73).setUint8(_0x114a07 && 1 == _0x114a07.orientation ? 2 : 0).setInt32(_0x21548d).setInt32(_0x1598a0).send();
+        new PacketWriter(10).setUint8(73).setUint8(ddCell && 1 == ddCell.orientation ? 2 : 0).setInt32(_0x21548d).setInt32(_0x1598a0).send();
         _0x31d2d6 = _0x21548d;
         _0x34aaf6 = _0x1598a0;
     }
@@ -8311,7 +8312,7 @@ function _0x483c7e(_0x4bd171) {
             } else {
                 _0x27324d.push(_0x4e2ef9);
             }
-            if (_0x3e08c0 || mainPlayerCells.length < 1) {
+            if (inOverlay || mainPlayerCells.length < 1) {
                 curserMessage("You must spawned in game to issue this command", false, true, 0, 5);
             } else {
                 setNick(currentNickname);
@@ -8336,7 +8337,7 @@ function _0x483c7e(_0x4bd171) {
                     _0x27324d.push(_0x2df53d);
                 }
                 tskngc(_0x1b76cc);
-                if (_0x3e08c0 || mainPlayerCells.length < 1) {
+                if (inOverlay || mainPlayerCells.length < 1) {
                     curserMessage("You must spawned in game to issue this command", false, true, 0, 5);
                 } else {
                     setNick(currentNickname);
@@ -8344,7 +8345,7 @@ function _0x483c7e(_0x4bd171) {
             } else if (/^(?:\/gacha1)/.test(_0x48b4f1)) {
                 curserMessage("Secret command... enjoy the skins!", false, true, 1, 5);
                 tskngc(_0x1b76cc);
-                if (_0x3e08c0 || mainPlayerCells.length < 1) {
+                if (inOverlay || mainPlayerCells.length < 1) {
                     curserMessage("You must spawned in game to issue this command", false, true, 0, 5);
                 } else {
                     setNick(currentNickname);
@@ -8352,7 +8353,7 @@ function _0x483c7e(_0x4bd171) {
             } else if (/^(?:\/gacha)/.test(_0x48b4f1)) {
                 toggleWearable(58, 0, 0, 3, false);
                 tskngc(_0x1b76cc);
-                if (_0x3e08c0 || mainPlayerCells.length < 1) {
+                if (inOverlay || mainPlayerCells.length < 1) {
                     curserMessage("You must spawned in game to issue this command", false, true, 0, 5);
                 } else {
                     setNick(currentNickname);
@@ -9016,11 +9017,11 @@ function _0x4a5541() {
     }
 }
 
-function _0x4c710c(_0x181790, _0x2c83d2) {
-    if ((_0x489844 = _0x181790) != _0x14f2d3) {
+function selectPowerup(id) {
+    if ((_0x489844 = id) != _0x14f2d3) {
         _0x14f2d3 = 0;
     }
-    if (_0x181957) {
+    if (ddEnabled) {
         $("#inventory").find(".inventory-box").tooltip("hide");
     } else if (0 != _0x489844) {
         if (_0x2029fe) {
@@ -9040,7 +9041,7 @@ function _0x54aa2f(_0x2f5349) {
         _0x94a128 = 0;
     }
     _0x94a128 = setTimeout(function() {
-        if (_0x181957) {
+        if (ddEnabled) {
             _0x14f2d3 = 0;
         }
     }, 400);
@@ -9093,10 +9094,23 @@ function _0x465950(_0x2c4b45, _0x5e4a11) {
 }
 
 function _0x4801bb() {
-    var _0x421ab1 = _0x19bc6d;
+    var _0x421ab1 = bDropActive;
     _0x492dec();
-    if (!(_0x181957 || _0x3e08c0 || 1 != _0x489844 && 2 != _0x489844 && 3 != _0x489844 && 4 != _0x489844 && 5 != _0x489844 && 6 != _0x489844 && 8 != _0x489844 && 9 != _0x489844 && 10 != _0x489844 && 11 != _0x489844 && 12 != _0x489844 && 14 != _0x489844)) {
-        _0x496adb = _0x181957 = true;
+    if (!ddEnabled && !inOverlay && (
+        1 == _0x489844 ||
+        2 == _0x489844 ||
+        3 == _0x489844 ||
+        4 == _0x489844 ||
+        5 == _0x489844 ||
+        6 == _0x489844 ||
+        8 == _0x489844 ||
+        9 == _0x489844 ||
+        10 == _0x489844 ||
+        11 == _0x489844 ||
+        12 == _0x489844 ||
+        14 == _0x489844
+    )) {
+        isDropAllowed = ddEnabled = true;
         _0x4289a6 = 0;
         switch (_0x2f4fb3 = _0x489844) {
             case 1:
@@ -9137,19 +9151,20 @@ function _0x4801bb() {
         }
 
         function _0x277ade(_0x48bba7, _0x57d355, _0x4f9aca, _0x2cb7b3, _0x4ce9ff) {
-            (_0x114a07 = new Cell(0, 0, 0, 0)).type = _0x48bba7;
-            _0x114a07.size = _0x114a07.oSize = _0x114a07.nSize = _0x114a07.strokeSize = _0x57d355;
+            ddCell = new Cell(0, 0, 0, 0);
+            ddCell.type = _0x48bba7;
+            ddCell.size = ddCell.oSize = ddCell.nSize = ddCell.strokeSize = _0x57d355;
             if (4 == _0x48bba7) {
-                _0x114a07.strokeSize = 0.83 * _0x57d355;
+                ddCell.strokeSize = 0.83 * _0x57d355;
             }
-            _0x114a07.color = rgbToHex(_0x4f9aca.r, _0x4f9aca.g, _0x4f9aca.b);
-            _0x114a07.colorDimmed = rgbToHex(_0x4f9aca.r * gameBrightness, _0x4f9aca.g * gameBrightness, _0x4f9aca.b * gameBrightness);
-            _0x114a07.spiked = _0x2cb7b3;
-            _0x114a07.imageId = _0x4ce9ff;
-            _0x114a07.reloadImage();
-            _0x114a07.ga = 0.5;
+            ddCell.color = rgbToHex(_0x4f9aca.r, _0x4f9aca.g, _0x4f9aca.b);
+            ddCell.colorDimmed = rgbToHex(_0x4f9aca.r * gameBrightness, _0x4f9aca.g * gameBrightness, _0x4f9aca.b * gameBrightness);
+            ddCell.spiked = _0x2cb7b3;
+            ddCell.imageId = _0x4ce9ff;
+            ddCell.reloadImage();
+            ddCell.ga = 0.5;
         }
-        _0x19bc6d = _0x421ab1;
+        bDropActive = _0x421ab1;
         if (isReady()) {
             new PacketWriter(2).setUint8(70).setUint8(_0x2f4fb3).send();
         }
@@ -9163,10 +9178,10 @@ function _0x4801bb() {
 }
 
 function _0x492dec() {
-    if (_0x181957) {
+    if (ddEnabled) {
         _0x2f4fb3 = 0;
-        _0x114a07 = null;
-        _0x19bc6d = _0x181957 = false;
+        ddCell = null;
+        bDropActive = ddEnabled = false;
         $(".inventory-box.active").removeClass("active");
         sendSignal(71);
         document.body.style.cursor = "default";
@@ -9174,24 +9189,24 @@ function _0x492dec() {
 }
 
 function _0x2f7348() {
-    if (_0x181957) {
-        if (isReady() && !_0x3e08c0) {
+    if (ddEnabled) {
+        if (isReady() && !inOverlay) {
             _0x4574cb(true);
-            if (!_0x19bc6d && _0x496adb && 1 != _0x2f4fb3 && 2 != _0x2f4fb3 && 3 != _0x2f4fb3 && 9 != _0x2f4fb3 && 10 != _0x2f4fb3) {
+            if (!bDropActive && isDropAllowed && 1 != _0x2f4fb3 && 2 != _0x2f4fb3 && 3 != _0x2f4fb3 && 9 != _0x2f4fb3 && 10 != _0x2f4fb3) {
                 _0x523f93(_0x14e1ef);
             }
             _0x14e1ef = [];
             new PacketWriter(10).setUint8(72).setInt32(_0x21548d).setInt32(_0x1598a0).setUint8(_0x2f4fb3).send();
         }
-        if (!_0x19bc6d) {
+        if (!bDropActive) {
             _0x492dec();
         }
     }
 }
 
 function _0x56a8e8() {
-    if (_0x181957 && _0x114a07 && !_0x3e08c0 && isReady() && 10 == _0x2f4fb3) {
-        _0x114a07.orientation = "undefined" != typeof orientation ? orientation : (_0x114a07.orientation + 1) % 2;
+    if (ddEnabled && ddCell && !inOverlay && isReady() && 10 == _0x2f4fb3) {
+        ddCell.orientation = "undefined" != typeof orientation ? orientation : (ddCell.orientation + 1) % 2;
         _0x4574cb(true);
     }
 }
@@ -9210,11 +9225,11 @@ function _0x3c6fac(_0x4bd4a8) {
     if (_0x4bd4a8.synthetic) {
         return false;
     }
-    if (!_0x3e08c0) {
+    if (!inOverlay) {
         _0x36887a = _0x4bd4a8.clientX;
         _0x19f1c7 = _0x4bd4a8.clientY;
         _0x368208();
-        if (_0x181957) {
+        if (ddEnabled) {
             _0x34f96a = _0x36887a;
             _0x5079ce = _0x19f1c7;
             _0x28c1e5();
@@ -9400,7 +9415,7 @@ var _0x21548d = 0;
 var _0x1598a0 = 0;
 var _0x31d2d6 = 0;
 var _0x34aaf6 = 0;
-var _0x19bc6d = false;
+var bDropActive = false;
 var _0x14f2d3 = 0;
 var _0x94a128 = 0;
 var _0x4587e2 = {};
@@ -9461,7 +9476,7 @@ var _0x29c97b = 1;
 var _0x634c41 = null;
 var windowIsLoaded = false;
 var _0x2332bb = false;
-var _0x3e08c0 = true;
+var inOverlay = true;
 var _0x21d872 = ["#F03030", "#30F030", "#606060", "#F0F030", "#20E8F8", "#F020E8", "#1060F0"];
 var customServerInfos = null;
 var _0x568853 = -1;
@@ -9497,12 +9512,12 @@ var _0x5ea511 = 0;
 var _0xb1583e = 0;
 var _0x31962a = 0;
 var _0x37e4a8 = 0;
-var _0x181957 = false;
+var ddEnabled = false;
 var _0x2f4fb3 = 0;
 var _0x489844 = 0;
-var _0x496adb = true;
+var isDropAllowed = true;
 var _0x4289a6 = 0;
-var _0x114a07 = null;
+var ddCell = null;
 var _0x1ec523 = false;
 var currentParty = [];
 var isPartyLeader = false;
@@ -10460,7 +10475,7 @@ window.spectate = function(_0x592d39) {
     }
 };
 window.toggleSkin = function(skinId) {
-    if (_0x3e08c0 && isReady()) {
+    if (inOverlay && isReady()) {
         if (gameSettings.skinId == skinId) {
             _0x5df715(0);
         } else {
@@ -11172,7 +11187,7 @@ window.tgWblGc = function(wearId, wearArea, zIndex, wearGroup, wearTry) {
         equipWearable(wearId, wearArea, zIndex, wearGroup, wearTry);
 };
 window.toggleWearable = function(wearId, wearArea, zIndex, wearGroup, wearTry) {
-    if (_0x3e08c0 && isReady()) { // inMenu && inWearablesTab
+    if (inOverlay && isReady()) { // inMenu && inWearablesTab
         let isUsing = false;
         for (const wearable of gameSettings.wearablesSelected) {
             if (wearable.wearId == wearId) {
