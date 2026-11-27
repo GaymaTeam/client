@@ -1958,7 +1958,7 @@ function _0x432cde() {
     var _0x337d0c;
 }
 
-function mutePlayer(uid, iid, name) {
+function mutePlayer(uid, iid, name) { // accountIdHash, encodedIpHash, nickname
     var _0x4b9b10 = uid != randomMD5 && !_0x2f707e[uid];
     var _0x4be0a6 = iid != randomMD5 && !_0x538120[iid];
     if (_0x4b9b10 || _0x4be0a6) {
@@ -2547,22 +2547,21 @@ function _0x215896() {
     _0x223539 = clientHeight / 2 / currentZoom;
     var _0x514393 = mainPlayerCells.length;
     if (0 < _0x514393) {
-        var _0x539378;
-        var _0x39a721 = 0;
-        var _0x106ce1 = 0;
-        for (var _0x2b0b8e = 0; _0x2b0b8e < _0x514393; _0x2b0b8e++) {
-            if ((_0x539378 = mainPlayerCells[_0x2b0b8e]).shouldUpdate) {
-                _0x539378.updatePos();
-            }
-            _0x106ce1 += _0x539378.x;
-            _0x39a721 += _0x539378.y;
+        let avgY = 0, avgX = 0;
+        for (let i = 0; i < _0x514393; i++) {
+            const cell = mainPlayerCells[i];
+            if (cell.shouldUpdate)
+                cell.updatePos();
+            avgX += cell.x;
+            avgY += cell.y;
         }
-        _0x53b8b0 = _0x46ac7b = _0x40e81b = _0x106ce1 / _0x514393;
-        _0x464afc = _0x2c7938 = _0x6c7bce = _0x39a721 / _0x514393;
+        _0x53b8b0 = _0x46ac7b = _0x40e81b = avgX / _0x514393;
+        _0x464afc = _0x2c7938 = _0x6c7bce = avgY / _0x514393;
     } else {
         _0x1e72ef(currentFrameTime);
     }
-    viewX = ((_0x2c9685 = 3 * _0x587d52) * viewX + _0x53b8b0) / (_0x2c9685 + 1);
+    _0x2c9685 = 3 * _0x587d52;
+    viewX = (_0x2c9685 * viewX + _0x53b8b0) / (_0x2c9685 + 1);
     viewY = (_0x2c9685 * viewY + _0x464afc) / (_0x2c9685 + 1);
     _0x2c9685 = Math.ceil(10 * _0x28ad4b * currentZoom * _0x28ad4b) / (10 * _0x28ad4b);
     if (Math.abs(_0x34bd4c - _0x2c9685) > 0.5 * Math.abs(_0x34bd4c - _0xd28f67)) {
@@ -6855,15 +6854,15 @@ function wsOnMessage(_0x2ba470) {
             curserMessage('You got banned', false, false, 0, 5);
             break;
         case 109:
-            var flags = pkt.getUint8();
-            var _0x2f2313 = randomMD5;
-            if (2 & flags)
-                _0x2f2313 = md5(((4294967296 + (pkt.getUint32() ^ randomBytesB)) % 4294967296).toString(36));
+            const flags = pkt.getUint8();
+            let accountHash = randomMD5;
+            if (2 & flags) // target is online
+                accountHash = md5(((4294967296 + (pkt.getUint32() ^ randomBytesB)) % 4294967296).toString(36));
             var _0x435e7a = 1 & flags ? pkt.getUint8() : 1;
-            var _0xba74db = [];
-            for (var i = 0; i < _0x435e7a; ++i)
-                _0xba74db.push(((4294967296 + (pkt.getUint32() ^ randomBytesB)) % 4294967296).toString(36));
-            mutePlayer(_0x2f2313, md5(1 < _0xba74db.length ? JSON.stringify(_0xba74db) : _0xba74db[0]), pkt.getString());
+            var encodedIpHash = [];
+            for (let i = 0; i < _0x435e7a; i++)
+                encodedIpHash.push(((4294967296 + (pkt.getUint32() ^ randomBytesB)) % 4294967296).toString(36));
+            mutePlayer(accountHash, md5(1 < encodedIpHash.length ? JSON.stringify(encodedIpHash) : encodedIpHash[0]), pkt.getString());
             break;
         case 110:
             var currentServer = 0;
@@ -7169,10 +7168,8 @@ function wsOnMessage(_0x2ba470) {
             break;
         }
         case 209:
-            _0x311374 = pkt.getUint16();
-            _0x2f2313 = pkt.getUint16();
-            $("#thumbUpCount").text(_0x311374);
-            $("#thumbDownCount").text(_0x2f2313);
+            $("#thumbUpCount").text(pkt.getUint16());
+            $("#thumbDownCount").text(pkt.getUint16());
             break;
         case 244:
             if (1 === pkt.buffer.byteLength) {
@@ -8203,7 +8200,7 @@ var _0x4d35f1 = !(window.showShopItem = function(_0x3e0889, _0x259c72, _0x3f108f
         }
     }
 });
-let _0x523f93 = (_0x9f381 = []) => {
+let _0x523f93 = (_0x9f381 = []) => { // NOTE: tf is this
     if (0 === _0x9f381.length) {
         _0x54b7d3 = 0;
         return false;
