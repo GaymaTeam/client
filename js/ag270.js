@@ -6857,7 +6857,7 @@ function wsOnMessage(_0x2ba470) {
             }
             break;
         case 108:
-            curserMessage('You got banned', false, false, 0, 5);
+            console.debug('You got banned, auto clearing cookies...');
             break;
         case 109:
             var flags = pkt.getUint8();
